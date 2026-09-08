@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T17:50:36.408Z",
+  "generatedAt": "2026-09-08T18:24:47.573Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -1869,7 +1869,7 @@
           "postedDate": null
         },
         {
-          "title": "Senior Engineering Manager – Incident Response",
+          "title": "Senior Engineering Manager, Incident Response",
           "url": "https://www.atlassian.com/company/careers/details/26656",
           "location": "",
           "postedDate": null
@@ -2255,18 +2255,6 @@
           "postedDate": null
         },
         {
-          "title": "Senior Developer - Core Ledger Replacement",
-          "url": "https://nab.eightfold.ai/careers/job/563980770565426?microsite=bnz",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Developer - nCino",
-          "url": "https://nab.eightfold.ai/careers/job/563980770587263?microsite=bnz",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Principal Engineer",
           "url": "https://nab.eightfold.ai/careers/job/563980770280863?microsite=bnz",
           "location": "",
@@ -2279,14 +2267,14 @@
           "postedDate": null
         },
         {
-          "title": "Principal Engineer (Salesforce / nCino Architect)",
-          "url": "https://nab.eightfold.ai/careers/job/563980770587262?microsite=bnz",
+          "title": "Senior Developer - Core Ledger Replacement",
+          "url": "https://nab.eightfold.ai/careers/job/563980770565426?microsite=bnz",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Product Manager",
-          "url": "https://nab.eightfold.ai/careers/job/563980770612977?microsite=bnz",
+          "title": "Senior Developer - nCino",
+          "url": "https://nab.eightfold.ai/careers/job/563980770587263?microsite=bnz",
           "location": "",
           "postedDate": null
         },
@@ -2299,6 +2287,18 @@
         {
           "title": "Technical Specalist",
           "url": "https://nab.eightfold.ai/careers/job/563980770612969?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Engineer (Salesforce / nCino Architect)",
+          "url": "https://nab.eightfold.ai/careers/job/563980770587262?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Manager",
+          "url": "https://nab.eightfold.ai/careers/job/563980770612977?microsite=bnz",
           "location": "",
           "postedDate": null
         },
