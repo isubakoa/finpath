@@ -1,0 +1,12 @@
+{
+  "name": "finpath-js-scraper",
+  "private": true,
+  "type": "module",
+  "description": "Scheduled browser-based scraper for FinPath's JavaScript-only career sites — see README.md.",
+  "scripts": {
+    "scrape": "node scrape.js"
+  },
+  "dependencies": {
+    "playwright": "^1.56.0"
+  }
+}
