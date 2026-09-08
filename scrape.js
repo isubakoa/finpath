@@ -173,6 +173,49 @@ const COMPANIES = [
     waitForSelector: 'a[href*="/position/"]',
     titleSelector: "span:not(:has(span))",
   },
+  {
+    slug: "kiwibank",
+    // Kiwibank's careers portal runs on parent-independent Cornerstone
+    // OnDemand (kiwibankpeople.csod.com) — a genuinely JS-only board (the
+    // raw HTML response is a near-empty shell). Job cards render as real
+    // anchor links once the page's own JS runs, with clean title text
+    // directly in the link, so no titleSelector is needed here. Only the
+    // first ~18 of the site's 33 listed openings render without further
+    // scrolling/interaction; a known, acceptable coverage gap.
+    urls: ["https://kiwibankpeople.csod.com/ux/ats/careersite/1/home?c=kiwibankpeople"],
+    linkPattern: /\/requisition\/\d+/,
+    waitForSelector: 'a[href*="requisition"]',
+  },
+  {
+    slug: "american-express",
+    // careers.americanexpress.com runs on Oracle Fusion Recruiting Cloud
+    // (Candidate Experience / "CX_1" site) but is wrapped in heavy
+    // client-side bot-protection scripting, and unlike other companies on
+    // this platform (e.g. CIMB), the raw HTML response contains no job
+    // data at all — it's rendered entirely from an API call this file's
+    // simple GET can't replicate, so it needs a real browser. Each job
+    // card's anchor is empty (title lives in a same-card
+    // <search-result-item-header>/.job-tile__title element referenced via
+    // aria-labelledby rather than DOM nesting), so this reuses the
+    // ancestor-selector approach already built for CIMB/ABN AMRO.
+    urls: ["https://careers.americanexpress.com/en/sites/CX_1/jobs?keyword=design"],
+    linkPattern: /\/en\/sites\/CX_1\/job\/\d+/,
+    waitForSelector: 'a[href*="/en/sites/CX_1/job/"]',
+    titleAncestorSelector: ".job-tile",
+    titleAncestorTitleSelector: ".job-tile__title",
+  },
+  {
+    slug: "standard-chartered",
+    // jobs.standardchartered.com runs the modern SAP SuccessFactors Career
+    // Site Builder 2.0 (a full client-rendered SPA — the raw HTML has no
+    // job data, unlike the older SuccessFactors template several other
+    // companies in this project turned out to be on). Once rendered, job
+    // cards are plain, clean anchor links with the title as their own
+    // text — no titleSelector needed.
+    urls: ["https://jobs.standardchartered.com/search/?q=design"],
+    linkPattern: /\/job\/[^/]+\/\d+-/,
+    waitForSelector: 'a[href^="/job/"]',
+  },
   // Still need a confirmed pattern (see README "Companies not yet wired up"):
   // wefox — its main careers page (careers.wefox.com) is currently broken/
   // unreachable and its company-wide board on join.com shows zero open
@@ -194,6 +237,17 @@ const COMPANIES = [
   // slower, much more fragile) kind of scraper than everything else here.
   // Left out of this batch; a direct check.php adapter would actually be
   // the simpler fix for these two specifically, whenever that's revisited.
+  //
+  // UBS was investigated as part of the "enterprise platforms" backlog
+  // (jobs.ubs.com runs IBM/Kenexa BrassRing, confirmed via its page's own
+  // meta tags) and turned out to be a different kind of dead end: it's
+  // genuinely session-state-dependent rather than architecturally
+  // unreachable. A fresh page load sometimes renders real job cards (real
+  // anchor links, clean titles) and sometimes renders a JSON preload blob
+  // with an empty job array, with no reliable way from the outside to tell
+  // which one a given request will get — repeated fresh loads (no reused
+  // cookies) came back empty far more often than not. A scheduled scraper
+  // hitting a coin-flip page isn't worth wiring in; left out of this batch.
 ];
 
 const TIMEOUT_MS = 30000;
