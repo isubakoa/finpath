@@ -125,6 +125,19 @@ const COMPANIES = [
     titleSelector: '[class^="title-"]',
   },
   {
+    slug: "national-australia-bank-nab",
+    // NAB's own careers page (nab.com.au/about-us/careers) links straight to
+    // this same Eightfold instance, just filtered to the "nab" microsite
+    // instead of "bnz" — same platform, same card/title markup, so this is
+    // BNZ's entry with the microsite param swapped. The site's previous note
+    // ("PageUp board") was stale; NAB moved to Eightfold at some point and
+    // this is the real, current board.
+    urls: ["https://nab.eightfold.ai/careers?microsite=nab&query=design"],
+    linkPattern: /\/careers\/job\/\d+/,
+    waitForSelector: 'a[href*="/careers/job/"]',
+    titleSelector: '[class^="title-"]',
+  },
+  {
     slug: "abn-amro",
     // werkenbijabnamro.nl/en/vacancies. Its keyword-filter query param
     // turned out to be silently ignored server-side (confirmed by network
