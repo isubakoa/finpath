@@ -1,36 +1,48 @@
 {
-  "generatedAt": "2026-09-08T12:36:29.500Z",
+  "generatedAt": "2026-09-08T12:51:24.347Z",
   "companies": {
     "adyen": {
       "ok": true,
       "roles": [
         {
-          "title": "Account Manager",
-          "url": "https://careers.adyen.com/vacancies/7340050-account-manager?locale=en",
+          "title": "Digital Experience Lead",
+          "url": "https://careers.adyen.com/vacancies/8090631-digital-experience-lead?locale=en",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Account Manager",
-          "url": "https://careers.adyen.com/vacancies/5359280-account-manager?locale=en",
+          "title": "Group Product Manager - Commercial Risk & Platform Fraud",
+          "url": "https://careers.adyen.com/vacancies/7862254-group-product-manager-commercial-risk-platform-fraud?locale=en",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Account Manager",
-          "url": "https://careers.adyen.com/vacancies/7095302-account-manager?locale=en",
+          "title": "Group Product Manager, Credit and Data Platform",
+          "url": "https://careers.adyen.com/vacancies/6630580-group-product-manager-credit-and-data-platform?locale=en",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Account Manager",
-          "url": "https://careers.adyen.com/vacancies/7938074-account-manager?locale=en",
+          "title": "Head of Product, Developer Experience",
+          "url": "https://careers.adyen.com/vacancies/7522608-head-of-product-developer-experience?locale=en",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Account Manager",
-          "url": "https://careers.adyen.com/vacancies/8099261-account-manager?locale=en",
+          "title": "Senior Product Manager, Banking",
+          "url": "https://careers.adyen.com/vacancies/8147288-senior-product-manager-banking?locale=en",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Strategy & Business Ops Manager",
+          "url": "https://careers.adyen.com/vacancies/8113927-senior-strategy-business-ops-manager?locale=en",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Strategy & Program Manager",
+          "url": "https://careers.adyen.com/vacancies/8164533-strategy-program-manager?locale=en",
           "location": "",
           "postedDate": null
         }
