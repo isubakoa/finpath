@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T22:20:31.126Z",
+  "generatedAt": "2026-09-08T23:16:53.119Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -905,6 +905,12 @@
         {
           "title": "Software Engineer Intern, 2027 Summer U.S.",
           "url": "https://www.atlassian.com/company/careers/details/26266",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Director, Commercial Legal - Enterprise Sales",
+          "url": "https://www.atlassian.com/company/careers/details/26771",
           "location": "",
           "postedDate": null
         },
@@ -2107,13 +2113,13 @@
       "roles": [
         {
           "title": "Design Operations Lead",
-          "url": "https://jobs.natwestgroup.com/jobs/18016714-design-operations-lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016716-design-operations-lead",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Design Operations Lead",
-          "url": "https://jobs.natwestgroup.com/jobs/18016716-design-operations-lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016714-design-operations-lead",
           "location": "",
           "postedDate": null
         },
@@ -2154,6 +2160,12 @@
           "postedDate": null
         },
         {
+          "title": "Software Engineer, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/17823116-software-engineer-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Principal Engineer, API Management Platform",
           "url": "https://jobs.natwestgroup.com/jobs/18117339-principal-engineer-api-management-platform",
           "location": "",
@@ -2162,24 +2174,6 @@
         {
           "title": "Software Engineer, VP",
           "url": "https://jobs.natwestgroup.com/jobs/17823115-software-engineer-vp",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer, VP",
-          "url": "https://jobs.natwestgroup.com/jobs/17823116-software-engineer-vp",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer, iOS",
-          "url": "https://jobs.natwestgroup.com/jobs/18026247-software-engineer-ios",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer, AVP",
-          "url": "https://jobs.natwestgroup.com/jobs/18078298-software-engineer-avp",
           "location": "",
           "postedDate": null
         },
@@ -2203,7 +2197,13 @@
         },
         {
           "title": "Principal AI Engineer, Director",
-          "url": "https://jobs.natwestgroup.com/jobs/17968373-principal-ai-engineer-director",
+          "url": "https://jobs.natwestgroup.com/jobs/17968374-principal-ai-engineer-director",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, iOS",
+          "url": "https://jobs.natwestgroup.com/jobs/18026246-software-engineer-ios",
           "location": "",
           "postedDate": null
         },
@@ -2215,25 +2215,31 @@
         },
         {
           "title": "Software Engineer, iOS",
-          "url": "https://jobs.natwestgroup.com/jobs/18026246-software-engineer-ios",
+          "url": "https://jobs.natwestgroup.com/jobs/18026247-software-engineer-ios",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, AVP",
+          "url": "https://jobs.natwestgroup.com/jobs/18078298-software-engineer-avp",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Principal AI Engineer, Director",
-          "url": "https://jobs.natwestgroup.com/jobs/17968374-principal-ai-engineer-director",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer",
-          "url": "https://jobs.natwestgroup.com/jobs/18187025-software-engineer",
+          "url": "https://jobs.natwestgroup.com/jobs/17968373-principal-ai-engineer-director",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Data Engineer, AVP",
           "url": "https://jobs.natwestgroup.com/jobs/18181603-data-engineer-avp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer",
+          "url": "https://jobs.natwestgroup.com/jobs/18187025-software-engineer",
           "location": "",
           "postedDate": null
         },
@@ -2273,14 +2279,14 @@
           "postedDate": null
         },
         {
-          "title": "Principal Engineer",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280863?microsite=bnz",
+          "title": "Product Manager",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282210?microsite=bnz",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Product Manager",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282210?microsite=bnz",
+          "title": "Principal Engineer",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280863?microsite=bnz",
           "location": "",
           "postedDate": null
         },
@@ -2297,14 +2303,14 @@
           "postedDate": null
         },
         {
-          "title": "Developer",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282235?microsite=bnz",
+          "title": "Technical Specalist",
+          "url": "https://nab.eightfold.ai/careers/job/563980770612969?microsite=bnz",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Principal Engineer (Salesforce / nCino Architect)",
-          "url": "https://nab.eightfold.ai/careers/job/563980770587262?microsite=bnz",
+          "title": "Developer",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282235?microsite=bnz",
           "location": "",
           "postedDate": null
         },
@@ -2315,8 +2321,8 @@
           "postedDate": null
         },
         {
-          "title": "Technical Specalist",
-          "url": "https://nab.eightfold.ai/careers/job/563980770612969?microsite=bnz",
+          "title": "Principal Engineer (Salesforce / nCino Architect)",
+          "url": "https://nab.eightfold.ai/careers/job/563980770587262?microsite=bnz",
           "location": "",
           "postedDate": null
         },
@@ -2374,14 +2380,14 @@
           "postedDate": null
         },
         {
-          "title": "Senior Product Designer - Personal Everyday Banking",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282803?microsite=nab",
+          "title": "Senior Product Designer - HCM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770286235?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior Product Designer - HCM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770286235?microsite=nab",
+          "title": "Senior Product Designer - Personal Everyday Banking",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282803?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -2434,14 +2440,14 @@
           "postedDate": null
         },
         {
-          "title": "Senior Technical Business Analyst (AI)",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282584?microsite=nab",
+          "title": "Senior Business Analyst - FCO",
+          "url": "https://nab.eightfold.ai/careers/job/563980770286363?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior Business Analyst - FCO",
-          "url": "https://nab.eightfold.ai/careers/job/563980770286363?microsite=nab",
+          "title": "Senior Technical Business Analyst (AI)",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282584?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -2452,14 +2458,14 @@
           "postedDate": null
         },
         {
-          "title": "Engineering Manager - BEB",
-          "url": "https://nab.eightfold.ai/careers/job/563980770281972?microsite=nab",
+          "title": "Engineering Manager - Payments",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282750?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Engineering Manager - Payments",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282750?microsite=nab",
+          "title": "Engineering Manager - BEB",
+          "url": "https://nab.eightfold.ai/careers/job/563980770281972?microsite=nab",
           "location": "",
           "postedDate": null
         }
@@ -2889,8 +2895,117 @@
       ]
     },
     "kiwibank": {
-      "ok": false,
-      "error": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home?c=kiwibankpeople: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://kiwibankpeople.csod.com/ux/ats/careersite/1/home?c=kiwibankpeople\", waiting until \"networkidle\"\n"
+      "ok": true,
+      "roles": [
+        {
+          "title": "Banking Assistant, Riccarton",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3493?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Platform Engineer – Digital Workplace Security Services",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3491?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Platform Engineer – DWSS Identity Governance and Administration",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3490?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Lead Engineer - SRE",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3488?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Banking Specialist, Riccarton",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3487?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Contact Centre Representative",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3482?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Banking Assistant, Porirua",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3479?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Relationship Customer Onboarding Specialist",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3474?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Contact Centre Manager",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3477?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Banking Assistant, Nelson",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3475?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Junior Application Specialist (Technical Business Analyst)",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3447?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Delivery Coach – Digital & Technology",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3237?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Lead",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3348?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Client Director - Corporate",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3469?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Site Reliability Engineer",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3453?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Banking Assistant, Napier",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3405?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "General Manager - Strategy and Architecture",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3460?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "D&T Senior Product Lead - Enterprise Hub",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3389?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        }
+      ]
     },
     "american-express": {
       "ok": false,
