@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T15:47:01.398Z",
+  "generatedAt": "2026-09-08T17:50:36.408Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -552,6 +552,2194 @@
         {
           "title": "Incident Manager",
           "url": "https://jobs.deel.com/klarna/job-details/21584046-56d5-44c4-8b18-7e15dc659827/overview",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "atlassian": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Senior Application Engineering Manager, Core Financial Apps",
+          "url": "https://www.atlassian.com/company/careers/details/27069",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Data Scientist",
+          "url": "https://www.atlassian.com/company/careers/details/26576",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Data Engineering Manager",
+          "url": "https://www.atlassian.com/company/careers/details/26571",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Data Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/26569",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Data Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/26568",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Data Scientist",
+          "url": "https://www.atlassian.com/company/careers/details/26573",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Operations Analyst, Partners & Alliances",
+          "url": "https://www.atlassian.com/company/careers/details/26237",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Data Engineer, DX",
+          "url": "https://www.atlassian.com/company/careers/details/26572",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Data Scientist",
+          "url": "https://www.atlassian.com/company/careers/details/26696",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Data Scientist, Loom",
+          "url": "https://www.atlassian.com/company/careers/details/26575",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Analyst, Sales Strategy & Operations",
+          "url": "https://www.atlassian.com/company/careers/details/26279",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head of Data Engineering",
+          "url": "https://www.atlassian.com/company/careers/details/26064",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Design Manager, Jira AI",
+          "url": "https://www.atlassian.com/company/careers/details/24872",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior ML System Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/26762",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Engineer - Data Platform",
+          "url": "https://www.atlassian.com/company/careers/details/27075",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Principal engineer",
+          "url": "https://www.atlassian.com/company/careers/details/27054",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Principal Engineer - Jira Platform",
+          "url": "https://www.atlassian.com/company/careers/details/27051",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Engineering Manager, Search Infrastructure",
+          "url": "https://www.atlassian.com/company/careers/details/26714",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Machine Learning Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25809",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Forward Deployed Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25799",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Principal Forward Deployed Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25798",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Principal Engineer, Search Platform",
+          "url": "https://www.atlassian.com/company/careers/details/25718",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Software Engineer - Search and Data",
+          "url": "https://www.atlassian.com/company/careers/details/25693",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Machine Learning Systems Engineering Manager - AI & ML Platform",
+          "url": "https://www.atlassian.com/company/careers/details/25682",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Backend Software Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25577",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Forward Deployed Engineer, AI",
+          "url": "https://www.atlassian.com/company/careers/details/27019",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Forward Deployed Engineer, AI (Remote)",
+          "url": "https://www.atlassian.com/company/careers/details/23724",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head of Forward Deployed Engineering EMEA",
+          "url": "https://www.atlassian.com/company/careers/details/22983",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior ML Performance Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/26377",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Engineering Manager, Agentic AI Integrations",
+          "url": "https://www.atlassian.com/company/careers/details/26357",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Machine Learning Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25394",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Technical Program Manager",
+          "url": "https://www.atlassian.com/company/careers/details/26965",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Fullstack Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25696",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Machine Learning Systems Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25292",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Infrastructure Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25283",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Frontend Software Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/27018",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Full Stack Software Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/27017",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Frontend Software Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/26674",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Fullstack Software Engineer, DX",
+          "url": "https://www.atlassian.com/company/careers/details/26664",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Fullstack Software Engineer, DX",
+          "url": "https://www.atlassian.com/company/careers/details/26345",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Principal Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25716",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Full Stack Software Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25561",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Engineer - Kubernetes Platform",
+          "url": "https://www.atlassian.com/company/careers/details/26359",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Forward Deployed Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25812",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Principal Forward Deployed Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25800",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Machine Learning Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25797",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Machine Learning Manager",
+          "url": "https://www.atlassian.com/company/careers/details/25747",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Machine Learning System Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25738",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Machine Learning System Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25737",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Machine Learning Engineer (GenAI Products with Enterprise Knowledge)",
+          "url": "https://www.atlassian.com/company/careers/details/26968",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Backend Software Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25565",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Backend Software Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25563",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Technical Revenue Accounting Manager- Enterprise Sales EMEA",
+          "url": "https://www.atlassian.com/company/careers/details/25354",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer Intern, 2027 Canada",
+          "url": "https://www.atlassian.com/company/careers/details/26275",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Management Intern, 2027 Summer U.S.",
+          "url": "https://www.atlassian.com/company/careers/details/26274",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer Intern, 2027 Summer U.S.",
+          "url": "https://www.atlassian.com/company/careers/details/26266",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Team Lead, SEO and AEO",
+          "url": "https://www.atlassian.com/company/careers/details/25342",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Paid Ads Marketing Manager, DX",
+          "url": "https://www.atlassian.com/company/careers/details/26354",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Regional Marketing Manager, Brazil",
+          "url": "https://www.atlassian.com/company/careers/details/25113",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior AR Manager, Developer Solutions",
+          "url": "https://www.atlassian.com/company/careers/details/27022",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Technical Social Media Strategist",
+          "url": "https://www.atlassian.com/company/careers/details/26834",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "APAC Marketing Lead, DX",
+          "url": "https://www.atlassian.com/company/careers/details/26570",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Risk and Compliance Senior Manager",
+          "url": "https://www.atlassian.com/company/careers/details/26665",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Lead Design Technologist",
+          "url": "https://www.atlassian.com/company/careers/details/26375",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Employee Relations Partner",
+          "url": "https://www.atlassian.com/company/careers/details/27023",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal HRBP, GTM",
+          "url": "https://www.atlassian.com/company/careers/details/26772",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager, Data Cloud and Connectors",
+          "url": "https://www.atlassian.com/company/careers/details/26663",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager, Self-Reported Insights",
+          "url": "https://www.atlassian.com/company/careers/details/26662",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Product Manager, System Insights for DX",
+          "url": "https://www.atlassian.com/company/careers/details/26340",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Product Management Manager, IAM & Identity Platform / Guard",
+          "url": "https://www.atlassian.com/company/careers/details/26078",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Manager, Rovo",
+          "url": "https://www.atlassian.com/company/careers/details/26289",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Principal Product Manager, Atlassian Government Cloud",
+          "url": "https://www.atlassian.com/company/careers/details/25679",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sr Principal Technical Program Manager - Enterprise and Emerging",
+          "url": "https://www.atlassian.com/company/careers/details/27072",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Strategic | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26831",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Strategic | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26830",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Strategic | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26828",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solutions Architect | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26328",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Solutions Architect | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26318",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Digital Success Manager",
+          "url": "https://www.atlassian.com/company/careers/details/26056",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Digital Success Manager",
+          "url": "https://www.atlassian.com/company/careers/details/26054",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Public Sector - State and Local Government (West)",
+          "url": "https://www.atlassian.com/company/careers/details/25829",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Manager, Strategic Sales | DX",
+          "url": "https://www.atlassian.com/company/careers/details/25734",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, MidMarket Sales | DX",
+          "url": "https://www.atlassian.com/company/careers/details/25663",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "AI Productivity Lead, Sales Development",
+          "url": "https://www.atlassian.com/company/careers/details/25634",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Migration - DACH",
+          "url": "https://www.atlassian.com/company/careers/details/25474",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid Market LATAM (Portuguese Speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25469",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Enterprise - Financial Services",
+          "url": "https://www.atlassian.com/company/careers/details/25419",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Director Public Sector Sales",
+          "url": "https://www.atlassian.com/company/careers/details/25199",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Account Executives, Mid-Market West",
+          "url": "https://www.atlassian.com/company/careers/details/25195",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solutions Engineer, Mid Market (LATAM) - Potuguese Speaking",
+          "url": "https://www.atlassian.com/company/careers/details/25180",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Engagement Manager (Dutch speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25638",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sales Development Representative, Mid-Market JSM DACH & CEE",
+          "url": "https://www.atlassian.com/company/careers/details/25398",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Customer Success Architect (AI)",
+          "url": "https://www.atlassian.com/company/careers/details/26633",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Forward Deployed Architect",
+          "url": "https://www.atlassian.com/company/careers/details/25780",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sales Development Representative, Enterprise",
+          "url": "https://www.atlassian.com/company/careers/details/25673",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sales Development Representative, Strategic",
+          "url": "https://www.atlassian.com/company/careers/details/25560",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sales Development Representative, Mid Market",
+          "url": "https://www.atlassian.com/company/careers/details/25550",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid Market Central",
+          "url": "https://www.atlassian.com/company/careers/details/25522",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Value Advisor, Value Management Office",
+          "url": "https://www.atlassian.com/company/careers/details/25236",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Manager, Strategic",
+          "url": "https://www.atlassian.com/company/careers/details/25498",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid Market",
+          "url": "https://www.atlassian.com/company/careers/details/25480",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Partner Solutions Architect",
+          "url": "https://www.atlassian.com/company/careers/details/25304",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid Market Canada",
+          "url": "https://www.atlassian.com/company/careers/details/25370",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Account Executives, Mid-Market Canada",
+          "url": "https://www.atlassian.com/company/careers/details/25197",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, DX Strategic - DACH (German Speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/27066",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "EMEA Solutions Engineering Manager | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26840",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Mid Market Sales Manager, UKI",
+          "url": "https://www.atlassian.com/company/careers/details/26760",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid-Market DACH | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26707",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solutions Engineer, Mid-Market CEE (Polish Speaker)",
+          "url": "https://www.atlassian.com/company/careers/details/26574",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head of Sales Development, Strategic & Enterprise",
+          "url": "https://www.atlassian.com/company/careers/details/26264",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Customer Success Architects (AI)",
+          "url": "https://www.atlassian.com/company/careers/details/26240",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solutions Engineer, Enterprise - UKI Public Sector",
+          "url": "https://www.atlassian.com/company/careers/details/25773",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, DX Enterprise DACH (German Speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25732",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, DX Enterprise, EMEA",
+          "url": "https://www.atlassian.com/company/careers/details/25730",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, DX Strategic EMEA",
+          "url": "https://www.atlassian.com/company/careers/details/25723",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sales Development Representative, Enterprise, Southern Europe",
+          "url": "https://www.atlassian.com/company/careers/details/25686",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sales Development Representative, Mid-Market DACH",
+          "url": "https://www.atlassian.com/company/careers/details/25633",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Enterprise New Logo, Iberia/Italy",
+          "url": "https://www.atlassian.com/company/careers/details/25436",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Enterprise Turkey and Middle East",
+          "url": "https://www.atlassian.com/company/careers/details/25429",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Enterprise New Logos France (French speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25427",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sales Development Representative, Mid-Market (Italian and Spanish speaker)",
+          "url": "https://www.atlassian.com/company/careers/details/25360",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solution Sales Executive, AI Enterprise",
+          "url": "https://www.atlassian.com/company/careers/details/25356",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Enterprise Poland and CEE",
+          "url": "https://www.atlassian.com/company/careers/details/25216",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Account Executives, Enterprise (Emerging Markets - MEA & CEE)",
+          "url": "https://www.atlassian.com/company/careers/details/25190",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid-Market UKI",
+          "url": "https://www.atlassian.com/company/careers/details/25089",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid-Market Benelux | DX",
+          "url": "https://www.atlassian.com/company/careers/details/24831",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solutions Architect | DX",
+          "url": "https://www.atlassian.com/company/careers/details/24713",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid Market (Filipino Speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25493",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Manager, Onboarding, TWC",
+          "url": "https://www.atlassian.com/company/careers/details/26297",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal, Success Portfolio Design & Transformation",
+          "url": "https://www.atlassian.com/company/careers/details/26037",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Services Solutions Advocate",
+          "url": "https://www.atlassian.com/company/careers/details/26250",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Partner Manager DACH (German Speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/26039",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Regional Sales Director, DACH (German speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25554",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive - Expansion in DACH (German speaker)",
+          "url": "https://www.atlassian.com/company/careers/details/25473",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Strategic Account Executive, DACH (German speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25265",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Enterprise New Logos DACH (German speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25217",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Strategic Solutions Sales Executive, ITSM/ESM DACH",
+          "url": "https://www.atlassian.com/company/careers/details/25169",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solutions Engineer | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26991",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solutions Engineer | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26989",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Enterprise Customer Success",
+          "url": "https://www.atlassian.com/company/careers/details/26307",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "SMB Solution Sales Executive, LATAM",
+          "url": "https://www.atlassian.com/company/careers/details/26007",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Partner Development Manager",
+          "url": "https://www.atlassian.com/company/careers/details/25742",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solution Sales Executive, JSM & JA",
+          "url": "https://www.atlassian.com/company/careers/details/25350",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Account Executive Mid Market East",
+          "url": "https://www.atlassian.com/company/careers/details/25320",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Solutions Engineer, Strategic",
+          "url": "https://www.atlassian.com/company/careers/details/25264",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Strategic Account Executive - East",
+          "url": "https://www.atlassian.com/company/careers/details/25090",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Services Solutions Advocate",
+          "url": "https://www.atlassian.com/company/careers/details/26249",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Enterprise Solutions Engineer - French (+ Spanish or Italian)",
+          "url": "https://www.atlassian.com/company/careers/details/25524",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Strategic Solutions Sales Executive, ITSM/ESM Southern Europe",
+          "url": "https://www.atlassian.com/company/careers/details/25170",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Enterprise Account Executive, Fabric | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26717",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solutions Architect",
+          "url": "https://www.atlassian.com/company/careers/details/26716",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Enterprise Sales | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26709",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Enterprise Sales | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26706",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Customer Retention Manager, Mid-Market, Renewals (German Speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/26699",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Mid Market Account Executive, LATAM (Spanish-Speaking) | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26363",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Enterprise Account Executive, LATAM (Spanish-speaking) | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26362",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solution Sales Executive, Prod Co",
+          "url": "https://www.atlassian.com/company/careers/details/26286",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Principal Customer Success Manager, Strategic - France",
+          "url": "https://www.atlassian.com/company/careers/details/26241",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solutions Engineering, Enterprise Emerging Markets",
+          "url": "https://www.atlassian.com/company/careers/details/26239",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solutions Engineer, Strategy Collection",
+          "url": "https://www.atlassian.com/company/careers/details/26233",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Enterprise | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26076",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Customer Success Manager, Strategic DACH",
+          "url": "https://www.atlassian.com/company/careers/details/26063",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Customer Success Manager, Strategic, France",
+          "url": "https://www.atlassian.com/company/careers/details/26057",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Principal Customer Success Manager, Strategic - UKI",
+          "url": "https://www.atlassian.com/company/careers/details/26050",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Solutions Engineer, Strategic DACH (German Speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/26034",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Solutions Engineer, Strategic UKI",
+          "url": "https://www.atlassian.com/company/careers/details/25782",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solutions Engineer, Enterprise (German Speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25774",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solution Engineer, Strategic, UKI",
+          "url": "https://www.atlassian.com/company/careers/details/25772",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solutions Engineer, Mid-Market DACH (German speaker)",
+          "url": "https://www.atlassian.com/company/careers/details/25763",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Enterprise Solutions Engineer, New Logo (German speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25762",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Account Executive, Enterprise - West",
+          "url": "https://www.atlassian.com/company/careers/details/25759",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid Market (LATAM)",
+          "url": "https://www.atlassian.com/company/careers/details/25701",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solution Sales Executive - Service Collection (India)",
+          "url": "https://www.atlassian.com/company/careers/details/25689",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive - Japanese Speaking",
+          "url": "https://www.atlassian.com/company/careers/details/25583",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Strategic Account Executive - Cleveland, OH",
+          "url": "https://www.atlassian.com/company/careers/details/25582",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Strategic Account Executive",
+          "url": "https://www.atlassian.com/company/careers/details/25581",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Strategic Account Executive",
+          "url": "https://www.atlassian.com/company/careers/details/25580",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Account Executive, Enterprise - East & Central",
+          "url": "https://www.atlassian.com/company/careers/details/25559",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Enterprise Southern Europe (Spanish Speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25434",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Customer Success Manager",
+          "url": "https://www.atlassian.com/company/careers/details/25395",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Manager, Strategic - DACH",
+          "url": "https://www.atlassian.com/company/careers/details/25376",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Atlassian Solution Sales Executive: JSM, Strategic Accounts - Remote",
+          "url": "https://www.atlassian.com/company/careers/details/25374",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Atlassian Solution Sales Executive: JSM, Strategic Accounts - Remote",
+          "url": "https://www.atlassian.com/company/careers/details/25373",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solution Sales Executive, ITSM / ESM — DACH (German Speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25317",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solution Consultant, Teamwork Foundations + AI",
+          "url": "https://www.atlassian.com/company/careers/details/25307",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Value Advisor, DACH",
+          "url": "https://www.atlassian.com/company/careers/details/25271",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Manager, Strategic - France",
+          "url": "https://www.atlassian.com/company/careers/details/25256",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solutions Engineer, Mid Market",
+          "url": "https://www.atlassian.com/company/careers/details/25244",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solution Engineer (German Speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25148",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Sales Development Represenative",
+          "url": "https://www.atlassian.com/company/careers/details/26675",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior, Sales Development Representative",
+          "url": "https://www.atlassian.com/company/careers/details/26632",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior, Sales Development Representative",
+          "url": "https://www.atlassian.com/company/careers/details/26631",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager - Solutions Engineering | DX",
+          "url": "https://www.atlassian.com/company/careers/details/26041",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sales Development Representative, DX",
+          "url": "https://www.atlassian.com/company/careers/details/25754",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sales Development Representative | DX",
+          "url": "https://www.atlassian.com/company/careers/details/25549",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Sales Development Representative | DX",
+          "url": "https://www.atlassian.com/company/careers/details/25543",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Associate Customer Success Manager",
+          "url": "https://www.atlassian.com/company/careers/details/25384",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solutions Architect Manager | DX",
+          "url": "https://www.atlassian.com/company/careers/details/24856",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "West Coast - ServiceCollection Solution Sales Executive",
+          "url": "https://www.atlassian.com/company/careers/details/25785",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Strategic Account Executive - West",
+          "url": "https://www.atlassian.com/company/careers/details/25758",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid-Market West",
+          "url": "https://www.atlassian.com/company/careers/details/25537",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solutions Engineer, Enterprise - Central & West",
+          "url": "https://www.atlassian.com/company/careers/details/25252",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Solution Sales, Service Collection",
+          "url": "https://www.atlassian.com/company/careers/details/25229",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Account Executive , AI & Digital Natives (Bay Area)",
+          "url": "https://www.atlassian.com/company/careers/details/25210",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Enterprise Account Manager, Korea",
+          "url": "https://www.atlassian.com/company/careers/details/25753",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Customer Success Manager, Enterprise",
+          "url": "https://www.atlassian.com/company/careers/details/26059",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid-Market (Thailand)",
+          "url": "https://www.atlassian.com/company/careers/details/25834",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Account Executives, Mid-Market",
+          "url": "https://www.atlassian.com/company/careers/details/25610",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid Market (SEA)",
+          "url": "https://www.atlassian.com/company/careers/details/25488",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid-Market (Mandarin speaking)",
+          "url": "https://www.atlassian.com/company/careers/details/25720",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sales Executive, Strategic",
+          "url": "https://www.atlassian.com/company/careers/details/25606",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Solutions Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/25314",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive, Mid-Market, ANZ",
+          "url": "https://www.atlassian.com/company/careers/details/25173",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Manager, Public Sector",
+          "url": "https://www.atlassian.com/company/careers/details/26381",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Value Advisor, Value Management Office",
+          "url": "https://www.atlassian.com/company/careers/details/25377",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Account Executive, Public Sector",
+          "url": "https://www.atlassian.com/company/careers/details/25075",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive Manager",
+          "url": "https://www.atlassian.com/company/careers/details/26379",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive - SMB+ Japan",
+          "url": "https://www.atlassian.com/company/careers/details/26035",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Engineering Manager – Incident Response",
+          "url": "https://www.atlassian.com/company/careers/details/26656",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Security Testing Engineer - Penetration Tester",
+          "url": "https://www.atlassian.com/company/careers/details/26643",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Trust Engagement - Senior Manager (US)",
+          "url": "https://www.atlassian.com/company/careers/details/26634",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Enterprise Security Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/26288",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Enterprise Delivery Manager",
+          "url": "https://www.atlassian.com/company/careers/details/26793",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Enterprise Delivery Manager, Migrations",
+          "url": "https://www.atlassian.com/company/careers/details/26791",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Enterprise Delivery Manager, Migrations",
+          "url": "https://www.atlassian.com/company/careers/details/26851",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Enterprise Delivery Manager, Migrations",
+          "url": "https://www.atlassian.com/company/careers/details/25321",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "fidelity-international": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Senior Associate – UI Design",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Gurgaon-Office/Senior-Associate---UI-Design_J65685-1?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Assistant Manager – UI Design",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Dalian-Office/Assistant-Manager---UI-Design_J70369?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "AMP - Strategic Design Lead",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Cannon-Street-Office/AMP-----Strategic-Design-Lead_J69885-1?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Technical Consultant - Cloud Security",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/FIL-Bengaluru-Office/Cybersecurity-Analyst---Cloud_J67835-1?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Data Engineer",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/FIL-Bengaluru-Office/Senior-Data-Engineer_J61625-1?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Data Engineer",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Gurgaon-Office/Data-Engineer_J70597-1?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Software Engineer I",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Dalian-Office/Senior-Software-Engineer-I_J68987-1?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Test Lead",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Gurgaon-Office/Test-Lead_J70606-3?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Technical Analyst - Service Now Developer",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/FIL-Bengaluru-Office/Technical-Analyst---Service-Now-Developer_J67011?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Technical Specialist - Collaboration Services (M365 Support)",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/FIL-Bengaluru-Office/Technical-Specialist----Collaboration-Services_J64123?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Strategic Change Lead",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/FIL-Bengaluru-Office/Strategic-Change-Lead_J69828-1?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "HR Business Partner",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Gurgaon-Office/HR-Business-Partner_J70292-1?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Manager - Business Analysis",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Cannon-Street-Office/Senior-Manager---Business-Analysis_J70719-1?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "AI Test Engineer - Test Lead",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/FIL-Bengaluru-Office/AI-Test-Engineer---Test-Lead_J70778?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Owner - Multi-Asset",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Hong-Kong-Office-New/Product-Owner---Multi-Asset_J69405?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Owner - Fixed Income",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Hong-Kong-Office-New/Product-Owner---Fixed-Income_J70844?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Owner - Equity",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Cannon-Street-Office/Product-Owner---Equity_J70839?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Associate Director, Product Development and Management",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Associate-Director--Product-Development-and-Management_J69422-1?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Implementation Director, Real Estate",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Cannon-Street-Office/Implementation-Director--Real-Estate_J70078?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Product Development and Management",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Manager--Product-Development-and-Management_J71092?q=design",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "abu-dhabi-investment-authority-adia": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Quantitative Researcher & Developer - Data Science",
+          "url": "https://jobs.workable.com/view/rzc4SnUFXDhUGhMJ8UtQyA/quantitative-researcher-%26-developer---data-science-in-abu-dhabi-at-abu-dhabi-investment-authority",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "ADIA Study Abroad Scholarship",
+          "url": "https://jobs.workable.com/view/51L4ABxQFdhAq6aQfZG85Z/adia-study-abroad-scholarship-in-abu-dhabi-at-abu-dhabi-investment-authority",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "ADIA Lab - Senior Computational Scientist - Material Sciences",
+          "url": "https://jobs.workable.com/view/pcGMBEvvTNbnR6bG4SBR5X/adia-lab---senior-computational-scientist---material-sciences-in-abu-dhabi-at-abu-dhabi-investment-authority",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "ADIA Lab - Senior Computational Scientist - Trustworthy AI",
+          "url": "https://jobs.workable.com/view/dEt6tr8e6Wy7tVp4zEzHiD/adia-lab---senior-computational-scientist---trustworthy-ai-in-abu-dhabi-at-abu-dhabi-investment-authority",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "2026 ADIA Residency Program",
+          "url": "https://jobs.workable.com/view/goCCFkvRMvvUfpfp9wYbAF/2026-adia-residency-program-in-abu-dhabi-at-abu-dhabi-investment-authority",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "ADIA - High School Math Club",
+          "url": "https://jobs.workable.com/view/kbGhFsXiomJruquRHHHzRM/adia---high-school-math-club-in-abu-dhabi-at-abu-dhabi-investment-authority",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "natwest-group": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Design Operations Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016716-design-operations-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Design Operations Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016714-design-operations-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Design Operations Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016715-design-operations-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Design Operations Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016717-design-operations-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Engineer, API Management Platform",
+          "url": "https://jobs.natwestgroup.com/jobs/18117395-principal-engineer-api-management-platform",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Digitalising Finance Architecture Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/17923039-digitalising-finance-architecture-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Digitalising Finance Architecture Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/17923040-digitalising-finance-architecture-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/17823117-software-engineer-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/17823116-software-engineer-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Engineer, API Management Platform",
+          "url": "https://jobs.natwestgroup.com/jobs/18117339-principal-engineer-api-management-platform",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/17823115-software-engineer-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Transformation and Change Manager, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/17987559-transformation-and-change-manager-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Java Solution Architect & Lead Engineer, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/18203002-java-solution-architect-and-lead-engineer-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "WoW Software Engineer - Host",
+          "url": "https://jobs.natwestgroup.com/jobs/18212749-wow-software-engineer-host",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal AI Engineer, Director",
+          "url": "https://jobs.natwestgroup.com/jobs/17968374-principal-ai-engineer-director",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, iOS",
+          "url": "https://jobs.natwestgroup.com/jobs/18026246-software-engineer-ios",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer",
+          "url": "https://jobs.natwestgroup.com/jobs/17687221-software-engineer",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, iOS",
+          "url": "https://jobs.natwestgroup.com/jobs/18026247-software-engineer-ios",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, AVP",
+          "url": "https://jobs.natwestgroup.com/jobs/18078298-software-engineer-avp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal AI Engineer, Director",
+          "url": "https://jobs.natwestgroup.com/jobs/17968373-principal-ai-engineer-director",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Data Engineer, AVP",
+          "url": "https://jobs.natwestgroup.com/jobs/18181603-data-engineer-avp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer",
+          "url": "https://jobs.natwestgroup.com/jobs/18187025-software-engineer",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "WoW - Quality Automation Specialist",
+          "url": "https://jobs.natwestgroup.com/jobs/18161023-wow-quality-automation-specialist",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Lead Enterprise Architect, Director",
+          "url": "https://jobs.natwestgroup.com/jobs/18181440-lead-enterprise-architect-director",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "WoW - Software Engineer",
+          "url": "https://jobs.natwestgroup.com/jobs/18186646-wow-software-engineer",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "bank-of-new-zealand-bnz": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Functional Consultant – Salesforce and nCino",
+          "url": "https://nab.eightfold.ai/careers/job/563980770587264?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Intermediate Developer",
+          "url": "https://nab.eightfold.ai/careers/job/563980770413733?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Developer - Core Ledger Replacement",
+          "url": "https://nab.eightfold.ai/careers/job/563980770565426?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Developer - nCino",
+          "url": "https://nab.eightfold.ai/careers/job/563980770587263?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Engineer",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280863?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Manager",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282210?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Engineer (Salesforce / nCino Architect)",
+          "url": "https://nab.eightfold.ai/careers/job/563980770587262?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Manager",
+          "url": "https://nab.eightfold.ai/careers/job/563980770612977?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Developer",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282235?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Technical Specalist",
+          "url": "https://nab.eightfold.ai/careers/job/563980770612969?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Platform Owner",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282227?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Platform Manager - AI Domain",
+          "url": "https://nab.eightfold.ai/careers/job/563980770550655?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Developer",
+          "url": "https://nab.eightfold.ai/careers/job/563980770612973?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "abn-amro": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Domain Expert Exposure Management",
+          "url": "https://www.werkenbijabnamro.nl/en/vacancy/9453/domain-expert-exposure-management",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Private Banker Vlaams-Brabant",
+          "url": "https://www.werkenbijabnamro.nl/en/vacancy/9052/senior-private-banker-vlaams-brabant",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Associate (Business Developer)",
+          "url": "https://www.werkenbijabnamro.nl/en/vacancy/9524/associate-business-developer",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sales Manager",
+          "url": "https://www.werkenbijabnamro.nl/en/vacancy/8986/sales-manager",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Stagiair(e) IT Processen bij het Process & Project Team (IT)",
+          "url": "https://www.werkenbijabnamro.nl/en/vacancy/9245/stagiair-e-it-processen-bij-het-process-project-team-it",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Business Consultant - FEC Data Domain (DFC)",
+          "url": "https://www.werkenbijabnamro.nl/en/vacancy/9528/business-consultant-fec-data-domain-dfc",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Pentesting Coordination & Automation",
+          "url": "https://www.werkenbijabnamro.nl/en/vacancy/9449/pentesting-coordination-automation",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Internship Regulatory Reporting",
+          "url": "https://www.werkenbijabnamro.nl/en/vacancy/8582/internship-regulatory-reporting",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "cimb-group": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Manager, GS IC SBF Office - Solution & Design MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36939/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Assistant Vice President, GS IC (SBF Office) - Solution & Design MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36995/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Vice President, GT-TBS, GCB Application Delivery, Trade MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36994/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Gen AI Engineer, DAI - GenAI - Development MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/34328/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Lead, GDAI - GenAI - Development MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/34327/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Assistant Manager, Lab & Capability Enabler",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36992/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Assistant Manager, GS IC (SBF Office) - Advisory & Insight MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36989/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Assistant Vice President, Risk Data Solutions & Strategy MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/29780/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Associate Director, GWBT&M - Sales & Distribution (Tokenisation - Platform, Custody & Infrastructure) MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36354/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Director, GT-TBS, GCDB Application Delivery Digital MY (Application Engineering Lead – Digital Wealth)",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36366/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Assistant Vice President, GF FBS FSI - Financial Information System MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36743/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Assistant Vice President, APP - Preferred Banking (Portfolio & Private Wealth) MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/35060/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Assistant Vice President, APP - Preferred Banking (Portfolio & Private Wealth) MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/35061/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "PROTEGE Apprentice",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/32927/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Assistant Vice President, DPP - Digital Platform MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/34921/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Business Analyst, GCMB DB Digital Business - Digital Projects and Enablement MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36820/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Gen AI Engineer, DAI - GenAI - Development MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/34324/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Associate, GWBPB - BS&S - BS - Business Process Management MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36200/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Associate Director, GWBT&M - Sales & Distribution (Tokenisation - Business Strategy & Execution) MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36353/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Assistant Manager, DPP - Digital Banking - Digital QA MY (00312)",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/35139/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, DPP - Digital Banking - Digital QA MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/35144/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, DPP - Digital Banking - Digital QA MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/35145/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head, GDAI - Risk Control Unit MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/34269/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Business Development Manager (FX) MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36514/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Director, Corporate Strategy & Performance MY",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36040/?keyword=design",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "aspire": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Engineering Manager",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/engineering-manager-69c54ed6-9ad3-4bf0-a8b8-bbcb14628ebb",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Partner Marketing Manager",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/partner-marketing-manager-831f2ae4-7cb0-4f85-b162-e07f55149737",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Cybersecurity Engineer",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/senior-cybersecurity-engineer-47cd2aac-4ed4-415c-bf6b-646521d05ea1",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager, Payments",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/senior-product-manager-payments-04004de7-f1ae-4766-ac5c-d3350e15acbe",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Regulatory Compliance Director",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/regulatory-compliance-director-d413122f-5474-4a84-a164-a49d4bd7973e",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Finance Manager - Finance Controllership",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/senior-finance-manager-finance-controllership-5db11a31-5b7e-4622-8031-cd4fd66973eb",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Strategic Sourcer and Talent Intelligence",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/strategic-sourcer-and-talent-intelligence-2bf161f7-d9a3-43b8-ba73-affe54c171a2",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior QA Engineer — Quality Engineering & Automation",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/senior-qa-engineer-quality-engineering-automation-928c5413-ee8d-480f-ba8c-efa5df5ed8ab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Risk Analytics Manager",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/risk-analytics-manager-80f9a1c1-c1b4-4e74-a64c-6b6f1ac5a527",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "FinCrime Manager",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/fin-crime-manager-7ea15fd0-8f11-42df-bc7d-8e7bcf8cc88a",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Customer Care (Chinese Speakers)",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/customer-care-chinese-speakers-f067e2cb-0fba-47cd-9e03-ec9db640099b",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Periodic Review Senior Specialist",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/periodic-review-senior-specialist-ece4006c-2ac4-4a98-8493-c06fdb55b8b9",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive - SG",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/account-executive-sg-e3f995e5-179e-4627-a689-a5fc2760381f",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Channel Partnerships Manager",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/channel-partnerships-manager-cb98cecf-28a4-4caf-b5ad-71bc2cc06e4f",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Compliance Officer and MLRO, Australia",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/compliance-officer-and-mlro-australia-147e9378-2666-4786-8d91-cd102190832b",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head of Group Shared Accounting Services",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/head-of-group-shared-accounting-services-cf320281-706b-42f8-8fd1-a678f10b8d2c",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Reconciliation Specialist",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/reconciliation-specialist-8fe2cbe0-def5-4fcc-942e-ccc237e0a035",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Country Manager, NL",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/country-manager-nl-a5bdfe18-b11b-459d-8c0d-fc8d70b1087b",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Channel Partnerships Lead",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/channel-partnerships-lead-8f9a1704-5495-4487-9009-9f8ae4682b60",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Channel Partnerships Manager - Accounting & Corporate Services",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/channel-partnerships-manager-accounting-corporate-services-610648d2-24ef-4ace-80e7-fd7190597a53",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Data Lead US (San Francisco)",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/data-lead-us-san-francisco-a8c1eac5-fbbf-4d19-a9f9-b76d86ab59fd",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "AI Product Lead US",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/ai-product-lead-us-7ffd9fd9-ff8d-4a87-971d-285cbc10e8b0",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Account Executive – Global Hiring (EOR)",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/senior-account-executive-global-hiring-eor-bc04c7f5-fd0c-4f55-b0e1-e0e12c1a6839",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive - US",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/account-executive-us-eb652566-c1d9-4eb7-8e12-5d9318d0f542",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Executive - HK",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/account-executive-hk-6361cd05-cdf4-49ae-bc92-f734d7bb642f",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head of Sales China",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/head-of-sales-china-7e720774-e62a-4357-bb24-f4c6b24e2e5b",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Manager",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/account-manager-a6030870-b83f-4b97-88bb-77461a7b94eb",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Inside Sales Representative",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/inside-sales-representative-be5c575c-367c-4dc4-966a-2d645f5f7b0b",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Manager, Strategic Partnerships",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/senior-manager-strategic-partnerships-cb829d84-2cb7-4b37-be12-51de9ede10d7",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Growth Strategist Intern",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/growth-strategist-intern-3299041d-d3ad-4946-9564-456c455a2298",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "GTM Engineer",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/gtm-engineer-a9c4ac1b-8865-406a-8a25-cdd87f736ec1",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Global Partner Marketing Lead",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/global-partner-marketing-lead-926460b6-6baf-4616-b257-6e757464984e",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "FinCrime Transaction Analyst",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/fin-crime-transaction-analyst-f56ff2bd-dc10-4ba9-bb5b-eed42348954e",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Channel Partnerships Intern (Startups & Venture Capital)",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/channel-partnerships-intern-startups-venture-capital-b897bce8-b833-4b21-835c-618a02a36788",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Dispute Ops Senior Specialist I",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/dispute-ops-senior-specialist-i-378cb2d0-5d25-47c8-ad6b-b5a557bb1240",
           "location": "",
           "postedDate": null
         }
