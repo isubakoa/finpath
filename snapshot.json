@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-09-08T12:36:29.500Z",
+  "companies": {
+    "adyen": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Account Manager",
+          "url": "https://careers.adyen.com/vacancies/7340050-account-manager?locale=en",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Manager",
+          "url": "https://careers.adyen.com/vacancies/5359280-account-manager?locale=en",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Manager",
+          "url": "https://careers.adyen.com/vacancies/7095302-account-manager?locale=en",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Manager",
+          "url": "https://careers.adyen.com/vacancies/7938074-account-manager?locale=en",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Account Manager",
+          "url": "https://careers.adyen.com/vacancies/8099261-account-manager?locale=en",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    }
+  }
+}
