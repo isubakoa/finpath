@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T18:24:47.573Z",
+  "generatedAt": "2026-09-08T20:03:20.421Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -1047,6 +1047,12 @@
           "postedDate": null
         },
         {
+          "title": "Senior Manager, Enterprise Sales (Fabric) DX",
+          "url": "https://www.atlassian.com/company/careers/details/25787",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Senior Manager, Strategic Sales | DX",
           "url": "https://www.atlassian.com/company/careers/details/25734",
           "location": "",
@@ -1970,18 +1976,6 @@
           "postedDate": null
         },
         {
-          "title": "Technical Analyst - Service Now Developer",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/FIL-Bengaluru-Office/Technical-Analyst---Service-Now-Developer_J67011?q=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Technical Specialist - Collaboration Services (M365 Support)",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/FIL-Bengaluru-Office/Technical-Specialist----Collaboration-Services_J64123?q=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Strategic Change Lead",
           "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/FIL-Bengaluru-Office/Strategic-Change-Lead_J69828-1?q=design",
           "location": "",
@@ -2040,6 +2034,18 @@
           "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Manager--Product-Development-and-Management_J71092?q=design",
           "location": "",
           "postedDate": null
+        },
+        {
+          "title": "Research Analyst",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Research-Analyst_J65282?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Agile Release Train (ART) Owner, Core Value Stream – Fixed Income",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Cannon-Street-Office/Agile-Release-Train--ART--Owner--Core-Value-Stream---Fixed-Income_J70837-1?q=design",
+          "location": "",
+          "postedDate": null
         }
       ]
     },
@@ -2089,25 +2095,25 @@
       "roles": [
         {
           "title": "Design Operations Lead",
-          "url": "https://jobs.natwestgroup.com/jobs/18016716-design-operations-lead",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Design Operations Lead",
           "url": "https://jobs.natwestgroup.com/jobs/18016714-design-operations-lead",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Design Operations Lead",
-          "url": "https://jobs.natwestgroup.com/jobs/18016715-design-operations-lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016716-design-operations-lead",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Design Operations Lead",
           "url": "https://jobs.natwestgroup.com/jobs/18016717-design-operations-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Design Operations Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016715-design-operations-lead",
           "location": "",
           "postedDate": null
         },
@@ -2136,12 +2142,6 @@
           "postedDate": null
         },
         {
-          "title": "Software Engineer, VP",
-          "url": "https://jobs.natwestgroup.com/jobs/17823116-software-engineer-vp",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Principal Engineer, API Management Platform",
           "url": "https://jobs.natwestgroup.com/jobs/18117339-principal-engineer-api-management-platform",
           "location": "",
@@ -2150,6 +2150,24 @@
         {
           "title": "Software Engineer, VP",
           "url": "https://jobs.natwestgroup.com/jobs/17823115-software-engineer-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/17823116-software-engineer-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, iOS",
+          "url": "https://jobs.natwestgroup.com/jobs/18026247-software-engineer-ios",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, AVP",
+          "url": "https://jobs.natwestgroup.com/jobs/18078298-software-engineer-avp",
           "location": "",
           "postedDate": null
         },
@@ -2173,13 +2191,7 @@
         },
         {
           "title": "Principal AI Engineer, Director",
-          "url": "https://jobs.natwestgroup.com/jobs/17968374-principal-ai-engineer-director",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer, iOS",
-          "url": "https://jobs.natwestgroup.com/jobs/18026246-software-engineer-ios",
+          "url": "https://jobs.natwestgroup.com/jobs/17968373-principal-ai-engineer-director",
           "location": "",
           "postedDate": null
         },
@@ -2191,31 +2203,25 @@
         },
         {
           "title": "Software Engineer, iOS",
-          "url": "https://jobs.natwestgroup.com/jobs/18026247-software-engineer-ios",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer, AVP",
-          "url": "https://jobs.natwestgroup.com/jobs/18078298-software-engineer-avp",
+          "url": "https://jobs.natwestgroup.com/jobs/18026246-software-engineer-ios",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Principal AI Engineer, Director",
-          "url": "https://jobs.natwestgroup.com/jobs/17968373-principal-ai-engineer-director",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Data Engineer, AVP",
-          "url": "https://jobs.natwestgroup.com/jobs/18181603-data-engineer-avp",
+          "url": "https://jobs.natwestgroup.com/jobs/17968374-principal-ai-engineer-director",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Software Engineer",
           "url": "https://jobs.natwestgroup.com/jobs/18187025-software-engineer",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Data Engineer, AVP",
+          "url": "https://jobs.natwestgroup.com/jobs/18181603-data-engineer-avp",
           "location": "",
           "postedDate": null
         },
