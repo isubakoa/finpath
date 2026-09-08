@@ -47,9 +47,31 @@ const COMPANIES = [
     linkPattern: /\/vacancies\/\d+-/,
     waitForSelector: 'a[href*="/vacancies/"]',
   },
+  {
+    slug: "klarna",
+    // Klarna's careers site (klarna.com/careers) links out to a Deel-hosted
+    // job board at jobs.deel.com/klarna. All open roles render in one page
+    // (no pagination/infinite-scroll to worry about — confirmed by hand),
+    // but the raw server HTML only contains the job *links*, not their
+    // titles (those are filled in by client-side React after load), so
+    // check.php's plain "html" scraper can't read this one — it needs an
+    // actual browser, same as Adyen.
+    urls: ["https://jobs.deel.com/klarna"],
+    linkPattern: /\/klarna\/job-details\/[a-f0-9-]+\/overview/,
+    waitForSelector: 'a[href*="/job-details/"]',
+    // Each job card is one big <a> wrapping the title plus location,
+    // employment type, and salary all mashed together in its text content —
+    // the actual title lives in a single child element, so pull that
+    // specifically instead of the whole card's text.
+    titleSelector: "p",
+  },
   // Still need a confirmed pattern (see README "Companies not yet wired up"):
-  // klarna, trade-republic, wefox — and any of the other JavaScript-only
-  // companies from the tracker's "Needs manual check" list you want covered.
+  // wefox — its main careers page (careers.wefox.com) is currently broken/
+  // unreachable and its company-wide board on join.com shows zero open
+  // positions, so there's nothing live to verify a scraper against right
+  // now. Trade Republic turned out not to need this file at all — it runs
+  // on Greenhouse under the hood, so it's wired directly into check.php's
+  // existing "greenhouse" adapter instead (see php-ftp/README.md).
 ];
 
 const TIMEOUT_MS = 30000;
@@ -67,7 +89,7 @@ async function scrapeOneUrl(browser, url, company) {
       await page.waitForSelector(company.waitForSelector, { timeout: TIMEOUT_MS }).catch(() => {});
     }
 
-    const roles = await page.evaluate((patternSource) => {
+    const roles = await page.evaluate(({ patternSource, titleSelector }) => {
       const pattern = new RegExp(patternSource);
       const seen = new Set();
       const out = [];
@@ -80,13 +102,18 @@ async function scrapeOneUrl(browser, url, company) {
           return;
         }
         if (!pattern.test(abs) || seen.has(abs)) return;
-        const title = (a.textContent || "").replace(/\s+/g, " ").trim();
+        // Most sites' job links are plain text, so the whole anchor's text
+        // is the title. Some (Klarna's Deel-hosted board, for one) wrap a
+        // whole card — title, location, salary — in one <a>, in which case
+        // titleSelector picks out just the title from a child element.
+        const titleEl = titleSelector ? a.querySelector(titleSelector) : null;
+        const title = ((titleEl || a).textContent || "").replace(/\s+/g, " ").trim();
         if (title.length < 3) return;
         seen.add(abs);
         out.push({ title, url: abs });
       });
       return out;
-    }, company.linkPattern.source);
+    }, { patternSource: company.linkPattern.source, titleSelector: company.titleSelector || null });
 
     await page.close();
     return roles;
