@@ -1,26 +1,5 @@
 # FinPath — JS-only career site scraper (scheduled, via GitHub Actions)
 
-This is the fix for the companies the main tool can never see into on its
-own: careers pages that render their job list entirely in JavaScript, so a
-plain server-side request (what `check.php` uses for everything else) only
-ever sees an empty page shell. The only real fix is something that behaves
-like an actual browser — loads the page, runs its JavaScript, waits for the
-listings to appear, then reads them. That's what this does, on a schedule,
-for free, using [Playwright](https://playwright.dev) and
-[GitHub Actions](https://docs.github.com/actions).
-
-**How it fits together:** this folder runs on its own, independent of your
-web host — GitHub runs it, not your PHP hosting. Every few hours it visits
-each configured company's careers page with a real headless browser, pulls
-out job titles and links, and writes the result to `snapshot.json`, which it
-commits back into this repo. `check.php` (in `php-ftp/`) then just fetches
-that file's raw URL on GitHub and merges the results in — the same as any
-other live-checked company, just refreshed every few hours instead of
-instantly. There's also a real-time alternative to this (`cf-browser-worker/`
-in this package, which renders on-demand instead of on a schedule) — both
-produce the exact same JSON shape, so `check.php` doesn't need to know or
-care which one you're using.
-
 ## Setup (about 10 minutes, one time)
 
 1. **Create a GitHub account** if you don't have one (free — [github.com/join](https://github.com/join)).
@@ -90,33 +69,3 @@ Only one company (Adyen) ships pre-configured and verified. To add another:
 5. Push the change — the workflow runs automatically on any push to
    `scrape.js`, so you'll see the result in the Actions tab within a minute
    or two.
-
-## Companies not yet wired up
-
-From the batch of JavaScript-only companies found so far: **Klarna**,
-**Trade Republic**, and **wefox** still need a confirmed `linkPattern` (Adyen
-is the only one verified end-to-end). Trade Republic in particular doesn't
-appear to expose a normal job-listing page at all right now — worth
-rechecking, some companies route job listings through a different path
-entirely (a separate careers subdomain, a modal that loads jobs via a
-background request, etc.).
-
-## Limitations, honestly
-
-- **A company can break silently.** If a company redesigns its careers page,
-  `linkPattern` can stop matching anything, and that company will just
-  return zero roles rather than an error. There's no way around this for any
-  approach that depends on a specific site's markup — it's the same
-  trade-off `check.php`'s own `html` adapter makes. Worth spot-checking the
-  Actions tab occasionally, or re-running `--debug` on a company if it's
-  gone quiet for a while.
-- **No posted-date, generally.** Most career-page listings don't show a
-  posting date without opening each individual job, which would multiply
-  the number of page loads substantially. Roles from this pipeline will
-  usually have `postedDate: null`, meaning they won't appear in the Today
-  tab — same behavior as the `html`-scraped companies in `check.php`.
-- **Freshness is "every few hours," not instant.** If that's not close
-  enough and you'd rather have this check live on every page load instead,
-  see `cf-browser-worker/` — same output, different timing, different
-  trade-offs (a free Cloudflare account and a daily rendering-time cap,
-  instead of a GitHub account and a few hours of latency).
