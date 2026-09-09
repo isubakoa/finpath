@@ -1,0 +1,7 @@
+# Left unpinned deliberately for now — this scraper hasn't been run against
+# a live install yet (see README.md's "Not yet live-tested" note), so
+# pinning to a specific python-jobspy version would just be a guess. Once
+# you've confirmed a version works reliably, pin it here
+# (python-jobspy==<version>) so a future JobSpy release can't silently
+# change behavior underneath a scheduled run.
+python-jobspy
