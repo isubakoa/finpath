@@ -232,6 +232,39 @@ const COMPANIES = [
     linkPattern: /\/job\/[^/]+\/\d+-/,
     waitForSelector: 'a[href^="/job/"]',
   },
+  {
+    slug: "netflix",
+    // ATS confirmed as Eightfold.ai (2026-09 research) — same platform as
+    // NAB/BNZ above, just on Netflix's own vanity domain rather than the
+    // shared eightfold.ai one. netflix.eightfold.ai redirects here. Real
+    // per-role URLs are confirmed live (explore.jobs.netflix.net/careers/
+    // job/<id>), and the search page returns embedded JSON with those same
+    // IDs even though the rendered DOM needs JS. titleSelector borrowed
+    // from NAB/BNZ's Eightfold instance on the assumption Eightfold reuses
+    // the same generated CSS-module class scheme across deployments — that
+    // assumption is UNVERIFIED for this specific tenant; check the Actions
+    // log after the first real run rather than trusting this blindly.
+    urls: ["https://explore.jobs.netflix.net/careers?query=Design&domain=netflix.com&sort_by=relevance"],
+    linkPattern: /\/careers\/job\/\d+/,
+    waitForSelector: 'a[href*="/careers/job/"]',
+    titleSelector: '[class^="title-"]',
+  },
+  {
+    slug: "google",
+    // careers.google.com / google.com's own careers search (2026-09
+    // research) confirmed JS-rendered with no working href on direct fetch.
+    // URL, wait selector and linkPattern below are sourced from a
+    // documented third-party Playwright scraper (not independently
+    // rendered/verified here, since this environment can't reach Google's
+    // site either) — that same source flags Google's careers site as
+    // actively resistant to automated scraping. Best-effort: worth checking
+    // the Actions log specifically for this one after the first real run,
+    // since it's meaningfully more likely to fail than the rest of this file.
+    urls: ["https://www.google.com/about/careers/applications/jobs/results?q=UX"],
+    linkPattern: /\/jobs\/results\/\d+-[a-z0-9-]+/i,
+    waitForSelector: "li.zE6MFb",
+    titleSelector: "h2.p1N2lc",
+  },
   // Still need a confirmed pattern (see README "Companies not yet wired up"):
   // wefox — its main careers page (careers.wefox.com) is currently broken/
   // unreachable and its company-wide board on join.com shows zero open
