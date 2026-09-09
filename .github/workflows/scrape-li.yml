@@ -1,0 +1,62 @@
+name: Scrape LI coverage (JobSpy)
+
+# Every hour, 24/7 — tightened from every 2 hours in September 2026
+# specifically to shrink the gap between a role going live on LI and
+# this scraper's next chance to find it, since index.html's Today tab only
+# shows a role on the exact calendar day it was actually posted (see
+# README.md's "How the rotation works" and "Today tab coverage" sections
+# for the full reasoning and the tradeoffs this accepts: double the daily
+# LI request volume, ~1,440/day). IMPORTANT: this number is read
+# directly by scrape.py's rotation logic (SCHEDULE_INTERVAL_HOURS, must
+# match this cron) to figure out which chunk of the full 950-combination
+# search grid to run each time — changing this value here without also
+# updating SCHEDULE_INTERVAL_HOURS in scrape.py will throw the rotation off
+# (it'll still run fine, just skip or repeat chunks unevenly). See
+# scrape.py's module docstring.
+on:
+  schedule:
+    - cron: "0 * * * *"
+  push:
+    paths:
+      - "li-scraper/scrape.py"
+      - "li-scraper/match.py"
+      - "li-scraper/companies.py"
+      - "li-scraper/requirements.txt"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: li-scraper
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run offline matching tests
+        run: python test_match.py
+
+      - name: Run offline rotation/merge tests
+        run: python test_rotation.py
+
+      - name: Run scraper
+        run: python scrape.py
+
+      - name: Commit updated snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add li-snapshot.json
+          git diff --staged --quiet && echo "No changes to commit." && exit 0
+          git commit -m "Refresh li-snapshot.json"
+          git push
