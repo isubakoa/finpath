@@ -5,7 +5,7 @@ on:
     - cron: "0 */3 * * *"
   push:
     paths:
-      - "js-scraper/scrape.js"
+      - "scrape.js"
   workflow_dispatch: {}
 
 permissions:
@@ -28,7 +28,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run scraper
-        run: node js-scraper/scrape.js
+        run: node scrape.js
 
       - name: Commit updated snapshot
         run: |
