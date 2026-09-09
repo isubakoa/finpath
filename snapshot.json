@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T03:42:35.378Z",
+  "generatedAt": "2026-09-09T04:02:17.616Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -2104,158 +2104,7 @@
     },
     "natwest-group": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Design Operations Lead",
-          "url": "https://jobs.natwestgroup.com/jobs/18016716-design-operations-lead",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Design Operations Lead",
-          "url": "https://jobs.natwestgroup.com/jobs/18016714-design-operations-lead",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Design Operations Lead",
-          "url": "https://jobs.natwestgroup.com/jobs/18016717-design-operations-lead",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Design Operations Lead",
-          "url": "https://jobs.natwestgroup.com/jobs/18016715-design-operations-lead",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Principal Engineer, API Management Platform",
-          "url": "https://jobs.natwestgroup.com/jobs/18117395-principal-engineer-api-management-platform",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Digitalising Finance Architecture Lead",
-          "url": "https://jobs.natwestgroup.com/jobs/17923039-digitalising-finance-architecture-lead",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Digitalising Finance Architecture Lead",
-          "url": "https://jobs.natwestgroup.com/jobs/17923040-digitalising-finance-architecture-lead",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer, VP",
-          "url": "https://jobs.natwestgroup.com/jobs/17823117-software-engineer-vp",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer, VP",
-          "url": "https://jobs.natwestgroup.com/jobs/17823116-software-engineer-vp",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Principal Engineer, API Management Platform",
-          "url": "https://jobs.natwestgroup.com/jobs/18117339-principal-engineer-api-management-platform",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer, VP",
-          "url": "https://jobs.natwestgroup.com/jobs/17823115-software-engineer-vp",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Transformation and Change Manager, VP",
-          "url": "https://jobs.natwestgroup.com/jobs/17987559-transformation-and-change-manager-vp",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Java Solution Architect & Lead Engineer, VP",
-          "url": "https://jobs.natwestgroup.com/jobs/18203002-java-solution-architect-and-lead-engineer-vp",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "WoW Software Engineer - Host",
-          "url": "https://jobs.natwestgroup.com/jobs/18212749-wow-software-engineer-host",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Principal AI Engineer, Director",
-          "url": "https://jobs.natwestgroup.com/jobs/17968374-principal-ai-engineer-director",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer, iOS",
-          "url": "https://jobs.natwestgroup.com/jobs/18026246-software-engineer-ios",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer",
-          "url": "https://jobs.natwestgroup.com/jobs/17687221-software-engineer",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer, iOS",
-          "url": "https://jobs.natwestgroup.com/jobs/18026247-software-engineer-ios",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer, AVP",
-          "url": "https://jobs.natwestgroup.com/jobs/18078298-software-engineer-avp",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Principal AI Engineer, Director",
-          "url": "https://jobs.natwestgroup.com/jobs/17968373-principal-ai-engineer-director",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Data Engineer, AVP",
-          "url": "https://jobs.natwestgroup.com/jobs/18181603-data-engineer-avp",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Software Engineer",
-          "url": "https://jobs.natwestgroup.com/jobs/18187025-software-engineer",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "WoW - Quality Automation Specialist",
-          "url": "https://jobs.natwestgroup.com/jobs/18161023-wow-quality-automation-specialist",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Lead Enterprise Architect, Director",
-          "url": "https://jobs.natwestgroup.com/jobs/18181440-lead-enterprise-architect-director",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "WoW - Software Engineer",
-          "url": "https://jobs.natwestgroup.com/jobs/18186646-wow-software-engineer",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
@@ -2356,12 +2205,6 @@
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Senior Analyst, Access Control Design (IAM)",
           "url": "https://nab.eightfold.ai/careers/job/563980770278617?microsite=nab",
           "location": "",
@@ -2370,6 +2213,12 @@
         {
           "title": "Solution Design - Fraud",
           "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -2434,14 +2283,14 @@
           "postedDate": null
         },
         {
-          "title": "Engineering Manager - Technology Risk, GRACE",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282787?microsite=nab",
+          "title": "Engineering Manager - Payments",
+          "url": "https://nab.eightfold.ai/careers/job/563980770594184?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Engineering Manager - Payments",
-          "url": "https://nab.eightfold.ai/careers/job/563980770594184?microsite=nab",
+          "title": "Engineering Manager - Technology Risk, GRACE",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282787?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -3002,8 +2851,69 @@
       ]
     },
     "american-express": {
-      "ok": false,
-      "error": "https://careers.americanexpress.com/en/sites/CX_1/jobs?keyword=design: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://careers.americanexpress.com/en/sites/CX_1/jobs?keyword=design\", waiting until \"networkidle\"\n"
+      "ok": true,
+      "roles": [
+        {
+          "title": "Manager - Instructional Design",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26013522/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sr Mgr - Digital Product Solution Design",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26012258/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager - Learning Design & Governance",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26012208/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Associate - Digital Product Management",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26012416/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Cybersecurity Engineer I",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26013169/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Staff Software Engineer - One Data Platform Engineering",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26012402/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer II",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26013674/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Financial Systems Analyst I",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26013426/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Software Engineer I",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26010003/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior AI Engineer I - Global Dining",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26012702/?keyword=design",
+          "location": "",
+          "postedDate": null
+        }
+      ]
     },
     "standard-chartered": {
       "ok": true,
