@@ -270,7 +270,22 @@ const USER_AGENT =
 async function scrapeOneUrl(browser, url, company) {
   const page = await browser.newPage({ userAgent: USER_AGENT });
   try {
-    await page.goto(url, { waitUntil: "networkidle", timeout: TIMEOUT_MS });
+    try {
+      await page.goto(url, { waitUntil: "networkidle", timeout: TIMEOUT_MS });
+    } catch (gotoErr) {
+      // American Express started failing here in production with "Timeout
+      // 30000ms exceeded" waiting for networkidle. A real (non-headless,
+      // interactive) browser loads the same URL and reaches idle within a
+      // few seconds with the job data fully rendered, so the page itself
+      // isn't broken — this is almost certainly the bot-protection layer
+      // giving GitHub Actions' headless browser a slower/harder challenge
+      // than an interactive one gets, not confirmed further than that.
+      // Only swallow this specific timeout and fall through to
+      // waitForSelector below, which gets its own fresh timeout budget to
+      // wait for the job content to show up — a real navigation failure
+      // (bad URL, DNS, connection refused) still fails the company loudly.
+      if (!/Timeout .*exceeded/i.test(String((gotoErr && gotoErr.message) || gotoErr))) throw gotoErr;
+    }
     if (company.waitForSelector) {
       // Best-effort: if the selector never shows up (page structure changed,
       // or genuinely zero roles right now), fall through and scrape whatever
