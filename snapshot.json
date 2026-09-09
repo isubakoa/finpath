@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T04:02:17.616Z",
+  "generatedAt": "2026-09-09T10:58:39.016Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -639,14 +639,32 @@
           "postedDate": null
         },
         {
+          "title": "Backend Software Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/27007",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Senior ML System Engineer",
           "url": "https://www.atlassian.com/company/careers/details/26762",
           "location": "",
           "postedDate": null
         },
         {
+          "title": "Software Engineer",
+          "url": "https://www.atlassian.com/company/careers/details/27156",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Principal Engineer - Data Platform",
           "url": "https://www.atlassian.com/company/careers/details/27075",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Engineering Manager, ITSM Operations",
+          "url": "https://www.atlassian.com/company/careers/details/27071",
           "location": "",
           "postedDate": null
         },
@@ -1245,7 +1263,7 @@
           "postedDate": null
         },
         {
-          "title": "Manager, Customer Success Architects (AI)",
+          "title": "Manager, Customer Success Architects (AI) in EMEA",
           "url": "https://www.atlassian.com/company/careers/details/26240",
           "location": "",
           "postedDate": null
@@ -1289,12 +1307,6 @@
         {
           "title": "Account Executive, Enterprise New Logo, Iberia/Italy",
           "url": "https://www.atlassian.com/company/careers/details/25436",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Account Executive, Enterprise Turkey and Middle East",
-          "url": "https://www.atlassian.com/company/careers/details/25429",
           "location": "",
           "postedDate": null
         },
@@ -1994,13 +2006,7 @@
           "postedDate": null
         },
         {
-          "title": "HR Business Partner",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Gurgaon-Office/HR-Business-Partner_J70292-1?q=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Manager - Business Analysis",
+          "title": "Senior Business Analyst",
           "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Cannon-Street-Office/Senior-Manager---Business-Analysis_J70719-1?q=design",
           "location": "",
           "postedDate": null
@@ -2058,6 +2064,12 @@
           "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Cannon-Street-Office/Agile-Release-Train--ART--Owner--Core-Value-Stream---Fixed-Income_J70837-1?q=design",
           "location": "",
           "postedDate": null
+        },
+        {
+          "title": "Agile Release Train (ART) Owner, Core Value Stream - Equity",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Cannon-Street-Office/Agile-Release-Train--ART--Owner--Core-Value-Stream---Equity_J70836?q=design",
+          "location": "",
+          "postedDate": null
         }
       ]
     },
@@ -2104,7 +2116,158 @@
     },
     "natwest-group": {
       "ok": true,
-      "roles": []
+      "roles": [
+        {
+          "title": "Design Operations Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016714-design-operations-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Design Operations Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016716-design-operations-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Design Operations Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016717-design-operations-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Design Operations Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/18016715-design-operations-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Engineer, API Management Platform",
+          "url": "https://jobs.natwestgroup.com/jobs/18117395-principal-engineer-api-management-platform",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Digitalising Finance Architecture Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/17923039-digitalising-finance-architecture-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Digitalising Finance Architecture Lead",
+          "url": "https://jobs.natwestgroup.com/jobs/17923040-digitalising-finance-architecture-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/17823117-software-engineer-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Engineer, API Management Platform",
+          "url": "https://jobs.natwestgroup.com/jobs/18117339-principal-engineer-api-management-platform",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/17823115-software-engineer-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/17823116-software-engineer-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Murex Software Engineer",
+          "url": "https://jobs.natwestgroup.com/jobs/18186679-murex-software-engineer",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, iOS",
+          "url": "https://jobs.natwestgroup.com/jobs/18026247-software-engineer-ios",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Transformation and Change Manager, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/17987559-transformation-and-change-manager-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Java Solution Architect & Lead Engineer, VP",
+          "url": "https://jobs.natwestgroup.com/jobs/18203002-java-solution-architect-and-lead-engineer-vp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "WoW Software Engineer - Host",
+          "url": "https://jobs.natwestgroup.com/jobs/18212749-wow-software-engineer-host",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal AI Engineer, Director",
+          "url": "https://jobs.natwestgroup.com/jobs/17968373-principal-ai-engineer-director",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer, iOS",
+          "url": "https://jobs.natwestgroup.com/jobs/18026246-software-engineer-ios",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal AI Engineer, Director",
+          "url": "https://jobs.natwestgroup.com/jobs/17968374-principal-ai-engineer-director",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Software Engineer",
+          "url": "https://jobs.natwestgroup.com/jobs/18187025-software-engineer",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Data Engineer, AVP",
+          "url": "https://jobs.natwestgroup.com/jobs/18181603-data-engineer-avp",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "WoW - Quality Automation Specialist",
+          "url": "https://jobs.natwestgroup.com/jobs/18161023-wow-quality-automation-specialist",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Lead Enterprise Architect, Director",
+          "url": "https://jobs.natwestgroup.com/jobs/18181440-lead-enterprise-architect-director",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "WoW - Software Engineer",
+          "url": "https://jobs.natwestgroup.com/jobs/18186646-wow-software-engineer",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "WoW - Software Engineer, AVP",
+          "url": "https://jobs.natwestgroup.com/jobs/18186651-wow-software-engineer-avp",
+          "location": "",
+          "postedDate": null
+        }
+      ]
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
@@ -2122,8 +2285,8 @@
           "postedDate": null
         },
         {
-          "title": "Senior Developer - Core Ledger Replacement",
-          "url": "https://nab.eightfold.ai/careers/job/563980770565426?microsite=bnz",
+          "title": "Product Manager",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282210?microsite=bnz",
           "location": "",
           "postedDate": null
         },
@@ -2134,26 +2297,26 @@
           "postedDate": null
         },
         {
+          "title": "Senior Developer - Core Ledger Replacement",
+          "url": "https://nab.eightfold.ai/careers/job/563980770565426?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Senior Developer - nCino",
           "url": "https://nab.eightfold.ai/careers/job/563980770587263?microsite=bnz",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Product Manager",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282210?microsite=bnz",
+          "title": "Principal Engineer (Salesforce / nCino Architect)",
+          "url": "https://nab.eightfold.ai/careers/job/563980770587262?microsite=bnz",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Product Manager",
           "url": "https://nab.eightfold.ai/careers/job/563980770612977?microsite=bnz",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Principal Engineer (Salesforce / nCino Architect)",
-          "url": "https://nab.eightfold.ai/careers/job/563980770587262?microsite=bnz",
           "location": "",
           "postedDate": null
         },
@@ -2193,14 +2356,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "Senior/Lead Engineer - Integration Design and Governance (IDG)",
-          "url": "https://nab.eightfold.ai/careers/job/563980770279574?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Principal Engineer Integration Design and Governance",
-          "url": "https://nab.eightfold.ai/careers/job/563980770279955?microsite=nab",
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -2211,14 +2368,20 @@
           "postedDate": null
         },
         {
+          "title": "Principal Engineer Integration Design and Governance",
+          "url": "https://nab.eightfold.ai/careers/job/563980770279955?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Solution Design - Fraud",
           "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "title": "Senior/Lead Engineer - Integration Design and Governance (IDG)",
+          "url": "https://nab.eightfold.ai/careers/job/563980770279574?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -2253,56 +2416,56 @@
           "postedDate": null
         },
         {
+          "title": "Senior, Production Support Engineer - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282709?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Analyst, Engineer (Production Support) - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282718?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head of Product ( Merchant Services & HICAPS)​",
+          "url": "https://nab.eightfold.ai/careers/job/563980770540233?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Consultant, Data Engineer",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282543?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Senior Analyst, Engineer - Core API Services",
           "url": "https://nab.eightfold.ai/careers/job/563980770282150?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Analyst, Engineer",
-          "url": "https://nab.eightfold.ai/careers/job/563980770569375?microsite=nab",
+          "title": "Business Analyst (data focus)",
+          "url": "https://nab.eightfold.ai/careers/job/563980770286417?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Analyst Engineer - EPBO",
-          "url": "https://nab.eightfold.ai/careers/job/563980770571255?microsite=nab",
+          "title": "Senior Business Analyst - Transaction Banking",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282681?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Engineering Manager - Martech",
-          "url": "https://nab.eightfold.ai/careers/job/563980770446158?microsite=nab",
+          "title": "Senior Business Analyst - Transaction Banking",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282666?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Engineering Manager - Martech",
-          "url": "https://nab.eightfold.ai/careers/job/563980770446175?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Engineering Manager - Payments",
-          "url": "https://nab.eightfold.ai/careers/job/563980770594184?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Engineering Manager - Technology Risk, GRACE",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282787?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Engineering Manager (Adobe Suite) - Martech",
-          "url": "https://nab.eightfold.ai/careers/job/563980770447066?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Engineering Manager (AI)",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282566?microsite=nab",
+          "title": "Consultant, Fullstack Engineer (Python/ ReactJS) - Group Security",
+          "url": "https://nab.eightfold.ai/careers/job/563980770281811?microsite=nab",
           "location": "",
           "postedDate": null
         }
@@ -2872,12 +3035,6 @@
           "postedDate": null
         },
         {
-          "title": "Senior Associate - Digital Product Management",
-          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26012416/?keyword=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Senior Cybersecurity Engineer I",
           "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26013169/?keyword=design",
           "location": "",
@@ -2902,14 +3059,20 @@
           "postedDate": null
         },
         {
+          "title": "Senior AI Engineer I - Global Dining",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26012702/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Senior Software Engineer I",
           "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26010003/?keyword=design",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior AI Engineer I - Global Dining",
-          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26012702/?keyword=design",
+          "title": "Sr Software Engineer I",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26010196/?keyword=design",
           "location": "",
           "postedDate": null
         }
@@ -2937,14 +3100,32 @@
           "postedDate": null
         },
         {
+          "title": "Senior Experience Designer, SC Design (UI/UX)",
+          "url": "https://jobs.standardchartered.com/job/Senior-Experience-Designer%2C-SC-Design-%28UIUX%29/52580-en_GB",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "AVP Scenario Design",
           "url": "https://jobs.standardchartered.com/job/AVP-Scenario-Design/60098-en_GB",
           "location": "",
           "postedDate": null
         },
         {
+          "title": "AVP Scenario Design",
+          "url": "https://jobs.standardchartered.com/job/AVP-Scenario-Design/62095-en_GB",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Product Manager, UIUX Design CoE",
           "url": "https://jobs.standardchartered.com/job/Product-Manager%2C-UIUX-Design-CoE/55069-en_GB",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Owner, Digital Acquisition",
+          "url": "https://jobs.standardchartered.com/job/Product-Owner%2C-Digital-Acquisition/58307-en_GB",
           "location": "",
           "postedDate": null
         },
@@ -2957,24 +3138,6 @@
         {
           "title": "Head, Data Management Capabilities Enablement, CIB",
           "url": "https://jobs.standardchartered.com/job/Head%2C-Data-Management-Capabilities-Enablement%2C-CIB/55498-en_GB",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Head - Affluent Portfolio, Sales Coverage & RM Enablement",
-          "url": "https://jobs.standardchartered.com/job/Head-Affluent-Portfolio%2C-Sales-Coverage-&amp;-RM-Enablement/61476-en_GB",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Director, Wealth Client Journey",
-          "url": "https://jobs.standardchartered.com/job/Director%2C-Wealth-Client-Journey/59889-en_GB",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Software Engineer Distributed Systems (Singapore / China)",
-          "url": "https://jobs.standardchartered.com/job/Senior-Software-Engineer-Distributed-Systems-%28Singapore-China%29/59508-en_GB",
           "location": "",
           "postedDate": null
         }
