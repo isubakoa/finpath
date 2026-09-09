@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T23:16:53.119Z",
+  "generatedAt": "2026-09-09T03:42:35.378Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -777,12 +777,6 @@
           "postedDate": null
         },
         {
-          "title": "Principal Frontend Software Engineer",
-          "url": "https://www.atlassian.com/company/careers/details/27018",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Principal Full Stack Software Engineer",
           "url": "https://www.atlassian.com/company/careers/details/27017",
           "location": "",
@@ -899,6 +893,12 @@
         {
           "title": "Product Management Intern, 2027 Summer U.S.",
           "url": "https://www.atlassian.com/company/careers/details/26274",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Design Intern, 2027 Summer U.S.",
+          "url": "https://www.atlassian.com/company/careers/details/26273",
           "location": "",
           "postedDate": null
         },
@@ -1791,12 +1791,6 @@
           "postedDate": null
         },
         {
-          "title": "Senior Solutions Engineer, Enterprise - Central & West",
-          "url": "https://www.atlassian.com/company/careers/details/25252",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Manager, Solution Sales, Service Collection",
           "url": "https://www.atlassian.com/company/careers/details/25229",
           "location": "",
@@ -1811,6 +1805,12 @@
         {
           "title": "Senior Enterprise Account Manager, Korea",
           "url": "https://www.atlassian.com/company/careers/details/25753",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head of APAC Sales, DX",
+          "url": "https://www.atlassian.com/company/careers/details/26710",
           "location": "",
           "postedDate": null
         },
@@ -1841,12 +1841,6 @@
         {
           "title": "Account Executive, Mid-Market (Mandarin speaking)",
           "url": "https://www.atlassian.com/company/careers/details/25720",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Sales Executive, Strategic",
-          "url": "https://www.atlassian.com/company/careers/details/25606",
           "location": "",
           "postedDate": null
         },
@@ -2279,8 +2273,8 @@
           "postedDate": null
         },
         {
-          "title": "Product Manager",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282210?microsite=bnz",
+          "title": "Senior Developer - Core Ledger Replacement",
+          "url": "https://nab.eightfold.ai/careers/job/563980770565426?microsite=bnz",
           "location": "",
           "postedDate": null
         },
@@ -2291,26 +2285,14 @@
           "postedDate": null
         },
         {
-          "title": "Senior Developer - Core Ledger Replacement",
-          "url": "https://nab.eightfold.ai/careers/job/563980770565426?microsite=bnz",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Senior Developer - nCino",
           "url": "https://nab.eightfold.ai/careers/job/563980770587263?microsite=bnz",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Technical Specalist",
-          "url": "https://nab.eightfold.ai/careers/job/563980770612969?microsite=bnz",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Developer",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282235?microsite=bnz",
+          "title": "Product Manager",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282210?microsite=bnz",
           "location": "",
           "postedDate": null
         },
@@ -2323,6 +2305,18 @@
         {
           "title": "Principal Engineer (Salesforce / nCino Architect)",
           "url": "https://nab.eightfold.ai/careers/job/563980770587262?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Technical Specalist",
+          "url": "https://nab.eightfold.ai/careers/job/563980770612969?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Developer",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282235?microsite=bnz",
           "location": "",
           "postedDate": null
         },
@@ -2350,8 +2344,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "Senior Analyst, Access Control Design (IAM)",
-          "url": "https://nab.eightfold.ai/careers/job/563980770278617?microsite=nab",
+          "title": "Senior/Lead Engineer - Integration Design and Governance (IDG)",
+          "url": "https://nab.eightfold.ai/careers/job/563980770279574?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -2362,32 +2356,32 @@
           "postedDate": null
         },
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior/Lead Engineer - Integration Design and Governance (IDG)",
-          "url": "https://nab.eightfold.ai/careers/job/563980770279574?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Solution Design, Senior Consultant - Merchant Services",
           "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior Product Designer - HCM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770286235?microsite=nab",
+          "title": "Senior Analyst, Access Control Design (IAM)",
+          "url": "https://nab.eightfold.ai/careers/job/563980770278617?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Senior Product Designer - Personal Everyday Banking",
           "url": "https://nab.eightfold.ai/careers/job/563980770282803?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Designer - HCM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770286235?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -2410,62 +2404,56 @@
           "postedDate": null
         },
         {
-          "title": "Analyst",
-          "url": "https://nab.eightfold.ai/careers/job/563980770415540?microsite=nab",
+          "title": "Senior Analyst, Engineer - Core API Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282150?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior Business Analyst - Payments",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282742?microsite=nab",
+          "title": "Analyst, Engineer",
+          "url": "https://nab.eightfold.ai/careers/job/563980770569375?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior Java Engineer - Payments",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282730?microsite=nab",
+          "title": "Analyst Engineer - EPBO",
+          "url": "https://nab.eightfold.ai/careers/job/563980770571255?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Analyst, Production Support - BEB",
-          "url": "https://nab.eightfold.ai/careers/job/563980770587565?microsite=nab",
+          "title": "Engineering Manager - Martech",
+          "url": "https://nab.eightfold.ai/careers/job/563980770446158?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Analyst, Production Support - BEB",
-          "url": "https://nab.eightfold.ai/careers/job/563980770587566?microsite=nab",
+          "title": "Engineering Manager - Martech",
+          "url": "https://nab.eightfold.ai/careers/job/563980770446175?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior Business Analyst - FCO",
-          "url": "https://nab.eightfold.ai/careers/job/563980770286363?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Technical Business Analyst (AI)",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282584?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Analyst, Business Analyst",
-          "url": "https://nab.eightfold.ai/careers/job/563980770281238?microsite=nab",
+          "title": "Engineering Manager - Technology Risk, GRACE",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282787?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Engineering Manager - Payments",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282750?microsite=nab",
+          "url": "https://nab.eightfold.ai/careers/job/563980770594184?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Engineering Manager - BEB",
-          "url": "https://nab.eightfold.ai/careers/job/563980770281972?microsite=nab",
+          "title": "Engineering Manager (Adobe Suite) - Martech",
+          "url": "https://nab.eightfold.ai/careers/job/563980770447066?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Engineering Manager (AI)",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282566?microsite=nab",
           "location": "",
           "postedDate": null
         }
@@ -2499,14 +2487,14 @@
           "postedDate": null
         },
         {
-          "title": "Stagiair(e) IT Processen bij het Process & Project Team (IT)",
-          "url": "https://www.werkenbijabnamro.nl/en/vacancy/9245/stagiair-e-it-processen-bij-het-process-project-team-it",
+          "title": "Business Consultant - FEC Data Domain (DFC)",
+          "url": "https://www.werkenbijabnamro.nl/en/vacancy/9528/business-consultant-fec-data-domain-dfc",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Business Consultant - FEC Data Domain (DFC)",
-          "url": "https://www.werkenbijabnamro.nl/en/vacancy/9528/business-consultant-fec-data-domain-dfc",
+          "title": "Stagiair(e) IT Processen bij het Process & Project Team (IT)",
+          "url": "https://www.werkenbijabnamro.nl/en/vacancy/9245/stagiair-e-it-processen-bij-het-process-project-team-it",
           "location": "",
           "postedDate": null
         },
@@ -2536,6 +2524,12 @@
         {
           "title": "Assistant Vice President, GS IC (SBF Office) - Solution & Design MY",
           "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36995/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Assistant Manager, GT-TBS, GCDB Application Delivery, Next Gen Clicks MY (Back End Developer 2)",
+          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36961/?keyword=design",
           "location": "",
           "postedDate": null
         },
@@ -2668,12 +2662,6 @@
         {
           "title": "Business Development Manager (FX) MY",
           "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36514/?keyword=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Director, Corporate Strategy & Performance MY",
-          "url": "https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/36040/?keyword=design",
           "location": "",
           "postedDate": null
         }
@@ -2898,6 +2886,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Commercial Manager - Hamilton",
+          "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3494?c=kiwibankpeople",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Banking Assistant, Riccarton",
           "url": "https://kiwibankpeople.csod.com/ux/ats/careersite/1/home/requisition/3493?c=kiwibankpeople",
           "location": "",
@@ -3069,8 +3063,8 @@
           "postedDate": null
         },
         {
-          "title": "Principal AI Engineer",
-          "url": "https://jobs.standardchartered.com/job/Principal-AI-Engineer/59483-en_GB",
+          "title": "Senior Software Engineer Distributed Systems (Singapore / China)",
+          "url": "https://jobs.standardchartered.com/job/Senior-Software-Engineer-Distributed-Systems-%28Singapore-China%29/59508-en_GB",
           "location": "",
           "postedDate": null
         }
