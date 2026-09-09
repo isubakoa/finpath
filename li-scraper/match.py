@@ -86,7 +86,15 @@ _MIN_CONTAINMENT_LEN = 5
 
 
 def _normalize(name):
-    name = name or ""
+    # `name or ""` alone doesn't catch a raw pandas NaN (a float — truthy in
+    # Python, so it sails past an `or` check) landing here from a caller that
+    # didn't already sanitize it (see scrape.py's _clean_str for the same
+    # issue at the source) — guard directly rather than relying solely on
+    # every caller remembering to pre-clean.
+    if name is None or (isinstance(name, float) and name != name):
+        name = ""
+    else:
+        name = str(name)
     name = _PARENS.sub(" ", name)
     name = _PUNCT.sub(" ", name)
     name = _LEGAL_SUFFIXES.sub(" ", name)

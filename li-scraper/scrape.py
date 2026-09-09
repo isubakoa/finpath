@@ -304,6 +304,21 @@ def normalize_posted_date(value):
     return s[:10]  # Timestamp's str() is 'YYYY-MM-DD ...' or already just the date
 
 
+def _clean_str(value):
+    """Coerce a raw JobSpy result field to a string. JobSpy returns a pandas
+    DataFrame under the hood, and pandas represents a missing value as NaN —
+    a float, not None or "". `value or ""` doesn't catch that, because
+    float('nan') is truthy in Python (only None/0/""/empty containers are
+    falsy) — so an ungated `row.get(...) or ""` lets a raw NaN float sail
+    through and blow up the moment any downstream code (match.py's regex
+    substitutions, is_role_relevant's string checks) tries to treat it as a
+    string. `value != value` is True only for NaN among common types, so
+    this catches it without needing a pandas import here."""
+    if value is None or (isinstance(value, float) and value != value):
+        return ""
+    return str(value)
+
+
 def build_fresh_roles(rows, index, today_iso, debug=False):
     """Filters this run's raw results down to real matches, keyed by URL.
     rows: iterable of (source, row) — source is "li" or "indeed", tagged
@@ -313,12 +328,12 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
     kept = dropped_company = dropped_title = duplicate = 0
 
     for source, row in rows:
-        url = row.get("job_url") or ""
+        url = _clean_str(row.get("job_url"))
         if not url or url in fresh:
             duplicate += 1
             continue
 
-        employer = row.get("company") or ""
+        employer = _clean_str(row.get("company"))
         slug = match_company(employer, index)
         if not slug:
             dropped_company += 1
@@ -326,7 +341,7 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
                 print(f"[match] no company match: {employer!r} — {row.get('title')!r}", file=sys.stderr)
             continue
 
-        title = row.get("title") or ""
+        title = _clean_str(row.get("title"))
         if not is_role_relevant(title):
             dropped_title += 1
             if debug:
@@ -336,7 +351,7 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
         kept += 1
         fresh[url] = (slug, {
             "title": title,
-            "location": row.get("location") or "Not specified",
+            "location": _clean_str(row.get("location")) or "Not specified",
             "url": url,
             "postedDate": normalize_posted_date(row.get("date_posted")),
             "source": source,
