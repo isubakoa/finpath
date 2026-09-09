@@ -86,6 +86,9 @@ const COMPANIES = [
     urls: ["https://fil.wd3.myworkdayjobs.com/en-US/001?q=design"],
     linkPattern: /\/en-US\/001\/job\//,
     waitForSelector: 'a[href*="/en-US/001/job/"]',
+    // See the settleDelayMs comment in scrapeOneUrl — this tenant's job tiles
+    // render with a dead placeholder href first, then swap to the real URL.
+    settleDelayMs: 2000,
   },
   {
     slug: "abu-dhabi-investment-authority-adia",
@@ -292,6 +295,20 @@ async function scrapeOneUrl(browser, url, company) {
       // did render rather than failing the whole page.
       await page.waitForSelector(company.waitForSelector, { timeout: TIMEOUT_MS }).catch(() => {});
     }
+    if (company.settleDelayMs) {
+      // Some SPA career sites (Fidelity International's Workday tenant is the
+      // known case) render their job-tile <a> elements with a placeholder
+      // href — literally https://community.workday.com/invalid-url, Workday's
+      // own generic dead-link landing page — for one render pass before their
+      // client-side router swaps in the real per-job URL a moment later.
+      // waitForSelector above is satisfied the instant the tile exists, which
+      // can land right in that placeholder window, so a company that hits
+      // this needs one more real wait for the swap to happen before we read
+      // hrefs out of the DOM. Left at 0 (skipped) for every other company —
+      // most sites don't do this and the extra wait is pure wasted time for
+      // them.
+      await page.waitForTimeout(company.settleDelayMs);
+    }
 
     const roles = await page.evaluate(({ patternSource, titleSelector, titleAncestorSelector, titleAncestorTitleSelector }) => {
       const pattern = new RegExp(patternSource);
@@ -306,6 +323,10 @@ async function scrapeOneUrl(browser, url, company) {
           return;
         }
         if (!pattern.test(abs) || seen.has(abs)) return;
+        // Defense in depth against the Workday placeholder-href issue (see the
+        // settleDelayMs comment above scrapeOneUrl's waitForSelector call): even
+        // with the settle wait, never let this specific known-dead marker through.
+        if (/community\.workday\.com\/invalid-url/i.test(abs)) return;
         // Most sites' job links are plain text, so the whole anchor's text
         // is the title. Some (Klarna's Deel-hosted board, for one) wrap a
         // whole card — title, location, salary — in one <a>, in which case

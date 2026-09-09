@@ -17,12 +17,24 @@ INDEX = build_index(COMPANIES, ALIASES)
 # addition — this exercises that both "li" and "indeed" rows flow through
 # company matching, title filtering, and de-dup identically, and that each
 # kept role is tagged with the source it actually came from (not hardcoded).
+#
+# The float("nan") cases below reproduce a real production crash from the
+# first live GitHub Actions run (2026-09-09): JobSpy returns a pandas
+# DataFrame, and pandas represents a missing field as NaN — a float, not
+# None or "" — which `row.get(...) or ""` doesn't catch (float('nan') is
+# truthy), so a NaN company name reached match.py's regex substitution as a
+# raw float and crashed with `TypeError: expected string or bytes-like
+# object, got 'float'`. Fixed via _clean_str() in scrape.py (and a matching
+# guard in match.py's _normalize()) — these cases must keep passing.
 FRESH_ROLES_CASES = [
     ("li", {"job_url": "https://x.test/1", "company": "Wise", "title": "Head of Design", "location": "London"}),
     ("indeed", {"job_url": "https://x.test/2", "company": "HSBC Holdings plc", "title": "Senior UX Researcher", "location": "Singapore"}),
     ("indeed", {"job_url": "https://x.test/3", "company": "Some Totally Unrelated Company", "title": "Head of Design", "location": "Berlin"}),  # dropped: no company match
     ("li", {"job_url": "https://x.test/4", "company": "Wise", "title": "Software Engineer", "location": "London"}),  # dropped: title not relevant
     ("li", {"job_url": "https://x.test/1", "company": "Wise", "title": "Head of Design (dup)", "location": "London"}),  # dropped: duplicate URL
+    ("li", {"job_url": "https://x.test/5", "company": float("nan"), "title": "Head of Design", "location": "London"}),  # dropped, not crashed: NaN company
+    ("li", {"job_url": "https://x.test/6", "company": "Wise", "title": "Head of Design", "location": float("nan")}),  # kept: NaN location falls back to "Not specified"
+    ("indeed", {"job_url": "https://x.test/7", "company": "Wise", "title": float("nan"), "location": "London"}),  # dropped, not crashed: NaN title
 ]
 
 # (LI employer name as it might realistically appear, expected slug or None)
@@ -80,16 +92,27 @@ def run():
         print(f"  {'OK ' if ok else 'FAIL'}  {title!r:35s} relevant={relevant!s:5s} tier={tier:6s} "
               f"(expected relevant={expected_relevant!s:5s} tier={expected_tier})")
 
-    print("-- build_fresh_roles (multi-source) --")
-    fresh = build_fresh_roles(FRESH_ROLES_CASES, INDEX, "2026-09-09")
+    print("-- build_fresh_roles (multi-source + NaN handling) --")
+    try:
+        fresh = build_fresh_roles(FRESH_ROLES_CASES, INDEX, "2026-09-09")
+        crashed = False
+    except TypeError as e:
+        fresh = {}
+        crashed = True
+        print(f"  FAIL  build_fresh_roles crashed: {e}")
     fresh_checks = [
-        ("kept exactly 2 roles (2 dropped, 1 duplicate)", len(fresh) == 2),
+        ("did not crash on NaN fields (the actual production bug)", not crashed),
+        ("kept exactly 3 roles (3 dropped, 1 duplicate, 1 NaN-company dropped, 1 NaN-title dropped)", len(fresh) == 3),
         ("wise role tagged source=li", fresh.get("https://x.test/1", (None, {}))[1].get("source") == "li"),
         ("wise role filed under correct slug", fresh.get("https://x.test/1", (None, {}))[0] == "wise"),
         ("hsbc role tagged source=indeed", fresh.get("https://x.test/2", (None, {}))[1].get("source") == "indeed"),
         ("hsbc role filed under correct slug", fresh.get("https://x.test/2", (None, {}))[0] == "hsbc"),
         ("unrelated company's role dropped", "https://x.test/3" not in fresh),
         ("irrelevant title dropped", "https://x.test/4" not in fresh),
+        ("NaN-company role dropped cleanly", "https://x.test/5" not in fresh),
+        ("NaN-location role kept, location falls back to 'Not specified'",
+         fresh.get("https://x.test/6", (None, {}))[1].get("location") == "Not specified"),
+        ("NaN-title role dropped cleanly", "https://x.test/7" not in fresh),
     ]
     for label, ok in fresh_checks:
         failures += 0 if ok else 1
