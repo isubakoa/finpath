@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T20:43:48Z",
+  "generatedAt": "2026-09-10T23:09:06Z",
   "companies": {
     "google": {
       "roles": [
@@ -690,6 +690,14 @@
           "postedDate": "2026-09-04",
           "source": "indeed",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Instructional Designer, MEATR FC Learning",
+          "location": "Abu Dhabi, Abu Dhabi Emirate, United Arab Emirates",
+          "url": "https://www.linkedin.com/jobs/view/4455911300",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1225,7 +1233,7 @@
           "url": "https://www.linkedin.com/jobs/view/4461365991",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Group Product Manager, Returns & Post-Purchase Experience",
@@ -1309,7 +1317,7 @@
           "url": "https://www.linkedin.com/jobs/view/4388540642",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Design Engineer",
@@ -2013,7 +2021,7 @@
           "url": "https://www.linkedin.com/jobs/view/4436460704",
           "postedDate": "2026-09-05",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Product Manager, Fraud Management - BSS Product Management Department (BSPMD)",
@@ -2060,6 +2068,14 @@
           "location": "Tokyo, Tokyo, Japan",
           "url": "https://www.linkedin.com/jobs/view/4436467309",
           "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Chief UI Designer, Customer Strategy Department - Platform Strategy Supervisory Department (PFSD)",
+          "location": "Tokyo, Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4436450939",
+          "postedDate": "2026-09-06",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -2209,7 +2225,7 @@
           "url": "https://de.indeed.com/viewjob?jk=a6f43e281dc53764",
           "postedDate": "2026-09-07",
           "source": "indeed",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Senior Creative Strategist - Lounge by Zalando (all genders)",
@@ -2549,6 +2565,14 @@
           "url": "https://www.linkedin.com/jobs/view/4463436108",
           "postedDate": null,
           "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Design Practice Craft & Community Lead",
+          "location": "Sydney, NSW, AU",
+          "url": "https://au.indeed.com/viewjob?jk=f5866ef33e068313",
+          "postedDate": "2026-09-07",
+          "source": "indeed",
           "lastSeenAt": "2026-09-10"
         }
       ]
@@ -2937,6 +2961,22 @@
           "url": "https://www.linkedin.com/jobs/view/4464176618",
           "postedDate": null,
           "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Product Designer - AVP (12-mth contract)",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4465871022",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Product Designer - AVP (12-mth contract)",
+          "location": "Singapore, S00, SG",
+          "url": "https://sg.indeed.com/viewjob?jk=ea02b633f7818a20",
+          "postedDate": "2026-09-11",
+          "source": "indeed",
           "lastSeenAt": "2026-09-10"
         }
       ]
@@ -3501,6 +3541,18 @@
           "url": "https://www.linkedin.com/jobs/view/4455567362",
           "postedDate": "2026-09-08",
           "source": "li",
+          "lastSeenAt": "2026-09-10"
+        }
+      ]
+    },
+    "swift": {
+      "roles": [
+        {
+          "title": "Web Designer Intern (Hybrid Work - KL/ Selangor only)",
+          "location": "Bukit Bintang, M14, MY",
+          "url": "https://malaysia.indeed.com/viewjob?jk=b266e423229a9dcc",
+          "postedDate": "2026-09-01",
+          "source": "indeed",
           "lastSeenAt": "2026-09-10"
         }
       ]
