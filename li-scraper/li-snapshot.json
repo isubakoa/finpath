@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T14:59:23Z",
+  "generatedAt": "2026-09-10T18:15:17Z",
   "companies": {
     "google": {
       "roles": [
@@ -154,6 +154,46 @@
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Group Product Manager, Shopping on Gemini",
+          "location": "Zurich, Zurich, Switzerland",
+          "url": "https://www.linkedin.com/jobs/view/4461386876",
+          "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Manager II, UGC Creative Editorial",
+          "location": "Tokyo, Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4460252050",
+          "postedDate": "2026-09-01",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Account Strategist, SBS Engage, Google Customer Solutions, Spain (Spanish, English)",
+          "location": "Dublin, D, IE",
+          "url": "https://ie.indeed.com/viewjob?jk=31e42ac94998ff86",
+          "postedDate": "2026-09-10",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Account Strategist, SBS Engage, Google Customer Solutions, Market: Baltics",
+          "location": "Dublin, D, IE",
+          "url": "https://ie.indeed.com/viewjob?jk=b308996e2c1fbaf0",
+          "postedDate": "2026-09-02",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Marketing Manager, APAC YouTube Shorts",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4464556461",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -253,13 +293,29 @@
           "url": "https://www.linkedin.com/jobs/view/4366465245",
           "postedDate": "2026-09-02",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Product Designer",
           "location": "Not specified",
           "url": "https://www.linkedin.com/jobs/view/4324417188",
           "postedDate": "2026-08-31",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Operations Manager (Product)",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4435462937",
+          "postedDate": "2026-09-07",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Marketing Manager - Americas",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4442637150",
+          "postedDate": "2026-09-02",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -295,6 +351,30 @@
           "title": "Talent Product Owner - Skills - Associate Director",
           "location": "Copenhagen, Capital Region of Denmark, Denmark",
           "url": "https://www.linkedin.com/jobs/view/4459971122",
+          "postedDate": "2026-09-02",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Manager - Event Experiences",
+          "location": "Dublin 2, County Dublin, Ireland",
+          "url": "https://www.linkedin.com/jobs/view/4462506670",
+          "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Talent Product Owner - Skills - Associate Director",
+          "location": "Milan, Lombardy, Italy",
+          "url": "https://www.linkedin.com/jobs/view/4459963381",
+          "postedDate": "2026-09-02",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Talent Product Owner - Skills - Associate Director",
+          "location": "Diegem, Flemish Region, Belgium",
+          "url": "https://www.linkedin.com/jobs/view/4459958514",
           "postedDate": "2026-09-02",
           "source": "li",
           "lastSeenAt": "2026-09-10"
@@ -431,7 +511,7 @@
           "title": "Product Manager - Technical, International Preferences",
           "location": "Luxembourg, Luxembourg, Luxembourg",
           "url": "https://www.linkedin.com/jobs/view/4455907672",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         },
@@ -439,7 +519,7 @@
           "title": "Principal Product Manager, Technical, Amazon Fulfillment Technologies - External Fulfillment",
           "location": "Luxembourg, Luxembourg, Luxembourg",
           "url": "https://www.linkedin.com/jobs/view/4455780876",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         },
@@ -495,7 +575,7 @@
           "title": "Sr Product Manager, DEX, MENAT DEX Team",
           "location": "Dubai, Dubai, United Arab Emirates",
           "url": "https://www.linkedin.com/jobs/view/4455900522",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         },
@@ -520,6 +600,46 @@
           "location": "Dublin, County Dublin, Ireland",
           "url": "https://www.linkedin.com/jobs/view/4455771925",
           "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Tech Principal Product Manager (Live TV), Fire TV Experience",
+          "location": "Berlin, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4455909655",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Product Manager, Vertical Strategy, Amazon Business Marketplace",
+          "location": "Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4455914096",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Sr Strategy & Product Manager, Profit & Negotiations",
+          "location": "Sydney, New South Wales, Australia",
+          "url": "https://www.linkedin.com/jobs/view/4455911912",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Marketing Manager, Engagement, Amazon Flex",
+          "location": "Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4455910583",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Marketing Manager, B2B, Amazon Business",
+          "location": "Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4455906809",
+          "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -654,6 +774,14 @@
           "postedDate": "2026-09-03",
           "source": "indeed",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Field Marketing Manager, North Asia",
+          "location": "Hong Kong, Hong Kong SAR",
+          "url": "https://www.linkedin.com/jobs/view/4451672118",
+          "postedDate": "2026-09-01",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -701,7 +829,7 @@
           "url": "https://www.linkedin.com/jobs/view/4461188482",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Managing Consultant, Specialised Product Delivery (Research Solutions) \u2013 Advisors Research Center (ARC)",
@@ -750,6 +878,86 @@
           "postedDate": "2026-09-02",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Specialist, Product Development",
+          "location": "Lisboa, P11, PT",
+          "url": "https://pt.indeed.com/viewjob?jk=cb53ca14892a5b87",
+          "postedDate": "2026-09-07",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Director, Product Management",
+          "location": "Lisboa, P11, PT",
+          "url": "https://pt.indeed.com/viewjob?jk=93add3ec4a390d86",
+          "postedDate": "2026-09-04",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Specialist, Product Management",
+          "location": "Lisboa, P11, PT",
+          "url": "https://pt.indeed.com/viewjob?jk=e1a40a49bdcc41bc",
+          "postedDate": "2026-09-02",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Security Solutions (SSO) Product Lead \u2013 Southeast Asia Division East",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4440179691",
+          "postedDate": "2026-09-02",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Manager",
+          "location": "Milan, Lombardy, Italy",
+          "url": "https://www.linkedin.com/jobs/view/4463015867",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Manager, Product Excellence & Innovation, WE",
+          "location": "Waterloo, Walloon Region, Belgium",
+          "url": "https://www.linkedin.com/jobs/view/4461171826",
+          "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Specialist, Product Management",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4462527263",
+          "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Director, Product Management",
+          "location": "Dublin, County Dublin, Ireland",
+          "url": "https://www.linkedin.com/jobs/view/4451289191",
+          "postedDate": "2026-09-05",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Manager, Product Management - B2B Payments",
+          "location": "Dublin, County Dublin, Ireland",
+          "url": "https://www.linkedin.com/jobs/view/4450172356",
+          "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Director, Product Management (Pricing & Assurance)",
+          "location": "Dubai, Dubai, United Arab Emirates",
+          "url": "https://www.linkedin.com/jobs/view/4450838668",
+          "postedDate": "2026-09-05",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -777,7 +985,7 @@
           "url": "https://www.linkedin.com/jobs/view/4417045244",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Manager - Personal Financial Services (Product & Portfolio Management - Mortgage)",
@@ -857,6 +1065,22 @@
           "url": "https://www.linkedin.com/jobs/view/4441587296",
           "postedDate": "2026-09-04",
           "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Manager, Revenue Strategy & Operations, ANZ (1 year Fixed-Term Contract)",
+          "location": "Sydney, NSW, AU",
+          "url": "https://au.indeed.com/viewjob?jk=e115777600f4331f",
+          "postedDate": "2026-09-02",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Manager, Revenue Strategy & Operations, ANZ (1 year Fixed-Term Contract)",
+          "location": "Sydney, NSW, AU",
+          "url": "https://au.indeed.com/viewjob?jk=ad778699dc22818e",
+          "postedDate": "2026-09-02",
+          "source": "indeed",
           "lastSeenAt": "2026-09-10"
         }
       ]
@@ -1046,6 +1270,22 @@
           "postedDate": "2026-09-06",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Director, Product Strategy & Transformation",
+          "location": "Alphen aan den Rijn, South Holland, Netherlands",
+          "url": "https://www.linkedin.com/jobs/view/4464120361",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "B2B Demand Generation Marketing Manager",
+          "location": "Berlin, Berlin, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4436044373",
+          "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1115,7 +1355,7 @@
           "title": "Product Owner, Rewards Journey",
           "location": "Bukit Jalil, Federal Territory of Kuala Lumpur, Malaysia",
           "url": "https://www.linkedin.com/jobs/view/4463871139",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         },
@@ -1124,6 +1364,14 @@
           "location": "Kuala Lumpur, M14, MY",
           "url": "https://malaysia.indeed.com/viewjob?jk=30487a1cc72d932a",
           "postedDate": "2026-09-09",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Growth Marketing Manager",
+          "location": "Fortitude Valley, QLD, AU",
+          "url": "https://au.indeed.com/viewjob?jk=a4694736b6e86f9f",
+          "postedDate": "2026-09-10",
           "source": "indeed",
           "lastSeenAt": "2026-09-10"
         }
@@ -1170,6 +1418,14 @@
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Product Manager",
+          "location": "Auckland, Auckland, New Zealand",
+          "url": "https://www.linkedin.com/jobs/view/4463428996",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1202,6 +1458,22 @@
           "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Health Innovation Strategist / Senior Strategist",
+          "location": "Milano, LOM, IT",
+          "url": "https://it.indeed.com/viewjob?jk=c8fa35acee9bd03c",
+          "postedDate": "2026-09-02",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Health Innovation Strategist / Senior Strategist",
+          "location": "London, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=1681b93d8e962195",
+          "postedDate": "2026-09-07",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1229,15 +1501,15 @@
           "url": "https://www.linkedin.com/jobs/view/4462861498",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Head of Product Management and UX (f/m/d)",
           "location": "Salzburg, Salzburg, Austria",
           "url": "https://www.linkedin.com/jobs/view/4463866430",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Senior Product Manager, B2B Lifecycle",
@@ -1262,6 +1534,22 @@
           "postedDate": "2026-09-07",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Head of Product Management and UX (f/m/d)",
+          "location": "Salzburg, SA, AT",
+          "url": "https://at.indeed.com/viewjob?jk=94ee93e471b3a589",
+          "postedDate": "2026-09-09",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Staff Product Manager, Tabby Card",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4465808293",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1274,6 +1562,38 @@
           "postedDate": "2026-09-03",
           "source": "indeed",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Account Technology Strategist",
+          "location": "Sydney, NSW, AU",
+          "url": "https://au.indeed.com/viewjob?jk=4ef1ebe78d22a7f8",
+          "postedDate": "2026-08-30",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Account Technology Strategist",
+          "location": "Sydney, NSW, AU",
+          "url": "https://au.indeed.com/viewjob?jk=bfd2d0979c65239a",
+          "postedDate": "2026-08-28",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Strategic Account Technology Strategist",
+          "location": "Sydney, NSW, AU",
+          "url": "https://au.indeed.com/viewjob?jk=65c66e14ca51d2c8",
+          "postedDate": "2026-08-24",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Strategic Account Technology Strategist - Manufacturing",
+          "location": "Schiphol, NH, NL",
+          "url": "https://nl.indeed.com/viewjob?jk=83165b2531954674",
+          "postedDate": "2026-09-01",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1284,6 +1604,22 @@
           "location": "London, England, UK",
           "url": "https://www.linkedin.com/jobs/view/4414152820",
           "postedDate": "2026-09-01",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Buzz Marketing Marketing Manager, France",
+          "location": "Paris, A8, FR",
+          "url": "https://fr.indeed.com/viewjob?jk=90eb9a97844ce36b",
+          "postedDate": "2026-09-07",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Marketing Manager, Mac & iPad (f/m/d)",
+          "location": "Berlin, Berlin, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4463200165",
+          "postedDate": "2026-09-08",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -1311,6 +1647,38 @@
           "title": "Product Owner (Digital Bank)",
           "location": "Federal Territory of Kuala Lumpur, Malaysia",
           "url": "https://www.linkedin.com/jobs/view/4460209015",
+          "postedDate": "2026-09-01",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Assistant Marketing Manager",
+          "location": "Kuala Lumpur, M14, MY",
+          "url": "https://malaysia.indeed.com/viewjob?jk=2e7b4bdc3f3db4a1",
+          "postedDate": "2026-07-27",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Strategist",
+          "location": "Seri Kembangan, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4464064905",
+          "postedDate": "2026-09-07",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Executive, Product & Proposition",
+          "location": "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4461121536",
+          "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Management & Planning (Senior/AM/Manager)",
+          "location": "WP. Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4460205859",
           "postedDate": "2026-09-01",
           "source": "li",
           "lastSeenAt": "2026-09-10"
@@ -1394,6 +1762,30 @@
           "postedDate": "2026-09-02",
           "source": "indeed",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "SVP Investment Strategist",
+          "location": "\u53f0\u5317\u5e02, TPE, TW",
+          "url": "https://tw.indeed.com/viewjob?jk=27d22d68af66bcba",
+          "postedDate": "2026-09-07",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Wholesale Marketing Manager, Asset Management",
+          "location": "Tokyo, Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4462777199",
+          "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Wholesale Marketing Manager, Asset Management",
+          "location": "JPC, JP",
+          "url": "https://jp.indeed.com/viewjob?jk=c9d0d229d521edb9",
+          "postedDate": "2026-09-03",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1405,6 +1797,22 @@
           "url": "https://www.linkedin.com/jobs/view/4461711493",
           "postedDate": "2026-09-01",
           "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Energy Strategist",
+          "location": "Bugis, S00, SG",
+          "url": "https://sg.indeed.com/viewjob?jk=a80f70283b743bac",
+          "postedDate": "2026-09-03",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Stablecoin Product Marketing Manager",
+          "location": "Utrecht, UT, NL",
+          "url": "https://nl.indeed.com/viewjob?jk=cbed40f2239ff02e",
+          "postedDate": "2026-09-10",
+          "source": "indeed",
           "lastSeenAt": "2026-09-10"
         }
       ]
@@ -1526,6 +1934,22 @@
           "postedDate": "2026-09-05",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Manager, Customer Strategy Department - Platform Strategy Supervisory Department (PFSD)",
+          "location": "Tokyo, Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4436472093",
+          "postedDate": "2026-09-05",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "AI Product Manager - Customer Strategy Department, Platform Strategy Supervisory Department (PFSD)",
+          "location": "Tokyo, Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4436467309",
+          "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1536,6 +1960,22 @@
           "location": "Seoul, Seoul, South Korea",
           "url": "https://www.linkedin.com/jobs/view/4433705615",
           "postedDate": "2026-09-06",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Manager Customer Product Strategy (m/w/d)",
+          "location": "Berlin, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4464669094",
+          "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Ads Marketing Manager, Germany",
+          "location": "Berlin, Berlin, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4463052556",
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -1557,7 +1997,7 @@
           "url": "https://www.linkedin.com/jobs/view/4461153047",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Lead Product Manager - AI Enablement",
@@ -1618,6 +2058,14 @@
           "postedDate": "2026-09-01",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Marketing Manager / Senior Marketing Specialist",
+          "location": "Hong Kong, Hong Kong SAR",
+          "url": "https://www.linkedin.com/jobs/view/4436703241",
+          "postedDate": "2026-09-05",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1628,6 +2076,14 @@
           "location": "Amsterdam, North Holland, Netherlands",
           "url": "https://www.linkedin.com/jobs/view/4462050637",
           "postedDate": "2026-09-01",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Marketing Manager EG Generics",
+          "location": "Brussels, Brussels Region, Belgium",
+          "url": "https://www.linkedin.com/jobs/view/4372691923",
+          "postedDate": "2026-09-03",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -1642,6 +2098,14 @@
           "postedDate": "2026-09-07",
           "source": "indeed",
           "lastSeenAt": "2026-09-09"
+        },
+        {
+          "title": "Senior Creative Strategist - Lounge by Zalando (all genders)",
+          "location": "Berlin, BE, DE",
+          "url": "https://de.indeed.com/viewjob?jk=68e371c39ec3b446",
+          "postedDate": "2026-09-08",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1671,7 +2135,7 @@
           "title": "Lead Product Manager, Business Applications",
           "location": "Petaling Jaya, Selangor, Malaysia",
           "url": "https://www.linkedin.com/jobs/view/4454776733",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         },
@@ -1698,6 +2162,14 @@
           "postedDate": "2026-09-02",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Lead Product Manager, Transaction Platform",
+          "location": "Petaling Jaya, Selangor, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4452951140",
+          "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1715,7 +2187,7 @@
           "title": "Product Owner.Injaz -RBG - Digital Web & Mobile Entities.Retail Banking Group",
           "location": "Not specified",
           "url": "https://www.linkedin.com/jobs/view/4465003304",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         },
@@ -1746,6 +2218,14 @@
           "postedDate": "2026-09-07",
           "source": "indeed",
           "lastSeenAt": "2026-09-09"
+        },
+        {
+          "title": "Product Structuring Specialist",
+          "location": "Z\u00fcrich, ZH, CH",
+          "url": "https://ch.indeed.com/viewjob?jk=e82507db5cceed13",
+          "postedDate": "2026-09-10",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1878,6 +2358,22 @@
           "postedDate": "2026-09-09",
           "source": "indeed",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Lead - Lending Experience",
+          "location": "Sydney, New South Wales, Australia",
+          "url": "https://www.linkedin.com/jobs/view/4465605778",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Marketing Manager",
+          "location": "Collingwood, New South Wales, Australia",
+          "url": "https://www.linkedin.com/jobs/view/4460098808",
+          "postedDate": "2026-09-01",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1926,6 +2422,14 @@
           "postedDate": "2026-09-08",
           "source": "indeed",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Manager - Business Deposits",
+          "location": "Auckland, New Zealand",
+          "url": "https://www.linkedin.com/jobs/view/4463436108",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1953,6 +2457,14 @@
           "url": "https://nl.indeed.com/viewjob?jk=bc7c2dc352a8dac7",
           "postedDate": "2026-09-04",
           "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Demand Generation Marketing Manager",
+          "location": "Stockholm, Stockholm County, Sweden",
+          "url": "https://www.linkedin.com/jobs/view/4443142443",
+          "postedDate": "2026-09-04",
+          "source": "li",
           "lastSeenAt": "2026-09-10"
         }
       ]
@@ -1997,6 +2509,14 @@
           "url": "https://ch.indeed.com/viewjob?jk=437f675cc95207c6",
           "postedDate": "2026-09-04",
           "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Marketing Manager",
+          "location": "Stockholm, Stockholm County, Sweden",
+          "url": "https://www.linkedin.com/jobs/view/4427952636",
+          "postedDate": "2026-09-07",
+          "source": "li",
           "lastSeenAt": "2026-09-10"
         }
       ]
@@ -2082,6 +2602,14 @@
           "postedDate": "2026-09-08",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Product Manager - Subscriptions",
+          "location": "Stockholm, Stockholm County, Sweden",
+          "url": "https://www.linkedin.com/jobs/view/4464624884",
+          "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -2102,6 +2630,14 @@
           "postedDate": "2026-09-06",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Strategy & Operations APAC",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4454545341",
+          "postedDate": "2026-09-06",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -2112,6 +2648,14 @@
           "location": "Madrid, Community of Madrid, Spain",
           "url": "https://www.linkedin.com/jobs/view/4462014873",
           "postedDate": "2026-09-01",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Digital Product Manager \u2013 Monitor & Grow",
+          "location": "Boadilla del Monte, Community of Madrid, Spain",
+          "url": "https://www.linkedin.com/jobs/view/4455929257",
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -2222,6 +2766,30 @@
           "postedDate": "2026-09-02",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Sr Product Manager - Hybridisation",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4454771171",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Sr Product Manager - Hybridisation",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4454765237",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Sr Product Manager - Hybridisation",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4454766226",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -2251,7 +2819,15 @@
           "title": "Product Manager",
           "location": "Abu Dhabi Emirate, United Arab Emirates",
           "url": "https://www.linkedin.com/jobs/view/4463042915",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Marketing Manager",
+          "location": "Taipei City, Taiwan",
+          "url": "https://www.linkedin.com/jobs/view/4441145653",
+          "postedDate": "2026-09-08",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -2294,6 +2870,22 @@
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Associate Director, Product Development and Management",
+          "location": "Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4443354862",
+          "postedDate": "2026-09-02",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Marketing Manager, Taiwan",
+          "location": "Taipei, Taipei City, Taiwan",
+          "url": "https://www.linkedin.com/jobs/view/4455717986",
+          "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -2324,6 +2916,22 @@
           "location": "Deventer, Overijssel, Netherlands",
           "url": "https://www.linkedin.com/jobs/view/4462848585",
           "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Product Strategy Manager - Telco",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4460970676",
+          "postedDate": "2026-09-02",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Product Strategy Manager - Subscriber Growth",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4460979375",
+          "postedDate": "2026-09-02",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -2426,6 +3034,14 @@
           "postedDate": "2026-08-31",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "IT Product Owner",
+          "location": "Lisboa, Lisbon, Portugal",
+          "url": "https://www.linkedin.com/jobs/view/4456398395",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -2461,6 +3077,14 @@
           "url": "https://uk.indeed.com/viewjob?jk=296ee5a83af4c80f",
           "postedDate": "2026-09-09",
           "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Manager- Value Added Services- BPL",
+          "location": "Northampton, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4461177605",
+          "postedDate": "2026-09-04",
+          "source": "li",
           "lastSeenAt": "2026-09-10"
         }
       ]
@@ -2610,6 +3234,14 @@
           "postedDate": "2026-09-09",
           "source": "indeed",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Demand Generation Marketing Manager - Europe",
+          "location": "Amsterdam, North Holland, Netherlands",
+          "url": "https://www.linkedin.com/jobs/view/4465062134",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -2620,6 +3252,90 @@
           "location": "Singapore, Singapore",
           "url": "https://www.linkedin.com/jobs/view/4436082830",
           "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        }
+      ]
+    },
+    "touch-n-go-digital-tng-digital": {
+      "roles": [
+        {
+          "title": "Product Leader",
+          "location": "Risch, Zug, Switzerland",
+          "url": "https://www.linkedin.com/jobs/view/4462504399",
+          "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Associate, Product Management",
+          "location": "Federal Territory of Kuala Lumpur, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4452377137",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        }
+      ]
+    },
+    "gxbank": {
+      "roles": [
+        {
+          "title": "Regional Lead Product Manager - Core Experience & Loyalty",
+          "location": "Petaling Jaya, Selangor, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4463165930",
+          "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Regional Lead Product Manager, CoreX & Loyalty",
+          "location": "Petaling Jaya, Selangor, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4444337192",
+          "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Product Management Leader - Save & Spend",
+          "location": "Petaling Jaya, Selangor, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4463258011",
+          "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        }
+      ]
+    },
+    "samsung": {
+      "roles": [
+        {
+          "title": "Regional Marketing Manager, One Samsung B2B",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4465018674",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        }
+      ]
+    },
+    "judo-bank": {
+      "roles": [
+        {
+          "title": "Marketing Manager",
+          "location": "Melbourne, Victoria, Australia",
+          "url": "https://www.linkedin.com/jobs/view/4460434391",
+          "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        }
+      ]
+    },
+    "mollie": {
+      "roles": [
+        {
+          "title": "Regional Marketing Manager - Benelux",
+          "location": "Amsterdam, North Holland, Netherlands",
+          "url": "https://www.linkedin.com/jobs/view/4456166195",
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
