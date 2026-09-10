@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T10:35:24Z",
+  "generatedAt": "2026-09-10T14:59:23Z",
   "companies": {
     "google": {
       "roles": [
@@ -41,7 +41,7 @@
           "url": "https://sg.indeed.com/viewjob?jk=65bb0316eed6a6b2",
           "postedDate": "2026-09-02",
           "source": "indeed",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "UX Engineer, Privacy, Safety and Security",
@@ -49,7 +49,7 @@
           "url": "https://www.linkedin.com/jobs/view/4452994859",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Product Manager II, Retail Ads",
@@ -144,6 +144,14 @@
           "location": "Dublin, County Dublin, Ireland",
           "url": "https://www.linkedin.com/jobs/view/4460602155",
           "postedDate": "2026-09-01",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior UX Designer, YouTube Creators Monetization",
+          "location": "Zurich, Zurich, Switzerland",
+          "url": "https://www.linkedin.com/jobs/view/4464184997",
+          "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -353,15 +361,15 @@
           "url": "https://www.linkedin.com/jobs/view/4455796758",
           "postedDate": null,
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "AI Design Technologist, Marketing Productivity, Amazon Ads Marketing",
           "location": "London, England, UK",
           "url": "https://www.linkedin.com/jobs/view/4455911852",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Senior Manufacturing Design Engineer, QxAME",
@@ -369,7 +377,7 @@
           "url": "https://tw.indeed.com/viewjob?jk=2036eacc1aa3c029",
           "postedDate": "2026-08-28",
           "source": "indeed",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Solutions Design Engineer, Robotic Storage Tech, International Solutions",
@@ -385,13 +393,13 @@
           "url": "https://www.linkedin.com/jobs/view/4455905465",
           "postedDate": null,
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Solutions Design Engineer, Robotic Storage Tech, International Solutions",
           "location": "Luxembourg, Luxembourg, Luxembourg",
           "url": "https://www.linkedin.com/jobs/view/4455905594",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         },
@@ -504,6 +512,14 @@
           "location": "London, England, UK",
           "url": "https://www.linkedin.com/jobs/view/4455791900",
           "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "ICT Design Engineer, EMEA",
+          "location": "Dublin, County Dublin, Ireland",
+          "url": "https://www.linkedin.com/jobs/view/4455771925",
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -753,7 +769,7 @@
           "url": "https://www.linkedin.com/jobs/view/4427994135",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Head - HLISB (Product Development)",
@@ -809,7 +825,7 @@
           "url": "https://www.linkedin.com/jobs/view/4359510199",
           "postedDate": "2026-09-08",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Director of Product Design - Business Accounts",
@@ -817,7 +833,7 @@
           "url": "https://www.linkedin.com/jobs/view/4358860199",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Staff Product Designer",
@@ -897,7 +913,7 @@
           "url": "https://www.linkedin.com/jobs/view/4462739002",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Director, Product Management (Retail Selection - Taiwan)",
@@ -1059,7 +1075,7 @@
           "title": "Senior Experience Designer, SC Design (UI/UX)",
           "location": "Bukit Jalil, Federal Territory of Kuala Lumpur, Malaysia",
           "url": "https://www.linkedin.com/jobs/view/4463874017",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-10"
         },
@@ -1146,6 +1162,14 @@
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Design Manager - Tunnel Package",
+          "location": "Guyancourt, \u00cele-de-France, France",
+          "url": "https://www.linkedin.com/jobs/view/4463468779",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1175,9 +1199,9 @@
           "title": "Senior Design Engineer",
           "location": "Brentford, England, UK",
           "url": "https://www.linkedin.com/jobs/view/4456155978",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1189,7 +1213,7 @@
           "url": "https://www.linkedin.com/jobs/view/4447504489",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Head of Product Management and UX (f/m/d)",
@@ -1197,7 +1221,7 @@
           "url": "https://www.linkedin.com/jobs/view/4461685936",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Head of Product Management and UX (f/m/d)",
@@ -1249,7 +1273,7 @@
           "url": "https://malaysia.indeed.com/viewjob?jk=3731751908d24018",
           "postedDate": "2026-09-03",
           "source": "indeed",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1261,7 +1285,7 @@
           "url": "https://www.linkedin.com/jobs/view/4414152820",
           "postedDate": "2026-09-01",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -1301,7 +1325,7 @@
           "url": "https://www.linkedin.com/jobs/view/4460254285",
           "postedDate": "2026-09-01",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Senior Product Designer",
@@ -1321,7 +1345,7 @@
           "url": "https://www.linkedin.com/jobs/view/4464331705",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "VP, Product Management \u7522\u54c1\u7ba1\u7406\u90e8 \u526f\u7e3d\u88c1 (HSBC Global Asset Management)",
@@ -1329,7 +1353,7 @@
           "url": "https://www.linkedin.com/jobs/view/4462134021",
           "postedDate": "2026-09-02",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "VP Card Product and Portfolio",
@@ -1393,7 +1417,7 @@
           "url": "https://www.linkedin.com/jobs/view/4462988010",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Product Manager (f/m/d)",
@@ -1421,13 +1445,21 @@
           "url": "https://www.linkedin.com/jobs/view/4416142414",
           "postedDate": "2026-09-05",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         },
         {
           "title": "Senior Specialist - Innovation Concept Design",
           "location": "Zurich, Zurich, Switzerland",
           "url": "https://www.linkedin.com/jobs/view/4443175164",
           "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior Lead - Brand Environment Design",
+          "location": "Zurich, Zurich, Switzerland",
+          "url": "https://www.linkedin.com/jobs/view/4437379660",
+          "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-10"
         }
@@ -1441,7 +1473,7 @@
           "url": "https://www.linkedin.com/jobs/view/4462963366",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -2466,6 +2498,14 @@
           "postedDate": "2026-09-03",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Motion Graphic Designer (AI Workflows)",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4436065707",
+          "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-10"
         }
       ]
     },
@@ -2569,6 +2609,18 @@
           "url": "https://nl.indeed.com/viewjob?jk=cf3bff2b864a2ee0",
           "postedDate": "2026-09-09",
           "source": "indeed",
+          "lastSeenAt": "2026-09-10"
+        }
+      ]
+    },
+    "uob": {
+      "roles": [
+        {
+          "title": "Manager, UX Designer, Group Transaction Banking",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4436082830",
+          "postedDate": null,
+          "source": "li",
           "lastSeenAt": "2026-09-10"
         }
       ]
