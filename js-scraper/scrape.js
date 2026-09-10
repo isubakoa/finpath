@@ -16,6 +16,29 @@
 import { chromium } from "playwright";
 import { writeFileSync } from "fs";
 
+// Ported from index.html's isRoleRelevant() — keep these three regexes
+// byte-for-byte in sync with that function if it ever changes (same
+// convention li-scraper/match.py already follows for its own copy).
+//
+// Added 2026-09: this file used to write every href matching a company's
+// linkPattern straight to snapshot.json, unfiltered by title, on the theory
+// that check.php/index.html would filter it on the way in anyway. That was
+// true, but it meant snapshot.json carried every open role at every scraped
+// company regardless of relevance — Atlassian's "all jobs" page alone was
+// contributing 230 raw entries for ~1-2 that were ever actually Design/UX/
+// Product-relevant, and Netflix/Google's broad search pages threatened to
+// make that worse. Filtering here, at the source, keeps the file down to
+// what could plausibly ever be shown, with no change in what the tracker
+// actually displays (the same filter was always applied downstream).
+const ALWAYS_ALLOW = /(ux engineer|ui engineer|design engineer|design technologist|creative technologist|product marketing|marketing manager)/i;
+const POSITIVE = /(design|\bux\b|\bui\b|user experience|\bproduct\b|strategist|strategy|(user|customer|product) research|research (lead|manager|strategist))/i;
+const NEGATIVE = /(engineer|developer|dev\b|qa\b|quality assurance|sales|marketing|legal|counsel|finance|accounting|account manager|recruit|talent acquisition|\bhr\b|human resources|data scientist|analyst|logistics|warehouse|driver|technician)/i;
+function isRoleRelevant(title) {
+  const t = title || "";
+  if (ALWAYS_ALLOW.test(t)) return true;
+  return POSITIVE.test(t) && !NEGATIVE.test(t);
+}
+
 // ---- Companies to scrape -------------------------------------------------
 //
 // Each entry needs `urls` (one or more pages that actually list jobs — not
@@ -431,7 +454,19 @@ async function scrapeCompany(browser, company, { debug = false } = {}) {
   if (roles.length === 0 && errors.length === urls.length && urls.length > 0) {
     return { ok: false, error: errors.join("; ") };
   }
-  return { ok: true, roles: roles.map((r) => ({ ...r, location: "", postedDate: null })) };
+
+  // Title-relevance filter (see isRoleRelevant() above) — applied here,
+  // after the debug log above so --debug runs still show every raw match
+  // for troubleshooting a linkPattern/selector, but before anything reaches
+  // snapshot.json. A company with a broad "all jobs" page (Atlassian) or an
+  // unfiltered search (Google) would otherwise write hundreds of irrelevant
+  // roles to the file for zero downstream benefit, since check.php/
+  // index.html always filtered them right back out on the way in.
+  const relevant = roles.filter((r) => isRoleRelevant(r.title));
+  if (debug && relevant.length !== roles.length) {
+    console.log(`[${company.slug}] ${roles.length - relevant.length} of ${roles.length} dropped as not title-relevant, ${relevant.length} kept`);
+  }
+  return { ok: true, roles: relevant.map((r) => ({ ...r, location: "", postedDate: null })) };
 }
 
 async function main() {
