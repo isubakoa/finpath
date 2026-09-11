@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T21:42:39Z",
+  "generatedAt": "2026-09-11T23:55:28Z",
   "companies": {
     "google": {
       "roles": [
@@ -301,7 +301,7 @@
           "url": "https://www.linkedin.com/jobs/view/4415910264",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Head of Product | SaaS",
@@ -309,7 +309,7 @@
           "url": "https://www.linkedin.com/jobs/view/4462236012",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Head of Product (Fraud)",
@@ -317,7 +317,7 @@
           "url": "https://www.linkedin.com/jobs/view/4296088123",
           "postedDate": "2026-09-05",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Head of Product (Fraud)",
@@ -325,7 +325,7 @@
           "url": "https://www.linkedin.com/jobs/view/4296081637",
           "postedDate": "2026-09-06",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Head of Product (Fraud)",
@@ -333,7 +333,7 @@
           "url": "https://www.linkedin.com/jobs/view/4296079955",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Head of Product (Fraud)",
@@ -341,7 +341,7 @@
           "url": "https://www.linkedin.com/jobs/view/4296081635",
           "postedDate": "2026-09-06",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Head of Product (Wealth & Trading)",
@@ -428,6 +428,22 @@
           "location": "London Area, United Kingdom",
           "url": "https://www.linkedin.com/jobs/view/4463977941",
           "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Head of Product (Fraud)",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4415798559",
+          "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Head of Product (Fraud)",
+          "location": "Berlin, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4296086221",
+          "postedDate": "2026-09-05",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         }
@@ -631,9 +647,9 @@
           "title": "Sr. Robotics Manager, Robotics Delivery & Packaging Innovation, Design & Deployment",
           "location": "Luxembourg, Luxembourg, Luxembourg",
           "url": "https://www.linkedin.com/jobs/view/4455905465",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Solutions Design Engineer, Robotic Storage Tech, International Solutions",
@@ -1269,7 +1285,7 @@
           "url": "https://www.linkedin.com/jobs/view/4461171826",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Specialist, Product Management",
@@ -1318,6 +1334,14 @@
           "postedDate": "2026-09-01",
           "source": "li",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Director, Product Management - Strategic growth",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4463968466",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -1337,7 +1361,7 @@
           "url": "https://www.linkedin.com/jobs/view/4427994135",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Head - HLISB (Product Development)",
@@ -1345,7 +1369,7 @@
           "url": "https://www.linkedin.com/jobs/view/4417045244",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Manager - Personal Financial Services (Product & Portfolio Management - Mortgage)",
@@ -1433,7 +1457,7 @@
           "url": "https://www.linkedin.com/jobs/view/4358860199",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Staff Product Designer",
@@ -1449,7 +1473,7 @@
           "url": "https://www.linkedin.com/jobs/view/4358050204",
           "postedDate": "2026-09-08",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Staff Product Designer",
@@ -1498,6 +1522,14 @@
           "postedDate": "2026-09-06",
           "source": "li",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Staff Product Designer",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/3824772606",
+          "postedDate": "2026-09-02",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -1517,7 +1549,7 @@
           "url": "https://www.linkedin.com/jobs/view/4463532019",
           "postedDate": "2026-09-08",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "User Experience (UX) Designer",
@@ -1818,6 +1850,14 @@
           "postedDate": "2026-09-07",
           "source": "li",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Design Director",
+          "location": "London, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4456018138",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -1837,7 +1877,7 @@
           "url": "https://malaysia.indeed.com/viewjob?jk=43f0021c6bfff452",
           "postedDate": "2026-09-07",
           "source": "indeed",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Product Manager, Credit Cards & Personal Loans",
@@ -1929,7 +1969,7 @@
           "url": "https://www.linkedin.com/jobs/view/4461134226",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "UX Designer (H/F)",
@@ -1951,7 +1991,7 @@
           "title": "Design Manager - Tunnel Package",
           "location": "Guyancourt, \u00cele-de-France, France",
           "url": "https://www.linkedin.com/jobs/view/4463468779",
-          "postedDate": null,
+          "postedDate": "2026-09-10",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         },
@@ -2313,7 +2353,7 @@
           "url": "https://www.linkedin.com/jobs/view/4464331705",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "VP, Product Management \u7522\u54c1\u7ba1\u7406\u90e8 \u526f\u7e3d\u88c1 (HSBC Global Asset Management)",
@@ -2337,7 +2377,7 @@
           "url": "https://tw.indeed.com/viewjob?jk=27a34f11d82d75cf",
           "postedDate": "2026-09-02",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Senior Product Manager - Digital Currencies",
@@ -2442,6 +2482,14 @@
           "postedDate": "2026-08-25",
           "source": "indeed",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Product Specialist - Capital Markets",
+          "location": "Central, HKI, HK",
+          "url": "https://hk.indeed.com/viewjob?jk=a811c9657ac234a1",
+          "postedDate": "2026-09-09",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -2539,7 +2587,7 @@
           "title": "Senior Lead - Brand Environment Design",
           "location": "Zurich, Zurich, Switzerland",
           "url": "https://www.linkedin.com/jobs/view/4437379660",
-          "postedDate": null,
+          "postedDate": "2026-09-10",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         }
@@ -2553,7 +2601,7 @@
           "url": "https://www.linkedin.com/jobs/view/4462963366",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Lead Product Designer",
@@ -2769,7 +2817,7 @@
           "url": "https://nz.indeed.com/viewjob?jk=62256e59d55add31",
           "postedDate": "2026-09-01",
           "source": "indeed",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Product Manager",
@@ -2865,7 +2913,7 @@
           "url": "https://www.linkedin.com/jobs/view/4428461436",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Lead Product Manager, Business Applications",
@@ -2961,7 +3009,7 @@
           "url": "https://ch.indeed.com/viewjob?jk=a5ac73132c4695e0",
           "postedDate": "2026-09-07",
           "source": "indeed",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Product Structuring Specialist",
