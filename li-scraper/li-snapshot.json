@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T00:59:34Z",
+  "generatedAt": "2026-09-11T05:44:07Z",
   "companies": {
     "google": {
       "roles": [
@@ -49,7 +49,7 @@
           "url": "https://www.linkedin.com/jobs/view/4452994859",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Product Manager II, Retail Ads",
@@ -65,7 +65,7 @@
           "url": "https://www.linkedin.com/jobs/view/4442622137",
           "postedDate": "2026-09-01",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Senior Product Design Engineer, Pixel Accessories",
@@ -202,6 +202,22 @@
           "postedDate": "2026-09-08",
           "source": "indeed",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Senior UX Researcher, YouTube Creator",
+          "location": "Zurich, Zurich, Switzerland",
+          "url": "https://www.linkedin.com/jobs/view/4464540207",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "CPU Physical Design Engineer",
+          "location": "Zhubei City, Taiwan, Taiwan",
+          "url": "https://www.linkedin.com/jobs/view/4460254612",
+          "postedDate": "2026-09-01",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -213,7 +229,7 @@
           "url": "https://www.linkedin.com/jobs/view/4461147941",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Lead UX Service Designer",
@@ -409,7 +425,23 @@
           "url": "https://www.linkedin.com/jobs/view/4440463581",
           "postedDate": "2026-09-01",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Digital Content Strategist - 12-month FTC",
+          "location": "Copenhagen, Capital Region of Denmark, Denmark",
+          "url": "https://www.linkedin.com/jobs/view/4453492060",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Digital Content Strategist - 12-month FTC",
+          "location": "Oslo, Oslo, Norway",
+          "url": "https://www.linkedin.com/jobs/view/4453478957",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -615,9 +647,9 @@
           "title": "Sr. Product Manager, MENA CX Improvements, Amazon Customer Service",
           "location": "Dubai, Dubai, United Arab Emirates",
           "url": "https://www.linkedin.com/jobs/view/4455796424",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Senior UX Designer, Prime Video",
@@ -706,6 +738,22 @@
           "postedDate": "2026-08-16",
           "source": "indeed",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Facility Design & Construction Sr. Specialist, FDC",
+          "location": "Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4455933305",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "VDC Manager, DC Design Engineering",
+          "location": "Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4464398726",
+          "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -770,6 +818,14 @@
           "postedDate": "2026-09-03",
           "source": "indeed",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Service Design Lead - 12 month FTC",
+          "location": "London, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4464638097",
+          "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -806,6 +862,22 @@
           "postedDate": "2026-09-07",
           "source": "li",
           "lastSeenAt": "2026-09-09"
+        },
+        {
+          "title": "Service Designer",
+          "location": "London, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4462207740",
+          "postedDate": "2026-09-07",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Service Designer",
+          "location": "Hursley, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4462227294",
+          "postedDate": "2026-09-07",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -862,6 +934,14 @@
           "postedDate": "2026-09-01",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Substrate Design Engineer",
+          "location": "Taipei, Taipei City, Taiwan",
+          "url": "https://www.linkedin.com/jobs/view/4462807271",
+          "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -1113,7 +1193,7 @@
           "url": "https://www.linkedin.com/jobs/view/4359510199",
           "postedDate": "2026-09-08",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Director of Product Design - Business Accounts",
@@ -1153,7 +1233,7 @@
           "url": "https://au.indeed.com/viewjob?jk=e115777600f4331f",
           "postedDate": "2026-09-02",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Manager, Revenue Strategy & Operations, ANZ (1 year Fixed-Term Contract)",
@@ -1161,7 +1241,7 @@
           "url": "https://au.indeed.com/viewjob?jk=ad778699dc22818e",
           "postedDate": "2026-09-02",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -1173,7 +1253,7 @@
           "url": "https://www.linkedin.com/jobs/view/4456874031",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Head of Product",
@@ -1546,6 +1626,14 @@
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Design Lead / Senior Design Lead (Transformation Lab), PST, PSD",
+          "location": "Singapore, S00, SG",
+          "url": "https://sg.indeed.com/viewjob?jk=6b766ff5baceaac0",
+          "postedDate": "2026-09-04",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -1689,7 +1777,7 @@
           "url": "https://malaysia.indeed.com/viewjob?jk=3731751908d24018",
           "postedDate": "2026-09-03",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Account Technology Strategist",
@@ -1697,7 +1785,7 @@
           "url": "https://au.indeed.com/viewjob?jk=4ef1ebe78d22a7f8",
           "postedDate": "2026-08-30",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Account Technology Strategist",
@@ -1705,7 +1793,7 @@
           "url": "https://au.indeed.com/viewjob?jk=bfd2d0979c65239a",
           "postedDate": "2026-08-28",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Strategic Account Technology Strategist",
@@ -1713,7 +1801,7 @@
           "url": "https://au.indeed.com/viewjob?jk=65c66e14ca51d2c8",
           "postedDate": "2026-08-24",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Strategic Account Technology Strategist - Manufacturing",
@@ -1741,7 +1829,7 @@
           "url": "https://fr.indeed.com/viewjob?jk=90eb9a97844ce36b",
           "postedDate": "2026-09-07",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Product Marketing Manager, Mac & iPad (f/m/d)",
@@ -1750,6 +1838,14 @@
           "postedDate": "2026-09-08",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "New Product Technology Project Manager",
+          "location": "Auckland City, N, NZ",
+          "url": "https://nz.indeed.com/viewjob?jk=e754d15324aea572",
+          "postedDate": "2026-09-01",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -1997,7 +2093,7 @@
           "url": "https://www.linkedin.com/jobs/view/4443175164",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Senior Lead - Brand Environment Design",
@@ -2257,7 +2353,7 @@
           "url": "https://de.indeed.com/viewjob?jk=68e371c39ec3b446",
           "postedDate": "2026-09-08",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -2542,6 +2638,14 @@
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Senior Product Designer",
+          "location": "Sydney, NSW, AU",
+          "url": "https://au.indeed.com/viewjob?jk=88a7ad45549f63cc",
+          "postedDate": "2026-09-10",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -2605,6 +2709,14 @@
           "url": "https://au.indeed.com/viewjob?jk=f5866ef33e068313",
           "postedDate": "2026-09-07",
           "source": "indeed",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Design Practice Craft & Community Lead",
+          "location": "Sydney, New South Wales, Australia",
+          "url": "https://www.linkedin.com/jobs/view/4464067517",
+          "postedDate": "2026-09-07",
+          "source": "li",
           "lastSeenAt": "2026-09-11"
         }
       ]
@@ -2949,7 +3061,7 @@
           "url": "https://www.linkedin.com/jobs/view/4442694668",
           "postedDate": "2026-09-02",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Sr Product Manager - Hybridisation",
@@ -2991,7 +3103,7 @@
           "title": "Customer Experience Designer, Retail Banking (1 Year Contract)",
           "location": "Hong Kong, Hong Kong SAR",
           "url": "https://www.linkedin.com/jobs/view/4464176618",
-          "postedDate": null,
+          "postedDate": "2026-09-10",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         },
@@ -3110,6 +3222,14 @@
           "postedDate": "2026-09-08",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Owner - Equity",
+          "location": "Cannon Street Station, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=bb5c9d6a24c1f2f8",
+          "postedDate": "2026-09-02",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -3628,6 +3748,30 @@
           "location": "Linkou District, New Taipei City, Taiwan",
           "url": "https://www.linkedin.com/jobs/view/4443360729",
           "postedDate": "2026-09-01",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        }
+      ]
+    },
+    "nvidia": {
+      "roles": [
+        {
+          "title": "Physical Design Engineer",
+          "location": "Hsinchu City, Taiwan, Taiwan",
+          "url": "https://www.linkedin.com/jobs/view/4435007293",
+          "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        }
+      ]
+    },
+    "klarna": {
+      "roles": [
+        {
+          "title": "Mechanical Design Engineer",
+          "location": "Kongens Lyngby, Capital Region of Denmark, Denmark",
+          "url": "https://www.linkedin.com/jobs/view/4422200391",
+          "postedDate": "2026-09-03",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         }
