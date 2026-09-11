@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T18:02:51Z",
+  "generatedAt": "2026-09-11T21:42:39Z",
   "companies": {
     "google": {
       "roles": [
@@ -414,6 +414,22 @@
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Proposition Design Manager",
+          "location": "London Area, United Kingdom",
+          "url": "https://www.linkedin.com/jobs/view/4463990427",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Service Design Manager",
+          "location": "London Area, United Kingdom",
+          "url": "https://www.linkedin.com/jobs/view/4463977941",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -503,7 +519,7 @@
           "title": "Digital Content Strategist - 12-month FTC",
           "location": "Oslo, Oslo, Norway",
           "url": "https://www.linkedin.com/jobs/view/4453478957",
-          "postedDate": null,
+          "postedDate": "2026-09-10",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         },
@@ -512,6 +528,14 @@
           "location": "Oslo, Oslo, Norway",
           "url": "https://www.linkedin.com/jobs/view/4459558595",
           "postedDate": "2026-09-01",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Manager:in Strategy & Transformation Consulting",
+          "location": "Vienna, Vienna, Austria",
+          "url": "https://www.linkedin.com/jobs/view/4416816382",
+          "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-11"
         }
@@ -874,6 +898,14 @@
           "postedDate": "2026-08-14",
           "source": "indeed",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Sr. Cultural Researcher, Futures Insights, Devices Experience Design",
+          "location": "London, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=e3a0e74f0b8e6e68",
+          "postedDate": "2026-09-02",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -945,6 +977,14 @@
           "url": "https://www.linkedin.com/jobs/view/4464638097",
           "postedDate": "2026-09-08",
           "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Service Design Lead - 12 Month FTC",
+          "location": "London, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=74d804912073a974",
+          "postedDate": "2026-09-07",
+          "source": "indeed",
           "lastSeenAt": "2026-09-11"
         }
       ]
@@ -1985,7 +2025,7 @@
           "url": "https://uk.indeed.com/viewjob?jk=1681b93d8e962195",
           "postedDate": "2026-09-07",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -4409,6 +4449,42 @@
           "url": "https://www.linkedin.com/jobs/view/4424582552",
           "postedDate": "2026-09-02",
           "source": "li",
+          "lastSeenAt": "2026-09-11"
+        }
+      ]
+    },
+    "hang-seng-bank": {
+      "roles": [
+        {
+          "title": "Senior Manager, Innovation and Product Development- Hang Seng Insurance - Hang Seng Bank (HK)",
+          "location": "Kowloon, Hong Kong SAR",
+          "url": "https://www.linkedin.com/jobs/view/4380194532",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        }
+      ]
+    },
+    "fujitsu": {
+      "roles": [
+        {
+          "title": "\u3010Uvance Wayfinders\u3011\u30b3\u30f3\u30b5\u30eb\u30bf\u30f3\u30c8_Transformation Design(Strategic Change)_Manager",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4437964692",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        }
+      ]
+    },
+    "natwest-group": {
+      "roles": [
+        {
+          "title": "Design Operations Lead",
+          "location": "London, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=6fb19f7ae5f15151",
+          "postedDate": "2026-09-08",
+          "source": "indeed",
           "lastSeenAt": "2026-09-11"
         }
       ]
