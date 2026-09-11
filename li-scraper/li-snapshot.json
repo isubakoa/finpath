@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T14:58:15Z",
+  "generatedAt": "2026-09-11T18:02:51Z",
   "companies": {
     "google": {
       "roles": [
@@ -137,7 +137,7 @@
           "url": "https://uk.indeed.com/viewjob?jk=01da280bddcff696",
           "postedDate": "2026-09-04",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Global Business Solutions, Customer Experience, UX, Profitability Consultant",
@@ -207,7 +207,7 @@
           "title": "Senior UX Researcher, YouTube Creator",
           "location": "Zurich, Zurich, Switzerland",
           "url": "https://www.linkedin.com/jobs/view/4464540207",
-          "postedDate": null,
+          "postedDate": "2026-09-10",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         },
@@ -504,6 +504,14 @@
           "location": "Oslo, Oslo, Norway",
           "url": "https://www.linkedin.com/jobs/view/4453478957",
           "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Konsulent Digital Health | Technology Strategy & Transformation | Oslo",
+          "location": "Oslo, Oslo, Norway",
+          "url": "https://www.linkedin.com/jobs/view/4459558595",
+          "postedDate": "2026-09-01",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         }
@@ -973,7 +981,7 @@
           "url": "https://www.linkedin.com/jobs/view/4462205724",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Service Designer",
@@ -1483,7 +1491,7 @@
           "title": "Senior UI/UX Designer",
           "location": "Not specified",
           "url": "https://www.linkedin.com/jobs/view/4463486837",
-          "postedDate": null,
+          "postedDate": "2026-09-10",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         },
@@ -1491,7 +1499,7 @@
           "title": "Senior UI/UX Designer",
           "location": "Not specified",
           "url": "https://www.linkedin.com/jobs/view/4463491387",
-          "postedDate": null,
+          "postedDate": "2026-09-10",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         },
@@ -1740,6 +1748,14 @@
           "location": "Berchem, Flemish Region, Belgium",
           "url": "https://www.linkedin.com/jobs/view/4426947948",
           "postedDate": "2026-09-06",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Director, Product Strategy & Transformation",
+          "location": "Dublin, County Dublin, Ireland",
+          "url": "https://www.linkedin.com/jobs/view/4464890004",
+          "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-11"
         }
@@ -2450,6 +2466,14 @@
           "postedDate": "2026-09-01",
           "source": "li",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Product Owner & Platform Specialist, Digital Web Ecosystems (m/f/d)",
+          "location": "Frankfurt am Main, HE, DE",
+          "url": "https://de.indeed.com/viewjob?jk=ac7c59790d36d5aa",
+          "postedDate": "2026-09-02",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -2588,6 +2612,14 @@
           "location": "Tokyo, Tokyo, Japan",
           "url": "https://www.linkedin.com/jobs/view/4456499116",
           "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "UX director, Rakuten24 - FMCG Customer Strategy Department (C&M)",
+          "location": "Tokyo, Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4436455898",
+          "postedDate": "2026-09-04",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         }
@@ -2869,7 +2901,7 @@
           "url": "https://www.linkedin.com/jobs/view/4460490381",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "Senior Marketing Manager - Marketing and Communications Group (UAE National Only )",
@@ -3665,7 +3697,7 @@
           "url": "https://sg.indeed.com/viewjob?jk=a3f85ec0041a6789",
           "postedDate": "2026-09-03",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         },
         {
           "title": "AVP, Specialist, Digital Product Management, Consumer Banking",
@@ -4245,7 +4277,7 @@
           "url": "https://www.linkedin.com/jobs/view/4455567362",
           "postedDate": "2026-09-08",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-11"
         }
       ]
     },
@@ -4300,6 +4332,14 @@
           "location": "Kongens Lyngby, Capital Region of Denmark, Denmark",
           "url": "https://www.linkedin.com/jobs/view/4422200391",
           "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "UX/UI Designer",
+          "location": "Newport, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4434593220",
+          "postedDate": "2026-09-10",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         }
