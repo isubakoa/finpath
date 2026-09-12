@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T10:51:17Z",
+  "generatedAt": "2026-09-12T12:03:32Z",
   "companies": {
     "google": {
       "roles": [
@@ -641,7 +641,7 @@
           "url": "https://www.linkedin.com/jobs/view/4462171449",
           "postedDate": "2026-09-02",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Instructional Designer, MEATR FC Learning",
@@ -657,7 +657,7 @@
           "url": "https://www.linkedin.com/jobs/view/4463100081",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Design Technologist, \u00e9Shop Content Services",
@@ -989,7 +989,7 @@
           "url": "https://pt.indeed.com/viewjob?jk=504edd4b333e641a",
           "postedDate": "2026-09-09",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Narrative designer",
@@ -1085,7 +1085,7 @@
           "url": "https://www.linkedin.com/jobs/view/4462225541",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "User Researcher",
@@ -1093,7 +1093,7 @@
           "url": "https://www.linkedin.com/jobs/view/4462205724",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Service Designer",
@@ -1301,7 +1301,7 @@
           "url": "https://www.linkedin.com/jobs/view/4440181628",
           "postedDate": "2026-09-02",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Specialist, Product Development, Digital Payments & Tokenization",
@@ -1414,6 +1414,14 @@
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Senior Specialist, Product Development",
+          "location": "Lisbon, Lisbon, Portugal",
+          "url": "https://www.linkedin.com/jobs/view/4462218968",
+          "postedDate": "2026-09-07",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
         }
       ]
     },
@@ -1625,7 +1633,7 @@
           "url": "https://www.linkedin.com/jobs/view/4456874031",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Head of Product",
@@ -1957,7 +1965,7 @@
           "url": "https://www.linkedin.com/jobs/view/4463520462",
           "postedDate": "2026-09-08",
           "source": "li",
-          "lastSeenAt": "2026-09-09"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Senior Product Manager - Servicing Platform - behaviour & Identity Linking",
@@ -2148,6 +2156,14 @@
           "location": "Edinburgh, SCT, GB",
           "url": "https://uk.indeed.com/viewjob?jk=991d6dbbe0a3f724",
           "postedDate": "2026-09-08",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Interaction Designer",
+          "location": "London, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=efd3029f76a313af",
+          "postedDate": "2026-09-11",
           "source": "indeed",
           "lastSeenAt": "2026-09-12"
         }
@@ -2726,6 +2742,22 @@
           "postedDate": "2026-09-04",
           "source": "li",
           "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Product & Insights Manager (w/m/d)",
+          "location": "Borken, North Rhine-Westphalia, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4465666048",
+          "postedDate": "2026-09-10",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Product & Insights Manager (w/m/d)",
+          "location": "D\u00fcsseldorf, North Rhine-Westphalia, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4465668048",
+          "postedDate": "2026-09-10",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
         }
       ]
     },
@@ -2796,6 +2828,14 @@
           "location": "London, ENG, GB",
           "url": "https://uk.indeed.com/viewjob?jk=40267a82865409d9",
           "postedDate": "2026-09-09",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Senior Motion Designer",
+          "location": "London, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=6035c6e4334ce4d7",
+          "postedDate": "2026-09-11",
           "source": "indeed",
           "lastSeenAt": "2026-09-12"
         }
@@ -4888,6 +4928,38 @@
           "location": "Tokyo, Tokyo, Japan",
           "url": "https://www.linkedin.com/jobs/view/4434328821",
           "postedDate": "2026-09-02",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "\u30b9\u30c8\u30e9\u30c6\u30b8\u30c3\u30af\u30c7\u30b6\u30a4\u30ca\u30fc / Strategic Designer_\u7ba1\u7406\u8077_Song",
+          "location": "Tokyo, Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4434332584",
+          "postedDate": "2026-09-02",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        }
+      ]
+    },
+    "telia-company": {
+      "roles": [
+        {
+          "title": "Product Manager",
+          "location": "Oslo, Oslo, Norway",
+          "url": "https://www.linkedin.com/jobs/view/4465697042",
+          "postedDate": "2026-09-10",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        }
+      ]
+    },
+    "vodafone": {
+      "roles": [
+        {
+          "title": "Senior User Experience Manager B2B (m/w/d), befristet bis zum 31.12.2027 als EZ",
+          "location": "D\u00fcsseldorf, North Rhine-Westphalia, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4459518872",
+          "postedDate": "2026-09-08",
           "source": "li",
           "lastSeenAt": "2026-09-12"
         }
