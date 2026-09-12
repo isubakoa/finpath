@@ -288,6 +288,50 @@ const COMPANIES = [
     waitForSelector: "li.zE6MFb",
     titleSelector: "h2.p1N2lc",
   },
+  {
+    slug: "ericsson",
+    // ATS confirmed as an Eightfold AI front end (2026-09 research) —
+    // jobs.ericsson.com/careers, same generated platform as NAB/BNZ/Netflix
+    // above. Ericsson's actual apply-flow redirects into SAP SuccessFactors
+    // (career2.successfactors.eu) on submission, but that backend split
+    // doesn't matter here: this scrapes Eightfold's own real, browsable
+    // listing/detail pages, not SuccessFactors directly, so it isn't the
+    // kind of bespoke SuccessFactors integration this project has ruled out
+    // — same reasoning as Klarna's Deel-hosted board above. A target-tier
+    // Principal UX/UI Designer (Bangalore) role was confirmed live at
+    // research time.
+    urls: ["https://jobs.ericsson.com/careers?query=Design&domain=ericsson.com&sort_by=relevance"],
+    linkPattern: /\/careers\/job\/\d+/,
+    waitForSelector: 'a[href*="/careers/job/"]',
+    titleSelector: '[class^="title-"]',
+  },
+  {
+    slug: "vodafone",
+    // ATS confirmed as Eightfold AI (2026-09 research) — jobs.vodafone.com/careers.
+    // A legacy SAP SuccessFactors board (opportunities.vodafone.com) still
+    // resolves but appears to hold only closed/archived postings; SuccessFactors
+    // itself is deliberately unsupported for direct integration regardless, so
+    // this scrapes the current Eightfold board only, same pattern as Netflix/
+    // NAB/BNZ above.
+    urls: ["https://jobs.vodafone.com/careers?query=Design&domain=vodafone.com&sort_by=relevance"],
+    linkPattern: /\/careers\/job\/\d+/,
+    waitForSelector: 'a[href*="/careers/job/"]',
+    titleSelector: '[class^="title-"]',
+  },
+  {
+    slug: "deutsche-telekom",
+    // ATS confirmed as Eightfold AI (2026-09 research) — careers.telekom.com/en,
+    // evidenced by an embedded telekom-growthhub.eightfold.ai reference. Unlike
+    // the other Eightfold sites in this file, job URLs here follow a
+    // "/en/jobs/<slug>-<numeric-id>" pattern rather than "/careers/job/<id>" —
+    // a differently-configured Eightfold deployment. titleSelector borrowed
+    // from NAB/BNZ/Netflix's instance on the same unverified assumption noted
+    // there — check the Actions log after the first real run.
+    urls: ["https://careers.telekom.com/en/jobs?search=Design"],
+    linkPattern: /\/en\/jobs\/[a-z0-9-]+-\d{6,}$/i,
+    waitForSelector: 'a[href*="/en/jobs/"]',
+    titleSelector: '[class^="title-"]',
+  },
   // Still need a confirmed pattern (see README "Companies not yet wired up"):
   // wefox — its main careers page (careers.wefox.com) is currently broken/
   // unreachable and its company-wide board on join.com shows zero open

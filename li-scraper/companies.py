@@ -193,6 +193,53 @@ COMPANIES = [
     {"name": "LG", "slug": "lg"},
     {"name": "Coupang", "slug": "coupang"},
     {"name": "Mercado Libre", "slug": "mercado-libre"},
+    # -- Batch: telecom / IT-services companies (Sep 2026), added at the
+    # user's request. Also serves as the answer to "can li-scraper cover the
+    # ones marked unknown ATS in index.html?" -- yes: unlike check.php's
+    # adapters, li-scraper doesn't touch a company's own ATS at all, it runs
+    # broad Design/UX/Product searches across LinkedIn + Indeed and then
+    # matches whichever employer names come back against this list. Any
+    # company here gets that supplemental coverage regardless of whether its
+    # own site has a working adapter, which is exactly what the SuccessFactors/
+    # Taleo/iCIMS-blocked companies below need (they're being added for that
+    # reason specifically, not just for completeness like most of this file).
+    #
+    # Cisco is already in this list above (line ~172) -- not duplicated.
+    # Virgin Mobile UAE deliberately left OUT: it's not an independent legal
+    # entity (see its index.html note -- it's fully run by du/EITC), and
+    # "Virgin Mobile" alone is too generic a name here -- match_company's
+    # containment check would happily attribute an unrelated "Virgin Mobile"
+    # posting from Australia/UK/US to this slug. Any real UAE hiring for it
+    # would show up under "du" anyway.
+    {"name": "e&", "slug": "e-and"},
+    {"name": "du (EITC)", "slug": "du"},
+    {"name": "Deutsche Telekom", "slug": "deutsche-telekom"},
+    {"name": "Orange", "slug": "orange"},
+    {"name": "Vodafone", "slug": "vodafone"},
+    {"name": "BT Group", "slug": "bt-group"},
+    {"name": "Ericsson", "slug": "ericsson"},
+    {"name": "Nokia", "slug": "nokia"},
+    {"name": "Telefónica", "slug": "telefonica"},
+    {"name": "Telenor", "slug": "telenor"},
+    {"name": "Telia Company", "slug": "telia-company"},
+    {"name": "Accenture", "slug": "accenture"},
+    {"name": "Capgemini", "slug": "capgemini"},
+    {"name": "Kyndryl", "slug": "kyndryl"},
+    {"name": "T-Systems", "slug": "t-systems"},
+    {"name": "Telstra", "slug": "telstra"},
+    {"name": "Optus", "slug": "optus"},
+    {"name": "TPG Telecom", "slug": "tpg-telecom"},
+    {"name": "2degrees", "slug": "twodegrees"},
+    # Matched as "Spark New Zealand" rather than bare "Spark" -- "Spark" alone
+    # is a 5-char generic word (Spark Networks, Spark by Capital One, assorted
+    # startups all use it) that would clear match.py's containment-matching
+    # length threshold and start misattributing unrelated postings.
+    {"name": "Spark New Zealand", "slug": "spark-nz"},
+    {"name": "One NZ", "slug": "one-nz"},
+    # -- Batch: Singapore's big 3 telcos (Sep 2026) --
+    {"name": "Singtel", "slug": "singtel"},
+    {"name": "StarHub", "slug": "starhub"},
+    {"name": "M1", "slug": "m1"},
 ]
 
 # Manual aliases for companies whose real LI employer name doesn't
@@ -219,4 +266,11 @@ ALIASES = {
     "first-abu-dhabi-bank-fab": ["FAB", "First Abu Dhabi Bank"],
     "lloyds-banking-group": ["Lloyds Bank", "Lloyds"],
     "commonwealth-bank-of-australia": ["Commonwealth Bank", "CommBank"],
+    # -- Batch: telecom / IT-services companies (Sep 2026) --
+    "e-and": ["Etisalat", "e& UAE", "Etisalat Group"],
+    "du": ["du", "EITC", "Emirates Integrated Telecommunications Company", "du Telecom"],
+    "telefonica": ["Telefonica"],  # unaccented form, in case LI/Indeed drop the accent
+    "twodegrees": ["2degrees Mobile"],
+    "spark-nz": ["Spark NZ"],  # deliberately not bare "Spark" -- see COMPANIES comment
+    "one-nz": ["One New Zealand"],
 }
