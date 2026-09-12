@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T22:05:43Z",
+  "generatedAt": "2026-09-12T23:50:36Z",
   "companies": {
     "google": {
       "roles": [
@@ -2741,6 +2741,14 @@
           "url": "https://de.indeed.com/viewjob?jk=fcedae6145e9afa7",
           "postedDate": "2026-08-29",
           "source": "indeed",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Product Designer - MAI Health",
+          "location": "London, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4455989232",
+          "postedDate": "2026-09-09",
+          "source": "li",
           "lastSeenAt": "2026-09-12"
         }
       ]
@@ -5793,6 +5801,14 @@
           "url": "https://jp.indeed.com/viewjob?jk=a437c95520d08e69",
           "postedDate": "2026-08-30",
           "source": "indeed",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Radio Unit Design Lead",
+          "location": "Yokohama, Kanagawa, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4461682210",
+          "postedDate": "2026-09-03",
+          "source": "li",
           "lastSeenAt": "2026-09-12"
         }
       ]
