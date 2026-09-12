@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T07:43:37Z",
+  "generatedAt": "2026-09-12T10:51:17Z",
   "companies": {
     "google": {
       "roles": [
@@ -9,7 +9,7 @@
           "url": "https://www.linkedin.com/jobs/view/4454248137",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Staff UX Designer Lead, Studio Content Publishing",
@@ -137,7 +137,7 @@
           "url": "https://uk.indeed.com/viewjob?jk=01da280bddcff696",
           "postedDate": "2026-09-04",
           "source": "indeed",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Global Business Solutions, Customer Experience, UX, Profitability Consultant",
@@ -207,9 +207,9 @@
           "title": "Senior UX Researcher, YouTube Creator",
           "location": "Zurich, Zurich, Switzerland",
           "url": "https://www.linkedin.com/jobs/view/4464540207",
-          "postedDate": "2026-09-10",
+          "postedDate": null,
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "CPU Physical Design Engineer",
@@ -277,7 +277,7 @@
           "url": "https://www.linkedin.com/jobs/view/4461147941",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Lead UX Service Designer",
@@ -478,6 +478,22 @@
           "postedDate": "2026-09-11",
           "source": "indeed",
           "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Graduate Programme 2027: Product Owner (UX)",
+          "location": "Porto, Porto, Portugal",
+          "url": "https://www.linkedin.com/jobs/view/4418826688",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Graduate Programme 2027: Product Owner (UX)",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4418837411",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
         }
       ]
     },
@@ -617,7 +633,7 @@
           "url": "https://es.indeed.com/viewjob?jk=983aa6183cd3204d",
           "postedDate": "2026-08-31",
           "source": "indeed",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Sr. Cultural Researcher, Futures Insights, Devices Experience Design",
@@ -1009,7 +1025,7 @@
           "url": "https://uk.indeed.com/viewjob?jk=fe7aa99211e13d26",
           "postedDate": "2026-09-03",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Senior UX Designer (12-Month FTC)",
@@ -1105,7 +1121,7 @@
           "url": "https://www.linkedin.com/jobs/view/4450477078",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Lead Technical Product Manager",
@@ -1149,7 +1165,7 @@
           "url": "https://ie.indeed.com/viewjob?jk=206331e46b02c1c0",
           "postedDate": "2026-09-07",
           "source": "indeed",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Substrate Design Engineer",
@@ -1293,7 +1309,7 @@
           "url": "https://www.linkedin.com/jobs/view/4450165429",
           "postedDate": "2026-09-02",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Senior Specialist, Product Development",
@@ -1461,7 +1477,7 @@
         }
       ]
     },
-    "emirates-nbd": {
+    "du": {
       "roles": [
         {
           "title": "Digital Product Specialist",
@@ -1470,7 +1486,11 @@
           "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-12"
-        },
+        }
+      ]
+    },
+    "emirates-nbd": {
+      "roles": [
         {
           "title": "Technical Product Owner - API Specialist",
           "location": "Dubai, Dubai, United Arab Emirates",
@@ -1497,7 +1517,7 @@
           "url": "https://www.linkedin.com/jobs/view/4315907490",
           "postedDate": "2026-09-08",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Director of Product Design - Business Accounts",
@@ -1637,7 +1657,7 @@
           "url": "https://www.linkedin.com/jobs/view/4463491387",
           "postedDate": "2026-09-10",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Senior Product Manager - Rules & Agentic Products",
@@ -1685,6 +1705,14 @@
           "url": "https://uk.indeed.com/viewjob?jk=24ef9984b7a9ca36",
           "postedDate": "2026-09-03",
           "source": "indeed",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Senior UX Designer",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4445533837",
+          "postedDate": null,
+          "source": "li",
           "lastSeenAt": "2026-09-12"
         }
       ]
@@ -1809,7 +1837,7 @@
           "url": "https://www.linkedin.com/jobs/view/4444914444",
           "postedDate": "2026-09-05",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Senior Product Manager",
@@ -2057,7 +2085,7 @@
           "url": "https://www.linkedin.com/jobs/view/4463604994",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Design Lead / Senior Design Lead (Transformation Lab), PST, PSD",
@@ -2870,6 +2898,14 @@
           "postedDate": "2026-09-04",
           "source": "li",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Trading Platform Product Specialist",
+          "location": "WP. Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4464851160",
+          "postedDate": "2026-09-11",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
         }
       ]
     },
@@ -3198,6 +3234,14 @@
           "postedDate": "2026-09-02",
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Product Management Intern - Monee (Sep/Oct/Nov Intake)",
+          "location": "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4463521726",
+          "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
         }
       ]
     },
@@ -3905,7 +3949,7 @@
           "url": "https://sg.indeed.com/viewjob?jk=ea02b633f7818a20",
           "postedDate": "2026-09-11",
           "source": "indeed",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Assistant Vice President, Product Management (Deposit)",
@@ -4785,6 +4829,66 @@
           "url": "https://uk.indeed.com/viewjob?jk=a16896c362fc4328",
           "postedDate": "2026-09-06",
           "source": "indeed",
+          "lastSeenAt": "2026-09-12"
+        }
+      ]
+    },
+    "accenture": {
+      "roles": [
+        {
+          "title": "Service & Experience Designer - Across all levels",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4454780675",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "UIUX\u30c7\u30b6\u30a4\u30ca\u30fc / UIUX Designer_Song",
+          "location": "Tokyo, Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4434347053",
+          "postedDate": "2026-09-03",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "User Researcher - Newcastle",
+          "location": "Newcastle Upon Tyne, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4453253840",
+          "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Senior UX Designer (Associate Manager)",
+          "location": "Dublin, County Dublin, Ireland",
+          "url": "https://www.linkedin.com/jobs/view/4453242938",
+          "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "UIUX\u30c7\u30b6\u30a4\u30ca\u30fc / UIUX Designer_\u7ba1\u7406\u8077_Song",
+          "location": "Tokyo, Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4434343134",
+          "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Bli med p\u00e5 v\u00e5rt Summer Internship 2027 i Design!",
+          "location": "Oslo, Oslo, Norway",
+          "url": "https://www.linkedin.com/jobs/view/4465104655",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "\u30b9\u30c8\u30e9\u30c6\u30b8\u30c3\u30af\u30c7\u30b6\u30a4\u30ca\u30fc / Strategic Designer_Song",
+          "location": "Tokyo, Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4434328821",
+          "postedDate": "2026-09-02",
+          "source": "li",
           "lastSeenAt": "2026-09-12"
         }
       ]
