@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T12:03:32Z",
+  "generatedAt": "2026-09-12T14:56:08Z",
   "companies": {
     "google": {
       "roles": [
@@ -49,7 +49,7 @@
           "url": "https://www.linkedin.com/jobs/view/4452994859",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Product Manager II, Retail Ads",
@@ -419,7 +419,7 @@
           "title": "Graduate Programme 2027: Product Designer",
           "location": "Not specified",
           "url": "https://www.linkedin.com/jobs/view/4418831598",
-          "postedDate": null,
+          "postedDate": "2026-09-11",
           "source": "li",
           "lastSeenAt": "2026-09-12"
         },
@@ -491,6 +491,14 @@
           "title": "Graduate Programme 2027: Product Owner (UX)",
           "location": "Not specified",
           "url": "https://www.linkedin.com/jobs/view/4418837411",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Graduate Programme 2027: Product Designer",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4418844131",
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-12"
@@ -663,9 +671,9 @@
           "title": "Design Technologist, \u00e9Shop Content Services",
           "location": "London, England, UK",
           "url": "https://www.linkedin.com/jobs/view/4455796758",
-          "postedDate": null,
+          "postedDate": "2026-09-09",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "AI Design Technologist, Marketing Productivity, Amazon Ads Marketing",
@@ -673,7 +681,7 @@
           "url": "https://www.linkedin.com/jobs/view/4455911852",
           "postedDate": "2026-09-09",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Senior Manufacturing Design Engineer, QxAME",
@@ -681,7 +689,7 @@
           "url": "https://tw.indeed.com/viewjob?jk=2036eacc1aa3c029",
           "postedDate": "2026-08-28",
           "source": "indeed",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Solutions Design Engineer, Robotic Storage Tech, International Solutions",
@@ -1441,7 +1449,7 @@
           "url": "https://www.linkedin.com/jobs/view/4427994135",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Head - HLISB (Product Development)",
@@ -1449,7 +1457,7 @@
           "url": "https://www.linkedin.com/jobs/view/4417045244",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Manager - Personal Financial Services (Product & Portfolio Management - Mortgage)",
@@ -1494,6 +1502,22 @@
           "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Senior Lead - Brand Environment Design",
+          "location": "Zurich, Zurich, Switzerland",
+          "url": "https://www.linkedin.com/jobs/view/4437379660",
+          "postedDate": "2026-09-10",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Senior Lead - Footwear Design, Performance Running",
+          "location": "Zurich, Zurich, Switzerland",
+          "url": "https://www.linkedin.com/jobs/view/4437996001",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
         }
       ]
     },
@@ -1533,7 +1557,7 @@
           "url": "https://www.linkedin.com/jobs/view/4359510199",
           "postedDate": "2026-09-08",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Director of Product Design - Business Accounts",
@@ -1541,7 +1565,7 @@
           "url": "https://www.linkedin.com/jobs/view/4358860199",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Staff Product Designer",
@@ -1749,7 +1773,7 @@
           "url": "https://www.linkedin.com/jobs/view/4462739002",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Director, Product Management (Retail Selection - Taiwan)",
@@ -1937,7 +1961,7 @@
           "url": "https://de.indeed.com/viewjob?jk=5699ef15985ba770",
           "postedDate": "2026-09-07",
           "source": "indeed",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Senior Product Manager / Product Owner - Clearfacts",
@@ -2123,9 +2147,9 @@
           "title": "Design Manager - Tunnel Package",
           "location": "Guyancourt, \u00cele-de-France, France",
           "url": "https://www.linkedin.com/jobs/view/4463468779",
-          "postedDate": "2026-09-10",
+          "postedDate": null,
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Senior Product Manager",
@@ -2197,7 +2221,7 @@
           "url": "https://www.linkedin.com/jobs/view/4456155978",
           "postedDate": "2026-09-09",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Health Innovation Strategist / Senior Strategist",
@@ -2214,6 +2238,14 @@
           "postedDate": "2026-09-07",
           "source": "indeed",
           "lastSeenAt": "2026-09-11"
+        },
+        {
+          "title": "Product Designer Collaboration Platform (all genders) \u2013\u202fBeats & Bytes\u202f\u2013\u202fUniversal Music Entertainment GmbH",
+          "location": "Berlin, BE, DE",
+          "url": "https://de.indeed.com/viewjob?jk=e09f6ac5f9e4c07e",
+          "postedDate": "2026-09-11",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-12"
         }
       ]
     },
@@ -2225,7 +2257,7 @@
           "url": "https://www.linkedin.com/jobs/view/4447504489",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Head of Product Management and UX (f/m/d)",
@@ -2317,7 +2349,7 @@
           "url": "https://malaysia.indeed.com/viewjob?jk=3731751908d24018",
           "postedDate": "2026-09-03",
           "source": "indeed",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Account Technology Strategist",
@@ -2517,7 +2549,7 @@
           "url": "https://www.linkedin.com/jobs/view/4464331705",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "VP, Product Management \u7522\u54c1\u7ba1\u7406\u90e8 \u526f\u7e3d\u88c1 (HSBC Global Asset Management)",
@@ -2533,7 +2565,7 @@
           "url": "https://tw.indeed.com/viewjob?jk=58d62f45b99f2d8a",
           "postedDate": "2026-09-07",
           "source": "indeed",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "VP, Product Management \u7522\u54c1\u7ba1\u7406\u90e8 \u526f\u7e3d\u88c1 (HSBC Global Asset Management)",
@@ -2541,7 +2573,7 @@
           "url": "https://tw.indeed.com/viewjob?jk=27a34f11d82d75cf",
           "postedDate": "2026-09-02",
           "source": "indeed",
-          "lastSeenAt": "2026-09-11"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Senior Product Manager - Digital Currencies",
@@ -2776,14 +2808,6 @@
           "location": "Zurich, Zurich, Switzerland",
           "url": "https://www.linkedin.com/jobs/view/4443175164",
           "postedDate": "2026-09-03",
-          "source": "li",
-          "lastSeenAt": "2026-09-11"
-        },
-        {
-          "title": "Senior Lead - Brand Environment Design",
-          "location": "Zurich, Zurich, Switzerland",
-          "url": "https://www.linkedin.com/jobs/view/4437379660",
-          "postedDate": "2026-09-10",
           "source": "li",
           "lastSeenAt": "2026-09-11"
         },
@@ -3954,6 +3978,14 @@
           "postedDate": "2026-09-03",
           "source": "li",
           "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Mobile Design Engineer",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4402629247",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
         }
       ]
     },
@@ -4342,6 +4374,14 @@
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-10"
+        },
+        {
+          "title": "Creative Lead - Design",
+          "location": "Dublin, County Dublin, Ireland",
+          "url": "https://www.linkedin.com/jobs/view/4447558588",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
         }
       ]
     },
@@ -4373,7 +4413,7 @@
           "url": "https://www.linkedin.com/jobs/view/4436065707",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-10"
+          "lastSeenAt": "2026-09-12"
         },
         {
           "title": "Lead Product Manager, Business Banking",
@@ -4938,6 +4978,14 @@
           "postedDate": "2026-09-02",
           "source": "li",
           "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Design Manager",
+          "location": "Oslo, Oslo, Norway",
+          "url": "https://www.linkedin.com/jobs/view/4453251879",
+          "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
         }
       ]
     },
@@ -4960,6 +5008,78 @@
           "location": "D\u00fcsseldorf, North Rhine-Westphalia, Germany",
           "url": "https://www.linkedin.com/jobs/view/4459518872",
           "postedDate": "2026-09-08",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        }
+      ]
+    },
+    "orange": {
+      "roles": [
+        {
+          "title": "Technischer Zeichner / Technischer Produktdesigner (m/w/d)",
+          "location": "Kiel, Schleswig-Holstein, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4463030186",
+          "postedDate": "2026-09-09",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        }
+      ]
+    },
+    "erste-group": {
+      "roles": [
+        {
+          "title": "Grafik- & Mediendesign mit KI-Fokus (m/w/x)",
+          "location": "Ried im Innkreis, Upper Austria, Austria",
+          "url": "https://www.linkedin.com/jobs/view/4463959588",
+          "postedDate": "2026-09-11",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        }
+      ]
+    },
+    "kyndryl": {
+      "roles": [
+        {
+          "title": "AI Innovation Lab - Senior Creative Technologist",
+          "location": "Liverpool, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4461987877",
+          "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "AI Innovation Lab - Senior Creative Technologist",
+          "location": "Greater London, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4463383224",
+          "postedDate": "2026-09-04",
+          "source": "li",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "AI Innovation Lab - Senior Creative Technologist",
+          "location": "Liverpool, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=bf04922cc5552d7f",
+          "postedDate": "2026-09-04",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "Associate Director - AI Innovation Lab, Human-centered Design",
+          "location": "Liverpool, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=12b85c02b1d2c91f",
+          "postedDate": "2026-09-04",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-12"
+        }
+      ]
+    },
+    "blackrock": {
+      "roles": [
+        {
+          "title": "Vice President \u2013 Japan Product Development, Global Product Solutions (GPS)",
+          "location": "Tokyo, Tokyo, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4466461450",
+          "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-12"
         }
