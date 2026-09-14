@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T08:35:11Z",
+  "generatedAt": "2026-09-14T15:41:47Z",
   "companies": {
     "google": {
       "roles": [
@@ -555,6 +555,14 @@
           "title": "Product Owner (Technical)",
           "location": "Not specified",
           "url": "https://www.linkedin.com/jobs/view/3795118489",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-14"
+        },
+        {
+          "title": "Head of Product (Fraud)",
+          "location": "Porto, Porto, Portugal",
+          "url": "https://www.linkedin.com/jobs/view/4370653931",
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-14"
@@ -1710,6 +1718,14 @@
           "postedDate": "2026-09-10",
           "source": "li",
           "lastSeenAt": "2026-09-14"
+        },
+        {
+          "title": "VP, Product Management - Corporate Solutions, EEMEA",
+          "location": "Dubai, Dubai, United Arab Emirates",
+          "url": "https://www.linkedin.com/jobs/view/4464789375",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-14"
         }
       ]
     },
@@ -1873,7 +1889,7 @@
         },
         {
           "title": "Director of Product Design - Payments",
-          "location": "London, England, UK",
+          "location": "Melbourne, Victoria, Australia",
           "url": "https://www.linkedin.com/jobs/view/4358050204",
           "postedDate": "2026-09-08",
           "source": "li",
@@ -2603,7 +2619,7 @@
           "title": "Design Manager - Tunnel Package",
           "location": "Guyancourt, \u00cele-de-France, France",
           "url": "https://www.linkedin.com/jobs/view/4463468779",
-          "postedDate": "2026-09-12",
+          "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-14"
         },
@@ -5831,7 +5847,7 @@
           "title": "Design Director",
           "location": "Lisbon, Lisbon, Portugal",
           "url": "https://www.linkedin.com/jobs/view/4356155360",
-          "postedDate": null,
+          "postedDate": "2026-09-13",
           "source": "li",
           "lastSeenAt": "2026-09-14"
         },
