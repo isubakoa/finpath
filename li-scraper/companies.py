@@ -1,7 +1,10 @@
-# The same 143 companies tracked in index.html (name + slug), copied here so
+# The same companies tracked in index.html (name + slug), copied here so
 # this scraper is self-contained and doesn't need to parse the frontend HTML.
 # If you add/rename/remove a company in index.html, mirror the change here —
-# there's no automatic sync between the two files.
+# there's no automatic sync between the two files. (Last reconciled 2026-09:
+# every company in index.html has an entry here, full 1:1 coverage by
+# design — see README.md for the "when there's an unknown ATS, add it here
+# instead" strategy this was adopted for.)
 #
 # match.py normalizes each `name` (drops legal suffixes like "Group"/"Bank"/
 # "Holdings", strips parenthetical alternate names into their own aliases,
@@ -18,7 +21,6 @@ COMPANIES = [
     {"name": "Monzo", "slug": "monzo"},
     {"name": "Starling Bank", "slug": "starling-bank"},
     {"name": "N26", "slug": "n26"},
-    {"name": "bunq", "slug": "bunq"},
     {"name": "Adyen", "slug": "adyen"},
     {"name": "Checkout.com", "slug": "checkout-com"},
     {"name": "SumUp", "slug": "sumup"},
@@ -205,14 +207,19 @@ COMPANIES = [
     # reason specifically, not just for completeness like most of this file).
     #
     # Cisco is already in this list above (line ~172) -- not duplicated.
-    # Virgin Mobile UAE deliberately left OUT: it's not an independent legal
-    # entity (see its index.html note -- it's fully run by du/EITC), and
-    # "Virgin Mobile" alone is too generic a name here -- match_company's
-    # containment check would happily attribute an unrelated "Virgin Mobile"
-    # posting from Australia/UK/US to this slug. Any real UAE hiring for it
-    # would show up under "du" anyway.
     {"name": "e&", "slug": "e-and"},
     {"name": "du (EITC)", "slug": "du"},
+    # It's not an independent legal entity (see its index.html note -- fully
+    # run by du/EITC), and any real UAE hiring for it would show up under
+    # "du" anyway, but 2026-09 policy is full coverage over completeness
+    # gaps, so it's included -- matched on the full "Virgin Mobile UAE"
+    # string rather than bare "Virgin Mobile" to limit (not eliminate) the
+    # risk of match.py's containment check pulling in an unrelated "Virgin
+    # Mobile" posting from Australia/UK/US (whose normalized name is a
+    # substring of ours, so it can still false-match the other direction --
+    # worth spot-checking li-snapshot.json's virgin-mobile-uae entries once
+    # this has run for real).
+    {"name": "Virgin Mobile UAE", "slug": "virgin-mobile-uae"},
     {"name": "Deutsche Telekom", "slug": "deutsche-telekom"},
     {"name": "Orange", "slug": "orange"},
     {"name": "Vodafone", "slug": "vodafone"},
