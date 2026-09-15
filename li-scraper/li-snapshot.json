@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15T14:28:30Z",
+  "generatedAt": "2026-09-15T19:04:21Z",
   "companies": {
     "google": {
       "roles": [
@@ -1926,6 +1926,14 @@
           "postedDate": "2026-09-14",
           "source": "indeed",
           "lastSeenAt": "2026-09-15"
+        },
+        {
+          "title": "Sr. Specialist, Product Experience Design, Crypto",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4456945054",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-15"
         }
       ]
     },
@@ -2399,6 +2407,14 @@
           "title": "Product Manager",
           "location": "London Area, United Kingdom",
           "url": "https://www.linkedin.com/jobs/view/4465237802",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-15"
+        },
+        {
+          "title": "Product Designer",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4465577534",
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-15"
@@ -3027,7 +3043,7 @@
           "title": "Product Designer & User Researcher H/F - Lille",
           "location": "Lille, Hauts-de-France, France",
           "url": "https://www.linkedin.com/jobs/view/4458210195",
-          "postedDate": null,
+          "postedDate": "2026-09-14",
           "source": "li",
           "lastSeenAt": "2026-09-15"
         }
@@ -5206,6 +5222,14 @@
           "postedDate": "2026-09-13",
           "source": "li",
           "lastSeenAt": "2026-09-15"
+        },
+        {
+          "title": "Sr Product Manager - LTV and Retention",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4465560248",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-15"
         }
       ]
     },
@@ -5854,6 +5878,14 @@
           "postedDate": "2026-09-09",
           "source": "li",
           "lastSeenAt": "2026-09-15"
+        },
+        {
+          "title": "Senior User Researcher",
+          "location": "Paris, \u00cele-de-France, France",
+          "url": "https://www.linkedin.com/jobs/view/4465569845",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-15"
         }
       ]
     },
@@ -6040,6 +6072,14 @@
           "location": "Federal Territory of Kuala Lumpur, Malaysia",
           "url": "https://www.linkedin.com/jobs/view/4441463050",
           "postedDate": "2026-09-14",
+          "source": "li",
+          "lastSeenAt": "2026-09-15"
+        },
+        {
+          "title": "Intern, Product Strategy (3 months/6 months)",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4467714380",
+          "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-15"
         }
@@ -6539,7 +6579,7 @@
           "title": "Design Lead",
           "location": "Lisbon, Lisbon, Portugal",
           "url": "https://www.linkedin.com/jobs/view/4356007107",
-          "postedDate": null,
+          "postedDate": "2026-09-14",
           "source": "li",
           "lastSeenAt": "2026-09-15"
         }
