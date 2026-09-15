@@ -7,7 +7,7 @@ LI data — see li-scraper/README.md's "Not yet live-tested" note).
 """
 
 from companies import COMPANIES, ALIASES
-from match import build_index, match_company, is_role_relevant, fit_tier
+from match import build_index, match_company, is_role_relevant, fit_tier, find_collisions
 from scrape import build_fresh_roles  # top-level scrape.py imports have no jobspy dependency —
                                        # it's only imported lazily inside run_searches()
 
@@ -60,6 +60,34 @@ CASES = [
     ("Grab Financial Group", "grab-grab-financial-group"),
     ("Some Totally Unrelated Company", None),
 ]
+
+# Every normalized name/alias that two different companies both claim as an
+# exact-match key, as of the last time this was reviewed. build_index()'s
+# `exact` dict is last-write-wins with no collision detection of its own, so
+# without this test a new collision (e.g. a future company whose name also
+# reduces to "boost" once suffixes are stripped) would fail silently --
+# postings would just get filed under the wrong slug with nothing to notice.
+# Each entry here has been individually reviewed and accepted:
+#
+#   "boost" -> boost / boost-bank: genuinely affiliated companies (Boost
+#   Bank is a 2024 digital-banking JV between Axiata's Boost and RHB, and
+#   literally shares Boost's own careers.myboost.co board per its note in
+#   index.html) whose names become identical text once "Bank" is stripped
+#   as a legal/corporate suffix. There's no text-only way to tell a real
+#   "Boost" posting from a real "Boost Bank" posting apart, and since both
+#   businesses share one careers site anyway, a stray misfile between the
+#   two slugs has minimal practical impact on what a reviewer sees. Adding
+#   a special-case exception to _normalize() for this one pair was judged
+#   riskier (touches shared normalization logic used by all 210 companies)
+#   than documenting and testing for it here.
+#
+# If this test starts failing because find_collisions() returns something
+# NOT in this allowlist, that's a real new bug (same class as the du/Emirates
+# collision caught and fixed in Sep 2026) -- go fix companies.py's aliases,
+# don't just widen the allowlist.
+KNOWN_COLLISIONS = {
+    "boost": ["boost", "boost-bank"],
+}
 
 TITLE_CASES = [
     ("Director, Product Design", True, "target"),
@@ -118,7 +146,20 @@ def run():
         failures += 0 if ok else 1
         print(f"  {'OK ' if ok else 'FAIL'}  {label}")
 
-    total_cases = len(CASES) + len(TITLE_CASES) + len(fresh_checks)
+    print("-- exact-match key collisions (reviewed allowlist) --")
+    got_collisions = find_collisions(COMPANIES, ALIASES)
+    ok = got_collisions == KNOWN_COLLISIONS
+    failures += 0 if ok else 1
+    print(f"  {'OK ' if ok else 'FAIL'}  find_collisions() == KNOWN_COLLISIONS")
+    if not ok:
+        unexpected = {k: v for k, v in got_collisions.items() if k not in KNOWN_COLLISIONS}
+        missing = {k: v for k, v in KNOWN_COLLISIONS.items() if k not in got_collisions}
+        if unexpected:
+            print(f"        unexpected new collision(s), go fix companies.py: {unexpected}")
+        if missing:
+            print(f"        expected collision(s) no longer present (update KNOWN_COLLISIONS if fixed on purpose): {missing}")
+
+    total_cases = len(CASES) + len(TITLE_CASES) + len(fresh_checks) + 1
     print(f"\n{total_cases - failures}/{total_cases} passed")
     if failures:
         raise SystemExit(f"{failures} case(s) failed")

@@ -122,6 +122,21 @@ COMPANIES = [
     {"name": "Mubadala Investment Company", "slug": "mubadala-investment-company"},
     {"name": "Abu Dhabi Investment Authority (ADIA)", "slug": "abu-dhabi-investment-authority-adia"},
     {"name": "GXBank", "slug": "gxbank"},
+    # NOTE (2026-09): "Boost Bank" and "Boost" below (slug "boost") are a
+    # known, reviewed, accepted matching collision -- both names normalize
+    # to the identical string "boost" once match.py's _normalize() strips
+    # "Bank" as a legal/corporate suffix, so match_company() can't reliably
+    # tell a real "Boost Bank" LI/Indeed posting from a real "Boost" one
+    # apart from employer-name text alone; whichever is declared later in
+    # this list wins ties in build_index()'s exact-match dict. Left
+    # unresolved on purpose rather than forcing an arbitrary tie-break: the
+    # two businesses are genuinely affiliated (Boost Bank is Axiata's 2024
+    # digital-banking JV with RHB and literally shares Boost's own
+    # careers.myboost.co board -- see its openNote in index.html), so a
+    # stray misfile between the two slugs has minimal practical impact.
+    # Documented and regression-tested via match.py's find_collisions() +
+    # test_match.py's KNOWN_COLLISIONS allowlist, so this stays a tracked,
+    # intentional limitation rather than a silent bug.
     {"name": "Boost Bank", "slug": "boost-bank"},
     {"name": "AEON Bank (Malaysia)", "slug": "aeon-bank-malaysia"},
     {"name": "Ryt Bank", "slug": "ryt-bank"},
@@ -132,6 +147,8 @@ COMPANIES = [
     {"name": "RHB Bank", "slug": "rhb-bank"},
     {"name": "Hong Leong Bank", "slug": "hong-leong-bank"},
     {"name": "Touch 'n Go Digital (TNG Digital)", "slug": "touch-n-go-digital-tng-digital"},
+    # See the "Boost Bank" entry above -- this is the other half of the
+    # documented, reviewed "boost" exact-match collision.
     {"name": "Boost", "slug": "boost"},
     {"name": "Curlec", "slug": "curlec"},
     {"name": "Versa", "slug": "versa"},
@@ -247,6 +264,21 @@ COMPANIES = [
     {"name": "Singtel", "slug": "singtel"},
     {"name": "StarHub", "slug": "starhub"},
     {"name": "M1", "slug": "m1"},
+    # -- Batch: aviation / airlines (Sep 2026) --
+    # Matched as "Emirates Airline" rather than bare "Emirates" -- this list
+    # already has "Emirates NBD" (a Dubai bank), and bare "Emirates" would be
+    # a substring of unrelated real postings like "Emirates Islamic Bank" or
+    # "Emirates NBD Capital", which match.py's containment check would then
+    # misattribute to the airline. A longer, more specific alias still
+    # catches a bare "Emirates" LI posting (short names match *into* a
+    # longer alias just fine) without matching the other direction.
+    {"name": "Emirates Airline", "slug": "emirates"},
+    {"name": "Etihad Airways", "slug": "etihad-airways"},
+    {"name": "British Airways", "slug": "british-airways"},
+    {"name": "KLM Royal Dutch Airlines", "slug": "klm"},
+    {"name": "Lufthansa", "slug": "lufthansa"},
+    {"name": "Air France", "slug": "air-france"},
+    {"name": "Singapore Airlines", "slug": "singapore-airlines"},
 ]
 
 # Manual aliases for companies whose real LI employer name doesn't
@@ -275,9 +307,26 @@ ALIASES = {
     "commonwealth-bank-of-australia": ["Commonwealth Bank", "CommBank"],
     # -- Batch: telecom / IT-services companies (Sep 2026) --
     "e-and": ["Etisalat", "e& UAE", "Etisalat Group"],
-    "du": ["du", "EITC", "Emirates Integrated Telecommunications Company", "du Telecom"],
+    # "Emirates Integrated Telecommunications Company" deliberately dropped
+    # (2026-09): its normalized form starts with "emirates", which was
+    # swallowing "Emirates Airline"/"Emirates Group" matches via containment
+    # once the airline was added -- "EITC" already covers the common
+    # abbreviation and real du postings are very unlikely to use the fully
+    # spelled-out legal name anyway.
+    "du": ["du", "EITC", "du Telecom"],
     "telefonica": ["Telefonica"],  # unaccented form, in case LI/Indeed drop the accent
     "twodegrees": ["2degrees Mobile"],
     "spark-nz": ["Spark NZ"],  # deliberately not bare "Spark" -- see COMPANIES comment
     "one-nz": ["One New Zealand"],
+    # -- Batch: aviation / airlines (Sep 2026) --
+    # Deliberately NOT adding bare "Emirates" or "The Emirates Group" as
+    # aliases here -- both normalize to the same generic 8-char "emirates"
+    # (the "group" suffix gets stripped) that "Emirates Airline" was chosen
+    # as the primary name specifically to avoid registering, since it would
+    # start misattributing unrelated "Emirates Islamic Bank" / "Emirates NBD
+    # Capital" postings via containment. The single "Emirates Airline" entry
+    # in COMPANIES already catches a bare "Emirates" posting on its own (a
+    # short incoming name matches fine when it's contained *within* our
+    # longer alias -- it's only dangerous the other way around).
+    "klm": ["KLM", "Air France-KLM"],
 }

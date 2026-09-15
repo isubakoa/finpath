@@ -146,3 +146,39 @@ def match_company(employer_name, index):
         if alias_norm in norm or norm in alias_norm:
             return slug
     return None
+
+
+def find_collisions(companies, aliases_by_slug=None):
+    """Diagnostic, not used by scrape.py itself: every normalized alias that
+    two or more *different* companies would both register as an exact-match
+    key. build_index()'s `exact` dict is a plain last-write-wins assignment,
+    so before this existed, a collision like this was invisible -- whichever
+    company happened to be declared later in COMPANIES silently won, and
+    every LI/Indeed posting for the other company got filed under the wrong
+    slug with no error, no warning, nothing (found 2026-09 two different
+    ways: "Boost Bank"/"Boost" both normalize to "boost" once "Bank" is
+    stripped as a legal suffix, and separately "du"'s own alias list used to
+    contain a phrase starting with "Emirates" that was shadowing the
+    "Emirates Airline" entry added in the same batch).
+
+    Returns {normalized_key: [slug, slug, ...]} (sorted) for every such
+    case. Some of these are genuine, irreducible ambiguities -- two real
+    companies whose names become identical text after normalization, not
+    something a smarter matching algorithm can fix (Boost/Boost Bank
+    literally share the same careers site) -- and are expected to stay
+    reviewed-and-accepted rather than "fixed." test_match.py asserts this
+    function's output against that reviewed allowlist, so a genuinely NEW,
+    undeclared collision fails the test suite immediately instead of
+    silently misfiling roles the way the Emirates/du one did before being
+    caught by hand.
+    """
+    aliases_by_slug = aliases_by_slug or {}
+    claims = {}  # normalized key -> set of slugs that registered it
+    for c in companies:
+        names = _aliases_for(c["name"]) + aliases_by_slug.get(c["slug"], [])
+        for n in names:
+            norm = _normalize(n)
+            if not norm:
+                continue
+            claims.setdefault(norm, set()).add(c["slug"])
+    return {norm: sorted(slugs) for norm, slugs in claims.items() if len(slugs) > 1}
