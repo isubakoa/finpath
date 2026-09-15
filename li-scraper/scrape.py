@@ -1,36 +1,59 @@
 """
-FinPath — LI + Indeed coverage via JobSpy (github.com/speedyapply/JobSpy)
+FinPath — LI + Indeed + Glassdoor + Google + Bayt coverage via JobSpy
+(github.com/speedyapply/JobSpy)
 
-Runs keyword searches against LI and Indeed (your trimmed Product +
-Design/UX title list, across your target-region list — see
+Runs keyword searches against five of JobSpy's eight supported sites (your
+trimmed Product + Design/UX title list, across your target-region list — see
 SEARCH_TERMS/LOCATIONS below), keeps only the results that are (a) from one
-of the 179 tracked companies — matched by name, see match.py — and (b) pass
+of the 210 tracked companies — matched by name, see match.py — and (b) pass
 the exact same isRoleRelevant() title filter index.html itself applies.
 Writes the result to li-snapshot.json in the same
 `{ companies: { <slug>: { roles: [...] } } }` shape check.php already
 expects from js-scraper's snapshot.json — each role carries its own
-`source` ("li" or "indeed") so the frontend can badge it correctly.
+`source` ("li", "indeed", "glassdoor", "google", or "bayt") so the frontend
+can badge it correctly. ZipRecruiter (US/Canada only — a poor fit for a
+mostly non-US target-region list), Naukri (India) and BDJobs (Bangladesh)
+were deliberately left out — see README.md's "Widening scope further" for
+the reasoning behind every site, included or not.
 
 *** IMPORTANT — READ THIS BEFORE CHANGING TERMS/LOCATIONS/SCHEDULE ***
 38 title phrases x 25 locations = 950 (term, location) combinations
 (trimmed down from the original 108 x 17 = 1,836 in September 2026 for
 freshness/footprint — see README.md's "How the rotation works" for the
-before/after). Each combination is searched against LI AND Indeed —
-added September 2026, see README.md's "Indeed coverage" section — as two
-independent requests (Indeed has no rate limiting per JobSpy's own docs, so
-only the LI side needs the randomized pacing pause). There is still no
-way to run all 950 combinations in a single pass without either proxies or
+before/after). Each combination is searched against LI, Indeed, Glassdoor
+(where the location is one of the ~15 GLASSDOOR_COUNTRY supports — see that
+dict below; Glassdoor's country list is a real subset of Indeed's, not a
+guess) and Google — four independent requests per combo, added to in
+September 2026 (Glassdoor/Google) on top of the original LI+Indeed pair —
+each in its own try/except so one site's failure never takes another's
+result down for that same combo. Only LI and Google get the randomized
+pacing pause: Indeed has no rate limiting per JobSpy's own docs, and
+Glassdoor isn't called out as rate-limited either so it's treated the same
+way pending real evidence otherwise (see README's "Indeed coverage" section,
+now covering all four of these); Google gets the same caution as LI despite
+JobSpy's docs not calling it out specifically, because it scrapes google.com
+directly rather than a job-board-specific endpoint, and Google is generally
+known to be aggressive about blocking non-browser traffic at volume — a
+documented hedge, not a confirmed constraint (worth revisiting once a few
+real runs' logs are in, same as every other pacing choice in this file).
+Bayt is architecturally different — no location parameter at all (it
+"searches internationally" per JobSpy's own README) — so it isn't part of
+this per-combo grid; see run_bayt_searches() below. There is still no way to
+run all 950 combinations in a single pass without either proxies or
 getting blocked on the LI side almost immediately — see
 li-scraper/README.md's "How the rotation works" section for the full
 explanation. Instead, each run covers one CHUNK of the full combination
 list (COMBOS_PER_RUN of them), chosen deterministically from the current
 time so consecutive scheduled runs walk through the whole list in order and
 wrap back around — a full cycle takes ROTATION_CYCLE_HOURS (printed below)
-to complete, unchanged by the addition of Indeed since chunk count is driven
-by combinations, not requests. Results accumulate into li-snapshot.json
-across runs (merged, not overwritten) and a role is only dropped after
-EXPIRY_DAYS without being re-confirmed — so a company found on Monday
-doesn't vanish from the tracker on Tuesday just because today's chunk
+to complete, unchanged by the addition of any of these sites since chunk
+count is driven by combinations, not requests (each run just does more work
+per chunk now — see README's "Widening scope further" for the actual
+request-volume numbers and why the cycle length was deliberately kept as-is
+rather than traded away for shorter runs). Results accumulate into
+li-snapshot.json across runs (merged, not overwritten) and a role is only
+dropped after EXPIRY_DAYS without being re-confirmed — so a company found on
+Monday doesn't vanish from the tracker on Tuesday just because today's chunk
 didn't include that company's search terms.
 
 USAGE (locally or in the GitHub Actions workflow — see .github/workflows/):
@@ -185,6 +208,65 @@ INDEED_LOCATION_OVERRIDE = {
     "Abu Dhabi, United Arab Emirates": "Abu Dhabi",
 }
 
+# The subset of LOCATIONS Glassdoor actually supports — `country_indeed` is
+# the same parameter JobSpy uses for both Indeed and Glassdoor, but
+# Glassdoor's own country list is a real subset of Indeed's, not a superset
+# or an unrelated list. Verified 2026-09 directly against JobSpy's source
+# (jobspy/model.py's Country enum — Glassdoor support is a 3rd tuple element
+# present only for these countries, not just the README's own summary table,
+# which is the authoritative behavior check.php-equivalent code actually
+# runs on). Taiwan, Japan, South Korea, Luxembourg, Denmark, Sweden, Norway,
+# Portugal, and United Arab Emirates are Indeed-only — deliberately absent
+# here rather than guessed at, so those combos just skip the Glassdoor call
+# cleanly (same pattern as INDEED_COUNTRY's own "shouldn't happen but skip
+# cleanly" guard in run_searches()).
+#
+# One flagged discrepancy: Malaysia. JobSpy's own README table doesn't mark
+# Malaysia with the Glassdoor asterisk, but the actual source code's Country
+# enum gives Malaysia a 3-element tuple (the code's real condition for
+# Glassdoor support) — added in a later commit that the README's hand-written
+# table apparently never caught up with. Included here on the code's
+# authority, since that's what actually executes, but worth specifically
+# watching in the first few live runs: if Malaysia's Glassdoor combos come
+# back consistently empty where Singapore/Hong Kong/etc. don't, that's the
+# README's version turning out to be the more accurate one in practice.
+GLASSDOOR_COUNTRY = {
+    "Singapore": "Singapore",
+    "Hong Kong": "Hong Kong",
+    "New Zealand": "New Zealand",
+    "Australia": "Australia",
+    "Netherlands": "Netherlands",
+    "Italy": "Italy",
+    "France": "France",
+    "Switzerland": "Switzerland",
+    "Austria": "Austria",
+    "Germany": "Germany",
+    "Belgium": "Belgium",
+    "Spain": "Spain",
+    "United Kingdom": "UK",
+    "Ireland": "Ireland",
+    "Kuala Lumpur, Malaysia": "Malaysia",  # see the Malaysia caveat above
+}
+
+# Google ignores `location`/`hours_old`/etc. entirely once `google_search_term`
+# is set (JobSpy builds the literal `q=` string from it verbatim, no parsing
+# on JobSpy's side) — so the "near <location>" and time-window phrasing has
+# to be embedded by hand, following the exact convention JobSpy's own README
+# example uses ("software engineer jobs near San Francisco, CA since
+# yesterday"). HOURS_OLD (240h / 10 days) doesn't map cleanly onto Google's
+# four literal time-phrase buckets (get_time_range() in JobSpy's own source:
+# "since yesterday" <=24h, "in the last 3 days" <=72h, "in the last week"
+# <=168h, else "in the last month") — "in the last month" is the safe
+# superset choice (never narrower than the 10-day window the other sites
+# use), not an attempt at an exact match. A Google result older than 10 days
+# just rides the same EXPIRY_DAYS/lastSeenAt lifecycle as everything else
+# once it's matched and kept — see build_fresh_roles/merge_and_prune.
+GOOGLE_TIME_PHRASE = "in the last month"
+
+
+def google_query(term, location):
+    return f"{term} jobs near {location} {GOOGLE_TIME_PHRASE}"
+
 RESULTS_WANTED_PER_SEARCH = 20
 HOURS_OLD = 240  # 10 days — comfortably wider than one rotation cycle (see below),
                  # so a role posted right after its combo's turn is still visible
@@ -195,8 +277,22 @@ HOURS_OLD = 240  # 10 days — comfortably wider than one rotation cycle (see be
 # every single request, run after run, is a very identifiable non-human
 # pattern; a random point in a tight range costs nothing in total run time
 # (same ~6-8 minutes either way) but doesn't look mechanically scripted.
+# Shared by LI and Google — see the module docstring for why Google gets the
+# same caution as LI despite not being explicitly flagged as rate-limited by
+# JobSpy's docs (it scrapes google.com directly, a generally block-happy
+# surface, and there's no cost to being cautious here versus real evidence).
 PAUSE_BETWEEN_SEARCHES_SECONDS_MIN = 5
 PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
+
+# Bayt has no location parameter at all (see module docstring), so it isn't
+# part of the term x location grid or the chunked rotation — it's cheap
+# enough (38 requests, one per SEARCH_TERMS entry, no location multiplier)
+# to just run in full every single scheduled run rather than needing its own
+# rotation logic. Same randomized-pause treatment as Google/LI: JobSpy's docs
+# don't call Bayt out as rate-limited either way, so this is the same
+# "no evidence yet, so don't assume it's as tolerant as Indeed" hedge.
+BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MIN = 5
+BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
 
 # ---- Rotation: see the module docstring. One run = one chunk of the full
 # ---- term x location grid, chosen deterministically from wall-clock time so
@@ -233,18 +329,19 @@ def current_chunk_index(total_chunks, forced=None):
 
 def run_searches(combos, debug=False):
     """Yields (source, row) for this run's chunk of (term, location)
-    combinations — source is "li" or "indeed", row is a raw JobSpy result
-    (dict-like). Imports jobspy lazily so match.py/test_match.py can be
-    exercised without the dependency installed.
+    combinations — source is "li", "indeed", "glassdoor", or "google"; row
+    is a raw JobSpy result (dict-like). Imports jobspy lazily so
+    match.py/test_match.py can be exercised without the dependency
+    installed.
 
-    LI and Indeed are run as two independent scrape_jobs() calls per
-    combo, each in its own try/except, rather than one combined
-    site_name=["linkedin","indeed"] call — deliberately, so an Indeed-side
-    failure (an unsupported country_indeed value, a transient error) can
-    never take LI's result for that same combo down with it, and vice
-    versa. Only LI gets the randomized pacing pause: Indeed has no
-    rate limiting per JobSpy's own docs, so there's nothing to be polite
-    about pacing around on that side."""
+    Each of the four sites is run as its own independent scrape_jobs() call
+    per combo, each in its own try/except, rather than one combined
+    site_name=[...] call — deliberately, so any one site's failure (an
+    unsupported country value, a transient error, a block) can never take
+    another site's result for that same combo down with it. Only LI and
+    Google get the randomized pacing pause — see PAUSE_BETWEEN_SEARCHES_*'s
+    comment above for why Google gets the same treatment as LI despite not
+    being explicitly flagged as rate-limited anywhere in JobSpy's docs."""
     from jobspy import scrape_jobs
 
     for term, location in combos:
@@ -270,26 +367,100 @@ def run_searches(combos, debug=False):
 
         indeed_country = INDEED_COUNTRY.get(location)
         if not indeed_country:
-            continue  # shouldn't happen — every LOCATIONS entry has a mapping — but skip cleanly if it ever doesn't
-        indeed_location = INDEED_LOCATION_OVERRIDE.get(location, location)
+            indeed_location = None  # shouldn't happen — every LOCATIONS entry has a mapping — but skip cleanly if it ever doesn't
+        else:
+            indeed_location = INDEED_LOCATION_OVERRIDE.get(location, location)
+            if debug:
+                print(f"[scrape] searching (indeed): {term!r} @ {indeed_location!r} ({indeed_country})", file=sys.stderr)
+            try:
+                df2 = scrape_jobs(
+                    site_name=["indeed"],
+                    search_term=term,
+                    location=indeed_location,
+                    country_indeed=indeed_country,
+                    results_wanted=RESULTS_WANTED_PER_SEARCH,
+                    hours_old=HOURS_OLD,
+                    verbose=1 if debug else 0,
+                )
+            except Exception as e:  # noqa: BLE001 — same isolation as the LI call above
+                print(f"[scrape] indeed search failed ({term!r} @ {indeed_location!r}): {e}", file=sys.stderr)
+                df2 = None
+            if df2 is not None and len(df2):
+                for row in df2.to_dict(orient="records"):
+                    yield ("indeed", row)
+
+        glassdoor_country = GLASSDOOR_COUNTRY.get(location)
+        if glassdoor_country:
+            glassdoor_location = INDEED_LOCATION_OVERRIDE.get(location, location)
+            if debug:
+                print(f"[scrape] searching (glassdoor): {term!r} @ {glassdoor_location!r} ({glassdoor_country})", file=sys.stderr)
+            try:
+                df3 = scrape_jobs(
+                    site_name=["glassdoor"],
+                    search_term=term,
+                    location=glassdoor_location,
+                    country_indeed=glassdoor_country,
+                    results_wanted=RESULTS_WANTED_PER_SEARCH,
+                    hours_old=HOURS_OLD,
+                    verbose=1 if debug else 0,
+                )
+            except Exception as e:  # noqa: BLE001 — same isolation as LI/Indeed above
+                print(f"[scrape] glassdoor search failed ({term!r} @ {glassdoor_location!r}): {e}", file=sys.stderr)
+                df3 = None
+            if df3 is not None and len(df3):
+                for row in df3.to_dict(orient="records"):
+                    yield ("glassdoor", row)
+            # No pause here — Glassdoor isn't flagged as rate-limited by JobSpy's
+            # docs, same reasoning as Indeed getting none. Revisit if the first
+            # several live runs suggest otherwise.
+        # else: this location isn't in GLASSDOOR_COUNTRY — skip cleanly, no request made.
+
+        query = google_query(term, location)
         if debug:
-            print(f"[scrape] searching (indeed): {term!r} @ {indeed_location!r} ({indeed_country})", file=sys.stderr)
+            print(f"[scrape] searching (google): {query!r}", file=sys.stderr)
         try:
-            df2 = scrape_jobs(
-                site_name=["indeed"],
-                search_term=term,
-                location=indeed_location,
-                country_indeed=indeed_country,
+            df4 = scrape_jobs(
+                site_name=["google"],
+                google_search_term=query,
                 results_wanted=RESULTS_WANTED_PER_SEARCH,
-                hours_old=HOURS_OLD,
                 verbose=1 if debug else 0,
             )
-        except Exception as e:  # noqa: BLE001 — same isolation as the LI call above
-            print(f"[scrape] indeed search failed ({term!r} @ {indeed_location!r}): {e}", file=sys.stderr)
-            df2 = None
-        if df2 is not None and len(df2):
-            for row in df2.to_dict(orient="records"):
-                yield ("indeed", row)
+        except Exception as e:  # noqa: BLE001 — same isolation as every other site above
+            print(f"[scrape] google search failed ({query!r}): {e}", file=sys.stderr)
+            df4 = None
+        if df4 is not None and len(df4):
+            for row in df4.to_dict(orient="records"):
+                yield ("google", row)
+        time.sleep(random.uniform(PAUSE_BETWEEN_SEARCHES_SECONDS_MIN, PAUSE_BETWEEN_SEARCHES_SECONDS_MAX))
+
+
+def run_bayt_searches(debug=False):
+    """Yields (source, row) for every one of SEARCH_TERMS against Bayt —
+    all 38, every run, not chunked (see BAYT_PAUSE_BETWEEN_SEARCHES_*'s
+    comment above for why this doesn't need the term x location rotation
+    the other four sites use: Bayt takes no location parameter at all, so
+    there's no location axis to rotate through, and 38 requests/run is
+    cheap enough to just always run in full). Same try/except-per-search
+    isolation as run_searches()."""
+    from jobspy import scrape_jobs
+
+    for term in SEARCH_TERMS:
+        if debug:
+            print(f"[scrape] searching (bayt): {term!r}", file=sys.stderr)
+        try:
+            df = scrape_jobs(
+                site_name=["bayt"],
+                search_term=term,
+                results_wanted=RESULTS_WANTED_PER_SEARCH,
+                verbose=1 if debug else 0,
+            )
+        except Exception as e:  # noqa: BLE001 — one bad search must not kill the whole run
+            print(f"[scrape] bayt search failed ({term!r}): {e}", file=sys.stderr)
+            df = None
+        if df is not None and len(df):
+            for row in df.to_dict(orient="records"):
+                yield ("bayt", row)
+        time.sleep(random.uniform(BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MIN, BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MAX))
 
 
 def normalize_posted_date(value):
@@ -442,18 +613,26 @@ def main():
     this_chunk = combos[chunk_index * COMBOS_PER_RUN: (chunk_index + 1) * COMBOS_PER_RUN]
 
     cycle_hours = total_chunks * SCHEDULE_INTERVAL_HOURS
+    glassdoor_calls_this_chunk = sum(1 for _, loc in this_chunk if loc in GLASSDOOR_COUNTRY)
+    # Up to 4 requests/combo (li + indeed + google always attempted, glassdoor only
+    # where GLASSDOOR_COUNTRY covers the location) + a flat 38 for Bayt, unchunked.
+    max_requests_this_run = len(this_chunk) * 3 + glassdoor_calls_this_chunk + len(SEARCH_TERMS)
     print(
         f"[scrape] {len(combos)} total combos ({len(SEARCH_TERMS)} terms x {len(LOCATIONS)} locations), "
-        f"{COMBOS_PER_RUN}/run -> {total_chunks} chunks -> full cycle ~{cycle_hours}h (~{cycle_hours / 24:.1f} days)"
+        f"{COMBOS_PER_RUN}/run -> {total_chunks} chunks -> full cycle ~{cycle_hours}h (~{cycle_hours / 24:.1f} days) "
+        f"[cycle length unchanged since the Sep 2026 Glassdoor/Google/Bayt addition — see module docstring]"
     )
     print(f"[scrape] this run: chunk {chunk_index + 1}/{total_chunks} "
-          f"({len(this_chunk)} combos x 2 sites = up to {len(this_chunk) * 2} requests)")
+          f"({len(this_chunk)} combos x li+indeed+google + {glassdoor_calls_this_chunk} glassdoor-eligible "
+          f"+ {len(SEARCH_TERMS)} bayt = up to {max_requests_this_run} requests)")
 
     index = build_index(COMPANIES, ALIASES)
-    rows = list(run_searches(this_chunk, debug=debug))
-    li_count = sum(1 for source, _ in rows if source == "li")
-    indeed_count = sum(1 for source, _ in rows if source == "indeed")
-    print(f"[scrape] {len(rows)} raw results this run ({li_count} li, {indeed_count} indeed)")
+    rows = list(run_searches(this_chunk, debug=debug)) + list(run_bayt_searches(debug=debug))
+    counts = {}
+    for source, _ in rows:
+        counts[source] = counts.get(source, 0) + 1
+    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "glassdoor", "google", "bayt"))
+    print(f"[scrape] {len(rows)} raw results this run ({counts_str})")
 
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     fresh_roles = build_fresh_roles(rows, index, today_iso, debug=debug)

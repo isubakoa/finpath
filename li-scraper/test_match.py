@@ -14,9 +14,13 @@ from scrape import build_fresh_roles  # top-level scrape.py imports have no jobs
 INDEX = build_index(COMPANIES, ALIASES)
 
 # build_fresh_roles() takes (source, row) tuples since September 2026's Indeed
-# addition — this exercises that both "li" and "indeed" rows flow through
-# company matching, title filtering, and de-dup identically, and that each
-# kept role is tagged with the source it actually came from (not hardcoded).
+# addition, extended the same month to glassdoor/google/bayt — this exercises
+# that all five sources' rows flow through company matching, title filtering,
+# and de-dup identically, and that each kept role is tagged with the source
+# it actually came from (not hardcoded) — build_fresh_roles() itself is
+# entirely source-agnostic (it just passes whatever string it's given straight
+# through to the kept role's "source" field), so these cases mainly guard
+# against a future edit accidentally special-casing one source over another.
 #
 # The float("nan") cases below reproduce a real production crash from the
 # first live GitHub Actions run (2026-09-09): JobSpy returns a pandas
@@ -35,6 +39,9 @@ FRESH_ROLES_CASES = [
     ("li", {"job_url": "https://x.test/5", "company": float("nan"), "title": "Head of Design", "location": "London"}),  # dropped, not crashed: NaN company
     ("li", {"job_url": "https://x.test/6", "company": "Wise", "title": "Head of Design", "location": float("nan")}),  # kept: NaN location falls back to "Not specified"
     ("indeed", {"job_url": "https://x.test/7", "company": "Wise", "title": float("nan"), "location": "London"}),  # dropped, not crashed: NaN title
+    ("glassdoor", {"job_url": "https://x.test/8", "company": "Wise", "title": "Senior Product Designer", "location": "Singapore"}),  # kept, source=glassdoor
+    ("google", {"job_url": "https://x.test/9", "company": "Wise", "title": "Head of Design", "location": "London"}),  # kept, source=google
+    ("bayt", {"job_url": "https://x.test/10", "company": "Wise", "title": "UX Researcher", "location": "Dubai"}),  # kept, source=bayt
 ]
 
 # (LI employer name as it might realistically appear, expected slug or None)
@@ -130,7 +137,8 @@ def run():
         print(f"  FAIL  build_fresh_roles crashed: {e}")
     fresh_checks = [
         ("did not crash on NaN fields (the actual production bug)", not crashed),
-        ("kept exactly 3 roles (3 dropped, 1 duplicate, 1 NaN-company dropped, 1 NaN-title dropped)", len(fresh) == 3),
+        ("kept exactly 6 roles (3 li/indeed dropped, 1 duplicate, 1 NaN-company dropped, 1 NaN-title dropped, "
+         "3 new glassdoor/google/bayt kept)", len(fresh) == 6),
         ("wise role tagged source=li", fresh.get("https://x.test/1", (None, {}))[1].get("source") == "li"),
         ("wise role filed under correct slug", fresh.get("https://x.test/1", (None, {}))[0] == "wise"),
         ("hsbc role tagged source=indeed", fresh.get("https://x.test/2", (None, {}))[1].get("source") == "indeed"),
@@ -141,6 +149,9 @@ def run():
         ("NaN-location role kept, location falls back to 'Not specified'",
          fresh.get("https://x.test/6", (None, {}))[1].get("location") == "Not specified"),
         ("NaN-title role dropped cleanly", "https://x.test/7" not in fresh),
+        ("glassdoor role tagged source=glassdoor", fresh.get("https://x.test/8", (None, {}))[1].get("source") == "glassdoor"),
+        ("google role tagged source=google", fresh.get("https://x.test/9", (None, {}))[1].get("source") == "google"),
+        ("bayt role tagged source=bayt", fresh.get("https://x.test/10", (None, {}))[1].get("source") == "bayt"),
     ]
     for label, ok in fresh_checks:
         failures += 0 if ok else 1

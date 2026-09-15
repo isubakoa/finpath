@@ -1,3 +1,9 @@
-# macOS
+# macOS Files
+
 .DS_Store
 **/.DS_Store
+
+# MD Files
+
+README.md
+**/README.md
