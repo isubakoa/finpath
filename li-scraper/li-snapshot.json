@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15T08:27:02Z",
+  "generatedAt": "2026-09-15T09:09:46Z",
   "companies": {
     "google": {
       "roles": [
@@ -769,7 +769,7 @@
           "url": "https://www.linkedin.com/jobs/view/4428254691",
           "postedDate": "2026-09-12",
           "source": "li",
-          "lastSeenAt": "2026-09-14"
+          "lastSeenAt": "2026-09-15"
         },
         {
           "title": "Creative Designer",
@@ -4532,6 +4532,14 @@
           "location": "Sydney, NSW, AU",
           "url": "https://au.indeed.com/viewjob?jk=755f9338f9ec43fd",
           "postedDate": "2026-09-14",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-15"
+        },
+        {
+          "title": "Senior Manager Data Product Delivery",
+          "location": "Sydney, NSW, AU",
+          "url": "https://au.indeed.com/viewjob?jk=a5602808d23cb7c0",
+          "postedDate": "2026-09-15",
           "source": "indeed",
           "lastSeenAt": "2026-09-15"
         }
