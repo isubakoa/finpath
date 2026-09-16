@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T21:08:54Z",
+  "generatedAt": "2026-09-16T23:52:50Z",
   "companies": {
     "google": {
       "roles": [
@@ -645,7 +645,7 @@
           "url": "https://www.linkedin.com/jobs/view/4418828634",
           "postedDate": "2026-09-14",
           "source": "li",
-          "lastSeenAt": "2026-09-15"
+          "lastSeenAt": "2026-09-16"
         },
         {
           "title": "Graduate Programme 2027: Product Owner (Technical)",
@@ -861,7 +861,7 @@
           "url": "https://es.indeed.com/viewjob?jk=a6f1cbafab934e49",
           "postedDate": "2026-09-09",
           "source": "indeed",
-          "lastSeenAt": "2026-09-15"
+          "lastSeenAt": "2026-09-16"
         },
         {
           "title": "Senior Manager, User Experience - (Quick Commerce)",
@@ -1249,7 +1249,7 @@
           "url": "https://www.linkedin.com/jobs/view/4455917023",
           "postedDate": "2026-09-09",
           "source": "li",
-          "lastSeenAt": "2026-09-14"
+          "lastSeenAt": "2026-09-16"
         },
         {
           "title": "Senior Product Manager, Selection, JP Books",
@@ -1865,7 +1865,7 @@
           "url": "https://www.linkedin.com/jobs/view/4408039076",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-14"
+          "lastSeenAt": "2026-09-16"
         }
       ]
     },
@@ -3022,6 +3022,14 @@
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-16"
+        },
+        {
+          "title": "[Coupang Pay] Staff Product Designer (FinTech UX)",
+          "location": "11, KR",
+          "url": "https://kr.indeed.com/viewjob?jk=b8850cd08661265e",
+          "postedDate": "2026-09-15",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-16"
         }
       ]
     },
@@ -3885,7 +3893,7 @@
           "url": "https://www.linkedin.com/jobs/view/4455974787",
           "postedDate": "2026-09-09",
           "source": "li",
-          "lastSeenAt": "2026-09-12"
+          "lastSeenAt": "2026-09-16"
         },
         {
           "title": "Product Designer - MAI Health",
@@ -3893,7 +3901,7 @@
           "url": "https://www.linkedin.com/jobs/view/4455742170",
           "postedDate": "2026-09-08",
           "source": "li",
-          "lastSeenAt": "2026-09-14"
+          "lastSeenAt": "2026-09-16"
         },
         {
           "title": "Strategic Account Technology Strategist",
@@ -4005,7 +4013,7 @@
           "url": "https://malaysia.indeed.com/viewjob?jk=2e7b4bdc3f3db4a1",
           "postedDate": "2026-07-27",
           "source": "indeed",
-          "lastSeenAt": "2026-09-14"
+          "lastSeenAt": "2026-09-16"
         },
         {
           "title": "Product Strategist",
@@ -5277,7 +5285,7 @@
           "url": "https://au.indeed.com/viewjob?jk=88a7ad45549f63cc",
           "postedDate": "2026-09-10",
           "source": "indeed",
-          "lastSeenAt": "2026-09-14"
+          "lastSeenAt": "2026-09-16"
         },
         {
           "title": "Senior Product Manager - CommSee 2.0",
@@ -7862,6 +7870,14 @@
           "postedDate": "2026-09-03",
           "source": "li",
           "lastSeenAt": "2026-09-12"
+        },
+        {
+          "title": "UX Designer - 12 month FTC",
+          "location": "London, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=563f03cca6e6a6f2",
+          "postedDate": "2026-09-16",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-16"
         }
       ]
     },
