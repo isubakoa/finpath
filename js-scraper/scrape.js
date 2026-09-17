@@ -318,19 +318,35 @@ const COMPANIES = [
     waitForSelector: 'a[href*="/careers/job/"]',
     titleSelector: '[class^="title-"]',
   },
+  // deutsche-telekom removed 2026-09-17: careers.telekom.com turned out to
+  // have its own first-party JSON search API (api/jobs-proxy/search), found
+  // via real browser network inspection — genuinely a better source than this
+  // scraper (fresher, no browser overhead, and it happens to also cover
+  // T-Systems' own postings from the same combined index). Now wired directly
+  // into check.php as the `telekom` adapter type; see php-ftp/README.md.
   {
-    slug: "deutsche-telekom",
-    // ATS confirmed as Eightfold AI (2026-09 research) — careers.telekom.com/en,
-    // evidenced by an embedded telekom-growthhub.eightfold.ai reference. Unlike
-    // the other Eightfold sites in this file, job URLs here follow a
-    // "/en/jobs/<slug>-<numeric-id>" pattern rather than "/careers/job/<id>" —
-    // a differently-configured Eightfold deployment. titleSelector borrowed
-    // from NAB/BNZ/Netflix's instance on the same unverified assumption noted
-    // there — check the Actions log after the first real run.
-    urls: ["https://careers.telekom.com/en/jobs?search=Design"],
-    linkPattern: /\/en\/jobs\/[a-z0-9-]+-\d{6,}$/i,
-    waitForSelector: 'a[href*="/en/jobs/"]',
-    titleSelector: '[class^="title-"]',
+    slug: "meta",
+    // metacareers.com (www.metacareers.com/jobs) previously looked
+    // unreachable by any automated method — direct fetches got HTTP 429
+    // (rate-limited) on every attempt across several passes, and the
+    // working theory was that this was infrastructure-level bot-blocking
+    // that would likely defeat a headless scraper too. That theory turned
+    // out to be wrong: a real browser (2026-09-17) loads the page and its
+    // full "697 Items" results with zero issues — the 429s were specific to
+    // the plain-fetch method used in earlier passes, not to automation in
+    // general. The page itself is a heavy internal Facebook/Comet GraphQL
+    // app (rotating doc_ids, an `lsd` CSRF token minted per page-load) —
+    // genuinely not a candidate for a direct check.php adapter, unlike
+    // Deutsche Telekom/Microsoft above — but the rendered DOM is completely
+    // ordinary: real `<a href="/profile/job_details/<id>">` links, each
+    // wrapping a plain `<h3>` with the job title (Meta's own class names
+    // on these elements are auto-generated atomic CSS, e.g. "x1i10hfl...",
+    // and would be too unstable to select against directly — `h3` inside
+    // the link is what's actually stable here).
+    urls: ["https://www.metacareers.com/jobs?q=design"],
+    linkPattern: /\/profile\/job_details\/\d+/,
+    waitForSelector: 'a[href*="/profile/job_details/"]',
+    titleSelector: "h3",
   },
   // Still need a confirmed pattern (see README "Companies not yet wired up"):
   // wefox — its main careers page (careers.wefox.com) is currently broken/
