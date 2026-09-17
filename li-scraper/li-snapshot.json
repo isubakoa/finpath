@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T08:41:31Z",
+  "generatedAt": "2026-09-17T14:28:06Z",
   "companies": {
     "google": {
       "roles": [
@@ -297,7 +297,7 @@
           "url": "https://ch.indeed.com/viewjob?jk=3440184140b4287b",
           "postedDate": "2026-09-14",
           "source": "indeed",
-          "lastSeenAt": "2026-09-15"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "CMF Execution Designer",
@@ -321,7 +321,7 @@
           "url": "https://tw.indeed.com/viewjob?jk=d3407631c368a2aa",
           "postedDate": "2026-09-15",
           "source": "indeed",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Senior Marketing Manager, AI Go-To-Market, JAPAC",
@@ -573,7 +573,7 @@
           "url": "https://www.linkedin.com/jobs/view/4418844131",
           "postedDate": "2026-09-12",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Graduate Programme 2027: Product Owner (UX)",
@@ -716,6 +716,22 @@
           "location": "London Area, United Kingdom",
           "url": "https://www.linkedin.com/jobs/view/4465538072",
           "postedDate": "2026-09-15",
+          "source": "li",
+          "lastSeenAt": "2026-09-17"
+        },
+        {
+          "title": "Product Designer (Platform)",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4423948907",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-17"
+        },
+        {
+          "title": "Product Designer",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/3940826947",
+          "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-17"
         }
@@ -866,6 +882,30 @@
           "postedDate": "2026-09-06",
           "source": "indeed",
           "lastSeenAt": "2026-09-16"
+        },
+        {
+          "title": "Consultant(e) Junior Designer de services et produits digitaux F/H",
+          "location": "Paris, \u00cele-de-France, France",
+          "url": "https://www.linkedin.com/jobs/view/4467541595",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-17"
+        },
+        {
+          "title": "Consultant(e) Junior Designer de services et produits digitaux F/H",
+          "location": "Paris, A8, FR",
+          "url": "https://fr.indeed.com/viewjob?jk=e0e0bbdf4ff4fde2",
+          "postedDate": "2026-09-17",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-17"
+        },
+        {
+          "title": "Communications and Design Senior Consultant - People Consulting",
+          "location": "Sydney, NSW, AU",
+          "url": "https://au.indeed.com/viewjob?jk=c9bd2254b2122f22",
+          "postedDate": "2026-09-15",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-17"
         }
       ]
     },
@@ -1105,7 +1145,7 @@
           "url": "https://www.linkedin.com/jobs/view/4455791900",
           "postedDate": "2026-09-09",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "ICT Design Engineer, EMEA",
@@ -1457,7 +1497,7 @@
           "url": "https://ie.indeed.com/viewjob?jk=e2d34f78a863af46",
           "postedDate": "2026-09-15",
           "source": "indeed",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Sr. Materials Manager, NPI Product Operations",
@@ -1472,6 +1512,22 @@
           "location": "Sydney, New South Wales, Australia",
           "url": "https://www.linkedin.com/jobs/view/4458735701",
           "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-17"
+        },
+        {
+          "title": "Designer (Event Promotion and Exhibition)",
+          "location": "KOW, HK",
+          "url": "https://hk.indeed.com/viewjob?jk=a45851b80ca2c963",
+          "postedDate": "2026-09-17",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-17"
+        },
+        {
+          "title": "UX Designer, International Seller Services",
+          "location": "London, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4467243228",
+          "postedDate": "2026-09-14",
           "source": "li",
           "lastSeenAt": "2026-09-17"
         }
@@ -2317,7 +2373,7 @@
           "url": "https://dk.indeed.com/viewjob?jk=b4178ed9511d524d",
           "postedDate": "2026-09-16",
           "source": "indeed",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         }
       ]
     },
@@ -2793,7 +2849,7 @@
           "url": "https://www.linkedin.com/jobs/view/4463486837",
           "postedDate": "2026-09-10",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Senior UI/UX Designer",
@@ -3737,7 +3793,7 @@
           "url": "https://www.linkedin.com/jobs/view/4464343869",
           "postedDate": "2026-09-07",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Head of Product Management and UX (f/m/d)",
@@ -3937,6 +3993,14 @@
           "url": "https://www.linkedin.com/jobs/view/4466887912",
           "postedDate": null,
           "source": "li",
+          "lastSeenAt": "2026-09-17"
+        },
+        {
+          "title": "Robotics Senior Mechanical Designer",
+          "location": "Sesto San Giovanni, LOM, IT",
+          "url": "https://it.indeed.com/viewjob?jk=68bbe319968140b7",
+          "postedDate": "2026-09-16",
+          "source": "indeed",
           "lastSeenAt": "2026-09-17"
         }
       ]
@@ -5073,7 +5137,7 @@
           "url": "https://www.linkedin.com/jobs/view/4460925789",
           "postedDate": "2026-09-15",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Senior Product Designer, Omnicommerce",
@@ -5269,7 +5333,7 @@
           "url": "https://www.linkedin.com/jobs/view/4456166611",
           "postedDate": "2026-09-15",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         }
       ]
     },
@@ -5510,6 +5574,14 @@
           "postedDate": "2026-09-17",
           "source": "indeed",
           "lastSeenAt": "2026-09-17"
+        },
+        {
+          "title": "Senior Product Designer",
+          "location": "Eveleigh, New South Wales, Australia",
+          "url": "https://www.linkedin.com/jobs/view/4467174815",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-17"
         }
       ]
     },
@@ -5521,6 +5593,14 @@
           "url": "https://www.linkedin.com/jobs/view/4464312371",
           "postedDate": "2026-09-07",
           "source": "li",
+          "lastSeenAt": "2026-09-17"
+        },
+        {
+          "title": "Design Operations Coordinator",
+          "location": "Melbourne, VIC, AU",
+          "url": "https://au.indeed.com/viewjob?jk=0351e3a20261352b",
+          "postedDate": "2026-09-17",
+          "source": "indeed",
           "lastSeenAt": "2026-09-17"
         }
       ]
@@ -6141,7 +6221,7 @@
           "url": "https://www.linkedin.com/jobs/view/4402629247",
           "postedDate": "2026-09-12",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Mobile Design Engineer",
@@ -6149,7 +6229,7 @@
           "url": "https://www.linkedin.com/jobs/view/4402627251",
           "postedDate": "2026-09-13",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Mobile Design Engineer",
@@ -6249,7 +6329,7 @@
           "url": "https://www.linkedin.com/jobs/view/4465871022",
           "postedDate": "2026-09-10",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Senior Product Designer - AVP (12-mth contract)",
@@ -6295,9 +6375,9 @@
           "title": "Product Designer - Corporate Lab",
           "location": "Singapore, Singapore",
           "url": "https://www.linkedin.com/jobs/view/4432244144",
-          "postedDate": null,
+          "postedDate": "2026-09-16",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Product Owner - Digital Transformation (Regional Loan Origination)",
@@ -6469,7 +6549,7 @@
           "url": "https://nl.indeed.com/viewjob?jk=e0040f464cefe902",
           "postedDate": "2026-09-16",
           "source": "indeed",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Product Owner - Fixed Income",
@@ -6598,6 +6678,22 @@
           "postedDate": "2026-09-10",
           "source": "indeed",
           "lastSeenAt": "2026-09-13"
+        },
+        {
+          "title": "Senior Product Designer \u2013 Design Systems",
+          "location": "Carlton, Victoria, Australia",
+          "url": "https://www.linkedin.com/jobs/view/4468395802",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-17"
+        },
+        {
+          "title": "Senior Product Designer \u2013 Design Systems",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4468604048",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-17"
         }
       ]
     },
@@ -7085,15 +7181,15 @@
           "url": "https://www.linkedin.com/jobs/view/4442841678",
           "postedDate": "2026-09-08",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Senior Product Designer - Sell Online",
           "location": "Berlin, Berlin, Germany",
           "url": "https://www.linkedin.com/jobs/view/4446657059",
-          "postedDate": null,
+          "postedDate": "2026-09-16",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         }
       ]
     },
@@ -7201,7 +7297,7 @@
           "url": "https://www.linkedin.com/jobs/view/4418267674",
           "postedDate": "2026-09-11",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         }
       ]
     },
@@ -7578,6 +7674,14 @@
           "postedDate": "2026-09-13",
           "source": "li",
           "lastSeenAt": "2026-09-16"
+        },
+        {
+          "title": "Service Coordinator / Functional Designer",
+          "location": "Brussels, BRU, BE",
+          "url": "https://be.indeed.com/viewjob?jk=2c2c667a9549f590",
+          "postedDate": "2026-09-16",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-17"
         }
       ]
     },
@@ -7757,7 +7861,7 @@
           "url": "https://www.linkedin.com/jobs/view/4355958458",
           "postedDate": "2026-09-13",
           "source": "li",
-          "lastSeenAt": "2026-09-16"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "Design Director",
@@ -8106,6 +8210,14 @@
           "postedDate": "2026-09-17",
           "source": "indeed",
           "lastSeenAt": "2026-09-17"
+        },
+        {
+          "title": "Senior Solution Designer",
+          "location": "Kuala Lumpur, M14, MY",
+          "url": "https://malaysia.indeed.com/viewjob?jk=854e260373fa4a0b",
+          "postedDate": "2026-09-17",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-17"
         }
       ]
     },
@@ -8241,7 +8353,7 @@
           "url": "https://www.linkedin.com/jobs/view/4466396906",
           "postedDate": "2026-09-11",
           "source": "li",
-          "lastSeenAt": "2026-09-15"
+          "lastSeenAt": "2026-09-17"
         },
         {
           "title": "JAG - Assistant Designer",
@@ -8508,6 +8620,18 @@
           "location": "Perth, Western Australia, Australia",
           "url": "https://www.linkedin.com/jobs/view/4466583085",
           "postedDate": "2026-09-15",
+          "source": "li",
+          "lastSeenAt": "2026-09-17"
+        }
+      ]
+    },
+    "singapore-airlines": {
+      "roles": [
+        {
+          "title": "Customer Experience - Senior Service Designer",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4467190943",
+          "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-17"
         }
