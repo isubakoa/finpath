@@ -490,13 +490,42 @@ def _clean_str(value):
     return str(value)
 
 
-def build_fresh_roles(rows, index, today_iso, debug=False):
+def _append_measurement_csv(path, rows):
+    """PHASE 0 MEASUREMENT ONLY — see PHASE0_MEASUREMENT.md. Appends rows to
+    a CSV, writing the header once if the file doesn't already exist. Purely
+    a side effect (file I/O); never touches anything build_fresh_roles()
+    returns or how it decides what to keep."""
+    import csv
+    file_exists = os.path.exists(path)
+    with open(path, "a", newline="") as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow([
+                "date", "source", "employer", "title", "location",
+                "matched_slug", "is_role_relevant", "fit_tier", "job_url",
+            ])
+        writer.writerows(rows)
+
+
+def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None):
     """Filters this run's raw results down to real matches, keyed by URL.
     rows: iterable of (source, row) — source is "li" or "indeed", tagged
     onto the kept role so the frontend badge shows which site actually
-    found it."""
+    found it.
+
+    measure_csv_path: PHASE 0 MEASUREMENT ONLY, temporary — see
+    PHASE0_MEASUREMENT.md. When set (via the MEASURE_UNMATCHED_CSV env var
+    in main()), appends one row per raw result seen this run — matched or
+    not — to the given CSV. This is purely additive logging: left unset (the
+    default, and the only mode production runs use today), this function's
+    filtering decisions and return value are byte-for-byte identical to
+    before this parameter existed. Delete this parameter, _append_measurement_csv(),
+    and the MEASURE_UNMATCHED_CSV wiring in main() once Phase 0's numbers
+    have been collected and reported — see PHASE0_MEASUREMENT.md for the
+    removal checklist."""
     fresh = {}  # url -> (slug, role dict)
     kept = dropped_company = dropped_title = duplicate = 0
+    measure_rows = [] if measure_csv_path else None
 
     for source, row in rows:
         url = _clean_str(row.get("job_url"))
@@ -505,14 +534,22 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
             continue
 
         employer = _clean_str(row.get("company"))
+        title = _clean_str(row.get("title"))
         slug = match_company(employer, index)
+
+        if measure_rows is not None:
+            measure_rows.append([
+                today_iso, source, employer, title,
+                _clean_str(row.get("location")),
+                slug or "", is_role_relevant(title), fit_tier(title), url,
+            ])
+
         if not slug:
             dropped_company += 1
             if debug:
                 print(f"[match] no company match: {employer!r} — {row.get('title')!r}", file=sys.stderr)
             continue
 
-        title = _clean_str(row.get("title"))
         if not is_role_relevant(title):
             dropped_title += 1
             if debug:
@@ -528,6 +565,9 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
             "source": source,
             "lastSeenAt": today_iso,
         })
+
+    if measure_rows is not None:
+        _append_measurement_csv(measure_csv_path, measure_rows)
 
     if debug:
         print(
@@ -635,7 +675,12 @@ def main():
     print(f"[scrape] {len(rows)} raw results this run ({counts_str})")
 
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    fresh_roles = build_fresh_roles(rows, index, today_iso, debug=debug)
+    # PHASE 0 MEASUREMENT ONLY, temporary — see PHASE0_MEASUREMENT.md.
+    # Unset in normal operation; the workflow sets it for the duration of the
+    # measurement window only. Leaving this env var unset (the default)
+    # means build_fresh_roles() behaves exactly as it did before this line.
+    measure_csv_path = os.environ.get("MEASURE_UNMATCHED_CSV") or None
+    fresh_roles = build_fresh_roles(rows, index, today_iso, debug=debug, measure_csv_path=measure_csv_path)
     existing = load_existing_snapshot()
     snapshot = merge_and_prune(existing, fresh_roles, today_iso, debug=debug)
 
