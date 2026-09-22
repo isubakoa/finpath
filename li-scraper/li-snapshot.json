@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T06:11:40Z",
+  "generatedAt": "2026-09-22T11:06:02Z",
   "companies": {
     "google": {
       "roles": [
@@ -305,7 +305,7 @@
           "url": "https://www.linkedin.com/jobs/view/4466512744",
           "postedDate": "2026-09-15",
           "source": "li",
-          "lastSeenAt": "2026-09-21"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "Head of Strategy and Operations, xWS gSO",
@@ -653,7 +653,7 @@
           "url": "https://www.linkedin.com/jobs/view/4418844131",
           "postedDate": "2026-09-12",
           "source": "li",
-          "lastSeenAt": "2026-09-21"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "Graduate Programme 2027: Product Owner (UX)",
@@ -661,7 +661,7 @@
           "url": "https://www.linkedin.com/jobs/view/4418842250",
           "postedDate": "2026-09-12",
           "source": "li",
-          "lastSeenAt": "2026-09-20"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "Product Marketing Manager (Loyalty)",
@@ -691,9 +691,9 @@
           "title": "Internship Programme 2027: Product Owner (UX)",
           "location": "Not specified",
           "url": "https://www.linkedin.com/jobs/view/4418825734",
-          "postedDate": null,
+          "postedDate": "2026-09-13",
           "source": "li",
-          "lastSeenAt": "2026-09-13"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "Product Owner (Technical)",
@@ -1014,6 +1014,22 @@
           "postedDate": "2026-09-12",
           "source": "li",
           "lastSeenAt": "2026-09-22"
+        },
+        {
+          "title": "Internship Programme 2027: Product Owner (UX)",
+          "location": "Porto, Porto, Portugal",
+          "url": "https://www.linkedin.com/jobs/view/4418835524",
+          "postedDate": "2026-09-13",
+          "source": "li",
+          "lastSeenAt": "2026-09-22"
+        },
+        {
+          "title": "Internship Programme 2027: Product Owner (UX)",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4418823867",
+          "postedDate": "2026-09-12",
+          "source": "li",
+          "lastSeenAt": "2026-09-22"
         }
       ]
     },
@@ -1257,7 +1273,7 @@
           "url": "https://www.linkedin.com/jobs/view/4468143600",
           "postedDate": null,
           "source": "li",
-          "lastSeenAt": "2026-09-21"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "UKI People Consulting - Organisation Design, Manager",
@@ -4053,7 +4069,7 @@
           "url": "https://www.linkedin.com/jobs/view/4467476182",
           "postedDate": "2026-09-15",
           "source": "li",
-          "lastSeenAt": "2026-09-21"
+          "lastSeenAt": "2026-09-22"
         }
       ]
     },
@@ -4309,7 +4325,7 @@
           "url": "https://www.linkedin.com/jobs/view/4457943786",
           "postedDate": "2026-09-17",
           "source": "li",
-          "lastSeenAt": "2026-09-19"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "Principal Product Manager - High Volume Lifecycle",
@@ -4573,7 +4589,7 @@
           "url": "https://www.linkedin.com/jobs/view/4458210195",
           "postedDate": "2026-09-14",
           "source": "li",
-          "lastSeenAt": "2026-09-21"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "UX Designer (H/F)",
@@ -4691,7 +4707,7 @@
           "title": "UI/UX Intern (October 2026 Intake)",
           "location": "Time, Rogaland, Norway",
           "url": "https://www.linkedin.com/jobs/view/4467370520",
-          "postedDate": null,
+          "postedDate": "2026-09-21",
           "source": "li",
           "lastSeenAt": "2026-09-22"
         }
@@ -5446,6 +5462,14 @@
           "postedDate": "2026-09-11",
           "source": "li",
           "lastSeenAt": "2026-09-20"
+        },
+        {
+          "title": "Digital Strategy, Consultant",
+          "location": "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4468505566",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-22"
         }
       ]
     },
@@ -8478,6 +8502,14 @@
           "postedDate": "2026-09-19",
           "source": "li",
           "lastSeenAt": "2026-09-22"
+        },
+        {
+          "title": "Product & AI Engagement Trainee",
+          "location": "Not specified",
+          "url": "https://www.linkedin.com/jobs/view/4414710793",
+          "postedDate": "2026-09-20",
+          "source": "li",
+          "lastSeenAt": "2026-09-22"
         }
       ]
     },
@@ -9093,7 +9125,7 @@
           "url": "https://www.linkedin.com/jobs/view/4465569845",
           "postedDate": "2026-09-15",
           "source": "li",
-          "lastSeenAt": "2026-09-19"
+          "lastSeenAt": "2026-09-22"
         }
       ]
     },
@@ -9282,6 +9314,14 @@
           "postedDate": "2026-09-11",
           "source": "li",
           "lastSeenAt": "2026-09-21"
+        },
+        {
+          "title": "Demand Generation Marketing Manager - Europe",
+          "location": "Amsterdam, NH, NL",
+          "url": "https://nl.indeed.com/viewjob?jk=400c1d1c3512159e",
+          "postedDate": "2026-09-21",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-22"
         }
       ]
     },
@@ -9353,7 +9393,7 @@
           "url": "https://www.linkedin.com/jobs/view/4467714380",
           "postedDate": "2026-09-15",
           "source": "li",
-          "lastSeenAt": "2026-09-17"
+          "lastSeenAt": "2026-09-22"
         }
       ]
     },
@@ -9617,7 +9657,7 @@
           "url": "https://www.linkedin.com/jobs/view/4448735413",
           "postedDate": "2026-09-19",
           "source": "li",
-          "lastSeenAt": "2026-09-21"
+          "lastSeenAt": "2026-09-22"
         }
       ]
     },
@@ -9893,7 +9933,7 @@
           "url": "https://www.linkedin.com/jobs/view/4434328821",
           "postedDate": "2026-09-18",
           "source": "li",
-          "lastSeenAt": "2026-09-20"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "\u30b9\u30c8\u30e9\u30c6\u30b8\u30c3\u30af\u30c7\u30b6\u30a4\u30ca\u30fc / Strategic Designer_\u7ba1\u7406\u8077_Song",
@@ -10061,7 +10101,7 @@
           "url": "https://www.linkedin.com/jobs/view/4458697045",
           "postedDate": "2026-09-18",
           "source": "li",
-          "lastSeenAt": "2026-09-21"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "UX Design Director Head of Interaction",
@@ -10518,6 +10558,14 @@
           "postedDate": null,
           "source": "li",
           "lastSeenAt": "2026-09-22"
+        },
+        {
+          "title": "Master Thesis: Industrial Design",
+          "location": "Stockholm, Stockholm County, Sweden",
+          "url": "https://www.linkedin.com/jobs/view/4468721403",
+          "postedDate": null,
+          "source": "li",
+          "lastSeenAt": "2026-09-22"
         }
       ]
     },
@@ -10629,7 +10677,7 @@
           "url": "https://www.linkedin.com/jobs/view/4459603241",
           "postedDate": "2026-09-17",
           "source": "li",
-          "lastSeenAt": "2026-09-19"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "Senior Product Manager - BKNG Adtech",
@@ -10850,6 +10898,22 @@
           "postedDate": "2026-09-18",
           "source": "indeed",
           "lastSeenAt": "2026-09-22"
+        },
+        {
+          "title": "UX Researcher - Manchester, UK",
+          "location": "Manchester, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=5c0ac9e70574711b",
+          "postedDate": "2026-09-18",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-22"
+        },
+        {
+          "title": "UX Researcher - Manchester, UK",
+          "location": "Manchester, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=95f23f8b1d54c5ef",
+          "postedDate": "2026-09-18",
+          "source": "indeed",
+          "lastSeenAt": "2026-09-22"
         }
       ]
     },
@@ -10877,15 +10941,15 @@
           "url": "https://www.linkedin.com/jobs/view/4457793171",
           "postedDate": "2026-09-18",
           "source": "li",
-          "lastSeenAt": "2026-09-19"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "User Research Professional - Employee Corporate Units",
           "location": "London, England, UK",
           "url": "https://www.linkedin.com/jobs/view/4466930312",
-          "postedDate": null,
+          "postedDate": "2026-09-18",
           "source": "li",
-          "lastSeenAt": "2026-09-19"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "User Research (Discovery) Specialist",
@@ -10901,7 +10965,7 @@
           "url": "https://uk.indeed.com/viewjob?jk=7f9cd628997e8759",
           "postedDate": "2026-09-18",
           "source": "indeed",
-          "lastSeenAt": "2026-09-21"
+          "lastSeenAt": "2026-09-22"
         },
         {
           "title": "Product Experience Design Specialist",
@@ -10909,7 +10973,7 @@
           "url": "https://uk.indeed.com/viewjob?jk=3b16344c57bba162",
           "postedDate": "2026-09-18",
           "source": "indeed",
-          "lastSeenAt": "2026-09-21"
+          "lastSeenAt": "2026-09-22"
         }
       ]
     },
