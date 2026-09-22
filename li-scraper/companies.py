@@ -279,6 +279,37 @@ COMPANIES = [
     {"name": "Lufthansa", "slug": "lufthansa"},
     {"name": "Air France", "slug": "air-france"},
     {"name": "Singapore Airlines", "slug": "singapore-airlines"},
+    # -- Batch: enterprise/industrial + product-tech companies (Sep 2026) --
+    {"name": "Siemens", "slug": "siemens"},
+    {"name": "Bosch", "slug": "bosch"},
+    {"name": "Shopify", "slug": "shopify"},
+    {"name": "Celonis", "slug": "celonis"},
+    {"name": "Personio", "slug": "personio"},
+    {"name": "Miro", "slug": "miro"},
+    {"name": "GitLab", "slug": "gitlab"},
+    {"name": "Elastic", "slug": "elastic"},
+    {"name": "Dynatrace", "slug": "dynatrace"},
+    {"name": "GetYourGuide", "slug": "getyourguide"},
+    {"name": "HelloFresh", "slug": "hellofresh"},
+    {"name": "Trivago", "slug": "trivago"},
+    {"name": "SoundCloud", "slug": "soundcloud"},
+    {"name": "Datadog", "slug": "datadog"},
+    {"name": "Cloudflare", "slug": "cloudflare"},
+    {"name": "MongoDB", "slug": "mongodb"},
+    # "Volvo Cars" (passenger vehicles) vs "Volvo Group" (trucks/buses/
+    # construction equipment) are separate, unrelated companies since a 1999
+    # ownership split -- but match.py's containment check is bidirectional,
+    # so a bare "Volvo" or "Volvo Group" posting would currently misattribute
+    # here (same shape of bug as the documented Boost/Boost Bank and
+    # Emirates/du cases -- see match.py's find_collisions() docstring).
+    # Accepted for now: Volvo Group is trucks/industrial and very unlikely to
+    # post under this scraper's Product/Design/UX title list. Revisit if a
+    # real Volvo Group posting ever shows up under this slug.
+    {"name": "Volvo Cars", "slug": "volvo-cars"},
+    {"name": "Mercedes-Benz", "slug": "mercedes-benz"},
+    {"name": "BMW Group", "slug": "bmw-group"},
+    {"name": "Airbus", "slug": "airbus"},
+    {"name": "Philips", "slug": "philips"},
 ]
 
 # Manual aliases for companies whose real LI employer name doesn't
