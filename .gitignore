@@ -3,7 +3,11 @@
 .DS_Store
 **/.DS_Store
 
+
 # MD Files
 
 README.md
 **/README.md
+
+CHANGES.md
+**/CHANGES.md

@@ -187,6 +187,38 @@ def fit_tier(title):
     return sen if TIER_RANK[sen] <= TIER_RANK[dom] else dom
 
 
+def open_market_gate(title, employer, is_agency_fn):
+    """Phase 2.4 — single, named gate deciding whether an unmatched-company
+    posting (already confirmed to be in an OPEN_MARKET_LOCATIONS market —
+    that check happens in scrape.py, before this is even called) enters the
+    open-market feed. Kept only if ALL of:
+      - is_role_relevant(title)
+      - fit_tier(title) == "target" — deliberately the real post-1.3 two-axis
+        tier, not the old single-regex one; this gate was specifically held
+        off until 1.3 shipped for that reason. "One tier below"/"stretch"
+        never qualify for open market in v1.
+      - not agency-blocklisted (is_agency_fn(employer) is False)
+
+    A fourth criterion from the spec — not user-excluded — is a per-viewer,
+    client-side-only concept (index.html's learnedExclusions mechanism,
+    Phase 4.4's planned employer-suppression equivalent) with no
+    server-side data to check here; this function can't and doesn't
+    implement it, index.html's own frontend filtering does.
+
+    is_agency_fn: a callable, not a direct import of agencies.py — keeps
+    match.py free of any dependency on the agency list (and matches this
+    file's own "kept in its own file so it can be unit-tested in isolation"
+    design; agencies.py imports normalize_employer_name() from here, so the
+    reverse import would be circular anyway)."""
+    if not is_role_relevant(title):
+        return False
+    if fit_tier(title) != "target":
+        return False
+    if is_agency_fn(employer):
+        return False
+    return True
+
+
 # ---- 1.5: ported from index.html's CTA_SUFFIX_RE/TRAILING_LOCATION_RE/
 # ---- isUnknownLocation()/normalizeScrapedTitle() — already applied there to
 # ---- index.html's own curated openRoles (see index.html's "reused verbatim"
@@ -256,21 +288,38 @@ def _normalize_identity_text(s):
     return _MULTI_WS_RE.sub(" ", s).strip().lower()
 
 
-def role_identity(slug, title, location):
+def normalize_employer_name(name):
+    """Public wrapper around _normalize() (below, company-name matching) for
+    callers outside this file that need the same normalized-employer form
+    company matching itself uses, without reaching into a leading-
+    underscore "private" helper directly. Used by agencies.py (Phase 2.3's
+    blocklist check) and scrape.py's open-market identity building (Phase
+    2.2) — an open-market posting has no resolved company slug the way a
+    tracked one does, so this is what role_identity() below gets passed
+    instead for those. Defined here rather than next to _normalize() itself
+    since it's conceptually part of this "public surface for callers
+    outside match.py" section."""
+    return _normalize(name)
+
+
+def role_identity(employer_key, title, location):
     """The (employer, title, location) key build_fresh_roles() dedupes
     postings on, regardless of which site found them or what URL they're
     at — see scrape.py's SOURCE_PRECEDENCE for how a conflict between two
-    sites reporting "the same" identity is resolved. Uses the already-
-    resolved company slug rather than re-normalizing the raw employer
-    string, since that's already the more canonical, collision-checked form
-    (see find_collisions() below). Known, accepted limitation: two genuinely
-    different open reqs at the same company with the literal same title and
-    location (not unheard of for a large employer running two identical-
-    titled searches) collapse into one row here — the same class of
-    trade-off as the Boost/Volvo company-name collisions documented further
-    down, judged acceptable given Phase 0 measured the real cross-site
-    duplicate rate at low single digits."""
-    return (slug, _normalize_identity_text(title), _normalize_identity_text(location))
+    sites reporting "the same" identity is resolved. employer_key is
+    either a tracked company's already-resolved slug (the common case —
+    more canonical and collision-checked than re-normalizing the raw
+    employer string, see find_collisions() below) or, for an unmatched
+    open-market posting (Phase 2.2, which has no slug to resolve to),
+    normalize_employer_name()'s normalized form of the raw employer string
+    itself. Known, accepted limitation: two genuinely different open reqs
+    at the same company with the literal same title and location (not
+    unheard of for a large employer running two identical-titled searches)
+    collapse into one row here — the same class of trade-off as the
+    Boost/Volvo company-name collisions documented further down, judged
+    acceptable given Phase 0 measured the real cross-site duplicate rate at
+    low single digits."""
+    return (employer_key, _normalize_identity_text(title), _normalize_identity_text(location))
 
 
 # ---- Company-name matching ----

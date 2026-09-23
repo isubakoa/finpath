@@ -4,17 +4,26 @@ FinPath — LI + Indeed + Glassdoor + Google + Bayt coverage via JobSpy
 
 Runs keyword searches against five of JobSpy's eight supported sites (your
 trimmed Product + Design/UX title list, across your target-region list — see
-SEARCH_TERMS/LOCATIONS below), keeps only the results that are (a) from one
-of the 210 tracked companies — matched by name, see match.py — and (b) pass
-the exact same isRoleRelevant() title filter index.html itself applies.
-Writes the result to li-snapshot.json in the same
-`{ companies: { <slug>: { roles: [...] } } }` shape check.php already
-expects from js-scraper's snapshot.json — each role carries its own
-`source` ("li", "indeed", "glassdoor", "google", or "bayt") so the frontend
-can badge it correctly. ZipRecruiter (US/Canada only — a poor fit for a
-mostly non-US target-region list), Naukri (India) and BDJobs (Bangladesh)
-were deliberately left out — see README.md's "Widening scope further" for
-the reasoning behind every site, included or not.
+SEARCH_TERMS/LOCATIONS below). Writes li-snapshot.json with two top-level
+sections:
+  - `companies: { <slug>: { roles: [...] } }` — results (a) from one of the
+    231 tracked companies — matched by name, see match.py — that (b) pass
+    the exact same isRoleRelevant() title filter index.html itself applies.
+    This is the original shape check.php has always expected from
+    js-scraper's snapshot.json, byte-for-byte unchanged by Phase 2.
+  - `openMarket: { roles: [...] }` (Phase 2, new) — a flat, no-slug list of
+    postings that matched NO tracked company but are still worth surfacing:
+    the posting's location is one of OPEN_MARKET_LOCATIONS (Singapore/
+    Netherlands today), and it clears open_market_gate() (relevant, real
+    target-tier fit, not on the agencies.py blocklist) — see
+    build_fresh_roles()/open_market_gate(). Sorted newest-first. Each role
+    in EITHER section carries its own `source` ("li", "indeed", "glassdoor",
+    "google", or "bayt") plus a `sources` array (Phase 1.4) for cross-site
+    corroboration, so the frontend can badge it correctly.
+ZipRecruiter (US/Canada only — a poor fit for a mostly non-US target-region
+list), Naukri (India) and BDJobs (Bangladesh) were deliberately left out —
+see README.md's "Widening scope further" for the reasoning behind every
+site, included or not.
 
 *** IMPORTANT — READ THIS BEFORE CHANGING TERMS/LOCATIONS/SCHEDULE ***
 38 title phrases x 25 locations = 950 (term, location) combinations
@@ -71,6 +80,7 @@ import sys
 import time
 from datetime import datetime, timedelta, timezone
 
+from agencies import is_agency
 from companies import COMPANIES, ALIASES
 from match import (
     build_index,
@@ -78,7 +88,9 @@ from match import (
     is_role_relevant,
     fit_tier,
     normalize_scraped_title,
+    normalize_employer_name,
     role_identity,
+    open_market_gate,
 )
 
 # ---- 1.4: cross-site dedupe source precedence — when the same normalized
@@ -214,6 +226,45 @@ LOCATIONS = [
     "Abu Dhabi, United Arab Emirates",
 ]
 
+# ---- Phase 2.1: open-market feed markets. An unmatched-company posting
+# ---- (no tracked-company match) only ever gets a second look for the
+# ---- open-market feed when its location is one of these — everywhere else,
+# ---- an unmatched posting is dropped exactly as it always was. Asserted
+# ---- against LOCATIONS at import time rather than trusting the two lists
+# ---- stay in sync by hand: OPEN_MARKET_LOCATIONS being a typo'd or stale
+# ---- subset would silently mean this location's combos never even get
+# ---- OFFERED to open_market_gate(), a much quieter failure than an import-
+# ---- time crash.
+OPEN_MARKET_LOCATIONS = ["Singapore", "Netherlands"]
+assert all(loc in LOCATIONS for loc in OPEN_MARKET_LOCATIONS), (
+    "OPEN_MARKET_LOCATIONS entries must all exist in LOCATIONS"
+)
+
+
+def _open_market_for(location):
+    """Which OPEN_MARKET_LOCATIONS entry (if any) a raw scraped location
+    string indicates — substring match, not exact equality, since a real
+    result's location is almost always more specific than the bare country
+    name used to search for it (e.g. "Amsterdam, North Holland,
+    Netherlands", not literally "Netherlands" — see the Phase 0 measurement
+    data this was checked against). Also recognizes a bare two-letter
+    country code ("SG"/"NL") on its own, a form some sources return instead
+    of a full location string — checked by exact (not substring) match
+    since those codes are too short/generic to substring-match safely.
+    Returns the matching OPEN_MARKET_LOCATIONS entry (e.g. "Singapore") or
+    None."""
+    loc = (location or "").strip().lower()
+    if not loc:
+        return None
+    country_codes = {"sg": "Singapore", "nl": "Netherlands"}
+    if loc in country_codes and country_codes[loc] in OPEN_MARKET_LOCATIONS:
+        return country_codes[loc]
+    for market in OPEN_MARKET_LOCATIONS:
+        if market.lower() in loc:
+            return market
+    return None
+
+
 # Every LOCATIONS entry mapped to the exact country_indeed string JobSpy's
 # Indeed adapter expects (verified against JobSpy's own supported-countries
 # list — these are case-/spelling-sensitive on JobSpy's side, not something
@@ -314,9 +365,26 @@ def google_query(term, location):
     return f"{term} jobs near {location} {GOOGLE_TIME_PHRASE}"
 
 RESULTS_WANTED_PER_SEARCH = 20
+# ---- Phase 2.6: a Singapore/Netherlands combo asks for more results per
+# ---- search than the standard sweep — an open-market posting only gets
+# ---- looked at once per combo (there's no separate "look harder at SG/NL"
+# ---- pass; this rides the same per-combo requests every location gets),
+# ---- so widening the net there directly widens open-market coverage.
+# ---- "sorted by recency" from the spec is NOT implemented as a JobSpy call
+# ---- parameter — scrape_jobs() has no sort/date-ordering parameter at all
+# ---- (checked directly against JobSpy's own README before writing this;
+# ---- inventing one that doesn't exist would just crash the next live run).
+# ---- Recency ordering is applied instead where it actually matters for a
+# ---- consumer — merge_and_prune() sorts openMarket.roles[] by postedDate
+# ---- (falling back to lastSeenAt) before it's written to the snapshot.
+RESULTS_WANTED_OPEN_MARKET = 50
 HOURS_OLD = 240  # 10 days — comfortably wider than one rotation cycle (see below),
                  # so a role posted right after its combo's turn is still visible
                  # the next time that combo comes up.
+
+
+def _results_wanted_for(location):
+    return RESULTS_WANTED_OPEN_MARKET if _open_market_for(location) else RESULTS_WANTED_PER_SEARCH
 
 # Polite, but randomized rather than a flat delay — September 2026, paired
 # with the move to hourly runs (below): a perfectly uniform 8.0s gap between
@@ -398,7 +466,7 @@ def run_searches(combos, debug=False):
                 site_name=["linkedin"],
                 search_term=term,
                 location=location,
-                results_wanted=RESULTS_WANTED_PER_SEARCH,
+                results_wanted=_results_wanted_for(location),  # 2.6
                 hours_old=HOURS_OLD,
                 linkedin_fetch_description=False,
                 verbose=1 if debug else 0,
@@ -424,7 +492,7 @@ def run_searches(combos, debug=False):
                     search_term=term,
                     location=indeed_location,
                     country_indeed=indeed_country,
-                    results_wanted=RESULTS_WANTED_PER_SEARCH,
+                    results_wanted=_results_wanted_for(location),  # 2.6
                     hours_old=HOURS_OLD,
                     verbose=1 if debug else 0,
                 )
@@ -446,7 +514,7 @@ def run_searches(combos, debug=False):
                     search_term=term,
                     location=glassdoor_location,
                     country_indeed=glassdoor_country,
-                    results_wanted=RESULTS_WANTED_PER_SEARCH,
+                    results_wanted=_results_wanted_for(location),  # 2.6
                     hours_old=HOURS_OLD,
                     verbose=1 if debug else 0,
                 )
@@ -468,7 +536,7 @@ def run_searches(combos, debug=False):
             df4 = scrape_jobs(
                 site_name=["google"],
                 google_search_term=query,
-                results_wanted=RESULTS_WANTED_PER_SEARCH,
+                results_wanted=_results_wanted_for(location),  # 2.6
                 verbose=1 if debug else 0,
             )
         except Exception as e:  # noqa: BLE001 — same isolation as every other site above
@@ -564,6 +632,18 @@ def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None
     when more than one site reports the same identity) so the frontend badge
     shows which site(s) actually found it.
 
+    Returns (fresh, fresh_open_market) — two separate identity-keyed dicts,
+    same (identity -> (key, role)) shape. `fresh` is unchanged from before
+    Phase 2: tracked-company matches only, `key` is the company slug.
+    `fresh_open_market` is new (2.2): a posting that matched NO tracked
+    company, but whose location is an OPEN_MARKET_LOCATIONS market and
+    clears open_market_gate() (relevant + real target-tier fit + not
+    agency-blocklisted), keyed the same way but with `key` being
+    normalize_employer_name(employer) instead of a slug (there's no slug —
+    that's the whole point of "open market"). Every other unmatched
+    posting — wrong location, or right location but failing the gate — is
+    still just dropped, exactly as before Phase 2 existed.
+
     A URL is still required and still deduped on its own first (`duplicate`
     below) — that's a much cheaper, unambiguous check (the literal same URL
     really is the literal same JobSpy row) and catches the common case
@@ -579,8 +659,10 @@ def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None
     wiring in main() once Phase 0's numbers have been collected and
     reported — see PHASE0_MEASUREMENT.md for the removal checklist."""
     fresh = {}  # identity tuple -> (slug, role dict)
+    fresh_open_market = {}  # identity tuple -> (normalized employer key, role dict) — 2.2
     seen_urls = set()
     kept = dropped_company = dropped_title = duplicate = merged_cross_site = 0
+    kept_open_market = dropped_open_market_strict = merged_cross_site_open_market = 0
     measure_rows = [] if measure_csv_path else None
 
     for source, row in rows:
@@ -611,6 +693,40 @@ def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None
             dropped_company += 1
             if debug:
                 print(f"[match] no company match: {employer!r} — {row.get('title')!r}", file=sys.stderr)
+            # 2.2: not a tracked company — still worth a second look for the
+            # open-market feed if it's in an OPEN_MARKET_LOCATIONS market.
+            market = _open_market_for(location)
+            if market and open_market_gate(title, employer, is_agency):
+                kept_open_market_this_row = True
+            else:
+                kept_open_market_this_row = False
+                if market:
+                    dropped_open_market_strict += 1
+                    if debug:
+                        print(f"[open-market] failed strict gate: {title!r} @ {employer!r} ({market})", file=sys.stderr)
+            if not kept_open_market_this_row:
+                continue
+
+            employer_key = normalize_employer_name(employer)
+            identity = role_identity(employer_key, title, location)
+            candidate_role = {
+                "employer": employer,
+                "market": market,
+                "title": title,
+                "location": location,
+                "url": url,
+                "postedDate": normalize_posted_date(row.get("date_posted")),
+                "source": source,
+                "sources": [source],
+                "lastSeenAt": today_iso,
+            }
+            if identity in fresh_open_market:
+                merged_cross_site_open_market += 1
+                _, prior_role = fresh_open_market[identity]
+                fresh_open_market[identity] = (employer_key, _merge_role_records(prior_role, candidate_role))
+            else:
+                kept_open_market += 1
+                fresh_open_market[identity] = (employer_key, candidate_role)
             continue
 
         if not is_role_relevant(title):
@@ -649,7 +765,13 @@ def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None
             f"merged_cross_site_identities={merged_cross_site}",
             file=sys.stderr,
         )
-    return fresh
+        print(
+            f"[open-market] kept={kept_open_market} dropped_strict_gate={dropped_open_market_strict} "
+            f"merged_cross_site_identities={merged_cross_site_open_market} "
+            f"(of the {dropped_company} with no company match)",
+            file=sys.stderr,
+        )
+    return fresh, fresh_open_market
 
 
 def load_existing_snapshot():
@@ -666,67 +788,123 @@ def load_existing_snapshot():
         return {"companies": {}}
 
 
-def merge_and_prune(existing, fresh_roles, today_iso, debug=False):
-    """existing: the snapshot loaded from disk (accumulated from prior runs).
-    fresh_roles: {identity: (slug, role)} found THIS run (1.4: identity is
-    role_identity()'s normalized employer+title+location tuple, not a URL —
-    see build_fresh_roles()). Returns the merged, pruned snapshot: fresh
-    roles upsert (refreshing lastSeenAt, merging "sources" with whatever was
-    already accumulated for that identity — see _merge_role_records()),
-    everything else carries over unless it's past EXPIRY_DAYS since its own
-    lastSeenAt.
+def _merge_identity_roles(existing_items, fresh_roles, cutoff):
+    """Shared merge mechanics behind both branches of merge_and_prune()
+    (tracked-company and, as of Phase 2.5, open-market — "extended not
+    forked" per the backlog: one function doing both jobs, not a
+    copy-pasted merge_and_prune_open_market(). The two branches differ
+    enough in OUTPUT shape (tracked groups by slug into
+    {slug: {"roles": [...]}}, open-market is a flat, recency-sorted list —
+    see merge_and_prune() below) that fully sharing the grouping step too
+    wasn't worth the extra indirection; this covers everything upstream of
+    that: flattening, merging, and expiry.
 
-    Roles written before 1.4 shipped only have a singular "source"/"url",
-    no "sources" array yet — flattening existing() below backfills
-    "sources" from "source" on the fly so every role is on the new shape
-    again the first time it's touched, no separate migration needed for
-    this field specifically (li-scraper/migrate_titles.py handles the
-    still-outstanding title/location text migration — see PHASE0_MEASUREMENT.md-
-    style note in that script)."""
-    cutoff = (datetime.now(timezone.utc) - timedelta(days=EXPIRY_DAYS)).strftime("%Y-%m-%d")
+    existing_items: iterable of (key, role) pairs already extracted from
+    wherever they're grouped in the existing snapshot (key is a company
+    slug for tracked roles, normalize_employer_name(employer) for
+    open-market ones — either way, whatever role_identity() expects as its
+    first argument). fresh_roles: {identity: (key, role)} found THIS run.
 
-    # Flatten existing into the same {identity: (slug, role)} shape to merge simply.
+    Returns (kept_items, stats) — kept_items is a list of (key, role) pairs
+    (this run's fresh roles, upserted/merged via _merge_role_records(), plus
+    everything carried over that hasn't hit EXPIRY_DAYS since its own
+    lastSeenAt); stats is {"added","updated","carried_over","expired"}.
+
+    Roles written before 1.4 shipped only have a singular "source"/"url", no
+    "sources" array yet — backfilled from "source" here on the fly so every
+    role is on the new shape again the first time it's touched, no separate
+    migration needed for this field specifically (li-scraper/migrate_titles.py
+    handles the still-outstanding title/location text migration)."""
     merged = {}
-    for slug, entry in existing.get("companies", {}).items():
-        for role in entry.get("roles", []):
-            identity = role_identity(slug, role.get("title", ""), role.get("location", ""))
-            if "sources" not in role:
-                role = dict(role)
-                role["sources"] = [role["source"]] if role.get("source") else []
-            merged[identity] = (slug, role)
+    for key, role in existing_items:
+        identity = role_identity(key, role.get("title", ""), role.get("location", ""))
+        if "sources" not in role:
+            role = dict(role)
+            role["sources"] = [role["source"]] if role.get("source") else []
+        merged[identity] = (key, role)
 
-    carried_over = expired = updated = added = 0
-    for identity, (slug, role) in fresh_roles.items():
+    stats = {"added": 0, "updated": 0, "carried_over": 0, "expired": 0}
+    for identity, (key, role) in fresh_roles.items():
         if identity in merged:
-            updated += 1
+            stats["updated"] += 1
             _, prior_role = merged[identity]
             role = _merge_role_records(prior_role, role)
         else:
-            added += 1
-        merged[identity] = (slug, role)
+            stats["added"] += 1
+        merged[identity] = (key, role)
 
-    companies_out = {}
-    for identity, (slug, role) in merged.items():
+    kept_items = []
+    for identity, (key, role) in merged.items():
         if identity in fresh_roles:
-            companies_out.setdefault(slug, {"roles": []})["roles"].append(role)
+            kept_items.append((key, role))
             continue
         last_seen = role.get("lastSeenAt") or "1970-01-01"
         if last_seen < cutoff:
-            expired += 1
+            stats["expired"] += 1
             continue
-        carried_over += 1
+        kept_items.append((key, role))
+
+    return kept_items, stats
+
+
+def merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=None, debug=False):
+    """existing: the snapshot loaded from disk (accumulated from prior runs).
+    fresh_roles: {identity: (slug, role)} found THIS run (1.4: identity is
+    role_identity()'s normalized employer+title+location tuple, not a URL —
+    see build_fresh_roles()). fresh_open_market_roles: the second dict
+    build_fresh_roles() now returns (2.2/2.5) — same shape, but keyed by
+    normalized employer text instead of a slug, since there's no tracked
+    company to resolve to. Returns the merged, pruned snapshot — "companies"
+    unchanged in shape from before Phase 2, plus a new top-level "openMarket"
+    key (2.5) — no synthetic slugs, never merged into "companies"."""
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=EXPIRY_DAYS)).strftime("%Y-%m-%d")
+    fresh_open_market_roles = fresh_open_market_roles or {}
+
+    existing_tracked_items = (
+        (slug, role)
+        for slug, entry in existing.get("companies", {}).items()
+        for role in entry.get("roles", [])
+    )
+    kept_items, stats = _merge_identity_roles(existing_tracked_items, fresh_roles, cutoff)
+    companies_out = {}
+    for slug, role in kept_items:
         companies_out.setdefault(slug, {"roles": []})["roles"].append(role)
+
+    # 2.5: same identity/expiry mechanics, applied to the open-market side.
+    # normalize_employer_name(role["employer"]) recomputes the same key a
+    # role was first filed under (see build_fresh_roles()) — nothing extra
+    # needs to be persisted on the role dict just to re-derive it next run.
+    existing_open_market_items = (
+        (normalize_employer_name(role.get("employer", "")), role)
+        for role in existing.get("openMarket", {}).get("roles", [])
+    )
+    kept_open_market_items, om_stats = _merge_identity_roles(
+        existing_open_market_items, fresh_open_market_roles, cutoff
+    )
+    # 2.6: "sorted by recency" — see RESULTS_WANTED_OPEN_MARKET's comment on
+    # why this isn't a JobSpy call parameter instead. Newest postedDate
+    # first; a role with no postedDate sorts last (not first) — "" is the
+    # lexicographically smallest fallback value, so reverse=True puts it at
+    # the end, not the start.
+    open_market_roles_out = [role for _, role in kept_open_market_items]
+    open_market_roles_out.sort(key=lambda r: (r.get("postedDate") or "", r.get("lastSeenAt") or ""), reverse=True)
 
     if debug:
         print(
-            f"[merge] added={added} updated={updated} carried_over={carried_over} "
-            f"expired_pruned={expired} (cutoff {cutoff})",
+            f"[merge] tracked: added={stats['added']} updated={stats['updated']} "
+            f"carried_over={stats['carried_over']} expired_pruned={stats['expired']} (cutoff {cutoff})",
+            file=sys.stderr,
+        )
+        print(
+            f"[merge] open-market: added={om_stats['added']} updated={om_stats['updated']} "
+            f"carried_over={om_stats['carried_over']} expired_pruned={om_stats['expired']}",
             file=sys.stderr,
         )
 
     return {
         "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "companies": companies_out,
+        "openMarket": {"roles": open_market_roles_out},
     }
 
 
@@ -769,13 +947,17 @@ def main():
     # measurement window only. Leaving this env var unset (the default)
     # means build_fresh_roles() behaves exactly as it did before this line.
     measure_csv_path = os.environ.get("MEASURE_UNMATCHED_CSV") or None
-    fresh_roles = build_fresh_roles(rows, index, today_iso, debug=debug, measure_csv_path=measure_csv_path)
+    fresh_roles, fresh_open_market_roles = build_fresh_roles(
+        rows, index, today_iso, debug=debug, measure_csv_path=measure_csv_path
+    )
     existing = load_existing_snapshot()
-    snapshot = merge_and_prune(existing, fresh_roles, today_iso, debug=debug)
+    snapshot = merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=fresh_open_market_roles, debug=debug)
 
+    open_market_count = len(snapshot["openMarket"]["roles"])
     if debug:
         print(f"\n[debug] {len(snapshot['companies'])} companies, "
-              f"{sum(len(c['roles']) for c in snapshot['companies'].values())} roles total — "
+              f"{sum(len(c['roles']) for c in snapshot['companies'].values())} roles total, "
+              f"{open_market_count} open-market roles ({'/'.join(OPEN_MARKET_LOCATIONS)}) — "
               f"not written to {OUTPUT_PATH} (--debug mode)", file=sys.stderr)
         return
 
@@ -783,7 +965,10 @@ def main():
         json.dump(snapshot, f, indent=2)
         f.write("\n")
     total_roles = sum(len(c["roles"]) for c in snapshot["companies"].values())
-    print(f"[scrape] wrote {OUTPUT_PATH}: {len(snapshot['companies'])} companies, {total_roles} roles")
+    print(
+        f"[scrape] wrote {OUTPUT_PATH}: {len(snapshot['companies'])} companies, {total_roles} roles, "
+        f"{open_market_count} open-market roles"
+    )
 
 
 if __name__ == "__main__":

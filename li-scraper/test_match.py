@@ -6,6 +6,9 @@ these were actually verified before this scraper was ever run against real
 LI data — see li-scraper/README.md's "Not yet live-tested" note).
 """
 
+from datetime import datetime, timedelta, timezone
+
+from agencies import is_agency
 from companies import COMPANIES, ALIASES
 from match import (
     build_index,
@@ -15,10 +18,17 @@ from match import (
     find_collisions,
     match_negative_filters,
     normalize_scraped_title,
+    normalize_employer_name,
     role_identity,
+    open_market_gate,
 )
-from scrape import build_fresh_roles  # top-level scrape.py imports have no jobspy dependency —
-                                       # it's only imported lazily inside run_searches()
+from scrape import (  # top-level scrape.py imports have no jobspy dependency —
+    build_fresh_roles,                                    # it's only imported lazily inside run_searches()
+    merge_and_prune,
+    OPEN_MARKET_LOCATIONS,
+    EXPIRY_DAYS,
+    _open_market_for,
+)
 
 INDEX = build_index(COMPANIES, ALIASES)
 
@@ -57,6 +67,12 @@ FRESH_ROLES_CASES = [
     ("glassdoor", {"job_url": "https://x.test/8", "company": "Wise", "title": "Senior Product Designer", "location": "Singapore"}),  # kept, source=glassdoor
     ("google", {"job_url": "https://x.test/9", "company": "Wise", "title": "Head of Design", "location": "London"}),  # 1.4: same identity as case #1 — merges, doesn't add a 6th kept entry
     ("bayt", {"job_url": "https://x.test/10", "company": "Wise", "title": "UX Researcher", "location": "Dubai"}),  # kept, source=bayt
+    # 2.2 — open-market cases: none of these employers are tracked companies.
+    ("li", {"job_url": "https://x.test/11", "company": "Some Random Singapore Startup Pte Ltd", "title": "Head of Product Design", "location": "Singapore"}),  # kept open-market: relevant, target-tier, SG, not an agency
+    ("glassdoor", {"job_url": "https://x.test/11b", "company": "Some Random Singapore Startup Pte Ltd", "title": "Head of Product Design", "location": "Singapore"}),  # 1.4-style merge: same open-market identity as #11, different site/URL
+    ("indeed", {"job_url": "https://x.test/12", "company": "Some Random Singapore Startup Pte Ltd", "title": "Product Designer", "location": "Singapore"}),  # dropped: relevant but only "below" tier, not "target" — fails open_market_gate()
+    ("li", {"job_url": "https://x.test/13", "company": "Robert Walters", "title": "Head of Product Design", "location": "Netherlands"}),  # dropped: would otherwise qualify, but Robert Walters is agency-blocklisted
+    ("li", {"job_url": "https://x.test/14", "company": "Some Random Startup GmbH", "title": "Head of Product Design", "location": "Germany"}),  # dropped: qualifying title, but Germany isn't an OPEN_MARKET_LOCATIONS market — not even offered to the gate
 ]
 
 # 1.5 — (raw_title, raw_location, expected_title, expected_location), tested
@@ -220,12 +236,12 @@ def run():
         print(f"  {'OK ' if ok else 'FAIL'}  {raw_title!r:45s} @ {raw_location!r:25s} -> "
               f"{got_title!r:35s} @ {got_location!r:30s} (expected {expected_title!r} @ {expected_location!r})")
 
-    print("-- build_fresh_roles (multi-source + NaN handling + 1.4 cross-site dedupe) --")
+    print("-- build_fresh_roles (multi-source + NaN handling + 1.4 cross-site dedupe + 2.2 open-market branch) --")
     try:
-        fresh = build_fresh_roles(FRESH_ROLES_CASES, INDEX, "2026-09-09")
+        fresh, fresh_open_market = build_fresh_roles(FRESH_ROLES_CASES, INDEX, "2026-09-09")
         crashed = False
     except TypeError as e:
-        fresh = {}
+        fresh, fresh_open_market = {}, {}
         crashed = True
         print(f"  FAIL  build_fresh_roles crashed: {e}")
 
@@ -259,6 +275,117 @@ def run():
         failures += 0 if ok else 1
         print(f"  {'OK ' if ok else 'FAIL'}  {label}")
 
+    print("-- build_fresh_roles open-market branch (2.2) --")
+    id_om_startup_sg = role_identity(
+        normalize_employer_name("Some Random Singapore Startup Pte Ltd"), "Head of Product Design", "Singapore"
+    )
+    om_checks = [
+        ("kept exactly 1 open-market identity (case #11+#11b merged; #12 fails the strict gate, "
+         "#13 is agency-blocklisted, #14 isn't an OPEN_MARKET_LOCATIONS market)", len(fresh_open_market) == 1),
+        ("the SG startup role is keyed under its normalized employer text, not a slug",
+         id_om_startup_sg in fresh_open_market),
+        ("...carries the raw employer display name",
+         fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("employer") == "Some Random Singapore Startup Pte Ltd"),
+        ("...tagged with market=Singapore", fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("market") == "Singapore"),
+        ("...li+glassdoor (cases #11/#11b) merged, sources retains both",
+         sorted(fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("sources", [])) == ["glassdoor", "li"]),
+        ("...canonical source is li (outranks glassdoor)",
+         fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("source") == "li"),
+        ("Robert Walters (case #13) did not leak into the open-market feed despite otherwise qualifying",
+         all(r.get("employer") != "Robert Walters" for _, r in fresh_open_market.values())),
+        ("the Germany case (#14) did not leak in either — not an OPEN_MARKET_LOCATIONS market",
+         all(r.get("market") != "" and "Germany" not in (r.get("location") or "") for _, r in fresh_open_market.values())),
+    ]
+    for label, ok in om_checks:
+        failures += 0 if ok else 1
+        print(f"  {'OK ' if ok else 'FAIL'}  {label}")
+
+    print("-- open-market: _open_market_for() (2.1) --")
+    OPEN_MARKET_LOCATION_CASES = [
+        ("Singapore", "Singapore"),
+        ("Amsterdam, North Holland, Netherlands", "Netherlands"),
+        ("Jurong East, West Region, Singapore", "Singapore"),  # real Phase 0 data shape
+        ("SG", "Singapore"),  # bare country-code form, also seen in real Phase 0 data
+        ("NL", "Netherlands"),
+        ("Kuala Lumpur, Malaysia", None),
+        ("", None),
+    ]
+    for raw, expected in OPEN_MARKET_LOCATION_CASES:
+        got = _open_market_for(raw)
+        ok = got == expected
+        failures += 0 if ok else 1
+        print(f"  {'OK ' if ok else 'FAIL'}  {raw!r:45s} -> {got!r} (expected {expected!r})")
+
+    print("-- open-market: is_agency() (2.3) --")
+    AGENCY_CASES = [
+        ("Robert Walters", True),
+        ("Michael Page", True),
+        ("Robert Walters Pte Ltd", True),  # legal suffixes stripped, still an exact match
+        ("Robert Half International", False),  # deliberately NOT a match — exact-match only, not fuzzy containment (see is_agency()'s docstring)
+        ("Some Random Startup", False),
+    ]
+    for employer, expected in AGENCY_CASES:
+        got = is_agency(employer)
+        ok = got == expected
+        failures += 0 if ok else 1
+        print(f"  {'OK ' if ok else 'FAIL'}  {employer!r:30s} -> {got!s:5s} (expected {expected!s})")
+
+    print("-- open-market: open_market_gate() (2.4) --")
+    OPEN_MARKET_GATE_CASES = [
+        ("Head of Product Design", "Random Co", (lambda _: False), True),
+        ("Product Designer", "Random Co", (lambda _: False), False),  # relevant, but only "below" tier
+        ("Junior Product Designer", "Random Co", (lambda _: False), False),  # hard-excluded — not relevant at all
+        ("Head of Product Design", "Robert Walters", is_agency, False),  # would otherwise qualify — agency-blocked
+    ]
+    for title, employer, agency_fn, expected in OPEN_MARKET_GATE_CASES:
+        got = open_market_gate(title, employer, agency_fn)
+        ok = got == expected
+        failures += 0 if ok else 1
+        print(f"  {'OK ' if ok else 'FAIL'}  {title!r:30s} @ {employer!r:20s} -> {got!s:5s} (expected {expected!s})")
+
+    print("-- merge_and_prune openMarket branch (2.5/2.6): recency sort + expiry --")
+    _now = datetime.now(timezone.utc)
+    _stale_last_seen = (_now - timedelta(days=EXPIRY_DAYS + 16)).strftime("%Y-%m-%d")  # well past EXPIRY_DAYS
+    _recent_last_seen = (_now - timedelta(days=3)).strftime("%Y-%m-%d")  # well within EXPIRY_DAYS
+    _today = _now.strftime("%Y-%m-%d")
+    existing_snapshot = {
+        "companies": {},
+        "openMarket": {"roles": [
+            {"employer": "Acme Singapore Pte Ltd", "market": "Singapore", "title": "Head of Product Design",
+             "location": "Singapore", "url": "https://x.test/OM-OLD", "postedDate": _stale_last_seen,
+             "source": "bayt", "lastSeenAt": _stale_last_seen},  # should be pruned — stale
+            {"employer": "Beta Netherlands BV", "market": "Netherlands", "title": "Staff Product Designer",
+             "location": "Amsterdam, Netherlands", "url": "https://x.test/OM-KEEP", "postedDate": _recent_last_seen,
+             "source": "li", "lastSeenAt": _recent_last_seen},  # not refreshed this run, but recent enough to carry over
+        ]},
+    }
+    new_key = normalize_employer_name("Gamma Singapore Pte Ltd")
+    new_identity = role_identity(new_key, "Lead Product Designer", "Singapore")
+    fresh_open_market_for_merge = {
+        new_identity: (new_key, {
+            "employer": "Gamma Singapore Pte Ltd", "market": "Singapore", "title": "Lead Product Designer",
+            "location": "Singapore", "url": "https://x.test/OM-NEW", "postedDate": _today,
+            "source": "li", "sources": ["li"], "lastSeenAt": _today,
+        })
+    }
+    merged_snapshot = merge_and_prune(
+        existing_snapshot, {}, _today, fresh_open_market_roles=fresh_open_market_for_merge
+    )
+    om_roles_out = merged_snapshot["openMarket"]["roles"]
+    merge_om_checks = [
+        ("companies{} passed through untouched (no tracked-company fresh roles given)", merged_snapshot["companies"] == {}),
+        ("stale bayt role pruned past EXPIRY_DAYS", all(r["url"] != "https://x.test/OM-OLD" for r in om_roles_out)),
+        ("recent li role carried over even though not refreshed this run",
+         any(r["url"] == "https://x.test/OM-KEEP" for r in om_roles_out)),
+        ("this run's new role present", any(r["url"] == "https://x.test/OM-NEW" for r in om_roles_out)),
+        ("exactly 2 roles survive (1 pruned, 1 carried over, 1 added)", len(om_roles_out) == 2),
+        ("output sorted newest-postedDate-first (2.6)",
+         [r["url"] for r in om_roles_out] == ["https://x.test/OM-NEW", "https://x.test/OM-KEEP"]),
+    ]
+    for label, ok in merge_om_checks:
+        failures += 0 if ok else 1
+        print(f"  {'OK ' if ok else 'FAIL'}  {label}")
+
     print("-- exact-match key collisions (reviewed allowlist) --")
     got_collisions = find_collisions(COMPANIES, ALIASES)
     ok = got_collisions == KNOWN_COLLISIONS
@@ -274,7 +401,9 @@ def run():
 
     total_cases = (
         len(CASES) + len(TITLE_CASES) + len(NEGATIVE_FILTER_CASES) + len(NORMALIZE_CASES)
-        + len(fresh_checks) + 1
+        + len(fresh_checks) + len(om_checks)
+        + len(OPEN_MARKET_LOCATION_CASES) + len(AGENCY_CASES) + len(OPEN_MARKET_GATE_CASES)
+        + len(merge_om_checks) + 1
     )
     print(f"\n{total_cases - failures}/{total_cases} passed")
     if failures:
