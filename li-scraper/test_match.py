@@ -25,9 +25,9 @@ from match import (
 from scrape import (  # top-level scrape.py imports have no jobspy dependency —
     build_fresh_roles,                                    # it's only imported lazily inside run_searches()
     merge_and_prune,
-    OPEN_MARKET_LOCATIONS,
+    CANONICAL_MARKETS,
     EXPIRY_DAYS,
-    _open_market_for,
+    market_for_location,
     sponsorship_signal,
     SPONSORSHIP_KEYWORDS,
 )
@@ -64,10 +64,19 @@ FRESH_ROLES_CASES = [
     # exercising the tracked-company branch of the sponsorship-signal wiring.
     ("indeed", {"job_url": "https://x.test/2", "company": "HSBC Holdings plc", "title": "Senior UX Researcher", "location": "Singapore",
                 "description": "We offer visa sponsorship for qualified candidates."}),
-    ("indeed", {"job_url": "https://x.test/3", "company": "Some Totally Unrelated Company", "title": "Head of Design", "location": "Berlin"}),  # dropped: no company match
+    # 2026-09-23 — a genuine employer name, no tracked-company match, "Head of Design" is
+    # relevant/target-tier: this now ALSO qualifies for the open-market branch (kept there),
+    # on top of its original purpose of proving the tracked-company path drops it (no slug).
+    # Its raw location "Berlin" has no country suffix, so market_for_location() can't resolve
+    # a canonical country from it and falls back to the raw text itself — "Berlin", not
+    # "Germany" — exercising that fallback with a real (non-empty) employer.
+    ("indeed", {"job_url": "https://x.test/3", "company": "Some Totally Unrelated Company", "title": "Head of Design", "location": "Berlin"}),  # dropped from tracked-company matching (no slug); kept open-market (market="Berlin", the raw fallback)
     ("li", {"job_url": "https://x.test/4", "company": "Wise", "title": "Software Engineer", "location": "London"}),  # dropped: title not relevant
     ("li", {"job_url": "https://x.test/1", "company": "Wise", "title": "Head of Design (dup)", "location": "London"}),  # dropped: duplicate URL
-    ("li", {"job_url": "https://x.test/5", "company": float("nan"), "title": "Head of Design", "location": "London"}),  # dropped, not crashed: NaN company
+    # 2026-09-23 — also proves the open-market branch's explicit empty-employer guard: title is
+    # relevant/target-tier and "London" is a location open market would otherwise accept, so
+    # without that guard a NaN/blank employer would leak into the feed with nothing to display.
+    ("li", {"job_url": "https://x.test/5", "company": float("nan"), "title": "Head of Design", "location": "London"}),  # dropped, not crashed: NaN company (dropped from BOTH branches — no slug, and open-market's employer guard)
     ("li", {"job_url": "https://x.test/6", "company": "Wise", "title": "Head of Design", "location": float("nan")}),  # kept: NaN location -> "" (1.5 — no more "Not specified")
     ("indeed", {"job_url": "https://x.test/7", "company": "Wise", "title": float("nan"), "location": "London"}),  # dropped, not crashed: NaN title
     ("glassdoor", {"job_url": "https://x.test/8", "company": "Wise", "title": "Senior Product Designer", "location": "Singapore"}),  # kept, source=glassdoor
@@ -87,10 +96,14 @@ FRESH_ROLES_CASES = [
                    "description": "We offer relocation support and welcome applications from international candidates as part of our Global Talent program."}),  # 1.4-style merge: same open-market identity as #11, different site/URL
     ("indeed", {"job_url": "https://x.test/12", "company": "Some Random Singapore Startup Pte Ltd", "title": "Product Designer", "location": "Singapore"}),  # dropped: relevant but only "below" tier, not "target" — fails open_market_gate()
     ("li", {"job_url": "https://x.test/13", "company": "Robert Walters", "title": "Head of Product Design", "location": "Netherlands"}),  # dropped: would otherwise qualify, but Robert Walters is agency-blocklisted
-    ("li", {"job_url": "https://x.test/14", "company": "Some Random Startup GmbH", "title": "Head of Product Design", "location": "Germany"}),  # dropped: qualifying title, but Germany isn't an OPEN_MARKET_LOCATIONS market — not even offered to the gate
-    # UAE added 2026-09-23 — same "genuine open-market employer" shape as #11, but for the
-    # newest OPEN_MARKET_LOCATIONS market, and using the "UAE" abbreviation (not the spelled-out
-    # "United Arab Emirates" that appears in LOCATIONS) to exercise MARKET_ALIASES.
+    # 2026-09-23 — open market broadened to every LOCATIONS entry: before this round, Germany
+    # wasn't one of the 3-market allowlist (SG/NL/UAE) and this case was DROPPED even though the
+    # title/employer would otherwise qualify. Now kept — proves the broadening actually works for
+    # a market well outside the old allowlist, not just the 3 markets that were already special-cased.
+    ("li", {"job_url": "https://x.test/14", "company": "Some Random Startup GmbH", "title": "Head of Product Design", "location": "Germany"}),  # kept open-market: relevant, target-tier, not an agency — market is now irrelevant to eligibility
+    # UAE added 2026-09-23 (market expansion round) — same "genuine open-market employer" shape as
+    # #11, using the "UAE" abbreviation (not the spelled-out "United Arab Emirates" that appears in
+    # LOCATIONS) to exercise MARKET_ALIASES.
     ("indeed", {"job_url": "https://x.test/15", "company": "Some Random Dubai Startup FZE", "title": "Head of Product Design", "location": "Dubai, UAE"}),  # kept open-market: relevant, target-tier, UAE (via alias), not an agency
     # Sponsorship negation guard (2026-09-23) — the description literally contains the
     # substring "visa sponsorship", but negated ("not able to offer"/"unfortunately"
@@ -314,11 +327,33 @@ def run():
     id_om_nl_negation = role_identity(
         normalize_employer_name("Some Random NL Open Market Co"), "Head of Product Design", "Netherlands"
     )
+    id_om_germany = role_identity(
+        normalize_employer_name("Some Random Startup GmbH"), "Head of Product Design", "Germany"
+    )
+    id_om_berlin_unrelated = role_identity(
+        normalize_employer_name("Some Totally Unrelated Company"), "Head of Design", "Berlin"
+    )
     om_checks = [
-        ("kept exactly 3 open-market identities (case #11+#11b merged into 1, case #15 is the 2nd, "
-         "case #16 is the 3rd; #12 fails the strict gate, #13 is agency-blocklisted, #14 isn't an "
-         "OPEN_MARKET_LOCATIONS market)",
-         len(fresh_open_market) == 3),
+        ("kept exactly 5 open-market identities (case #3/Berlin, case #11+#11b merged into 1, "
+         "case #14/Germany, case #15/UAE, case #16/NL — all newly or already eligible now that "
+         "open market has no location allowlist; #5's NaN-employer row and #12's below-tier title "
+         "still don't qualify, #13 is still agency-blocklisted)",
+         len(fresh_open_market) == 5),
+        ("the Berlin/'Some Totally Unrelated Company' role (case #3) is now ALSO kept open-market "
+         "— previously it only ever demonstrated the tracked-company branch dropping it (no slug); "
+         "with no location allowlist left, its real employer + relevant/target title now qualify "
+         "it for the open-market branch too", id_om_berlin_unrelated in fresh_open_market),
+        ("...tagged with market='Berlin' — the raw location fallback, since 'Berlin' alone (no "
+         "country suffix) doesn't substring-match any CANONICAL_MARKETS entry",
+         fresh_open_market.get(id_om_berlin_unrelated, (None, {}))[1].get("market") == "Berlin"),
+        ("the Germany role (case #14) is now kept — 2026-09-23's broadening: no location ever "
+         "gated it, only title/employer (open_market_gate())", id_om_germany in fresh_open_market),
+        ("...tagged with market=Germany (market_for_location() label, not a gate)",
+         fresh_open_market.get(id_om_germany, (None, {}))[1].get("market") == "Germany"),
+        ("case #5's NaN-employer row (blank 'company' field) did NOT leak into the open-market "
+         "feed despite an otherwise-qualifying relevant/target title and an eligible location — "
+         "the explicit empty-employer guard in build_fresh_roles() catches it",
+         all(r.get("employer") for r in (v[1] for v in fresh_open_market.values()))),
         ("the SG startup role is keyed under its normalized employer text, not a slug",
          id_om_startup_sg in fresh_open_market),
         ("...carries the raw employer display name",
@@ -336,8 +371,9 @@ def run():
         ("...tagged with source=indeed", fresh_open_market.get(id_om_startup_uae, (None, {}))[1].get("source") == "indeed"),
         ("Robert Walters (case #13) did not leak into the open-market feed despite otherwise qualifying",
          all(r.get("employer") != "Robert Walters" for _, r in fresh_open_market.values())),
-        ("the Germany case (#14) did not leak in either — not an OPEN_MARKET_LOCATIONS market",
-         all(r.get("market") != "" and "Germany" not in (r.get("location") or "") for _, r in fresh_open_market.values())),
+        ("case #12 (below-tier title) still did not leak in — the gate is unchanged, only the "
+         "location restriction upstream of it was removed",
+         all(r.get("title") != "Product Designer" for _, r in fresh_open_market.values())),
         # 2026-09-23 — sponsorship signal on the open-market branch.
         ("SG startup role's sponsorshipSignal is the union of li's (#11, no description) and "
          "glassdoor's (#11b, three keywords) — canonical source is still li, signal isn't",
@@ -356,25 +392,50 @@ def run():
         failures += 0 if ok else 1
         print(f"  {'OK ' if ok else 'FAIL'}  {label}")
 
-    print("-- open-market: _open_market_for() (2.1, UAE added 2026-09-23) --")
-    OPEN_MARKET_LOCATION_CASES = [
+    print("-- open-market: market_for_location() (2.1 -> broadened to all LOCATIONS, 2026-09-23) --")
+    MARKET_FOR_LOCATION_CASES = [
         ("Singapore", "Singapore"),
         ("Amsterdam, North Holland, Netherlands", "Netherlands"),
         ("Jurong East, West Region, Singapore", "Singapore"),  # real Phase 0 data shape
         ("SG", "Singapore"),  # bare country-code form, also seen in real Phase 0 data
         ("NL", "Netherlands"),
         ("Dubai, United Arab Emirates", "United Arab Emirates"),  # the spelled-out form (matches LOCATIONS verbatim)
-        ("Abu Dhabi, United Arab Emirates", "United Arab Emirates"),
+        ("Abu Dhabi, United Arab Emirates", "United Arab Emirates"),  # both UAE cities collapse to one canonical market
         ("Dubai, UAE", "United Arab Emirates"),  # the common abbreviated form — via MARKET_ALIASES, not a literal LOCATIONS substring
         ("AE", "United Arab Emirates"),  # bare country-code form
-        ("Kuala Lumpur, Malaysia", None),
-        ("", None),
+        # 2026-09-23 — previously these returned None (dropped, not an OPEN_MARKET_LOCATIONS
+        # market); now every LOCATIONS-derived market resolves to a real label, since this
+        # function is a display label, not a gate, for any of the 25 already-searched locations.
+        ("Kuala Lumpur, Malaysia", "Malaysia"),  # city-qualified LOCATIONS entry collapses to its country
+        ("Berlin, Germany", "Germany"),  # a bare-country LOCATIONS entry, well outside the old 3-market allowlist
+        ("Sydney, NSW, Australia", "Australia"),
+        ("Tokyo, Japan", "Japan"),
+        # Never returns None: a location this file never actually searches for (so real rows
+        # can't arise from it, but the function must still degrade safely) falls back to the raw
+        # location text itself rather than dropping the role or crashing.
+        ("Reykjavik, Iceland", "Reykjavik, Iceland"),
+        ("", "Unspecified"),
     ]
-    for raw, expected in OPEN_MARKET_LOCATION_CASES:
-        got = _open_market_for(raw)
+    for raw, expected in MARKET_FOR_LOCATION_CASES:
+        got = market_for_location(raw)
         ok = got == expected
         failures += 0 if ok else 1
         print(f"  {'OK ' if ok else 'FAIL'}  {raw!r:45s} -> {got!r} (expected {expected!r})")
+
+    print("-- open-market: CANONICAL_MARKETS derivation (2026-09-23, sanity) --")
+    canonical_checks = [
+        ("24 distinct canonical markets from 25 LOCATIONS entries (Dubai + Abu Dhabi collapse "
+         "into one 'United Arab Emirates')", len(CANONICAL_MARKETS) == 24),
+        ("Singapore present (bare LOCATIONS entry, unchanged)", "Singapore" in CANONICAL_MARKETS),
+        ("Germany present — never eligible for open market before this round",
+         "Germany" in CANONICAL_MARKETS),
+        ("Malaysia present (collapsed from 'Kuala Lumpur, Malaysia')", "Malaysia" in CANONICAL_MARKETS),
+        ("United Arab Emirates present exactly once, not twice",
+         CANONICAL_MARKETS.count("United Arab Emirates") == 1),
+    ]
+    for label, ok in canonical_checks:
+        failures += 0 if ok else 1
+        print(f"  {'OK ' if ok else 'FAIL'}  {label}")
 
     print("-- sponsorship_signal() (2026-09-23, direct) --")
     SPONSORSHIP_CASES = [
@@ -492,8 +553,10 @@ def run():
     total_cases = (
         len(CASES) + len(TITLE_CASES) + len(NEGATIVE_FILTER_CASES) + len(NORMALIZE_CASES)
         + len(fresh_checks) + len(om_checks)
-        + len(OPEN_MARKET_LOCATION_CASES) + len(AGENCY_CASES) + len(OPEN_MARKET_GATE_CASES)
-        + len(merge_om_checks) + 1
+        + len(MARKET_FOR_LOCATION_CASES) + len(canonical_checks)
+        + len(SPONSORSHIP_CASES) + 1  # +1: the all_covered SPONSORSHIP_KEYWORDS-coverage check
+        + len(AGENCY_CASES) + len(OPEN_MARKET_GATE_CASES)
+        + len(merge_om_checks) + 1  # +1: find_collisions() == KNOWN_COLLISIONS
     )
     print(f"\n{total_cases - failures}/{total_cases} passed")
     if failures:

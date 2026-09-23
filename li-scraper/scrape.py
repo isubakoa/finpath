@@ -11,13 +11,15 @@ sections:
     the exact same isRoleRelevant() title filter index.html itself applies.
     This is the original shape check.php has always expected from
     js-scraper's snapshot.json, byte-for-byte unchanged by Phase 2.
-  - `openMarket: { roles: [...] }` (Phase 2, new; UAE added 2026-09-23) — a
-    flat, no-slug list of postings that matched NO tracked company but are
-    still worth surfacing: the posting's location is one of
-    OPEN_MARKET_LOCATIONS (Singapore, Netherlands, and United Arab Emirates
-    today), and it clears open_market_gate() (relevant, real target-tier
-    fit, not on the agencies.py blocklist) — see
-    build_fresh_roles()/open_market_gate(). Sorted newest-first. Each role
+  - `openMarket: { roles: [...] }` (Phase 2, new; broadened to all 25
+    LOCATIONS 2026-09-23) — a flat, no-slug list of postings that matched NO
+    tracked company but are still worth surfacing: it clears
+    open_market_gate() (relevant, real target-tier fit, not on the
+    agencies.py blocklist) — see build_fresh_roles()/open_market_gate(). No
+    location restriction of its own beyond that — every location this file
+    already searches (all of LOCATIONS, not a narrower subset) is eligible;
+    a `market` field (see market_for_location()) labels which one, purely
+    for display/filtering, never for exclusion. Sorted newest-first. Each role
     in EITHER section carries its own `source` ("li", "indeed", "glassdoor",
     "google", or "bayt") plus a `sources` array (Phase 1.4) for cross-site
     corroboration, so the frontend can badge it correctly. LI and Indeed are
@@ -305,64 +307,74 @@ LOCATIONS = [
     "Abu Dhabi, United Arab Emirates",
 ]
 
-# ---- Phase 2.1 (UAE added 2026-09-23): open-market feed markets. An
-# ---- unmatched-company posting (no tracked-company match) only ever gets a
-# ---- second look for the open-market feed when its location is one of
-# ---- these — everywhere else, an unmatched posting is dropped exactly as
-# ---- it always was. Singapore/Netherlands are asserted for EXACT
-# ---- membership in LOCATIONS (each is its own bare-country entry there).
-# ---- United Arab Emirates has no bare entry of its own in LOCATIONS — only
-# ---- the two city-qualified ones ("Dubai, United Arab Emirates" / "Abu
-# ---- Dhabi, United Arab Emirates") that already exist there for ordinary
-# ---- tracked-company scraping — so it's asserted for SUBSTRING membership
-# ---- instead: "united arab emirates" must appear in at least one real
-# ---- LOCATIONS entry. Either way, the assert exists so a typo'd or stale
-# ---- OPEN_MARKET_LOCATIONS entry fails loudly at import time instead of
-# ---- silently meaning that market's combos never reach open_market_gate().
-OPEN_MARKET_LOCATIONS = ["Singapore", "Netherlands", "United Arab Emirates"]
-assert all(
-    any(market.lower() == loc.lower() or market.lower() in loc.lower() for loc in LOCATIONS)
-    for market in OPEN_MARKET_LOCATIONS
-), "Each OPEN_MARKET_LOCATIONS entry must exactly match or be a substring of at least one LOCATIONS entry"
+# ---- 2026-09-23 — open market broadened to every LOCATIONS entry, per your
+# ---- call: "keep it open and broad across all market but specific to the
+# ---- pre-defined job titles." Previously (Phase 2.1, then the UAE addition)
+# ---- an unmatched-company posting only got a second look for the
+# ---- open-market feed when its location was one of a 3-market allowlist
+# ---- (Singapore/Netherlands/UAE) — everywhere else it was dropped even
+# ---- though this file already searches all 25 LOCATIONS for every one of
+# ---- the 38 pre-defined titles (see the module docstring's combo-count
+# ---- note). That allowlist is gone: eligibility is now open_market_gate()
+# ---- alone (relevant + target-tier fit + not agency-blocklisted, entirely
+# ---- title/employer-based) — no location check gates entry at all anymore.
+# ---- CANONICAL_MARKETS below is not a gate — it only supplies the `market`
+# ---- label build_fresh_roles() attaches for display/filtering (the Rules &
+# ---- Sources per-market toggles, the "Open market · <market>" chip),
+# ---- derived by collapsing every LOCATIONS "City, Country" entry (Dubai/Abu
+# ---- Dhabi, Kuala Lumpur) down to its country, deduped in LOCATIONS order.
+def _canonical_market_name(location_entry):
+    return location_entry.split(",")[-1].strip() if "," in location_entry else location_entry
+
+
+CANONICAL_MARKETS = []
+for _loc_entry in LOCATIONS:
+    _canonical = _canonical_market_name(_loc_entry)
+    if _canonical not in CANONICAL_MARKETS:
+        CANONICAL_MARKETS.append(_canonical)
 
 # A market whose real-world postings commonly abbreviate the country name
-# differently than LOCATIONS spells it out, checked as an extra substring
-# alongside the market's own name in _open_market_for() below — "UAE" is a
-# very common informal abbreviation LinkedIn/Indeed location fields use
-# ("Dubai, UAE") that wouldn't otherwise contain the literal phrase "united
-# arab emirates". Every OPEN_MARKET_LOCATIONS entry not listed here just
-# matches on its own lowercase name (Singapore, Netherlands — unchanged
-# from Phase 2.1).
+# differently than CANONICAL_MARKETS spells it out, checked as an extra
+# substring alongside the market's own name in market_for_location() below —
+# "UAE" is a very common informal abbreviation LinkedIn/Indeed location
+# fields use ("Dubai, UAE") that wouldn't otherwise contain the literal
+# phrase "united arab emirates". Every market not listed here just matches
+# on its own lowercase name.
 MARKET_ALIASES = {
     "United Arab Emirates": ["uae"],
 }
 
 
-def _open_market_for(location):
-    """Which OPEN_MARKET_LOCATIONS entry (if any) a raw scraped location
-    string indicates — substring match, not exact equality, since a real
-    result's location is almost always more specific than the bare country
-    name used to search for it (e.g. "Amsterdam, North Holland,
-    Netherlands", not literally "Netherlands" — see the Phase 0 measurement
-    data this was checked against). Each market also gets any aliases
-    listed in MARKET_ALIASES checked as additional substrings (e.g. "uae"
-    for United Arab Emirates). Also recognizes a bare two- or three-letter
-    country code ("SG"/"NL"/"AE") on its own, a form some sources return
-    instead of a full location string — checked by exact (not substring)
-    match since those codes are too short/generic to substring-match
-    safely. Returns the matching OPEN_MARKET_LOCATIONS entry (e.g.
-    "Singapore") or None."""
-    loc = (location or "").strip().lower()
+def market_for_location(location):
+    """Best-effort canonical market label for a raw scraped location string —
+    used only for display/filtering (the Rules & Sources per-market toggles,
+    the "Open market · <market>" chip), never to decide whether a posting
+    qualifies for the open-market feed (that's open_market_gate() alone,
+    title/employer-based — see the 2026-09-23 broadening note above). Same
+    substring-match approach the original 3-market version had, generalized
+    to all 24 CANONICAL_MARKETS: not exact equality, since a real result's
+    location is almost always more specific than the bare country name used
+    to search for it (e.g. "Amsterdam, North Holland, Netherlands", not
+    literally "Netherlands"). MARKET_ALIASES checked as extra substrings.
+    Also recognizes a bare two-letter country code ("SG"/"NL"/"AE") some
+    sources return instead of a full location string, checked by exact (not
+    substring) match since codes are too short to substring-match safely.
+    Unlike the old gate version, this never returns None: a location that
+    doesn't match anything in CANONICAL_MARKETS still gets labeled — with
+    the raw (trimmed) location string itself — rather than the role being
+    dropped or mislabeled, since this is purely a display label now."""
+    loc = (location or "").strip()
     if not loc:
-        return None
+        return "Unspecified"
+    loc_lower = loc.lower()
     country_codes = {"sg": "Singapore", "nl": "Netherlands", "ae": "United Arab Emirates"}
-    if loc in country_codes and country_codes[loc] in OPEN_MARKET_LOCATIONS:
-        return country_codes[loc]
-    for market in OPEN_MARKET_LOCATIONS:
+    if loc_lower in country_codes:
+        return country_codes[loc_lower]
+    for market in CANONICAL_MARKETS:
         needles = [market.lower()] + MARKET_ALIASES.get(market, [])
-        if any(needle in loc for needle in needles):
+        if any(needle in loc_lower for needle in needles):
             return market
-    return None
+    return loc
 
 
 # Every LOCATIONS entry mapped to the exact country_indeed string JobSpy's
@@ -465,13 +477,18 @@ def google_query(term, location):
     return f"{term} jobs near {location} {GOOGLE_TIME_PHRASE}"
 
 RESULTS_WANTED_PER_SEARCH = 20
-# ---- Phase 2.6: an open-market-eligible combo (any OPEN_MARKET_LOCATIONS
-# ---- market — Singapore, Netherlands, or United Arab Emirates) asks for
-# ---- more results per search than the standard sweep — an open-market
-# ---- posting only gets looked at once per combo (there's no separate
-# ---- "look harder at these markets" pass; this rides the same per-combo
-# ---- requests every location gets),
-# ---- so widening the net there directly widens open-market coverage.
+# ---- Phase 2.6 originally asked for more results per search (50 instead of
+# ---- 20) on any OPEN_MARKET_LOCATIONS-eligible combo, since that widened
+# ---- net directly widened open-market coverage for a small 3-market
+# ---- allowlist. 2026-09-23: now that open-market eligibility covers every
+# ---- LOCATIONS entry (not a 3-market subset — see market_for_location()'s
+# ---- note above), applying that same +50 boost everywhere would mean
+# ---- meaningfully more requests across all 950 combos, not just a handful
+# ---- — a real footprint/rate-limit tradeoff, and your explicit call was to
+# ---- keep the flat 20-per-search default instead and take the filtering
+# ---- fix without also scraping harder. RESULTS_WANTED_OPEN_MARKET/
+# ---- _results_wanted_for() are retired; every combo now just uses
+# ---- RESULTS_WANTED_PER_SEARCH directly, open-market-eligible or not.
 # ---- "sorted by recency" from the spec is NOT implemented as a JobSpy call
 # ---- parameter — scrape_jobs() has no sort/date-ordering parameter at all
 # ---- (checked directly against JobSpy's own README before writing this;
@@ -479,14 +496,9 @@ RESULTS_WANTED_PER_SEARCH = 20
 # ---- Recency ordering is applied instead where it actually matters for a
 # ---- consumer — merge_and_prune() sorts openMarket.roles[] by postedDate
 # ---- (falling back to lastSeenAt) before it's written to the snapshot.
-RESULTS_WANTED_OPEN_MARKET = 50
 HOURS_OLD = 240  # 10 days — comfortably wider than one rotation cycle (see below),
                  # so a role posted right after its combo's turn is still visible
                  # the next time that combo comes up.
-
-
-def _results_wanted_for(location):
-    return RESULTS_WANTED_OPEN_MARKET if _open_market_for(location) else RESULTS_WANTED_PER_SEARCH
 
 # Polite, but randomized rather than a flat delay — September 2026, paired
 # with the move to hourly runs (below): a perfectly uniform 8.0s gap between
@@ -583,7 +595,7 @@ def run_searches(combos, debug=False):
                 site_name=["linkedin"],
                 search_term=term,
                 location=location,
-                results_wanted=_results_wanted_for(location),  # 2.6
+                results_wanted=RESULTS_WANTED_PER_SEARCH,  # 2.6, flat since 2026-09-23
                 hours_old=HOURS_OLD,
                 linkedin_fetch_description=False,
                 verbose=1 if debug else 0,
@@ -609,7 +621,7 @@ def run_searches(combos, debug=False):
                     search_term=term,
                     location=indeed_location,
                     country_indeed=indeed_country,
-                    results_wanted=_results_wanted_for(location),  # 2.6
+                    results_wanted=RESULTS_WANTED_PER_SEARCH,  # 2.6, flat since 2026-09-23
                     hours_old=HOURS_OLD,
                     verbose=1 if debug else 0,
                 )
@@ -631,7 +643,7 @@ def run_searches(combos, debug=False):
                     search_term=term,
                     location=glassdoor_location,
                     country_indeed=glassdoor_country,
-                    results_wanted=_results_wanted_for(location),  # 2.6
+                    results_wanted=RESULTS_WANTED_PER_SEARCH,  # 2.6, flat since 2026-09-23
                     hours_old=HOURS_OLD,
                     verbose=1 if debug else 0,
                 )
@@ -653,7 +665,7 @@ def run_searches(combos, debug=False):
             df4 = scrape_jobs(
                 site_name=["google"],
                 google_search_term=query,
-                results_wanted=_results_wanted_for(location),  # 2.6
+                results_wanted=RESULTS_WANTED_PER_SEARCH,  # 2.6, flat since 2026-09-23
                 verbose=1 if debug else 0,
             )
         except Exception as e:  # noqa: BLE001 — same isolation as every other site above
@@ -735,14 +747,17 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
     Returns (fresh, fresh_open_market) — two separate identity-keyed dicts,
     same (identity -> (key, role)) shape. `fresh` is unchanged from before
     Phase 2: tracked-company matches only, `key` is the company slug.
-    `fresh_open_market` is new (2.2): a posting that matched NO tracked
-    company, but whose location is an OPEN_MARKET_LOCATIONS market and
-    clears open_market_gate() (relevant + real target-tier fit + not
-    agency-blocklisted), keyed the same way but with `key` being
-    normalize_employer_name(employer) instead of a slug (there's no slug —
-    that's the whole point of "open market"). Every other unmatched
-    posting — wrong location, or right location but failing the gate — is
-    still just dropped, exactly as before Phase 2 existed.
+    `fresh_open_market` is new (2.2; broadened 2026-09-23): a posting that
+    matched NO tracked company but clears open_market_gate() (relevant +
+    real target-tier fit + not agency-blocklisted) — no location check gates
+    entry at all anymore, since this file already searches every LOCATIONS
+    entry for every pre-defined title regardless. `market_for_location()`
+    still labels which market a kept role is in, purely for display/
+    filtering (never to decide inclusion). Keyed the same way as `fresh` but
+    with `key` being normalize_employer_name(employer) instead of a slug
+    (there's no slug — that's the whole point of "open market"). Every other
+    unmatched posting — failing open_market_gate() on title/employer — is
+    still just dropped, exactly as before.
 
     A URL is still required and still deduped on its own first (`duplicate`
     below) — that's a much cheaper, unambiguous check (the literal same URL
@@ -776,17 +791,25 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
             dropped_company += 1
             if debug:
                 print(f"[match] no company match: {employer!r} — {row.get('title')!r}", file=sys.stderr)
-            # 2.2: not a tracked company — still worth a second look for the
-            # open-market feed if it's in an OPEN_MARKET_LOCATIONS market.
-            market = _open_market_for(location)
-            if market and open_market_gate(title, employer, is_agency):
+            # 2.2 (broadened 2026-09-23): not a tracked company — still worth
+            # a second look for the open-market feed, gated purely on title/
+            # employer now (open_market_gate()) — no location restriction.
+            # An empty employer (e.g. a NaN "company" field — see _clean_str()'s
+            # docstring) can never qualify: an "open market" posting with no
+            # employer name to show is useless in the UI, not just noise.
+            # Previously this was accidentally caught by the location
+            # allowlist (an empty-employer row's location was essentially
+            # never one of the 3 old markets) rather than by an explicit
+            # check — now that there's no location allowlist to lean on,
+            # this guards it directly instead of relying on that coincidence.
+            market = market_for_location(location)
+            if employer and open_market_gate(title, employer, is_agency):
                 kept_open_market_this_row = True
             else:
                 kept_open_market_this_row = False
-                if market:
-                    dropped_open_market_strict += 1
-                    if debug:
-                        print(f"[open-market] failed strict gate: {title!r} @ {employer!r} ({market})", file=sys.stderr)
+                dropped_open_market_strict += 1
+                if debug:
+                    print(f"[open-market] failed gate: {title!r} @ {employer!r} ({market})", file=sys.stderr)
             if not kept_open_market_this_row:
                 continue
 
@@ -1039,7 +1062,7 @@ def main():
     if debug:
         print(f"\n[debug] {len(snapshot['companies'])} companies, "
               f"{sum(len(c['roles']) for c in snapshot['companies'].values())} roles total, "
-              f"{open_market_count} open-market roles ({'/'.join(OPEN_MARKET_LOCATIONS)}) — "
+              f"{open_market_count} open-market roles (all searched markets) — "
               f"not written to {OUTPUT_PATH} (--debug mode)", file=sys.stderr)
         return
 

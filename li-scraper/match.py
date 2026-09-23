@@ -189,9 +189,13 @@ def fit_tier(title):
 
 def open_market_gate(title, employer, is_agency_fn):
     """Phase 2.4 — single, named gate deciding whether an unmatched-company
-    posting (already confirmed to be in an OPEN_MARKET_LOCATIONS market —
-    that check happens in scrape.py, before this is even called) enters the
-    open-market feed. Kept only if ALL of:
+    posting enters the open-market feed. 2026-09-23: this is now the ONLY
+    gate — there is no location restriction upstream in scrape.py anymore
+    (open market originally required the posting's location to be one of a
+    3-market allowlist; that's gone, per the call to keep it "open and broad
+    across all market but specific to the pre-defined job titles" — every
+    location scrape.py already searches is eligible, filtered purely by
+    title here). Kept only if ALL of:
       - is_role_relevant(title)
       - fit_tier(title) == "target" — deliberately the real post-1.3 two-axis
         tier, not the old single-regex one; this gate was specifically held
