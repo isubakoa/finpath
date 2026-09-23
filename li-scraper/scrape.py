@@ -604,24 +604,7 @@ def _clean_str(value):
     return str(value)
 
 
-def _append_measurement_csv(path, rows):
-    """PHASE 0 MEASUREMENT ONLY — see PHASE0_MEASUREMENT.md. Appends rows to
-    a CSV, writing the header once if the file doesn't already exist. Purely
-    a side effect (file I/O); never touches anything build_fresh_roles()
-    returns or how it decides what to keep."""
-    import csv
-    file_exists = os.path.exists(path)
-    with open(path, "a", newline="") as f:
-        writer = csv.writer(f)
-        if not file_exists:
-            writer.writerow([
-                "date", "source", "employer", "title", "location",
-                "matched_slug", "is_role_relevant", "fit_tier", "job_url",
-            ])
-        writer.writerows(rows)
-
-
-def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None):
+def build_fresh_roles(rows, index, today_iso, debug=False):
     """Filters this run's raw results down to real matches, keyed by
     role_identity() (1.4: normalized employer+title+location — NOT job_url;
     the same real posting frequently turns up at a different URL per site,
@@ -647,23 +630,12 @@ def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None
     A URL is still required and still deduped on its own first (`duplicate`
     below) — that's a much cheaper, unambiguous check (the literal same URL
     really is the literal same JobSpy row) and catches the common case
-    before the heavier identity-based merge ever runs.
-
-    measure_csv_path: PHASE 0 MEASUREMENT ONLY, temporary — see
-    PHASE0_MEASUREMENT.md. When set (via the MEASURE_UNMATCHED_CSV env var
-    in main()), appends one row per raw result seen this run — matched or
-    not — to the given CSV. This is purely additive logging: left unset (the
-    default, and the only mode production runs use today), this function's
-    filtering decisions are unaffected by whether it's set. Delete this
-    parameter, _append_measurement_csv(), and the MEASURE_UNMATCHED_CSV
-    wiring in main() once Phase 0's numbers have been collected and
-    reported — see PHASE0_MEASUREMENT.md for the removal checklist."""
+    before the heavier identity-based merge ever runs."""
     fresh = {}  # identity tuple -> (slug, role dict)
     fresh_open_market = {}  # identity tuple -> (normalized employer key, role dict) — 2.2
     seen_urls = set()
     kept = dropped_company = dropped_title = duplicate = merged_cross_site = 0
     kept_open_market = dropped_open_market_strict = merged_cross_site_open_market = 0
-    measure_rows = [] if measure_csv_path else None
 
     for source, row in rows:
         url = _clean_str(row.get("job_url"))
@@ -682,12 +654,6 @@ def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None
         # this guards against).
         title, location = normalize_scraped_title(_clean_str(row.get("title")), _clean_str(row.get("location")))
         slug = match_company(employer, index)
-
-        if measure_rows is not None:
-            measure_rows.append([
-                today_iso, source, employer, title, location,
-                slug or "", is_role_relevant(title), fit_tier(title), url,
-            ])
 
         if not slug:
             dropped_company += 1
@@ -754,9 +720,6 @@ def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None
 
         kept += 1
         fresh[identity] = (slug, candidate_role)
-
-    if measure_rows is not None:
-        _append_measurement_csv(measure_csv_path, measure_rows)
 
     if debug:
         print(
@@ -942,14 +905,7 @@ def main():
     print(f"[scrape] {len(rows)} raw results this run ({counts_str})")
 
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    # PHASE 0 MEASUREMENT ONLY, temporary — see PHASE0_MEASUREMENT.md.
-    # Unset in normal operation; the workflow sets it for the duration of the
-    # measurement window only. Leaving this env var unset (the default)
-    # means build_fresh_roles() behaves exactly as it did before this line.
-    measure_csv_path = os.environ.get("MEASURE_UNMATCHED_CSV") or None
-    fresh_roles, fresh_open_market_roles = build_fresh_roles(
-        rows, index, today_iso, debug=debug, measure_csv_path=measure_csv_path
-    )
+    fresh_roles, fresh_open_market_roles = build_fresh_roles(rows, index, today_iso, debug=debug)
     existing = load_existing_snapshot()
     snapshot = merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=fresh_open_market_roles, debug=debug)
 
