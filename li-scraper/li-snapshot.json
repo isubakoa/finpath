@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T20:53:37Z",
+  "generatedAt": "2026-09-23T22:21:48Z",
   "companies": {
     "google": {
       "roles": [
@@ -817,11 +817,11 @@
           "url": "https://www.linkedin.com/jobs/view/4466905186",
           "postedDate": "2026-09-18",
           "source": "li",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Head of Product (Fraud)",
@@ -1222,8 +1222,8 @@
         {
           "title": "Product Owner (UX)",
           "location": "",
-          "url": "https://www.linkedin.com/jobs/view/3955976065",
-          "postedDate": "2026-09-17",
+          "url": "https://www.linkedin.com/jobs/view/3811296961",
+          "postedDate": "2026-09-20",
           "source": "li",
           "sources": [
             "li"
@@ -1258,8 +1258,8 @@
         {
           "title": "Product Designer (Platform)",
           "location": "",
-          "url": "https://www.linkedin.com/jobs/view/4423960794",
-          "postedDate": "2026-09-17",
+          "url": "https://www.linkedin.com/jobs/view/4423947992",
+          "postedDate": "2026-09-19",
           "source": "li",
           "sources": [
             "li"
@@ -1589,11 +1589,11 @@
           "url": "https://www.linkedin.com/jobs/view/4429844140",
           "postedDate": "2026-09-18",
           "source": "li",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Senior Associate/ Assistant Manager, Experience Designer",
@@ -1625,11 +1625,11 @@
           "url": "https://www.linkedin.com/jobs/view/4448423702",
           "postedDate": "2026-09-18",
           "source": "li",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Associate Product Manager",
@@ -2722,8 +2722,8 @@
         {
           "title": "Visual Designer, Brand Innovation Lab",
           "location": "London, ENG, GB",
-          "url": "https://uk.indeed.com/viewjob?jk=6323ffac95bad2be",
-          "postedDate": "2026-09-09",
+          "url": "https://uk.indeed.com/viewjob?jk=029fda21cb8f6233",
+          "postedDate": "2026-09-08",
           "source": "indeed",
           "sources": [
             "indeed"
@@ -2836,8 +2836,8 @@
           "sources": [
             "indeed"
           ],
-          "lastSeenAt": "2026-09-23",
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Product Manager, Amazon Alexa",
@@ -2981,11 +2981,11 @@
           "url": "https://it.indeed.com/viewjob?jk=cb721b985331d3f6",
           "postedDate": "2026-09-17",
           "source": "indeed",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "indeed"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         }
       ]
     },
@@ -3081,11 +3081,11 @@
           "url": "https://www.linkedin.com/jobs/view/4467983386",
           "postedDate": "2026-09-16",
           "source": "li",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Design Researcher - 6 Months FTC",
@@ -3263,13 +3263,13 @@
           "title": "Product Owner / UX Designer \u2013 AI & Digital Experience H/F - IBM FutureNow Center - Strasbourg",
           "location": "Lille, Hauts-de-France, France",
           "url": "https://www.linkedin.com/jobs/view/4468593706",
-          "postedDate": null,
+          "postedDate": "2026-09-22",
           "source": "li",
-          "lastSeenAt": "2026-09-23",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         }
       ]
     },
@@ -4363,6 +4363,18 @@
           "source": "indeed",
           "sources": [
             "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
+        },
+        {
+          "title": "Creative Strategy Manager",
+          "location": "",
+          "url": "https://www.linkedin.com/jobs/view/4465220844",
+          "postedDate": "2026-09-14",
+          "source": "li",
+          "sources": [
+            "li"
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-09-23"
@@ -7481,11 +7493,11 @@
           "url": "https://at.indeed.com/viewjob?jk=0eee26145ad99208",
           "postedDate": "2026-08-20",
           "source": "indeed",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "indeed"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Field Integrated Marketing Manager",
@@ -7543,6 +7555,30 @@
           "source": "li",
           "sources": [
             "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
+        },
+        {
+          "title": "Account Technology Strategist - Public Sector (Central Gov)",
+          "location": "Schiphol, NH, NL",
+          "url": "https://nl.indeed.com/viewjob?jk=f69d4dcd83f218a2",
+          "postedDate": "2026-09-18",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
+        },
+        {
+          "title": "Postdoctoral Researcher, Experimental Data Generation & CRO Strategy",
+          "location": "Berlin, BE, DE",
+          "url": "https://de.indeed.com/viewjob?jk=29dda248a2bfb88a",
+          "postedDate": "2026-09-22",
+          "source": "indeed",
+          "sources": [
+            "indeed"
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-09-23"
@@ -7902,6 +7938,18 @@
             "li"
           ],
           "sponsorshipSignal": []
+        },
+        {
+          "title": "Assistant Manager, CX Strategy, Partnerships & CVP",
+          "location": "",
+          "url": "https://www.linkedin.com/jobs/view/4465786764",
+          "postedDate": "2026-09-14",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         }
       ]
     },
@@ -9490,6 +9538,30 @@
           ],
           "lastSeenAt": "2026-09-23",
           "sponsorshipSignal": []
+        },
+        {
+          "title": "Senior Design Strategist \u2013 Workplace & Education",
+          "location": "Sydney, New South Wales, Australia",
+          "url": "https://www.linkedin.com/jobs/view/4468793333",
+          "postedDate": "2026-09-22",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
+        },
+        {
+          "title": "Senior Design Strategist \u2013 Workplace & Education",
+          "location": "Melbourne, Victoria, Australia",
+          "url": "https://www.linkedin.com/jobs/view/4469003141",
+          "postedDate": "2026-09-22",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         }
       ]
     },
@@ -13217,11 +13289,11 @@
           "url": "https://it.indeed.com/viewjob?jk=0fb4bbe482e08eb6",
           "postedDate": "2026-09-22",
           "source": "indeed",
-          "lastSeenAt": "2026-09-22",
           "sources": [
             "indeed"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         }
       ]
     },
@@ -14342,6 +14414,18 @@
             "li"
           ],
           "sponsorshipSignal": []
+        },
+        {
+          "title": "\u3010Uvance Wayfinders\u3011\u30b3\u30f3\u30b5\u30eb\u30bf\u30f3\u30c8_Transformation Design(Strategic Change)_Senior Consultant",
+          "location": "",
+          "url": "https://www.linkedin.com/jobs/view/4440234009",
+          "postedDate": "2026-09-18",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         }
       ]
     },
@@ -14645,11 +14729,11 @@
           "url": "https://www.linkedin.com/jobs/view/4453246960",
           "postedDate": "2026-09-18",
           "source": "li",
-          "lastSeenAt": "2026-09-23",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Product Owner - Corporate Banking (all genders)",
@@ -14753,11 +14837,11 @@
           "url": "https://nz.indeed.com/viewjob?jk=6a6d905ea0669a98",
           "postedDate": "2026-09-15",
           "source": "indeed",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "indeed"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Technology Strategy \u2013 Consultant (Wellington & Auckland)",
@@ -14765,11 +14849,11 @@
           "url": "https://nz.indeed.com/viewjob?jk=2d42c7046a828ab2",
           "postedDate": "2026-09-15",
           "source": "indeed",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "indeed"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Growth Strategist",
@@ -14897,11 +14981,11 @@
           "url": "https://www.linkedin.com/jobs/view/4466286552",
           "postedDate": "2026-09-17",
           "source": "li",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Senior Manager | Consulting & Business Development | Product Mid-Market",
@@ -14979,13 +15063,13 @@
           "title": "CX Strategist",
           "location": "Melbourne, Victoria, Australia",
           "url": "https://www.linkedin.com/jobs/view/4468582256",
-          "postedDate": null,
+          "postedDate": "2026-09-22",
           "source": "li",
-          "lastSeenAt": "2026-09-23",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "AI Product Manager \u2013 Managed Services & AI Transformation",
@@ -15370,14 +15454,14 @@
         {
           "title": "Associate Director - AI Innovation Lab, Human-centered Design",
           "location": "Liverpool, England, UK",
-          "url": "https://www.linkedin.com/jobs/view/4467570233",
-          "postedDate": null,
+          "url": "https://www.linkedin.com/jobs/view/4468661687",
+          "postedDate": "2026-09-17",
           "source": "li",
-          "lastSeenAt": "2026-09-17",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         }
       ]
     },
@@ -15401,11 +15485,11 @@
           "url": "https://www.linkedin.com/jobs/view/4468695478",
           "postedDate": "2026-09-17",
           "source": "li",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Vice President, Product Strategist",
@@ -15857,11 +15941,11 @@
           "url": "https://www.linkedin.com/jobs/view/4467092634",
           "postedDate": "2026-09-14",
           "source": "li",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Senior Quantitative Research Manager",
@@ -16077,11 +16161,11 @@
           "url": "https://www.linkedin.com/jobs/view/4454180355",
           "postedDate": "2026-09-16",
           "source": "li",
-          "lastSeenAt": "2026-09-21",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         },
         {
           "title": "Junior UX Designer (SC Cleared / SC Eligible) - Associate Consultant - Digital Excellence",
@@ -16214,6 +16298,18 @@
           ],
           "lastSeenAt": "2026-09-23",
           "sponsorshipSignal": []
+        },
+        {
+          "title": "User Experience Researcher",
+          "location": "Manchester, England, UK",
+          "url": "https://www.linkedin.com/jobs/view/4467840381",
+          "postedDate": "2026-09-18",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         }
       ]
     },
@@ -17274,6 +17370,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-09-23"
+        },
+        {
+          "title": "Product Manager IGT-S",
+          "location": "Best, NB, NL",
+          "url": "https://nl.indeed.com/viewjob?jk=ca12c0cce5b4df26",
+          "postedDate": "2026-09-23",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
         }
       ]
     },
@@ -17464,6 +17572,18 @@
           "location": "Berlin, Berlin, Germany",
           "url": "https://www.linkedin.com/jobs/view/4459857844",
           "postedDate": "2026-09-18",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
+        },
+        {
+          "title": "Senior Product Designer, New Ventures & Consumer UX (f/m/x)",
+          "location": "Berlin, Berlin, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4470984600",
+          "postedDate": null,
           "source": "li",
           "sources": [
             "li"
@@ -17672,6 +17792,22 @@
           "lastSeenAt": "2026-09-23"
         }
       ]
+    },
+    "celonis": {
+      "roles": [
+        {
+          "title": "Executive Briefing & Solutions Strategy Lead (EBC)",
+          "location": "Munich, Bavaria, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4465217824",
+          "postedDate": "2026-09-14",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-23"
+        }
+      ]
     }
   },
   "openMarket": {
@@ -17682,6 +17818,34 @@
         "title": "Senior UX/UI Lead till drivmedelsf\u00f6retag",
         "location": "Stockholm, AB, SE",
         "url": "https://se.indeed.com/viewjob?jk=1eaa245fb96e6502",
+        "postedDate": "2026-09-23",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
+        "employer": "Entain",
+        "market": "London, ENG, GB",
+        "title": "Head of Design",
+        "location": "London, ENG, GB",
+        "url": "https://uk.indeed.com/viewjob?jk=d075b20dd688e0c6",
+        "postedDate": "2026-09-23",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
+        "employer": "AECOM",
+        "market": "Dublin, D, IE",
+        "title": "Technical Design Lead- Data Centres",
+        "location": "Dublin, D, IE",
+        "url": "https://ie.indeed.com/viewjob?jk=9e0d8cc5d2a23c7e",
         "postedDate": "2026-09-23",
         "source": "indeed",
         "sources": [
@@ -17709,7 +17873,7 @@
         "market": "Unspecified",
         "title": "Lead UX Designer",
         "location": "",
-        "url": "https://www.linkedin.com/jobs/view/4468526428",
+        "url": "https://www.linkedin.com/jobs/view/4468537253",
         "postedDate": "2026-09-22",
         "source": "li",
         "sources": [
@@ -17859,6 +18023,76 @@
         "lastSeenAt": "2026-09-23"
       },
       {
+        "employer": "appliedAI Initiative GmbH",
+        "market": "Germany",
+        "title": "Principal UX Designer (m/f/x) \u2013 AI Design",
+        "location": "Munich, Bavaria, Germany",
+        "url": "https://www.linkedin.com/jobs/view/4470294064",
+        "postedDate": "2026-09-22",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
+        "employer": "Health New Zealand | Te Whatu Ora",
+        "market": "Manukau City, N, NZ",
+        "title": "Patient Family Insights Co-Design Lead - Pacific Health - Manukau",
+        "location": "Manukau City, N, NZ",
+        "url": "https://nz.indeed.com/viewjob?jk=c533d746e797d63c",
+        "postedDate": "2026-09-22",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
+        "employer": "PEC project engineers & consultants GmbH",
+        "market": "Friedrichshafen, BW, DE",
+        "title": "Experience Design Lead (m/w/d) - Digital Products",
+        "location": "Friedrichshafen, BW, DE",
+        "url": "https://de.indeed.com/viewjob?jk=1e8fd0cb5dc2eaf7",
+        "postedDate": "2026-09-22",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
+        "employer": "Alef Education",
+        "market": "Abu Dhabi, AZ, AE",
+        "title": "Head of Design",
+        "location": "Abu Dhabi, AZ, AE",
+        "url": "https://ae.indeed.com/viewjob?jk=25a3cc31e104ec92",
+        "postedDate": "2026-09-22",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
+        "employer": "Electronic Arts",
+        "market": "Clementi, S00, SG",
+        "title": "Principal Product Designer",
+        "location": "Clementi, S00, SG",
+        "url": "https://sg.indeed.com/viewjob?jk=dcd36f67541cf0a1",
+        "postedDate": "2026-09-22",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
         "employer": "Opacity",
         "market": "Denmark",
         "title": "Lead Product Designer",
@@ -17891,7 +18125,7 @@
         "market": "New Zealand",
         "title": "Team Lead End User Experience",
         "location": "Wellington, New Zealand",
-        "url": "https://www.linkedin.com/jobs/view/4468493269",
+        "url": "https://www.linkedin.com/jobs/view/4468703084",
         "postedDate": "2026-09-21",
         "source": "li",
         "sources": [
@@ -18097,6 +18331,48 @@
         "lastSeenAt": "2026-09-23"
       },
       {
+        "employer": "Dow Jones",
+        "market": "Spain",
+        "title": "Principal Product Designer, Energy",
+        "location": "Barcelona, Catalonia, Spain",
+        "url": "https://www.linkedin.com/jobs/view/4457564817",
+        "postedDate": "2026-09-21",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
+        "employer": "Boots",
+        "market": "Nottingham, ENG, GB",
+        "title": "Creative Design Lead, The B-Hive",
+        "location": "Nottingham, ENG, GB",
+        "url": "https://uk.indeed.com/viewjob?jk=a39ca98ec06f8469",
+        "postedDate": "2026-09-21",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
+        "employer": "See & Recruit",
+        "market": "United Arab Emirates",
+        "title": "Head of Design",
+        "location": "Dubai, United Arab Emirates",
+        "url": "https://www.linkedin.com/jobs/view/4469853217",
+        "postedDate": "2026-09-21",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
         "employer": "Fanatics Momentum",
         "market": "United Arab Emirates",
         "title": "Lead Product Designer, Platform",
@@ -18200,6 +18476,20 @@
         "title": "Director, UX Design - AEC Forma Design",
         "location": "Barcelona, Catalonia, Spain",
         "url": "https://www.linkedin.com/jobs/view/4432105659",
+        "postedDate": "2026-09-20",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
+        "employer": "WSP in New Zealand",
+        "market": "New Zealand",
+        "title": "Digital Design Lead - Water",
+        "location": "Auckland, Auckland, New Zealand",
+        "url": "https://www.linkedin.com/jobs/view/4433819524",
         "postedDate": "2026-09-20",
         "source": "li",
         "sources": [
@@ -18438,6 +18728,20 @@
         "title": "Director, UX Design - AEC Forma Design",
         "location": "Dublin, County Dublin, Ireland",
         "url": "https://www.linkedin.com/jobs/view/4432122035",
+        "postedDate": "2026-09-18",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
+        "employer": "Prolific",
+        "market": "London, England, UK",
+        "title": "Lead Product Designer",
+        "location": "London, England, UK",
+        "url": "https://www.linkedin.com/jobs/view/4440962349",
         "postedDate": "2026-09-18",
         "source": "li",
         "sources": [
@@ -18829,7 +19133,7 @@
         "market": "Unspecified",
         "title": "Staff Product Designer, Growth",
         "location": "",
-        "url": "https://www.linkedin.com/jobs/view/4456511276",
+        "url": "https://www.linkedin.com/jobs/view/4455895529",
         "postedDate": "2026-09-15",
         "source": "li",
         "sources": [
@@ -19170,6 +19474,20 @@
         "source": "li",
         "sources": [
           "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-23"
+      },
+      {
+        "employer": "DeepOcean",
+        "market": "Oslo, N03, NO",
+        "title": "Digital Transformation & User Experience Tech Lead",
+        "location": "Oslo, N03, NO",
+        "url": "https://no.indeed.com/viewjob?jk=d38f258503623e0e",
+        "postedDate": "2026-09-14",
+        "source": "indeed",
+        "sources": [
+          "indeed"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-09-23"
