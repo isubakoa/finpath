@@ -73,6 +73,10 @@ FRESH_ROLES_CASES = [
     ("indeed", {"job_url": "https://x.test/12", "company": "Some Random Singapore Startup Pte Ltd", "title": "Product Designer", "location": "Singapore"}),  # dropped: relevant but only "below" tier, not "target" — fails open_market_gate()
     ("li", {"job_url": "https://x.test/13", "company": "Robert Walters", "title": "Head of Product Design", "location": "Netherlands"}),  # dropped: would otherwise qualify, but Robert Walters is agency-blocklisted
     ("li", {"job_url": "https://x.test/14", "company": "Some Random Startup GmbH", "title": "Head of Product Design", "location": "Germany"}),  # dropped: qualifying title, but Germany isn't an OPEN_MARKET_LOCATIONS market — not even offered to the gate
+    # UAE added 2026-09-23 — same "genuine open-market employer" shape as #11, but for the
+    # newest OPEN_MARKET_LOCATIONS market, and using the "UAE" abbreviation (not the spelled-out
+    # "United Arab Emirates" that appears in LOCATIONS) to exercise MARKET_ALIASES.
+    ("indeed", {"job_url": "https://x.test/15", "company": "Some Random Dubai Startup FZE", "title": "Head of Product Design", "location": "Dubai, UAE"}),  # kept open-market: relevant, target-tier, UAE (via alias), not an agency
 ]
 
 # 1.5 — (raw_title, raw_location, expected_title, expected_location), tested
@@ -279,9 +283,13 @@ def run():
     id_om_startup_sg = role_identity(
         normalize_employer_name("Some Random Singapore Startup Pte Ltd"), "Head of Product Design", "Singapore"
     )
+    id_om_startup_uae = role_identity(
+        normalize_employer_name("Some Random Dubai Startup FZE"), "Head of Product Design", "Dubai, UAE"
+    )
     om_checks = [
-        ("kept exactly 1 open-market identity (case #11+#11b merged; #12 fails the strict gate, "
-         "#13 is agency-blocklisted, #14 isn't an OPEN_MARKET_LOCATIONS market)", len(fresh_open_market) == 1),
+        ("kept exactly 2 open-market identities (case #11+#11b merged into 1, case #15 is the 2nd; "
+         "#12 fails the strict gate, #13 is agency-blocklisted, #14 isn't an OPEN_MARKET_LOCATIONS market)",
+         len(fresh_open_market) == 2),
         ("the SG startup role is keyed under its normalized employer text, not a slug",
          id_om_startup_sg in fresh_open_market),
         ("...carries the raw employer display name",
@@ -291,6 +299,12 @@ def run():
          sorted(fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("sources", [])) == ["glassdoor", "li"]),
         ("...canonical source is li (outranks glassdoor)",
          fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("source") == "li"),
+        ("the UAE startup role (case #15, 'Dubai, UAE' — the abbreviated form) is keyed under its "
+         "normalized employer text too", id_om_startup_uae in fresh_open_market),
+        ("...tagged with market=United Arab Emirates (via MARKET_ALIASES's 'uae', not a literal "
+         "'united arab emirates' substring)",
+         fresh_open_market.get(id_om_startup_uae, (None, {}))[1].get("market") == "United Arab Emirates"),
+        ("...tagged with source=indeed", fresh_open_market.get(id_om_startup_uae, (None, {}))[1].get("source") == "indeed"),
         ("Robert Walters (case #13) did not leak into the open-market feed despite otherwise qualifying",
          all(r.get("employer") != "Robert Walters" for _, r in fresh_open_market.values())),
         ("the Germany case (#14) did not leak in either — not an OPEN_MARKET_LOCATIONS market",
@@ -300,13 +314,17 @@ def run():
         failures += 0 if ok else 1
         print(f"  {'OK ' if ok else 'FAIL'}  {label}")
 
-    print("-- open-market: _open_market_for() (2.1) --")
+    print("-- open-market: _open_market_for() (2.1, UAE added 2026-09-23) --")
     OPEN_MARKET_LOCATION_CASES = [
         ("Singapore", "Singapore"),
         ("Amsterdam, North Holland, Netherlands", "Netherlands"),
         ("Jurong East, West Region, Singapore", "Singapore"),  # real Phase 0 data shape
         ("SG", "Singapore"),  # bare country-code form, also seen in real Phase 0 data
         ("NL", "Netherlands"),
+        ("Dubai, United Arab Emirates", "United Arab Emirates"),  # the spelled-out form (matches LOCATIONS verbatim)
+        ("Abu Dhabi, United Arab Emirates", "United Arab Emirates"),
+        ("Dubai, UAE", "United Arab Emirates"),  # the common abbreviated form — via MARKET_ALIASES, not a literal LOCATIONS substring
+        ("AE", "United Arab Emirates"),  # bare country-code form
         ("Kuala Lumpur, Malaysia", None),
         ("", None),
     ]

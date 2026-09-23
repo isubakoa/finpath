@@ -11,15 +11,19 @@ sections:
     the exact same isRoleRelevant() title filter index.html itself applies.
     This is the original shape check.php has always expected from
     js-scraper's snapshot.json, byte-for-byte unchanged by Phase 2.
-  - `openMarket: { roles: [...] }` (Phase 2, new) — a flat, no-slug list of
-    postings that matched NO tracked company but are still worth surfacing:
-    the posting's location is one of OPEN_MARKET_LOCATIONS (Singapore/
-    Netherlands today), and it clears open_market_gate() (relevant, real
-    target-tier fit, not on the agencies.py blocklist) — see
+  - `openMarket: { roles: [...] }` (Phase 2, new; UAE added 2026-09-23) — a
+    flat, no-slug list of postings that matched NO tracked company but are
+    still worth surfacing: the posting's location is one of
+    OPEN_MARKET_LOCATIONS (Singapore, Netherlands, and United Arab Emirates
+    today), and it clears open_market_gate() (relevant, real target-tier
+    fit, not on the agencies.py blocklist) — see
     build_fresh_roles()/open_market_gate(). Sorted newest-first. Each role
     in EITHER section carries its own `source` ("li", "indeed", "glassdoor",
     "google", or "bayt") plus a `sources` array (Phase 1.4) for cross-site
-    corroboration, so the frontend can badge it correctly.
+    corroboration, so the frontend can badge it correctly. LI and Indeed are
+    both queried unconditionally for every combo, open-market locations
+    included — see run_searches() below — so every open-market market has
+    the same two-source floor as every tracked-company market does.
 ZipRecruiter (US/Canada only — a poor fit for a mostly non-US target-region
 list), Naukri (India) and BDJobs (Bangladesh) were deliberately left out —
 see README.md's "Widening scope further" for the reasoning behind every
@@ -226,19 +230,37 @@ LOCATIONS = [
     "Abu Dhabi, United Arab Emirates",
 ]
 
-# ---- Phase 2.1: open-market feed markets. An unmatched-company posting
-# ---- (no tracked-company match) only ever gets a second look for the
-# ---- open-market feed when its location is one of these — everywhere else,
-# ---- an unmatched posting is dropped exactly as it always was. Asserted
-# ---- against LOCATIONS at import time rather than trusting the two lists
-# ---- stay in sync by hand: OPEN_MARKET_LOCATIONS being a typo'd or stale
-# ---- subset would silently mean this location's combos never even get
-# ---- OFFERED to open_market_gate(), a much quieter failure than an import-
-# ---- time crash.
-OPEN_MARKET_LOCATIONS = ["Singapore", "Netherlands"]
-assert all(loc in LOCATIONS for loc in OPEN_MARKET_LOCATIONS), (
-    "OPEN_MARKET_LOCATIONS entries must all exist in LOCATIONS"
-)
+# ---- Phase 2.1 (UAE added 2026-09-23): open-market feed markets. An
+# ---- unmatched-company posting (no tracked-company match) only ever gets a
+# ---- second look for the open-market feed when its location is one of
+# ---- these — everywhere else, an unmatched posting is dropped exactly as
+# ---- it always was. Singapore/Netherlands are asserted for EXACT
+# ---- membership in LOCATIONS (each is its own bare-country entry there).
+# ---- United Arab Emirates has no bare entry of its own in LOCATIONS — only
+# ---- the two city-qualified ones ("Dubai, United Arab Emirates" / "Abu
+# ---- Dhabi, United Arab Emirates") that already exist there for ordinary
+# ---- tracked-company scraping — so it's asserted for SUBSTRING membership
+# ---- instead: "united arab emirates" must appear in at least one real
+# ---- LOCATIONS entry. Either way, the assert exists so a typo'd or stale
+# ---- OPEN_MARKET_LOCATIONS entry fails loudly at import time instead of
+# ---- silently meaning that market's combos never reach open_market_gate().
+OPEN_MARKET_LOCATIONS = ["Singapore", "Netherlands", "United Arab Emirates"]
+assert all(
+    any(market.lower() == loc.lower() or market.lower() in loc.lower() for loc in LOCATIONS)
+    for market in OPEN_MARKET_LOCATIONS
+), "Each OPEN_MARKET_LOCATIONS entry must exactly match or be a substring of at least one LOCATIONS entry"
+
+# A market whose real-world postings commonly abbreviate the country name
+# differently than LOCATIONS spells it out, checked as an extra substring
+# alongside the market's own name in _open_market_for() below — "UAE" is a
+# very common informal abbreviation LinkedIn/Indeed location fields use
+# ("Dubai, UAE") that wouldn't otherwise contain the literal phrase "united
+# arab emirates". Every OPEN_MARKET_LOCATIONS entry not listed here just
+# matches on its own lowercase name (Singapore, Netherlands — unchanged
+# from Phase 2.1).
+MARKET_ALIASES = {
+    "United Arab Emirates": ["uae"],
+}
 
 
 def _open_market_for(location):
@@ -247,20 +269,23 @@ def _open_market_for(location):
     result's location is almost always more specific than the bare country
     name used to search for it (e.g. "Amsterdam, North Holland,
     Netherlands", not literally "Netherlands" — see the Phase 0 measurement
-    data this was checked against). Also recognizes a bare two-letter
-    country code ("SG"/"NL") on its own, a form some sources return instead
-    of a full location string — checked by exact (not substring) match
-    since those codes are too short/generic to substring-match safely.
-    Returns the matching OPEN_MARKET_LOCATIONS entry (e.g. "Singapore") or
-    None."""
+    data this was checked against). Each market also gets any aliases
+    listed in MARKET_ALIASES checked as additional substrings (e.g. "uae"
+    for United Arab Emirates). Also recognizes a bare two- or three-letter
+    country code ("SG"/"NL"/"AE") on its own, a form some sources return
+    instead of a full location string — checked by exact (not substring)
+    match since those codes are too short/generic to substring-match
+    safely. Returns the matching OPEN_MARKET_LOCATIONS entry (e.g.
+    "Singapore") or None."""
     loc = (location or "").strip().lower()
     if not loc:
         return None
-    country_codes = {"sg": "Singapore", "nl": "Netherlands"}
+    country_codes = {"sg": "Singapore", "nl": "Netherlands", "ae": "United Arab Emirates"}
     if loc in country_codes and country_codes[loc] in OPEN_MARKET_LOCATIONS:
         return country_codes[loc]
     for market in OPEN_MARKET_LOCATIONS:
-        if market.lower() in loc:
+        needles = [market.lower()] + MARKET_ALIASES.get(market, [])
+        if any(needle in loc for needle in needles):
             return market
     return None
 
@@ -365,10 +390,12 @@ def google_query(term, location):
     return f"{term} jobs near {location} {GOOGLE_TIME_PHRASE}"
 
 RESULTS_WANTED_PER_SEARCH = 20
-# ---- Phase 2.6: a Singapore/Netherlands combo asks for more results per
-# ---- search than the standard sweep — an open-market posting only gets
-# ---- looked at once per combo (there's no separate "look harder at SG/NL"
-# ---- pass; this rides the same per-combo requests every location gets),
+# ---- Phase 2.6: an open-market-eligible combo (any OPEN_MARKET_LOCATIONS
+# ---- market — Singapore, Netherlands, or United Arab Emirates) asks for
+# ---- more results per search than the standard sweep — an open-market
+# ---- posting only gets looked at once per combo (there's no separate
+# ---- "look harder at these markets" pass; this rides the same per-combo
+# ---- requests every location gets),
 # ---- so widening the net there directly widens open-market coverage.
 # ---- "sorted by recency" from the spec is NOT implemented as a JobSpy call
 # ---- parameter — scrape_jobs() has no sort/date-ordering parameter at all
