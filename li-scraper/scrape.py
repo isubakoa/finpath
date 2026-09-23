@@ -72,7 +72,53 @@ import time
 from datetime import datetime, timedelta, timezone
 
 from companies import COMPANIES, ALIASES
-from match import build_index, match_company, is_role_relevant, fit_tier
+from match import (
+    build_index,
+    match_company,
+    is_role_relevant,
+    fit_tier,
+    normalize_scraped_title,
+    role_identity,
+)
+
+# ---- 1.4: cross-site dedupe source precedence — when the same normalized
+# ---- (employer, title, location) identity is found via more than one site
+# ---- (this run, or across runs once merge_and_prune() folds them together),
+# ---- whichever site ranks lowest here supplies the role's canonical
+# ---- url/source; every site that found it is retained in the role's
+# ---- "sources" array regardless. "ats" is here (ranked highest) for
+# ---- forward-compat with index.html's own directly-fetched roles, which
+# ---- use the same precedence concept — this scraper itself never produces
+# ---- an "ats"-sourced row today.
+SOURCE_PRECEDENCE = {"ats": 0, "li": 1, "indeed": 2, "glassdoor": 3, "google": 4, "bayt": 5}
+
+
+def _source_rank(source):
+    return SOURCE_PRECEDENCE.get(source, len(SOURCE_PRECEDENCE))
+
+
+def _merge_role_records(prior, new):
+    """Combine a previously-seen role record with a freshly (re-)scraped one
+    for the same normalized identity (1.4) — used both within a single run
+    (build_fresh_roles(), when two of this run's raw rows collide) and across
+    runs (merge_and_prune(), when this run reconfirms a role carried over
+    from an earlier one). The freshest lastSeenAt/postedDate always wins (the
+    newer scrape just reconfirmed the role is still live), but the canonical
+    source/url is whichever record ranks higher in SOURCE_PRECEDENCE — so a
+    lower-precedence site re-finding an already-established ATS/LinkedIn
+    posting doesn't demote its canonical URL. "sources" is always the union
+    of both, so corroboration accumulates and is never lost across runs."""
+    sources = sorted(
+        set(prior.get("sources") or ([prior["source"]] if prior.get("source") else []))
+        | set(new.get("sources") or ([new["source"]] if new.get("source") else [])),
+        key=_source_rank,
+    )
+    canonical = new if _source_rank(new.get("source")) <= _source_rank(prior.get("source")) else prior
+    merged_role = dict(canonical)
+    merged_role["sources"] = sources
+    merged_role["lastSeenAt"] = new.get("lastSeenAt") or prior.get("lastSeenAt")
+    merged_role["postedDate"] = new.get("postedDate") or prior.get("postedDate")
+    return merged_role
 
 OUTPUT_PATH = "li-snapshot.json"
 
@@ -508,39 +554,56 @@ def _append_measurement_csv(path, rows):
 
 
 def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None):
-    """Filters this run's raw results down to real matches, keyed by URL.
-    rows: iterable of (source, row) — source is "li" or "indeed", tagged
-    onto the kept role so the frontend badge shows which site actually
-    found it.
+    """Filters this run's raw results down to real matches, keyed by
+    role_identity() (1.4: normalized employer+title+location — NOT job_url;
+    the same real posting frequently turns up at a different URL per site,
+    or even a fresh URL on the same site on a later run, and that's exactly
+    the cross-site duplication Phase 0 set out to measure). rows: iterable
+    of (source, row) — source is "li", "indeed", "glassdoor", "google", or
+    "bayt", tagged onto the kept role (plus retained in its "sources" array
+    when more than one site reports the same identity) so the frontend badge
+    shows which site(s) actually found it.
+
+    A URL is still required and still deduped on its own first (`duplicate`
+    below) — that's a much cheaper, unambiguous check (the literal same URL
+    really is the literal same JobSpy row) and catches the common case
+    before the heavier identity-based merge ever runs.
 
     measure_csv_path: PHASE 0 MEASUREMENT ONLY, temporary — see
     PHASE0_MEASUREMENT.md. When set (via the MEASURE_UNMATCHED_CSV env var
     in main()), appends one row per raw result seen this run — matched or
     not — to the given CSV. This is purely additive logging: left unset (the
     default, and the only mode production runs use today), this function's
-    filtering decisions and return value are byte-for-byte identical to
-    before this parameter existed. Delete this parameter, _append_measurement_csv(),
-    and the MEASURE_UNMATCHED_CSV wiring in main() once Phase 0's numbers
-    have been collected and reported — see PHASE0_MEASUREMENT.md for the
-    removal checklist."""
-    fresh = {}  # url -> (slug, role dict)
-    kept = dropped_company = dropped_title = duplicate = 0
+    filtering decisions are unaffected by whether it's set. Delete this
+    parameter, _append_measurement_csv(), and the MEASURE_UNMATCHED_CSV
+    wiring in main() once Phase 0's numbers have been collected and
+    reported — see PHASE0_MEASUREMENT.md for the removal checklist."""
+    fresh = {}  # identity tuple -> (slug, role dict)
+    seen_urls = set()
+    kept = dropped_company = dropped_title = duplicate = merged_cross_site = 0
     measure_rows = [] if measure_csv_path else None
 
     for source, row in rows:
         url = _clean_str(row.get("job_url"))
-        if not url or url in fresh:
+        if not url or url in seen_urls:
             duplicate += 1
             continue
+        seen_urls.add(url)
 
         employer = _clean_str(row.get("company"))
-        title = _clean_str(row.get("title"))
+        # 1.5: strip CTA-button run-on text and, only when the site gave no
+        # location, recover one that's run into the title text itself.
+        # _clean_str() first, same as employer above — normalize_scraped_title()
+        # ultimately just does str(value), which doesn't catch a raw pandas
+        # NaN float the way _clean_str()'s explicit `value != value` check
+        # does (see _clean_str()'s own docstring for the production crash
+        # this guards against).
+        title, location = normalize_scraped_title(_clean_str(row.get("title")), _clean_str(row.get("location")))
         slug = match_company(employer, index)
 
         if measure_rows is not None:
             measure_rows.append([
-                today_iso, source, employer, title,
-                _clean_str(row.get("location")),
+                today_iso, source, employer, title, location,
                 slug or "", is_role_relevant(title), fit_tier(title), url,
             ])
 
@@ -556,15 +619,25 @@ def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None
                 print(f"[match] title filtered out: {title!r} @ {employer!r}", file=sys.stderr)
             continue
 
-        kept += 1
-        fresh[url] = (slug, {
+        identity = role_identity(slug, title, location)
+        candidate_role = {
             "title": title,
-            "location": _clean_str(row.get("location")) or "Not specified",
+            "location": location,
             "url": url,
             "postedDate": normalize_posted_date(row.get("date_posted")),
             "source": source,
+            "sources": [source],
             "lastSeenAt": today_iso,
-        })
+        }
+
+        if identity in fresh:
+            merged_cross_site += 1
+            _, prior_role = fresh[identity]
+            fresh[identity] = (slug, _merge_role_records(prior_role, candidate_role))
+            continue
+
+        kept += 1
+        fresh[identity] = (slug, candidate_role)
 
     if measure_rows is not None:
         _append_measurement_csv(measure_csv_path, measure_rows)
@@ -572,7 +645,8 @@ def build_fresh_roles(rows, index, today_iso, debug=False, measure_csv_path=None
     if debug:
         print(
             f"[match] kept={kept} dropped_no_company_match={dropped_company} "
-            f"dropped_title_filter={dropped_title} duplicates={duplicate}",
+            f"dropped_title_filter={dropped_title} duplicate_urls={duplicate} "
+            f"merged_cross_site_identities={merged_cross_site}",
             file=sys.stderr,
         )
     return fresh
@@ -594,31 +668,46 @@ def load_existing_snapshot():
 
 def merge_and_prune(existing, fresh_roles, today_iso, debug=False):
     """existing: the snapshot loaded from disk (accumulated from prior runs).
-    fresh_roles: {url: (slug, role)} found THIS run. Returns the merged,
-    pruned snapshot: fresh roles upsert (refreshing lastSeenAt), everything
-    else carries over unless it's past EXPIRY_DAYS since its own
-    lastSeenAt."""
+    fresh_roles: {identity: (slug, role)} found THIS run (1.4: identity is
+    role_identity()'s normalized employer+title+location tuple, not a URL —
+    see build_fresh_roles()). Returns the merged, pruned snapshot: fresh
+    roles upsert (refreshing lastSeenAt, merging "sources" with whatever was
+    already accumulated for that identity — see _merge_role_records()),
+    everything else carries over unless it's past EXPIRY_DAYS since its own
+    lastSeenAt.
+
+    Roles written before 1.4 shipped only have a singular "source"/"url",
+    no "sources" array yet — flattening existing() below backfills
+    "sources" from "source" on the fly so every role is on the new shape
+    again the first time it's touched, no separate migration needed for
+    this field specifically (li-scraper/migrate_titles.py handles the
+    still-outstanding title/location text migration — see PHASE0_MEASUREMENT.md-
+    style note in that script)."""
     cutoff = (datetime.now(timezone.utc) - timedelta(days=EXPIRY_DAYS)).strftime("%Y-%m-%d")
 
-    # Flatten existing into the same {url: (slug, role)} shape to merge simply.
+    # Flatten existing into the same {identity: (slug, role)} shape to merge simply.
     merged = {}
     for slug, entry in existing.get("companies", {}).items():
         for role in entry.get("roles", []):
-            url = role.get("url")
-            if url:
-                merged[url] = (slug, role)
+            identity = role_identity(slug, role.get("title", ""), role.get("location", ""))
+            if "sources" not in role:
+                role = dict(role)
+                role["sources"] = [role["source"]] if role.get("source") else []
+            merged[identity] = (slug, role)
 
     carried_over = expired = updated = added = 0
-    for url, (slug, role) in fresh_roles.items():
-        if url in merged:
+    for identity, (slug, role) in fresh_roles.items():
+        if identity in merged:
             updated += 1
+            _, prior_role = merged[identity]
+            role = _merge_role_records(prior_role, role)
         else:
             added += 1
-        merged[url] = (slug, role)
+        merged[identity] = (slug, role)
 
     companies_out = {}
-    for url, (slug, role) in merged.items():
-        if url in fresh_roles:
+    for identity, (slug, role) in merged.items():
+        if identity in fresh_roles:
             companies_out.setdefault(slug, {"roles": []})["roles"].append(role)
             continue
         last_seen = role.get("lastSeenAt") or "1970-01-01"
