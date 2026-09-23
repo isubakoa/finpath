@@ -23,7 +23,14 @@ sections:
     corroboration, so the frontend can badge it correctly. LI and Indeed are
     both queried unconditionally for every combo, open-market locations
     included — see run_searches() below — so every open-market market has
-    the same two-source floor as every tracked-company market does.
+    the same two-source floor as every tracked-company market does. As of
+    2026-09-23, both sections also carry `sponsorshipSignal` (a list of
+    matched sponsorship/relocation phrases from the posting's own
+    description — see SPONSORSHIP_KEYWORDS/sponsorship_signal() below);
+    always `[]` for a LinkedIn-only role, since linkedin_fetch_description
+    stays off (see run_searches()'s docstring) — Indeed/Glassdoor/Google/
+    Bayt return a description with no extra request, so those sites are
+    covered for free.
 ZipRecruiter (US/Canada only — a poor fit for a mostly non-US target-region
 list), Naukri (India) and BDJobs (Bangladesh) were deliberately left out —
 see README.md's "Widening scope further" for the reasoning behind every
@@ -123,18 +130,86 @@ def _merge_role_records(prior, new):
     source/url is whichever record ranks higher in SOURCE_PRECEDENCE — so a
     lower-precedence site re-finding an already-established ATS/LinkedIn
     posting doesn't demote its canonical URL. "sources" is always the union
-    of both, so corroboration accumulates and is never lost across runs."""
+    of both, so corroboration accumulates and is never lost across runs.
+
+    2026-09-23: "sponsorshipSignal" follows the exact same union reasoning as
+    "sources" — once ANY corroborating source's description has surfaced a
+    matched phrase, that evidence should never be lost just because the
+    canonical record this round happens to come from a source with no
+    description (e.g. a LinkedIn row winning on SOURCE_PRECEDENCE after an
+    Indeed row already established a signal)."""
     sources = sorted(
         set(prior.get("sources") or ([prior["source"]] if prior.get("source") else []))
         | set(new.get("sources") or ([new["source"]] if new.get("source") else [])),
         key=_source_rank,
     )
+    sponsorship_signal_union = sorted(
+        set(prior.get("sponsorshipSignal") or []) | set(new.get("sponsorshipSignal") or [])
+    )
     canonical = new if _source_rank(new.get("source")) <= _source_rank(prior.get("source")) else prior
     merged_role = dict(canonical)
     merged_role["sources"] = sources
+    merged_role["sponsorshipSignal"] = sponsorship_signal_union
     merged_role["lastSeenAt"] = new.get("lastSeenAt") or prior.get("lastSeenAt")
     merged_role["postedDate"] = new.get("postedDate") or prior.get("postedDate")
     return merged_role
+
+
+# ---- Sponsorship/relocation keyword heuristic (2026-09-23) — a per-posting
+# ---- signal, separate from and complementary to companies.py's existing
+# ---- manually-curated, company-level `sponsorship`/`sponsorshipNote` fields
+# ---- (index.html's About panel already documents those as "a rough,
+# ---- size-and-market-based signal, not a verified guarantee" — this is the
+# ---- same spirit, applied per-listing instead of per-company). Literal,
+# ---- case-insensitive substring matching against the posting's own
+# ---- description text — deliberately not fuzzy/NLP, same "exact-match,
+# ---- conservative" philosophy as agencies.py's is_agency() and
+# ---- _open_market_for()'s MARKET_ALIASES: a false "this posting offers
+# ---- sponsorship" claim is a worse failure than an occasional missed one.
+SPONSORSHIP_KEYWORDS = [
+    "visa sponsorship",
+    "relocation support",
+    "international candidates",
+    "global talent",
+]
+
+# A small set of negation cues checked immediately before a matched phrase —
+# catches the most common real-world false positive ("no visa sponsorship
+# available", "unable to offer relocation support") without pretending to be
+# a real negation parser. This is a best-effort guard, not a guarantee: it
+# won't catch every phrasing (e.g. a negation several clauses earlier), which
+# is exactly why the frontend surfaces this as "a phrase was found," never as
+# "this employer confirmed sponsorship" — see index.html's About panel.
+_SPONSORSHIP_NEGATION_CUES = (
+    "no ", "not ", "without ", "unable to", "cannot ", "can't ", "won't ",
+    "does not", "doesn't", "unfortunately",
+)
+_SPONSORSHIP_NEGATION_WINDOW_CHARS = 40
+
+
+def _has_nearby_negation(text, match_start):
+    prefix = text[max(0, match_start - _SPONSORSHIP_NEGATION_WINDOW_CHARS):match_start]
+    return any(cue in prefix for cue in _SPONSORSHIP_NEGATION_CUES)
+
+
+def sponsorship_signal(description):
+    """Returns the list of SPONSORSHIP_KEYWORDS phrases found in `description`
+    (empty list = none found, including for an empty/missing description —
+    the common case for a LinkedIn-only row, since linkedin_fetch_description
+    stays off). Always a list, never a bare boolean, so the frontend can show
+    *which* phrase(s) actually matched rather than one opaque flag. Only the
+    first occurrence of each keyword is checked against
+    _has_nearby_negation() — good enough for a flag, not meant to be an
+    exhaustive report of every mention in a long description."""
+    if not description:
+        return []
+    text = description.lower()
+    hits = []
+    for keyword in SPONSORSHIP_KEYWORDS:
+        idx = text.find(keyword.lower())
+        if idx != -1 and not _has_nearby_negation(text, idx):
+            hits.append(keyword)
+    return hits
 
 OUTPUT_PATH = "li-snapshot.json"
 
@@ -482,7 +557,22 @@ def run_searches(combos, debug=False):
     another site's result for that same combo down with it. Only LI and
     Google get the randomized pacing pause — see PAUSE_BETWEEN_SEARCHES_*'s
     comment above for why Google gets the same treatment as LI despite not
-    being explicitly flagged as rate-limited anywhere in JobSpy's docs."""
+    being explicitly flagged as rate-limited anywhere in JobSpy's docs.
+
+    Description availability (2026-09-23, checked directly against JobSpy's
+    own README before writing this): Indeed, Glassdoor, and Google all return
+    a `description` field on every row with no extra parameter needed. LI is
+    the one exception — JobSpy only populates it when linkedin_fetch_description=True
+    is passed, which adds one extra request PER RESULT ("increases requests
+    by O(n)" per JobSpy's own docs) — a real cost given LI is this scraper's
+    single biggest source. Deliberately left off (see the
+    linkedin_fetch_description=False call below) — a LI-only role's
+    `sponsorshipSignal` (see sponsorship_signal() above) will always be [],
+    not because nothing was found but because nothing was ever fetched to
+    look at. Revisit if this proves to be a real gap once more data has
+    accumulated (a LI-corroborated role that also turns up on Indeed/
+    Glassdoor/Google still gets a description via that second source — see
+    _merge_role_records()'s sponsorshipSignal union)."""
     from jobspy import scrape_jobs
 
     for term, location in combos:
@@ -711,6 +801,7 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
                 "postedDate": normalize_posted_date(row.get("date_posted")),
                 "source": source,
                 "sources": [source],
+                "sponsorshipSignal": sponsorship_signal(_clean_str(row.get("description"))),
                 "lastSeenAt": today_iso,
             }
             if identity in fresh_open_market:
@@ -736,6 +827,7 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
             "postedDate": normalize_posted_date(row.get("date_posted")),
             "source": source,
             "sources": [source],
+            "sponsorshipSignal": sponsorship_signal(_clean_str(row.get("description"))),
             "lastSeenAt": today_iso,
         }
 
@@ -804,13 +896,20 @@ def _merge_identity_roles(existing_items, fresh_roles, cutoff):
     "sources" array yet — backfilled from "source" here on the fly so every
     role is on the new shape again the first time it's touched, no separate
     migration needed for this field specifically (li-scraper/migrate_titles.py
-    handles the still-outstanding title/location text migration)."""
+    handles the still-outstanding title/location text migration). Roles
+    written before the 2026-09-23 sponsorship-keyword addition are backfilled
+    the same way, to an empty list — not because a description was checked
+    and found nothing, just because no description was ever fetched/scanned
+    for that role yet."""
     merged = {}
     for key, role in existing_items:
         identity = role_identity(key, role.get("title", ""), role.get("location", ""))
-        if "sources" not in role:
+        if "sources" not in role or "sponsorshipSignal" not in role:
             role = dict(role)
-            role["sources"] = [role["source"]] if role.get("source") else []
+            if "sources" not in role:
+                role["sources"] = [role["source"]] if role.get("source") else []
+            if "sponsorshipSignal" not in role:
+                role["sponsorshipSignal"] = []
         merged[identity] = (key, role)
 
     stats = {"added": 0, "updated": 0, "carried_over": 0, "expired": 0}

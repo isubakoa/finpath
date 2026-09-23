@@ -28,6 +28,8 @@ from scrape import (  # top-level scrape.py imports have no jobspy dependency �
     OPEN_MARKET_LOCATIONS,
     EXPIRY_DAYS,
     _open_market_for,
+    sponsorship_signal,
+    SPONSORSHIP_KEYWORDS,
 )
 
 INDEX = build_index(COMPANIES, ALIASES)
@@ -57,7 +59,11 @@ INDEX = build_index(COMPANIES, ALIASES)
 # entry instead of two.
 FRESH_ROLES_CASES = [
     ("li", {"job_url": "https://x.test/1", "company": "Wise", "title": "Head of Design", "location": "London"}),
-    ("indeed", {"job_url": "https://x.test/2", "company": "HSBC Holdings plc", "title": "Senior UX Researcher", "location": "Singapore"}),
+    # 2026-09-23 — description carries a sponsorship keyword; li itself never fetches
+    # descriptions (linkedin_fetch_description stays off), but Indeed's row here does,
+    # exercising the tracked-company branch of the sponsorship-signal wiring.
+    ("indeed", {"job_url": "https://x.test/2", "company": "HSBC Holdings plc", "title": "Senior UX Researcher", "location": "Singapore",
+                "description": "We offer visa sponsorship for qualified candidates."}),
     ("indeed", {"job_url": "https://x.test/3", "company": "Some Totally Unrelated Company", "title": "Head of Design", "location": "Berlin"}),  # dropped: no company match
     ("li", {"job_url": "https://x.test/4", "company": "Wise", "title": "Software Engineer", "location": "London"}),  # dropped: title not relevant
     ("li", {"job_url": "https://x.test/1", "company": "Wise", "title": "Head of Design (dup)", "location": "London"}),  # dropped: duplicate URL
@@ -65,11 +71,20 @@ FRESH_ROLES_CASES = [
     ("li", {"job_url": "https://x.test/6", "company": "Wise", "title": "Head of Design", "location": float("nan")}),  # kept: NaN location -> "" (1.5 — no more "Not specified")
     ("indeed", {"job_url": "https://x.test/7", "company": "Wise", "title": float("nan"), "location": "London"}),  # dropped, not crashed: NaN title
     ("glassdoor", {"job_url": "https://x.test/8", "company": "Wise", "title": "Senior Product Designer", "location": "Singapore"}),  # kept, source=glassdoor
-    ("google", {"job_url": "https://x.test/9", "company": "Wise", "title": "Head of Design", "location": "London"}),  # 1.4: same identity as case #1 — merges, doesn't add a 6th kept entry
+    # 2026-09-23 — the canonical record for this identity stays li's (case #1, no
+    # description, wins SOURCE_PRECEDENCE) but this google row's description carries a
+    # sponsorship keyword — exercises _merge_role_records()'s sponsorshipSignal UNION
+    # (evidence from a non-canonical source must still survive the merge).
+    ("google", {"job_url": "https://x.test/9", "company": "Wise", "title": "Head of Design", "location": "London",
+                "description": "We welcome international candidates from around the world."}),  # 1.4: same identity as case #1 — merges, doesn't add a 6th kept entry
     ("bayt", {"job_url": "https://x.test/10", "company": "Wise", "title": "UX Researcher", "location": "Dubai"}),  # kept, source=bayt
     # 2.2 — open-market cases: none of these employers are tracked companies.
     ("li", {"job_url": "https://x.test/11", "company": "Some Random Singapore Startup Pte Ltd", "title": "Head of Product Design", "location": "Singapore"}),  # kept open-market: relevant, target-tier, SG, not an agency
-    ("glassdoor", {"job_url": "https://x.test/11b", "company": "Some Random Singapore Startup Pte Ltd", "title": "Head of Product Design", "location": "Singapore"}),  # 1.4-style merge: same open-market identity as #11, different site/URL
+    # 2026-09-23 — this glassdoor row's description carries THREE sponsorship keywords at
+    # once; merges with #11 (li, no description) into the same open-market identity, same
+    # union-merge exercise as case #9 above but for the open-market branch.
+    ("glassdoor", {"job_url": "https://x.test/11b", "company": "Some Random Singapore Startup Pte Ltd", "title": "Head of Product Design", "location": "Singapore",
+                   "description": "We offer relocation support and welcome applications from international candidates as part of our Global Talent program."}),  # 1.4-style merge: same open-market identity as #11, different site/URL
     ("indeed", {"job_url": "https://x.test/12", "company": "Some Random Singapore Startup Pte Ltd", "title": "Product Designer", "location": "Singapore"}),  # dropped: relevant but only "below" tier, not "target" — fails open_market_gate()
     ("li", {"job_url": "https://x.test/13", "company": "Robert Walters", "title": "Head of Product Design", "location": "Netherlands"}),  # dropped: would otherwise qualify, but Robert Walters is agency-blocklisted
     ("li", {"job_url": "https://x.test/14", "company": "Some Random Startup GmbH", "title": "Head of Product Design", "location": "Germany"}),  # dropped: qualifying title, but Germany isn't an OPEN_MARKET_LOCATIONS market — not even offered to the gate
@@ -77,6 +92,11 @@ FRESH_ROLES_CASES = [
     # newest OPEN_MARKET_LOCATIONS market, and using the "UAE" abbreviation (not the spelled-out
     # "United Arab Emirates" that appears in LOCATIONS) to exercise MARKET_ALIASES.
     ("indeed", {"job_url": "https://x.test/15", "company": "Some Random Dubai Startup FZE", "title": "Head of Product Design", "location": "Dubai, UAE"}),  # kept open-market: relevant, target-tier, UAE (via alias), not an agency
+    # Sponsorship negation guard (2026-09-23) — the description literally contains the
+    # substring "visa sponsorship", but negated ("not able to offer"/"unfortunately"
+    # nearby) — sponsorshipSignal must come back empty, not a false positive.
+    ("indeed", {"job_url": "https://x.test/16", "company": "Some Random NL Open Market Co", "title": "Head of Product Design", "location": "Netherlands",
+                "description": "Unfortunately, we are not able to offer visa sponsorship for this role at this time."}),  # kept open-market (relevant/target-tier/NL/not agency); sponsorshipSignal must be [] despite the substring being present
 ]
 
 # 1.5 — (raw_title, raw_location, expected_title, expected_location), tested
@@ -267,6 +287,11 @@ def run():
          sorted(fresh.get(id_wise_design_london, (None, {}))[1].get("sources", [])) == ["google", "li"]),
         ("...merged role's canonical url is li's (case #1's), not google's (case #10's)",
          fresh.get(id_wise_design_london, (None, {}))[1].get("url") == "https://x.test/1"),
+        ("...merged role's sponsorshipSignal keeps google's (case #9's) match even though li "
+         "(no description) won canonical status — the UNION, not just the canonical record's own signal",
+         fresh.get(id_wise_design_london, (None, {}))[1].get("sponsorshipSignal") == ["international candidates"]),
+        ("hsbc role (indeed, case #2, has a description) carries its own sponsorshipSignal",
+         fresh.get(id_hsbc_senior_ux_researcher_sg, (None, {}))[1].get("sponsorshipSignal") == ["visa sponsorship"]),
         ("wise role filed under correct slug", fresh.get(id_wise_design_london, (None, {}))[0] == "wise"),
         ("hsbc role tagged source=indeed", fresh.get(id_hsbc_senior_ux_researcher_sg, (None, {}))[1].get("source") == "indeed"),
         ("hsbc role filed under correct slug", fresh.get(id_hsbc_senior_ux_researcher_sg, (None, {}))[0] == "hsbc"),
@@ -286,10 +311,14 @@ def run():
     id_om_startup_uae = role_identity(
         normalize_employer_name("Some Random Dubai Startup FZE"), "Head of Product Design", "Dubai, UAE"
     )
+    id_om_nl_negation = role_identity(
+        normalize_employer_name("Some Random NL Open Market Co"), "Head of Product Design", "Netherlands"
+    )
     om_checks = [
-        ("kept exactly 2 open-market identities (case #11+#11b merged into 1, case #15 is the 2nd; "
-         "#12 fails the strict gate, #13 is agency-blocklisted, #14 isn't an OPEN_MARKET_LOCATIONS market)",
-         len(fresh_open_market) == 2),
+        ("kept exactly 3 open-market identities (case #11+#11b merged into 1, case #15 is the 2nd, "
+         "case #16 is the 3rd; #12 fails the strict gate, #13 is agency-blocklisted, #14 isn't an "
+         "OPEN_MARKET_LOCATIONS market)",
+         len(fresh_open_market) == 3),
         ("the SG startup role is keyed under its normalized employer text, not a slug",
          id_om_startup_sg in fresh_open_market),
         ("...carries the raw employer display name",
@@ -309,6 +338,19 @@ def run():
          all(r.get("employer") != "Robert Walters" for _, r in fresh_open_market.values())),
         ("the Germany case (#14) did not leak in either — not an OPEN_MARKET_LOCATIONS market",
          all(r.get("market") != "" and "Germany" not in (r.get("location") or "") for _, r in fresh_open_market.values())),
+        # 2026-09-23 — sponsorship signal on the open-market branch.
+        ("SG startup role's sponsorshipSignal is the union of li's (#11, no description) and "
+         "glassdoor's (#11b, three keywords) — canonical source is still li, signal isn't",
+         fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("sponsorshipSignal") ==
+         sorted(["relocation support", "international candidates", "global talent"])),
+        ("UAE startup role (case #15) has no description at all -> sponsorshipSignal is []",
+         fresh_open_market.get(id_om_startup_uae, (None, {}))[1].get("sponsorshipSignal") == []),
+        ("case #16 (NL) kept in the open-market feed on its own merits (relevant/target-tier/not agency)",
+         id_om_nl_negation in fresh_open_market),
+        ("...but its sponsorshipSignal is [] — the description contains the literal substring "
+         "'visa sponsorship' but negated ('not able to offer'/'unfortunately' nearby), so the "
+         "negation guard correctly suppresses the false positive",
+         fresh_open_market.get(id_om_nl_negation, (None, {}))[1].get("sponsorshipSignal") == []),
     ]
     for label, ok in om_checks:
         failures += 0 if ok else 1
@@ -333,6 +375,36 @@ def run():
         ok = got == expected
         failures += 0 if ok else 1
         print(f"  {'OK ' if ok else 'FAIL'}  {raw!r:45s} -> {got!r} (expected {expected!r})")
+
+    print("-- sponsorship_signal() (2026-09-23, direct) --")
+    SPONSORSHIP_CASES = [
+        ("We offer visa sponsorship for qualified candidates.", ["visa sponsorship"]),
+        ("VISA SPONSORSHIP available for the right candidate!", ["visa sponsorship"]),  # case-insensitive
+        ("We welcome international candidates from around the world.", ["international candidates"]),
+        (
+            "We offer relocation support and welcome applications from international "
+            "candidates as part of our Global Talent program.",
+            ["relocation support", "international candidates", "global talent"],
+        ),  # all 4 keywords present bar one, in encounter order — not alphabetical
+        ("Unfortunately, we are not able to offer visa sponsorship for this role at this time.", []),  # negated
+        ("No relocation support is provided for this position.", []),  # negated ("no ")
+        ("This role does not include visa sponsorship.", []),  # negated ("does not")
+        ("Great benefits and a competitive salary package.", []),  # no keyword at all
+        ("", []),  # empty description — the common case for a LinkedIn-only row
+        (None, []),  # missing description field entirely (row.get() returns None)
+    ]
+    for description, expected in SPONSORSHIP_CASES:
+        got = sponsorship_signal(description)
+        ok = got == expected
+        failures += 0 if ok else 1
+        shown = (description[:55] + "…") if description and len(description) > 55 else description
+        print(f"  {'OK ' if ok else 'FAIL'}  {shown!r:60s} -> {got!r} (expected {expected!r})")
+    # Every keyword actually appears in at least one positive case above — guards against a
+    # future SPONSORSHIP_KEYWORDS edit silently going untested.
+    tested_hits = {kw for _, hits in SPONSORSHIP_CASES for kw in hits}
+    all_covered = tested_hits == set(SPONSORSHIP_KEYWORDS)
+    failures += 0 if all_covered else 1
+    print(f"  {'OK ' if all_covered else 'FAIL'}  every SPONSORSHIP_KEYWORDS entry is exercised by at least one case above")
 
     print("-- open-market: is_agency() (2.3) --")
     AGENCY_CASES = [
