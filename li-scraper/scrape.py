@@ -1,12 +1,12 @@
 """
 FinPath — LI + Indeed coverage via JobSpy (github.com/speedyapply/JobSpy),
-plus Glassdoor and Bayt via dedicated Playwright scrapers (see
-*** GLASSDOOR: NOW VIA PLAYWRIGHT *** and *** BAYT: NOW VIA PLAYWRIGHT ***
-below, and glassdoor_playwright.py's/bayt_playwright.py's own module
-docstrings for the full story). Google was retired outright, not replaced
-— see *** GOOGLE: RETIRED *** below.
+plus Bayt via a dedicated Playwright scraper (see *** BAYT: NOW VIA
+PLAYWRIGHT *** below, and bayt_playwright.py's own module docstring for the
+full story). Glassdoor and Google were both evaluated and retired outright,
+neither replaced — see *** GLASSDOOR: RETIRED *** and *** GOOGLE: RETIRED
+*** below.
 
-Runs keyword searches against five of JobSpy's eight supported sites (your
+Runs keyword searches against three of JobSpy's eight supported sites (your
 trimmed Product + Design/UX title list, across your target-region list — see
 SEARCH_TERMS/LOCATIONS below). Writes li-snapshot.json with two top-level
 sections:
@@ -25,19 +25,18 @@ sections:
     already searches (all of LOCATIONS, not a narrower subset) is eligible;
     a `market` field (see market_for_location()) labels which one, purely
     for display/filtering, never for exclusion. Sorted newest-first. Each role
-    in EITHER section carries its own `source` ("li", "indeed", "glassdoor",
-    "google", or "bayt") plus a `sources` array (Phase 1.4) for cross-site
-    corroboration, so the frontend can badge it correctly. LI and Indeed are
-    both queried unconditionally for every combo, open-market locations
-    included — see run_searches() below — so every open-market market has
-    the same two-source floor as every tracked-company market does. As of
+    in EITHER section carries its own `source` ("li", "indeed", or "bayt")
+    plus a `sources` array (Phase 1.4) for cross-site corroboration, so the
+    frontend can badge it correctly. LI and Indeed are both queried
+    unconditionally for every combo, open-market locations included — see
+    run_searches() below — so every open-market market has the same
+    two-source floor as every tracked-company market does. As of
     2026-09-23, both sections also carry `sponsorshipSignal` (a list of
     matched sponsorship/relocation phrases from the posting's own
     description — see SPONSORSHIP_KEYWORDS/sponsorship_signal() below);
     always `[]` for a LinkedIn-only role, since linkedin_fetch_description
-    stays off (see run_searches()'s docstring) — Indeed/Glassdoor/Google/
-    Bayt return a description with no extra request, so those sites are
-    covered for free.
+    stays off (see run_searches()'s docstring) — Indeed and Bayt return a
+    description with no extra request, so those sites are covered for free.
 ZipRecruiter (US/Canada only — a poor fit for a mostly non-US target-region
 list), Naukri (India) and BDJobs (Bangladesh) were deliberately left out —
 see README.md's "Widening scope further" for the reasoning behind every
@@ -53,21 +52,16 @@ it to 38 x 25 = 950; this round's location trim is a second, independent
 reduction on top of that one. Each combination is searched against LI and
 Indeed via JobSpy — two independent requests per combo, each in its own
 try/except so one site's failure never takes the other's result down for
-that same combo — plus Glassdoor, via a separate real-headless-Chromium
-Playwright scrape (where the location is one of the GLASSDOOR_COUNTRY
-supports — see that dict below; Glassdoor's country list is a real subset
-of Indeed's, not a guess), run outside this grid but fed the same
-`this_chunk` combos — see run_glassdoor_playwright_searches() and the
-module docstring's "GLASSDOOR: NOW VIA PLAYWRIGHT" section. Only LI gets
-the randomized pacing pause among the two JobSpy calls: Indeed has no rate
-limiting per JobSpy's own docs (see README's "Indeed coverage" section).
-Google used to be part of this grid too — retired outright 2026-09-24, see
-the module docstring's "GOOGLE: RETIRED" section; it's no longer searched
-at all, by any method. Bayt is architecturally different from all of the
-above — no location parameter at all (it "searches internationally" per
-JobSpy's own README) — so it isn't part of this per-combo grid either,
-searched separately and unchunked; see run_bayt_playwright_searches()
-below. There is still no way to run all 570 combinations in a single pass
+that same combo. Only LI gets the randomized pacing pause between the two
+JobSpy calls: Indeed has no rate limiting per JobSpy's own docs (see
+README's "Indeed coverage" section). Glassdoor and Google used to be part
+of this grid too — both retired outright 2026-09-24, see the module
+docstring's "GLASSDOOR: RETIRED" and "GOOGLE: RETIRED" sections; neither is
+searched at all anymore, by any method. Bayt is architecturally different
+from LI/Indeed — no location parameter at all (it "searches
+internationally" per JobSpy's own README) — so it isn't part of this
+per-combo grid either, searched separately and unchunked; see
+run_bayt_playwright_searches() below. There is still no way to run all 570 combinations in a single pass
 without either proxies or getting blocked on the LI side almost
 immediately — see li-scraper/README.md's "How the rotation works" section
 for the full
@@ -101,68 +95,90 @@ selectors and the full reasoning. run_bayt_searches() (the old JobSpy path)
 is left fully intact below, just no longer called from main() — a
 ready rollback if the Playwright approach ever needs to be abandoned.
 
-*** GLASSDOOR: NOW VIA PLAYWRIGHT, NOT JOBSPY (2026-09-24) ***
-Same story as Bayt, same day: JobSpy's Glassdoor adapter
-(run_glassdoor_searches() below) got a 400/403 ("location not parsed") on
-every real request. Rather than retire it (the original plan —
-zenpath-glassdoor-retired.zip, since superseded), the same Playwright
-approach that fixed Bayt was extended to Glassdoor. Verified 2026-09-24 by
-driving Glassdoor's real site directly: it does NOT bot-block a real
-browser the way Google does (see below) — a real Chromium request got a
-normal, fully-rendered results page on the first try. Glassdoor's own
-same-origin `/autocomplete/location` endpoint resolves a location name to
-a real location id/type live (no hardcoded, guessable IDs — an earlier
-hand-guessed numeric ID silently resolved to a completely wrong place with
-a fully valid-looking page and no error at all, which is exactly the
-failure mode live resolution avoids); the search itself uses a plain
-`?sc.keyword=&locT=&locId=` query string, not Glassdoor's fragile
-self-referential "SEO slug" URL encoding. See glassdoor_playwright.py's
-module docstring for the full verified DOM selectors and URL scheme.
-run_glassdoor_playwright_searches() below is called with the same
-`this_chunk` combos run_searches() already gets — this does NOT add any
-new combos to the rotation, only changes how Glassdoor's existing share of
-them is fetched. run_glassdoor_searches() (the old JobSpy path, extracted
-verbatim from what used to be inline in run_searches()) is left fully
-intact, just no longer called — a ready rollback path.
+*** GLASSDOOR: RETIRED (2026-09-24, after a same-day Playwright attempt) ***
+JobSpy's own Glassdoor adapter (removed — see below) got a 400/403
+("location not parsed") on every real request, the same shape of failure
+Bayt originally had. A same-day Playwright replacement was built and
+shipped, following the same reasoning that fixed Bayt: an initial manual
+check with a real, headed browser tab got a normal, fully-rendered results
+page on the first try, suggesting — wrongly, as it turned out — that
+Glassdoor doesn't bot-block real browsers the way Google does.
+
+That manual check used a headed browser, not the headless Chromium
+`sync_playwright()` actually launches in production, and the two behaved
+differently. The first live GitHub Actions run of the Playwright version
+came back with 0 Glassdoor results out of 63 eligible combos attempted. A
+local diagnostic (run against the real, unmodified scraper code, from a
+real residential IP — ruling out a GitHub-Actions-specific block) showed
+exactly why: Glassdoor's own homepage returned HTTP 401, titled
+"Authenticating...", running a script that redirects straight to
+`glassdoor.com/member/profile/login?reason=bot-detection&...` —
+Cloudflare's bot-management layer explicitly detecting the headless
+browser itself (not just "can this client run JS", which is what let Bayt
+through) and gating it behind a login wall, citing bot-detection as the
+reason in the URL itself.
+
+Getting past a page that explicitly declares itself a bot-detection
+response would mean deploying stealth countermeasures — spoofing
+`navigator.webdriver`, faking browser fingerprints, that whole toolkit —
+specifically to defeat a site's active anti-automation defense. That's a
+hard line regardless of the reason or who's asking, the same one that
+ruled out Google below. Separately, real research (not a guess) confirmed
+there's no legitimate way around it either: Glassdoor's official v1
+partner API (api.glassdoor.com) has returned HTTP 410 Gone since
+2025-08-20 — dead even for existing partner-key holders — and any new API
+access has required an undisclosed, enterprise-only sales process since
+2024, not a fit for this project. So Glassdoor is retired outright, same
+as Google: glassdoor_playwright.py, test_glassdoor_playwright.py, and
+every Glassdoor-specific code path that used to live in this file
+(GLASSDOOR_COUNTRY, run_glassdoor_searches(), run_glassdoor_playwright_
+searches()) have been deleted entirely rather than kept as a rollback —
+there's no working approach to roll back to. If this ever needs
+revisiting, the real alternative isn't a scraper at all: paid third-party
+job-data aggregators (e.g. JobsPipe, TheirStack) relicense Glassdoor's
+data themselves — a vendor decision, not something to build against
+unilaterally.
 
 *** GOOGLE: RETIRED, NOT REPLACED (2026-09-24) ***
 JobSpy's Google adapter returns 0 rows with an "initial cursor not found"
-warning on every request — no loud error the way Glassdoor/Bayt had, just
-silent nothing. Real diagnosis (a JobSpy maintainer's own account of this
-exact situation): Google serves an HTTP-200 "enable JavaScript" bootstrap
-shell to any non-JS-executing HTTP client, which is architecturally the
-same root cause as Bayt/Glassdoor's blocks — so in principle the same
-Playwright approach would likely fix Google too. It was NOT built. Loading
-Google's own search results page in a real browser — a single manual
-request, no automation, no scale at all — got an immediate "unusual
-traffic... verify you're not a robot" interstitial on the very first try;
-Bayt and Glassdoor both loaded cleanly on their first real-browser attempt.
-Building recurring automated infrastructure specifically to defeat
-Google's own bot-check, against Google's own search results specifically
-(not a job board), at an hourly schedule, is a materially different and
-more serious thing than Bayt/Glassdoor's cases — Google's Terms of Service
-explicitly prohibit automated querying of its search results, and actually
-solving/bypassing a CAPTCHA-class challenge is out of scope regardless of
-the reason. So Google is retired outright instead: run_google_searches()
-below is extracted verbatim from what used to be inline in run_searches(),
-kept intact as a reference, but never called from main() or from anywhere
-else. If Google coverage matters enough to revisit, the real, compliant
-path is Google's official Custom Search JSON API — but that returns
-general web-search snippets/links, not Google's special Jobs-panel data,
-so it would need real re-architecture (crawling each linked page
-separately) rather than being a drop-in replacement; not scoped or built.
+warning on every request — no loud error the way Bayt's JobSpy adapter
+had, just silent nothing. Real diagnosis (a JobSpy maintainer's own
+account of this exact situation): Google serves an HTTP-200 "enable
+JavaScript" bootstrap shell to any non-JS-executing HTTP client — in
+principle the same root cause Bayt had, and initially thought to be
+Glassdoor's too (see above — Glassdoor's real problem turned out to be
+different and worse: active headless-browser detection, not just a JS
+requirement). It was NOT built. Loading Google's own search results page
+in a real browser — a single manual request, no automation, no scale at
+all — got an immediate "unusual traffic... verify you're not a robot"
+interstitial on the very first try, unlike Bayt (which loaded cleanly, and
+still does via Playwright today). Building recurring automated
+infrastructure specifically to defeat Google's own bot-check, against
+Google's own search results specifically (not a job board), at an hourly
+schedule, is a materially different and more serious thing than Bayt's
+case — Google's Terms of Service explicitly prohibit automated querying of
+its search results, and actually solving/bypassing a CAPTCHA-class
+challenge is out of scope regardless of the reason (the same reasoning
+that ultimately caught up with Glassdoor too, once its headless-specific
+Cloudflare block came to light — see above). So Google is retired
+outright: run_google_searches() below is extracted verbatim from what
+used to be inline in run_searches(), kept intact as a reference, but never
+called from main() or from anywhere else. If Google coverage matters
+enough to revisit, the real, compliant path is Google's official Custom
+Search JSON API — but that returns general web-search snippets/links, not
+Google's special Jobs-panel data, so it would need real re-architecture
+(crawling each linked page separately) rather than being a drop-in
+replacement; not scoped or built.
 
-Both Playwright additions (Bayt, Glassdoor) add a real new per-run cost — a
-full Chromium install in CI, plus real browser page loads every run
-(38 for Bayt, roughly glassdoor_calls_this_chunk more for Glassdoor, both
-printed in this file's own run-summary line) — that the old JobSpy calls
-didn't have. Worth watching in the first several live GitHub Actions runs
-before fully trusting the normal hourly cadence; see the workflow's own
-comments.
+The Bayt Playwright addition adds a real new per-run cost — a full
+Chromium install in CI, plus 38 real browser page loads every run — that
+the old JobSpy call didn't have. Worth watching in the first several live
+GitHub Actions runs before fully trusting the normal hourly cadence; see
+the workflow's own comments.
 
 USAGE (locally or in the GitHub Actions workflow — see .github/workflows/):
     pip install -r requirements.txt
-    playwright install --with-deps chromium   # needed once, for the Bayt/Glassdoor scrapers
+    playwright install --with-deps chromium   # needed once, for the Bayt scraper
     python scrape.py
     python scrape.py --debug         # prints every kept/dropped result, no file write
     python scrape.py --chunk N       # force a specific chunk index (for testing)
@@ -366,10 +382,8 @@ SEARCH_TERMS = PRODUCT_TERMS + DESIGN_TERMS
 # same "United Arab Emirates" canonical market/label anyway, see
 # CANONICAL_MARKETS below, so keeping just one loses no distinct market,
 # only the 2x-search-frequency UAE used to get from having two entries).
-# INDEED_COUNTRY/INDEED_LOCATION_OVERRIDE/GLASSDOOR_COUNTRY below were
-# trimmed to match — every kept entry here has (at minimum) an
-# INDEED_COUNTRY mapping; GLASSDOOR_COUNTRY only ever covered a subset
-# anyway, unaffected for the entries that were never in it.
+# INDEED_COUNTRY/INDEED_LOCATION_OVERRIDE below were trimmed to match —
+# every kept entry here has (at minimum) an INDEED_COUNTRY mapping.
 LOCATIONS = [
     "Singapore",
     "Hong Kong",
@@ -487,45 +501,6 @@ INDEED_COUNTRY = {
 INDEED_LOCATION_OVERRIDE = {
     "Kuala Lumpur, Malaysia": "Kuala Lumpur",
     "Dubai, United Arab Emirates": "Dubai",
-}
-
-# The subset of LOCATIONS Glassdoor actually supports — `country_indeed` is
-# the same parameter JobSpy uses for both Indeed and Glassdoor, but
-# Glassdoor's own country list is a real subset of Indeed's, not a superset
-# or an unrelated list. Verified 2026-09 directly against JobSpy's source
-# (jobspy/model.py's Country enum — Glassdoor support is a 3rd tuple element
-# present only for these countries, not just the README's own summary table,
-# which is the authoritative behavior check.php-equivalent code actually
-# runs on). Japan, South Korea, Sweden, Portugal, and United Arab Emirates
-# (of the entries LOCATIONS still has as of 2026-09-24) are Indeed-only —
-# deliberately absent here rather than guessed at, so those combos just skip
-# the Glassdoor call cleanly (same pattern as INDEED_COUNTRY's own
-# "shouldn't happen but skip cleanly" guard in run_searches()). Trimmed
-# 2026-09-24 to match LOCATIONS above (France/Switzerland/Austria/Belgium/
-# Spain removed — all five were already Glassdoor-supported entries that are
-# no longer in LOCATIONS at all; no still-kept location lost Glassdoor
-# coverage in this trim).
-#
-# One flagged discrepancy: Malaysia. JobSpy's own README table doesn't mark
-# Malaysia with the Glassdoor asterisk, but the actual source code's Country
-# enum gives Malaysia a 3-element tuple (the code's real condition for
-# Glassdoor support) — added in a later commit that the README's hand-written
-# table apparently never caught up with. Included here on the code's
-# authority, since that's what actually executes, but worth specifically
-# watching in the first few live runs: if Malaysia's Glassdoor combos come
-# back consistently empty where Singapore/Hong Kong/etc. don't, that's the
-# README's version turning out to be the more accurate one in practice.
-GLASSDOOR_COUNTRY = {
-    "Singapore": "Singapore",
-    "Hong Kong": "Hong Kong",
-    "New Zealand": "New Zealand",
-    "Australia": "Australia",
-    "Netherlands": "Netherlands",
-    "Italy": "Italy",
-    "Germany": "Germany",
-    "United Kingdom": "UK",
-    "Ireland": "Ireland",
-    "Kuala Lumpur, Malaysia": "Malaysia",  # see the Malaysia caveat above
 }
 
 # Google ignores `location`/`hours_old`/etc. entirely once `google_search_term`
@@ -652,12 +627,13 @@ def run_searches(combos, debug=False):
     exercised without the dependency installed.
 
     *** 2026-09-24: Glassdoor and Google used to be inline here too — see
-    "GLASSDOOR: NOW VIA PLAYWRIGHT" and "GOOGLE: RETIRED" in the module
-    docstring. Glassdoor's old JobSpy-based logic is preserved verbatim in
-    run_glassdoor_searches() below (retired, no longer called); Google's in
-    run_google_searches() (retired, no longer called at all — there's no
-    Playwright replacement for Google, see the module docstring for why).
-    Only LI and Indeed remain here. ***
+    "GLASSDOOR: RETIRED" and "GOOGLE: RETIRED" in the module docstring.
+    Glassdoor's old JobSpy-based logic (and its Playwright replacement) was
+    deleted outright, not kept as a rollback — see the module docstring for
+    why. Google's old logic is preserved verbatim in run_google_searches()
+    below (retired, no longer called at all — there's no Playwright
+    replacement for Google, see the module docstring for why). Only LI and
+    Indeed remain here. ***
 
     Each site is run as its own independent scrape_jobs() call per combo,
     each in its own try/except — deliberately, so any one site's failure
@@ -678,8 +654,8 @@ def run_searches(combos, debug=False):
     `sponsorshipSignal` (see sponsorship_signal() above) will always be [],
     not because nothing was found but because nothing was ever fetched to
     look at. Revisit if this proves to be a real gap once more data has
-    accumulated (a LI-corroborated role that also turns up on Indeed/
-    Glassdoor/Bayt still gets a description via that second source — see
+    accumulated (a LI-corroborated role that also turns up on Indeed/Bayt
+    still gets a description via that second source — see
     _merge_role_records()'s sponsorshipSignal union)."""
     from jobspy import scrape_jobs
 
@@ -729,56 +705,17 @@ def run_searches(combos, debug=False):
                     yield ("indeed", row)
 
 
-def run_glassdoor_searches(combos, debug=False):
-    """*** RETIRED 2026-09-24, NO LONGER CALLED FROM main() — see the
-    module docstring's "GLASSDOOR: NOW VIA PLAYWRIGHT" section. *** Extracted
-    verbatim from what used to be inline in run_searches() above (same
-    per-combo loop shape, same try/except isolation, same pacing choice —
-    no pause here, Glassdoor was never flagged as rate-limited by JobSpy's
-    docs). Left fully intact purely as a ready rollback path if the
-    Playwright replacement (run_glassdoor_playwright_searches() below) ever
-    needs to be abandoned; not exercised by any live code path today.
-    JobSpy's Glassdoor adapter itself gets a 400/403 ("location not
-    parsed") on every real request — see the module docstring for the full
-    story."""
-    from jobspy import scrape_jobs
-
-    for term, location in combos:
-        glassdoor_country = GLASSDOOR_COUNTRY.get(location)
-        if not glassdoor_country:
-            continue  # this location isn't in GLASSDOOR_COUNTRY — skip cleanly, no request made
-        glassdoor_location = INDEED_LOCATION_OVERRIDE.get(location, location)
-        if debug:
-            print(f"[scrape] searching (glassdoor): {term!r} @ {glassdoor_location!r} ({glassdoor_country})", file=sys.stderr)
-        try:
-            df3 = scrape_jobs(
-                site_name=["glassdoor"],
-                search_term=term,
-                location=glassdoor_location,
-                country_indeed=glassdoor_country,
-                results_wanted=RESULTS_WANTED_PER_SEARCH,  # 2.6, flat since 2026-09-23
-                hours_old=HOURS_OLD,
-                verbose=1 if debug else 0,
-            )
-        except Exception as e:  # noqa: BLE001 — same isolation as run_searches()
-            print(f"[scrape] glassdoor search failed ({term!r} @ {glassdoor_location!r}): {e}", file=sys.stderr)
-            df3 = None
-        if df3 is not None and len(df3):
-            for row in df3.to_dict(orient="records"):
-                yield ("glassdoor", row)
-
-
 def run_google_searches(combos, debug=False):
     """*** RETIRED 2026-09-24, NO LONGER CALLED FROM main() AT ALL — see the
-    module docstring's "GOOGLE: RETIRED" section. Unlike Bayt/Glassdoor,
-    there is no Playwright replacement for this one. *** Extracted verbatim
-    from what used to be inline in run_searches() above. Left fully intact
-    purely as a reference/rollback path; not exercised by any live code
-    path today. JobSpy's Google adapter returns 0 rows with an "initial
-    cursor not found" warning on every real request — Google serves an
-    HTTP-200 "enable JavaScript" bootstrap shell to non-JS HTTP clients
-    (per a JobSpy maintainer's own account of this exact failure mode), so
-    this doesn't even fail loudly the way Glassdoor/Bayt's 403s did."""
+    module docstring's "GOOGLE: RETIRED" section. Unlike Bayt, there is no
+    Playwright replacement for this one. *** Extracted verbatim from what
+    used to be inline in run_searches() above. Left fully intact purely as
+    a reference/rollback path; not exercised by any live code path today.
+    JobSpy's Google adapter returns 0 rows with an "initial cursor not
+    found" warning on every real request — Google serves an HTTP-200
+    "enable JavaScript" bootstrap shell to non-JS HTTP clients (per a
+    JobSpy maintainer's own account of this exact failure mode), so this
+    doesn't even fail loudly the way Bayt's 403s did."""
     from jobspy import scrape_jobs
 
     for term, location in combos:
@@ -853,25 +790,6 @@ def run_bayt_playwright_searches(debug=False):
     yield from scrape_bayt(SEARCH_TERMS, debug=debug)
 
 
-def run_glassdoor_playwright_searches(combos, debug=False):
-    """Yields (source, row) for every combo in `combos` whose location is
-    Glassdoor-eligible (GLASSDOOR_COUNTRY), via a real headless-Chromium
-    Playwright scrape — the replacement for run_glassdoor_searches() above
-    (see the module docstring's "GLASSDOOR: NOW VIA PLAYWRIGHT" section for
-    why). `combos` is meant to be the exact same `this_chunk` list
-    run_searches() is given each run — this doesn't add any new combos to
-    the rotation, it just changes how Glassdoor's existing share of them
-    gets fetched. The GLASSDOOR_COUNTRY filter is applied HERE, not inside
-    glassdoor_playwright.py — that module deliberately knows nothing about
-    scrape.py's own constants, so it stays independently testable with no
-    dependency back on this file. Thin wrapper otherwise, same lazy-import
-    reasoning as run_bayt_playwright_searches() above."""
-    from glassdoor_playwright import scrape_glassdoor
-
-    eligible = [(term, loc) for term, loc in combos if loc in GLASSDOOR_COUNTRY]
-    yield from scrape_glassdoor(eligible, debug=debug)
-
-
 def normalize_posted_date(value):
     """JobSpy's date_posted comes back as a pandas Timestamp/date/NaT/None
     depending on what LI gave it — collapse all of that to either an
@@ -905,8 +823,7 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
     the same real posting frequently turns up at a different URL per site,
     or even a fresh URL on the same site on a later run, and that's exactly
     the cross-site duplication Phase 0 set out to measure). rows: iterable
-    of (source, row) — source is "li", "indeed", "glassdoor", "google", or
-    "bayt", tagged onto the kept role (plus retained in its "sources" array
+    of (source, row) — source is "li", "indeed", or "bayt", tagged onto the kept role (plus retained in its "sources" array
     when more than one site reports the same identity) so the frontend badge
     shows which site(s) actually found it.
 
@@ -1198,33 +1115,30 @@ def main():
     this_chunk = combos[chunk_index * COMBOS_PER_RUN: (chunk_index + 1) * COMBOS_PER_RUN]
 
     cycle_hours = total_chunks * SCHEDULE_INTERVAL_HOURS
-    glassdoor_calls_this_chunk = sum(1 for _, loc in this_chunk if loc in GLASSDOOR_COUNTRY)
-    # 2 JobSpy requests/combo now (li + indeed only — google retired
-    # outright, glassdoor moved to Playwright, see the module docstring) +
-    # a flat 38 Bayt page loads + glassdoor_calls_this_chunk Glassdoor page
-    # loads, both via Playwright, neither a JobSpy request anymore — see
-    # run_bayt_playwright_searches()/run_glassdoor_playwright_searches().
-    max_requests_this_run = len(this_chunk) * 2 + glassdoor_calls_this_chunk + len(SEARCH_TERMS)
+    # 2 JobSpy requests/combo now (li + indeed only — google and glassdoor
+    # both retired outright, see the module docstring) + a flat 38 Bayt page
+    # loads via Playwright, not a JobSpy request — see
+    # run_bayt_playwright_searches().
+    max_requests_this_run = len(this_chunk) * 2 + len(SEARCH_TERMS)
     print(
         f"[scrape] {len(combos)} total combos ({len(SEARCH_TERMS)} terms x {len(LOCATIONS)} locations), "
         f"{COMBOS_PER_RUN}/run -> {total_chunks} chunks -> full cycle ~{cycle_hours}h (~{cycle_hours / 24:.1f} days) "
-        f"[cycle length unchanged since the Sep 2026 Glassdoor/Google/Bayt addition — see module docstring]"
+        f"[cycle length set independently of which sites are queried — see COMBOS_PER_RUN's own comment]"
     )
     print(f"[scrape] this run: chunk {chunk_index + 1}/{total_chunks} "
-          f"({len(this_chunk)} combos x li+indeed (JobSpy) + {glassdoor_calls_this_chunk} glassdoor-eligible "
-          f"+ {len(SEARCH_TERMS)} bayt page loads (both Playwright) = up to {max_requests_this_run} requests; "
-          f"google retired, no longer searched at all)")
+          f"({len(this_chunk)} combos x li+indeed (JobSpy) "
+          f"+ {len(SEARCH_TERMS)} bayt page loads (Playwright) = up to {max_requests_this_run} requests; "
+          f"google and glassdoor both retired, neither searched at all)")
 
     index = build_index(COMPANIES, ALIASES)
     rows = (
         list(run_searches(this_chunk, debug=debug))
         + list(run_bayt_playwright_searches(debug=debug))
-        + list(run_glassdoor_playwright_searches(this_chunk, debug=debug))
     )
     counts = {}
     for source, _ in rows:
         counts[source] = counts.get(source, 0) + 1
-    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "glassdoor", "bayt"))
+    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "bayt"))
     print(f"[scrape] {len(rows)} raw results this run ({counts_str})")
 
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")

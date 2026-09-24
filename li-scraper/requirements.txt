@@ -6,13 +6,17 @@
 # change behavior underneath a scheduled run.
 python-jobspy
 
-# 2026-09-24: added for bayt_playwright.py AND glassdoor_playwright.py —
-# JobSpy's own Bayt and Glassdoor integrations are both blocked outright
-# (see scrape.py's module docstring, "BAYT: NOW VIA PLAYWRIGHT" and
-# "GLASSDOOR: NOW VIA PLAYWRIGHT"), so both are now scraped directly via a
-# real headless Chromium browser instead. The workflow also needs a
-# one-time `playwright install --with-deps chromium` step (see
+# 2026-09-24: added for bayt_playwright.py — JobSpy's own Bayt integration
+# is blocked outright (see scrape.py's module docstring, "BAYT: NOW VIA
+# PLAYWRIGHT"), so Bayt is scraped directly via a real headless Chromium
+# browser instead. The workflow also needs a one-time
+# `playwright install --with-deps chromium` step (see
 # .github/workflows/scrape-li.yml) — the pip package alone doesn't include
-# the browser binary itself. One shared Playwright/Chromium install covers
-# both scrapers.
+# the browser binary itself.
+#
+# (A Glassdoor Playwright scraper briefly used this same dependency too —
+# removed 2026-09-24 after Cloudflare's bot-management explicitly detected
+# the headless browser and blocked it citing "reason=bot-detection"; see
+# scrape.py's module docstring, "GLASSDOOR: RETIRED", for the full story.
+# playwright itself stays here since Bayt still needs it.)
 playwright

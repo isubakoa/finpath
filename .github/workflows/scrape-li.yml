@@ -11,8 +11,10 @@ name: Scrape LI coverage (JobSpy)
 # 950-combo grid was trimmed to 570 (LOCATIONS 25 -> 15, your explicit
 # market picks, to cut load/block-risk) and COMBOS_PER_RUN was set to 95 so
 # the new, smaller grid still completes a full cycle every 6h. Combined
-# daily request volume across LI/Indeed/Glassdoor/Google is now ~2,280 LI
-# requests/day at that same 6h cycle — up from the original 950-combo/
+# daily request volume across LI/Indeed is now ~2,280 LI requests/day at
+# that same 6h cycle (Glassdoor and Google are both retired outright as of
+# 2026-09-24 and no longer contribute to this figure at all — see
+# scrape.py's module docstring) — up from the original 950-combo/
 # 60-per-run baseline's ~1,440/day, but a real ~40% CUT from the ~3,840/day
 # a same-day-earlier round had briefly set (950 combos at 160/run) before
 # this location trim replaced it: shrinking the grid was banked entirely as
@@ -35,7 +37,6 @@ on:
       - "li-scraper/companies.py"
       - "li-scraper/requirements.txt"
       - "li-scraper/bayt_playwright.py" # 2026-09-24: Bayt's dedicated Playwright scraper, see scrape.py's module docstring
-      - "li-scraper/glassdoor_playwright.py" # 2026-09-24: Glassdoor's dedicated Playwright scraper, see scrape.py's module docstring
   workflow_dispatch: {}
 
 permissions:
@@ -76,18 +77,16 @@ jobs:
       - name: Run offline rotation/merge tests
         run: python test_rotation.py
 
-      # 2026-09-24: both new — cover bayt_playwright.py/glassdoor_playwright.py's
-      # own logic (URL building, DOM-extraction-to-row transforms, location
-      # resolution) plus scrape.py's wiring to them, via fake
-      # browser/page objects — no real network or installed Chromium
-      # needed, so these run alongside the existing offline test steps
-      # above rather than needing the Chromium-install step to have
-      # happened first.
+      # 2026-09-24: covers bayt_playwright.py's own logic (URL/date helpers,
+      # DOM-extraction-to-row transform) plus scrape.py's wiring to it, via
+      # a fake browser/page object — no real network or installed Chromium
+      # needed, so this runs alongside the existing offline test steps above
+      # rather than needing the Chromium-install step to have happened
+      # first. (A matching Glassdoor-Playwright test step lived here too,
+      # briefly — removed 2026-09-24 along with glassdoor_playwright.py
+      # itself; see scrape.py's module docstring, "GLASSDOOR: RETIRED".)
       - name: Run offline Bayt-Playwright tests
         run: python test_bayt_playwright.py
-
-      - name: Run offline Glassdoor-Playwright tests
-        run: python test_glassdoor_playwright.py
 
       - name: Run scraper
         run: python scrape.py
