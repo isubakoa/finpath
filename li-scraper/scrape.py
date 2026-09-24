@@ -11,8 +11,9 @@ sections:
     the exact same isRoleRelevant() title filter index.html itself applies.
     This is the original shape check.php has always expected from
     js-scraper's snapshot.json, byte-for-byte unchanged by Phase 2.
-  - `openMarket: { roles: [...] }` (Phase 2, new; broadened to all 25
-    LOCATIONS 2026-09-23) — a flat, no-slug list of postings that matched NO
+  - `openMarket: { roles: [...] }` (Phase 2, new; broadened to all LOCATIONS
+    2026-09-23, LOCATIONS trimmed 25 -> 15 the same day per your explicit
+    market picks) — a flat, no-slug list of postings that matched NO
     tracked company but are still worth surfacing: it clears
     open_market_gate() (relevant, real target-tier fit, not on the
     agencies.py blocklist) — see build_fresh_roles()/open_market_gate(). No
@@ -39,14 +40,16 @@ see README.md's "Widening scope further" for the reasoning behind every
 site, included or not.
 
 *** IMPORTANT — READ THIS BEFORE CHANGING TERMS/LOCATIONS/SCHEDULE ***
-38 title phrases x 25 locations = 950 (term, location) combinations
-(trimmed down from the original 108 x 17 = 1,836 in September 2026 for
-freshness/footprint — see README.md's "How the rotation works" for the
-before/after). Each combination is searched against LI, Indeed, Glassdoor
-(where the location is one of the ~15 GLASSDOOR_COUNTRY supports — see that
-dict below; Glassdoor's country list is a real subset of Indeed's, not a
-guess) and Google — four independent requests per combo, added to in
-September 2026 (Glassdoor/Google) on top of the original LI+Indeed pair —
+38 title phrases x 15 locations = 570 (term, location) combinations as of
+2026-09-24 (trimmed from 25 locations/950 combos the same day, at the
+user's explicit request, after being walked through the full list of 25
+and choosing which 15 to keep — see LOCATIONS below for the current list).
+Originally 108 x 17 = 1,836 before a September 2026 term-list trim brought
+it to 38 x 25 = 950; this round's location trim is a second, independent
+reduction on top of that one. Each combination is searched against LI,
+Indeed, Glassdoor (where the location is one of the GLASSDOOR_COUNTRY
+supports — see that dict below; Glassdoor's country list is a real subset
+of Indeed's, not a guess) and Google — four independent requests per combo,
 each in its own try/except so one site's failure never takes another's
 result down for that same combo. Only LI and Google get the randomized
 pacing pause: Indeed has no rate limiting per JobSpy's own docs, and
@@ -61,22 +64,21 @@ real runs' logs are in, same as every other pacing choice in this file).
 Bayt is architecturally different — no location parameter at all (it
 "searches internationally" per JobSpy's own README) — so it isn't part of
 this per-combo grid; see run_bayt_searches() below. There is still no way to
-run all 950 combinations in a single pass without either proxies or
+run all 570 combinations in a single pass without either proxies or
 getting blocked on the LI side almost immediately — see
 li-scraper/README.md's "How the rotation works" section for the full
 explanation. Instead, each run covers one CHUNK of the full combination
 list (COMBOS_PER_RUN of them), chosen deterministically from the current
 time so consecutive scheduled runs walk through the whole list in order and
 wrap back around — a full cycle takes ROTATION_CYCLE_HOURS (printed below)
-to complete, unchanged by the addition of any of these sites since chunk
-count is driven by combinations, not requests (each run just does more work
-per chunk now — see README's "Widening scope further" for the actual
-request-volume numbers and why the cycle length was deliberately kept as-is
-rather than traded away for shorter runs). Results accumulate into
-li-snapshot.json across runs (merged, not overwritten) and a role is only
-dropped after EXPIRY_DAYS without being re-confirmed — so a company found on
-Monday doesn't vanish from the tracker on Tuesday just because today's chunk
-didn't include that company's search terms.
+to complete. As of 2026-09-24, COMBOS_PER_RUN=95 divides the 570-combo grid
+into exactly 6 equal chunks -> a 6-hour cycle, at ~2,280 LI requests/day —
+see COMBOS_PER_RUN's own comment below for how that number was chosen and
+the two levers (grid size, combos/run) that went into it. Results
+accumulate into li-snapshot.json across runs (merged, not overwritten) and
+a role is only dropped after EXPIRY_DAYS without being re-confirmed — so a
+company found on Monday doesn't vanish from the tracker on Tuesday just
+because today's chunk didn't include that company's search terms.
 
 USAGE (locally or in the GitHub Actions workflow — see .github/workflows/):
     pip install -r requirements.txt
@@ -269,42 +271,40 @@ DESIGN_TERMS = [
 
 SEARCH_TERMS = PRODUCT_TERMS + DESIGN_TERMS
 
-# Your target-region list, updated September 2026. Bare country names
-# ("Japan", "Australia", "Netherlands", ...) resolve broadly to anywhere in
-# that country via LI's own location search; "City, Country" entries
-# (Kuala Lumpur, Dubai, Abu Dhabi) resolve to that specific metro only —
-# that distinction is intentional (your call), not something this script
-# enforces itself. Note this list is actually longer than the 17-location
-# one it replaces (Sydney/Melbourne merged into one broader "Australia",
-# but Italy, France, Luxembourg, Switzerland, Austria, Denmark, Sweden,
-# Norway, and Ireland are all new) — the freshness win below comes entirely
-# from the term-list trim above, not from narrowing locations.
+# Your target-region list. Bare country names ("Japan", "Australia",
+# "Netherlands", ...) resolve broadly to anywhere in that country via LI's
+# own location search; "City, Country" entries (Kuala Lumpur, Dubai)
+# resolve to that specific metro only — that distinction is intentional
+# (your call), not something this script enforces itself.
+#
+# 2026-09-24: trimmed from 25 entries to these 15, at your explicit request
+# to reduce scraper load/block-risk, after being shown the full list and
+# choosing which markets to keep. Cut: Taiwan, France, Luxembourg,
+# Switzerland, Austria, Denmark, Norway, Belgium, Spain, and one of the two
+# UAE entries (Abu Dhabi — Dubai stays, and both always collapsed to the
+# same "United Arab Emirates" canonical market/label anyway, see
+# CANONICAL_MARKETS below, so keeping just one loses no distinct market,
+# only the 2x-search-frequency UAE used to get from having two entries).
+# INDEED_COUNTRY/INDEED_LOCATION_OVERRIDE/GLASSDOOR_COUNTRY below were
+# trimmed to match — every kept entry here has (at minimum) an
+# INDEED_COUNTRY mapping; GLASSDOOR_COUNTRY only ever covered a subset
+# anyway, unaffected for the entries that were never in it.
 LOCATIONS = [
     "Singapore",
     "Hong Kong",
-    "Taiwan",
     "Japan",
     "South Korea",
     "New Zealand",
     "Australia",
     "Netherlands",
     "Italy",
-    "France",
-    "Luxembourg",
-    "Switzerland",
-    "Austria",
-    "Denmark",
     "Sweden",
-    "Norway",
     "Germany",
-    "Belgium",
-    "Spain",
     "Portugal",
     "United Kingdom",
     "Ireland",
     "Kuala Lumpur, Malaysia",
     "Dubai, United Arab Emirates",
-    "Abu Dhabi, United Arab Emirates",
 ]
 
 # ---- 2026-09-23 — open market broadened to every LOCATIONS entry, per your
@@ -380,41 +380,32 @@ def market_for_location(location):
 # Every LOCATIONS entry mapped to the exact country_indeed string JobSpy's
 # Indeed adapter expects (verified against JobSpy's own supported-countries
 # list — these are case-/spelling-sensitive on JobSpy's side, not something
-# to guess at). All 25 are supported. The three "City, Country" entries also
-# get a trimmed, city-only LOCATION_FOR_INDEED override below, since Indeed
-# treats `location` as an in-country search modifier on top of
-# `country_indeed`, not a repeat of the country name.
+# to guess at). All 15 are supported. The two remaining "City, Country"
+# entries also get a trimmed, city-only LOCATION_FOR_INDEED override below,
+# since Indeed treats `location` as an in-country search modifier on top of
+# `country_indeed`, not a repeat of the country name. Trimmed 2026-09-24 to
+# match LOCATIONS above (Taiwan/France/Luxembourg/Switzerland/Austria/
+# Denmark/Norway/Belgium/Spain/Abu Dhabi entries removed).
 INDEED_COUNTRY = {
     "Singapore": "Singapore",
     "Hong Kong": "Hong Kong",
-    "Taiwan": "Taiwan",
     "Japan": "Japan",
     "South Korea": "South Korea",
     "New Zealand": "New Zealand",
     "Australia": "Australia",
     "Netherlands": "Netherlands",
     "Italy": "Italy",
-    "France": "France",
-    "Luxembourg": "Luxembourg",
-    "Switzerland": "Switzerland",
-    "Austria": "Austria",
-    "Denmark": "Denmark",
     "Sweden": "Sweden",
-    "Norway": "Norway",
     "Germany": "Germany",
-    "Belgium": "Belgium",
-    "Spain": "Spain",
     "Portugal": "Portugal",
     "United Kingdom": "UK",
     "Ireland": "Ireland",
     "Kuala Lumpur, Malaysia": "Malaysia",
     "Dubai, United Arab Emirates": "United Arab Emirates",
-    "Abu Dhabi, United Arab Emirates": "United Arab Emirates",
 }
 INDEED_LOCATION_OVERRIDE = {
     "Kuala Lumpur, Malaysia": "Kuala Lumpur",
     "Dubai, United Arab Emirates": "Dubai",
-    "Abu Dhabi, United Arab Emirates": "Abu Dhabi",
 }
 
 # The subset of LOCATIONS Glassdoor actually supports — `country_indeed` is
@@ -424,11 +415,15 @@ INDEED_LOCATION_OVERRIDE = {
 # (jobspy/model.py's Country enum — Glassdoor support is a 3rd tuple element
 # present only for these countries, not just the README's own summary table,
 # which is the authoritative behavior check.php-equivalent code actually
-# runs on). Taiwan, Japan, South Korea, Luxembourg, Denmark, Sweden, Norway,
-# Portugal, and United Arab Emirates are Indeed-only — deliberately absent
-# here rather than guessed at, so those combos just skip the Glassdoor call
-# cleanly (same pattern as INDEED_COUNTRY's own "shouldn't happen but skip
-# cleanly" guard in run_searches()).
+# runs on). Japan, South Korea, Sweden, Portugal, and United Arab Emirates
+# (of the entries LOCATIONS still has as of 2026-09-24) are Indeed-only —
+# deliberately absent here rather than guessed at, so those combos just skip
+# the Glassdoor call cleanly (same pattern as INDEED_COUNTRY's own
+# "shouldn't happen but skip cleanly" guard in run_searches()). Trimmed
+# 2026-09-24 to match LOCATIONS above (France/Switzerland/Austria/Belgium/
+# Spain removed — all five were already Glassdoor-supported entries that are
+# no longer in LOCATIONS at all; no still-kept location lost Glassdoor
+# coverage in this trim).
 #
 # One flagged discrepancy: Malaysia. JobSpy's own README table doesn't mark
 # Malaysia with the Glassdoor asterisk, but the actual source code's Country
@@ -446,12 +441,7 @@ GLASSDOOR_COUNTRY = {
     "Australia": "Australia",
     "Netherlands": "Netherlands",
     "Italy": "Italy",
-    "France": "France",
-    "Switzerland": "Switzerland",
-    "Austria": "Austria",
     "Germany": "Germany",
-    "Belgium": "Belgium",
-    "Spain": "Spain",
     "United Kingdom": "UK",
     "Ireland": "Ireland",
     "Kuala Lumpur, Malaysia": "Malaysia",  # see the Malaysia caveat above
@@ -527,7 +517,26 @@ BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
 # ---- scheduled runs naturally advance through the whole grid and wrap
 # ---- around. Tune COMBOS_PER_RUN to trade off per-run LI load against
 # ---- how long a full cycle takes (both printed at the top of every run).
-COMBOS_PER_RUN = 60
+# ---- 2026-09-24: two changes landed together — LOCATIONS was trimmed
+# ---- 25 -> 15 (see LOCATIONS' own comment above) AND this was set to 95
+# ---- (from 60). The grid trim alone (950 -> 570 combos) would have sped
+# ---- the old 60/run pace up to a ~9.5h cycle for free, at LOWER daily
+# ---- volume than before (24*60=1,440/day, same as the very first
+# ---- baseline). Instead, 95 was chosen so the smaller grid divides evenly
+# ---- into exactly 6 chunks (570/95=6.0) -> a 6-hour cycle, matching what
+# ---- had just been approved (and shipped, then superseded by this round)
+# ---- at COMBOS_PER_RUN=160 on the old 950-combo grid — same freshness,
+# ---- but at ~2,280 LI requests/day instead of ~3,840/day (a ~40% cut),
+# ---- and a real safety-margin win too: the deliberate pacing pauses alone
+# ---- (see PAUSE_BETWEEN_SEARCHES_* above) total ~16s/combo, so 95 combos
+# ---- is ~25 minutes of guaranteed pause time per run, well clear of the
+# ---- 60-minute gap between scheduled runs (versus ~43 minutes at the
+# ---- previous 160/950 combination) — a run finishing late enough to
+# ---- overlap the next one is now a lot less likely. If real GitHub
+# ---- Actions run logs confirm plenty of margin, both COMBOS_PER_RUN and
+# ---- LOCATIONS have room to grow again later; this was chosen to bank
+# ---- the smaller grid as risk reduction, not to spend it on more speed.
+COMBOS_PER_RUN = 95
 SCHEDULE_INTERVAL_HOURS = 1  # must match the cron in .github/workflows/scrape-li.yml
 
 # A role not re-confirmed within this many days is dropped from the

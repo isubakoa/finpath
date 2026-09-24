@@ -422,16 +422,30 @@ def run():
         failures += 0 if ok else 1
         print(f"  {'OK ' if ok else 'FAIL'}  {raw!r:45s} -> {got!r} (expected {expected!r})")
 
-    print("-- open-market: CANONICAL_MARKETS derivation (2026-09-23, sanity) --")
+    print("-- open-market: CANONICAL_MARKETS derivation (2026-09-23, sanity; "
+          "LOCATIONS trimmed 25 -> 15 on 2026-09-24 — see below) --")
     canonical_checks = [
-        ("24 distinct canonical markets from 25 LOCATIONS entries (Dubai + Abu Dhabi collapse "
-         "into one 'United Arab Emirates')", len(CANONICAL_MARKETS) == 24),
+        # 2026-09-24: LOCATIONS trimmed from 25 entries to 15 (see scrape.py's
+        # LOCATIONS comment) — this dropped Abu Dhabi, the second of the two
+        # UAE entries that used to collapse into one canonical market, so
+        # there's no longer any 2-LOCATIONS-entries -> 1-market collapsing at
+        # all: 15 LOCATIONS entries now produce 15 distinct canonical markets
+        # (was 24 markets from 25 entries, when Dubai + Abu Dhabi were the
+        # only pair sharing a market). This number is a tripwire, not a
+        # derived value — update it deliberately if LOCATIONS changes again.
+        ("15 distinct canonical markets from 15 LOCATIONS entries (no more "
+         "multi-entry collapsing since only one UAE entry remains)",
+         len(CANONICAL_MARKETS) == 15),
         ("Singapore present (bare LOCATIONS entry, unchanged)", "Singapore" in CANONICAL_MARKETS),
-        ("Germany present — never eligible for open market before this round",
+        ("Germany present — never eligible for open market before the broadening round",
          "Germany" in CANONICAL_MARKETS),
         ("Malaysia present (collapsed from 'Kuala Lumpur, Malaysia')", "Malaysia" in CANONICAL_MARKETS),
-        ("United Arab Emirates present exactly once, not twice",
+        ("United Arab Emirates present exactly once (from the single remaining Dubai entry)",
          CANONICAL_MARKETS.count("United Arab Emirates") == 1),
+        ("Taiwan absent — cut in the 2026-09-24 location trim",
+         "Taiwan" not in CANONICAL_MARKETS),
+        ("France absent — cut in the 2026-09-24 location trim",
+         "France" not in CANONICAL_MARKETS),
     ]
     for label, ok in canonical_checks:
         failures += 0 if ok else 1
