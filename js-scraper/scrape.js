@@ -256,6 +256,27 @@ const COMPANIES = [
     waitForSelector: 'a[href^="/job/"]',
   },
   {
+    slug: "bmw-group",
+    // jobs.bmwgroup.com is BMW's own vanity domain fronting the same
+    // platform as Standard Chartered above — the modern SAP SuccessFactors
+    // Career Site Builder (career5.successfactors.eu/career?career_company=
+    // bmwag underneath, confirmed via its "Sign In" link) — a full
+    // client-rendered SPA with no job data in the raw HTML. Once rendered,
+    // job cards are plain anchor links matching the exact same
+    // /job/<title-slug>/<numeric-id>-<locale> shape Standard Chartered uses,
+    // title as the link's own text — no titleSelector needed. NOTE (2026-09
+    // research): BMW's "Design" job-field copy explicitly covers automotive/
+    // vehicle design, not Product/UX, so a bare keyword search on "design"
+    // mostly surfaces IT/manufacturing/internship roles (63 raw matches at
+    // research time, nearly all unrelated) — isRoleRelevant()'s title filter
+    // above handles this the same way it already does for Google/Atlassian's
+    // similarly broad searches; left in rather than dropped since it's no
+    // worse than those.
+    urls: ["https://jobs.bmwgroup.com/search?q=design"],
+    linkPattern: /\/job\/[^/]+\/\d+-/,
+    waitForSelector: 'a[href^="/job/"]',
+  },
+  {
     slug: "netflix",
     // ATS confirmed as Eightfold.ai (2026-09 research) — same platform as
     // NAB/BNZ above, just on Netflix's own vanity domain rather than the
