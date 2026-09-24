@@ -34,6 +34,8 @@ on:
       - "li-scraper/match.py"
       - "li-scraper/companies.py"
       - "li-scraper/requirements.txt"
+      - "li-scraper/bayt_playwright.py" # 2026-09-24: Bayt's dedicated Playwright scraper, see scrape.py's module docstring
+      - "li-scraper/glassdoor_playwright.py" # 2026-09-24: Glassdoor's dedicated Playwright scraper, see scrape.py's module docstring
   workflow_dispatch: {}
 
 permissions:
@@ -55,11 +57,37 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # 2026-09-24: needed for bayt_playwright.py — JobSpy's own Bayt
+      # integration is blocked outright (403 on every request, confirmed
+      # from both GitHub Actions and a real home IP — see scrape.py's
+      # module docstring), so Bayt is now scraped directly via a real
+      # headless Chromium browser instead. `pip install playwright` alone
+      # only installs the Python package; the browser binary itself still
+      # needs this separate step, same as js-scraper's own
+      # `npx playwright install --with-deps chromium` step in
+      # .github/workflows/scrape.yml (the Node equivalent of this same
+      # requirement, already proven working in this repo).
+      - name: Install Chromium (Playwright)
+        run: playwright install --with-deps chromium
+
       - name: Run offline matching tests
         run: python test_match.py
 
       - name: Run offline rotation/merge tests
         run: python test_rotation.py
+
+      # 2026-09-24: both new — cover bayt_playwright.py/glassdoor_playwright.py's
+      # own logic (URL building, DOM-extraction-to-row transforms, location
+      # resolution) plus scrape.py's wiring to them, via fake
+      # browser/page objects — no real network or installed Chromium
+      # needed, so these run alongside the existing offline test steps
+      # above rather than needing the Chromium-install step to have
+      # happened first.
+      - name: Run offline Bayt-Playwright tests
+        run: python test_bayt_playwright.py
+
+      - name: Run offline Glassdoor-Playwright tests
+        run: python test_glassdoor_playwright.py
 
       - name: Run scraper
         run: python scrape.py
