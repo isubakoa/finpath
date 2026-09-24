@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T11:30:41Z",
+  "generatedAt": "2026-09-24T15:31:15Z",
   "companies": {
     "google": {
       "roles": [
@@ -175,7 +175,7 @@
           "title": "Global Business Solutions, Customer Experience, UX, Profitability Consultant",
           "location": "Dublin, County Dublin, Ireland",
           "url": "https://www.linkedin.com/jobs/view/4460602155",
-          "postedDate": "2026-09-01",
+          "postedDate": "2026-09-23",
           "source": "li",
           "sources": [
             "li"
@@ -647,6 +647,18 @@
           "source": "li",
           "sources": [
             "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-24"
+        },
+        {
+          "title": "Group Product Manager, Google Partner Innovation, APAC GTM Operations",
+          "location": "Singapore, SG",
+          "url": "https://sg.indeed.com/viewjob?jk=fa3d3078b578c3c0",
+          "postedDate": "2026-09-24",
+          "source": "indeed",
+          "sources": [
+            "indeed"
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-09-24"
@@ -1258,8 +1270,8 @@
         {
           "title": "Product Designer",
           "location": "",
-          "url": "https://www.linkedin.com/jobs/view/3775455569",
-          "postedDate": "2026-09-21",
+          "url": "https://www.linkedin.com/jobs/view/4324417188",
+          "postedDate": "2026-09-22",
           "source": "li",
           "sources": [
             "li"
@@ -1270,7 +1282,7 @@
         {
           "title": "Product Designer (Platform)",
           "location": "",
-          "url": "https://www.linkedin.com/jobs/view/4423960794",
+          "url": "https://www.linkedin.com/jobs/view/4423948907",
           "postedDate": "2026-09-17",
           "source": "li",
           "sources": [
@@ -4455,11 +4467,11 @@
           "url": "https://www.linkedin.com/jobs/view/4417045244",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-13",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-24"
         },
         {
           "title": "Manager - Personal Financial Services (Product & Portfolio Management - Mortgage)",
@@ -5049,7 +5061,7 @@
           "title": "Staff Product Designer",
           "location": "Singapore, Singapore",
           "url": "https://www.linkedin.com/jobs/view/3824772606",
-          "postedDate": "2026-09-02",
+          "postedDate": "2026-09-23",
           "source": "li",
           "sources": [
             "li"
@@ -8652,6 +8664,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-09-24"
+        },
+        {
+          "title": "Lead Designer Employee Experience",
+          "location": "Utrecht, UT, NL",
+          "url": "https://nl.indeed.com/viewjob?jk=47d076acea84bfab",
+          "postedDate": "2026-09-24",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-24"
         }
       ]
     },
@@ -9994,6 +10018,18 @@
           "location": "Singapore, Singapore",
           "url": "https://www.linkedin.com/jobs/view/4470414366",
           "postedDate": "2026-09-22",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-24"
+        },
+        {
+          "title": "Senior Product Designer, Support",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4471457072",
+          "postedDate": null,
           "source": "li",
           "sources": [
             "li"
@@ -12760,6 +12796,18 @@
           ],
           "lastSeenAt": "2026-09-23",
           "sponsorshipSignal": []
+        },
+        {
+          "title": "User Experience Designer",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4471433641",
+          "postedDate": null,
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-24"
         }
       ]
     },
@@ -15015,7 +15063,7 @@
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-09-23"
+          "lastSeenAt": "2026-09-24"
         },
         {
           "title": "Product Owner - Corporate Banking (all genders)",
@@ -17303,7 +17351,7 @@
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-09-23"
+          "lastSeenAt": "2026-09-24"
         },
         {
           "title": "Senior Product Designer",
@@ -18016,6 +18064,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-09-23"
+        },
+        {
+          "title": "Senior Product Designer (B2C)",
+          "location": "Berlin, Germany",
+          "url": "https://www.linkedin.com/jobs/view/4462401859",
+          "postedDate": null,
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-24"
         }
       ]
     },
@@ -18211,6 +18271,48 @@
   "openMarket": {
     "roles": [
       {
+        "employer": "Uniphar",
+        "market": "DUBLIN 24, D, IE",
+        "title": "Senior Design Lead",
+        "location": "DUBLIN 24, D, IE",
+        "url": "https://ie.indeed.com/viewjob?jk=b53902369b834f39",
+        "postedDate": "2026-09-24",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-24"
+      },
+      {
+        "employer": "DIUS",
+        "market": "Sydney, NSW, AU",
+        "title": "Lead Product Design Engineer",
+        "location": "Sydney, NSW, AU",
+        "url": "https://au.indeed.com/viewjob?jk=9cd808a40bbff85e",
+        "postedDate": "2026-09-24",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-24"
+      },
+      {
+        "employer": "synthesia",
+        "market": "London, ENG, GB",
+        "title": "Product Designer, Generative Media (Staff-Level / L6)",
+        "location": "London, ENG, GB",
+        "url": "https://uk.indeed.com/viewjob?jk=0c6e920c74bfc65a",
+        "postedDate": "2026-09-24",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-24"
+      },
+      {
         "employer": "Digitalenta",
         "market": "Stockholm, AB, SE",
         "title": "Senior UX/UI Lead till drivmedelsf\u00f6retag",
@@ -18285,7 +18387,7 @@
         "market": "Netherlands",
         "title": "Lead Product Designer",
         "location": "Amsterdam, North Holland, Netherlands",
-        "url": "https://www.linkedin.com/jobs/view/4457344632",
+        "url": "https://www.linkedin.com/jobs/view/4471484380",
         "postedDate": "2026-09-23",
         "source": "li",
         "sources": [
@@ -18300,6 +18402,62 @@
         "title": "UX Lead (m/w/d)",
         "location": "Hamburg, Germany",
         "url": "https://www.linkedin.com/jobs/view/4469131682",
+        "postedDate": "2026-09-23",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-24"
+      },
+      {
+        "employer": "Nameless Ventures",
+        "market": "United Arab Emirates",
+        "title": "Head of Design",
+        "location": "Dubai, United Arab Emirates",
+        "url": "https://www.linkedin.com/jobs/view/4470934602",
+        "postedDate": "2026-09-23",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-24"
+      },
+      {
+        "employer": "CO-WORKER TECHNOLOGY AB",
+        "market": "Sweden",
+        "title": "Senior UX/UI Lead",
+        "location": "Stockholm, Stockholm County, Sweden",
+        "url": "https://www.linkedin.com/jobs/view/4469302919",
+        "postedDate": "2026-09-23",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-24"
+      },
+      {
+        "employer": "Linktree",
+        "market": "Australia",
+        "title": "Staff Product Designer",
+        "location": "Melbourne, Victoria, Australia",
+        "url": "https://www.linkedin.com/jobs/view/4460672259",
+        "postedDate": "2026-09-23",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-24"
+      },
+      {
+        "employer": "Digitalenta",
+        "market": "Unspecified",
+        "title": "Senior UX/UI Lead",
+        "location": "",
+        "url": "https://www.linkedin.com/jobs/view/4470935300",
         "postedDate": "2026-09-23",
         "source": "li",
         "sources": [
@@ -19167,7 +19325,7 @@
         "market": "Ireland",
         "title": "Director, UX Design - AEC Forma Design",
         "location": "Dublin, County Dublin, Ireland",
-        "url": "https://www.linkedin.com/jobs/view/4432122035",
+        "url": "https://www.linkedin.com/jobs/view/4469669972",
         "postedDate": "2026-09-18",
         "source": "li",
         "sources": [
@@ -20269,62 +20427,6 @@
         "lastSeenAt": "2026-09-23"
       },
       {
-        "employer": "Nameless Ventures",
-        "market": "United Arab Emirates",
-        "title": "Head of Design",
-        "location": "Dubai, United Arab Emirates",
-        "url": "https://www.linkedin.com/jobs/view/4470934602",
-        "postedDate": null,
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-09-24"
-      },
-      {
-        "employer": "CO-WORKER TECHNOLOGY AB",
-        "market": "Sweden",
-        "title": "Senior UX/UI Lead",
-        "location": "Stockholm, Stockholm County, Sweden",
-        "url": "https://www.linkedin.com/jobs/view/4469302919",
-        "postedDate": null,
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-09-24"
-      },
-      {
-        "employer": "Linktree",
-        "market": "Australia",
-        "title": "Staff Product Designer",
-        "location": "Melbourne, Victoria, Australia",
-        "url": "https://www.linkedin.com/jobs/view/4460672259",
-        "postedDate": null,
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-09-24"
-      },
-      {
-        "employer": "Digitalenta",
-        "market": "Unspecified",
-        "title": "Senior UX/UI Lead",
-        "location": "",
-        "url": "https://www.linkedin.com/jobs/view/4470935300",
-        "postedDate": null,
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-09-24"
-      },
-      {
         "employer": "Avance Consulting",
         "market": "Sweden",
         "title": "Senior UX/UI Lead",
@@ -20470,6 +20572,48 @@
         "title": "Experience Design Lead",
         "location": "Greater London, England, UK",
         "url": "https://www.linkedin.com/jobs/view/4427312524",
+        "postedDate": null,
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-24"
+      },
+      {
+        "employer": "Nexer Group",
+        "market": "Sweden",
+        "title": "Senior/Lead UX/CX Designer i G\u00f6teborg",
+        "location": "Gothenburg, V\u00e4stra G\u00f6taland County, Sweden",
+        "url": "https://www.linkedin.com/jobs/view/4450170575",
+        "postedDate": null,
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-24"
+      },
+      {
+        "employer": "Parloa",
+        "market": "Germany",
+        "title": "Staff Product Designer - Expert Experience",
+        "location": "Berlin, Berlin, Germany",
+        "url": "https://www.linkedin.com/jobs/view/4469728930",
+        "postedDate": null,
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-24"
+      },
+      {
+        "employer": "Synthesia",
+        "market": "London, England, UK",
+        "title": "Product Designer, Generative Media (Staff-Level / L6)",
+        "location": "London, England, UK",
+        "url": "https://www.linkedin.com/jobs/view/4471492018",
         "postedDate": null,
         "source": "li",
         "sources": [
