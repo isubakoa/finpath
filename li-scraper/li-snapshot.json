@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T12:38:01Z",
+  "generatedAt": "2026-09-25T14:14:23Z",
   "companies": {
     "google": {
       "roles": [
@@ -261,11 +261,11 @@
           "url": "https://www.linkedin.com/jobs/view/4461671312",
           "postedDate": "2026-09-03",
           "source": "li",
-          "lastSeenAt": "2026-09-12",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
         },
         {
           "title": "Strategy and Operations Manager, Google Cloud (Korean, English)",
@@ -620,6 +620,18 @@
           "location": "Dublin, D, IE",
           "url": "https://ie.indeed.com/viewjob?jk=397f5c8a8653420f",
           "postedDate": "2026-09-24",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
+        },
+        {
+          "title": "Account Strategist, SBS Engage, Google Customer Solutions, Poland, (Polish, English)",
+          "location": "Dublin, D, IE",
+          "url": "https://ie.indeed.com/viewjob?jk=71ab6df445a51435",
+          "postedDate": "2026-09-25",
           "source": "indeed",
           "sources": [
             "indeed"
@@ -1186,8 +1198,8 @@
         {
           "title": "Product Owner (UX)",
           "location": "",
-          "url": "https://www.linkedin.com/jobs/view/3566458861",
-          "postedDate": "2026-09-21",
+          "url": "https://www.linkedin.com/jobs/view/3955976065",
+          "postedDate": "2026-09-17",
           "source": "li",
           "sources": [
             "li"
@@ -1247,7 +1259,7 @@
           "title": "Product Marketing Manager (Retail)",
           "location": "Porto, Porto, Portugal",
           "url": "https://www.linkedin.com/jobs/view/4461312900",
-          "postedDate": null,
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -1945,11 +1957,11 @@
           "url": "https://www.linkedin.com/jobs/view/4463152631",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-12",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
         },
         {
           "title": "Sr Product Manager, DEX, MENAT DEX Team",
@@ -2473,11 +2485,11 @@
           "url": "https://www.linkedin.com/jobs/view/4458735701",
           "postedDate": "2026-09-16",
           "source": "li",
-          "lastSeenAt": "2026-09-22",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
         },
         {
           "title": "Designer (Event Promotion and Exhibition)",
@@ -2841,6 +2853,18 @@
           "source": "li",
           "sources": [
             "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
+        },
+        {
+          "title": "Senior Product Manager, Amazon Freight",
+          "location": "London, ENG, GB",
+          "url": "https://uk.indeed.com/viewjob?jk=b19277cddf347bf7",
+          "postedDate": "2026-09-24",
+          "source": "indeed",
+          "sources": [
+            "indeed"
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-09-25"
@@ -3581,7 +3605,7 @@
           "title": "Senior Product Manager, Messenger",
           "location": "Dublin, County Dublin, Ireland",
           "url": "https://www.linkedin.com/jobs/view/4446306288",
-          "postedDate": "2026-09-03",
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -5183,11 +5207,11 @@
           "url": "https://www.linkedin.com/jobs/view/4118294718",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-14",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
         },
         {
           "title": "Product Lead, Payment Fraud",
@@ -5374,6 +5398,18 @@
           "location": "Singapore, Singapore",
           "url": "https://www.linkedin.com/jobs/view/4382574018",
           "postedDate": "2026-09-19",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
+        },
+        {
+          "title": "Senior Product Manager, Liquidity Platform",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4429496095",
+          "postedDate": "2026-09-16",
           "source": "li",
           "sources": [
             "li"
@@ -7239,11 +7275,11 @@
           "url": "https://de.indeed.com/viewjob?jk=0861cacc0a7c2224",
           "postedDate": "2026-09-21",
           "source": "indeed",
-          "lastSeenAt": "2026-09-22",
           "sources": [
             "indeed"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
         },
         {
           "title": "Product Marketing Specialist \u2013 Distribution Automation",
@@ -7604,6 +7640,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-09-25"
+        },
+        {
+          "title": "Master\u2019s Thesis: Design for Automated Control Cabinet Assembly",
+          "location": "V\u00e4ster\u00e5s, U, SE",
+          "url": "https://se.indeed.com/viewjob?jk=734316cdb7764098",
+          "postedDate": "2026-09-25",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
         }
       ]
     },
@@ -7793,7 +7841,7 @@
           "title": "Principal Product Manager - Agent 365",
           "location": "Dublin, County Dublin, Ireland",
           "url": "https://www.linkedin.com/jobs/view/4471466427",
-          "postedDate": null,
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -8649,6 +8697,18 @@
           "title": "Senior UI/UX engineer",
           "location": "Cheung Sha Wan, Hong Kong SAR",
           "url": "https://www.linkedin.com/jobs/view/4471871107",
+          "postedDate": null,
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
+        },
+        {
+          "title": "Senior Product Manager, Fund Services, Markets & Securities Services",
+          "location": "Central & Western District, Hong Kong SAR",
+          "url": "https://www.linkedin.com/jobs/view/4471894961",
           "postedDate": null,
           "source": "li",
           "sources": [
@@ -9563,11 +9623,11 @@
           "url": "https://www.linkedin.com/jobs/view/4461144143",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-14",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
         },
         {
           "title": "Lead Product Manager - AI Enablement",
@@ -9575,11 +9635,11 @@
           "url": "https://www.linkedin.com/jobs/view/4461139828",
           "postedDate": "2026-09-04",
           "source": "li",
-          "lastSeenAt": "2026-09-14",
           "sources": [
             "li"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
         },
         {
           "title": "Lead Product Manager - AI Enablement",
@@ -10061,7 +10121,7 @@
           "title": "Lead Product Strategist",
           "location": "Singapore, Singapore",
           "url": "https://www.linkedin.com/jobs/view/4467892016",
-          "postedDate": "2026-09-18",
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -10284,6 +10344,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-09-25"
+        },
+        {
+          "title": "Product Manager - Enterprise Collaboration and AI",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4434612165",
+          "postedDate": null,
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
         }
       ]
     },
@@ -10345,7 +10417,7 @@
           "title": "Senior Product Manager - Hong Kong",
           "location": "Hong Kong, Hong Kong SAR",
           "url": "https://www.linkedin.com/jobs/view/4463630976",
-          "postedDate": "2026-09-04",
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -11245,7 +11317,7 @@
           "title": "Product Owner expert Business Processing ambito Pagamenti",
           "location": "Milan, Lombardy, Italy",
           "url": "https://www.linkedin.com/jobs/view/4469732645",
-          "postedDate": null,
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -11257,7 +11329,7 @@
           "title": "Product Owner expert Business Processing ambito Pagamenti",
           "location": "Bologna, Emilia-Romagna, Italy",
           "url": "https://www.linkedin.com/jobs/view/4469726839",
-          "postedDate": null,
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -11672,7 +11744,7 @@
         {
           "title": "Staff Product Manager, Local Payment Methods Growth",
           "location": "Dublin, County Dublin, Ireland",
-          "url": "https://www.linkedin.com/jobs/view/4456372995",
+          "url": "https://www.linkedin.com/jobs/view/4456370961",
           "postedDate": "2026-09-21",
           "source": "li",
           "sources": [
@@ -11956,8 +12028,8 @@
         {
           "title": "Senior Product Manager - Consumer",
           "location": "",
-          "url": "https://www.linkedin.com/jobs/view/4442903316",
-          "postedDate": "2026-09-23",
+          "url": "https://www.linkedin.com/jobs/view/4442698444",
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -11968,7 +12040,7 @@
         {
           "title": "Senior Product Manager - Pro Onboarding",
           "location": "",
-          "url": "https://www.linkedin.com/jobs/view/4470024703",
+          "url": "https://www.linkedin.com/jobs/view/4470026710",
           "postedDate": null,
           "source": "li",
           "sources": [
@@ -14324,6 +14396,30 @@
             "li"
           ],
           "sponsorshipSignal": []
+        },
+        {
+          "title": "Product Manager - Remittance",
+          "location": "Federal Territory of Kuala Lumpur, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4471866775",
+          "postedDate": null,
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
+        },
+        {
+          "title": "Senior Product Manager - Wealth",
+          "location": "Federal Territory of Kuala Lumpur, Malaysia",
+          "url": "https://www.linkedin.com/jobs/view/4471883092",
+          "postedDate": null,
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
         }
       ]
     },
@@ -14765,7 +14861,7 @@
           "title": "Lead Data Product Manager",
           "location": "London, England, UK",
           "url": "https://www.linkedin.com/jobs/view/4424582552",
-          "postedDate": "2026-09-02",
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -16285,7 +16381,7 @@
           "title": "IPECS - Senior Product Management",
           "location": "Seoul, Seoul, South Korea",
           "url": "https://www.linkedin.com/jobs/view/4443822609",
-          "postedDate": "2026-09-03",
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -17955,7 +18051,7 @@
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-09-24"
+          "lastSeenAt": "2026-09-25"
         },
         {
           "title": "Product Owner \u2013 AI Forge Platform (f/m/d)",
@@ -17967,7 +18063,7 @@
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-09-24"
+          "lastSeenAt": "2026-09-25"
         },
         {
           "title": "Technical Product Owner",
@@ -17991,7 +18087,7 @@
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-09-24"
+          "lastSeenAt": "2026-09-25"
         },
         {
           "title": "Technical Product Owner",
@@ -18093,7 +18189,7 @@
           "title": "Data Product Manager",
           "location": "Porto, Porto, Portugal",
           "url": "https://www.linkedin.com/jobs/view/4443817758",
-          "postedDate": null,
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -18537,7 +18633,19 @@
           "title": "Senior Product Strategy Manager",
           "location": "Dublin, County Dublin, Ireland",
           "url": "https://www.linkedin.com/jobs/view/4462445016",
-          "postedDate": null,
+          "postedDate": "2026-09-24",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-25"
+        },
+        {
+          "title": "Senior Product Manager",
+          "location": "Dublin, County Dublin, Ireland",
+          "url": "https://www.linkedin.com/jobs/view/4433899095",
+          "postedDate": "2026-09-24",
           "source": "li",
           "sources": [
             "li"
@@ -18838,6 +18946,20 @@
   },
   "openMarket": {
     "roles": [
+      {
+        "employer": "K\u00f6nig Maschinen Gesellschaft m.b.H.",
+        "market": "Verona, VEN, IT",
+        "title": "HEAD OF DESIGN DEPARTMENT (m/f/d)",
+        "location": "Verona, VEN, IT",
+        "url": "https://it.indeed.com/viewjob?jk=62bed901aed60db5",
+        "postedDate": "2026-09-25",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-25"
+      },
       {
         "employer": "synthesia",
         "market": "London, ENG, GB",
