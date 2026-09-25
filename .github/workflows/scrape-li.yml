@@ -1,35 +1,48 @@
 name: Scrape LI coverage (JobSpy)
 
-# Every hour, 24/7 — tightened from every 2 hours in September 2026
-# specifically to shrink the gap between a role going live on LI and
+# 2026-09-25 — backed off from hourly-at-minute-0 to every 3 hours, offset to
+# minute 13, after the hourly schedule turned out to fire wildly irregularly
+# in practice: commit history on main showed gaps anywhere from 45 minutes to
+# nearly 6 hours between runs, and at least one run number (out of #118-121)
+# never showed up in the Actions run list at all. Root cause, as far as it
+# could be confirmed without direct Actions-API access: GitHub's own
+# scheduler is documented to delay or silently DROP `schedule` triggers
+# anchored at the top of the hour (minute 0), since every workflow on GitHub
+# scheduled that way competes for the same "high load" window — see
+# https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#schedule.
+# Moving off :00 (minute 13 here) avoids that specific congestion point;
+# backing off from hourly to every 3h also just means fewer chances to
+# collide with it and less total Actions-minutes burned. Both changes were
+# made together deliberately, at the user's explicit choice, over just the
+# minute-offset fix alone.
+#
+# Previously: every hour, 24/7 — tightened from every 2 hours in September
+# 2026 specifically to shrink the gap between a role going live on LI and
 # this scraper's next chance to find it, since index.php's Today tab gates
 # on freshness (originally calendar-day-posted; since 2026-09-23, a rolling
 # 24h window from first-seen — see README.md's "How the rotation works" and
-# scrape.py's module docstring for the full reasoning). This cron interval
-# (SCHEDULE_INTERVAL_HOURS below) is unchanged as of 2026-09-24 — both of
-# that day's rotation-speed changes were made entirely in scrape.py: the
-# 950-combo grid was trimmed to 570 (LOCATIONS 25 -> 15, your explicit
-# market picks, to cut load/block-risk) and COMBOS_PER_RUN was set to 95 so
-# the new, smaller grid still completes a full cycle every 6h. Combined
-# daily request volume across LI/Indeed is now ~2,280 LI requests/day at
-# that same 6h cycle (Glassdoor and Google are both retired outright as of
-# 2026-09-24 and no longer contribute to this figure at all — see
-# scrape.py's module docstring) — up from the original 950-combo/
-# 60-per-run baseline's ~1,440/day, but a real ~40% CUT from the ~3,840/day
-# a same-day-earlier round had briefly set (950 combos at 160/run) before
-# this location trim replaced it: shrinking the grid was banked entirely as
-# lower daily volume rather than an even faster cycle — see scrape.py's
-# COMBOS_PER_RUN comment for the full reasoning and the runtime-overlap
-# constraint that shaped the choice. IMPORTANT: this cron value is read
-# directly by scrape.py's rotation logic (SCHEDULE_INTERVAL_HOURS, must
-# match this cron) to figure out which chunk of the full combination search
-# grid to run each time — changing this value here without also updating
-# SCHEDULE_INTERVAL_HOURS in scrape.py will throw the rotation off (it'll
-# still run fine, just skip or repeat chunks unevenly). See scrape.py's
-# module docstring.
+# scrape.py's module docstring for the full reasoning). As of 2026-09-24, the
+# 950-combo grid was trimmed to 570 (LOCATIONS 25 -> 15, your explicit market
+# picks, to cut load/block-risk) and COMBOS_PER_RUN was set to 95 so the grid
+# divides into exactly 6 chunks; at the (now-reverted) hourly cadence that
+# was a 6h full-rotation cycle at ~2,280 LI requests/day. At today's 3h
+# cadence, with COMBOS_PER_RUN left unchanged (a separate lever — see
+# scrape.py's COMBOS_PER_RUN comment — not touched by this round), the same
+# 6-chunk grid now takes ~18h to fully rotate instead of 6h, and daily LI
+# request volume drops to roughly a third of the ~2,280/day figure above. If
+# that rotation speed or request volume ever needs tuning back up, raise
+# COMBOS_PER_RUN rather than re-tightening the cron — see that comment for
+# the runtime-overlap constraint that limits how high it can safely go.
+# IMPORTANT: this cron value is read directly by scrape.py's rotation logic
+# (SCHEDULE_INTERVAL_HOURS, must match this cron's *interval* — the hour
+# spacing, not the minute offset) to figure out which chunk of the full
+# combination search grid to run each time — changing the interval here
+# without also updating SCHEDULE_INTERVAL_HOURS in scrape.py will throw the
+# rotation off (it'll still run fine, just skip or repeat chunks unevenly).
+# See scrape.py's module docstring.
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "13 */3 * * *"
   push:
     paths:
       - "li-scraper/scrape.py"
