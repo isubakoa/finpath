@@ -22,13 +22,65 @@ name: Scrape JS-only career sites
 #      snapshot.json here vs. li-snapshot.json there — but both push to the
 #      same `main` branch) never land close enough in time to race each
 #      other into a non-fast-forward push rejection.
+#
+# 2026-09-25, round 3 (current) — the round-2 off-:00 fix above turned out
+# to help but not fully solve it: checked directly against this workflow's
+# own Actions run history (not guessed) and found the same pattern
+# scrape-li.yml hit — real gaps of 6-7+ hours between runs instead of 2, and
+# currently stale by 6h+ at the time this was diagnosed. GitHub's own docs
+# describe `schedule` as best-effort with no delivery-time guarantee, and
+# moving off minute 0 only reduces exposure to the single worst congestion
+# point, not the underlying unreliability. See scrape-li.yml's header
+# comment for the full investigation and reasoning — same root cause, same
+# fix, applied here too:
+#
+#     The cron below now fires every 15 minutes (offset 8, distinct from
+#     scrape-li.yml's offset 3 for the same git-push-collision-avoidance
+#     reason as the minute-43-vs-13 split above) instead of every 2 hours.
+#     A new first step checks, via the GitHub REST API, how long it's
+#     actually been since the last real commit to snapshot.json — only when
+#     that's at least 2 hours (or there's no prior commit at all) does the
+#     rest of the job run; every other tick is a fast, cheap no-op. This
+#     workflow has no rotation/chunking logic to worry about keeping in
+#     sync (see the no-SCHEDULE_INTERVAL_HOURS-equivalent note below) — the
+#     gate step's own 2h threshold, hardcoded to match scrape-li.yml's
+#     SCHEDULE_INTERVAL_HOURS, is the only place this needs to stay
+#     consistent.
+#
 # This workflow has no SCHEDULE_INTERVAL_HOURS-equivalent constant of its
 # own (js-scraper/scrape.js does a full run every time, no rotation/chunking
 # — unlike li-scraper/scrape.py) so there's nothing else to keep in sync
-# with this cron besides this comment.
+# with this cron besides this comment and the gate step's threshold.
+#
+# 2026-09-25 — separate, more serious bug found and fixed while
+# investigating the scheduling issue above (not the thing that was reported,
+# but caught along the way): js-scraper/scrape.js was writing its output via
+# `writeFileSync("snapshot.json", ...)`, a path resolved against the
+# process's CURRENT WORKING DIRECTORY. The "Run scraper" step below runs
+# with `working-directory: ./js-scraper`, so every run was actually writing
+# to js-scraper/snapshot.json — a file this workflow never commits (the
+# "Commit updated snapshot" step below runs at the repo root and does
+# `git add snapshot.json`, meaning the ROOT file, which the scraper never
+# touched). Confirmed directly: js-scraper/snapshot.json doesn't exist in
+# the repo at all (404 on GitHub), while root snapshot.json's last real
+# commit was 2026-09-09 ("Relocate") — 16 days stale at the time this was
+# caught, DESPITE every scheduled run reporting "success", because
+# `git diff --staged --quiet && exit 0` silently treats "nothing changed"
+# as a normal no-op rather than a failure. Root snapshot.json is confirmed
+# (via the live, deployed php-ftp/check.php's own SNAPSHOT_URL constant) to
+# be the file the live site actually reads, so the fix belongs in
+# scrape.js's write path, not here or in check.php — see the "fixed a real
+# bug" comment at the top of js-scraper/scrape.js for the fix itself. Once
+# this lands, the very next real (non-gated-out) run should make root
+# snapshot.json's generatedAt jump from 2026-09-09 to current.
 on:
   schedule:
-    - cron: "43 */2 * * *"
+    # Round 3: fires every 15 minutes (offset 8 past the hour, still off
+    # minute :00/:30 per the round-1 lesson documented in scrape-li.yml) so
+    # the gate step below gets frequent chances to catch up even if GitHub
+    # drops or delays several attempts in a row. This is NOT how often the
+    # real scrape runs — see the gate step below.
+    - cron: "8,23,38,53 * * * *"
   push:
     paths:
       - "js-scraper/scrape.js"
@@ -42,25 +94,70 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     steps:
+      # 2026-09-25, round 3 — see the top-of-file comment for the full
+      # reasoning; mirrors scrape-li.yml's own gate step. Deliberately the
+      # very first step, before checkout: asks the GitHub REST API (via the
+      # auto-provided GITHUB_TOKEN, already granted contents:write below,
+      # which covers read) when snapshot.json was last actually committed
+      # on main, without needing a git clone for what is, on most ticks, a
+      # no-op check. Only when the answer is "at least 2 hours ago" (or
+      # "never committed yet") does the rest of the job — checkout
+      # included — run.
+      - name: Gate on elapsed time since last real run
+        id: gate
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SNAPSHOT_PATH: snapshot.json
+          SCHEDULE_INTERVAL_HOURS: "2" # must match scrape-li.yml's gate threshold
+        run: |
+          set -euo pipefail
+          RESP=$(curl -sS \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/commits?path=${SNAPSHOT_PATH}&sha=main&per_page=1")
+          LAST_ISO=$(echo "$RESP" | jq -r 'if (type == "array") and (length > 0) then .[0].commit.committer.date else "" end')
+          if [ -z "$LAST_ISO" ]; then
+            echo "No prior commit found for $SNAPSHOT_PATH on main — treating as first-ever run."
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            LAST_EPOCH=$(date -u -d "$LAST_ISO" +%s)
+            NOW_EPOCH=$(date -u +%s)
+            ELAPSED=$(( NOW_EPOCH - LAST_EPOCH ))
+            THRESHOLD=$(( SCHEDULE_INTERVAL_HOURS * 3600 ))
+            echo "Last commit to $SNAPSHOT_PATH: $LAST_ISO (${ELAPSED}s ago; threshold ${THRESHOLD}s)"
+            if [ "$ELAPSED" -ge "$THRESHOLD" ]; then
+              echo "should_run=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "should_run=false" >> "$GITHUB_OUTPUT"
+              echo "Only ${ELAPSED}s since the last real run — skipping this check-in."
+            fi
+          fi
+
       - uses: actions/checkout@v4
+        if: steps.gate.outputs.should_run == 'true'
 
       - uses: actions/setup-node@v4
+        if: steps.gate.outputs.should_run == 'true'
         with:
           node-version: 22
 
       - name: Install dependencies
+        if: steps.gate.outputs.should_run == 'true'
         working-directory: ./js-scraper
         run: npm install
 
       - name: Install Chromium (Playwright)
+        if: steps.gate.outputs.should_run == 'true'
         working-directory: ./js-scraper
         run: npx playwright install --with-deps chromium
 
       - name: Run scraper
+        if: steps.gate.outputs.should_run == 'true'
         working-directory: ./js-scraper
         run: node scrape.js
 
       - name: Commit updated snapshot
+        if: steps.gate.outputs.should_run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

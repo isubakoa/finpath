@@ -15,6 +15,33 @@
 
 import { chromium } from "playwright";
 import { writeFileSync } from "fs";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+// 2026-09-25 — fixed a real bug: this used to be `writeFileSync("snapshot.json", ...)`,
+// a path resolved against the PROCESS's current working directory, not this
+// file's own location. That was silently wrong: .github/workflows/scrape.yml
+// runs `node scrape.js` with `working-directory: ./js-scraper`, so every
+// single run for weeks was writing to js-scraper/snapshot.json — a file
+// that's never committed (the "Commit updated snapshot" workflow step runs
+// at the repo root and does `git add snapshot.json`, meaning the ROOT
+// snapshot.json, a completely different file the scraper never touched) —
+// while check.php's live SNAPSHOT_URL
+// (https://raw.githubusercontent.com/.../main/snapshot.json, confirmed
+// directly against the deployed file) kept serving whatever was last
+// committed there: 2026-09-09, "Relocate", 16 days stale by the time this
+// was caught, even though every scheduled run reported "success" (the
+// commit step's `git diff --staged --quiet && exit 0` treats "nothing
+// changed" as a normal, silent no-op, so a wrong-but-unchanging file never
+// surfaced as a failure). Computing the target path from this script's own
+// location (rather than a bare relative literal, and rather than trusting
+// the workflow's working-directory to always match) means the output lands
+// at the repo root regardless of where the process happens to be launched
+// from — correct today, and safe against a future workflow reorganization
+// reintroducing the same class of bug.
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const SNAPSHOT_PATH = join(__dirname, "..", "snapshot.json");
 
 // Ported from index.html's isRoleRelevant() — keep these three regexes
 // byte-for-byte in sync with that function if it ever changes (same
@@ -573,8 +600,8 @@ async function main() {
 
   if (!debug) {
     const snapshot = { generatedAt: new Date().toISOString(), companies };
-    writeFileSync("snapshot.json", JSON.stringify(snapshot, null, 2));
-    console.log(`\nWrote snapshot.json (${Object.keys(companies).length} compan${Object.keys(companies).length === 1 ? "y" : "ies"}).`);
+    writeFileSync(SNAPSHOT_PATH, JSON.stringify(snapshot, null, 2));
+    console.log(`\nWrote ${SNAPSHOT_PATH} (${Object.keys(companies).length} compan${Object.keys(companies).length === 1 ? "y" : "ies"}).`);
   }
 }
 

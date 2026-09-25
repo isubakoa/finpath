@@ -24,13 +24,43 @@ name: Scrape LI coverage (JobSpy)
 #     Fixed by moving off :00 (to minute 13) AND backing off from hourly to
 #     every 3h, both deliberately, at Isu's explicit choice, over just the
 #     minute-offset fix alone.
-#   - 2026-09-25, round 2 (current): tightened back to every 2 hours, same
-#     minute-13 offset — Isu's explicit follow-up call, trading back some of
-#     round 1's Actions-minutes savings in favor of a shorter gap between a
-#     role going live and this scraper finding it, same motivation as the
-#     original hourly-to-2h tightening above. The minute-0 congestion fix
-#     from round 1 is untouched either way — only the *interval* changed
-#     back, not the offset.
+#   - 2026-09-25, round 2: tightened back to every 2 hours, same minute-13
+#     offset — Isu's explicit follow-up call, trading back some of round 1's
+#     Actions-minutes savings in favor of a shorter gap between a role going
+#     live and this scraper finding it, same motivation as the original
+#     hourly-to-2h tightening above. The minute-0 congestion fix from round
+#     1 is untouched either way — only the *interval* changed back, not the
+#     offset.
+#   - 2026-09-25, round 3 (current): round 2's off-:00 fix turned out to
+#     help but not fully solve it — even at minute 13, real gaps between
+#     runs kept coming in at 5-7 hours instead of 2, confirmed directly
+#     against the Actions run history (not guessed): runs landed
+#     22:50, 01:01 (+2h11m), 06:52 (+5h51m), 12:13 (+5h21m), then nothing for
+#     3h50m+ after that. GitHub's own docs describe `schedule` as
+#     best-effort and explicitly say it "may be delayed" without any upper
+#     bound promised — moving off minute 0 reduces exposure to the single
+#     worst congestion point but doesn't make the trigger reliable overall,
+#     especially for a lower-traffic repo like this one.
+#
+#     Fix: decouple "how often GitHub attempts to fire this workflow" from
+#     "how often the real scrape actually runs." The cron below now fires
+#     every 15 minutes (cheap — the new gate step below is the ONLY thing
+#     that runs on most ticks, and exits in a few seconds) instead of every
+#     2 hours; a new first step compares wall-clock time against the last
+#     commit that actually touched li-snapshot.json (via the GitHub REST
+#     API, not a full git clone — see the gate step's own comments) and
+#     skips every other step unless at least SCHEDULE_INTERVAL_HOURS (2h)
+#     have genuinely passed. This is self-healing: however many attempts
+#     GitHub drops or delays in a row, the very next one that actually fires
+#     sees "yes, enough real time has passed" and does the work — the
+#     effective worst-case lag becomes "however long GitHub takes to fire
+#     ANY of the 8 attempts per 2h window," not "however long GitHub takes
+#     to fire ONE specific attempt anchored to one exact minute," which is a
+#     much easier bar to clear. li-scraper/scrape.py's
+#     current_chunk_index() is unaffected — it already computes its chunk
+#     purely from wall-clock time (see its own comment), with no dependency
+#     on how many times this workflow was invoked, so gated-out ticks that
+#     never reach `python scrape.py` don't skew the rotation at all.
 #
 # As of 2026-09-24, the 950-combo grid was trimmed to 570 (LOCATIONS 25 ->
 # 15, your explicit market picks, to cut load/block-risk) and
@@ -44,16 +74,20 @@ name: Scrape LI coverage (JobSpy)
 # comment for the runtime-overlap constraint that limits how high it can
 # safely go (still comfortably clear at 2h: ~25min of guaranteed pause time
 # versus a 120-minute gap between runs).
-# IMPORTANT: this cron value is read directly by scrape.py's rotation logic
-# (SCHEDULE_INTERVAL_HOURS, must match this cron's *interval* — the hour
-# spacing, not the minute offset) to figure out which chunk of the full
-# combination search grid to run each time — changing the interval here
-# without also updating SCHEDULE_INTERVAL_HOURS in scrape.py will throw the
-# rotation off (it'll still run fine, just skip or repeat chunks unevenly).
-# See scrape.py's module docstring.
+# IMPORTANT: SCHEDULE_INTERVAL_HOURS below (2) is what actually governs both
+# the rotation chunking AND, as of round 3, the gate step's threshold — it
+# must match li-scraper/scrape.py's own SCHEDULE_INTERVAL_HOURS constant.
+# The cron's *frequency* (every 15 min, as of round 3) is deliberately no
+# longer the thing that controls real run spacing — only SCHEDULE_INTERVAL_HOURS
+# does that now, via the gate step. See scrape.py's module docstring.
 on:
   schedule:
-    - cron: "13 */2 * * *"
+    # Round 3: fires every 15 minutes (offset 3 past the hour, still off
+    # minute :00/:30 per the round-1 lesson above) so the gate step below
+    # gets frequent chances to catch up even if GitHub drops or delays
+    # several attempts in a row. This is NOT how often the real scrape
+    # runs — see SCHEDULE_INTERVAL_HOURS above and the gate step below.
+    - cron: "3,18,33,48 * * * *"
   push:
     paths:
       - "li-scraper/scrape.py"
@@ -73,13 +107,55 @@ jobs:
       run:
         working-directory: li-scraper
     steps:
+      # 2026-09-25, round 3 — see the top-of-file comment for the full
+      # reasoning. Deliberately the very first step, before checkout: uses
+      # the GitHub REST API (via the auto-provided GITHUB_TOKEN, already
+      # granted contents:write below, which covers read) to ask "when was
+      # li-snapshot.json last actually committed on main?" without needing
+      # a git clone at all for what is, on most ticks, a no-op check. Only
+      # when the answer is "at least SCHEDULE_INTERVAL_HOURS ago" (or "never
+      # committed yet") does the rest of the job — checkout included — run.
+      - name: Gate on elapsed time since last real run
+        id: gate
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SNAPSHOT_PATH: li-scraper/li-snapshot.json
+          SCHEDULE_INTERVAL_HOURS: "2" # must match li-scraper/scrape.py's SCHEDULE_INTERVAL_HOURS
+        run: |
+          set -euo pipefail
+          RESP=$(curl -sS \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/commits?path=${SNAPSHOT_PATH}&sha=main&per_page=1")
+          LAST_ISO=$(echo "$RESP" | jq -r 'if (type == "array") and (length > 0) then .[0].commit.committer.date else "" end')
+          if [ -z "$LAST_ISO" ]; then
+            echo "No prior commit found for $SNAPSHOT_PATH on main — treating as first-ever run."
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            LAST_EPOCH=$(date -u -d "$LAST_ISO" +%s)
+            NOW_EPOCH=$(date -u +%s)
+            ELAPSED=$(( NOW_EPOCH - LAST_EPOCH ))
+            THRESHOLD=$(( SCHEDULE_INTERVAL_HOURS * 3600 ))
+            echo "Last commit to $SNAPSHOT_PATH: $LAST_ISO (${ELAPSED}s ago; threshold ${THRESHOLD}s)"
+            if [ "$ELAPSED" -ge "$THRESHOLD" ]; then
+              echo "should_run=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "should_run=false" >> "$GITHUB_OUTPUT"
+              echo "Only ${ELAPSED}s since the last real run — skipping this check-in."
+            fi
+          fi
+
       - uses: actions/checkout@v4
+        if: steps.gate.outputs.should_run == 'true'
 
       - uses: actions/setup-python@v5
+        if: steps.gate.outputs.should_run == 'true'
         with:
           python-version: "3.11"
 
       - name: Install dependencies
+        if: steps.gate.outputs.should_run == 'true'
         run: pip install -r requirements.txt
 
       # 2026-09-24: needed for bayt_playwright.py — JobSpy's own Bayt
@@ -93,12 +169,15 @@ jobs:
       # .github/workflows/scrape.yml (the Node equivalent of this same
       # requirement, already proven working in this repo).
       - name: Install Chromium (Playwright)
+        if: steps.gate.outputs.should_run == 'true'
         run: playwright install --with-deps chromium
 
       - name: Run offline matching tests
+        if: steps.gate.outputs.should_run == 'true'
         run: python test_match.py
 
       - name: Run offline rotation/merge tests
+        if: steps.gate.outputs.should_run == 'true'
         run: python test_rotation.py
 
       # 2026-09-24: covers bayt_playwright.py's own logic (URL/date helpers,
@@ -110,12 +189,15 @@ jobs:
       # briefly — removed 2026-09-24 along with glassdoor_playwright.py
       # itself; see scrape.py's module docstring, "GLASSDOOR: RETIRED".)
       - name: Run offline Bayt-Playwright tests
+        if: steps.gate.outputs.should_run == 'true'
         run: python test_bayt_playwright.py
 
       - name: Run scraper
+        if: steps.gate.outputs.should_run == 'true'
         run: python scrape.py
 
       - name: Commit updated snapshot
+        if: steps.gate.outputs.should_run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
