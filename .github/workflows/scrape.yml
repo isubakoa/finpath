@@ -1,8 +1,34 @@
 name: Scrape JS-only career sites
 
+# 2026-09-25 — moved from "0 */3 * * *" (every 3h, at minute 0) to every 2h
+# at minute 43, in the same round-2 pass that tightened
+# .github/workflows/scrape-li.yml back to 2h (see that file's header comment
+# for the full scheduling history/reasoning — this workflow shares the same
+# motivation: shorter gap between a role going live and the next scrape).
+# Two things changed together here, deliberately:
+#   1. Interval: 3h -> 2h, matching scrape-li.yml's own change.
+#   2. Minute offset: 0 -> 43 (this workflow never actually had an off-:00
+#      offset before — it happened to avoid the minute-0 congestion issue
+#      diagnosed for scrape-li.yml purely by luck, not by design, since
+#      nothing here gates on a rotation bucket the way that one does). Given
+#      the same minute-0-drop risk documented at
+#      https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#schedule
+#      applies to every `schedule`-triggered workflow equally, it gets the
+#      same off-:00 treatment now on general principle, not because this
+#      workflow showed the same symptoms scrape-li.yml did.
+#   3. Minute 43 specifically (not scrape-li.yml's 13): kept deliberately
+#      apart from scrape-li.yml's own minute-13 offset, so the two
+#      workflows' `git push` steps (each commits a different file —
+#      snapshot.json here vs. li-snapshot.json there — but both push to the
+#      same `main` branch) never land close enough in time to race each
+#      other into a non-fast-forward push rejection.
+# This workflow has no SCHEDULE_INTERVAL_HOURS-equivalent constant of its
+# own (js-scraper/scrape.js does a full run every time, no rotation/chunking
+# — unlike li-scraper/scrape.py) so there's nothing else to keep in sync
+# with this cron besides this comment.
 on:
   schedule:
-    - cron: "0 */3 * * *"
+    - cron: "43 */2 * * *"
   push:
     paths:
       - "js-scraper/scrape.js"

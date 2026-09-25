@@ -593,24 +593,33 @@ BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
 # ---- LOCATIONS have room to grow again later; this was chosen to bank
 # ---- the smaller grid as risk reduction, not to spend it on more speed.
 COMBOS_PER_RUN = 95
-# 2026-09-25 — was 1 (hourly), matching the cron that used to be
-# "0 * * * *". That cron turned out to fire wildly irregularly in practice
-# (gaps from 45min to ~6h between runs, at least one run missing outright) —
-# see .github/workflows/scrape-li.yml's header comment for the full
-# diagnosis (GitHub's scheduler documented to drop `schedule` triggers
-# anchored at minute 0 under load) and the fix (cron moved to "13 */3 * * *"
-# — every 3h, off the top of the hour). This value must always match that
-# cron's *interval* (the hour spacing, e.g. 3 for "every 3 hours" — not the
-# minute offset), or the chunk-rotation math below picks the wrong bucket.
-# At 3h instead of 1h, the runtime-overlap concern noted in COMBOS_PER_RUN's
-# comment above (95 combos ~= 25min of guaranteed pause time versus a
-# 60-minute gap) is no longer a live constraint — 25min is well clear of a
-# 180-minute gap — so COMBOS_PER_RUN was deliberately left unchanged here
-# rather than raised to compensate; the grid now takes ~18h to fully rotate
-# instead of ~6h (total_chunks unchanged at 6, cycle_hours = 6 * 3). Raise
-# COMBOS_PER_RUN, not this value, if that rotation speed ever needs tuning
-# back up.
-SCHEDULE_INTERVAL_HOURS = 3  # must match the cron interval in .github/workflows/scrape-li.yml
+# Scheduling history, kept in full so a future change doesn't have to
+# rediscover this by trial and error:
+#   - Originally hourly ("0 * * * *"). Fired wildly irregularly in practice
+#     (gaps from 45min to ~6h between runs, at least one run missing
+#     outright) — see .github/workflows/scrape-li.yml's header comment for
+#     the full diagnosis (GitHub's scheduler documented to drop `schedule`
+#     triggers anchored at minute 0 under load).
+#   - 2026-09-25, round 1: moved to every 3h, off the top of the hour
+#     ("13 */3 * * *") — fixed both the minute-0 congestion and cut total
+#     Actions-minutes burned.
+#   - 2026-09-25, round 2 (this value): tightened back to every 2h, same
+#     minute offset ("13 */2 * * *") — Isu's explicit follow-up call,
+#     trading back some of round 1's cut in favor of a shorter gap between a
+#     role going live on LI and this scraper's next chance to find it. Still
+#     off minute 0, so the original congestion fix is unaffected either way.
+# This value must always match the cron's *interval* in
+# .github/workflows/scrape-li.yml (the hour spacing — e.g. 2 for "every 2
+# hours" — not the minute offset), or the chunk-rotation math below picks
+# the wrong bucket. At 2h, the runtime-overlap concern noted in
+# COMBOS_PER_RUN's comment above (95 combos ~= 25min of guaranteed pause
+# time versus a 120-minute gap) is still comfortably clear — nowhere near
+# the tightness of the original 60-minute hourly gap — so COMBOS_PER_RUN
+# was again deliberately left unchanged; the grid now takes ~12h to fully
+# rotate (total_chunks unchanged at 6, cycle_hours = 6 * 2), versus ~18h at
+# the round-1 3h cadence. Raise COMBOS_PER_RUN, not this value, if rotation
+# speed ever needs tuning independently of the firing interval.
+SCHEDULE_INTERVAL_HOURS = 2  # must match the cron interval in .github/workflows/scrape-li.yml
 
 # A role not re-confirmed within this many days is dropped from the
 # snapshot — see the module docstring's "accumulate, don't overwrite" note.
@@ -629,7 +638,7 @@ def current_chunk_index(total_chunks, forced=None):
     # Deterministic, stateless: which SCHEDULE_INTERVAL_HOURS-wide bucket of
     # wall-clock time are we in right now, since the Unix epoch. Consecutive
     # scheduled runs land in consecutive buckets — the cron (currently
-    # "13 */3 * * *", see .github/workflows/scrape-li.yml) fires a few
+    # "13 */2 * * *", see .github/workflows/scrape-li.yml) fires a few
     # minutes into each SCHEDULE_INTERVAL_HOURS-wide epoch boundary, which is
     # plenty close for a multi-hour-wide bucket — so this advances by 1 each
     # scheduled run without needing to persist any state between runs. A
