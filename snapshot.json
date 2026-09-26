@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T00:45:44.961Z",
+  "generatedAt": "2026-09-26T05:40:57.064Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -216,14 +216,14 @@
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -248,12 +248,6 @@
         {
           "title": "Solution Designer - Digital",
           "url": "https://nab.eightfold.ai/careers/job/563980770282677?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Head of Product ( Merchant Services & HICAPS)​",
-          "url": "https://nab.eightfold.ai/careers/job/563980770540233?microsite=nab",
           "location": "",
           "postedDate": null
         }
@@ -431,32 +425,26 @@
           "postedDate": null
         },
         {
-          "title": "Radio HW Design Power Amplifier",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
+          "title": "Staff Compiler Design Engineer",
+          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Radio Unit Design Lead",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "title": "Network Design Optimization Internship",
+          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "New Grad-Interconnect Design-BJ",
-          "url": "https://jobs.ericsson.com/careers/job/563121777171641?domain=ericsson.com",
+          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Radio HW TRX Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121776114486?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Radio HW Digital Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
+          "title": "Manager of System Design Team 1",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -467,8 +455,8 @@
           "postedDate": null
         },
         {
-          "title": "Product Quality Leader",
-          "url": "https://jobs.ericsson.com/careers/job/563121776553428?domain=ericsson.com",
+          "title": "Master Thesis: Quantitative Characterization of Low-Power RTL Design Patterns",
+          "url": "https://jobs.ericsson.com/careers/job/563121777283378?domain=ericsson.com",
           "location": "",
           "postedDate": null
         }
@@ -477,6 +465,24 @@
     "vodafone": {
       "ok": true,
       "roles": [
+        {
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
+          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "IP LAN Design Engineer Fixed Term Contract",
+          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
         {
           "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
@@ -490,26 +496,8 @@
           "postedDate": null
         },
         {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "IP LAN Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "IP LAN Design Engineer Fixed Term Contract",
-          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
-          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -520,14 +508,14 @@
           "postedDate": null
         },
         {
-          "title": "CX Design Lead",
-          "url": "https://jobs.vodafone.com/careers/job/563018697217901?domain=vodafone.com",
+          "title": "VodafoneThree - Privacy By Design Assistant - 12 Months FTC",
+          "url": "https://jobs.vodafone.com/careers/job/563018697983423?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "GTM Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
+          "title": "User Experience Design Expert (m/w/d)",
+          "url": "https://jobs.vodafone.com/careers/job/563018697988664?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
