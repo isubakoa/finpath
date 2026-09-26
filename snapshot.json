@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T05:40:57.064Z",
+  "generatedAt": "2026-09-26T10:18:53.874Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -282,26 +282,7 @@
     },
     "aspire": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Partner Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/partner-marketing-manager-831f2ae4-7cb0-4f85-b162-e07f55149737",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "AI Product Manager, FinCrime",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/ai-product-manager-fin-crime-ef285596-5640-47e2-a882-cccebe127c45",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Growth Strategist Intern",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/growth-strategist-intern-3299041d-d3ad-4946-9564-456c455a2298",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "kiwibank": {
       "ok": true,
@@ -437,26 +418,14 @@
           "postedDate": null
         },
         {
-          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Manager of System Design Team 1",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Master Thesis: AI-Assisted Integrated Data Center Design for Telecom Core Systems",
           "url": "https://jobs.ericsson.com/careers/job/563121777306234?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Master Thesis: Quantitative Characterization of Low-Power RTL Design Patterns",
-          "url": "https://jobs.ericsson.com/careers/job/563121777283378?domain=ericsson.com",
+          "title": "New Grad-Board Power Design-BJ",
+          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
           "location": "",
           "postedDate": null
         }
@@ -466,8 +435,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "title": "IP LAN Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -484,38 +459,26 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Cloud Solution Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "IP LAN Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "title": "Senior Digital & OSS E2E Solution Design Authority",
+          "url": "https://jobs.vodafone.com/careers/job/563018695387687?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "VodafoneThree - Privacy By Design Assistant - 12 Months FTC",
-          "url": "https://jobs.vodafone.com/careers/job/563018697983423?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "User Experience Design Expert (m/w/d)",
-          "url": "https://jobs.vodafone.com/careers/job/563018697988664?domain=vodafone.com",
+          "title": "GTM Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
