@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T22:19:32.020Z",
+  "generatedAt": "2026-09-26T00:45:44.961Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -175,12 +175,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "AMP - Strategic Design Lead",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Cannon-Street-Office/AMP-----Strategic-Design-Lead_J69885-1?q=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Senior Manager, Product Development and Management",
           "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Senior-Manager--Product-Development-and-Management_J71483-7?q=design",
           "location": "",
@@ -216,8 +210,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -228,8 +222,8 @@
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -254,6 +248,12 @@
         {
           "title": "Solution Designer - Digital",
           "url": "https://nab.eightfold.ai/careers/job/563980770282677?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head of Product ( Merchant Services & HICAPS)​",
+          "url": "https://nab.eightfold.ai/careers/job/563980770540233?microsite=nab",
           "location": "",
           "postedDate": null
         }
@@ -431,12 +431,6 @@
           "postedDate": null
         },
         {
-          "title": "Master Thesis: AI-Assisted Integrated Data Center Design for Telecom Core Systems",
-          "url": "https://jobs.ericsson.com/careers/job/563121777306234?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Radio HW Design Power Amplifier",
           "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
           "location": "",
@@ -457,6 +451,18 @@
         {
           "title": "Radio HW TRX Design",
           "url": "https://jobs.ericsson.com/careers/job/563121776114486?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio HW Digital Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: AI-Assisted Integrated Data Center Design for Telecom Core Systems",
+          "url": "https://jobs.ericsson.com/careers/job/563121777306234?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
