@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T14:40:19.663Z",
+  "generatedAt": "2026-09-26T18:03:53.063Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -210,12 +210,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Solution Design, Senior Consultant - ECOM",
           "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
@@ -224,6 +218,12 @@
         {
           "title": "Solution Design, Senior Consultant - Merchant Services",
           "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -282,7 +282,26 @@
     },
     "aspire": {
       "ok": true,
-      "roles": []
+      "roles": [
+        {
+          "title": "Partner Marketing Manager",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/partner-marketing-manager-831f2ae4-7cb0-4f85-b162-e07f55149737",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "AI Product Manager, FinCrime",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/ai-product-manager-fin-crime-ef285596-5640-47e2-a882-cccebe127c45",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Growth Strategist Intern",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/growth-strategist-intern-3299041d-d3ad-4946-9564-456c455a2298",
+          "location": "",
+          "postedDate": null
+        }
+      ]
     },
     "kiwibank": {
       "ok": true,
@@ -453,14 +472,26 @@
       "ok": true,
       "roles": [
         {
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "IP LAN Design Engineer Fixed Term Contract",
+          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "title": "IP LAN Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -477,32 +508,20 @@
           "postedDate": null
         },
         {
-          "title": "IP LAN Design Engineer Fixed Term Contract",
-          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "IP LAN Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "CX Design Lead",
-          "url": "https://jobs.vodafone.com/careers/job/563018697217901?domain=vodafone.com",
+          "title": "GTM Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior Digital & OSS E2E Solution Design Authority",
-          "url": "https://jobs.vodafone.com/careers/job/563018695387687?domain=vodafone.com",
+          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
