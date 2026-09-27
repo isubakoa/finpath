@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T19:37:37Z",
+  "generatedAt": "2026-09-27T22:44:13Z",
   "companies": {
     "google": {
       "roles": [
@@ -4916,8 +4916,8 @@
         {
           "title": "Staff Product Designer",
           "location": "Singapore, Singapore",
-          "url": "https://www.linkedin.com/jobs/view/4441587296",
-          "postedDate": "2026-09-25",
+          "url": "https://www.linkedin.com/jobs/view/3824772606",
+          "postedDate": "2026-09-23",
           "source": "li",
           "sources": [
             "li"
@@ -7307,7 +7307,7 @@
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-09-26"
+          "lastSeenAt": "2026-09-27"
         },
         {
           "title": "Senior Design Manager - Spain",
@@ -7844,14 +7844,14 @@
         {
           "title": "Senior Product Development Manager Discretionary and Alternatives - Hang Seng Bank (HK)",
           "location": "Central, HKI, HK",
-          "url": "https://hk.indeed.com/viewjob?jk=dc4ac68f7af14192",
-          "postedDate": "2026-08-28",
+          "url": "https://hk.indeed.com/viewjob?jk=646f4f9cf9158ac6",
+          "postedDate": "2026-09-27",
           "source": "indeed",
-          "lastSeenAt": "2026-09-20",
           "sources": [
             "indeed"
           ],
-          "sponsorshipSignal": []
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-27"
         },
         {
           "title": "Product Development Manager Discretionary and Alternatives - Hang Seng Bank (HK)",
@@ -15440,6 +15440,18 @@
             "li"
           ],
           "sponsorshipSignal": []
+        },
+        {
+          "title": "Manager of System Design Team 1",
+          "location": "Yokohama, Kanagawa, Japan",
+          "url": "https://www.linkedin.com/jobs/view/4461682211",
+          "postedDate": "2026-09-25",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-27"
         }
       ]
     },
@@ -15694,6 +15706,18 @@
           "location": "Amsterdam, North Holland, Netherlands",
           "url": "https://www.linkedin.com/jobs/view/4444738360",
           "postedDate": null,
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-09-27"
+        },
+        {
+          "title": "UI Artist | New Games",
+          "location": "Stockholm, Stockholm County, Sweden",
+          "url": "https://www.linkedin.com/jobs/view/4471114295",
+          "postedDate": "2026-09-23",
           "source": "li",
           "sources": [
             "li"
@@ -18023,6 +18047,48 @@
         "lastSeenAt": "2026-09-27"
       },
       {
+        "employer": "Arbeitnow - Jobs in Germany & UK",
+        "market": "Germany",
+        "title": "Head of Product Design",
+        "location": "Berlin, Germany",
+        "url": "https://www.linkedin.com/jobs/view/4472404233",
+        "postedDate": "2026-09-26",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-27"
+      },
+      {
+        "employer": "SEGA Europe",
+        "market": "Horsham, England, UK",
+        "title": "Head of UI/UX",
+        "location": "Horsham, England, UK",
+        "url": "https://www.linkedin.com/jobs/view/4386377590",
+        "postedDate": "2026-09-26",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-27"
+      },
+      {
+        "employer": "Belmond",
+        "market": "Italy",
+        "title": "Interior Design Director Italy",
+        "location": "Milan, Lombardy, Italy",
+        "url": "https://www.linkedin.com/jobs/view/4471038198",
+        "postedDate": "2026-09-26",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-27"
+      },
+      {
         "employer": "Red Badger",
         "market": "London, ENG, GB",
         "title": "Freelance Principal UX Researcher",
@@ -18039,9 +18105,9 @@
       {
         "employer": "SCIENTE",
         "market": "Singapore",
-        "title": "Lead UI/UX Designer",
+        "title": "Lead UI UX Designer",
         "location": "Singapore, Singapore",
-        "url": "https://www.linkedin.com/jobs/view/4470061636",
+        "url": "https://www.linkedin.com/jobs/view/4470074235",
         "postedDate": "2026-09-25",
         "source": "li",
         "sources": [
@@ -18322,6 +18388,20 @@
         "title": "Design Lead",
         "location": "Glasgow, Scotland, UK",
         "url": "https://www.linkedin.com/jobs/view/4454523198",
+        "postedDate": "2026-09-25",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-27"
+      },
+      {
+        "employer": "Mode Executive",
+        "market": "United Kingdom",
+        "title": "Design Director \u2013 Luxury Womenswear Brand",
+        "location": "London Area, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4470336261",
         "postedDate": "2026-09-25",
         "source": "li",
         "sources": [
@@ -18742,6 +18822,20 @@
         "title": "Packaging & Print Design Lead - Tangle Teezer",
         "location": "London, England, UK",
         "url": "https://www.linkedin.com/jobs/view/4470661735",
+        "postedDate": "2026-09-24",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-27"
+      },
+      {
+        "employer": "Balfour Beatty plc",
+        "market": "Derby, England, UK",
+        "title": "Head of Design - Overhead Lines",
+        "location": "Derby, England, UK",
+        "url": "https://www.linkedin.com/jobs/view/4431502500",
         "postedDate": "2026-09-24",
         "source": "li",
         "sources": [
@@ -21593,48 +21687,6 @@
         "lastSeenAt": "2026-09-24"
       },
       {
-        "employer": "Arbeitnow - Jobs in Germany & UK",
-        "market": "Germany",
-        "title": "Head of Product Design",
-        "location": "Berlin, Germany",
-        "url": "https://www.linkedin.com/jobs/view/4472404233",
-        "postedDate": null,
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-09-27"
-      },
-      {
-        "employer": "SEGA Europe",
-        "market": "Horsham, England, UK",
-        "title": "Head of UI/UX",
-        "location": "Horsham, England, UK",
-        "url": "https://www.linkedin.com/jobs/view/4386377590",
-        "postedDate": null,
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-09-27"
-      },
-      {
-        "employer": "Belmond",
-        "market": "Italy",
-        "title": "Interior Design Director Italy",
-        "location": "Milan, Lombardy, Italy",
-        "url": "https://www.linkedin.com/jobs/view/4471038198",
-        "postedDate": null,
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-09-27"
-      },
-      {
         "employer": "Workwize",
         "market": "Netherlands",
         "title": "Principal UX Designer",
@@ -21654,6 +21706,34 @@
         "title": "Analog Mixed Signal IC Design Lead",
         "location": "Lombardy, Italy",
         "url": "https://www.linkedin.com/jobs/view/4449025865",
+        "postedDate": null,
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-27"
+      },
+      {
+        "employer": "Scopely",
+        "market": "Ireland",
+        "title": "Game Design Director - Star Trek Fleet Command",
+        "location": "Dublin, County Dublin, Ireland",
+        "url": "https://www.linkedin.com/jobs/view/4454850859",
+        "postedDate": null,
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-09-27"
+      },
+      {
+        "employer": "AKQA",
+        "market": "London, England, UK",
+        "title": "Product Design Director",
+        "location": "London, England, UK",
+        "url": "https://www.linkedin.com/jobs/view/4387266120",
         "postedDate": null,
         "source": "li",
         "sources": [
