@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T20:33:39.420Z",
+  "generatedAt": "2026-09-27T23:29:15.430Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -440,6 +440,12 @@
           "url": "https://jobs.ericsson.com/careers/job/563121777306234?domain=ericsson.com",
           "location": "",
           "postedDate": null
+        },
+        {
+          "title": "Master Thesis: Design and Evaluation of Red-Blue Teaming with AI Agents",
+          "url": "https://jobs.ericsson.com/careers/job/563121777177778?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
         }
       ]
     },
@@ -465,14 +471,14 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
-          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "title": "IP LAN Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "IP LAN Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
+          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
+          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -491,12 +497,6 @@
         {
           "title": "User Experience Design Expert (m/w/d)",
           "url": "https://jobs.vodafone.com/careers/job/563018697988664?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
