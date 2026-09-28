@@ -19,8 +19,10 @@ sections:
     2026-09-23, LOCATIONS trimmed 25 -> 15 the same day per your explicit
     market picks) — a flat, no-slug list of postings that matched NO
     tracked company but are still worth surfacing: it clears
-    open_market_gate() (relevant, real target-tier fit, not on the
-    agencies.py blocklist) — see build_fresh_roles()/open_market_gate(). No
+    open_market_gate() (relevant, real target-or-below-tier fit — not
+    "stretch" — not on the agencies.py blocklist; loosened 2026-09-28 from
+    target-tier-only, see open_market_gate()'s own docstring for why) — see
+    build_fresh_roles()/open_market_gate(). No
     location restriction of its own beyond that — every location this file
     already searches (all of LOCATIONS, not a narrower subset) is eligible;
     a `market` field (see market_for_location()) labels which one, purely
@@ -69,10 +71,16 @@ explanation. Instead, each run covers one CHUNK of the full combination
 list (COMBOS_PER_RUN of them), chosen deterministically from the current
 time so consecutive scheduled runs walk through the whole list in order and
 wrap back around — a full cycle takes ROTATION_CYCLE_HOURS (printed below)
-to complete. As of 2026-09-24, COMBOS_PER_RUN=95 divides the 570-combo grid
-into exactly 6 equal chunks -> a 6-hour cycle, at ~2,280 LI requests/day —
-see COMBOS_PER_RUN's own comment below for how that number was chosen and
-the two levers (grid size, combos/run) that went into it. Results
+to complete. As of 2026-09-28, COMBOS_PER_RUN=114 divides the 570-combo grid
+into exactly 5 equal chunks -> a 10-hour cycle at today's 2-hour scheduled
+cadence (SCHEDULE_INTERVAL_HOURS below), at ~1,368 LI requests/day — see
+COMBOS_PER_RUN's own comment below for how that number was chosen, the
+2026-09-28 tightening, and the two levers (grid size, combos/run) that went
+into it. (This paragraph previously said "COMBOS_PER_RUN=95 ... a 6-hour
+cycle" — stale even before the 2026-09-28 change: that math was from when
+runs fired hourly, before the 2026-09-25 move to a 2-hour cadence, which
+alone had already pushed the real cycle to ~12h without this paragraph
+being updated to say so.) Results
 accumulate into li-snapshot.json across runs (merged, not overwritten) and
 a role is only dropped after EXPIRY_DAYS without being re-confirmed — so a
 company found on Monday doesn't vanish from the tracker on Tuesday just
@@ -411,8 +419,9 @@ LOCATIONS = [
 # ---- though this file already searches all 25 LOCATIONS for every one of
 # ---- the 38 pre-defined titles (see the module docstring's combo-count
 # ---- note). That allowlist is gone: eligibility is now open_market_gate()
-# ---- alone (relevant + target-tier fit + not agency-blocklisted, entirely
-# ---- title/employer-based) — no location check gates entry at all anymore.
+# ---- alone (relevant + target-or-below-tier fit + not agency-blocklisted,
+# ---- entirely title/employer-based) — no location check gates entry at all
+# ---- anymore.
 # ---- CANONICAL_MARKETS below is not a gate — it only supplies the `market`
 # ---- label build_fresh_roles() attaches for display/filtering (the Rules &
 # ---- Sources per-market toggles, the "Open market · <market>" chip),
@@ -592,7 +601,47 @@ BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
 # ---- Actions run logs confirm plenty of margin, both COMBOS_PER_RUN and
 # ---- LOCATIONS have room to grow again later; this was chosen to bank
 # ---- the smaller grid as risk reduction, not to spend it on more speed.
-COMBOS_PER_RUN = 95
+# ----
+# ---- 2026-09-28 (current) — that "room to grow later" was cashed in: at
+# ---- today's 2-hour scheduled cadence (see SCHEDULE_INTERVAL_HOURS below),
+# ---- 95 combos/run meant a full rotation took ~12h (6 chunks x 2h) — so any
+# ---- one (term, location) combo, including every tracked-company-adjacent
+# ---- open-market search, only got re-checked twice a day. Isu asked
+# ---- specifically for a shorter rotation, then explicitly asked for a
+# ---- smaller daily-volume increase than an initial 190/3-chunk/6h option
+# ---- would have meant — see that tradeoff below. Raised to
+# ---- COMBOS_PER_RUN=114, which divides the 570-combo grid evenly
+# ---- (570/114=5.0) -> exactly 5 chunks -> a 10-hour full-rotation cycle,
+# ---- a real (if more modest than 190's) improvement on the previous ~12h.
+# ---- 142 was floated first (roughly midway between 95 and 190) but doesn't
+# ---- divide 570 evenly — ceil(570/142)=5 chunks too, the same cycle length
+# ---- as 114, just with an oddly-shaped last chunk of only 2 combos instead
+# ---- of 5 equal 114-combo chunks — so 114 gets the identical 10h cycle with
+# ---- no uneven chunk, strictly better than 142 for this purpose. Cost/safety
+# ---- check, computed directly against the actual code (today there is
+# ---- exactly ONE time.sleep() per combo in run_searches(), drawn from
+# ---- PAUSE_BETWEEN_SEARCHES_SECONDS_MIN..MAX = 5..11s, averaging 8s/combo —
+# ---- the older "~16s/combo" figure a previous version of this comment used
+# ---- appears to predate a since-simplified run_searches() and was not
+# ---- reused here): 114 combos x ~8s = ~15 minutes of guaranteed pause time
+# ---- per run, comfortably inside the 120-minute gap between scheduled runs
+# ---- (~87% margin left over, versus ~89% margin at 95 combos/~12.7min
+# ---- before this change) — checkout/dependency-install/Chromium-install/
+# ---- the offline test suites/Bayt's own 38-request pass/actual JobSpy
+# ---- network latency beyond the deliberate pause all add more wall-clock
+# ---- time on top of that ~15min figure and aren't accounted for here, same
+# ---- caveat previous versions of this comment carried. The real tradeoff is
+# ---- still daily request volume, just a smaller one than 190 would have
+# ---- meant: 114/95 = 1.2x as many combos searched per day at the same 2h
+# ---- cadence (12 runs/day either way), so both LI and Indeed's daily
+# ---- request count go to ~1,368/day each (~2,736/day combined) instead of
+# ---- ~1,140/1,140/2,280 before this change — a ~20% increase, versus the
+# ---- ~100% increase 190 would have been. If even this proves to be a real
+# ---- block-risk concern once real Actions run logs confirm (or don't) that
+# ---- the margin actually holds up in practice, dial COMBOS_PER_RUN back
+# ---- down rather than re-widening LOCATIONS/SEARCH_TERMS to compensate —
+# ---- same "which lever" guidance as before.
+COMBOS_PER_RUN = 114
 # Scheduling history, kept in full so a future change doesn't have to
 # rediscover this by trial and error:
 #   - Originally hourly ("0 * * * *"). Fired wildly irregularly in practice
@@ -612,12 +661,14 @@ COMBOS_PER_RUN = 95
 # .github/workflows/scrape-li.yml (the hour spacing — e.g. 2 for "every 2
 # hours" — not the minute offset), or the chunk-rotation math below picks
 # the wrong bucket. At 2h, the runtime-overlap concern noted in
-# COMBOS_PER_RUN's comment above (95 combos ~= 25min of guaranteed pause
-# time versus a 120-minute gap) is still comfortably clear — nowhere near
-# the tightness of the original 60-minute hourly gap — so COMBOS_PER_RUN
-# was again deliberately left unchanged; the grid now takes ~12h to fully
-# rotate (total_chunks unchanged at 6, cycle_hours = 6 * 2), versus ~18h at
-# the round-1 3h cadence. Raise COMBOS_PER_RUN, not this value, if rotation
+# COMBOS_PER_RUN's comment above (114 combos ~= 15min of guaranteed pause
+# time versus a 120-minute gap, as of the 2026-09-28 tightening — see that
+# comment for the current numbers) is still comfortably clear — nowhere near
+# the tightness of the original 60-minute hourly gap — so this value
+# (SCHEDULE_INTERVAL_HOURS itself) is unchanged by that round; only
+# COMBOS_PER_RUN moved. The grid now takes ~10h to fully rotate (total_chunks
+# = 5 as of 2026-09-28, cycle_hours = 5 * 2), versus ~12h before that change
+# and ~18h at the round-1 3h cadence. Raise COMBOS_PER_RUN, not this value, if rotation
 # speed ever needs tuning independently of the firing interval.
 SCHEDULE_INTERVAL_HOURS = 2  # must match the cron interval in .github/workflows/scrape-li.yml
 
@@ -860,7 +911,9 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
     Phase 2: tracked-company matches only, `key` is the company slug.
     `fresh_open_market` is new (2.2; broadened 2026-09-23): a posting that
     matched NO tracked company but clears open_market_gate() (relevant +
-    real target-tier fit + not agency-blocklisted) — no location check gates
+    real target-or-below-tier fit + not agency-blocklisted — see that
+    function's own docstring for the 2026-09-28 loosening from target-only)
+    — no location check gates
     entry at all anymore, since this file already searches every LOCATIONS
     entry for every pre-defined title regardless. `market_for_location()`
     still labels which market a kept role is in, purely for display/

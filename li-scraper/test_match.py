@@ -94,7 +94,13 @@ FRESH_ROLES_CASES = [
     # union-merge exercise as case #9 above but for the open-market branch.
     ("glassdoor", {"job_url": "https://x.test/11b", "company": "Some Random Singapore Startup Pte Ltd", "title": "Head of Product Design", "location": "Singapore",
                    "description": "We offer relocation support and welcome applications from international candidates as part of our Global Talent program."}),  # 1.4-style merge: same open-market identity as #11, different site/URL
-    ("indeed", {"job_url": "https://x.test/12", "company": "Some Random Singapore Startup Pte Ltd", "title": "Product Designer", "location": "Singapore"}),  # dropped: relevant but only "below" tier, not "target" — fails open_market_gate()
+    # 2026-09-28 — was "dropped: relevant but only 'below' tier, not 'target' —
+    # fails open_market_gate()" before that gate was loosened to accept
+    # target-OR-below tier (see match.py's open_market_gate() docstring for
+    # why). Same title/employer/location as before; now a DIFFERENT open-market
+    # identity than case #11/#11b above (different title: "Product Designer" vs
+    # "Head of Product Design"), so it's its own new kept entry, not a merge.
+    ("indeed", {"job_url": "https://x.test/12", "company": "Some Random Singapore Startup Pte Ltd", "title": "Product Designer", "location": "Singapore"}),  # kept open-market (below-tier, now eligible); still relevant, SG, not an agency
     ("li", {"job_url": "https://x.test/13", "company": "Robert Walters", "title": "Head of Product Design", "location": "Netherlands"}),  # dropped: would otherwise qualify, but Robert Walters is agency-blocklisted
     # 2026-09-23 — open market broadened to every LOCATIONS entry: before this round, Germany
     # wasn't one of the 3-market allowlist (SG/NL/UAE) and this case was DROPPED even though the
@@ -333,12 +339,20 @@ def run():
     id_om_berlin_unrelated = role_identity(
         normalize_employer_name("Some Totally Unrelated Company"), "Head of Design", "Berlin"
     )
+    # 2026-09-28 — case #12 ("Product Designer" @ the same SG startup as #11/#11b) is now its
+    # own kept open-market identity: open_market_gate() was loosened to accept "below" tier, not
+    # just "target" (see match.py). Different title than #11/#11b ("Product Designer" vs "Head of
+    # Product Design"), so it's a distinct identity, not a merge into id_om_startup_sg.
+    id_om_startup_sg_below = role_identity(
+        normalize_employer_name("Some Random Singapore Startup Pte Ltd"), "Product Designer", "Singapore"
+    )
     om_checks = [
-        ("kept exactly 5 open-market identities (case #3/Berlin, case #11+#11b merged into 1, "
-         "case #14/Germany, case #15/UAE, case #16/NL — all newly or already eligible now that "
-         "open market has no location allowlist; #5's NaN-employer row and #12's below-tier title "
-         "still don't qualify, #13 is still agency-blocklisted)",
-         len(fresh_open_market) == 5),
+        ("kept exactly 6 open-market identities (case #3/Berlin, case #11+#11b merged into 1, "
+         "case #12/below-tier (2026-09-28 — now eligible, see below), case #14/Germany, "
+         "case #15/UAE, case #16/NL — all newly or already eligible now that open market has no "
+         "location allowlist and the gate accepts target-or-below tier; #5's NaN-employer row "
+         "still doesn't qualify, #13 is still agency-blocklisted)",
+         len(fresh_open_market) == 6),
         ("the Berlin/'Some Totally Unrelated Company' role (case #3) is now ALSO kept open-market "
          "— previously it only ever demonstrated the tracked-company branch dropping it (no slug); "
          "with no location allowlist left, its real employer + relevant/target title now qualify "
@@ -371,9 +385,19 @@ def run():
         ("...tagged with source=indeed", fresh_open_market.get(id_om_startup_uae, (None, {}))[1].get("source") == "indeed"),
         ("Robert Walters (case #13) did not leak into the open-market feed despite otherwise qualifying",
          all(r.get("employer") != "Robert Walters" for _, r in fresh_open_market.values())),
-        ("case #12 (below-tier title) still did not leak in — the gate is unchanged, only the "
-         "location restriction upstream of it was removed",
-         all(r.get("title") != "Product Designer" for _, r in fresh_open_market.values())),
+        # 2026-09-28 — was "case #12 (below-tier title) still did not leak in — the gate is
+        # unchanged, only the location restriction upstream of it was removed" before
+        # open_market_gate() was loosened to accept "below" tier. Now the opposite is true: it's
+        # SUPPOSED to be kept, as the direct proof the loosening actually took effect.
+        ("case #12 (below-tier title 'Product Designer') IS now kept open-market — direct proof "
+         "the 2026-09-28 open_market_gate() loosening (target-only -> target-or-below) took "
+         "effect, not just that the location restriction stays removed",
+         id_om_startup_sg_below in fresh_open_market),
+        ("...carries the raw employer display name, same employer as #11/#11b but a distinct "
+         "identity (different title)",
+         fresh_open_market.get(id_om_startup_sg_below, (None, {}))[1].get("employer") == "Some Random Singapore Startup Pte Ltd"),
+        ("...tagged with source=indeed (case #12's own source, not merged with #11/#11b's li/glassdoor)",
+         fresh_open_market.get(id_om_startup_sg_below, (None, {}))[1].get("source") == "indeed"),
         # 2026-09-23 — sponsorship signal on the open-market branch.
         ("SG startup role's sponsorshipSignal is the union of li's (#11, no description) and "
          "glassdoor's (#11b, three keywords) — canonical source is still li, signal isn't",
@@ -496,9 +520,19 @@ def run():
         print(f"  {'OK ' if ok else 'FAIL'}  {employer!r:30s} -> {got!s:5s} (expected {expected!s})")
 
     print("-- open-market: open_market_gate() (2.4) --")
+    # 2026-09-28 — open_market_gate() loosened from fit_tier=="target" only to
+    # fit_tier in ("target", "below") — see match.py's open_market_gate() docstring. The
+    # "Product Designer" case below flips from False to True; "Design Coordinator" is new,
+    # added specifically to prove "stretch" tier still doesn't qualify (the loosening was
+    # target-or-below, not "accept everything relevant") — see its own inline note.
     OPEN_MARKET_GATE_CASES = [
-        ("Head of Product Design", "Random Co", (lambda _: False), True),
-        ("Product Designer", "Random Co", (lambda _: False), False),  # relevant, but only "below" tier
+        ("Head of Product Design", "Random Co", (lambda _: False), True),  # target tier — qualified before and after
+        ("Product Designer", "Random Co", (lambda _: False), True),  # relevant, "below" tier — now qualifies (was False pre-2026-09-28)
+        # relevant (bare "design" matches POSITIVE) but neither DOMAIN_CORE nor DOMAIN_BROADER
+        # matches "design coordinator" as a phrase, so domain_tier == "stretch"; seniority_tier is
+        # "below" (no seniority word) but the WEAKER axis wins fit_tier(), so this is "stretch"
+        # overall, not "below" — proves the loosening didn't accidentally admit stretch-tier titles.
+        ("Design Coordinator", "Random Co", (lambda _: False), False),  # relevant, but "stretch" tier — still excluded
         ("Junior Product Designer", "Random Co", (lambda _: False), False),  # hard-excluded — not relevant at all
         ("Head of Product Design", "Robert Walters", is_agency, False),  # would otherwise qualify — agency-blocked
     ]

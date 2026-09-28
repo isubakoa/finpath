@@ -197,11 +197,27 @@ def open_market_gate(title, employer, is_agency_fn):
     location scrape.py already searches is eligible, filtered purely by
     title here). Kept only if ALL of:
       - is_role_relevant(title)
-      - fit_tier(title) == "target" — deliberately the real post-1.3 two-axis
-        tier, not the old single-regex one; this gate was specifically held
-        off until 1.3 shipped for that reason. "One tier below"/"stretch"
-        never qualify for open market in v1.
+      - fit_tier(title) in ("target", "below") — deliberately the real
+        post-1.3 two-axis tier, not the old single-regex one. "stretch"
+        (and a hard-excluded title, which reports its own "excluded" tier —
+        see fit_tier()'s own docstring) never qualify for open market.
       - not agency-blocklisted (is_agency_fn(employer) is False)
+
+    2026-09-28 — loosened from fit_tier(title) == "target" only: the
+    target-only gate turned out to be the single biggest reason Open Market
+    consistently showed far fewer roles than the tracked-Companies list,
+    which has no fit-tier gate at all (a tracked company's openRoles[] is
+    shown at every tier once merged in — see index.php's mergeLiveResultIntoCompany(),
+    which only re-applies is_role_relevant(), not a tier check). Most real
+    postings land at "below" rather than "target" on the two-axis tier, so
+    that one extra condition was throwing out the majority of otherwise-
+    relevant open-market hits. Dropping it to target-or-below brings Open
+    Market's admission criteria in line with what Companies already shows,
+    while "stretch" (barely design/product-adjacent at all) and hard
+    exclusions (junior/intern/associate-without-qualifier/etc.) still don't
+    qualify — this was never a blanket removal of the tier filter, just
+    matching it to what the rest of the app already considers "worth
+    showing".
 
     A fourth criterion from the spec — not user-excluded — is a per-viewer,
     client-side-only concept (index.html's learnedExclusions mechanism,
@@ -216,7 +232,7 @@ def open_market_gate(title, employer, is_agency_fn):
     reverse import would be circular anyway)."""
     if not is_role_relevant(title):
         return False
-    if fit_tier(title) != "target":
+    if fit_tier(title) not in ("target", "below"):
         return False
     if is_agency_fn(employer):
         return False

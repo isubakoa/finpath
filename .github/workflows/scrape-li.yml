@@ -65,15 +65,25 @@ name: Scrape LI coverage (JobSpy)
 # As of 2026-09-24, the 950-combo grid was trimmed to 570 (LOCATIONS 25 ->
 # 15, your explicit market picks, to cut load/block-risk) and
 # COMBOS_PER_RUN was set to 95 so the grid divides into exactly 6 chunks. At
-# today's 2h cadence, with COMBOS_PER_RUN left unchanged (a separate lever —
-# see scrape.py's COMBOS_PER_RUN comment — not touched by this round), that
-# 6-chunk grid takes ~12h to fully rotate (vs ~18h at round 1's 3h cadence,
-# ~6h at the original hourly cadence), at roughly 1.5x round 1's daily LI
-# request volume. If that rotation speed or request volume ever needs tuning
-# again, raise COMBOS_PER_RUN rather than re-tightening the cron — see that
-# comment for the runtime-overlap constraint that limits how high it can
-# safely go (still comfortably clear at 2h: ~25min of guaranteed pause time
-# versus a 120-minute gap between runs).
+# today's 2h cadence, that 6-chunk grid took ~12h to fully rotate (vs ~18h
+# at round 1's 3h cadence, ~6h at the original hourly cadence), at roughly
+# 1.5x round 1's daily LI request volume.
+#
+# 2026-09-28 — COMBOS_PER_RUN raised 95 -> 114 (still an even divisor of the
+# 570-combo grid: 570/114=5 chunks exactly) specifically to shorten that
+# rotation, after Isu asked for a shorter cycle but then explicitly asked
+# for a smaller daily-volume increase than an initial 190/3-chunk/6h option
+# would have meant — see scrape.py's COMBOS_PER_RUN comment for the full
+# reasoning, why 114 (not the also-considered 142, which doesn't divide 570
+# evenly), and the runtime-overlap math (still comfortably clear at 2h:
+# ~15min of guaranteed pause time for 114 combos versus the 120-minute gap
+# between runs). Same 2h cadence, same SCHEDULE_INTERVAL_HOURS=2 below, only
+# the chunk size changed — the grid now takes ~10h to fully rotate instead
+# of ~12h, at a more modest ~20% increase in daily LI/Indeed request volume
+# (~1,368/day each, up from ~1,140/day each). If that rotation speed or
+# request volume ever needs tuning again, raise or lower COMBOS_PER_RUN
+# rather than touching this cron — see that comment for the current safety
+# margin.
 # IMPORTANT: SCHEDULE_INTERVAL_HOURS below (2) is what actually governs both
 # the rotation chunking AND, as of round 3, the gate step's threshold — it
 # must match li-scraper/scrape.py's own SCHEDULE_INTERVAL_HOURS constant.
