@@ -101,7 +101,14 @@ FRESH_ROLES_CASES = [
     # identity than case #11/#11b above (different title: "Product Designer" vs
     # "Head of Product Design"), so it's its own new kept entry, not a merge.
     ("indeed", {"job_url": "https://x.test/12", "company": "Some Random Singapore Startup Pte Ltd", "title": "Product Designer", "location": "Singapore"}),  # kept open-market (below-tier, now eligible); still relevant, SG, not an agency
-    ("li", {"job_url": "https://x.test/13", "company": "Robert Walters", "title": "Head of Product Design", "location": "Netherlands"}),  # dropped: would otherwise qualify, but Robert Walters is agency-blocklisted
+    # 2026-09-28 — was "dropped: would otherwise qualify, but Robert Walters is
+    # agency-blocklisted" before open_market_gate() stopped consulting the
+    # agency blocklist (per explicit request — see match.py's open_market_gate()
+    # docstring). Now kept: proves a staffing-agency employer is no longer
+    # excluded from the open-market feed. is_agency("Robert Walters") is still
+    # True (that function/list is untouched, see the AGENCY_CASES block below) —
+    # the gate just doesn't call it any more.
+    ("li", {"job_url": "https://x.test/13", "company": "Robert Walters", "title": "Head of Product Design", "location": "Netherlands"}),  # kept open-market (2026-09-28): relevant, target-tier, agency blocklist no longer consulted
     # 2026-09-23 — open market broadened to every LOCATIONS entry: before this round, Germany
     # wasn't one of the 3-market allowlist (SG/NL/UAE) and this case was DROPPED even though the
     # title/employer would otherwise qualify. Now kept — proves the broadening actually works for
@@ -346,13 +353,20 @@ def run():
     id_om_startup_sg_below = role_identity(
         normalize_employer_name("Some Random Singapore Startup Pte Ltd"), "Product Designer", "Singapore"
     )
+    # 2026-09-28 (second change, same day) — case #13 (Robert Walters) is now its own kept
+    # open-market identity too: open_market_gate() stopped consulting the agency blocklist
+    # (see match.py's docstring). Distinct employer from every other case, so its own identity.
+    id_om_robert_walters = role_identity(
+        normalize_employer_name("Robert Walters"), "Head of Product Design", "Netherlands"
+    )
     om_checks = [
-        ("kept exactly 6 open-market identities (case #3/Berlin, case #11+#11b merged into 1, "
-         "case #12/below-tier (2026-09-28 — now eligible, see below), case #14/Germany, "
+        ("kept exactly 7 open-market identities (case #3/Berlin, case #11+#11b merged into 1, "
+         "case #12/below-tier (2026-09-28 — now eligible, see below), case #13/Robert Walters "
+         "(2026-09-28 — agency blocklist no longer consulted, see below), case #14/Germany, "
          "case #15/UAE, case #16/NL — all newly or already eligible now that open market has no "
-         "location allowlist and the gate accepts target-or-below tier; #5's NaN-employer row "
-         "still doesn't qualify, #13 is still agency-blocklisted)",
-         len(fresh_open_market) == 6),
+         "location allowlist, the gate accepts target-or-below tier, and the gate no longer "
+         "excludes agencies; #5's NaN-employer row still doesn't qualify)",
+         len(fresh_open_market) == 7),
         ("the Berlin/'Some Totally Unrelated Company' role (case #3) is now ALSO kept open-market "
          "— previously it only ever demonstrated the tracked-company branch dropping it (no slug); "
          "with no location allowlist left, its real employer + relevant/target title now qualify "
@@ -383,8 +397,16 @@ def run():
          "'united arab emirates' substring)",
          fresh_open_market.get(id_om_startup_uae, (None, {}))[1].get("market") == "United Arab Emirates"),
         ("...tagged with source=indeed", fresh_open_market.get(id_om_startup_uae, (None, {}))[1].get("source") == "indeed"),
-        ("Robert Walters (case #13) did not leak into the open-market feed despite otherwise qualifying",
-         all(r.get("employer") != "Robert Walters" for _, r in fresh_open_market.values())),
+        # 2026-09-28 (second change, same day) — was "Robert Walters (case #13) did not leak
+        # into the open-market feed despite otherwise qualifying" before open_market_gate()
+        # stopped consulting the agency blocklist. Now the opposite is true: it's SUPPOSED to
+        # be kept, as the direct proof the agency-blocklist removal actually took effect.
+        ("Robert Walters (case #13) IS now kept open-market — direct proof the 2026-09-28 "
+         "open_market_gate() agency-blocklist removal took effect",
+         id_om_robert_walters in fresh_open_market),
+        ("...carries the raw employer display name",
+         fresh_open_market.get(id_om_robert_walters, (None, {}))[1].get("employer") == "Robert Walters"),
+        ("...tagged with market=Netherlands", fresh_open_market.get(id_om_robert_walters, (None, {}))[1].get("market") == "Netherlands"),
         # 2026-09-28 — was "case #12 (below-tier title) still did not leak in — the gate is
         # unchanged, only the location restriction upstream of it was removed" before
         # open_market_gate() was loosened to accept "below" tier. Now the opposite is true: it's
@@ -520,24 +542,32 @@ def run():
         print(f"  {'OK ' if ok else 'FAIL'}  {employer!r:30s} -> {got!s:5s} (expected {expected!s})")
 
     print("-- open-market: open_market_gate() (2.4) --")
-    # 2026-09-28 — open_market_gate() loosened from fit_tier=="target" only to
+    # 2026-09-28, round 1 — open_market_gate() loosened from fit_tier=="target" only to
     # fit_tier in ("target", "below") — see match.py's open_market_gate() docstring. The
     # "Product Designer" case below flips from False to True; "Design Coordinator" is new,
     # added specifically to prove "stretch" tier still doesn't qualify (the loosening was
     # target-or-below, not "accept everything relevant") — see its own inline note.
+    #
+    # 2026-09-28, round 2 (same day) — open_market_gate() dropped its is_agency_fn parameter
+    # entirely (agency postings are no longer excluded, per explicit request — see the
+    # function's own docstring). Every case tuple below lost its trailing agency-fn argument
+    # to match the new two-arg signature, and the Robert Walters case's expected value flipped
+    # from False to True (it would already have qualified on title/tier alone — agency status
+    # is simply no longer consulted). is_agency() itself is untouched and still directly unit
+    # tested above (AGENCY_CASES) — only this gate stopped calling it.
     OPEN_MARKET_GATE_CASES = [
-        ("Head of Product Design", "Random Co", (lambda _: False), True),  # target tier — qualified before and after
-        ("Product Designer", "Random Co", (lambda _: False), True),  # relevant, "below" tier — now qualifies (was False pre-2026-09-28)
+        ("Head of Product Design", "Random Co", True),  # target tier — qualified before and after
+        ("Product Designer", "Random Co", True),  # relevant, "below" tier — now qualifies (was False pre-2026-09-28)
         # relevant (bare "design" matches POSITIVE) but neither DOMAIN_CORE nor DOMAIN_BROADER
         # matches "design coordinator" as a phrase, so domain_tier == "stretch"; seniority_tier is
         # "below" (no seniority word) but the WEAKER axis wins fit_tier(), so this is "stretch"
         # overall, not "below" — proves the loosening didn't accidentally admit stretch-tier titles.
-        ("Design Coordinator", "Random Co", (lambda _: False), False),  # relevant, but "stretch" tier — still excluded
-        ("Junior Product Designer", "Random Co", (lambda _: False), False),  # hard-excluded — not relevant at all
-        ("Head of Product Design", "Robert Walters", is_agency, False),  # would otherwise qualify — agency-blocked
+        ("Design Coordinator", "Random Co", False),  # relevant, but "stretch" tier — still excluded
+        ("Junior Product Designer", "Random Co", False),  # hard-excluded — not relevant at all
+        ("Head of Product Design", "Robert Walters", True),  # agency, target tier — now qualifies (was False pre-round-2; agency blocklist no longer consulted)
     ]
-    for title, employer, agency_fn, expected in OPEN_MARKET_GATE_CASES:
-        got = open_market_gate(title, employer, agency_fn)
+    for title, employer, expected in OPEN_MARKET_GATE_CASES:
+        got = open_market_gate(title, employer)
         ok = got == expected
         failures += 0 if ok else 1
         print(f"  {'OK ' if ok else 'FAIL'}  {title!r:30s} @ {employer!r:20s} -> {got!s:5s} (expected {expected!s})")

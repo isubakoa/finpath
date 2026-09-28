@@ -90,6 +90,40 @@ name: Scrape LI coverage (JobSpy)
 # The cron's *frequency* (every 15 min, as of round 3) is deliberately no
 # longer the thing that controls real run spacing — only SCHEDULE_INTERVAL_HOURS
 # does that now, via the gate step. See scrape.py's module docstring.
+#
+# 2026-09-28 (same day, two further changes, no cron/gate changes needed for
+# either — both are about WHAT scrape.py searches per run, not WHEN this
+# workflow fires):
+#   1. Open-market staffing/recruitment agency postings (Robert Walters,
+#      Michael Page, etc.) are now INCLUDED, per explicit request —
+#      li-scraper/match.py's open_market_gate() no longer consults
+#      agencies.py's is_agency() blocklist. See that function's own
+#      docstring for the full reasoning; agencies.py itself is untouched.
+#   2. Isu's 3 priority markets (Singapore, Dubai, Netherlands — the last
+#      covering Amsterdam too) no longer sit in the ordinary COMBOS_PER_RUN
+#      rotation with the other 12 locations. They're pulled into their own
+#      always-considered sweep, run EVERY TERM against all 3, layered on top
+#      of whichever rotating chunk a run would have covered anyway, on every
+#      OTHER real run (~4h worst-case gap) — see scrape.py's module
+#      docstring "PRIORITY MARKETS" section and priority_sweep_due() for the
+#      full mechanism and cost reasoning. This is a pure scrape.py-side
+#      change (PRIORITY_LOCATIONS/ROTATING_LOCATIONS/priority_combos()/
+#      priority_sweep_due(), all keyed off the same SCHEDULE_INTERVAL_HOURS
+#      wall-clock buckets current_chunk_index() already used) — nothing here
+#      needed to change for it to work: the gate step's job is still just
+#      "has enough wall-clock time passed since the last real commit," which
+#      is unaffected by what that next real run decides to search internally.
+#   Net effect on daily request volume: the rotating pool's own chunk size
+#   (COMBOS_PER_RUN=114) is unchanged, so its own ~1,368/day LI+Indeed
+#   request volume is unchanged too (see the 2026-09-28 COMBOS_PER_RUN entry
+#   above) — it's simply now spread over 456 rotating combos instead of 570,
+#   so its own full-rotation cycle got shorter (~8h, down from ~10h) as a
+#   side effect, not a new tuning decision. On top of that, the priority
+#   sweep adds roughly another ~1,368/day (3 markets x 38 terms x 2
+#   sites/combo x ~1 sweep every ~4h), since "every other run" was Isu's
+#   explicit choice over "every run" (which would have doubled that added
+#   cost) — see the module docstring for the full trade-off as it was
+#   presented and decided.
 on:
   schedule:
     # Round 3: fires every 15 minutes (offset 3 past the hour, still off

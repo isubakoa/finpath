@@ -187,7 +187,7 @@ def fit_tier(title):
     return sen if TIER_RANK[sen] <= TIER_RANK[dom] else dom
 
 
-def open_market_gate(title, employer, is_agency_fn):
+def open_market_gate(title, employer):
     """Phase 2.4 — single, named gate deciding whether an unmatched-company
     posting enters the open-market feed. 2026-09-23: this is now the ONLY
     gate — there is no location restriction upstream in scrape.py anymore
@@ -201,7 +201,6 @@ def open_market_gate(title, employer, is_agency_fn):
         post-1.3 two-axis tier, not the old single-regex one. "stretch"
         (and a hard-excluded title, which reports its own "excluded" tier —
         see fit_tier()'s own docstring) never qualify for open market.
-      - not agency-blocklisted (is_agency_fn(employer) is False)
 
     2026-09-28 — loosened from fit_tier(title) == "target" only: the
     target-only gate turned out to be the single biggest reason Open Market
@@ -219,22 +218,27 @@ def open_market_gate(title, employer, is_agency_fn):
     matching it to what the rest of the app already considers "worth
     showing".
 
-    A fourth criterion from the spec — not user-excluded — is a per-viewer,
+    2026-09-28 (same day) — the agency-blocklist check (is_agency_fn(employer),
+    an `is_agency_fn` parameter this function used to take) was ALSO removed,
+    per an explicit separate request: staffing/recruitment agency postings
+    (Robert Walters, Michael Page, etc.) are wanted in Open Market now, not
+    filtered out. agencies.py's is_agency() and its AGENCY_NAMES list are
+    untouched and still importable — nothing here deletes the blocklist
+    itself, this function just no longer consults it, so reinstating it
+    later (or using it somewhere else, e.g. a display-only "via agency" tag)
+    is a small, self-contained change rather than rebuilding it from
+    scratch. Every call site was updated to match (scrape.py's
+    `from agencies import is_agency` and the single open_market_gate() call
+    both dropped the now-unused argument).
+
+    A third criterion from the spec — not user-excluded — is a per-viewer,
     client-side-only concept (index.html's learnedExclusions mechanism,
     Phase 4.4's planned employer-suppression equivalent) with no
     server-side data to check here; this function can't and doesn't
-    implement it, index.html's own frontend filtering does.
-
-    is_agency_fn: a callable, not a direct import of agencies.py — keeps
-    match.py free of any dependency on the agency list (and matches this
-    file's own "kept in its own file so it can be unit-tested in isolation"
-    design; agencies.py imports normalize_employer_name() from here, so the
-    reverse import would be circular anyway)."""
+    implement it, index.html's own frontend filtering does."""
     if not is_role_relevant(title):
         return False
     if fit_tier(title) not in ("target", "below"):
-        return False
-    if is_agency_fn(employer):
         return False
     return True
 

@@ -20,9 +20,13 @@ sections:
     market picks) — a flat, no-slug list of postings that matched NO
     tracked company but are still worth surfacing: it clears
     open_market_gate() (relevant, real target-or-below-tier fit — not
-    "stretch" — not on the agencies.py blocklist; loosened 2026-09-28 from
-    target-tier-only, see open_market_gate()'s own docstring for why) — see
-    build_fresh_roles()/open_market_gate(). No
+    "stretch"; loosened 2026-09-28 from target-tier-only, see
+    open_market_gate()'s own docstring for why) — see
+    build_fresh_roles()/open_market_gate(). Staffing/recruitment agency
+    postings (Robert Walters, Michael Page, etc.) are INCLUDED as of
+    2026-09-28, per explicit request — agencies.py's is_agency() blocklist
+    still exists but open_market_gate() no longer calls it; see that
+    function's docstring. No
     location restriction of its own beyond that — every location this file
     already searches (all of LOCATIONS, not a narrower subset) is eligible;
     a `market` field (see market_for_location()) labels which one, purely
@@ -85,6 +89,35 @@ accumulate into li-snapshot.json across runs (merged, not overwritten) and
 a role is only dropped after EXPIRY_DAYS without being re-confirmed — so a
 company found on Monday doesn't vanish from the tracker on Tuesday just
 because today's chunk didn't include that company's search terms.
+
+*** PRIORITY MARKETS (2026-09-28) — Singapore, UAE (Dubai), Netherlands ***
+Isu's 3 priority markets — Singapore, Dubai (searched as "Dubai, United Arab
+Emirates"), and the Netherlands (searched as the existing bare "Netherlands"
+LOCATIONS entry — already broad enough to cover Amsterdam and the rest of
+the country, so no separate Amsterdam-only entry was added; a bare-country
+search was already this file's own established pattern for every other
+country-level LOCATIONS entry) no longer sit in the ordinary rotation with
+the other 12 locations. They're pulled out into their own PRIORITY_LOCATIONS
+list and searched, EVERY TERM, as a separate sweep layered on top of
+whichever rotating chunk a run would have covered anyway — see
+PRIORITY_LOCATIONS/ROTATING_LOCATIONS/priority_combos()/priority_sweep_due()
+below. Two things this deliberately achieves together:
+  1. The other 12 (now "rotating") locations are NOT slowed down — pulling 3
+     locations out shrinks the rotating grid (570 -> 456 combos), so at the
+     same COMBOS_PER_RUN, those 12 locations' own full-rotation cycle is if
+     anything slightly FASTER than before (~8h vs ~10h), never slower.
+  2. The priority sweep runs on every OTHER scheduled run (~4h worst-case
+     gap, not the ~10h/12h an ordinary rotation turn would mean) — "every
+     run" (~2h) was considered and costed out first, but doubles total daily
+     LI/Indeed request volume on top of the COMBOS_PER_RUN=95->114 increase
+     from the same day; "every other run" was Isu's explicit choice instead,
+     for roughly half that added cost while still being far more frequent
+     than these 3 markets' old rotation turn.
+See priority_sweep_due()'s own docstring for exactly how "every other run"
+is computed (deterministic from wall-clock time, same self-healing
+philosophy as current_chunk_index() — no persisted state, no counter of how
+many real runs have actually fired, so ticks GitHub drops or delays don't
+desync it).
 
 *** BAYT: NOW VIA PLAYWRIGHT, NOT JOBSPY (2026-09-24) ***
 JobSpy's own Bayt adapter (run_bayt_searches() below) got an outright 403
@@ -200,7 +233,6 @@ import sys
 import time
 from datetime import datetime, timedelta, timezone
 
-from agencies import is_agency
 from companies import COMPANIES, ALIASES
 from match import (
     build_index,
@@ -410,6 +442,30 @@ LOCATIONS = [
     "Dubai, United Arab Emirates",
 ]
 
+# ---- 2026-09-28 — Isu's 3 priority markets, pulled out of the ordinary
+# ---- rotation into their own always-considered sweep (every term, every
+# ---- other run) — see the module docstring's "PRIORITY MARKETS" section for
+# ---- the full reasoning, and priority_combos()/priority_sweep_due() below
+# ---- for the mechanism. "Netherlands" here (not a separate "Amsterdam"
+# ---- entry) is Isu's explicit choice — the existing bare-country entry
+# ---- already covers Amsterdam plus the rest of the country, matching how
+# ---- every other bare-country LOCATIONS entry above already behaves.
+# ---- Must be a subset of LOCATIONS (checked at import time below) — these
+# ---- strings have to match a LOCATIONS entry exactly, not add a new one.
+PRIORITY_LOCATIONS = [
+    "Singapore",
+    "Dubai, United Arab Emirates",
+    "Netherlands",
+]
+assert all(loc in LOCATIONS for loc in PRIORITY_LOCATIONS), \
+    "PRIORITY_LOCATIONS must be an exact subset of LOCATIONS"
+
+# The remaining 12 locations — what actually gets chunked/rotated by
+# COMBOS_PER_RUN. Smaller than the full LOCATIONS list now that
+# PRIORITY_LOCATIONS is searched separately every other run instead — see
+# rotating_combos()/priority_combos() below.
+ROTATING_LOCATIONS = [loc for loc in LOCATIONS if loc not in PRIORITY_LOCATIONS]
+
 # ---- 2026-09-23 — open market broadened to every LOCATIONS entry, per your
 # ---- call: "keep it open and broad across all market but specific to the
 # ---- pre-defined job titles." Previously (Phase 2.1, then the UAE addition)
@@ -419,9 +475,9 @@ LOCATIONS = [
 # ---- though this file already searches all 25 LOCATIONS for every one of
 # ---- the 38 pre-defined titles (see the module docstring's combo-count
 # ---- note). That allowlist is gone: eligibility is now open_market_gate()
-# ---- alone (relevant + target-or-below-tier fit + not agency-blocklisted,
-# ---- entirely title/employer-based) — no location check gates entry at all
-# ---- anymore.
+# ---- alone (relevant + target-or-below-tier fit — agency postings included
+# ---- as of 2026-09-28, see that function's docstring — entirely
+# ---- title/employer-based) — no location check gates entry at all anymore.
 # ---- CANONICAL_MARKETS below is not a gate — it only supplies the `market`
 # ---- label build_fresh_roles() attaches for display/filtering (the Rules &
 # ---- Sources per-market toggles, the "Open market · <market>" chip),
@@ -641,6 +697,22 @@ BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
 # ---- the margin actually holds up in practice, dial COMBOS_PER_RUN back
 # ---- down rather than re-widening LOCATIONS/SEARCH_TERMS to compensate —
 # ---- same "which lever" guidance as before.
+# ----
+# ---- 2026-09-28 (same day, second change) — Singapore/Dubai/Netherlands
+# ---- pulled out into PRIORITY_LOCATIONS (see that list's own comment and
+# ---- the module docstring's "PRIORITY MARKETS" section), so this constant
+# ---- now divides ROTATING_LOCATIONS' smaller 456-combo grid (12 locations
+# ---- x 38 terms), not the full 570. COMBOS_PER_RUN itself is UNCHANGED at
+# ---- 114 — it happens to still divide the new grid evenly too
+# ---- (456/114=4.0) -> exactly 4 chunks -> an ~8-hour full-rotation cycle
+# ---- for the 12 rotating locations, down from ~10h, at the exact same
+# ---- ~1,368/day LI/Indeed request volume this constant already meant
+# ---- before today's second change — none of that ~1,368/day cost is new;
+# ---- it's simply now spread over a smaller pool, which is why the cycle
+# ---- got shorter "for free." All of the added request volume from the
+# ---- priority sweep (another ~1,368/day — see PRIORITY_LOCATIONS/
+# ---- priority_combos() for the accounting) is separate and additional to
+# ---- what's described in this comment block.
 COMBOS_PER_RUN = 114
 # Scheduling history, kept in full so a future change doesn't have to
 # rediscover this by trial and error:
@@ -666,9 +738,21 @@ COMBOS_PER_RUN = 114
 # comment for the current numbers) is still comfortably clear — nowhere near
 # the tightness of the original 60-minute hourly gap — so this value
 # (SCHEDULE_INTERVAL_HOURS itself) is unchanged by that round; only
-# COMBOS_PER_RUN moved. The grid now takes ~10h to fully rotate (total_chunks
-# = 5 as of 2026-09-28, cycle_hours = 5 * 2), versus ~12h before that change
-# and ~18h at the round-1 3h cadence. Raise COMBOS_PER_RUN, not this value, if rotation
+# COMBOS_PER_RUN moved. The (rotating-pool) grid took ~10h to fully rotate
+# right after that change (total_chunks = 5, cycle_hours = 5 * 2), versus
+# ~12h before it and ~18h at the round-1 3h cadence.
+#
+# 2026-09-28 (same day, second change) — PRIORITY_LOCATIONS (Singapore,
+# Dubai, Netherlands) carved out of the rotating pool into their own
+# always-swept set (see COMBOS_PER_RUN's own comment and the module
+# docstring's "PRIORITY MARKETS" section). The rotating pool COMBOS_PER_RUN
+# actually chunks shrank from 570 to 456 combos as a result, so total_chunks
+# dropped from 5 to 4 and the rotating cycle from ~10h to ~8h — a side
+# effect of the pool shrinking, not a new tuning decision; COMBOS_PER_RUN
+# itself did not change. This is on top of, not instead of, the priority
+# sweep's own separate every-other-run cadence (priority_sweep_due(), same
+# SCHEDULE_INTERVAL_HOURS-wide buckets as this file's other rotation math).
+# Raise COMBOS_PER_RUN, not this value, if rotation
 # speed ever needs tuning independently of the firing interval.
 SCHEDULE_INTERVAL_HOURS = 2  # must match the cron interval in .github/workflows/scrape-li.yml
 
@@ -680,7 +764,25 @@ EXPIRY_DAYS = 14
 
 
 def all_combos():
+    """Every (term, location) combo across the FULL LOCATIONS list (570, priority and
+    rotating markets together) — total-grid accounting/tests only. main() doesn't search
+    this directly any more; see rotating_combos()/priority_combos() below for what
+    actually gets searched each run."""
     return [(term, loc) for term in SEARCH_TERMS for loc in LOCATIONS]
+
+
+def rotating_combos():
+    """(term, location) combos for ROTATING_LOCATIONS only — the 12 non-priority
+    markets. This is what COMBOS_PER_RUN/current_chunk_index() actually chunk through
+    each run; see the module docstring's "PRIORITY MARKETS" section."""
+    return [(term, loc) for term in SEARCH_TERMS for loc in ROTATING_LOCATIONS]
+
+
+def priority_combos():
+    """(term, location) combos for PRIORITY_LOCATIONS — every term, every one of the 3
+    priority markets. Layered on top of the current run's rotating chunk when
+    priority_sweep_due() says this run's turn has come up — see that function."""
+    return [(term, loc) for term in SEARCH_TERMS for loc in PRIORITY_LOCATIONS]
 
 
 def current_chunk_index(total_chunks, forced=None):
@@ -688,15 +790,35 @@ def current_chunk_index(total_chunks, forced=None):
         return forced % total_chunks
     # Deterministic, stateless: which SCHEDULE_INTERVAL_HOURS-wide bucket of
     # wall-clock time are we in right now, since the Unix epoch. Consecutive
-    # scheduled runs land in consecutive buckets — the cron (currently
-    # "13 */2 * * *", see .github/workflows/scrape-li.yml) fires a few
-    # minutes into each SCHEDULE_INTERVAL_HOURS-wide epoch boundary, which is
-    # plenty close for a multi-hour-wide bucket — so this advances by 1 each
-    # scheduled run without needing to persist any state between runs. A
+    # scheduled runs land in consecutive buckets — the cron (currently fires
+    # every 15 minutes, off :00/:30, with a separate gate step deciding which
+    # ticks actually do real work — see .github/workflows/scrape-li.yml's
+    # "round 3" header comment) doesn't need to land exactly on each
+    # SCHEDULE_INTERVAL_HOURS boundary for this to work: it's a multi-hour-
+    # wide bucket, so any real run landing somewhere inside it advances this
+    # by 1 without needing to persist any state between runs. A
     # manually-triggered or delayed run may occasionally repeat or skip a
     # chunk — harmless, it evens out over the next cycle.
     bucket = int(time.time() // (SCHEDULE_INTERVAL_HOURS * 3600))
     return bucket % total_chunks
+
+
+def priority_sweep_due(forced=None):
+    """2026-09-28 — whether THIS run includes the guaranteed PRIORITY_LOCATIONS sweep on
+    top of its normal rotating chunk. See the module docstring's "PRIORITY MARKETS"
+    section for the full reasoning (why these 3 markets were pulled out of the rotation,
+    why "every other run" rather than "every run"). Same wall-clock-bucket approach as
+    current_chunk_index() (deliberately the SAME SCHEDULE_INTERVAL_HOURS-wide bucket, not
+    a separate clock) — due on even-numbered buckets, not due on odd ones, which in
+    practice means roughly every other real run includes the sweep and the other half
+    don't. Deterministic and stateless: derived fresh from wall-clock time every run, not
+    from a counter of how many real runs have actually fired, so a tick GitHub drops or
+    delays doesn't desync it — the next run that actually fires just checks "is the
+    CURRENT bucket even or odd," with nothing to remember from the last one."""
+    if forced is not None:
+        return forced % 2 == 0
+    bucket = int(time.time() // (SCHEDULE_INTERVAL_HOURS * 3600))
+    return bucket % 2 == 0
 
 
 def run_searches(combos, debug=False):
@@ -911,9 +1033,9 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
     Phase 2: tracked-company matches only, `key` is the company slug.
     `fresh_open_market` is new (2.2; broadened 2026-09-23): a posting that
     matched NO tracked company but clears open_market_gate() (relevant +
-    real target-or-below-tier fit + not agency-blocklisted — see that
-    function's own docstring for the 2026-09-28 loosening from target-only)
-    — no location check gates
+    real target-or-below-tier fit — see that function's own docstring for
+    the 2026-09-28 loosening from target-only, and for the same-day removal
+    of its agency-blocklist check) — no location check gates
     entry at all anymore, since this file already searches every LOCATIONS
     entry for every pre-defined title regardless. `market_for_location()`
     still labels which market a kept role is in, purely for display/
@@ -967,7 +1089,7 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
             # check — now that there's no location allowlist to lean on,
             # this guards it directly instead of relying on that coincidence.
             market = market_for_location(location)
-            if employer and open_market_gate(title, employer, is_agency):
+            if employer and open_market_gate(title, employer):
                 kept_open_market_this_row = True
             else:
                 kept_open_market_this_row = False
@@ -1189,31 +1311,48 @@ def main():
     forced_chunk = None
     if "--chunk" in sys.argv:
         forced_chunk = int(sys.argv[sys.argv.index("--chunk") + 1])
+    # 2026-09-28 — manual overrides for testing the priority sweep, same spirit as
+    # --chunk above: `--priority` forces the sweep on this run, `--no-priority` forces
+    # it off, regardless of what the wall-clock bucket would otherwise say.
+    forced_priority = None
+    if "--priority" in sys.argv:
+        forced_priority = 0  # even -> due, per priority_sweep_due()
+    elif "--no-priority" in sys.argv:
+        forced_priority = 1  # odd -> not due
 
-    combos = all_combos()
-    total_chunks = math.ceil(len(combos) / COMBOS_PER_RUN)
+    rotating = rotating_combos()
+    total_chunks = math.ceil(len(rotating) / COMBOS_PER_RUN)
     chunk_index = current_chunk_index(total_chunks, forced=forced_chunk)
-    this_chunk = combos[chunk_index * COMBOS_PER_RUN: (chunk_index + 1) * COMBOS_PER_RUN]
+    this_chunk = rotating[chunk_index * COMBOS_PER_RUN: (chunk_index + 1) * COMBOS_PER_RUN]
+
+    include_priority = priority_sweep_due(forced=forced_priority)
+    priority = priority_combos() if include_priority else []
+    combos_this_run = this_chunk + priority
 
     cycle_hours = total_chunks * SCHEDULE_INTERVAL_HOURS
     # 2 JobSpy requests/combo now (li + indeed only — google and glassdoor
     # both retired outright, see the module docstring) + a flat 38 Bayt page
     # loads via Playwright, not a JobSpy request — see
     # run_bayt_playwright_searches().
-    max_requests_this_run = len(this_chunk) * 2 + len(SEARCH_TERMS)
+    max_requests_this_run = len(combos_this_run) * 2 + len(SEARCH_TERMS)
     print(
-        f"[scrape] {len(combos)} total combos ({len(SEARCH_TERMS)} terms x {len(LOCATIONS)} locations), "
-        f"{COMBOS_PER_RUN}/run -> {total_chunks} chunks -> full cycle ~{cycle_hours}h (~{cycle_hours / 24:.1f} days) "
+        f"[scrape] rotating pool: {len(rotating)} combos ({len(SEARCH_TERMS)} terms x "
+        f"{len(ROTATING_LOCATIONS)} rotating locations), {COMBOS_PER_RUN}/run -> {total_chunks} "
+        f"chunks -> full cycle ~{cycle_hours}h (~{cycle_hours / 24:.1f} days). Priority pool: "
+        f"{len(PRIORITY_LOCATIONS)} markets ({', '.join(PRIORITY_LOCATIONS)}) x {len(SEARCH_TERMS)} "
+        f"terms = {len(priority_combos())} combos, swept every other run "
+        f"(~{2 * SCHEDULE_INTERVAL_HOURS}h worst-case gap). "
         f"[cycle length set independently of which sites are queried — see COMBOS_PER_RUN's own comment]"
     )
-    print(f"[scrape] this run: chunk {chunk_index + 1}/{total_chunks} "
-          f"({len(this_chunk)} combos x li+indeed (JobSpy) "
+    print(f"[scrape] this run: rotating chunk {chunk_index + 1}/{total_chunks} ({len(this_chunk)} combos)"
+          + (f" + priority sweep ({len(priority)} combos)" if include_priority else " (priority sweep not due this run)")
+          + f" = {len(combos_this_run)} combos x li+indeed (JobSpy) "
           f"+ {len(SEARCH_TERMS)} bayt page loads (Playwright) = up to {max_requests_this_run} requests; "
-          f"google and glassdoor both retired, neither searched at all)")
+          f"google and glassdoor both retired, neither searched at all")
 
     index = build_index(COMPANIES, ALIASES)
     rows = (
-        list(run_searches(this_chunk, debug=debug))
+        list(run_searches(combos_this_run, debug=debug))
         + list(run_bayt_playwright_searches(debug=debug))
     )
     counts = {}

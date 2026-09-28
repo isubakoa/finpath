@@ -39,8 +39,9 @@ real keying scheme.
 from datetime import datetime, timedelta, timezone
 
 from scrape import (
-    all_combos, merge_and_prune, role_identity, normalize_employer_name,
-    SEARCH_TERMS, LOCATIONS, COMBOS_PER_RUN, EXPIRY_DAYS, SCHEDULE_INTERVAL_HOURS,
+    all_combos, rotating_combos, priority_combos, merge_and_prune, role_identity,
+    normalize_employer_name, SEARCH_TERMS, LOCATIONS, PRIORITY_LOCATIONS,
+    ROTATING_LOCATIONS, COMBOS_PER_RUN, EXPIRY_DAYS, SCHEDULE_INTERVAL_HOURS,
 )
 
 failures = 0
@@ -72,10 +73,28 @@ print("-- combo coverage --")
 combos = all_combos()
 check("total combo count", len(combos), len(SEARCH_TERMS) * len(LOCATIONS))
 check("no duplicate combos", len(set(combos)), len(combos))
+
+# 2026-09-28 — PRIORITY_LOCATIONS (Singapore/Dubai/Netherlands) carved out of the
+# ordinary rotation into their own always-considered sweep (see scrape.py's module
+# docstring's "PRIORITY MARKETS" section). COMBOS_PER_RUN/current_chunk_index() now
+# chunk through rotating_combos() (the remaining 12 locations), not all_combos() (all
+# 15) — the checks below confirm that split is exact (no combo lost or duplicated
+# between the two pools) and that the rotation-cycle math reflects the smaller pool.
+rotating = rotating_combos()
+priority = priority_combos()
+check("rotating combo count", len(rotating), len(SEARCH_TERMS) * len(ROTATING_LOCATIONS))
+check("priority combo count", len(priority), len(SEARCH_TERMS) * len(PRIORITY_LOCATIONS))
+check("rotating + priority combos partition all_combos() exactly (same multiset, no gaps/overlap)",
+      sorted(rotating + priority), sorted(combos))
+check("rotating and priority combo sets are disjoint",
+      set(rotating) & set(priority), set())
+
 import math
-total_chunks = math.ceil(len(combos) / COMBOS_PER_RUN)
+total_chunks = math.ceil(len(rotating) / COMBOS_PER_RUN)
 cycle_days = total_chunks * SCHEDULE_INTERVAL_HOURS / 24
-print(f"  (info) {total_chunks} chunks x {SCHEDULE_INTERVAL_HOURS}h = {cycle_days:.2f}-day full rotation cycle")
+print(f"  (info) {total_chunks} chunks x {SCHEDULE_INTERVAL_HOURS}h = {cycle_days:.2f}-day full rotation cycle "
+      f"for the {len(rotating)} rotating combos ({len(PRIORITY_LOCATIONS)} priority markets swept separately, "
+      f"every other run, on top of each chunk)")
 check("EXPIRY_DAYS comfortably exceeds 2x rotation cycle", EXPIRY_DAYS > 2 * cycle_days, True)
 
 print("-- merge_and_prune --")

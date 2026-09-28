@@ -1,10 +1,21 @@
 """
-Phase 2.3 — required agency/staffing-firm blocklist for the open-market
-feed. An open-market posting whose employer name normalizes (via
-match.py's normalize_employer_name() — the same function tracked-company
-matching itself uses) to one of these is never kept, regardless of title or
-fit tier — see match.py's open_market_gate(). Not surfaced behind a filter
-in v1: this is a hard blocklist, not a toggle.
+Phase 2.3 — agency/staffing-firm identification for the open-market feed. An
+employer name normalizes (via match.py's normalize_employer_name() — the
+same function tracked-company matching itself uses) to one of these if it's
+a known staffing/recruitment agency or job-aggregator brand rather than a
+real employer.
+
+2026-09-28 — this list was originally a hard blocklist: open_market_gate()
+called is_agency() and dropped any posting from one of these employers
+outright, regardless of title or fit tier. As of 2026-09-28, per explicit
+request, open_market_gate() no longer calls is_agency() at all — staffing/
+recruitment agency postings (Robert Walters, Michael Page, etc.) are now
+INCLUDED in the open-market feed like any other employer. This module and
+is_agency() are otherwise untouched (still directly unit tested in
+test_match.py) precisely so that reinstating the blocklist, or repurposing
+it as a filter/badge instead of a hard exclusion, stays a small, self-
+contained change — see match.py's open_market_gate() docstring for the
+full reasoning.
 
 Seeded from two sources:
   1. The original spec's list of named agencies/staffing firms.
