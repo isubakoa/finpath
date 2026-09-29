@@ -287,12 +287,62 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         run: python scrape.py
 
+      # 2026-09-29, round 2 — the concurrency group above (see its own dated
+      # comment) stops this workflow's OWN runs from overlapping each other,
+      # but it can't stop main from moving in the ~1-hour a run like this
+      # spends scraping: js-scraper's separate scrape.yml workflow commits
+      # "Refresh snapshot.json" to the same main branch on its own
+      # independent schedule, and a person can push to main by hand at any
+      # time too (this repo's actual history shows both happening) — neither
+      # is in this workflow's concurrency group, so a plain `git push` here
+      # still failed with "[rejected] ... fetch first" the first time this
+      # was hit, from a commit that landed on main WHILE this run was still
+      # scraping. That failure discarded the whole run's freshly-scraped
+      # snapshot (regenerable, not a data-loss risk, but a wasted ~1-hour run
+      # and a real risk of the workflow silently never updating
+      # li-snapshot.json if every run kept losing this race).
+      #
+      # Fix: retry the push, fetching and rebasing onto the new tip in
+      # between attempts, instead of failing outright on the first
+      # rejection. This is safe by construction, not just "probably fine":
+      # this step's own commit only ever touches li-snapshot.json, and the
+      # concurrency group above already guarantees no OTHER run of this same
+      # workflow can be racing it — so whatever new commit(s) appeared on
+      # main in the meantime are guaranteed not to touch li-snapshot.json,
+      # meaning the rebase has nothing to conflict with; it just replays this
+      # run's one commit onto the new tip. The rebase --abort/hard-fail path
+      # below exists only as a tripwire in case that assumption is ever
+      # broken (e.g. someone hand-edits li-snapshot.json directly on main) —
+      # it should never actually trigger in normal operation.
       - name: Commit updated snapshot
         if: steps.gate.outputs.should_run == 'true'
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add li-snapshot.json
-          git diff --staged --quiet && echo "No changes to commit." && exit 0
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
           git commit -m "Refresh li-snapshot.json"
-          git push
+          attempts=6
+          for attempt in $(seq 1 "$attempts"); do
+            if git push; then
+              echo "Pushed on attempt $attempt/$attempts."
+              exit 0
+            fi
+            if [ "$attempt" -eq "$attempts" ]; then
+              break
+            fi
+            echo "Push rejected on attempt $attempt/$attempts — main moved since this run's checkout (another workflow's or a person's commit, not touching li-snapshot.json — see this step's own comment above). Fetching origin/main and rebasing this run's commit onto it, then retrying..."
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "::error::Unexpected rebase conflict onto origin/main while replaying the li-snapshot.json commit — this should be impossible if only this workflow ever touches that file (see this step's comment above). Aborting rather than guessing at a resolution; a human needs to look at what else changed li-snapshot.json on main."
+              git rebase --abort
+              exit 1
+            fi
+            sleep $(( (RANDOM % 20) + 5 ))
+          done
+          echo "::error::Failed to push after $attempts attempts — main kept moving faster than this loop could catch up (repeated concurrent commits from elsewhere). Investigate what's committing to main this often; this run's freshly-scraped snapshot was NOT saved."
+          exit 1
