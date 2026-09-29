@@ -141,6 +141,53 @@ on:
       - "li-scraper/bayt_playwright.py" # 2026-09-24: Bayt's dedicated Playwright scraper, see scrape.py's module docstring
   workflow_dispatch: {}
 
+# 2026-09-29 — added after a real failure: "Run scraper" took 58m56s (the
+# priority-sweep-inclusive runs added 2026-09-28 roughly double a run's own
+# combo count on the runs that include one, on top of real JobSpy/Playwright
+# network latency well beyond the guaranteed-pause estimate — see
+# scrape.py's module docstring's request-volume accounting, which was never
+# about run DURATION), then failed to push: "[rejected] main -> main (fetch
+# first) ... the remote contains work that you do not have locally."
+#
+# Root cause: the round-3 gate step (see its own comment below) decides
+# whether to run based on time since the LAST COMMIT, not on whether a scrape
+# is currently IN PROGRESS. The cron fires every 15 minutes. Once a real run
+# starts, it can take up to ~an hour to reach its own commit — during that
+# entire window, every 15-minute tick still sees "the last real commit was
+# >= SCHEDULE_INTERVAL_HOURS ago" (because the in-flight run hasn't committed
+# yet) and starts ANOTHER full scrape run alongside it, with no coordination
+# between them. Each of those extra runs does a real, complete, wasted scrape
+# (extra LI/Indeed/Bayt load, extra block-risk) and then all of them race to
+# commit+push — only the first one to reach the push wins; every other one
+# gets exactly the rejection above, discarding that run's own work (harmless,
+# since li-snapshot.json is fully regenerable — no data is actually lost —
+# but the Actions minutes and the extra scrape traffic against LI/Indeed/Bayt
+# both are).
+#
+# This bug predates 2026-09-28's priority-sweep/agency changes — any run
+# lasting longer than one 15-minute tick was already exposed to it — but a
+# run duration under ~15 minutes made it rare enough not to have been hit
+# yet; a ~58-minute run makes it close to certain (roughly 3-4 extra
+# overlapping runs get kicked off before the first one finally commits).
+#
+# Fix: a `concurrency` group serializes this workflow — GitHub queues any
+# new run of this workflow while one is already in progress instead of
+# starting it alongside the running one, and only keeps at most one queued
+# run waiting (a newer trigger replaces an older still-queued one, so no
+# backlog builds up). `cancel-in-progress: false` is deliberate, not the
+# default left alone: it must NOT cancel the in-progress run — with a
+# ~1-hour scrape and 15-minute ticks, `cancel-in-progress: true` would mean
+# every in-flight scrape gets killed by the next tick before it ever
+# finishes, and no real run would ever complete (a livelock, strictly worse
+# than the bug this fixes). With this in place, the one queued run that
+# eventually gets its turn re-runs the gate step first (as every run does)
+# and — since the previous run's commit has landed by then — correctly sees
+# "not enough time has passed" and exits immediately without scraping again;
+# see the gate step's own comment below for that logic.
+concurrency:
+  group: scrape-li
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
