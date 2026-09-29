@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T14:24:02.240Z",
+  "generatedAt": "2026-09-29T19:34:29.089Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -110,6 +110,12 @@
           "postedDate": null
         },
         {
+          "title": "Head of Product Marketing, Jira and Flywheel",
+          "url": "https://www.atlassian.com/company/careers/details/26673",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Senior Product Manager",
           "url": "https://www.atlassian.com/company/careers/details/27274",
           "location": "",
@@ -187,20 +193,14 @@
           "postedDate": null
         },
         {
-          "title": "Product Owner - Multi-Asset",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Hong-Kong-Office-New/Product-Owner---Multi-Asset_J69405?q=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Product Owner - Fixed Income",
           "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Hong-Kong-Office-New/Product-Owner---Fixed-Income_J70844?q=design",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Associate Director, Product Development and Management",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Associate-Director--Product-Development-and-Management_J69422-1?q=design",
+          "title": "Manager, Product Development and Management",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Manager--Product-Development-and-Management_J71092?q=design",
           "location": "",
           "postedDate": null
         }
@@ -222,8 +222,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -234,8 +234,8 @@
           "postedDate": null
         },
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -260,12 +260,6 @@
         {
           "title": "Solution Designer - Customer Onboarding (HCM/Hanoi)",
           "url": "https://nab.eightfold.ai/careers/job/563980770286552?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Head of Product ( Merchant Services & HICAPS)​",
-          "url": "https://nab.eightfold.ai/careers/job/563980770540233?microsite=nab",
           "location": "",
           "postedDate": null
         }
@@ -418,20 +412,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Master thesis: RF filters/antennas AI-assisted Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777202432?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Master thesis: AI-Era Site Material SC Design",
           "url": "https://jobs.ericsson.com/careers/job/563121777223859?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Master Thesis: Industrial Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777128824?domain=ericsson.com",
+          "title": "Master thesis: RF filters/antennas AI-assisted Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777202432?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -466,8 +454,20 @@
           "postedDate": null
         },
         {
-          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
+          "title": "New Grad-Interconnect Design-BJ",
+          "url": "https://jobs.ericsson.com/careers/job/563121777171641?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: AI-Assisted Integrated Data Center Design for Telecom Core Systems",
+          "url": "https://jobs.ericsson.com/careers/job/563121777306234?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: Design and Evaluation of Red-Blue Teaming with AI Agents",
+          "url": "https://jobs.ericsson.com/careers/job/563121777177778?domain=ericsson.com",
           "location": "",
           "postedDate": null
         }
@@ -489,8 +489,8 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
+          "title": "IP LAN Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -501,32 +501,32 @@
           "postedDate": null
         },
         {
-          "title": "IP LAN Design Engineer Fixed Term Contract",
-          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "IP LAN Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Secure by Design Manager",
           "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "title": "IP LAN Design Engineer Fixed Term Contract",
+          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
           "title": "CX Design Lead",
           "url": "https://jobs.vodafone.com/careers/job/563018697217901?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "GTM Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
