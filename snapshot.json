@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T05:45:23.197Z",
+  "generatedAt": "2026-10-01T11:57:18.092Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -146,6 +146,12 @@
           "postedDate": null
         },
         {
+          "title": "Senior Product Designer, Strategy Collection",
+          "url": "https://www.atlassian.com/company/careers/details/27559",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Principal, Strategy & BizOps",
           "url": "https://www.atlassian.com/company/careers/details/27212",
           "location": "",
@@ -158,7 +164,7 @@
           "postedDate": null
         },
         {
-          "title": "CMK/Encryption Platform Product Manager",
+          "title": "Principal Product Manager (CMK/Encryption Platform)",
           "url": "https://www.atlassian.com/company/careers/details/27197",
           "location": "",
           "postedDate": null
@@ -276,20 +282,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Solution Design, Senior Consultant - ECOM",
           "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -314,12 +314,6 @@
         {
           "title": "Solution Designer - Customer Onboarding (HCM/Hanoi)",
           "url": "https://nab.eightfold.ai/careers/job/563980770286552?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Head of Product ( Merchant Services & HICAPS)​",
-          "url": "https://nab.eightfold.ai/careers/job/563980770540233?microsite=nab",
           "location": "",
           "postedDate": null
         }
@@ -389,12 +383,6 @@
           "postedDate": null
         },
         {
-          "title": "Product Manager – IVA Experience Design",
-          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26013802/?keyword=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Senior Associate-Digital Product Management",
           "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26013369/?keyword=design",
           "location": "",
@@ -420,6 +408,12 @@
         {
           "title": "Senior Experience Designer, SC Design (UI/UX)",
           "url": "https://jobs.standardchartered.com/job/Senior-Experience-Designer%2C-SC-Design-%28UIUX%29/61386-en_GB",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "AVP Scenario Design",
+          "url": "https://jobs.standardchartered.com/job/AVP-Scenario-Design/60098-en_GB",
           "location": "",
           "postedDate": null
         },
@@ -490,14 +484,8 @@
           "postedDate": null
         },
         {
-          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Master Thesis: Industrial Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777128824?domain=ericsson.com",
+          "title": "Head of Hardware Design (m/f/d)",
+          "url": "https://jobs.ericsson.com/careers/job/563121774641892?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -530,6 +518,18 @@
           "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
           "location": "",
           "postedDate": null
+        },
+        {
+          "title": "Radio Unit Design Lead",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
         }
       ]
     },
@@ -537,20 +537,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
-          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "IP LAN Design Engineer Fixed Term Contract",
-          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -567,32 +555,32 @@
           "postedDate": null
         },
         {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Data Centers Design & Implementation Expert",
           "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "CX Design Lead",
-          "url": "https://jobs.vodafone.com/careers/job/563018697217901?domain=vodafone.com",
+          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
+          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Secure By Design - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697998557?domain=vodafone.com",
+          "title": "IP LAN Design Engineer Fixed Term Contract",
+          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior UX/UI Designer (281464)",
-          "url": "https://jobs.vodafone.com/careers/job/563018696408069?domain=vodafone.com",
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
