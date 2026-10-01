@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T20:20:28.051Z",
+  "generatedAt": "2026-10-01T00:01:06.385Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -222,12 +222,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Solution Design, Senior Consultant - ECOM",
           "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
@@ -236,6 +230,12 @@
         {
           "title": "Solution Design, Senior Consultant - Merchant Services",
           "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -338,6 +338,12 @@
         {
           "title": "Senior Associate - Product Design",
           "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26014362/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Creative Director, Motion Design",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26013972/?keyword=design",
           "location": "",
           "postedDate": null
         },
@@ -508,8 +514,26 @@
       "ok": true,
       "roles": [
         {
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "IP LAN Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
+          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -532,26 +556,20 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
-          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "title": "VodafoneThree - Privacy By Design Assistant - 12 Months FTC",
+          "url": "https://jobs.vodafone.com/careers/job/563018697983423?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "GTM Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
+          "title": "VodafoneThree - Process Designer",
+          "url": "https://jobs.vodafone.com/careers/job/563018697772841?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
