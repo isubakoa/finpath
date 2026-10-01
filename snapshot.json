@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T00:01:06.385Z",
+  "generatedAt": "2026-10-01T05:45:23.197Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -50,6 +50,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Sr. Product Designer - Service Collection",
+          "url": "https://www.atlassian.com/company/careers/details/27228",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Principal Product Designer, Rovo & AI",
           "url": "https://www.atlassian.com/company/careers/details/27204",
           "location": "",
@@ -62,6 +68,24 @@
           "postedDate": null
         },
         {
+          "title": "Senior Design Manager, Strategy Collection",
+          "url": "https://www.atlassian.com/company/careers/details/27282",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Lead Product Designer, Jira",
+          "url": "https://www.atlassian.com/company/careers/details/27323",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Technical Product Manager - Commerce (Billing & Monetization)",
+          "url": "https://www.atlassian.com/company/careers/details/27217",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Product Management Intern, 2027 Summer U.S.",
           "url": "https://www.atlassian.com/company/careers/details/26274",
           "location": "",
@@ -70,6 +94,12 @@
         {
           "title": "Product Design Intern, 2027 Summer U.S.",
           "url": "https://www.atlassian.com/company/careers/details/26273",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Marketing Manager, Teamwork Graph Adoption",
+          "url": "https://www.atlassian.com/company/careers/details/27558",
           "location": "",
           "postedDate": null
         },
@@ -104,8 +134,20 @@
           "postedDate": null
         },
         {
+          "title": "Principal Product Designer, DX",
+          "url": "https://www.atlassian.com/company/careers/details/27399",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Strategy and Business Operations Principal - Rovo and AI",
           "url": "https://www.atlassian.com/company/careers/details/27486",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal, Strategy & BizOps",
+          "url": "https://www.atlassian.com/company/careers/details/27212",
           "location": "",
           "postedDate": null
         },
@@ -146,8 +188,20 @@
           "postedDate": null
         },
         {
+          "title": "Senior Principal Product Manager",
+          "url": "https://www.atlassian.com/company/careers/details/27205",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Principal Product Manager, Focus",
           "url": "https://www.atlassian.com/company/careers/details/27092",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head of Product, Jira",
+          "url": "https://www.atlassian.com/company/careers/details/27061",
           "location": "",
           "postedDate": null
         },
@@ -222,14 +276,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -260,6 +314,12 @@
         {
           "title": "Solution Designer - Customer Onboarding (HCM/Hanoi)",
           "url": "https://nab.eightfold.ai/careers/job/563980770286552?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head of Product ( Merchant Services & HICAPS)​",
+          "url": "https://nab.eightfold.ai/careers/job/563980770540233?microsite=nab",
           "location": "",
           "postedDate": null
         }
@@ -294,32 +354,7 @@
     },
     "aspire": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Partner Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/partner-marketing-manager-831f2ae4-7cb0-4f85-b162-e07f55149737",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "AI Product Manager, FinCrime",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/ai-product-manager-fin-crime-ef285596-5640-47e2-a882-cccebe127c45",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Field Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/field-marketing-manager-ff554506-c7f8-4d31-bb03-9ff26719c296",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Growth Strategist Intern",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/growth-strategist-intern-3299041d-d3ad-4946-9564-456c455a2298",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "kiwibank": {
       "ok": true,
@@ -443,32 +478,32 @@
       "ok": true,
       "roles": [
         {
-          "title": "Master thesis: AI-Era Site Material SC Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777223859?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Master thesis: RF filters/antennas AI-assisted Design",
           "url": "https://jobs.ericsson.com/careers/job/563121777202432?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Radio HW Design Power Amplifier",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
+          "title": "Master thesis: AI-Era Site Material SC Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777223859?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Radio Unit Design Lead",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "New Grad-Interconnect Design-BJ",
-          "url": "https://jobs.ericsson.com/careers/job/563121777171641?domain=ericsson.com",
+          "title": "Master Thesis: Industrial Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777128824?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: Quantitative Characterization of Low-Power RTL Design Patterns",
+          "url": "https://jobs.ericsson.com/careers/job/563121777283378?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -479,20 +514,8 @@
           "postedDate": null
         },
         {
-          "title": "AI Motion Design Specialist",
-          "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Network Design Optimization Internship",
-          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Master Thesis: AI-Assisted Integrated Data Center Design for Telecom Core Systems",
-          "url": "https://jobs.ericsson.com/careers/job/563121777306234?domain=ericsson.com",
+          "title": "Entry Level: Microwave Design Engineer",
+          "url": "https://jobs.ericsson.com/careers/job/563121777309243?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -503,8 +526,8 @@
           "postedDate": null
         },
         {
-          "title": "Product Quality Leader",
-          "url": "https://jobs.ericsson.com/careers/job/563121776553428?domain=ericsson.com",
+          "title": "Radio HW Design Power Amplifier",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
           "location": "",
           "postedDate": null
         }
@@ -514,26 +537,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "IP LAN Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
           "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -550,26 +555,44 @@
           "postedDate": null
         },
         {
+          "title": "IP LAN Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Cloud Solution Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "VodafoneThree - Privacy By Design Assistant - 12 Months FTC",
-          "url": "https://jobs.vodafone.com/careers/job/563018697983423?domain=vodafone.com",
+          "title": "CX Design Lead",
+          "url": "https://jobs.vodafone.com/careers/job/563018697217901?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "VodafoneThree - Process Designer",
-          "url": "https://jobs.vodafone.com/careers/job/563018697772841?domain=vodafone.com",
+          "title": "Secure By Design - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697998557?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior UX/UI Designer (281464)",
+          "url": "https://jobs.vodafone.com/careers/job/563018696408069?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
