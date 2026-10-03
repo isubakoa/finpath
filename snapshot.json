@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T07:17:17.827Z",
+  "generatedAt": "2026-10-03T12:42:11.389Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -233,7 +233,32 @@
     },
     "fidelity-international": {
       "ok": true,
-      "roles": []
+      "roles": [
+        {
+          "title": "Senior Manager, Product Development and Management",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Senior-Manager--Product-Development-and-Management_J71483-7?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Owner - Fixed Income",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Hong-Kong-Office-New/Product-Owner---Fixed-Income_J70844?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Associate Director, Product Development and Management",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Associate-Director--Product-Development-and-Management_J69422-1?q=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Manager, Product Development and Management",
+          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Manager--Product-Development-and-Management_J71092?q=design",
+          "location": "",
+          "postedDate": null
+        }
+      ]
     },
     "abu-dhabi-investment-authority-adia": {
       "ok": true,
@@ -251,6 +276,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Solution Design, Senior Consultant - ECOM",
           "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
@@ -259,12 +290,6 @@
         {
           "title": "Solution Design - Fraud",
           "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -323,7 +348,32 @@
     },
     "aspire": {
       "ok": true,
-      "roles": []
+      "roles": [
+        {
+          "title": "Partner Marketing Manager",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/partner-marketing-manager-831f2ae4-7cb0-4f85-b162-e07f55149737",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "AI Product Manager, FinCrime",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/ai-product-manager-fin-crime-ef285596-5640-47e2-a882-cccebe127c45",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Field Marketing Manager",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/field-marketing-manager-ff554506-c7f8-4d31-bb03-9ff26719c296",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Growth Strategist Intern",
+          "url": "https://revolutpeople.com/aspire/public/careers/position/growth-strategist-intern-3299041d-d3ad-4946-9564-456c455a2298",
+          "location": "",
+          "postedDate": null
+        }
+      ]
     },
     "kiwibank": {
       "ok": true,
@@ -499,12 +549,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
           "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
           "location": "",
@@ -513,18 +557,6 @@
         {
           "title": "Cloud Solution Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "IP LAN Design Engineer Fixed Term Contract",
-          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -541,20 +573,32 @@
           "postedDate": null
         },
         {
-          "title": "GTM Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
+          "title": "IP LAN Design Engineer Fixed Term Contract",
+          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior Digital & OSS E2E Solution Design Authority",
-          "url": "https://jobs.vodafone.com/careers/job/563018695387687?domain=vodafone.com",
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior UX/UI Designer (281464)",
+          "url": "https://jobs.vodafone.com/careers/job/563018696408069?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
