@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T16:46:44.547Z",
+  "generatedAt": "2026-10-03T19:37:17.311Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -266,20 +266,7 @@
     },
     "natwest-group": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Artificial Intelligence Product Manager, PBWM",
-          "url": "https://jobs.natwestgroup.com/jobs/18251794-artificial-intelligence-product-manager-pbwm",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Artificial Intelligence Product Manager, PBWM",
-          "url": "https://jobs.natwestgroup.com/jobs/18261838-artificial-intelligence-product-manager-pbwm",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
@@ -289,14 +276,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -400,12 +387,6 @@
           "postedDate": null
         },
         {
-          "title": "AVP Scenario Design",
-          "url": "https://jobs.standardchartered.com/job/AVP-Scenario-Design/60098-en_GB",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Senior UI/UX Designer",
           "url": "https://jobs.standardchartered.com/job/Senior-UIUX-Designer/52526-en_GB",
           "location": "",
@@ -460,6 +441,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Master thesis: AI-Era Site Material SC Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777223859?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Head of Hardware Design (m/f/d)",
           "url": "https://jobs.ericsson.com/careers/job/563121774641892?domain=ericsson.com",
           "location": "",
@@ -468,12 +455,6 @@
         {
           "title": "Master thesis: RF filters/antennas AI-assisted Design",
           "url": "https://jobs.ericsson.com/careers/job/563121777202432?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Master thesis: AI-Era Site Material SC Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777223859?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -490,38 +471,44 @@
           "postedDate": null
         },
         {
-          "title": "Master Thesis: Design and Optimization of a Dynamic Reduced-Order Model for Performance - Radio Unit",
-          "url": "https://jobs.ericsson.com/careers/job/563121777237868?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Manager of System Design Team 1",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Master Thesis: Industrial Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777128824?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Master Thesis: Optimization and Design-Space Exploration of Rack-Scale Server Solutions",
-          "url": "https://jobs.ericsson.com/careers/job/563121777263757?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
+          "title": "Master Thesis: Quantitative Characterization of Low-Power RTL Design Patterns",
+          "url": "https://jobs.ericsson.com/careers/job/563121777283378?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Master Thesis: AI-driven antenna design",
           "url": "https://jobs.ericsson.com/careers/job/563121777269705?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: Interaction Design - Shape Your Own Idea in the Future of Networks",
+          "url": "https://jobs.ericsson.com/careers/job/563121777284377?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio HW Design Power Amplifier",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio HW Digital Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: AI-Assisted Integrated Data Center Design for Telecom Core Systems",
+          "url": "https://jobs.ericsson.com/careers/job/563121777306234?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: Design and Evaluation of Red-Blue Teaming with AI Agents",
+          "url": "https://jobs.ericsson.com/careers/job/563121777177778?domain=ericsson.com",
           "location": "",
           "postedDate": null
         }
@@ -537,20 +524,14 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
-          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Data Centers Design & Implementation Expert",
           "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -567,8 +548,14 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
+          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
