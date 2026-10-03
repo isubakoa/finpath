@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T18:35:37Z",
+  "generatedAt": "2026-10-03T23:38:21Z",
   "companies": {
     "google": {
       "roles": [
@@ -8542,6 +8542,18 @@
           "location": "Sheffield, ENG, GB",
           "url": "https://uk.indeed.com/viewjob?jk=1b0438f8991d9e33",
           "postedDate": "2026-10-02",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-10-03"
+        },
+        {
+          "title": "Senior Life Product Manager - Hang Seng Insurance - Hang Seng Bank (HK)",
+          "location": "Mong Kok, KOW, HK",
+          "url": "https://hk.indeed.com/viewjob?jk=50302291379c827e",
+          "postedDate": "2026-10-03",
           "source": "indeed",
           "sources": [
             "indeed"
@@ -19995,13 +20007,13 @@
           "title": "Senior Product Manager",
           "location": "WP. Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
           "url": "https://www.linkedin.com/jobs/view/4472515994",
-          "postedDate": null,
+          "postedDate": "2026-10-01",
           "source": "li",
           "sources": [
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-10-01"
+          "lastSeenAt": "2026-10-03"
         }
       ]
     },
@@ -21310,6 +21322,118 @@
         "source": "li",
         "sources": [
           "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "Reperio Human Capital",
+        "market": "Ireland",
+        "title": "Senior Product Design Strategist",
+        "location": "Dublin, County Dublin, Ireland",
+        "url": "https://www.linkedin.com/jobs/view/4473449533",
+        "postedDate": "2026-10-03",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "Boyd",
+        "market": "South Korea",
+        "title": "Certified Product Design Engineer",
+        "location": "Cheongju, North Chungcheong, South Korea",
+        "url": "https://www.linkedin.com/jobs/view/4451125140",
+        "postedDate": "2026-10-03",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "Epidemic Sound",
+        "market": "Sweden",
+        "title": "Lead Product Designer",
+        "location": "Stockholm, Stockholm County, Sweden",
+        "url": "https://www.linkedin.com/jobs/view/4456780933",
+        "postedDate": "2026-10-03",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "Pennylane",
+        "market": "Portugal",
+        "title": "Product Designer (Confirmed/Senior) - Germany (m/w/d)",
+        "location": "Lisbon, Lisbon, Portugal",
+        "url": "https://www.linkedin.com/jobs/view/4430771567",
+        "postedDate": "2026-10-03",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "Toss Place(\ud1a0\uc2a4\ud50c\ub808\uc774\uc2a4)",
+        "market": "South Korea",
+        "title": "Visual Designer (Design System)",
+        "location": "Seoul, Seoul, South Korea",
+        "url": "https://www.linkedin.com/jobs/view/4447466857",
+        "postedDate": "2026-10-03",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "PhotoS\u00ec",
+        "market": "Italy",
+        "title": "Digital Product Designer",
+        "location": "Riccione, Emilia-Romagna, Italy",
+        "url": "https://www.linkedin.com/jobs/view/4473867715",
+        "postedDate": "2026-10-03",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "Toss Securities",
+        "market": "South Korea",
+        "title": "Product Excellence Manager (Strategy & Execution)",
+        "location": "Seoul, Seoul, South Korea",
+        "url": "https://www.linkedin.com/jobs/view/4465145578",
+        "postedDate": "2026-10-03",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "GE Aerospace",
+        "market": "BY, DE",
+        "title": "Director of Strategy and Operations (m/f/d), International Government Relations",
+        "location": "BY, DE",
+        "url": "https://de.indeed.com/viewjob?jk=dbb270e6da1d25f6",
+        "postedDate": "2026-10-03",
+        "source": "indeed",
+        "sources": [
+          "indeed"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-10-03"
@@ -26625,6 +26749,62 @@
         "lastSeenAt": "2026-10-03"
       },
       {
+        "employer": "K\u00f6rber",
+        "market": "Italy",
+        "title": "Head of SW Product Management",
+        "location": "Lucca, Tuscany, Italy",
+        "url": "https://www.linkedin.com/jobs/view/4456344664",
+        "postedDate": "2026-10-02",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "Sectra",
+        "market": "Sweden",
+        "title": "Product Operations Manager, Orthopaedics",
+        "location": "Link\u00f6ping, \u00d6sterg\u00f6tland County, Sweden",
+        "url": "https://www.linkedin.com/jobs/view/4428849233",
+        "postedDate": "2026-10-02",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "Jazz Pharmaceuticals",
+        "market": "London, ENG, GB",
+        "title": "Head of Talent Management Strategy",
+        "location": "London, ENG, GB",
+        "url": "https://uk.indeed.com/viewjob?jk=83273c4d14604cb5",
+        "postedDate": "2026-10-02",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "BJAK",
+        "market": "Malaysia",
+        "title": "Lead, Strategy",
+        "location": "Petaling Jaya, Selangor, Malaysia",
+        "url": "https://www.linkedin.com/jobs/view/4473305341",
+        "postedDate": "2026-10-02",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
         "employer": "Fidaro",
         "market": "HK",
         "title": "Founding Product Manager",
@@ -26788,20 +26968,6 @@
         "source": "indeed",
         "sources": [
           "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-02"
-      },
-      {
-        "employer": "K\u00f6rber",
-        "market": "Italy",
-        "title": "Head of SW Product Management",
-        "location": "Lucca, Tuscany, Italy",
-        "url": "https://www.linkedin.com/jobs/view/4456344664",
-        "postedDate": "2026-10-02",
-        "source": "li",
-        "sources": [
-          "li"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-10-02"
@@ -27486,20 +27652,6 @@
         "title": "AI-Assisted UI/UX Designer",
         "location": "Coimbra, Portugal",
         "url": "https://www.linkedin.com/jobs/view/4474153016",
-        "postedDate": "2026-10-01",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-03"
-      },
-      {
-        "employer": "Reperio Human Capital",
-        "market": "Ireland",
-        "title": "Senior Product Design Strategist",
-        "location": "Dublin, County Dublin, Ireland",
-        "url": "https://www.linkedin.com/jobs/view/4472978332",
         "postedDate": "2026-10-01",
         "source": "li",
         "sources": [
@@ -30870,6 +31022,20 @@
         "source": "bayt",
         "sources": [
           "bayt"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "Citi",
+        "market": "London, ENG, GB",
+        "title": "eCommerce Product, Senior Vice President",
+        "location": "London, ENG, GB",
+        "url": "https://uk.indeed.com/viewjob?jk=6292f36781eea09a",
+        "postedDate": "2026-10-01",
+        "source": "indeed",
+        "sources": [
+          "indeed"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-10-03"
@@ -36597,20 +36763,6 @@
         "title": "Mobile UI Designer",
         "location": "Petaling Jaya, Selangor, Malaysia",
         "url": "https://www.linkedin.com/jobs/view/4473078753",
-        "postedDate": "2026-09-29",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-03"
-      },
-      {
-        "employer": "Boyd",
-        "market": "South Korea",
-        "title": "Certified Product Design Engineer",
-        "location": "Cheongju, North Chungcheong, South Korea",
-        "url": "https://www.linkedin.com/jobs/view/4471261693",
         "postedDate": "2026-09-29",
         "source": "li",
         "sources": [
@@ -44258,11 +44410,39 @@
         "lastSeenAt": "2026-10-03"
       },
       {
+        "employer": "Mondel\u0113z International",
+        "market": "Singapore",
+        "title": "Technologist, Product Development, Gum & Candy",
+        "location": "Singapore",
+        "url": "https://www.linkedin.com/jobs/view/4472764040",
+        "postedDate": "2026-09-28",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "CQUniversity",
+        "market": "Australia",
+        "title": "Manager - Web Strategy and Performance",
+        "location": "Melbourne, Victoria, Australia",
+        "url": "https://www.linkedin.com/jobs/view/4472703196",
+        "postedDate": "2026-09-28",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
         "employer": "Cpl",
         "market": "Dublin, D, IE",
-        "title": "Senior Product Designer",
+        "title": "Senior Product Designer \u2013 Design Systems",
         "location": "Dublin, D, IE",
-        "url": "https://ie.indeed.com/viewjob?jk=43c0652d55603e64",
+        "url": "https://ie.indeed.com/viewjob?jk=dd2ac24addd302fc",
         "postedDate": "2026-09-28",
         "source": "indeed",
         "sources": [
@@ -44272,11 +44452,11 @@
         "lastSeenAt": "2026-10-03"
       },
       {
-        "employer": "Mondel\u0113z International",
-        "market": "Singapore",
-        "title": "Technologist, Product Development, Gum & Candy",
-        "location": "Singapore",
-        "url": "https://www.linkedin.com/jobs/view/4472764040",
+        "employer": "Major Players | B Corp\u2122",
+        "market": "United Kingdom",
+        "title": "Head of Design/Creative",
+        "location": "London, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4472756421",
         "postedDate": "2026-09-28",
         "source": "li",
         "sources": [
@@ -44729,20 +44909,6 @@
         "source": "indeed",
         "sources": [
           "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-02"
-      },
-      {
-        "employer": "CQUniversity",
-        "market": "Australia",
-        "title": "Manager - Web Strategy and Performance",
-        "location": "Melbourne, Victoria, Australia",
-        "url": "https://www.linkedin.com/jobs/view/4472703196",
-        "postedDate": "2026-09-28",
-        "source": "li",
-        "sources": [
-          "li"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-10-02"
@@ -48618,6 +48784,20 @@
         "lastSeenAt": "2026-10-03"
       },
       {
+        "employer": "CTS EVENTIM AG & Co. KGaA",
+        "market": "Germany",
+        "title": "(Senior) Growth Product Manager (m/w/d)",
+        "location": "Hamburg, Hamburg, Germany",
+        "url": "https://www.linkedin.com/jobs/view/4435815669",
+        "postedDate": "2026-09-26",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
         "employer": "The Flex",
         "market": "Unspecified",
         "title": "Product Designer",
@@ -48833,20 +49013,6 @@
         "title": "Senior Product Manager, APIs",
         "location": "",
         "url": "https://www.linkedin.com/jobs/view/4470797705",
-        "postedDate": "2026-09-26",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-01"
-      },
-      {
-        "employer": "CTS EVENTIM AG & Co. KGaA",
-        "market": "Germany",
-        "title": "(Senior) Growth Product Manager (m/w/d)",
-        "location": "Hamburg, Hamburg, Germany",
-        "url": "https://www.linkedin.com/jobs/view/4435815669",
         "postedDate": "2026-09-26",
         "source": "li",
         "sources": [
@@ -49262,20 +49428,6 @@
         "lastSeenAt": "2026-09-27"
       },
       {
-        "employer": "Cpl",
-        "market": "Dublin, D, IE",
-        "title": "Senior Product Designer - Design Systems",
-        "location": "Dublin, D, IE",
-        "url": "https://ie.indeed.com/viewjob?jk=0b78beaf525ebdd3",
-        "postedDate": "2026-09-25",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-03"
-      },
-      {
         "employer": "CoStar Group",
         "market": "Australia",
         "title": "Senior Product Designer",
@@ -49644,7 +49796,7 @@
         "market": "Ireland",
         "title": "Senior Principal Content Strategist",
         "location": "Dublin, County Dublin, Ireland",
-        "url": "https://www.linkedin.com/jobs/view/4470316874",
+        "url": "https://www.linkedin.com/jobs/view/4470313951",
         "postedDate": "2026-09-25",
         "source": "li",
         "sources": [
@@ -51796,6 +51948,20 @@
         "lastSeenAt": "2026-10-03"
       },
       {
+        "employer": "VaynerX",
+        "market": "Greater Kuala Lumpur",
+        "title": "Strategist",
+        "location": "Greater Kuala Lumpur",
+        "url": "https://www.linkedin.com/jobs/view/4443126992",
+        "postedDate": "2026-09-25",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
         "employer": "TDCX",
         "market": "Unspecified",
         "title": "Senior Product Owner (Digital product)",
@@ -52067,20 +52233,6 @@
         "title": "Senior UI Technical Artist [Tom Clancy's The Division 2: Survivors]",
         "location": "Malmo, Sk\u00e5ne County, Sweden",
         "url": "https://www.linkedin.com/jobs/view/4460739356",
-        "postedDate": "2026-09-25",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-02"
-      },
-      {
-        "employer": "VaynerX",
-        "market": "Greater Kuala Lumpur",
-        "title": "Strategist",
-        "location": "Greater Kuala Lumpur",
-        "url": "https://www.linkedin.com/jobs/view/4443126992",
         "postedDate": "2026-09-25",
         "source": "li",
         "sources": [
@@ -64804,6 +64956,20 @@
       {
         "employer": "Cpl",
         "market": "Dublin, D, IE",
+        "title": "Senior Product Designer",
+        "location": "Dublin, D, IE",
+        "url": "https://ie.indeed.com/viewjob?jk=668e51fb382bdb93",
+        "postedDate": "2026-09-21",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-03"
+      },
+      {
+        "employer": "Cpl",
+        "market": "Dublin, D, IE",
         "title": "Principal Product Designer",
         "location": "Dublin, D, IE",
         "url": "https://ie.indeed.com/viewjob?jk=6548204afad49ed3",
@@ -70289,7 +70455,7 @@
           "bayt"
         ],
         "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-02"
+        "lastSeenAt": "2026-10-03"
       },
       {
         "employer": "Careem",
