@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T21:44:09.948Z",
+  "generatedAt": "2026-10-05T00:15:10.651Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -276,6 +276,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Solution Design, Senior Consultant - ECOM",
           "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
@@ -284,12 +290,6 @@
         {
           "title": "Solution Design - Fraud",
           "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -506,14 +506,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
-          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -536,20 +536,32 @@
           "postedDate": null
         },
         {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
+          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
+          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "title": "VodafoneThree - Privacy By Design Assistant - 12 Months FTC",
+          "url": "https://jobs.vodafone.com/careers/job/563018697983423?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137384?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Digital & OSS E2E Solution Design Authority",
+          "url": "https://jobs.vodafone.com/careers/job/563018695387687?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
@@ -557,7 +569,50 @@
     },
     "meta": {
       "ok": true,
-      "roles": []
+      "roles": [
+        {
+          "title": "Director, Product Design - WhatsApp Business",
+          "url": "https://www.metacareers.com/profile/job_details/28174013278935082",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Design Systems Product Designer",
+          "url": "https://www.metacareers.com/profile/job_details/1382825436728337",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Design Producer - Human Interface",
+          "url": "https://www.metacareers.com/profile/job_details/1354563596382371",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Design Prototyper, Human Interface",
+          "url": "https://www.metacareers.com/profile/job_details/1980766752569637",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Creative Director, Design",
+          "url": "https://www.metacareers.com/profile/job_details/27533437029609442",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Industrial Design Architect (ME/PDE)",
+          "url": "https://www.metacareers.com/profile/job_details/788152294069957",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Design Engineering Intern",
+          "url": "https://www.metacareers.com/profile/job_details/1613359540444032",
+          "location": "",
+          "postedDate": null
+        }
+      ]
     }
   }
 }
