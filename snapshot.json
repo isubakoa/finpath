@@ -1,9 +1,33 @@
 {
-  "generatedAt": "2026-10-05T13:03:11.358Z",
+  "generatedAt": "2026-10-05T21:21:13.556Z",
   "companies": {
     "adyen": {
       "ok": true,
       "roles": [
+        {
+          "title": "Group Product Manager, APAC [Head of Products, APAC]",
+          "url": "https://careers.adyen.com/vacancies/8185942-group-product-manager-apac-head-of-products-apac?locale=en",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Group Product Manager - Commercial Risk & Platform Fraud",
+          "url": "https://careers.adyen.com/vacancies/7862254-group-product-manager-commercial-risk-platform-fraud?locale=en",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Group Product Manager, Credit and Data Platform",
+          "url": "https://careers.adyen.com/vacancies/6630580-group-product-manager-credit-and-data-platform?locale=en",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Product Manager, AI-Native Merchant Experiences",
+          "url": "https://careers.adyen.com/vacancies/8161148-principal-product-manager-ai-native-merchant-experiences?locale=en",
+          "location": "",
+          "postedDate": null
+        },
         {
           "title": "Senior Strategy & Business Ops Manager",
           "url": "https://careers.adyen.com/vacancies/8113927-senior-strategy-business-ops-manager?locale=en",
@@ -106,12 +130,6 @@
         {
           "title": "Technical Social Media Strategist",
           "url": "https://www.atlassian.com/company/careers/details/26834",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Head of Product Marketing, Jira and Flywheel",
-          "url": "https://www.atlassian.com/company/careers/details/26673",
           "location": "",
           "postedDate": null
         },
@@ -252,12 +270,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Solution Design - Fraud",
           "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
@@ -266,6 +278,12 @@
         {
           "title": "Solution Design, Senior Consultant - Merchant Services",
           "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -334,6 +352,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Senior Product Designer",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26011611/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Designer, Design Studio-Onbrand",
           "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26014529/?keyword=design",
           "location": "",
@@ -386,12 +410,6 @@
           "postedDate": null
         },
         {
-          "title": "IT Communications and Graphics Design Intern (Spring 2027)",
-          "url": "https://jobs.bmwgroup.com/job/IT-Communications-and-Graphics-Design-Intern-%28Spring-2027%29/192182-en_US",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Internship UI/UX Design and App Development in Open Innovation (f/m/x)",
           "url": "https://jobs.bmwgroup.com/job/Internship-UIUX-Design-and-App-Development-in-Open-Innovation-%28fmx%29/191268-en_US",
           "location": "",
@@ -417,32 +435,32 @@
           "postedDate": null
         },
         {
-          "title": "Head of Hardware Design (m/f/d)",
-          "url": "https://jobs.ericsson.com/careers/job/563121774641892?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Master thesis: RF filters/antennas AI-assisted Design",
           "url": "https://jobs.ericsson.com/careers/job/563121777202432?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Master Thesis: AI-driven antenna design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777269705?domain=ericsson.com",
+          "title": "Head of Hardware Design (m/f/d)",
+          "url": "https://jobs.ericsson.com/careers/job/563121774641892?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Master Thesis: Interaction Design - Shape Your Own Idea in the Future of Networks",
-          "url": "https://jobs.ericsson.com/careers/job/563121777284377?domain=ericsson.com",
+          "title": "Radio Unit Design Lead",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "AI Motion Design Specialist",
-          "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
+          "title": "Master Thesis: Quantitative Characterization of Low-Power RTL Design Patterns",
+          "url": "https://jobs.ericsson.com/careers/job/563121777283378?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio HW Digital Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -455,12 +473,6 @@
         {
           "title": "Mechanical Design Engineer II",
           "url": "https://jobs.ericsson.com/careers/job/563121776961372?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Sub-System Design Engineer",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152248?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -488,26 +500,14 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
-          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "IP LAN Design Engineer Fixed Term Contract",
-          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "IP LAN Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -518,8 +518,26 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
+          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
+          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "IP LAN Design Engineer Fixed Term Contract",
+          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
