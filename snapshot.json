@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T01:50:25.988Z",
+  "generatedAt": "2026-10-06T08:16:42.111Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -276,8 +276,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -288,8 +288,8 @@
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -314,6 +314,12 @@
         {
           "title": "Solution Designer - Customer Onboarding (HCM/Hanoi)",
           "url": "https://nab.eightfold.ai/careers/job/563980770286552?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Head of Product ( Merchant Services & HICAPS)​",
+          "url": "https://nab.eightfold.ai/careers/job/563980770540233?microsite=nab",
           "location": "",
           "postedDate": null
         }
@@ -356,26 +362,7 @@
     },
     "american-express": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Senior Product Designer",
-          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26011611/?keyword=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Designer, Design Studio-Onbrand",
-          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26014529/?keyword=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Creative Director, Motion Design",
-          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26013972/?keyword=design",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "standard-chartered": {
       "ok": true,
@@ -465,26 +452,32 @@
           "postedDate": null
         },
         {
-          "title": "Master Thesis: Design and Optimization of a Dynamic Reduced-Order Model for Performance - Radio Unit",
-          "url": "https://jobs.ericsson.com/careers/job/563121777237868?domain=ericsson.com",
+          "title": "Master Thesis: Quantitative Characterization of Low-Power RTL Design Patterns",
+          "url": "https://jobs.ericsson.com/careers/job/563121777283378?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
+          "title": "Mechanical Design Engineer II",
+          "url": "https://jobs.ericsson.com/careers/job/563121776961372?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Staff Compiler Design Engineer",
-          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
+          "title": "Master Thesis: Design and Evaluation of Red-Blue Teaming with AI Agents",
+          "url": "https://jobs.ericsson.com/careers/job/563121777177778?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Master Thesis: AI-driven antenna design",
           "url": "https://jobs.ericsson.com/careers/job/563121777269705?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
           "location": "",
           "postedDate": null
         }
@@ -494,26 +487,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "IP LAN Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Secure by Design Manager",
           "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -536,8 +517,56 @@
           "postedDate": null
         },
         {
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "IP LAN Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137384?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137387?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure By Design - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697998557?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Secure by Design Solution Architect - VOIS",
           "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
