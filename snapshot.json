@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T21:21:13.556Z",
+  "generatedAt": "2026-10-06T01:50:25.988Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -222,6 +222,12 @@
           "url": "https://www.atlassian.com/company/careers/details/26037",
           "location": "",
           "postedDate": null
+        },
+        {
+          "title": "Senior Solution Consultant, Strategy Collection",
+          "url": "https://www.atlassian.com/company/careers/details/27550",
+          "location": "",
+          "postedDate": null
         }
       ]
     },
@@ -270,6 +276,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Solution Design - Fraud",
           "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
@@ -278,12 +290,6 @@
         {
           "title": "Solution Design, Senior Consultant - Merchant Services",
           "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -429,12 +435,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "Master thesis: AI-Era Site Material SC Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777223859?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Master thesis: RF filters/antennas AI-assisted Design",
           "url": "https://jobs.ericsson.com/careers/job/563121777202432?domain=ericsson.com",
           "location": "",
@@ -453,38 +453,38 @@
           "postedDate": null
         },
         {
-          "title": "Master Thesis: Quantitative Characterization of Low-Power RTL Design Patterns",
-          "url": "https://jobs.ericsson.com/careers/job/563121777283378?domain=ericsson.com",
+          "title": "New Grad-Interconnect Design-BJ",
+          "url": "https://jobs.ericsson.com/careers/job/563121777171641?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Radio HW Digital Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
+          "title": "AI Motion Design Specialist",
+          "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Network Design Optimization Internship",
-          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
+          "title": "Master Thesis: Design and Optimization of a Dynamic Reduced-Order Model for Performance - Radio Unit",
+          "url": "https://jobs.ericsson.com/careers/job/563121777237868?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Mechanical Design Engineer II",
-          "url": "https://jobs.ericsson.com/careers/job/563121776961372?domain=ericsson.com",
+          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Master Thesis: AI-Assisted Integrated Data Center Design for Telecom Core Systems",
-          "url": "https://jobs.ericsson.com/careers/job/563121777306234?domain=ericsson.com",
+          "title": "Staff Compiler Design Engineer",
+          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Master Thesis: Design and Evaluation of Red-Blue Teaming with AI Agents",
-          "url": "https://jobs.ericsson.com/careers/job/563121777177778?domain=ericsson.com",
+          "title": "Master Thesis: AI-driven antenna design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777269705?domain=ericsson.com",
           "location": "",
           "postedDate": null
         }
@@ -494,12 +494,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "IP LAN Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
           "location": "",
@@ -508,6 +502,12 @@
         {
           "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -530,8 +530,8 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
