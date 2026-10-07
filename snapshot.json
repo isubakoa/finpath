@@ -1,15 +1,9 @@
 {
-  "generatedAt": "2026-10-07T05:51:39.386Z",
+  "generatedAt": "2026-10-07T12:09:58.788Z",
   "companies": {
     "adyen": {
       "ok": true,
       "roles": [
-        {
-          "title": "Group Product Manager, APAC [Head of Products, APAC]",
-          "url": "https://careers.adyen.com/vacancies/8185942-group-product-manager-apac-head-of-products-apac?locale=en",
-          "location": "",
-          "postedDate": null
-        },
         {
           "title": "Group Product Manager - Commercial Risk & Platform Fraud",
           "url": "https://careers.adyen.com/vacancies/7862254-group-product-manager-commercial-risk-platform-fraud?locale=en",
@@ -25,6 +19,12 @@
         {
           "title": "Principal Product Manager, AI-Native Merchant Experiences",
           "url": "https://careers.adyen.com/vacancies/8161148-principal-product-manager-ai-native-merchant-experiences?locale=en",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager, Banking",
+          "url": "https://careers.adyen.com/vacancies/8147288-senior-product-manager-banking?locale=en",
           "location": "",
           "postedDate": null
         },
@@ -272,7 +272,26 @@
     },
     "natwest-group": {
       "ok": true,
-      "roles": []
+      "roles": [
+        {
+          "title": "UX Designer",
+          "url": "https://jobs.natwestgroup.com/jobs/18318728-ux-designer",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "UX Designer",
+          "url": "https://jobs.natwestgroup.com/jobs/18318729-ux-designer",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "UX Designer",
+          "url": "https://jobs.natwestgroup.com/jobs/18318727-ux-designer",
+          "location": "",
+          "postedDate": null
+        }
+      ]
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
@@ -353,8 +372,8 @@
       ]
     },
     "aspire": {
-      "ok": false,
-      "error": "https://revolutpeople.com/aspire/public/careers/: page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://revolutpeople.com/aspire/public/careers/\nCall log:\n  - navigating to \"https://revolutpeople.com/aspire/public/careers/\", waiting until \"networkidle\"\n"
+      "ok": true,
+      "roles": []
     },
     "kiwibank": {
       "ok": true,
@@ -441,56 +460,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Head of Hardware Design (m/f/d)",
-          "url": "https://jobs.ericsson.com/careers/job/563121774641892?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Master thesis: RF filters/antennas AI-assisted Design",
           "url": "https://jobs.ericsson.com/careers/job/563121777202432?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Master Thesis: Optimization and Design-Space Exploration of Rack-Scale Server Solutions",
-          "url": "https://jobs.ericsson.com/careers/job/563121777263757?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Manager of System Design Team 1",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Master Thesis: Design and Optimization of a Dynamic Reduced-Order Model for Performance - Radio Unit",
-          "url": "https://jobs.ericsson.com/careers/job/563121777237868?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Staff Compiler Design Engineer",
-          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Master Thesis: AI-Assisted Integrated Data Center Design for Telecom Core Systems",
-          "url": "https://jobs.ericsson.com/careers/job/563121777306234?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Master Thesis: Industrial Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777128824?domain=ericsson.com",
+          "title": "Head of Hardware Design (m/f/d)",
+          "url": "https://jobs.ericsson.com/careers/job/563121774641892?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -501,14 +478,44 @@
           "postedDate": null
         },
         {
-          "title": "Lead Product Manager",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262183?domain=ericsson.com",
+          "title": "New Grad-Interconnect Design-BJ",
+          "url": "https://jobs.ericsson.com/careers/job/563121777171641?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio HW Digital Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "New Grad-Board Power Design-BJ",
+          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: Design and Evaluation of Red-Blue Teaming with AI Agents",
+          "url": "https://jobs.ericsson.com/careers/job/563121777177778?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: Quantitative Characterization of Low-Power RTL Design Patterns",
+          "url": "https://jobs.ericsson.com/careers/job/563121777283378?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Master Thesis: AI-driven antenna design",
           "url": "https://jobs.ericsson.com/careers/job/563121777269705?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: AI-Driven Microcontroller Power Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777231077?domain=ericsson.com",
           "location": "",
           "postedDate": null
         }
@@ -518,32 +525,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
-          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Secure by Design Manager",
           "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "IP LAN Design Engineer Fixed Term Contract",
-          "url": "https://jobs.vodafone.com/careers/job/563018697872092?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "IP LAN Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018697911112?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -554,8 +537,26 @@
           "postedDate": null
         },
         {
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
+          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure By Design - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697998557?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -572,8 +573,32 @@
           "postedDate": null
         },
         {
-          "title": "UX Designer",
-          "url": "https://jobs.vodafone.com/careers/job/563018698175962?domain=vodafone.com",
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "VodafoneThree - Privacy by Design Lead",
+          "url": "https://jobs.vodafone.com/careers/job/563018698160920?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
