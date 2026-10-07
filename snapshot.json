@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T12:09:58.788Z",
+  "generatedAt": "2026-10-07T18:57:45.901Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -389,6 +389,12 @@
           "postedDate": null
         },
         {
+          "title": "Senior Product Designer, Venues - Resy",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26010340/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Designer, Design Studio-Onbrand",
           "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26014529/?keyword=design",
           "location": "",
@@ -472,20 +478,8 @@
           "postedDate": null
         },
         {
-          "title": "AI Motion Design Specialist",
-          "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "New Grad-Interconnect Design-BJ",
-          "url": "https://jobs.ericsson.com/careers/job/563121777171641?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Radio HW Digital Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
+          "title": "Master Thesis: Design and Evaluation of Red-Blue Teaming with AI Agents",
+          "url": "https://jobs.ericsson.com/careers/job/563121777177778?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -496,14 +490,32 @@
           "postedDate": null
         },
         {
-          "title": "Master Thesis: Design and Evaluation of Red-Blue Teaming with AI Agents",
-          "url": "https://jobs.ericsson.com/careers/job/563121777177778?domain=ericsson.com",
+          "title": "Radio Unit Design Lead",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Master Thesis: Quantitative Characterization of Low-Power RTL Design Patterns",
-          "url": "https://jobs.ericsson.com/careers/job/563121777283378?domain=ericsson.com",
+          "title": "New Grad-Interconnect Design-BJ",
+          "url": "https://jobs.ericsson.com/careers/job/563121777171641?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: Design and Optimization of a Dynamic Reduced-Order Model for Performance - Radio Unit",
+          "url": "https://jobs.ericsson.com/careers/job/563121777237868?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: AI-Assisted Integrated Data Center Design for Telecom Core Systems",
+          "url": "https://jobs.ericsson.com/careers/job/563121777306234?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Staff Compiler Design Engineer",
+          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -531,18 +543,6 @@
           "postedDate": null
         },
         {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
@@ -555,8 +555,20 @@
           "postedDate": null
         },
         {
-          "title": "Secure By Design - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697998557?domain=vodafone.com",
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "GTM Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -573,32 +585,14 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Architect - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Architect - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Architect - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "VodafoneThree - Privacy by Design Lead",
           "url": "https://jobs.vodafone.com/careers/job/563018698160920?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "VodafoneThree - Process Designer",
+          "url": "https://jobs.vodafone.com/careers/job/563018697772841?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
@@ -644,14 +638,14 @@
           "postedDate": null
         },
         {
-          "title": "Digital Design Engineer, SoC Chassis",
-          "url": "https://www.metacareers.com/profile/job_details/1483569256948762",
+          "title": "Digital Design Engineer, Interconnect",
+          "url": "https://www.metacareers.com/profile/job_details/1850153969751238",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Design Engineering and Construction Operations Engineering, Controls Engineer",
-          "url": "https://www.metacareers.com/profile/job_details/1100281485803086",
+          "title": "Digital Design Engineer, SoC Chassis",
+          "url": "https://www.metacareers.com/profile/job_details/1483569256948762",
           "location": "",
           "postedDate": null
         }
