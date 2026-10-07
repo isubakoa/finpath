@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T20:29:13.366Z",
+  "generatedAt": "2026-10-07T00:08:14.573Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -146,6 +146,12 @@
           "postedDate": null
         },
         {
+          "title": "Principal Product Designer, Studio",
+          "url": "https://www.atlassian.com/company/careers/details/27427",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Senior Product Manager - IT Operations",
           "url": "https://www.atlassian.com/company/careers/details/27326",
           "location": "",
@@ -282,6 +288,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Solution Design - Fraud",
           "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
@@ -290,12 +302,6 @@
         {
           "title": "Solution Design, Senior Consultant - ECOM",
           "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -353,8 +359,8 @@
       ]
     },
     "aspire": {
-      "ok": true,
-      "roles": []
+      "ok": false,
+      "error": "https://revolutpeople.com/aspire/public/careers/: page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://revolutpeople.com/aspire/public/careers/\nCall log:\n  - navigating to \"https://revolutpeople.com/aspire/public/careers/\", waiting until \"networkidle\"\n"
     },
     "kiwibank": {
       "ok": true,
@@ -536,8 +542,8 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
-          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -554,20 +560,20 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "CX Design Lead",
-          "url": "https://jobs.vodafone.com/careers/job/563018697217901?domain=vodafone.com",
+          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
+          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
@@ -577,6 +583,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Design Producer - Human Interface",
+          "url": "https://www.metacareers.com/profile/job_details/1354563596382371",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Director, Product Design - WhatsApp Business",
           "url": "https://www.metacareers.com/profile/job_details/28174013278935082",
           "location": "",
@@ -585,12 +597,6 @@
         {
           "title": "Design Systems Product Designer",
           "url": "https://www.metacareers.com/profile/job_details/1382825436728337",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Design Producer - Human Interface",
-          "url": "https://www.metacareers.com/profile/job_details/1354563596382371",
           "location": "",
           "postedDate": null
         },
@@ -613,8 +619,14 @@
           "postedDate": null
         },
         {
-          "title": "Product Design Engineering Intern",
-          "url": "https://www.metacareers.com/profile/job_details/1613359540444032",
+          "title": "Digital Design Engineer, SoC Chassis",
+          "url": "https://www.metacareers.com/profile/job_details/1483569256948762",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Design Engineering and Construction Operations Engineering, Controls Engineer",
+          "url": "https://www.metacareers.com/profile/job_details/1100281485803086",
           "location": "",
           "postedDate": null
         }
