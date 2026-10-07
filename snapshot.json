@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T18:57:45.901Z",
+  "generatedAt": "2026-10-07T23:28:19.818Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -272,26 +272,7 @@
     },
     "natwest-group": {
       "ok": true,
-      "roles": [
-        {
-          "title": "UX Designer",
-          "url": "https://jobs.natwestgroup.com/jobs/18318728-ux-designer",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "UX Designer",
-          "url": "https://jobs.natwestgroup.com/jobs/18318729-ux-designer",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "UX Designer",
-          "url": "https://jobs.natwestgroup.com/jobs/18318727-ux-designer",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
@@ -301,6 +282,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Solution Design - Fraud",
           "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
@@ -309,12 +296,6 @@
         {
           "title": "Solution Design, Senior Consultant - Merchant Services",
           "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -502,20 +483,20 @@
           "postedDate": null
         },
         {
-          "title": "Master Thesis: Design and Optimization of a Dynamic Reduced-Order Model for Performance - Radio Unit",
-          "url": "https://jobs.ericsson.com/careers/job/563121777237868?domain=ericsson.com",
+          "title": "Network Design Optimization Internship",
+          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Master Thesis: AI-Assisted Integrated Data Center Design for Telecom Core Systems",
-          "url": "https://jobs.ericsson.com/careers/job/563121777306234?domain=ericsson.com",
+          "title": "Senior Sub-System Design Engineer",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152248?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Staff Compiler Design Engineer",
-          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
+          "title": "Entry Level: Microwave Design Engineer",
+          "url": "https://jobs.ericsson.com/careers/job/563121777309243?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -537,8 +518,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
+          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -549,8 +530,8 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
-          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -561,8 +542,14 @@
           "postedDate": null
         },
         {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Digital & OSS E2E Solution Design Authority",
+          "url": "https://jobs.vodafone.com/careers/job/563018695387687?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -574,19 +561,13 @@
         },
         {
           "title": "Secure by Design Solution Architect - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697137384?domain=vodafone.com",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Secure by Design Solution Architect - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697137387?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "VodafoneThree - Privacy by Design Lead",
-          "url": "https://jobs.vodafone.com/careers/job/563018698160920?domain=vodafone.com",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -638,14 +619,14 @@
           "postedDate": null
         },
         {
-          "title": "Digital Design Engineer, Interconnect",
-          "url": "https://www.metacareers.com/profile/job_details/1850153969751238",
+          "title": "Battery Product Design Engineer",
+          "url": "https://www.metacareers.com/profile/job_details/933743939458082",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Digital Design Engineer, SoC Chassis",
-          "url": "https://www.metacareers.com/profile/job_details/1483569256948762",
+          "title": "Digital Design Engineer, Interconnect",
+          "url": "https://www.metacareers.com/profile/job_details/1850153969751238",
           "location": "",
           "postedDate": null
         }
