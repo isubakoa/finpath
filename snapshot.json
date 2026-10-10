@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T20:16:39.322Z",
+  "generatedAt": "2026-10-10T23:44:53.113Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -260,44 +260,7 @@
     },
     "natwest-group": {
       "ok": true,
-      "roles": [
-        {
-          "title": "UX Designer",
-          "url": "https://jobs.natwestgroup.com/jobs/18318727-ux-designer",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "UX Designer",
-          "url": "https://jobs.natwestgroup.com/jobs/18318728-ux-designer",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "UX Designer",
-          "url": "https://jobs.natwestgroup.com/jobs/18318729-ux-designer",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324786-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324785-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324784-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
@@ -307,14 +270,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design, Senior Consultant - Merchant Services",
-          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - Merchant Services",
+          "url": "https://nab.eightfold.ai/careers/job/563980770282827?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -345,12 +308,6 @@
         {
           "title": "Solution Designer - Customer Onboarding (HCM/Hanoi)",
           "url": "https://nab.eightfold.ai/careers/job/563980770286552?microsite=nab",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Head of Product ( Merchant Services & HICAPS)​",
-          "url": "https://nab.eightfold.ai/careers/job/563980770540233?microsite=nab",
           "location": "",
           "postedDate": null
         }
@@ -555,12 +512,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
-          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
           "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
           "location": "",
@@ -585,14 +536,14 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
+          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Secure By Design - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697998557?domain=vodafone.com",
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -615,32 +566,8 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Architect - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697137384?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Architect - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697137387?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Architect - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Architect - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Architect - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
+          "title": "UX Designer",
+          "url": "https://jobs.vodafone.com/careers/job/563018698175962?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
@@ -682,12 +609,6 @@
         {
           "title": "Industrial Design Architect (ME/PDE)",
           "url": "https://www.metacareers.com/profile/job_details/788152294069957",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Structural Design Engineer - FEA (Intern)",
-          "url": "https://www.metacareers.com/profile/job_details/1080292111664557",
           "location": "",
           "postedDate": null
         }
