@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T19:48:20Z",
+  "generatedAt": "2026-10-10T23:18:05Z",
   "companies": {
     "google": {
       "roles": [
@@ -1119,13 +1119,13 @@
           "title": "Technology Consulting - Strategy Manager",
           "location": "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
           "url": "https://www.linkedin.com/jobs/view/4429844140",
-          "postedDate": "2026-09-18",
+          "postedDate": "2026-10-10",
           "source": "li",
           "sources": [
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-09-28"
+          "lastSeenAt": "2026-10-10"
         },
         {
           "title": "Talent Solutions Cross Functional AI Product Owner - Associate Director",
@@ -11846,7 +11846,7 @@
         {
           "title": "Senior UX/UI Designer - Online Banking (all genders)",
           "location": "Munich, Bavaria, Germany",
-          "url": "https://www.linkedin.com/jobs/view/4477698990",
+          "url": "https://www.linkedin.com/jobs/view/4477805721",
           "postedDate": "2026-10-09",
           "source": "li",
           "sources": [
@@ -13441,7 +13441,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-10-09"
+          "lastSeenAt": "2026-10-10"
         }
       ]
     },
@@ -15483,7 +15483,7 @@
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-10-09"
+          "lastSeenAt": "2026-10-10"
         },
         {
           "title": "Senior AI Product Manager",
@@ -19190,6 +19190,20 @@
         "title": "Product Owner (Vertical)",
         "location": "Seoul, Seoul, South Korea",
         "url": "https://www.linkedin.com/jobs/view/4439976454",
+        "postedDate": "2026-10-10",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
+        "employer": "Arc'teryx Equipment",
+        "market": "Japan",
+        "title": "Director, Product Development",
+        "location": "Tokyo, Tokyo, Japan",
+        "url": "https://www.linkedin.com/jobs/view/4418799186",
         "postedDate": "2026-10-10",
         "source": "li",
         "sources": [
@@ -23400,6 +23414,76 @@
         "lastSeenAt": "2026-10-10"
       },
       {
+        "employer": "NielsenIQ",
+        "market": "London, ENG, UK",
+        "title": "Digital Shelf Product Leader",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=8954124ec0edb7b5",
+        "postedDate": "2026-10-09",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
+        "employer": "Activision",
+        "market": "Australia",
+        "title": "Senior UI Engineer - Sledgehammer Games - Melbourne",
+        "location": "Melbourne, Victoria, Australia",
+        "url": "https://www.linkedin.com/jobs/view/4460154288",
+        "postedDate": "2026-10-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
+        "employer": "News Corp",
+        "market": "Australia",
+        "title": "Senior Product Manager",
+        "location": "Melbourne, VIC, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=825dd97a24ac5bad",
+        "postedDate": "2026-10-09",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
+        "employer": "NSW Government",
+        "market": "Australia",
+        "title": "Senior Manager Asset Strategy, Initiatives and Integration",
+        "location": "Mascot, NSW, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=540e4bb93aaeb9a4",
+        "postedDate": "2026-10-09",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
+        "employer": "News Corp",
+        "market": "Australia",
+        "title": "Principal Product Manager",
+        "location": "Melbourne, VIC, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=52f434d38d10e651",
+        "postedDate": "2026-10-09",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
         "employer": "Aleph-Labs",
         "market": "Malaysia",
         "title": "User Experience Designer",
@@ -23694,20 +23778,6 @@
         "lastSeenAt": "2026-10-09"
       },
       {
-        "employer": "NielsenIQ",
-        "market": "London, ENG, UK",
-        "title": "Digital Shelf Product Leader",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=8954124ec0edb7b5",
-        "postedDate": "2026-10-09",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-09"
-      },
-      {
         "employer": "PwC",
         "market": "London, ENG, UK",
         "title": "AI & Technology Strategist - Senior Manager",
@@ -23717,20 +23787,6 @@
         "source": "indeed",
         "sources": [
           "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-09"
-      },
-      {
-        "employer": "Activision",
-        "market": "Australia",
-        "title": "Senior UI Engineer - Sledgehammer Games - Melbourne",
-        "location": "Melbourne, Victoria, Australia",
-        "url": "https://www.linkedin.com/jobs/view/4460154288",
-        "postedDate": "2026-10-09",
-        "source": "li",
-        "sources": [
-          "li"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-10-09"
@@ -27826,6 +27882,48 @@
         "lastSeenAt": "2026-10-10"
       },
       {
+        "employer": "Brown Brothers Harriman",
+        "market": "Ireland",
+        "title": "Technical Product Manager - ETF",
+        "location": "Dublin, D, Ireland",
+        "url": "https://ie.indeed.com/viewjob?jk=3d632ccf9d8df347",
+        "postedDate": "2026-10-08",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
+        "employer": "Brown Brothers Harriman",
+        "market": "Ireland",
+        "title": "Technical Product Manager - Fund Services",
+        "location": "Dublin, D, Ireland",
+        "url": "https://ie.indeed.com/viewjob?jk=bd1239f7a56cf7ad",
+        "postedDate": "2026-10-08",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
+        "employer": "Unsociable Agency",
+        "market": "East London, ENG, UK",
+        "title": "German Speaking TikTok Shop Live Commerce Strategist (Entry-Level)",
+        "location": "East London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=a96661b3620f0915",
+        "postedDate": "2026-10-08",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
         "employer": "2-TIMES",
         "market": "Hong Kong",
         "title": "Creative Design Lead (Luxury)",
@@ -28169,34 +28267,6 @@
         "title": "Product Manager",
         "location": "Singapore, S00, Singapore",
         "url": "https://sg.indeed.com/viewjob?jk=836623ddc5be7888",
-        "postedDate": "2026-10-08",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-09"
-      },
-      {
-        "employer": "Brown Brothers Harriman",
-        "market": "Ireland",
-        "title": "Technical Product Manager - ETF",
-        "location": "Dublin, D, Ireland",
-        "url": "https://ie.indeed.com/viewjob?jk=3d632ccf9d8df347",
-        "postedDate": "2026-10-08",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-09"
-      },
-      {
-        "employer": "Brown Brothers Harriman",
-        "market": "Ireland",
-        "title": "Technical Product Manager - Fund Services",
-        "location": "Dublin, D, Ireland",
-        "url": "https://ie.indeed.com/viewjob?jk=bd1239f7a56cf7ad",
         "postedDate": "2026-10-08",
         "source": "indeed",
         "sources": [
@@ -32734,6 +32804,20 @@
         "lastSeenAt": "2026-10-10"
       },
       {
+        "employer": "Qlub",
+        "market": "London, ENG, UK",
+        "title": "Head of Product Analytics & Experimentation",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=e4a1d504c112bfb3",
+        "postedDate": "2026-10-07",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
         "employer": "Tech Skills Resources (part of the CPL Group)",
         "market": "Ireland",
         "title": "Head of Product - Corporate Pensions",
@@ -33135,20 +33219,6 @@
         "source": "li",
         "sources": [
           "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-09"
-      },
-      {
-        "employer": "Qlub",
-        "market": "London, ENG, UK",
-        "title": "Head of Product Analytics & Experimentation",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=e4a1d504c112bfb3",
-        "postedDate": "2026-10-07",
-        "source": "indeed",
-        "sources": [
-          "indeed"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-10-09"
@@ -36270,7 +36340,7 @@
         "market": "Seoul Incheon Metropolitan Area",
         "title": "UI/UX \ub2f4\ub2f9\uc790 \ubaa8\uc9d1(\uacc4\uc57d\uc9c1/\uc804\ud658\uac00\ub2a5)",
         "location": "Seoul Incheon Metropolitan Area",
-        "url": "https://www.linkedin.com/jobs/view/4476305841",
+        "url": "https://www.linkedin.com/jobs/view/4476325016",
         "postedDate": "2026-10-06",
         "source": "li",
         "sources": [
@@ -36340,7 +36410,7 @@
         "market": "South Korea",
         "title": "Human-AI Interaction & UX Expert (AI Community)",
         "location": "South Korea",
-        "url": "https://www.linkedin.com/jobs/view/4408718882",
+        "url": "https://www.linkedin.com/jobs/view/4476166268",
         "postedDate": "2026-10-06",
         "source": "li",
         "sources": [
@@ -46590,6 +46660,20 @@
         "lastSeenAt": "2026-10-10"
       },
       {
+        "employer": "Envato",
+        "market": "Australia",
+        "title": "Product Designer -- Visual Craft & AI",
+        "location": "Australia",
+        "url": "https://www.linkedin.com/jobs/view/4475862288",
+        "postedDate": "2026-10-05",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
         "employer": "Eaton",
         "market": "Ireland",
         "title": "EMEA Data Center Segment Strategy & Offer Management Leader",
@@ -48973,20 +49057,6 @@
         "source": "indeed",
         "sources": [
           "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-06"
-      },
-      {
-        "employer": "Envato",
-        "market": "Australia",
-        "title": "Product Designer - Visual Craft & AI",
-        "location": "Australia",
-        "url": "https://www.linkedin.com/jobs/view/4475862288",
-        "postedDate": "2026-10-05",
-        "source": "li",
-        "sources": [
-          "li"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-10-06"
@@ -53034,7 +53104,7 @@
         "market": "Ireland",
         "title": "Principal Product Designer",
         "location": "Dublin, D, Ireland",
-        "url": "https://ie.indeed.com/viewjob?jk=6548204afad49ed3",
+        "url": "https://ie.indeed.com/viewjob?jk=09e7aa09b0d93b14",
         "postedDate": "2026-10-02",
         "source": "indeed",
         "sources": [
@@ -53048,7 +53118,7 @@
         "market": "Ireland",
         "title": "Senior Product Designer",
         "location": "Dublin, D, Ireland",
-        "url": "https://ie.indeed.com/viewjob?jk=668e51fb382bdb93",
+        "url": "https://ie.indeed.com/viewjob?jk=43c0652d55603e64",
         "postedDate": "2026-10-02",
         "source": "indeed",
         "sources": [
@@ -56421,6 +56491,34 @@
         "lastSeenAt": "2026-10-10"
       },
       {
+        "employer": "Hostaway",
+        "market": "London, ENG, UK",
+        "title": "Head of Product Analytics - 100% Remote - EMEA",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=74998873e80e954f",
+        "postedDate": "2026-10-02",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
+        "employer": "Jazz Pharmaceuticals",
+        "market": "London, ENG, UK",
+        "title": "Head of Talent Management Strategy",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=83273c4d14604cb5",
+        "postedDate": "2026-10-02",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
         "employer": "Jobgether",
         "market": "Italy",
         "title": "Senior Product Designer",
@@ -56794,34 +56892,6 @@
         "source": "li",
         "sources": [
           "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-09"
-      },
-      {
-        "employer": "Hostaway",
-        "market": "London, ENG, UK",
-        "title": "Head of Product Analytics - 100% Remote - EMEA",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=74998873e80e954f",
-        "postedDate": "2026-10-02",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-09"
-      },
-      {
-        "employer": "Jazz Pharmaceuticals",
-        "market": "London, ENG, UK",
-        "title": "Head of Talent Management Strategy",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=83273c4d14604cb5",
-        "postedDate": "2026-10-02",
-        "source": "indeed",
-        "sources": [
-          "indeed"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-10-09"
@@ -63464,6 +63534,20 @@
         "title": "Senior Product Designer",
         "location": "London, ENG, UK",
         "url": "https://uk.indeed.com/viewjob?jk=eca5eb88d853bd65",
+        "postedDate": "2026-10-01",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-10-10"
+      },
+      {
+        "employer": "Goodwall",
+        "market": "London, ENG, UK",
+        "title": "Head of Growth & Product",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=2db1162b09b02c92",
         "postedDate": "2026-10-01",
         "source": "indeed",
         "sources": [
