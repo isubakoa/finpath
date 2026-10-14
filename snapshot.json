@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T21:29:19.225Z",
+  "generatedAt": "2026-10-14T00:31:18.836Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -49,6 +49,12 @@
     "atlassian": {
       "ok": true,
       "roles": [
+        {
+          "title": "Senior Design Manager, Strategy Collection",
+          "url": "https://www.atlassian.com/company/careers/details/27282",
+          "location": "",
+          "postedDate": null
+        },
         {
           "title": "Sr. Product Designer - Service Collection",
           "url": "https://www.atlassian.com/company/careers/details/27228",
@@ -116,8 +122,8 @@
           "postedDate": null
         },
         {
-          "title": "Paid Ads Marketing Manager, DX",
-          "url": "https://www.atlassian.com/company/careers/details/26354",
+          "title": "Senior Brand Strategist",
+          "url": "https://www.atlassian.com/company/careers/details/26959",
           "location": "",
           "postedDate": null
         },
@@ -142,6 +148,36 @@
         {
           "title": "Product Manager, Atlassian Government Cloud",
           "url": "https://www.atlassian.com/company/careers/details/27433",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Product Manager, Focus",
+          "url": "https://www.atlassian.com/company/careers/details/27092",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager, Data Cloud and Connectors",
+          "url": "https://www.atlassian.com/company/careers/details/26663",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager, Self-Reported Insights",
+          "url": "https://www.atlassian.com/company/careers/details/26662",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Product Manager, System Insights for DX",
+          "url": "https://www.atlassian.com/company/careers/details/26340",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Manager, Rovo",
+          "url": "https://www.atlassian.com/company/careers/details/26289",
           "location": "",
           "postedDate": null
         },
@@ -172,36 +208,6 @@
         {
           "title": "Principal Outbound Product Manager, Service Collection",
           "url": "https://www.atlassian.com/company/careers/details/27426",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Principal Product Manager, Focus",
-          "url": "https://www.atlassian.com/company/careers/details/27092",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Principal Product Manager, System Insights for DX",
-          "url": "https://www.atlassian.com/company/careers/details/26340",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Product Manager, Rovo",
-          "url": "https://www.atlassian.com/company/careers/details/26289",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Product Manager, Data Cloud and Connectors",
-          "url": "https://www.atlassian.com/company/careers/details/26663",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Product Manager, Self-Reported Insights",
-          "url": "https://www.atlassian.com/company/careers/details/26662",
           "location": "",
           "postedDate": null
         },
@@ -252,7 +258,14 @@
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
-      "roles": []
+      "roles": [
+        {
+          "title": "Product Manager",
+          "url": "https://nab.eightfold.ai/careers/job/563980770612977?microsite=bnz",
+          "location": "",
+          "postedDate": null
+        }
+      ]
     },
     "national-australia-bank-nab": {
       "ok": true,
@@ -470,6 +483,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
+          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
           "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
           "location": "",
@@ -488,20 +507,14 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Cloud Solution Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
-          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -520,6 +533,24 @@
         {
           "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
           "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137384?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137387?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Architect - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
@@ -565,14 +596,14 @@
           "postedDate": null
         },
         {
-          "title": "Research Scientist Intern, Systems ML - SW/HW Co-Design - CPUSys (PhD)",
-          "url": "https://www.metacareers.com/profile/job_details/2192664358300823",
+          "title": "Product Design Engineering Intern",
+          "url": "https://www.metacareers.com/profile/job_details/1123001263407222",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Product Design Engineering Intern",
-          "url": "https://www.metacareers.com/profile/job_details/1613359540444032",
+          "title": "Research Scientist Intern, Systems ML - SW/HW Co-Design - CPUSys (PhD)",
+          "url": "https://www.metacareers.com/profile/job_details/2192664358300823",
           "location": "",
           "postedDate": null
         }
