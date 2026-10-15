@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T22:40:57.452Z",
+  "generatedAt": "2026-10-15T00:54:58.006Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -50,6 +50,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Principal Product Designer, Rovo & AI",
+          "url": "https://www.atlassian.com/company/careers/details/27204",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Senior Design Manager, Strategy Collection",
           "url": "https://www.atlassian.com/company/careers/details/27282",
           "location": "",
@@ -86,12 +92,6 @@
           "postedDate": null
         },
         {
-          "title": "Principal Product Designer, Rovo & AI",
-          "url": "https://www.atlassian.com/company/careers/details/27204",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Lead Design Technologist",
           "url": "https://www.atlassian.com/company/careers/details/26375",
           "location": "",
@@ -116,6 +116,12 @@
           "postedDate": null
         },
         {
+          "title": "Lead Paid Search Strategist",
+          "url": "https://www.atlassian.com/company/careers/details/27163",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Senior Brand Strategist",
           "url": "https://www.atlassian.com/company/careers/details/26959",
           "location": "",
@@ -128,6 +134,18 @@
           "postedDate": null
         },
         {
+          "title": "Lead Product Designer, AI",
+          "url": "https://www.atlassian.com/company/careers/details/27441",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Executive Assistant - AI Product Team",
+          "url": "https://www.atlassian.com/company/careers/details/27354",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Principal Product Designer, Studio",
           "url": "https://www.atlassian.com/company/careers/details/27427",
           "location": "",
@@ -136,6 +154,12 @@
         {
           "title": "Principal Product Designer, DX",
           "url": "https://www.atlassian.com/company/careers/details/27399",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Product Manager, Confluence Aggregation",
+          "url": "https://www.atlassian.com/company/careers/details/27291",
           "location": "",
           "postedDate": null
         },
@@ -259,14 +283,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -436,12 +460,6 @@
           "postedDate": null
         },
         {
-          "title": "New Grad-Board Power Design-BJ",
-          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Radio HW TRX Design",
           "url": "https://jobs.ericsson.com/careers/job/563121776114486?domain=ericsson.com",
           "location": "",
@@ -472,8 +490,14 @@
           "postedDate": null
         },
         {
-          "title": "Radio Unit Design Lead",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "title": "Master Thesis: Industrial Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121777128824?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: Interaction Design - Shape Your Own Idea in the Future of Networks",
+          "url": "https://jobs.ericsson.com/careers/job/563121777284377?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -537,6 +561,12 @@
           "postedDate": null
         },
         {
+          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Secure By Design - VOIS",
           "url": "https://jobs.vodafone.com/careers/job/563018697998557?domain=vodafone.com",
           "location": "",
@@ -545,12 +575,6 @@
         {
           "title": "VodafoneThree - Privacy by Design Lead",
           "url": "https://jobs.vodafone.com/careers/job/563018698160920?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "GTM Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
