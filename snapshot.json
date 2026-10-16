@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T14:26:38.324Z",
+  "generatedAt": "2026-10-16T18:18:07.578Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -346,6 +346,18 @@
     "american-express": {
       "ok": true,
       "roles": [
+        {
+          "title": "Senior Product Designer",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26015472/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Associate - Design Operations",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26015470/?keyword=design",
+          "location": "",
+          "postedDate": null
+        },
         {
           "title": "Senior Product Designer, Venues - Resy",
           "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26010340/?keyword=design",
