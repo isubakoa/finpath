@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T21:27:09.972Z",
+  "generatedAt": "2026-10-16T23:48:13.069Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -337,44 +337,7 @@
     },
     "aspire": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Partner Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/partner-marketing-manager-831f2ae4-7cb0-4f85-b162-e07f55149737",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "AI Product Manager, FinCrime",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/ai-product-manager-fin-crime-ef285596-5640-47e2-a882-cccebe127c45",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Field Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/field-marketing-manager-ff554506-c7f8-4d31-bb03-9ff26719c296",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Growth Strategist Intern",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/growth-strategist-intern-3299041d-d3ad-4946-9564-456c455a2298",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Affiliate Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/affiliate-marketing-manager-681fd543-283f-4e3b-8f3a-9e84ade36a2b",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Product Manager (Expense Management)",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/product-manager-expense-management-32f0fce0-7106-4eb9-911e-b445daa7abab",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "kiwibank": {
       "ok": true,
@@ -497,12 +460,6 @@
           "postedDate": null
         },
         {
-          "title": "Master Thesis: AI-driven antenna design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777269705?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Manager of System Design Team 1",
           "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
           "location": "",
@@ -539,6 +496,12 @@
           "postedDate": null
         },
         {
+          "title": "Mechanical Design Engineer II",
+          "url": "https://jobs.ericsson.com/careers/job/563121776961372?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Radio HW TRX Design",
           "url": "https://jobs.ericsson.com/careers/job/563121776114486?domain=ericsson.com",
           "location": "",
@@ -547,6 +510,12 @@
         {
           "title": "Lead Product Manager",
           "url": "https://jobs.ericsson.com/careers/job/563121776262183?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio HW Design Power Amplifier",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
           "location": "",
           "postedDate": null
         }
