@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T22:16:09.575Z",
+  "generatedAt": "2026-10-16T00:34:37.145Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -104,14 +104,14 @@
           "postedDate": null
         },
         {
-          "title": "Product Management Intern, 2027 Summer U.S.",
-          "url": "https://www.atlassian.com/company/careers/details/26274",
+          "title": "Product Design Intern, 2027 Summer U.S.",
+          "url": "https://www.atlassian.com/company/careers/details/26273",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Product Design Intern, 2027 Summer U.S.",
-          "url": "https://www.atlassian.com/company/careers/details/26273",
+          "title": "Product Management Intern, 2027 Summer U.S.",
+          "url": "https://www.atlassian.com/company/careers/details/26274",
           "location": "",
           "postedDate": null
         },
@@ -142,12 +142,6 @@
         {
           "title": "Lead Product Designer, AI",
           "url": "https://www.atlassian.com/company/careers/details/27441",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Executive Assistant - AI Product Team",
-          "url": "https://www.atlassian.com/company/careers/details/27354",
           "location": "",
           "postedDate": null
         },
@@ -283,14 +277,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
