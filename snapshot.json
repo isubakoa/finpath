@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T14:15:56.086Z",
+  "generatedAt": "2026-10-17T17:23:54.028Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -50,12 +50,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "Lead Design Technologist",
-          "url": "https://www.atlassian.com/company/careers/details/26375",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Senior Director, Jira Design",
           "url": "https://www.atlassian.com/company/careers/details/24872",
           "location": "",
@@ -64,12 +58,6 @@
         {
           "title": "Principal Product Designer, Rovo & AI",
           "url": "https://www.atlassian.com/company/careers/details/27204",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Design Manager, Strategy Collection",
-          "url": "https://www.atlassian.com/company/careers/details/27282",
           "location": "",
           "postedDate": null
         },
@@ -170,6 +158,12 @@
           "postedDate": null
         },
         {
+          "title": "Senior Product Manager, Self-Reported Insights",
+          "url": "https://www.atlassian.com/company/careers/details/26662",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Principal Product Manager, Confluence Aggregation",
           "url": "https://www.atlassian.com/company/careers/details/27291",
           "location": "",
@@ -190,12 +184,6 @@
         {
           "title": "Senior Product Manager, Data Cloud and Connectors",
           "url": "https://www.atlassian.com/company/careers/details/26663",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Product Manager, Self-Reported Insights",
-          "url": "https://www.atlassian.com/company/careers/details/26662",
           "location": "",
           "postedDate": null
         },
@@ -295,14 +283,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -537,6 +525,12 @@
           "postedDate": null
         },
         {
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Cloud Solution Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
           "location": "",
@@ -549,14 +543,14 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "title": "FS Architecture & Design, Assoc. Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018697741021?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "FS Architecture & Design, Assoc. Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697741021?domain=vodafone.com",
+          "title": "VodafoneThree - Privacy by Design Lead",
+          "url": "https://jobs.vodafone.com/careers/job/563018698160920?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -573,8 +567,8 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
+          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
+          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
