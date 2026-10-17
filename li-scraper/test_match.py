@@ -65,12 +65,15 @@ FRESH_ROLES_CASES = [
     ("indeed", {"job_url": "https://x.test/2", "company": "HSBC Holdings plc", "title": "Senior UX Researcher", "location": "Singapore",
                 "description": "We offer visa sponsorship for qualified candidates."}),
     # 2026-09-23 — a genuine employer name, no tracked-company match, "Head of Design" is
-    # relevant/target-tier: this now ALSO qualifies for the open-market branch (kept there),
-    # on top of its original purpose of proving the tracked-company path drops it (no slug).
-    # Its raw location "Berlin" has no country suffix, so market_for_location() can't resolve
-    # a canonical country from it and falls back to the raw text itself — "Berlin", not
-    # "Germany" — exercising that fallback with a real (non-empty) employer.
-    ("indeed", {"job_url": "https://x.test/3", "company": "Some Totally Unrelated Company", "title": "Head of Design", "location": "Berlin"}),  # dropped from tracked-company matching (no slug); kept open-market (market="Berlin", the raw fallback)
+    # relevant/target-tier: this used to ALSO qualify for the open-market branch (kept there)
+    # purely because market_for_location() never returned None back then, on top of its
+    # original purpose of proving the tracked-company path drops it (no slug).
+    # 2026-10-17 — flipped back to dropped: its raw location "Berlin" has no country code or
+    # name attached, and "berlin" is deliberately NOT a CITY_ALIASES entry (a real "Berlin, El
+    # Salvador" posting turned up in the audit that added this gate — see scrape.py's dated
+    # comment above ISO_CODE_TO_MARKET), so market_for_location() now returns None and
+    # is_known_market() fails it before open_market_gate() is ever reached.
+    ("indeed", {"job_url": "https://x.test/3", "company": "Some Totally Unrelated Company", "title": "Head of Design", "location": "Berlin"}),  # dropped from tracked-company matching (no slug); ALSO dropped open-market (2026-10-17 — unresolvable location)
     ("li", {"job_url": "https://x.test/4", "company": "Wise", "title": "Software Engineer", "location": "London"}),  # dropped: title not relevant
     ("li", {"job_url": "https://x.test/1", "company": "Wise", "title": "Head of Design (dup)", "location": "London"}),  # dropped: duplicate URL
     # 2026-09-23 — also proves the open-market branch's explicit empty-employer guard: title is
@@ -123,6 +126,15 @@ FRESH_ROLES_CASES = [
     # nearby) — sponsorshipSignal must come back empty, not a false positive.
     ("indeed", {"job_url": "https://x.test/16", "company": "Some Random NL Open Market Co", "title": "Head of Product Design", "location": "Netherlands",
                 "description": "Unfortunately, we are not able to offer visa sponsorship for this role at this time."}),  # kept open-market (relevant/target-tier/NL/not agency); sponsorshipSignal must be [] despite the substring being present
+    # 2026-10-17 — direct regression test for the reported bug: a real India posting (otherwise
+    # perfectly qualifying title/employer) must NOT reach the open-market feed. India has never
+    # been one of the 15 LOCATIONS/CANONICAL_MARKETS entries.
+    ("li", {"job_url": "https://x.test/17", "company": "Some Random Startup Pvt Ltd", "title": "Head of Product Design", "location": "Bengaluru, India"}),  # dropped open-market (2026-10-17): relevant/target-tier/not-agency, but India isn't a searched market
+    # 2026-10-17 — proves the new ISO_CODE_TO_MARKET resolution pass: Indeed's common
+    # "City, StateCode, CountryCode" shape, with no spelled-out country name anywhere, must
+    # still resolve (to Germany here) and be KEPT — this is exactly the shape that a naive
+    # "drop anything market_for_location() can't resolve" fix would have wrongly hidden too.
+    ("indeed", {"job_url": "https://x.test/18", "company": "Some Random Berlin Startup GmbH", "title": "Head of Product Design", "location": "Berlin, BE, DE"}),  # kept open-market: resolves via last-comma-segment ISO code, market=Germany
 ]
 
 # 1.5 — (raw_title, raw_location, expected_title, expected_location), tested
@@ -343,8 +355,21 @@ def run():
     id_om_germany = role_identity(
         normalize_employer_name("Some Random Startup GmbH"), "Head of Product Design", "Germany"
     )
+    # 2026-10-17 — case #3 (bare "Berlin", no country marker) used to be kept here too (see its
+    # dated comment in FRESH_ROLES_CASES above for why that flipped); kept as a named identity
+    # purely so the "must NOT be kept" assertion below has something concrete to check against.
     id_om_berlin_unrelated = role_identity(
         normalize_employer_name("Some Totally Unrelated Company"), "Head of Design", "Berlin"
+    )
+    # 2026-10-17 — case #17: a real India posting, otherwise fully qualifying — must NOT leak
+    # into the open-market feed. Direct regression test for the reported bug.
+    id_om_india = role_identity(
+        normalize_employer_name("Some Random Startup Pvt Ltd"), "Head of Product Design", "Bengaluru, India"
+    )
+    # 2026-10-17 — case #18: Indeed's "City, StateCode, CountryCode" shape with no spelled-out
+    # country name — must resolve via ISO_CODE_TO_MARKET and be kept, market=Germany.
+    id_om_berlin_iso = role_identity(
+        normalize_employer_name("Some Random Berlin Startup GmbH"), "Head of Product Design", "Berlin, BE, DE"
     )
     # 2026-09-28 — case #12 ("Product Designer" @ the same SG startup as #11/#11b) is now its
     # own kept open-market identity: open_market_gate() was loosened to accept "below" tier, not
@@ -360,20 +385,24 @@ def run():
         normalize_employer_name("Robert Walters"), "Head of Product Design", "Netherlands"
     )
     om_checks = [
-        ("kept exactly 7 open-market identities (case #3/Berlin, case #11+#11b merged into 1, "
-         "case #12/below-tier (2026-09-28 — now eligible, see below), case #13/Robert Walters "
-         "(2026-09-28 — agency blocklist no longer consulted, see below), case #14/Germany, "
-         "case #15/UAE, case #16/NL — all newly or already eligible now that open market has no "
-         "location allowlist, the gate accepts target-or-below tier, and the gate no longer "
-         "excludes agencies; #5's NaN-employer row still doesn't qualify)",
+        ("kept exactly 7 open-market identities (case #11+#11b merged into 1, case #12/below-tier, "
+         "case #13/Robert Walters, case #14/Germany, case #15/UAE, case #16/NL, case #18/Berlin-"
+         "via-ISO-code — all eligible now that the gate accepts target-or-below tier and no longer "
+         "excludes agencies, and every one actually resolves to a searched market; #3/bare-Berlin, "
+         "#5's NaN-employer row, and #17/India are the ones that correctly do NOT qualify)",
          len(fresh_open_market) == 7),
-        ("the Berlin/'Some Totally Unrelated Company' role (case #3) is now ALSO kept open-market "
-         "— previously it only ever demonstrated the tracked-company branch dropping it (no slug); "
-         "with no location allowlist left, its real employer + relevant/target title now qualify "
-         "it for the open-market branch too", id_om_berlin_unrelated in fresh_open_market),
-        ("...tagged with market='Berlin' — the raw location fallback, since 'Berlin' alone (no "
-         "country suffix) doesn't substring-match any CANONICAL_MARKETS entry",
-         fresh_open_market.get(id_om_berlin_unrelated, (None, {}))[1].get("market") == "Berlin"),
+        ("case #3 (bare 'Berlin', no country marker) is NOT kept open-market (2026-10-17 — "
+         "flipped back: market_for_location('Berlin') now returns None, so is_known_market() "
+         "fails it before open_market_gate() is ever reached — see its dated FRESH_ROLES_CASES "
+         "comment above)", id_om_berlin_unrelated not in fresh_open_market),
+        ("case #17 (Bengaluru, India) is NOT kept open-market despite an otherwise fully-"
+         "qualifying relevant/target title and real employer — direct proof the reported India "
+         "leak is fixed", id_om_india not in fresh_open_market),
+        ("case #18 (Berlin, BE, DE — Indeed's ISO-code shape) IS kept open-market — direct proof "
+         "ISO_CODE_TO_MARKET's last-comma-segment resolution works, not just the full-country-"
+         "name substring match", id_om_berlin_iso in fresh_open_market),
+        ("...tagged with market=Germany, not a raw/unresolved fallback",
+         fresh_open_market.get(id_om_berlin_iso, (None, {}))[1].get("market") == "Germany"),
         ("the Germany role (case #14) is now kept — 2026-09-23's broadening: no location ever "
          "gated it, only title/employer (open_market_gate())", id_om_germany in fresh_open_market),
         ("...tagged with market=Germany (market_for_location() label, not a gate)",
@@ -438,7 +467,8 @@ def run():
         failures += 0 if ok else 1
         print(f"  {'OK ' if ok else 'FAIL'}  {label}")
 
-    print("-- open-market: market_for_location() (2.1 -> broadened to all LOCATIONS, 2026-09-23) --")
+    print("-- open-market: market_for_location() (2.1 -> broadened to all LOCATIONS, 2026-09-23; "
+          "2026-10-17 -> ISO code + city-alias resolution, returns None when unresolved) --")
     MARKET_FOR_LOCATION_CASES = [
         ("Singapore", "Singapore"),
         ("Amsterdam, North Holland, Netherlands", "Netherlands"),
@@ -456,11 +486,27 @@ def run():
         ("Berlin, Germany", "Germany"),  # a bare-country LOCATIONS entry, well outside the old 3-market allowlist
         ("Sydney, NSW, Australia", "Australia"),
         ("Tokyo, Japan", "Japan"),
-        # Never returns None: a location this file never actually searches for (so real rows
-        # can't arise from it, but the function must still degrade safely) falls back to the raw
-        # location text itself rather than dropping the role or crashing.
-        ("Reykjavik, Iceland", "Reykjavik, Iceland"),
-        ("", "Unspecified"),
+        # 2026-10-17 — ISO_CODE_TO_MARKET's last-comma-segment pass: Indeed's common
+        # "City, StateCode, CountryCode" shape, no spelled-out country name anywhere.
+        ("Berlin, BE, DE", "Germany"),
+        ("London, ENG, GB", "United Kingdom"),
+        ("Stockholm, AB, SE", "Sweden"),
+        ("Outram, S00, SG", "Singapore"),
+        # 2026-10-17 — CITY_ALIASES pass: "Greater X (Metropolitan) Area" shape, no country
+        # marker at all.
+        ("Greater Tokyo Area", "Japan"),
+        ("Greater Kuala Lumpur", "Malaysia"),
+        # 2026-10-17 — the whole reason this gate exists: a real location this file never
+        # searches for now returns None (not a raw-text fallback) so build_fresh_roles() can
+        # drop it — see scrape.py's dated comment above ISO_CODE_TO_MARKET for the full story
+        # (a real India leak is what prompted this).
+        ("Reykjavik, Iceland", None),
+        ("Bengaluru, India", None),
+        ("", None),
+        # 2026-10-17 — deliberately conservative: a real "Berlin, El Salvador" posting surfaced
+        # in the audit that added this gate, which is exactly why "berlin" is not a bare
+        # CITY_ALIASES entry — this must resolve to neither Germany nor anything else.
+        ("Berlin, El Salvador", None),
     ]
     for raw, expected in MARKET_FOR_LOCATION_CASES:
         got = market_for_location(raw)

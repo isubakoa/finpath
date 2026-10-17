@@ -26,11 +26,15 @@ sections:
     postings (Robert Walters, Michael Page, etc.) are INCLUDED as of
     2026-09-28, per explicit request — agencies.py's is_agency() blocklist
     still exists but open_market_gate() no longer calls it; see that
-    function's docstring. No
-    location restriction of its own beyond that — every location this file
-    already searches (all of LOCATIONS, not a narrower subset) is eligible;
-    a `market` field (see market_for_location()) labels which one, purely
-    for display/filtering, never for exclusion. Sorted newest-first. Each role
+    function's docstring. Every location this file already searches (all
+    of LOCATIONS, not a narrower subset) is eligible; a `market` field (see
+    market_for_location()) labels which one. As of 2026-10-17 a posting
+    whose own scraped location can't be resolved to one of those LOCATIONS
+    markets (is_known_market()) is dropped — not a return to a narrower
+    allowlist, just closing the gap that let results actually based
+    somewhere never searched (India, in the case that got reported) ride
+    along unchecked; see the dated comment above market_for_location()'s
+    ISO_CODE_TO_MARKET for the full story. Sorted newest-first. Each role
     in EITHER section carries its own `source` ("li", "indeed", or "bayt")
     plus a `sources` array (Phase 1.4) for cross-site corroboration, so the
     frontend can badge it correctly. LI and Indeed are both queried
@@ -305,7 +309,7 @@ def _merge_role_records(prior, new):
 # ---- case-insensitive substring matching against the posting's own
 # ---- description text — deliberately not fuzzy/NLP, same "exact-match,
 # ---- conservative" philosophy as agencies.py's is_agency() and
-# ---- _open_market_for()'s MARKET_ALIASES: a false "this posting offers
+# ---- market_for_location()'s MARKET_ALIASES: a false "this posting offers
 # ---- sponsorship" claim is a worse failure than an occasional missed one.
 SPONSORSHIP_KEYWORDS = [
     "visa sponsorship",
@@ -474,12 +478,15 @@ ROTATING_LOCATIONS = [loc for loc in LOCATIONS if loc not in PRIORITY_LOCATIONS]
 # ---- (Singapore/Netherlands/UAE) — everywhere else it was dropped even
 # ---- though this file already searches all 25 LOCATIONS for every one of
 # ---- the 38 pre-defined titles (see the module docstring's combo-count
-# ---- note). That allowlist is gone: eligibility is now open_market_gate()
-# ---- alone (relevant + target-or-below-tier fit — agency postings included
-# ---- as of 2026-09-28, see that function's docstring — entirely
-# ---- title/employer-based) — no location check gates entry at all anymore.
-# ---- CANONICAL_MARKETS below is not a gate — it only supplies the `market`
-# ---- label build_fresh_roles() attaches for display/filtering (the Rules &
+# ---- note). That allowlist is gone: eligibility is open_market_gate()
+# ---- (relevant + target-or-below-tier fit — agency postings included as of
+# ---- 2026-09-28, see that function's docstring) PLUS, as of 2026-10-17 (see
+# ---- that date's note on market_for_location()/is_known_market() below), a
+# ---- real check that the posting's own scraped location actually resolves
+# ---- to one of these 15 markets — not a narrow 3-market allowlist like the
+# ---- old gate, but not "anything goes" either.
+# ---- CANONICAL_MARKETS below only supplies the `market` label
+# ---- build_fresh_roles() attaches for display/filtering (the Rules &
 # ---- Sources per-market toggles, the "Open market · <market>" chip),
 # ---- derived by collapsing every LOCATIONS "City, Country" entry (Dubai/Abu
 # ---- Dhabi, Kuala Lumpur) down to its country, deduped in LOCATIONS order.
@@ -504,37 +511,145 @@ MARKET_ALIASES = {
     "United Arab Emirates": ["uae"],
 }
 
+# ---- 2026-10-17 — added after Isu reported genuine India postings showing
+# ---- up in the Open Market feed despite India never being one of the
+# ---- searched LOCATIONS. Root cause: the 2026-09-23 broadening above
+# ---- correctly removed the old narrow 3-market allowlist, but in doing so
+# ---- left NO location check at all — market_for_location() only ever
+# ---- existed as a display label and explicitly never returned None (see
+# ---- its own docstring, now out of date), so a posting whose location
+# ---- can't be resolved to one of our markets was still kept, just labeled
+# ---- with its raw, unresolved location text. LinkedIn/Indeed/Bayt do this
+# ---- more than you'd expect — a search scoped to "Singapore" or "United
+# ---- Kingdom" can still return a posting actually based in India, Pakistan,
+# ---- the US, etc. (global job-board behavior, not a bug in the search call
+# ---- itself) — and with nothing checking the result's own location
+# ---- afterward, every one of those leaked straight into the feed.
+# ----
+# ---- real snapshot data audited this date: 6760 kept open-market roles,
+# ---- 113 of them labeled India/Bengaluru/Mumbai/Chennai/Pune/Gurgaon
+# ---- (genuine leaks), plus smaller leaks from the US, Canada, Pakistan,
+# ---- Saudi Arabia, Qatar, Morocco, Poland, Egypt, Türkiye, Sudan, Spain,
+# ---- Slovenia, and Tunisia — none of those are LOCATIONS entries.
+# ----
+# ---- the fix is NOT a return to the old narrow allowlist (Isu's "keep it
+# ---- open and broad across all markets" call from 2026-09-23 still stands
+# ---- for all 15 LOCATIONS/CANONICAL_MARKETS) — it's making the EXISTING
+# ---- "which of our markets is this" resolution actually capable of
+# ---- recognizing a posting as being in one of them, so unresolved genuinely
+# ---- means "not one of our markets" rather than "we couldn't be bothered to
+# ---- check." market_for_location() alone wasn't reliable enough to gate on
+# ---- as-is: real Indeed rows in particular come back as "City, StateCode,
+# ---- CC" (e.g. "Berlin, BE, DE", "Stockholm, AB, SE", "Dubai, DU, AE") —
+# ---- an ISO-2 country code, never the spelled-out country name — which the
+# ---- old substring-on-full-name check could never match, and LinkedIn
+# ---- sometimes drops the country entirely for a "Greater X Metropolitan
+# ---- Area"/"X Area" phrasing with no code at all. Gating on the old
+# ---- function as-is would have silently hidden hundreds of perfectly real
+# ---- UK/Germany/Sweden/Korea/Singapore/etc. postings along with the actual
+# ---- India leak — a worse regression than the bug being fixed. So
+# ---- market_for_location() itself was extended with two more resolution
+# ---- passes (ISO_CODE_TO_MARKET, checked against the location's own last
+# ---- comma-separated segment; then CITY_ALIASES, a short, evidence-based
+# ---- list built directly from this date's real snapshot's remaining
+# ---- unresolved-but-legitimate rows) before anything gates on its result.
+# ----
+# ---- CITY_ALIASES is deliberately conservative about ambiguous names: a
+# ---- real "Berlin, El Salvador" row surfaced in the same audit (not
+# ---- Germany!), which is exactly why "berlin" is NOT a city alias here —
+# ---- same reasoning kept "cambridge" and "perth" out (Cambridge, MA;
+# ---- Perth, Scotland both real). Where a name is genuinely ambiguous, this
+# ---- deliberately drops the (rare, usually single-occurrence) legitimate
+# ---- posting rather than risk letting an off-market one back in — the
+# ---- failure mode Isu actually flagged was a false positive, not a false
+# ---- negative, so that's the direction this errs in when unsure.
+# ----
+# ---- is_known_market() is the new boolean gate: build_fresh_roles()'s
+# ---- open-market branch now requires it before keeping a row, exactly
+# ---- where open_market_gate() (title/employer) is already checked — see
+# ---- that function's call site below.
+ISO_CODE_TO_MARKET = {
+    "sg": "Singapore", "hk": "Hong Kong", "jp": "Japan", "kr": "South Korea",
+    "nz": "New Zealand", "au": "Australia", "nl": "Netherlands", "it": "Italy",
+    "se": "Sweden", "de": "Germany", "pt": "Portugal", "gb": "United Kingdom",
+    "uk": "United Kingdom", "ie": "Ireland", "my": "Malaysia",
+    "ae": "United Arab Emirates",
+}
+
+# "Greater X Area"/"X Metropolitan Area"-style results carry no country name
+# or code at all. Each of these was confirmed against the 2026-10-17 audit's
+# real (and otherwise-unresolved) data — see the dated note above for why
+# ambiguous names (Berlin, Cambridge, Perth, Rome, London, Manchester — each
+# has a real same-named place outside these 15 markets, or was already
+# covered by ISO_CODE_TO_MARKET for every real row observed) are deliberately
+# left out rather than guessed at.
+CITY_ALIASES = {
+    "amsterdam": "Netherlands", "eindhoven": "Netherlands", "utrecht": "Netherlands",
+    "rotterdam": "Netherlands", "the hague": "Netherlands", "den haag": "Netherlands",
+    "arnhem": "Netherlands", "den bosch": "Netherlands", "s-hertogenbosch": "Netherlands",
+    "hilversum": "Netherlands",
+    "sydney": "Australia", "melbourne": "Australia", "brisbane": "Australia",
+    "tokyo": "Japan",
+    "munich": "Germany", "hamburg": "Germany", "stuttgart": "Germany",
+    "nuremberg": "Germany",
+    "milan": "Italy", "padova": "Italy", "padua": "Italy", "vicenza": "Italy",
+    "seoul": "South Korea", "incheon": "South Korea", "busan": "South Korea",
+    "kuala lumpur": "Malaysia",
+    "lisbon": "Portugal", "porto": "Portugal",
+    "stockholm": "Sweden", "vasteras": "Sweden", "västerås": "Sweden",
+    "goteborg": "Sweden", "göteborg": "Sweden", "gothenburg": "Sweden",
+    "malmo": "Sweden", "malmö": "Sweden",
+    "dublin": "Ireland", "cork": "Ireland",
+    "auckland": "New Zealand", "wellington": "New Zealand", "christchurch": "New Zealand",
+    "blackpool": "United Kingdom",
+    "dubai": "United Arab Emirates",
+}
+
 
 def market_for_location(location):
     """Best-effort canonical market label for a raw scraped location string —
-    used only for display/filtering (the Rules & Sources per-market toggles,
-    the "Open market · <market>" chip), never to decide whether a posting
-    qualifies for the open-market feed (that's open_market_gate() alone,
-    title/employer-based — see the 2026-09-23 broadening note above). Same
-    substring-match approach the original 3-market version had, generalized
-    to all 24 CANONICAL_MARKETS: not exact equality, since a real result's
-    location is almost always more specific than the bare country name used
-    to search for it (e.g. "Amsterdam, North Holland, Netherlands", not
-    literally "Netherlands"). MARKET_ALIASES checked as extra substrings.
-    Also recognizes a bare two-letter country code ("SG"/"NL"/"AE") some
-    sources return instead of a full location string, checked by exact (not
-    substring) match since codes are too short to substring-match safely.
-    Unlike the old gate version, this never returns None: a location that
-    doesn't match anything in CANONICAL_MARKETS still gets labeled — with
-    the raw (trimmed) location string itself — rather than the role being
-    dropped or mislabeled, since this is purely a display label now."""
+    used for display/filtering (the Rules & Sources per-market toggles, the
+    "Open market · <market>" chip) AND, as of 2026-10-17, as the thing
+    is_known_market() checks before a posting is allowed into the open-market
+    feed at all — see the dated comment above ISO_CODE_TO_MARKET for why a
+    location this can't resolve is no longer assumed to be fine. Three
+    resolution passes, in order: (1) the original substring-match against
+    each CANONICAL_MARKETS name (+ MARKET_ALIASES) — e.g. "Amsterdam, North
+    Holland, Netherlands" contains "netherlands" outright; (2) ISO_CODE_TO_MARKET,
+    checked both as an exact match (a source that returns a bare "SG"/"NL"/"AE"
+    instead of a full location string) and against the location's own last
+    comma-separated segment (the common "City, StateCode, CC" shape real
+    Indeed rows use, e.g. "Berlin, BE, DE"); (3) CITY_ALIASES, for the
+    "Greater X Area" shape that carries no country marker at all. Returns
+    None when none of the three resolve anything — that's the new "not one
+    of our markets" signal; see is_known_market()."""
     loc = (location or "").strip()
     if not loc:
-        return "Unspecified"
+        return None
     loc_lower = loc.lower()
-    country_codes = {"sg": "Singapore", "nl": "Netherlands", "ae": "United Arab Emirates"}
-    if loc_lower in country_codes:
-        return country_codes[loc_lower]
+    if loc_lower in ISO_CODE_TO_MARKET:
+        return ISO_CODE_TO_MARKET[loc_lower]
     for market in CANONICAL_MARKETS:
         needles = [market.lower()] + MARKET_ALIASES.get(market, [])
         if any(needle in loc_lower for needle in needles):
             return market
-    return loc
+    parts = [p.strip().lower() for p in loc.split(",") if p.strip()]
+    if parts and parts[-1] in ISO_CODE_TO_MARKET:
+        return ISO_CODE_TO_MARKET[parts[-1]]
+    for city, market in CITY_ALIASES.items():
+        if city in loc_lower:
+            return market
+    return None
+
+
+def is_known_market(location):
+    """True when market_for_location(location) resolves to one of our 15
+    searched markets — the open-market feed's location gate (2026-10-17, see
+    the dated comment above ISO_CODE_TO_MARKET for why this exists and how
+    it's deliberately NOT the old narrow 3-market allowlist). Kept as its own
+    named function, rather than inlining `market_for_location(...) is not
+    None` at the one call site, so the gate's intent reads clearly there."""
+    return market_for_location(location) is not None
 
 
 # Every LOCATIONS entry mapped to the exact country_indeed string JobSpy's
@@ -1035,15 +1150,20 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
     matched NO tracked company but clears open_market_gate() (relevant +
     real target-or-below-tier fit — see that function's own docstring for
     the 2026-09-28 loosening from target-only, and for the same-day removal
-    of its agency-blocklist check) — no location check gates
-    entry at all anymore, since this file already searches every LOCATIONS
-    entry for every pre-defined title regardless. `market_for_location()`
-    still labels which market a kept role is in, purely for display/
-    filtering (never to decide inclusion). Keyed the same way as `fresh` but
+    of its agency-blocklist check) AND is_known_market() (2026-10-17 — the
+    posting's own scraped location actually resolves to one of our 15
+    searched markets; see the dated comment above market_for_location()'s
+    ISO_CODE_TO_MARKET for why this exists — it is not the old narrow
+    3-market allowlist, every LOCATIONS entry is still fair game, this just
+    stops a result that's actually based somewhere we never searched, e.g.
+    India, from riding in alongside the ones that are). `market_for_location()`
+    labels which market a kept role is in for display/filtering, same
+    function the gate itself now uses. Keyed the same way as `fresh` but
     with `key` being normalize_employer_name(employer) instead of a slug
     (there's no slug — that's the whole point of "open market"). Every other
-    unmatched posting — failing open_market_gate() on title/employer — is
-    still just dropped, exactly as before.
+    unmatched posting — failing open_market_gate() on title/employer, or
+    is_known_market() on location — is still just dropped, exactly as
+    before.
 
     A URL is still required and still deduped on its own first (`duplicate`
     below) — that's a much cheaper, unambiguous check (the literal same URL
@@ -1054,6 +1174,7 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
     seen_urls = set()
     kept = dropped_company = dropped_title = duplicate = merged_cross_site = 0
     kept_open_market = dropped_open_market_strict = merged_cross_site_open_market = 0
+    dropped_off_market = 0  # 2026-10-17 — location doesn't resolve to one of our 15 markets
 
     for source, row in rows:
         url = _clean_str(row.get("job_url"))
@@ -1078,16 +1199,28 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
             if debug:
                 print(f"[match] no company match: {employer!r} — {row.get('title')!r}", file=sys.stderr)
             # 2.2 (broadened 2026-09-23): not a tracked company — still worth
-            # a second look for the open-market feed, gated purely on title/
-            # employer now (open_market_gate()) — no location restriction.
+            # a second look for the open-market feed, gated on title/employer
+            # (open_market_gate()) and, as of 2026-10-17, on location actually
+            # resolving to one of our 15 markets (is_known_market() — see the
+            # dated comment above market_for_location()'s ISO_CODE_TO_MARKET
+            # for why this was added back: not the old narrow 3-market
+            # allowlist, every LOCATIONS entry still qualifies, this just
+            # catches a result that's actually based somewhere we never
+            # searched, e.g. India, before it reaches the title/employer gate.
             # An empty employer (e.g. a NaN "company" field — see _clean_str()'s
             # docstring) can never qualify: an "open market" posting with no
             # employer name to show is useless in the UI, not just noise.
             # Previously this was accidentally caught by the location
             # allowlist (an empty-employer row's location was essentially
             # never one of the 3 old markets) rather than by an explicit
-            # check — now that there's no location allowlist to lean on,
-            # this guards it directly instead of relying on that coincidence.
+            # check — is_known_market() isn't a reliable stand-in for that
+            # coincidence either (an empty-employer row can still have a
+            # perfectly real market), so this still guards it directly.
+            if not is_known_market(location):
+                dropped_off_market += 1
+                if debug:
+                    print(f"[open-market] off-market location: {title!r} @ {employer!r} ({location!r})", file=sys.stderr)
+                continue
             market = market_for_location(location)
             if employer and open_market_gate(title, employer):
                 kept_open_market_this_row = True
@@ -1158,6 +1291,7 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
         )
         print(
             f"[open-market] kept={kept_open_market} dropped_strict_gate={dropped_open_market_strict} "
+            f"dropped_off_market={dropped_off_market} "
             f"merged_cross_site_identities={merged_cross_site_open_market} "
             f"(of the {dropped_company} with no company match)",
             file=sys.stderr,
