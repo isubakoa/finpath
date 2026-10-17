@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T17:23:54.028Z",
+  "generatedAt": "2026-10-17T19:35:35.836Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -283,14 +283,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -478,12 +478,6 @@
           "postedDate": null
         },
         {
-          "title": "Master Thesis: Design and Optimization of a Dynamic Reduced-Order Model for Performance - Radio Unit",
-          "url": "https://jobs.ericsson.com/careers/job/563121777237868?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "AI Motion Design Specialist",
           "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
           "location": "",
@@ -492,6 +486,12 @@
         {
           "title": "New Grad-Board Power Design-BJ",
           "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio Unit Design Lead",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -519,12 +519,6 @@
           "postedDate": null
         },
         {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Secure by Design Manager",
           "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
@@ -539,6 +533,12 @@
         {
           "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
           "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
