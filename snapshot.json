@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T05:18:58.072Z",
+  "generatedAt": "2026-10-19T11:01:18.210Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -278,26 +278,7 @@
     },
     "natwest-group": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324786-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324785-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324784-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
@@ -320,14 +301,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -515,14 +496,14 @@
           "postedDate": null
         },
         {
-          "title": "Mechanical Design Engineer II",
-          "url": "https://jobs.ericsson.com/careers/job/563121776961372?domain=ericsson.com",
+          "title": "New Grad-Board Power Design-BJ",
+          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Staff Compiler Design Engineer",
-          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
+          "title": "Manager of System Design Team 1",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -533,14 +514,8 @@
           "postedDate": null
         },
         {
-          "title": "New Grad-Board Power Design-BJ",
-          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Manager of System Design Team 1",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
+          "title": "Staff Compiler Design Engineer",
+          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -568,14 +543,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -586,14 +555,20 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
+          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
+          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Praktikant Frontend-Entwicklung & UX Design für Netzwerkanalyse-Plattform (m/w/d) in Stuttgart",
-          "url": "https://jobs.vodafone.com/careers/job/563018697793057?domain=vodafone.com",
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -604,44 +579,20 @@
           "postedDate": null
         },
         {
+          "title": "VodafoneThree - Privacy by Design Lead",
+          "url": "https://jobs.vodafone.com/careers/job/563018698160920?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Secure by Design Solution Expert - VOIS",
           "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
-          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697137384?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "VodafoneThree - Privacy by Design Lead",
-          "url": "https://jobs.vodafone.com/careers/job/563018698160920?domain=vodafone.com",
+          "title": "GTM Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
