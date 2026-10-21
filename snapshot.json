@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T00:57:37.470Z",
+  "generatedAt": "2026-10-21T05:29:10.189Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -272,7 +272,32 @@
     },
     "natwest-group": {
       "ok": true,
-      "roles": []
+      "roles": [
+        {
+          "title": "Product Designer",
+          "url": "https://jobs.natwestgroup.com/jobs/18215536-product-designer",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Industry Product Owner, Financial Health & Vulnerability",
+          "url": "https://jobs.natwestgroup.com/jobs/18324786-industry-product-owner-financial-health-and-vulnerability",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Industry Product Owner, Financial Health & Vulnerability",
+          "url": "https://jobs.natwestgroup.com/jobs/18324785-industry-product-owner-financial-health-and-vulnerability",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Industry Product Owner, Financial Health & Vulnerability",
+          "url": "https://jobs.natwestgroup.com/jobs/18324784-industry-product-owner-financial-health-and-vulnerability",
+          "location": "",
+          "postedDate": null
+        }
+      ]
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
@@ -453,12 +478,6 @@
           "postedDate": null
         },
         {
-          "title": "Intern, Automotive Design - Spring 2027",
-          "url": "https://jobs.bmwgroup.com/job/Intern%2C-Automotive-Design-Spring-2027/192989-en_US",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Intern Distributed Design Optimization (f/m/x)",
           "url": "https://jobs.bmwgroup.com/job/Intern-Distributed-Design-Optimization-%28fmx%29/197274-en_US",
           "location": "",
@@ -496,14 +515,26 @@
           "postedDate": null
         },
         {
-          "title": "Radio HW Design Power Amplifier",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
+          "title": "Staff Compiler Design Engineer",
+          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Radio HW Digital Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
+          "title": "Master Thesis: Design and Optimization of a Dynamic Reduced-Order Model for Performance - Radio Unit",
+          "url": "https://jobs.ericsson.com/careers/job/563121777237868?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio Unit Design Lead",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio Frequency design and support",
+          "url": "https://jobs.ericsson.com/careers/job/563121777418239?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -514,20 +545,8 @@
           "postedDate": null
         },
         {
-          "title": "Network Design Optimization Internship",
-          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Radio HW TRX Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121776114486?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "AI Motion Design Specialist",
-          "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
+          "title": "New Grad-Board Power Design-BJ",
+          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -538,8 +557,20 @@
           "postedDate": null
         },
         {
+          "title": "Radio HW TRX Design",
+          "url": "https://jobs.ericsson.com/careers/job/563121776114486?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Lead Product Manager",
           "url": "https://jobs.ericsson.com/careers/job/563121776262183?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio HW Design Power Amplifier",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
           "location": "",
           "postedDate": null
         }
@@ -549,26 +580,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Data Centers Design & Implementation Expert",
           "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "VodafoneThree - Cyber Security Senior Consultant - Secure by Design",
-          "url": "https://jobs.vodafone.com/careers/job/563018698264820?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -579,14 +598,14 @@
           "postedDate": null
         },
         {
-          "title": "VodafoneThree - Privacy by Design Lead",
-          "url": "https://jobs.vodafone.com/careers/job/563018698160920?domain=vodafone.com",
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
+          "title": "VodafoneThree - Cyber Security Senior Consultant - Secure by Design",
+          "url": "https://jobs.vodafone.com/careers/job/563018698264820?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -597,14 +616,20 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
+          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137384?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
