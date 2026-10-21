@@ -6,6 +6,24 @@ full story). Glassdoor and Google were both evaluated and retired outright,
 neither replaced — see *** GLASSDOOR: RETIRED *** and *** GOOGLE: RETIRED
 *** below.
 
+2026-10-20 — two more sources added, both Netherlands-specific job boards
+Isu asked to be evaluated and wired in: welcome_to_nl.py (welcome-to-nl.nl,
+via its own Elastic App Search backend — a broad general-purpose Dutch
+portal, title-filtered like every other source) and uxwork.py (uxwork.nl,
+via its own plain JSON search endpoint — already a dedicated UX/product
+board, so no title filtering needed on top of what it already is). Neither
+needs Playwright — both are plain requests/JSON, like every source here
+except Bayt. See each module's own docstring for the full story (how their
+backends were found, what's confirmed vs. still-unverified, and why
+uxwork.py — unlike every other source — takes no `terms` argument). A
+third site Isu also asked about, englishjobsearch.nl, was evaluated and
+deliberately NOT added: it's a white-labeled Talent.com instance (real
+overlap with the LI/Indeed coverage this file already has) whose own job
+links are tracking-token redirects rather than stable URLs — too close to
+the exact URL-identity bug class (id-vs-url, the sync blind-replace) the
+php-ftp frontend has already been bitten by twice. Worth revisiting if the
+other two prove out and Isu wants the extra coverage anyway.
+
 Runs keyword searches against three of JobSpy's eight supported sites (your
 trimmed Product + Design/UX title list, across your target-region list — see
 SEARCH_TERMS/LOCATIONS below). Writes li-snapshot.json with two top-level
@@ -258,7 +276,11 @@ from match import (
 # ---- forward-compat with index.html's own directly-fetched roles, which
 # ---- use the same precedence concept — this scraper itself never produces
 # ---- an "ats"-sourced row today.
-SOURCE_PRECEDENCE = {"ats": 0, "li": 1, "indeed": 2, "glassdoor": 3, "google": 4, "bayt": 5}
+# ---- 2026-10-20 — welcometonl/uxwork added, ranked below bayt: both are
+# ---- lower-traffic/narrower NL-only sources, so an existing LI/Indeed/Bayt
+# ---- row for the same identity should keep supplying the canonical url
+# ---- rather than have a newly-added source silently take over.
+SOURCE_PRECEDENCE = {"ats": 0, "li": 1, "indeed": 2, "glassdoor": 3, "google": 4, "bayt": 5, "welcometonl": 6, "uxwork": 7}
 
 
 def _source_rank(source):
@@ -1106,6 +1128,31 @@ def run_bayt_playwright_searches(debug=False):
     yield from scrape_bayt(SEARCH_TERMS, debug=debug)
 
 
+def run_welcome_to_nl_searches(debug=False):
+    """Yields (source, row) for every SEARCH_TERMS entry against
+    welcome-to-nl.nl's own Elastic App Search backend — thin wrapper
+    around welcome_to_nl.scrape_welcome_to_nl(), same lazy-import-inside-
+    the-function reasoning as run_bayt_playwright_searches() above (so
+    match.py/test_match.py stay importable without the `requests` package
+    installed, same as they already don't need `playwright` installed).
+    2026-10-20, see this module's own docstring for the full story."""
+    from welcome_to_nl import scrape_welcome_to_nl
+
+    yield from scrape_welcome_to_nl(SEARCH_TERMS, debug=debug)
+
+
+def run_uxwork_searches(debug=False):
+    """Yields (source, row) from uxwork.nl's own plain JSON search
+    endpoint — thin wrapper around uxwork.scrape_uxwork(). Unlike every
+    other run_*_searches() function here, this one takes no `terms`/combos
+    at all: uxwork.nl is already a dedicated UX/product-design board, one
+    call already covers every discipline — see uxwork.py's own module
+    docstring for why. 2026-10-20."""
+    from uxwork import scrape_uxwork
+
+    yield from scrape_uxwork(debug=debug)
+
+
 def normalize_posted_date(value):
     """JobSpy's date_posted comes back as a pandas Timestamp/date/NaT/None
     depending on what LI gave it — collapse all of that to either an
@@ -1467,8 +1514,11 @@ def main():
     # 2 JobSpy requests/combo now (li + indeed only — google and glassdoor
     # both retired outright, see the module docstring) + a flat 38 Bayt page
     # loads via Playwright, not a JobSpy request — see
-    # run_bayt_playwright_searches().
-    max_requests_this_run = len(combos_this_run) * 2 + len(SEARCH_TERMS)
+    # run_bayt_playwright_searches() — + up to 38*MAX_PAGES_PER_TERM
+    # welcome-to-nl.nl requests (see welcome_to_nl.py) + 1 uxwork.nl request
+    # (see uxwork.py — one call covers every term, not per-term like
+    # everything else here).
+    max_requests_this_run = len(combos_this_run) * 2 + len(SEARCH_TERMS) + len(SEARCH_TERMS) * 2 + 1
     print(
         f"[scrape] rotating pool: {len(rotating)} combos ({len(SEARCH_TERMS)} terms x "
         f"{len(ROTATING_LOCATIONS)} rotating locations), {COMBOS_PER_RUN}/run -> {total_chunks} "
@@ -1481,18 +1531,21 @@ def main():
     print(f"[scrape] this run: rotating chunk {chunk_index + 1}/{total_chunks} ({len(this_chunk)} combos)"
           + (f" + priority sweep ({len(priority)} combos)" if include_priority else " (priority sweep not due this run)")
           + f" = {len(combos_this_run)} combos x li+indeed (JobSpy) "
-          f"+ {len(SEARCH_TERMS)} bayt page loads (Playwright) = up to {max_requests_this_run} requests; "
-          f"google and glassdoor both retired, neither searched at all")
+          f"+ {len(SEARCH_TERMS)} bayt page loads (Playwright) "
+          f"+ up to {len(SEARCH_TERMS) * 2} welcome-to-nl.nl requests + 1 uxwork.nl request "
+          f"= up to {max_requests_this_run} requests; google and glassdoor both retired, neither searched at all")
 
     index = build_index(COMPANIES, ALIASES)
     rows = (
         list(run_searches(combos_this_run, debug=debug))
         + list(run_bayt_playwright_searches(debug=debug))
+        + list(run_welcome_to_nl_searches(debug=debug))
+        + list(run_uxwork_searches(debug=debug))
     )
     counts = {}
     for source, _ in rows:
         counts[source] = counts.get(source, 0) + 1
-    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "bayt"))
+    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "bayt", "welcometonl", "uxwork"))
     print(f"[scrape] {len(rows)} raw results this run ({counts_str})")
 
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
