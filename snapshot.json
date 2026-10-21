@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T22:32:17.913Z",
+  "generatedAt": "2026-10-21T00:57:37.470Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -112,6 +112,12 @@
         {
           "title": "Product Management Intern, 2027 Summer U.S.",
           "url": "https://www.atlassian.com/company/careers/details/26274",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Marketing Manager - Teamwork Graph Adoption",
+          "url": "https://www.atlassian.com/company/careers/details/27558",
           "location": "",
           "postedDate": null
         },
@@ -266,32 +272,7 @@
     },
     "natwest-group": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Product Designer",
-          "url": "https://jobs.natwestgroup.com/jobs/18215536-product-designer",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324786-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324785-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324784-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
@@ -533,12 +514,6 @@
           "postedDate": null
         },
         {
-          "title": "New Grad-Board Power Design-BJ",
-          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Network Design Optimization Internship",
           "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
           "location": "",
@@ -547,6 +522,12 @@
         {
           "title": "Radio HW TRX Design",
           "url": "https://jobs.ericsson.com/careers/job/563121776114486?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "AI Motion Design Specialist",
+          "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
