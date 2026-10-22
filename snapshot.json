@@ -1,9 +1,15 @@
 {
-  "generatedAt": "2026-10-22T01:05:26.301Z",
+  "generatedAt": "2026-10-22T06:07:49.456Z",
   "companies": {
     "adyen": {
       "ok": true,
       "roles": [
+        {
+          "title": "Group Product Manager, APAC [Head of Products, APAC]",
+          "url": "https://careers.adyen.com/vacancies/8185942-group-product-manager-apac-head-of-products-apac?locale=en",
+          "location": "",
+          "postedDate": null
+        },
         {
           "title": "Group Product Manager, Credit and Data Platform",
           "url": "https://careers.adyen.com/vacancies/6630580-group-product-manager-credit-and-data-platform?locale=en",
@@ -19,12 +25,6 @@
         {
           "title": "Principal Product Manager, AI-Native Merchant Experiences",
           "url": "https://careers.adyen.com/vacancies/8161148-principal-product-manager-ai-native-merchant-experiences?locale=en",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Product Manager - Interface Foundations",
-          "url": "https://careers.adyen.com/vacancies/8244728-product-manager-interface-foundations?locale=en",
           "location": "",
           "postedDate": null
         },
@@ -295,14 +295,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -434,6 +434,12 @@
           "url": "https://jobs.standardchartered.com/job/Manager%2C-Design-Studio/62324-en_GB",
           "location": "",
           "postedDate": null
+        },
+        {
+          "title": "Product Owner, Digital Acquisition",
+          "url": "https://jobs.standardchartered.com/job/Product-Owner%2C-Digital-Acquisition/58307-en_GB",
+          "location": "",
+          "postedDate": null
         }
       ]
     },
@@ -478,6 +484,42 @@
       "ok": true,
       "roles": [
         {
+          "title": "Staff Compiler Design Engineer",
+          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio Frequency design and support",
+          "url": "https://jobs.ericsson.com/careers/job/563121777418239?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio Unit Design Lead",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Network Design Optimization Internship",
+          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Master Thesis: Design and Optimization of a Dynamic Reduced-Order Model for Performance - Radio Unit",
+          "url": "https://jobs.ericsson.com/careers/job/563121777237868?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "AI Motion Design Specialist",
+          "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Radio HW TRX Design",
           "url": "https://jobs.ericsson.com/careers/job/563121776114486?domain=ericsson.com",
           "location": "",
@@ -494,30 +536,6 @@
           "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
           "location": "",
           "postedDate": null
-        },
-        {
-          "title": "Manager of System Design Team 1",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "AI Motion Design Specialist",
-          "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Sub-System Design Engineer",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152248?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Master Thesis: Design and Optimization of a Dynamic Reduced-Order Model for Performance - Radio Unit",
-          "url": "https://jobs.ericsson.com/careers/job/563121777237868?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
         }
       ]
     },
@@ -531,20 +549,8 @@
           "postedDate": null
         },
         {
-          "title": "VodafoneThree - Cyber Security Senior Consultant - Secure by Design",
-          "url": "https://jobs.vodafone.com/careers/job/563018698264820?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Cloud Solution Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -555,14 +561,14 @@
           "postedDate": null
         },
         {
-          "title": "GTM Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
+          "title": "VodafoneThree - Cyber Security Senior Consultant - Secure by Design",
+          "url": "https://jobs.vodafone.com/careers/job/563018698264820?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -581,6 +587,12 @@
         {
           "title": "VodafoneThree - Senior Design Engineer Telco Application",
           "url": "https://jobs.vodafone.com/careers/job/563018698185616?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "FS Architecture & Design, Assoc. Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018697741021?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
