@@ -396,6 +396,190 @@ const COMPANIES = [
     waitForSelector: 'a[href*="/profile/job_details/"]',
     titleSelector: "h3",
   },
+  {
+    slug: "citibank",
+    // jobs.citi.com's own search page ("powered by Eightfold" is mentioned
+    // only for its separate "Match Me" resume-matching feature, which is a
+    // red herring) turned out to be a Phenom-People-style front end in its
+    // own right, but digging into its actual API calls (via real browser
+    // network inspection, 2026-10-22) found the true underlying board is a
+    // SEPARATE Eightfold tenant at citi.eightfold.ai — same platform as
+    // NAB/BNZ/Netflix/Ericsson/Vodafone above, confirmed by the identical
+    // /careers/job/<id> link shape and title-<hash> class naming. Citi's
+    // tenant blocks the generic /api/apply/v2/jobs endpoint those others
+    // use (403 "Not authorized for PCSX" — it uses a differently-named
+    // /api/pcsx/search endpoint instead, also public/unauthenticated but a
+    // different shape check.php's existing "eightfold" adapter doesn't
+    // speak), so this scrapes the rendered page directly rather than
+    // needing a new check.php adapter variant. 20 real per-role links
+    // confirmed live, titles genuinely design-relevant (e.g. "UX Product
+    // Design Lead", "UX and Human Factors Design") — a raw "design"
+    // keyword still pulls in some noise (e.g. "Design System Developer –
+    // Angular", a dev role) same as every other broad-keyword company here;
+    // isRoleRelevant() above is what keeps that in check.
+    urls: ["https://citi.eightfold.ai/careers?query=design&domain=citi.com&sort_by=relevance"],
+    linkPattern: /\/careers\/job\/\d+/,
+    waitForSelector: 'a[href*="/careers/job/"]',
+    titleSelector: '[class^="title-"]',
+  },
+  {
+    slug: "heineken",
+    // careers.theheinekencompany.com is a Drupal site (confirmed via its
+    // "Views Exposed Filter" form markup) covering every HEINEKEN-owned
+    // brewery/brand worldwide — 735 total open roles company-wide. Its
+    // visible keyword search box posts to a different endpoint than the
+    // page actually reads on load (?keywords=/?q= in the URL are both
+    // silently ignored — confirmed: identical 735-job unfiltered count
+    // either way), but the "Job Functions" facet filter genuinely works
+    // as a plain GET param: job_functions[]=211 is "Digital & Technology"
+    // (found via the real <option value="211"> in its own markup) and
+    // correctly narrows to 30 jobs. Only the first 10 of those 30 render
+    // without further pagination (a known, accepted gap elsewhere in this
+    // project, e.g. ABN AMRO) — none of the visible 10 are Design/UX
+    // (Technology Specialist, Agile PM, Data & Analytics Manager, Technical
+    // Product Owner, Solution Engineer, etc.), though this is a partial
+    // check, not a confirmed-complete zero like TomTom/KPMG. Title is the
+    // link's own direct text, no titleSelector needed; a second, empty-text
+    // anchor per job card is automatically dropped by this scraper's own
+    // minimum-title-length filter.
+    urls: ["https://careers.theheinekencompany.com/job-listing?job_functions%5B%5D=211"],
+    linkPattern: /\/job\/[^/]+\/[^/]+\/[^/]+$/i,
+    waitForSelector: 'a[href*="/job/"]',
+  },
+  {
+    slug: "unilever",
+    // careers.unilever.com runs on Oracle Taleo (confirmed via its
+    // /en/job/<city>/<slug>/<orgId>/<jobId> URL shape, the classic Taleo
+    // Career Section pattern) — a platform this project has already
+    // deliberately decided not to build a direct check.php adapter for
+    // (see the Spark NZ entry's own note re: "deliberately-unsupported
+    // SuccessFactors/Taleo/iCIMS"), so this is scraped instead. Its own
+    // keyword filter genuinely works server-side (confirmed: a nonsense
+    // query returns 0 results, "UX designer"/"product designer" both
+    // return 0, "design" alone returns 55 — real matches, just almost
+    // entirely packaging/process-engineering roles that happen to mention
+    // "design" in a non-UX sense). A confirmed, complete zero for real
+    // Design/UX/Product-design hiring right now. The raw HTML already
+    // contains the full job list with no client JS needed, but each
+    // card's title sits in its own <h2 class="global-job-list__title">
+    // alongside a location <span> inside the same link, so titleSelector
+    // is used rather than check.php's plain "html" adapter (whose exact
+    // text-extraction behavior for a nested title wasn't confirmed).
+    urls: ["https://careers.unilever.com/en/search-jobs/design"],
+    linkPattern: /\/en\/job\/[^/]+\/[^/]+\/\d+\/\d+$/i,
+    waitForSelector: 'a[href*="/en/job/"]',
+    titleSelector: "h2.global-job-list__title",
+  },
+  {
+    slug: "transavia",
+    // werkenbijtransavia.com (not transavia.recruitee.com, which redirects
+    // here) is a white-labeled Recruitee board on a custom domain —
+    // confirmed via its own CDN asset host (careers.recruiteecdn.com).
+    // Recruitee isn't one of check.php's direct adapter types, so this is
+    // scraped rather than wired in directly. All 12 of Transavia's current
+    // openings read directly off the page, 2026-10-22: Cockpit/Technische
+    // Dienst/Kantoor roles only (pilots, legal, platform engineer, safety
+    // engineer, domain architect, aircraft mechanics) — a confirmed,
+    // complete zero for Design/UX/Product, consistent with this being a
+    // 3,000-person airline rather than a design-led tech company. Each job
+    // card renders several <a href="/o/<slug>"> elements (one with the real
+    // title text, others just "Bekijk vacature" or a bare "nl"/"en" locale
+    // switch), but the title-bearing one is always first in document order
+    // and this scraper keeps the first match per URL, so no titleSelector
+    // is needed — the locale-switch variants carry a query string, so the
+    // linkPattern is end-anchored to exclude them rather than scraping
+    // three near-duplicate entries per role.
+    urls: ["https://werkenbijtransavia.com/vacatures"],
+    linkPattern: /\/o\/[a-z0-9-]+$/i,
+    waitForSelector: 'a[href^="/o/"]',
+  },
+  {
+    slug: "vanderlande",
+    // careers.vanderlande.com is a WordPress site with a custom "careers"
+    // REST API plugin behind it (/wp-json/careers/v1/vacancy/...), but that
+    // JSON endpoint turned out unreachable via a plain `fetch()` from this
+    // page's own context (returned undefined rather than throwing or
+    // responding — not pursued further; the rendered page works fine and
+    // needed no extra investigation once this stopped working). Its own
+    // ?vacancy_keyword= filter DOES work server-side (unlike ABN AMRO/KPMG
+    // above) — confirmed live: "Junior UI/UX Designer Intern" (Dubai)
+    // surfaced on a "design" search, 2026-10-22. Job cards share the same
+    // <a class="new-project"> wrapper as this site's unrelated "life at
+    // Vanderlande" blog-post cards, so linkPattern is anchored to
+    // "/all-jobs/" specifically to avoid scraping blog posts; title lives
+    // in the card's own <h3>.
+    urls: ["https://careers.vanderlande.com/all-jobs/?vacancy_keyword=design"],
+    linkPattern: /\/all-jobs\/[a-z0-9-]+\/?$/i,
+    waitForSelector: "a.new-project",
+    titleSelector: "h3",
+  },
+  {
+    slug: "tomtom",
+    // tomtom.com/careers/joboverview/ runs on TomTom's own first-party
+    // careers API (www.tomtom.com/api/careers/jobs — a genuine public,
+    // unauthenticated JSON endpoint, confirmed 2026-10-22), not any
+    // third-party ATS, so there's no check.php adapter type for it. Read
+    // that API directly to check EVERY one of the company's current
+    // openings by title: a confirmed, complete zero — all 17 are
+    // Engineering/IT/Sales/HR, nothing Design/UX/Product-design (one
+    // "Program Manager - Delivery" sits in the API's own "Product"
+    // category but isn't a design role). Wired into js-scraper against the
+    // rendered page (not the JSON API, which this scraper's generic
+    // href-extraction can't consume directly) for ongoing live monitoring.
+    // Each card's title lives in its own <p class="headline3"> inside the
+    // link, alongside team/location text that would otherwise get mashed
+    // into one string.
+    urls: ["https://www.tomtom.com/careers/joboverview/"],
+    linkPattern: /\/careers\/jobdetails\/[a-f0-9-]+\/[a-z0-9-]+\/?$/i,
+    waitForSelector: 'a[href*="/careers/jobdetails/"]',
+    titleSelector: "p.headline3",
+  },
+  {
+    slug: "kpmg",
+    // kpmg.com/xx/en/home/careers.html (the global entry point) redirects
+    // by country — followed it to the Netherlands one specifically
+    // (kpmg.com/nl/en/home/careers.html -> werkenbijkpmg.nl), consistent
+    // with this project's own Dutch-market focus and with how
+    // companies.py's own alias comment already calls out "KPMG Nederland"
+    // by name. The site's own ?s= keyword param is silently ignored
+    // (confirmed: identical 185-count results regardless of query), same
+    // failure mode as ABN AMRO above, BUT this one has a genuine escape
+    // hatch: a full, public, unauthenticated JSON dump of literally every
+    // vacancy lives at /_lunr/vacancies (the backing data for the page's
+    // own Lunr/ItemsJS client-side search widget) — read directly
+    // (2026-10-22) to check EVERY one of KPMG NL's 185 live roles by title,
+    // not just the ~20 that render on page 1: only two even contain the
+    // word "design", and both are "Organizational/Digital Organization
+    // Design" management-consulting roles, not product/UX design. So this
+    // is a confirmed, complete, genuine-zero finding for product/UX/design
+    // coverage, not the usual "page-1-only, hope the rest doesn't matter"
+    // gap — still wired up against the ordinary rendered /vacatures page
+    // (not the JSON dump, which this scraper's generic href-extraction
+    // can't consume directly) so any new design-relevant posting still
+    // gets caught live going forward. Each card's title is in its own
+    // <h3> inside the link, same markup Bunq's Framer board happens to
+    // share.
+    urls: ["https://www.werkenbijkpmg.nl/vacatures"],
+    linkPattern: /\/vacature\/[a-z0-9-]+$/i,
+    waitForSelector: 'a[href^="/vacature/"]',
+    titleSelector: "h3",
+  },
+  {
+    slug: "bunq",
+    // careers.bunq.com/positions is a Framer-built site (not a third-party
+    // ATS at all) — but, unlike most Framer/React sites in this project,
+    // its full job list (20 real roles, confirmed 2026-10-22) is already
+    // present in the raw server HTML on a cold, credential-less fetch, no
+    // client JS needed to render it. Each job card is one big <a> wrapping
+    // an <article> that contains the real title in its own
+    // <h3 data-framer-name="Title">, with other card text (department
+    // badge, etc.) alongside it, so titleSelector picks the h3 specifically
+    // rather than grabbing the whole card's mashed-together text.
+    urls: ["https://careers.bunq.com/positions"],
+    linkPattern: /\/positions\/[a-z0-9-]+$/i,
+    waitForSelector: 'a[href*="/positions/"]',
+    titleSelector: 'h3[data-framer-name="Title"]',
+  },
   // Still need a confirmed pattern (see README "Companies not yet wired up"):
   // wefox — its main careers page (careers.wefox.com) is currently broken/
   // unreachable and its company-wide board on join.com shows zero open
