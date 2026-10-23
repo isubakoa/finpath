@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T01:50:11.650Z",
+  "generatedAt": "2026-10-23T06:35:17.772Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -272,56 +272,7 @@
     },
     "natwest-group": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Product Designer",
-          "url": "https://jobs.natwestgroup.com/jobs/18215536-product-designer",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Product Designer (10 months)",
-          "url": "https://jobs.natwestgroup.com/jobs/18385787-product-designer-10-months",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Product Designer (10 months)",
-          "url": "https://jobs.natwestgroup.com/jobs/18385786-product-designer-10-months",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Product Designer (10 months)",
-          "url": "https://jobs.natwestgroup.com/jobs/18330300-product-designer-10-months",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior UX Researcher",
-          "url": "https://jobs.natwestgroup.com/jobs/18352295-senior-ux-researcher",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324786-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324785-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Industry Product Owner, Financial Health & Vulnerability",
-          "url": "https://jobs.natwestgroup.com/jobs/18324784-industry-product-owner-financial-health-and-vulnerability",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
@@ -404,38 +355,7 @@
     },
     "aspire": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Partner Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/partner-marketing-manager-831f2ae4-7cb0-4f85-b162-e07f55149737",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "AI Product Manager, FinCrime",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/ai-product-manager-fin-crime-ef285596-5640-47e2-a882-cccebe127c45",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Field Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/field-marketing-manager-ff554506-c7f8-4d31-bb03-9ff26719c296",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Growth Strategist Intern",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/growth-strategist-intern-3299041d-d3ad-4946-9564-456c455a2298",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Product Manager (Expense Management)",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/product-manager-expense-management-32f0fce0-7106-4eb9-911e-b445daa7abab",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "kiwibank": {
       "ok": true,
@@ -606,8 +526,8 @@
           "postedDate": null
         },
         {
-          "title": "Radio HW TRX Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121776114486?domain=ericsson.com",
+          "title": "Radio HW Design Power Amplifier",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -618,8 +538,8 @@
           "postedDate": null
         },
         {
-          "title": "Radio HW Design Power Amplifier",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
+          "title": "System Designer 6G Technology Testbeds",
+          "url": "https://jobs.ericsson.com/careers/job/563121777418650?domain=ericsson.com",
           "location": "",
           "postedDate": null
         }
@@ -631,12 +551,6 @@
         {
           "title": "Cloud Solution Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "VodafoneThree - Cyber Security Senior Consultant - Secure by Design",
-          "url": "https://jobs.vodafone.com/careers/job/563018698264820?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -659,8 +573,8 @@
           "postedDate": null
         },
         {
-          "title": "GTM Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
+          "title": "VodafoneThree - Cyber Security Senior Consultant - Secure by Design",
+          "url": "https://jobs.vodafone.com/careers/job/563018698264820?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -671,14 +585,20 @@
           "postedDate": null
         },
         {
-          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
-          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137387?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "FS Architecture & Design, Assoc. Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697741021?domain=vodafone.com",
+          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
+          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
@@ -690,6 +610,12 @@
         {
           "title": "Product Design Prototyper, Human Interface",
           "url": "https://www.metacareers.com/profile/job_details/29440839905500455",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Design Prototyper, Human Interface",
+          "url": "https://www.metacareers.com/profile/job_details/1980766752569637",
           "location": "",
           "postedDate": null
         },
@@ -718,12 +644,6 @@
           "postedDate": null
         },
         {
-          "title": "Product Design Prototyper, Human Interface",
-          "url": "https://www.metacareers.com/profile/job_details/1980766752569637",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Creative Director, Design",
           "url": "https://www.metacareers.com/profile/job_details/27533437029609442",
           "location": "",
@@ -747,18 +667,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "UX Product Design Lead",
-          "url": "https://citi.eightfold.ai/careers/job/859037066595?domain=citi.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Digital Design Service Pillar Lead - Senior Vice President",
-          "url": "https://citi.eightfold.ai/careers/job/859035930025?domain=citi.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "UX and Human Factors Design",
           "url": "https://citi.eightfold.ai/careers/job/859038267995?domain=citi.com",
           "location": "",
@@ -773,6 +681,18 @@
         {
           "title": "Video Design Lead: Multimedia",
           "url": "https://citi.eightfold.ai/careers/job/859037414561?domain=citi.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Digital Design Service Pillar Lead - Senior Vice President",
+          "url": "https://citi.eightfold.ai/careers/job/859035930025?domain=citi.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "UX Product Design Lead",
+          "url": "https://citi.eightfold.ai/careers/job/859037066595?domain=citi.com",
           "location": "",
           "postedDate": null
         },
