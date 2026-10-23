@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T20:26:41.522Z",
+  "generatedAt": "2026-10-23T23:21:35.565Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -307,14 +307,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -367,38 +367,7 @@
     },
     "aspire": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Partner Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/partner-marketing-manager-831f2ae4-7cb0-4f85-b162-e07f55149737",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "AI Product Manager, FinCrime",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/ai-product-manager-fin-crime-ef285596-5640-47e2-a882-cccebe127c45",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Field Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/field-marketing-manager-ff554506-c7f8-4d31-bb03-9ff26719c296",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Growth Strategist Intern",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/growth-strategist-intern-3299041d-d3ad-4946-9564-456c455a2298",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Product Manager (Expense Management)",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/product-manager-expense-management-32f0fce0-7106-4eb9-911e-b445daa7abab",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "kiwibank": {
       "ok": true,
@@ -698,6 +667,12 @@
       "ok": true,
       "roles": [
         {
+          "title": "Global Design & Construction Program Lead - Senior Vice President",
+          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Digital Design Service Pillar Lead - Senior Vice President",
           "url": "https://citi.eightfold.ai/careers/job/859035930025?domain=citi.com",
           "location": "",
@@ -706,12 +681,6 @@
         {
           "title": "UX Product Design Lead",
           "url": "https://citi.eightfold.ai/careers/job/859037066595?domain=citi.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Global Design & Construction Program Lead - Senior Vice President",
-          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
           "location": "",
           "postedDate": null
         },
@@ -799,14 +768,14 @@
           "postedDate": null
         },
         {
-          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
+          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
+          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
           "location": "",
           "postedDate": null
         },
