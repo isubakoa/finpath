@@ -4,7 +4,7 @@
 # plus an elapsed-time gate, because GitHub drops and delays scheduled runs.
 # Offsets 8/23/38/53 keep it away from scrape-li.yml's ticks and the top of
 # the hour. Also runs on any push that changes the scraper.
-name: Scrape JS-only career sites
+name: Scrape JS-only
 
 on:
   schedule:

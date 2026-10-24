@@ -11,7 +11,7 @@
 #
 # Tuning what each run searches (markets, terms, combos per run) happens in
 # scrape.py, not here. SCHEDULE_INTERVAL_HOURS below must match scrape.py's.
-name: Scrape LI coverage (JobSpy)
+name: Scrape LI-Coverage
 
 on:
   schedule:
