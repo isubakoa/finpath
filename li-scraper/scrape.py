@@ -9,7 +9,7 @@ Sources (one generator each, all yielding (source, row)):
   bayt          headless-Chromium scrape (bayt_playwright.py) -- JobSpy's Bayt
                 adapter gets 403'd everywhere. No location axis, all terms, every run.
   welcometonl   welcome-to-nl.nl's search backend (welcome_to_nl.py).
-  uxwork        uxwork.nl's JSON search, one call covers everything (uxwork.py).
+  uxwork        uxwork.nl's JSON search, paged until nothing new (~5 pages; uxwork.py).
 Glassdoor and Google were evaluated and retired in 2026-09 (bot-detection /
 CAPTCHA walls we won't defeat; Glassdoor's API is gone). englishjobsearch.nl
 was evaluated and skipped (tracking-redirect URLs, overlaps LI/Indeed).
@@ -505,7 +505,7 @@ def run_welcome_to_nl_searches(debug=False):
 
 
 def run_uxwork_searches(debug=False):
-    """Yields ("uxwork", row) from uxwork.nl -- one call, no terms (uxwork.py)."""
+    """Yields ("uxwork", row) from uxwork.nl -- a few pages, no terms (uxwork.py)."""
     from uxwork import scrape_uxwork
 
     yield from scrape_uxwork(debug=debug)
@@ -795,8 +795,8 @@ def main():
 
     cycle_hours = total_chunks * SCHEDULE_INTERVAL_HOURS
     # 2 JobSpy requests per combo (li + indeed) + one Bayt page load per term
-    # + up to 2 welcome-to-nl.nl requests per term + 1 uxwork.nl request.
-    max_requests_this_run = len(combos_this_run) * 2 + len(SEARCH_TERMS) + len(SEARCH_TERMS) * 2 + 1
+    # + up to 2 welcome-to-nl.nl requests per term + ~5 uxwork.nl pages.
+    max_requests_this_run = len(combos_this_run) * 2 + len(SEARCH_TERMS) + len(SEARCH_TERMS) * 2 + 5
     print(
         f"[scrape] rotating pool: {len(rotating)} combos ({len(SEARCH_TERMS)} terms x "
         f"{len(ROTATING_LOCATIONS)} rotating locations), {COMBOS_PER_RUN}/run -> {total_chunks} "
@@ -810,7 +810,7 @@ def main():
           + (f" + priority sweep ({len(priority)} combos)" if include_priority else " (priority sweep not due this run)")
           + f" = {len(combos_this_run)} combos x li+indeed (JobSpy) "
           f"+ {len(SEARCH_TERMS)} bayt page loads (Playwright) "
-          f"+ up to {len(SEARCH_TERMS) * 2} welcome-to-nl.nl requests + 1 uxwork.nl request "
+          f"+ up to {len(SEARCH_TERMS) * 2} welcome-to-nl.nl requests + ~5 uxwork.nl pages "
           f"= up to {max_requests_this_run} requests")
 
     index = build_index(COMPANIES, ALIASES)

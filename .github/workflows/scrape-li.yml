@@ -105,6 +105,10 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         run: python test_bayt_playwright.py
 
+      - name: Run offline uxwork tests
+        if: steps.gate.outputs.should_run == 'true'
+        run: python test_uxwork.py
+
       - name: Run scraper
         if: steps.gate.outputs.should_run == 'true'
         run: python scrape.py
