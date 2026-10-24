@@ -2396,11 +2396,12 @@
       "url": "https://www.mashreq.com/en/uae/about-us/careers/careers-portal/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "The 'apply' button on its careers portal actually points at another Oracle Fusion Recruiting Cloud instance (same platform as Westpac/Emirates NBD/FAB, different tenant) — now live-checked via check.php's oraclecloud adapter. 380 current openings (API returns the first 200); several Product Manager/Owner titles (mostly at Mashreq's Pakistan subsidiary), no Product/UX Design.",
+      "openNote": "Oracle Fusion Recruiting Cloud (hcld.fa.em2.oraclecloud.com, site CX_1), ~424 requisitions. Oracle's API returns at most 200 requisitions per request, so the check is narrowed with ats.keyword \"product\": its job categories are legal entities, not functions, so they can't narrow it. Keyword results are relevance-sorted; checked 2026-10-24, all 22 product-titled roles rank in the top 22 of 255 hits (Product Owner / Digital Product Expert / Product Manager, UAE, Egypt and Pakistan).",
       "ats": {
         "type": "oraclecloud",
         "host": "hcld.fa.em2.oraclecloud.com",
-        "site": "CX_1"
+        "site": "CX_1",
+        "keyword": "product"
       }
     },
     {
@@ -4318,13 +4319,14 @@
       "sponsorshipNote": "One of the largest and most established global tech employers with a very well-known visa-sponsorship track record; heuristic only.",
       "note": "Large in-house product/design org; jobs.uber.com's listing page is JavaScript-rendered.",
       "url": "https://www.uber.com/global/en/careers/list/",
-      "openStatus": "uncertain",
+      "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "UPDATE (2026-09): jobs.uber.com's own JS-rendered listing page was the wrong place to look — its sign-in/apply flow reveals the real backend is Oracle Fusion Recruiting Cloud (iaziqy.fa.ocs.oraclecloud.com, site UberCareers), confirmed via live per-role preview URLs on that host. Wired in via check.php's existing oraclecloud adapter — genuinely live-checked now rather than a manual JS-blocked snapshot.",
+      "openNote": "Oracle Fusion Recruiting Cloud (iaziqy.fa.ocs.oraclecloud.com, site UberCareers), ~719 requisitions. Oracle's API returns at most 200 requisitions per request, so the check is narrowed to the \"Product\" job category (ats.facet 300000024063666), which holds all ~30 product and design roles (checked 2026-10-24: Lead, Senior and II Product Designers, two Director, Product Management roles, Creative Director - Expression). The live check sets the real status.",
       "ats": {
         "type": "oraclecloud",
         "host": "iaziqy.fa.ocs.oraclecloud.com",
-        "site": "UberCareers"
+        "site": "UberCareers",
+        "facet": "300000024063666"
       }
     },
     {
@@ -5320,11 +5322,12 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Runs on Oracle Fusion Cloud Recruiting (host fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com, site CX_1) — this is Oracle Fusion, distinct from the deliberately-unsupported Oracle Taleo, so it's wired via check.php's existing oraclecloud adapter like the UAE banks. Only IC-level and internship/apprenticeship UX roles found; \"Senior Design Engineer\"/hardware design-engineering roles were excluded as not product/UX-relevant. No Director/Head/VP/Principal/Staff/Lead design role found as of 2026-09-12.",
+      "openNote": "Oracle Fusion Recruiting Cloud (fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com, site CX_1), ~574 requisitions, mostly R&D. Oracle's API returns at most 200 requisitions per request, so the check is narrowed to \"Product, Portfolio & Solution Management\" plus \"Information Technology\" (ats.facet, ~40 roles). Checked 2026-10-24: no UX/product design roles; product management includes Sr Director Product Mgt. and Head of AI Infra Product Management.",
       "ats": {
         "type": "oraclecloud",
         "host": "fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com",
-        "site": "CX_1"
+        "site": "CX_1",
+        "facet": "300000009357788;300000009357755"
       }
     },
     {
@@ -6759,11 +6762,20 @@
       "url": "https://careers.marriott.com/",
       "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "2026-10-22, real browser: Marriott runs on Oracle Fusion Recruiting Cloud (host ejwl.fa.us2.oraclecloud.com, site CX) — confirmed live via the public recruitingCEJobRequisitions REST API (keyword \"design\" returned TotalJobsCount: 2034, so the raw keyword hit is extremely broad/noisy across a hotel portfolio this size, same caveat as other oraclecloud companies on this list). The \"Global Design\" category facet on that same query showed only 2 current postings — a much more useful signal than the raw count, hence below-target rather than none; individual roles not yet pulled through check.php's own category-aware logic.",
+      "openNote": "Oracle Fusion Recruiting Cloud (ejwl.fa.us2.oraclecloud.com, site CX), ~13,400 requisitions; the unfiltered request timed out. Oracle's API returns at most 200 requisitions per request, so the check is narrowed with two merged queries (ats.queries): Information Technology + Global Design + Brand Management + PR (~140, where the product managers sit), and Sales & Marketing with keyword \"design\" (~173, where the design leadership sits). Checked 2026-10-24: Director of Design Operations, Design Systems; Director, E2E Experience Design & Innovation; Senior Product Manager, Marriott Bonvoy Mobile App.",
       "ats": {
         "type": "oraclecloud",
         "host": "ejwl.fa.us2.oraclecloud.com",
-        "site": "CX"
+        "site": "CX",
+        "queries": [
+          {
+            "facet": "300000120365204;300000120365180;300000120365237;300000120365231"
+          },
+          {
+            "facet": "300000120365183",
+            "keyword": "design"
+          }
+        ]
       },
       "match": {
         "aliases": [
@@ -6786,13 +6798,14 @@
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "Global hospitality company (Hilton, Conrad, Waldorf Astoria, and other brands). Isu's own wording was \"Hilton Hotels\" — kept as a li-scraper alias.",
       "url": "https://jobs.hilton.com/",
-      "openStatus": "uncertain",
+      "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "2026-10-22, real browser: ATS confirmed as Oracle Fusion Recruiting Cloud (efet.fa.us2.oraclecloud.com, site CX_1) — wired in directly, no js-scraper needed. A bare \"design\" keyword is extremely noisy for a hotel operator this size (1074 total hits — \"design your career\"-type copy, interior/architectural design, etc., same caveat as Marriott/American Express elsewhere on this list), and unlike Marriott's instance, Hilton's own category facets don't expose a distinct \"Design\"/\"Product\" bucket to narrow against (top categories are Culinary, Housekeeping, F&B, Sales & Marketing, Guest Services, HR, Technology, Engineering) — genuinely unresolved whether any real Design/UX roles exist right now versus pure keyword noise, hence still \"uncertain\" rather than a confident below-target/none. A \"Technology\" category (22 open roles) is the most likely place any digital product/design hire would sit; worth a closer manual pass if this company's coverage matters enough to invest more time in.",
+      "openNote": "Oracle Fusion Recruiting Cloud (efet.fa.us2.oraclecloud.com, site CX_1). The API returns at most 200 of Hilton's ~4,500 requisitions, so the check filters to the \"Technology\" job category (ats.facet 300004569519727, ~32 roles), which is where its corporate product and digital roles sit (checked 2026-10-24: Director Product Management, Mobile, plus three Product Management manager roles in McLean/Memphis). Design-titled roles elsewhere are graphic/interior design under Sales & Marketing or Projects & Design, not targets.",
       "ats": {
         "type": "oraclecloud",
         "host": "efet.fa.us2.oraclecloud.com",
-        "site": "CX_1"
+        "site": "CX_1",
+        "facet": "300004569519727"
       },
       "match": {
         "aliases": [
@@ -6815,12 +6828,11 @@
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "Short-form video platform; real postings on LinkedIn/Indeed commonly appear under the parent \"ByteDance\" entity name as well as \"TikTok\" itself — kept as a li-scraper alias.",
       "url": "https://careers.tiktok.com/",
-      "openStatus": "uncertain",
+      "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "2026-10-22 — added at Isu's request alongside this round's li-scraper companies.py batch; unlike the rest of this list, NOT individually researched for a direct ATS adapter (no live-browser investigation of its careers site was done this round). Tracked the same way Bayt/welcome-to-nl.nl/uxwork.nl postings reach a company's own row — via the broad li-scraper LI/Indeed/etc. title search matching this employer's name, not a dedicated check.php adapter. ats left as unknown on purpose rather than guessed; worth a real research pass later if this company's coverage matters enough to invest in.",
+      "openNote": "lifeattiktok.com's public search API (check.php type \"tiktok\"), filtered to the Design and Product job categories: ~330 roles in one call (checked 2026-10-24: 61 Design, 265 Product). Design roles cluster in San Jose, Singapore and London; most are IC or graduate level (Senior/Staff Product Designer, Content Design Lead/Manager).",
       "ats": {
-        "type": "unknown",
-        "slug": null
+        "type": "tiktok"
       },
       "match": {
         "aliases": [
@@ -6882,13 +6894,13 @@
       "sponsorship": "uncertain",
       "sponsorshipNote": "Not individually researched (see openNote) — no sponsorship heuristic applied either way.",
       "note": "Amsterdam-based studio behind the Horizon series; a subsidiary of Sony Interactive Entertainment (already separately tracked under slug \"sony-interactive-entertainment\") but kept as its own distinct entry since Isu asked for it by name — same parent/subsidiary pattern as \"Deutsche Telekom\"/\"T-Systems\" elsewhere in this list. Isu's own spelling was \"Guerilla Games\" (one r); corrected here to the studio's actual name, \"Guerrilla Games\".",
-      "url": "https://www.guerrilla-games.com/careers",
-      "openStatus": "uncertain",
+      "url": "https://www.guerrilla-games.com/join",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "2026-10-22 — added at Isu's request alongside this round's li-scraper companies.py batch; unlike the rest of this list, NOT individually researched for a direct ATS adapter (no live-browser investigation of its careers site was done this round). Tracked the same way Bayt/welcome-to-nl.nl/uxwork.nl postings reach a company's own row — via the broad li-scraper LI/Indeed/etc. title search matching this employer's name, not a dedicated check.php adapter. ats left as unknown on purpose rather than guessed; worth a real research pass later if this company's coverage matters enough to invest in.",
+      "openNote": "Guerrilla's own Greenhouse board (guerrilla-games), which feeds guerrilla-games.com/join. Checked 2026-10-24: no open roles at all; the studio is Amsterdam-only. Not on Sony Interactive Entertainment's global board.",
       "ats": {
-        "type": "unknown",
-        "slug": null
+        "type": "greenhouse",
+        "slug": "guerrilla-games"
       },
       "match": {
         "note": "Sony Interactive Entertainment studio, kept separate (same pattern as Deutsche Telekom / T-Systems). No bare 'Guerrilla' alias: as a 9-char containment key it would catch 'guerrilla marketing' agencies; a bare 'Guerrilla' posting still matches into 'Guerrilla Games'."
@@ -6960,9 +6972,9 @@
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "Dutch multinational brewing company.",
       "url": "https://careers.theheinekencompany.com/job-listing?job_functions%5B%5D=211",
-      "openStatus": "uncertain",
+      "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "2026-10-22, real browser: a Drupal-powered global careers site covering every HEINEKEN-owned brewery/brand (735 roles company-wide). Its visible keyword search box turns out to be silently ignored server-side (confirmed: identical unfiltered 735-count regardless of query, same failure mode as ABN AMRO/KPMG elsewhere on this list), but its \"Job Functions\" facet genuinely works as a plain GET param — job_functions[]=211 (\"Digital & Technology\") correctly narrows to 30 roles. Only the first 10 of those 30 render without further pagination this scraper doesn't yet support, and none of those 10 are Design/UX (Technology Specialist, Agile PM, Data & Analytics Manager, Technical Product Owner, etc.) — a genuine partial check, not a confirmed-complete zero like TomTom/KPMG, so left as \"uncertain\" rather than \"none.\"",
+      "openNote": "Drupal careers site for every HEINEKEN brand (~735 roles). The keyword box is ignored server-side, but the \"Digital & Technology\" Job Functions facet (job_functions[0]=211, ~32 roles) works, and js-scraper reads all of its pages (page=0,0,N, 10 per page). Checked 2026-10-24: one design role, Product Designer (HEINEKEN Kraków, Poland), below the Director bar.",
       "ats": {
         "type": "snapshot",
         "slug": "heineken"

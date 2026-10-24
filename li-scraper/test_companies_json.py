@@ -50,7 +50,7 @@ ATS_REQUIRED = {
     "nordea": set(), "lloyds": set(), "dassault": set(), "amazon": set(),
     "telekom": set(), "microsoft": set(), "emirates": set(), "line": set(),
     "bt": set(), "fujitsu": set(), "capgemini": set(), "klm": set(),
-    "lufthansa": set(),
+    "lufthansa": set(), "tiktok": set(),
 }
 ROLE_REQUIRED = {"id", "title", "url"}
 MATCH_KEYS = {"name", "aliases", "note"}
@@ -91,6 +91,10 @@ def check():
             missing = {k for k in ATS_REQUIRED[t] if not ats.get(k)}
             if missing:
                 err(f"{where}: ats.type {t!r} needs {sorted(missing)}")
+        if t == "oraclecloud" and "queries" in ats:
+            q = ats["queries"]
+            if not (isinstance(q, list) and q and all(isinstance(x, dict) and (x.get("facet") or x.get("keyword")) for x in q)):
+                err(f"{where}: ats.queries must be a non-empty list of {{facet, keyword}} objects")
         if t == "html" and ats.get("linkPattern"):
             m = re.fullmatch(r"#(.*)#([a-z]*)", ats["linkPattern"], re.S)
             if not m:

@@ -230,10 +230,13 @@ const COMPANIES = [
   {
     slug: "heineken",
     // Drupal; the keyword box is ignored, but the Job Functions facet works:
-    // job_functions[]=211 = Digital & Technology (30 roles). Only the first 10
-    // render without pagination -- a partial check. Empty duplicate anchors are
-    // dropped by the minimum-title-length filter.
-    urls: ["https://careers.theheinekencompany.com/job-listing?job_functions%5B%5D=211"],
+    // job_functions[0]=211 = Digital & Technology (~32 roles, 10 per page). Drupal's
+    // pager param is page=0,0,N; each page is server-rendered, so the URLs are listed
+    // explicitly (six pages = room for 60 roles; empty pages are harmless). Empty
+    // duplicate anchors are dropped by the minimum-title-length filter.
+    urls: [0, 1, 2, 3, 4, 5].map(
+      (n) => `https://careers.theheinekencompany.com/job-listing?job_functions%5B0%5D=211&page=0%2C0%2C${n}`
+    ),
     linkPattern: /\/job\/[^/]+\/[^/]+\/[^/]+$/i,
     waitForSelector: 'a[href*="/job/"]',
   },
