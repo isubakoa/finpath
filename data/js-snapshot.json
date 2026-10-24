@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T17:49:24.077Z",
+  "generatedAt": "2026-10-24T20:07:52.930Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -307,14 +307,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Solution Design, Senior Consultant - ECOM",
-          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
+          "title": "Solution Design - Fraud",
+          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Solution Design - Fraud",
-          "url": "https://nab.eightfold.ai/careers/job/563980770280390?microsite=nab",
+          "title": "Solution Design, Senior Consultant - ECOM",
+          "url": "https://nab.eightfold.ai/careers/job/563980770744711?microsite=nab",
           "location": "",
           "postedDate": null
         },
@@ -543,24 +543,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Secure by Design Manager",
           "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "",
@@ -573,20 +555,20 @@
           "postedDate": null
         },
         {
-          "title": "GTM Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -597,8 +579,44 @@
           "postedDate": null
         },
         {
+          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
+          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137387?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137384?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "FS Architecture & Design, Assoc. Manager",
           "url": "https://jobs.vodafone.com/careers/job/563018697741021?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
@@ -667,18 +685,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "Global Design & Construction Program Lead - Senior Vice President",
-          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Digital Design Service Pillar Lead - Senior Vice President",
-          "url": "https://citi.eightfold.ai/careers/job/859035930025?domain=citi.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "UX Product Design Lead",
           "url": "https://citi.eightfold.ai/careers/job/859037066595?domain=citi.com",
           "location": "",
@@ -693,6 +699,18 @@
         {
           "title": "UX and Human Factors Design",
           "url": "https://citi.eightfold.ai/careers/job/859038267995?domain=citi.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Digital Design Service Pillar Lead - Senior Vice President",
+          "url": "https://citi.eightfold.ai/careers/job/859035930025?domain=citi.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Global Design & Construction Program Lead - Senior Vice President",
+          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
           "location": "",
           "postedDate": null
         },
@@ -757,6 +775,21 @@
         }
       ]
     },
+    "telenor": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Product Lead",
+          "url": "https://careers.telenor.com/jobs/8296703-product-lead",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "aramco": {
+      "ok": false,
+      "error": "https://careers.aramco.com/search/?q=design: page.evaluate: Execution context was destroyed, most likely because of a navigation"
+    },
     "unilever": {
       "ok": true,
       "roles": []
@@ -769,14 +802,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Working Student (m/f/d) Product Management",
-          "url": "https://careers.vanderlande.com/all-jobs/working-student-m-f-d-product-management-68143096/",
+          "title": "Junior UI/UX Designer Intern",
+          "url": "https://careers.vanderlande.com/all-jobs/junior-ui-ux-designer-intern-68269271/",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Junior UI/UX Designer Intern",
-          "url": "https://careers.vanderlande.com/all-jobs/junior-ui-ux-designer-intern-68269271/",
+          "title": "Working Student (m/f/d) Product Management",
+          "url": "https://careers.vanderlande.com/all-jobs/working-student-m-f-d-product-management-68143096/",
           "location": "",
           "postedDate": null
         },
@@ -836,14 +869,7 @@
     },
     "kpmg": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Consultant Strategy & Operations - Health",
-          "url": "https://www.werkenbijkpmg.nl/vacature/consultant-strategy-operations-health",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "bunq": {
       "ok": true,
