@@ -36,7 +36,8 @@ function isRoleRelevant(title) {
 // A wrong pattern returns zero roles, not an error -- verify with
 // `node scrape.js --debug <slug>`. Optional: waitForSelector, settleDelayMs,
 // titleSelector (title is a child of the link), titleAncestorSelector +
-// titleAncestorTitleSelector (title sits outside the link).
+// titleAncestorTitleSelector (title sits outside the link), titleStrip (a regex
+// removed from each title, e.g. screen-reader text).
 const COMPANIES = [
   {
     slug: "adyen",
@@ -259,6 +260,68 @@ const COMPANIES = [
     waitForSelector: "a.jobTitle-link",
   },
   {
+    slug: "triodos-bank",
+    // SuccessFactors Career Site Builder, browser-rendered; clean title links.
+    urls: ["https://careers.triodos.com/search/?q=&locationsearch=&searchResultView=LIST"],
+    linkPattern: /\/job\/[^/]+\/\d+-/,
+    waitForSelector: "a.jobCardTitle",
+  },
+  {
+    slug: "backbase",
+    // Webflow page fed by Teamtailor, 20 per page; Webflow's pager param is
+    // b158f050_page (?page is ignored). Six pages = room for 120 (68 on 2026-10-24).
+    urls: [1, 2, 3, 4, 5, 6].map((n) => `https://www.backbase.com/careers/jobs?b158f050_page=${n}`),
+    linkPattern: /\/careers\/jobs\/\d+-[^/?#]+$/,
+    waitForSelector: 'a[href*="/careers/jobs/"]',
+  },
+  {
+    slug: "euronext",
+    // Server-rendered job-offers list, 50 per page from page=0 (153 on 2026-10-24).
+    urls: [0, 1, 2, 3, 4].map((n) => `https://www.euronext.com/en/about/careers/job-offers?page=${n}`),
+    linkPattern: /\/about\/careers\/job-offers\/r\d+-/,
+    waitForSelector: 'a[href*="/about/careers/job-offers/"]',
+  },
+  {
+    slug: "nn-group",
+    // English vacancies render from an API that rejects paging params; the page shows
+    // the newest 10 (13 on 2026-10-24). Each card has an empty overlay link (dropped by
+    // the title-length check) and a titled one whose h2 carries screen-reader text.
+    urls: ["https://www.nn-careers.com/en/vacancies"],
+    linkPattern: /\/en\/vacancy\/\d+\//,
+    waitForSelector: 'a[href*="/en/vacancy/"] h2',
+    titleSelector: "h2",
+    titleStrip: /^Vacancy:\s*|\s*-\s*View vacancy$/g,
+  },
+  {
+    slug: "aegon",
+    // Drupal list, ~21 per page from page=0 (157 on 2026-10-24); pages come back empty
+    // when fetched too fast outside a browser. The link wraps a logo; the title is the
+    // card's h3.
+    urls: [0, 1, 2, 3, 4, 5, 6, 7, 8].map((n) => `https://www.aegon.com/careers/vacancies?page=${n}`),
+    linkPattern: /\/careers\/vacancies\/[^/]+\/[^/]+\/[^/]+\/[^/?#]+$/,
+    waitForSelector: 'a[href*="/careers/vacancies/"]',
+    titleAncestorSelector: "li",
+    titleAncestorTitleSelector: ".molecule--teaser-card-row--title",
+  },
+  {
+    slug: "goldman-sachs",
+    // higher.gs.com, browser-rendered over GraphQL; 20 per page, relevance-sorted.
+    // The link holds title + location spans; the first span is the title.
+    urls: [1, 2, 3].map((n) => `https://higher.gs.com/results?page=${n}&search=design&sort=RELEVANCE`),
+    linkPattern: /\/roles\/\d+$/,
+    waitForSelector: 'a[href^="/roles/"]',
+    titleSelector: "span.gs-text",
+  },
+  {
+    slug: "morgan-stanley",
+    // Eightfold; its API 403s outside the page (even in a browser), so the rendered
+    // list is read like Ericsson/Vodafone.
+    urls: ["https://morganstanley.eightfold.ai/careers?query=design&domain=morganstanley.com&sort_by=relevance"],
+    linkPattern: /\/careers\/job\/\d+/,
+    waitForSelector: 'a[href*="/careers/job/"]',
+    titleSelector: '[class^="title-"]',
+  },
+  {
     slug: "unilever",
     // Oracle Taleo (not given a direct adapter, by policy). The keyword filter works
     // server-side; "design" returns packaging/engineering roles. Title is an
@@ -412,6 +475,8 @@ async function scrapeCompany(browser, company, { debug = false } = {}) {
       found.forEach((r) => {
         if (seen.has(r.url)) return;
         seen.add(r.url);
+        // Optional per-company cleanup of boilerplate around the title.
+        if (company.titleStrip) r.title = r.title.replace(company.titleStrip, "").trim();
         roles.push(r);
       });
     } catch (err) {

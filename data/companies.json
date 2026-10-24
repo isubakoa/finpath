@@ -6972,6 +6972,1356 @@
         "type": "snapshot",
         "slug": "heineken"
       }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "de Volksbank (ASN Bank)",
+      "slug": "de-volksbank",
+      "category": "Global Bank",
+      "hq": "Utrecht, Netherlands",
+      "founded": 2017,
+      "asia": "limited",
+      "asiaNote": "Netherlands only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Dutch retail bank (formerly SNS); its brands are being merged under the ASN Bank name.",
+      "url": "https://werkenbij.asnbank.nl/",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "Careers site werkenbij.asnbank.nl runs on Phenom and only renders its search in a full browser session; not wired in yet (2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "ASN Bank",
+          "de Volksbank N.V."
+        ],
+        "note": "No bare 'Volksbank' alias: it would match Germany's many cooperative Volksbanks."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Triodos Bank",
+      "slug": "triodos-bank",
+      "category": "Global Bank",
+      "hq": "Zeist, Netherlands",
+      "founded": 1980,
+      "asia": "limited",
+      "asiaNote": "Europe only",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Sustainability-focused European bank.",
+      "url": "https://careers.triodos.com/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "SAP SuccessFactors career site (careers.triodos.com), browser-rendered, read by js-scraper (9 roles on 2026-10-24).",
+      "ats": {
+        "type": "snapshot",
+        "slug": "triodos-bank"
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Knab",
+      "slug": "knab",
+      "category": "Digital Bank",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 2012,
+      "asia": "limited",
+      "asiaNote": "Netherlands only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Dutch digital bank for freelancers and SMEs.",
+      "url": "https://www.knab.nl/",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "Its Greenhouse board (knab) no longer answers (404 on 2026-10-24) and no replacement was found. Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Knab Bank",
+          "Knab N.V."
+        ],
+        "note": "'Knab' is under the 5-character containment minimum, so these aliases cover longer employer strings."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Backbase",
+      "slug": "backbase",
+      "category": "Banking Infrastructure",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 2003,
+      "asia": "some",
+      "asiaNote": "Singapore, Hong Kong, Sydney offices",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Engagement-banking platform vendor; large in-house product and UX practice.",
+      "url": "https://www.backbase.com/careers/jobs",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Own Webflow careers page fed by Teamtailor, 20 per page (b158f050_page), read by js-scraper. 68 roles on 2026-10-24, including a Senior UX Designer.",
+      "ats": {
+        "type": "snapshot",
+        "slug": "backbase"
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Ohpen",
+      "slug": "ohpen",
+      "category": "Banking Infrastructure",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 2009,
+      "asia": "limited",
+      "asiaNote": "Europe only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Cloud core-banking platform.",
+      "url": "https://ohpen.jobs.personio.com/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Personio board, server-rendered with every role on one page (19 on 2026-10-24); titles from the jb-title element inside each link.",
+      "ats": {
+        "type": "html",
+        "url": "https://ohpen.jobs.personio.com/",
+        "linkPattern": "#/job/\\d+#",
+        "titleClass": "jb-title"
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Silverflow",
+      "slug": "silverflow",
+      "category": "Payments & Transfers",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 2019,
+      "asia": "limited",
+      "asiaNote": "Europe only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Cloud-native card-processing platform.",
+      "url": "https://silverflow.jobs.personio.com/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Personio board (linked from silverflow.com/career), same layout as Ohpen's.",
+      "ats": {
+        "type": "html",
+        "url": "https://silverflow.jobs.personio.com/",
+        "linkPattern": "#/job/\\d+#",
+        "titleClass": "jb-title"
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "BUX",
+      "slug": "bux",
+      "category": "Trading & Investing",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 2014,
+      "asia": "limited",
+      "asiaNote": "Europe only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Retail investing app, owned by ABN AMRO since 2024.",
+      "url": "https://getbux.com/",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "No careers page found (getbux.com/careers 404, no Greenhouse/Lever/Ashby board on 2026-10-24); likely hires through ABN AMRO. Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "BUX Financial Services",
+          "BUX Zero",
+          "getbux"
+        ],
+        "note": "'BUX' is under the 5-character containment minimum, so only exact or alias matches attach."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Finom",
+      "slug": "finom",
+      "category": "Business Banking & Expense",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 2019,
+      "asia": "limited",
+      "asiaNote": "Europe only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Business account and invoicing fintech for European SMEs.",
+      "url": "https://finom.co/",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "finom.co's careers pages return 404 and no Greenhouse/Lever/Ashby/Workable board exists (2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Finom Group",
+          "Finom B.V."
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Optiver",
+      "slug": "optiver",
+      "category": "Trading & Investing",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 1986,
+      "asia": "some",
+      "asiaNote": "Sydney, Hong Kong, Singapore, Shanghai, Taipei",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Global market maker.",
+      "url": "https://optiver.com/working-at-optiver/career-opportunities/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Greenhouse board 'optiverus' carries all offices' roles (162 on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "greenhouse",
+        "slug": "optiverus"
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Flow Traders",
+      "slug": "flow-traders",
+      "category": "Trading & Investing",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 2004,
+      "asia": "some",
+      "asiaNote": "Hong Kong, Singapore",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "ETP market maker.",
+      "url": "https://www.flowtraders.com/careers",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Greenhouse board 'flowtraders' (46 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "greenhouse",
+        "slug": "flowtraders"
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "IMC Trading",
+      "slug": "imc-trading",
+      "category": "Trading & Investing",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 1989,
+      "asia": "some",
+      "asiaNote": "Sydney, Hong Kong, Mumbai",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Global market maker.",
+      "url": "https://www.imc.com/eu/careers",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Greenhouse board 'imc' (170 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "greenhouse",
+        "slug": "imc"
+      },
+      "match": {
+        "aliases": [
+          "IMC",
+          "IMC Financial Markets"
+        ],
+        "note": "'IMC' alone is short and generic; it only matches exactly."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Euronext",
+      "slug": "euronext",
+      "category": "Trading & Investing",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 2000,
+      "asia": "limited",
+      "asiaNote": "Europe only",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Pan-European exchange group (Amsterdam, Paris, Milan, Oslo and others).",
+      "url": "https://www.euronext.com/en/about/careers/job-offers",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Own server-rendered job-offers list, 50 per page (153 roles over 4 pages on 2026-10-24, ~10 product roles), read by js-scraper.",
+      "ats": {
+        "type": "snapshot",
+        "slug": "euronext"
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "NN Group",
+      "slug": "nn-group",
+      "category": "Insurance",
+      "hq": "The Hague, Netherlands",
+      "founded": 1845,
+      "asia": "some",
+      "asiaNote": "Japan",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Dutch insurer and pension provider (Nationale-Nederlanden).",
+      "url": "https://www.nn-careers.com/en/vacancies",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "nn-careers.com English vacancies (13 on 2026-10-24) render from an internal API that rejects paging parameters; js-scraper reads the newest 10 on the page.",
+      "ats": {
+        "type": "snapshot",
+        "slug": "nn-group"
+      },
+      "match": {
+        "aliases": [
+          "Nationale-Nederlanden",
+          "NN Insurance",
+          "NN Investment Partners"
+        ],
+        "note": "Bare 'NN' is too short to match safely."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Aegon",
+      "slug": "aegon",
+      "category": "Insurance",
+      "hq": "The Hague, Netherlands",
+      "founded": 1983,
+      "asia": "some",
+      "asiaNote": "Hong Kong (Transamerica Life Bermuda)",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Insurer and asset manager (Aegon, Transamerica).",
+      "url": "https://www.aegon.com/careers/vacancies",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Own Drupal vacancies list (157 on 2026-10-24, ~21 per page); pages load reliably only in a browser session, so js-scraper reads them. Titles sit beside the link.",
+      "ats": {
+        "type": "snapshot",
+        "slug": "aegon"
+      },
+      "match": {
+        "aliases": [
+          "Aegon N.V.",
+          "Transamerica",
+          "Aegon UK"
+        ]
+      }
+    },
+    {
+      "region": "Global",
+      "name": "JPMorgan Chase",
+      "slug": "jpmorgan-chase",
+      "category": "Global Bank",
+      "hq": "New York, USA",
+      "founded": 1799,
+      "asia": "strong",
+      "asiaNote": "Major hubs in Singapore, Hong Kong, Tokyo, Sydney",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Largest US bank; large digital and design organisation (J.P. Morgan, Chase).",
+      "url": "https://careers.jpmorgan.com/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Oracle Fusion Recruiting Cloud. Two merged keyword queries (200-row API cap): 'UX' (118, complete) and 'product design' (relevance-sorted). On 2026-10-24: Senior UX Designer VP (London), User Experience Strategy Lead ED, Product Designer VPs.",
+      "ats": {
+        "type": "oraclecloud",
+        "host": "jpmc.fa.oraclecloud.com",
+        "site": "CX_1001",
+        "queries": [
+          {
+            "keyword": "UX"
+          },
+          {
+            "keyword": "product design"
+          }
+        ]
+      },
+      "match": {
+        "aliases": [
+          "J.P. Morgan",
+          "JPMorgan",
+          "JP Morgan",
+          "JPMorgan Chase & Co.",
+          "Chase UK"
+        ],
+        "note": "No bare 'Chase' alias (too generic)."
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Goldman Sachs",
+      "slug": "goldman-sachs",
+      "category": "Global Bank",
+      "hq": "New York, USA",
+      "founded": 1869,
+      "asia": "strong",
+      "asiaNote": "Singapore, Hong Kong, Tokyo, Bengaluru",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Global investment bank (Marcus, Apple Card teams included).",
+      "url": "https://higher.gs.com/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Own site higher.gs.com, browser-rendered (GraphQL behind it), read by js-scraper from a 'design' search. On 2026-10-24: VP UI/UX Design (Bengaluru).",
+      "ats": {
+        "type": "snapshot",
+        "slug": "goldman-sachs"
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Morgan Stanley",
+      "slug": "morgan-stanley",
+      "category": "Global Bank",
+      "hq": "New York, USA",
+      "founded": 1935,
+      "asia": "strong",
+      "asiaNote": "Hong Kong, Tokyo, Singapore, Mumbai",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Global investment bank and wealth manager.",
+      "url": "https://www.morganstanley.com/careers",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Eightfold board (morganstanley.eightfold.ai); its API refuses outside requests (403 even in a browser), so js-scraper reads the rendered list. On 2026-10-24: Senior UX Design Lead VP (New York).",
+      "ats": {
+        "type": "snapshot",
+        "slug": "morgan-stanley"
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Allica Bank",
+      "slug": "allica-bank",
+      "category": "Business Banking & Expense",
+      "hq": "London, UK",
+      "founded": 2019,
+      "asia": "limited",
+      "asiaNote": "UK only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "UK business bank for established SMEs.",
+      "url": "https://jobs.ashbyhq.com/allica-bank",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Ashby board 'allica-bank' (28 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "ashby",
+        "slug": "allica-bank"
+      },
+      "match": {
+        "name": "Allica",
+        "aliases": [
+          "Allica Bank Ltd"
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "OakNorth",
+      "slug": "oaknorth",
+      "category": "Business Banking & Expense",
+      "hq": "London, UK",
+      "founded": 2015,
+      "asia": "some",
+      "asiaNote": "India (Gurugram, Bengaluru)",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "UK lender to growing businesses.",
+      "url": "https://jobs.ashbyhq.com/oaknorth",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Ashby board 'oaknorth' (25 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "ashby",
+        "slug": "oaknorth"
+      },
+      "match": {
+        "aliases": [
+          "OakNorth Bank"
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Zopa",
+      "slug": "zopa",
+      "category": "Digital Bank",
+      "hq": "London, UK",
+      "founded": 2005,
+      "asia": "limited",
+      "asiaNote": "UK only",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "UK digital bank (loans, savings, cards).",
+      "url": "https://jobs.lever.co/zopa",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Lever board 'zopa' (34 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "lever",
+        "slug": "zopa"
+      },
+      "match": {
+        "aliases": [
+          "Zopa Bank",
+          "Zopa Limited"
+        ],
+        "note": "'Zopa' is under the 5-character containment minimum."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Kroo",
+      "slug": "kroo",
+      "category": "Digital Bank",
+      "hq": "London, UK",
+      "founded": 2016,
+      "asia": "limited",
+      "asiaNote": "UK only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "UK digital bank.",
+      "url": "https://apply.workable.com/kroo/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Workable account 'kroo' (16 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workable",
+        "slug": "kroo"
+      },
+      "match": {
+        "aliases": [
+          "Kroo Bank"
+        ],
+        "note": "'Kroo' is under the 5-character containment minimum."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Ebury",
+      "slug": "ebury",
+      "category": "Payments & Transfers",
+      "hq": "London, UK",
+      "founded": 2009,
+      "asia": "limited",
+      "asiaNote": "Limited APAC presence",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "FX and cross-border payments for SMEs (Santander-backed).",
+      "url": "https://job-boards.eu.greenhouse.io/ebury",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Greenhouse board 'ebury' (EU-hosted board, readable through the standard API; 144 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "greenhouse",
+        "slug": "ebury"
+      },
+      "match": {
+        "aliases": [
+          "Ebury Partners"
+        ]
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Worldpay (Global Payments)",
+      "slug": "worldpay",
+      "category": "Payments & Transfers",
+      "hq": "Atlanta, USA (Global Payments); Worldpay offices in London and Cincinnati",
+      "founded": 1989,
+      "asia": "some",
+      "asiaNote": "APAC offices",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Merchant acquirer, now part of Global Payments; jobs.worldpay.com redirects to Global Payments careers.",
+      "url": "https://jobs.globalpayments.com/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Global Payments' Workday tenant (tsys.wd1, site TSYS), which now carries Worldpay roles. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workday",
+        "slug": "tsys",
+        "wdNum": "1",
+        "site": "TSYS"
+      },
+      "match": {
+        "aliases": [
+          "Worldpay",
+          "Global Payments",
+          "Global Payments Inc."
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Paddle",
+      "slug": "paddle",
+      "category": "Payments & Transfers",
+      "hq": "London, UK",
+      "founded": 2012,
+      "asia": "limited",
+      "asiaNote": "Limited APAC presence",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Merchant-of-record payments platform for software companies.",
+      "url": "https://jobs.ashbyhq.com/paddle",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Ashby board 'paddle' (17 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "ashby",
+        "slug": "paddle"
+      },
+      "match": {
+        "aliases": [
+          "Paddle.com"
+        ],
+        "note": "Accepted risk: 'Paddle' also contain-matches unrelated names such as 'Paddle8' (rare in design/product postings)."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Thought Machine",
+      "slug": "thought-machine",
+      "category": "Banking Infrastructure",
+      "hq": "London, UK",
+      "founded": 2014,
+      "asia": "some",
+      "asiaNote": "Singapore, Sydney",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Cloud-native core-banking vendor (Vault).",
+      "url": "https://jobs.ashbyhq.com/thought-machine",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Ashby board 'thought-machine' (38 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "ashby",
+        "slug": "thought-machine"
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "10x Banking",
+      "slug": "10x-banking",
+      "category": "Banking Infrastructure",
+      "hq": "London, UK",
+      "founded": 2016,
+      "asia": "some",
+      "asiaNote": "Sydney",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Cloud core-banking vendor.",
+      "url": "https://apply.workable.com/10xbanking/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Workable account '10xbanking' (1 role on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workable",
+        "slug": "10xbanking"
+      },
+      "match": {
+        "aliases": [
+          "10x Future Technologies",
+          "10x"
+        ],
+        "note": "'10x' alone only matches exactly."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Curve",
+      "slug": "curve",
+      "category": "Payments & Transfers",
+      "hq": "London, UK",
+      "founded": 2015,
+      "asia": "limited",
+      "asiaNote": "UK/EU only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Card-aggregation fintech.",
+      "url": "https://www.curve.com/careers/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Workable account 'curve' (Curve's logo); 0 open roles on 2026-10-24, matching its careers page. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workable",
+        "slug": "curve"
+      },
+      "match": {
+        "aliases": [
+          "Curve OS",
+          "Imagine Curve"
+        ],
+        "note": "Accepted risk: 'Curve' (5 characters) also contain-matches unrelated employers such as 'Curve Dental' (rare in design/product postings)."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "ClearScore",
+      "slug": "clearscore",
+      "category": "Payments & Transfers",
+      "hq": "London, UK",
+      "founded": 2015,
+      "asia": "some",
+      "asiaNote": "South Africa, Australia, Canada, New Zealand",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Credit-score and financial-marketplace app.",
+      "url": "https://apply.workable.com/clear-score/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Workable account 'clear-score' (named ClearScore); 0 open roles on 2026-10-24. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workable",
+        "slug": "clear-score"
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Moneybox",
+      "slug": "moneybox",
+      "category": "Trading & Investing",
+      "hq": "London, UK",
+      "founded": 2016,
+      "asia": "limited",
+      "asiaNote": "UK only",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Savings and investing app.",
+      "url": "https://jobs.ashbyhq.com/moneybox",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Ashby board 'moneybox' (20 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "ashby",
+        "slug": "moneybox"
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Chip",
+      "slug": "chip",
+      "category": "Trading & Investing",
+      "hq": "London, UK",
+      "founded": 2016,
+      "asia": "limited",
+      "asiaNote": "UK only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Savings and investing app.",
+      "url": "https://chip.teamtailor.com/jobs",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Teamtailor board (linked from getchip.uk), server-rendered (10 roles on 2026-10-24); titles from the company-link-style span inside each link. Workable's 'chip' account is a different company.",
+      "ats": {
+        "type": "html",
+        "url": "https://chip.teamtailor.com/jobs",
+        "linkPattern": "#/jobs/\\d+-[a-z0-9-]+$#i",
+        "titleClass": "company-link-style"
+      },
+      "match": {
+        "aliases": [
+          "Chip Financial",
+          "Chip Financial Ltd",
+          "Chip Savings"
+        ],
+        "note": "'Chip' is generic and under the 5-character containment minimum."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Lendable",
+      "slug": "lendable",
+      "category": "Digital Bank",
+      "hq": "London, UK",
+      "founded": 2014,
+      "asia": "limited",
+      "asiaNote": "UK only",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "UK consumer-lending fintech (Zable, Lendable loans).",
+      "url": "https://careers.lendable.com/jobs",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Ashby board 'lendable' (69 roles on 2026-10-24); careers.lendable.com's static HTML only holds placeholder jobs. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "ashby",
+        "slug": "lendable"
+      }
+    },
+    {
+      "region": "APAC",
+      "name": "Trust Bank",
+      "slug": "trust-bank",
+      "category": "Digital Bank",
+      "hq": "Singapore",
+      "founded": 2022,
+      "asia": "strong",
+      "asiaNote": "Singapore-only digital bank (Standard Chartered x FairPrice)",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on Employment Pass sponsorship; not individually checked.",
+      "note": "Singapore digital bank, a Standard Chartered and NTUC FairPrice joint venture.",
+      "url": "https://job-boards.greenhouse.io/trustbank",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Greenhouse board 'trustbank' (10 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "greenhouse",
+        "slug": "trustbank"
+      },
+      "match": {
+        "name": "Trust Bank Singapore",
+        "aliases": [
+          "Trust Bank Singapore Limited"
+        ],
+        "note": "Not plain 'Trust Bank': match.py drops 'Bank', and a bare 'trust' would contain-match Trustly, National Trust and the like."
+      }
+    },
+    {
+      "region": "APAC",
+      "name": "GXS Bank",
+      "slug": "gxs-bank",
+      "category": "Digital Bank",
+      "hq": "Singapore",
+      "founded": 2022,
+      "asia": "strong",
+      "asiaNote": "Singapore digital bank (Grab x Singtel); sister of GXBank Malaysia",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on Employment Pass sponsorship; not individually checked.",
+      "note": "Singapore digital bank from Grab and Singtel.",
+      "url": "https://gxs.wd3.myworkdayjobs.com/GXS",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Same Workday tenant as GXBank (Malaysia), separate site 'GXS'. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workday",
+        "slug": "gxs",
+        "wdNum": "3",
+        "site": "GXS"
+      },
+      "match": {
+        "aliases": [
+          "GXS Bank Pte Ltd"
+        ],
+        "note": "'GXS' is short; GXBank (Malaysia) is its own entry."
+      }
+    },
+    {
+      "region": "APAC",
+      "name": "MariBank",
+      "slug": "maribank",
+      "category": "Digital Bank",
+      "hq": "Singapore",
+      "founded": 2023,
+      "asia": "strong",
+      "asiaNote": "Singapore digital bank (Sea Group)",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Sea Group's digital bank.",
+      "url": "https://careers.sea.com/",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "Hires through Sea Group's careers site (careers.sea.com), which has no public board ZenPath can read; no Greenhouse/Lever/Workday board found (2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "MariBank Singapore",
+          "MariBank Singapore Private Limited"
+        ]
+      }
+    },
+    {
+      "region": "APAC",
+      "name": "ANEXT Bank",
+      "slug": "anext-bank",
+      "category": "Digital Bank",
+      "hq": "Singapore",
+      "founded": 2022,
+      "asia": "strong",
+      "asiaNote": "Singapore digital wholesale bank (Ant Group)",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on Employment Pass sponsorship; not individually checked.",
+      "note": "Ant Group's Singapore digital wholesale bank for SMEs.",
+      "url": "https://www.anextbank.com/",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "No public job board found (no Greenhouse/Lever/Workable/Workday, 2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "ANEXT Bank Pte Ltd",
+          "ANEXT"
+        ]
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Bank of America",
+      "slug": "bank-of-america",
+      "category": "Global Bank",
+      "hq": "Charlotte, USA",
+      "founded": 1904,
+      "asia": "strong",
+      "asiaNote": "Singapore, Hong Kong, Tokyo, Mumbai",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Large US bank (BofA Securities, Merrill).",
+      "url": "https://careers.bankofamerica.com/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Workday tenant 'ghr', Asia-Pacific lateral site (Lateral-APAC) to match the Singapore focus; a separate 'Lateral-US' site carries US roles. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workday",
+        "slug": "ghr",
+        "wdNum": "1",
+        "site": "Lateral-APAC"
+      },
+      "match": {
+        "aliases": [
+          "BofA",
+          "BofA Securities",
+          "Bank of America Merrill Lynch",
+          "Merrill"
+        ]
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Société Générale",
+      "slug": "societe-generale",
+      "category": "Global Bank",
+      "hq": "Paris, France",
+      "founded": 1864,
+      "asia": "strong",
+      "asiaNote": "Singapore, Hong Kong, Tokyo, Bengaluru",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "French universal bank; corporate and investment banking hub in Singapore.",
+      "url": "https://careers.societegenerale.com/",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "Own careers site (careers.societegenerale.com) with no public feed or server-rendered list ZenPath can read (2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Societe Generale",
+          "SocGen",
+          "Société Générale CIB",
+          "Societe Generale Corporate & Investment Banking"
+        ]
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Crédit Agricole CIB",
+      "slug": "credit-agricole-cib",
+      "category": "Global Bank",
+      "hq": "Paris, France",
+      "founded": 1863,
+      "asia": "strong",
+      "asiaNote": "Singapore, Hong Kong, Tokyo",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Corporate and investment banking arm of Crédit Agricole.",
+      "url": "https://www.ca-cib.com/careers",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "No public job board found for CA-CIB (no Workday/SmartRecruiters tenant, 2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Credit Agricole CIB",
+          "Crédit Agricole Corporate and Investment Bank",
+          "Credit Agricole Corporate and Investment Bank"
+        ]
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Julius Baer",
+      "slug": "julius-baer",
+      "category": "Trading & Investing",
+      "hq": "Zurich, Switzerland",
+      "founded": 1890,
+      "asia": "strong",
+      "asiaNote": "Singapore and Hong Kong booking centres",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Swiss wealth manager.",
+      "url": "https://juliusbaer.wd3.myworkdayjobs.com/External",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Workday tenant 'juliusbaer'. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workday",
+        "slug": "juliusbaer",
+        "wdNum": "3",
+        "site": "External"
+      },
+      "match": {
+        "aliases": [
+          "Bank Julius Baer",
+          "Julius Bär"
+        ]
+      }
+    },
+    {
+      "region": "Global",
+      "name": "LGT",
+      "slug": "lgt",
+      "category": "Trading & Investing",
+      "hq": "Vaduz, Liechtenstein",
+      "founded": 1920,
+      "asia": "strong",
+      "asiaNote": "Singapore and Hong Kong",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Private bank and asset manager (LGT Private Banking).",
+      "url": "https://www.lgt.com/sg-en/career/jobs",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Own server-rendered Singapore job list (10 roles on 2026-10-24).",
+      "ats": {
+        "type": "html",
+        "url": "https://www.lgt.com/sg-en/career/jobs",
+        "linkPattern": "#/career/jobs/[a-z0-9-]+$#i"
+      },
+      "match": {
+        "aliases": [
+          "LGT Private Banking",
+          "LGT Bank",
+          "LGT Capital Partners"
+        ],
+        "note": "'LGT' alone only matches exactly."
+      }
+    },
+    {
+      "region": "Global",
+      "name": "SMBC",
+      "slug": "smbc",
+      "category": "Global Bank",
+      "hq": "Tokyo, Japan",
+      "founded": 2001,
+      "asia": "strong",
+      "asiaNote": "Asia head office in Singapore",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Sumitomo Mitsui Banking Corporation.",
+      "url": "https://careerasia.smbc.co.jp/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "SuccessFactors career site for SMBC Asia (also lists the group's JRI roles), server-rendered. 'design' search on 2026-10-24: 25 hits incl. Director/ED Data Design and VP Solution Lead (Domain BA/UX).",
+      "ats": {
+        "type": "html",
+        "url": "https://careerasia.smbc.co.jp/search/?q=design",
+        "linkPattern": "#/job/[^/]+/\\d+/#i"
+      },
+      "match": {
+        "aliases": [
+          "Sumitomo Mitsui Banking Corporation",
+          "SMBC Group",
+          "Sumitomo Mitsui Banking"
+        ]
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Mizuho",
+      "slug": "mizuho",
+      "category": "Global Bank",
+      "hq": "Tokyo, Japan",
+      "founded": 2000,
+      "asia": "strong",
+      "asiaNote": "Singapore, Hong Kong, Tokyo",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Japanese megabank.",
+      "url": "https://www.mizuhogroup.com/asia-pacific/careers",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "Only an Americas Workday board was found (mizuho.wd1, site mizuhoamericas), which wouldn't show Singapore roles; no Asia-Pacific board found (2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Mizuho Bank",
+          "Mizuho Financial Group",
+          "Mizuho Securities"
+        ]
+      }
+    },
+    {
+      "region": "APAC",
+      "name": "YouTrip",
+      "slug": "youtrip",
+      "category": "Payments & Transfers",
+      "hq": "Singapore",
+      "founded": 2018,
+      "asia": "strong",
+      "asiaNote": "Singapore, Thailand, Philippines",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on Employment Pass sponsorship; not individually checked.",
+      "note": "Multi-currency travel wallet.",
+      "url": "https://apply.workable.com/youtrip/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Workable account 'youtrip' (43 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workable",
+        "slug": "youtrip"
+      },
+      "match": {
+        "aliases": [
+          "You Technologies",
+          "You Technologies Group"
+        ]
+      }
+    },
+    {
+      "region": "APAC",
+      "name": "Atome",
+      "slug": "atome",
+      "category": "Payments & Transfers",
+      "hq": "Singapore",
+      "founded": 2019,
+      "asia": "strong",
+      "asiaNote": "Southeast Asia",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on Employment Pass sponsorship; not individually checked.",
+      "note": "Buy-now-pay-later app from Advance Intelligence Group.",
+      "url": "https://www.atome.sg/",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "No group job board found (Workable's 'atome' account is Atome Thailand with no roles; no Lever/Greenhouse board, 2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Advance Intelligence Group",
+          "ADVANCE.AI",
+          "Atome Financial"
+        ]
+      }
+    },
+    {
+      "region": "APAC",
+      "name": "Funding Societies",
+      "slug": "funding-societies",
+      "category": "Business Banking & Expense",
+      "hq": "Singapore",
+      "founded": 2015,
+      "asia": "strong",
+      "asiaNote": "Singapore, Malaysia, Indonesia, Thailand, Vietnam",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on Employment Pass sponsorship; not individually checked.",
+      "note": "SME digital financing platform (Modalku in Indonesia).",
+      "url": "https://apply.workable.com/fundingsocieties/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Workable account 'fundingsocieties' (Funding Societies | Modalku Group, 72 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workable",
+        "slug": "fundingsocieties"
+      },
+      "match": {
+        "aliases": [
+          "Modalku",
+          "Funding Societies | Modalku"
+        ]
+      }
+    },
+    {
+      "region": "APAC",
+      "name": "Arta Finance",
+      "slug": "arta-finance",
+      "category": "Trading & Investing",
+      "hq": "Singapore",
+      "founded": 2021,
+      "asia": "strong",
+      "asiaNote": "Singapore plus the US",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on Employment Pass sponsorship; not individually checked.",
+      "note": "Digital wealth-management platform.",
+      "url": "https://jobs.ashbyhq.com/artafinance",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Ashby board 'artafinance' (6 roles on 2026-10-24, incl. VP of Product, B2B Wealth Platform, Singapore). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "ashby",
+        "slug": "artafinance"
+      },
+      "match": {
+        "aliases": [
+          "Arta TechFin"
+        ]
+      }
+    },
+    {
+      "region": "APAC",
+      "name": "SGX Group",
+      "slug": "sgx-group",
+      "category": "Trading & Investing",
+      "hq": "Singapore",
+      "founded": 1999,
+      "asia": "strong",
+      "asiaNote": "Singapore exchange group",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Singapore Exchange.",
+      "url": "https://careers.sgx.com/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "SuccessFactors career site, server-rendered ('design' search, 10 on 2026-10-24).",
+      "ats": {
+        "type": "html",
+        "url": "https://careers.sgx.com/search/?q=design",
+        "linkPattern": "#/job/[^/]+/\\d+/#i"
+      },
+      "match": {
+        "aliases": [
+          "Singapore Exchange",
+          "SGX"
+        ],
+        "note": "'SGX' alone only matches exactly."
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Prudential",
+      "slug": "prudential",
+      "category": "Insurance",
+      "hq": "Hong Kong / London (Prudential plc)",
+      "founded": 1848,
+      "asia": "strong",
+      "asiaNote": "Asia-focused insurer (Singapore, Hong Kong, Malaysia and beyond)",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Asia- and Africa-focused insurer (Prudential plc), incl. Prudential Singapore.",
+      "url": "https://prudential.wd3.myworkdayjobs.com/prudential",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Prudential plc's group Workday site; 'design' search on 2026-10-24 included Experience Design Lead roles. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workday",
+        "slug": "prudential",
+        "wdNum": "3",
+        "site": "prudential"
+      },
+      "match": {
+        "name": "Prudential Singapore",
+        "aliases": [
+          "Prudential Assurance Company Singapore",
+          "Prudential Corporation Asia",
+          "Prudential Hong Kong"
+        ],
+        "note": "No key that normalizes to bare 'prudential' (match.py drops 'plc'), so the unrelated US Prudential Financial doesn't match."
+      }
+    },
+    {
+      "region": "Global",
+      "name": "AIA",
+      "slug": "aia",
+      "category": "Insurance",
+      "hq": "Hong Kong",
+      "founded": 1919,
+      "asia": "strong",
+      "asiaNote": "Pan-Asian insurer",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Pan-Asian life insurer, incl. AIA Singapore.",
+      "url": "https://aia.wd3.myworkdayjobs.com/External",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "AIA group Workday site; 'design' search on 2026-10-24 included UI/UX designer roles. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workday",
+        "slug": "aia",
+        "wdNum": "3",
+        "site": "External"
+      },
+      "match": {
+        "aliases": [
+          "AIA Singapore",
+          "AIA Group",
+          "AIA Group Limited"
+        ],
+        "note": "'AIA' alone only matches exactly."
+      }
+    },
+    {
+      "region": "APAC",
+      "name": "Great Eastern",
+      "slug": "great-eastern",
+      "category": "Insurance",
+      "hq": "Singapore",
+      "founded": 1908,
+      "asia": "strong",
+      "asiaNote": "Singapore, Malaysia, Indonesia",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Singapore life insurer (OCBC group).",
+      "url": "https://www.greateasternlife.com/sg/en/careers.html",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "No public job board found (no Workday/SuccessFactors tenant, 2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Great Eastern Life",
+          "Great Eastern Life Assurance",
+          "Great Eastern Holdings"
+        ]
+      }
+    },
+    {
+      "region": "APAC",
+      "name": "Income Insurance",
+      "slug": "income-insurance",
+      "category": "Insurance",
+      "hq": "Singapore",
+      "founded": 1970,
+      "asia": "strong",
+      "asiaNote": "Singapore",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
+      "note": "Singapore insurer, formerly NTUC Income.",
+      "url": "https://www.income.com.sg/careers",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "No public job board found (2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "NTUC Income",
+          "Income Insurance Limited"
+        ]
+      }
     }
   ]
 }
