@@ -1,20 +1,8 @@
 """
-Tests for the 2026-09-24 Bayt-via-Playwright replacement — see
-bayt_playwright.py's module docstring for the full background, and
-scrape.py's module docstring's "BAYT: NOW VIA PLAYWRIGHT" section for why
-JobSpy's own Bayt integration was replaced rather than just retired (unlike
-Glassdoor — see test_glassdoor_retired.py).
-
-No real network/browser dependency needed for most of this: bayt_playwright's
-DOM-extraction logic and date/URL helpers are pure functions, tested
-directly. scrape_bayt_term()/scrape_bayt() are tested against a small fake
-Playwright browser/page (fake_playwright below) that mimics just enough of
-the real sync_playwright API surface (new_page/goto/wait_for_selector/
-evaluate/close) to exercise the real code path, the same "insert a fake
-module/object rather than touching the network" approach test_bayt_retired.py
-and test_glassdoor_retired.py already use for jobspy. Run with
-`python3 test_bayt_playwright.py` — no pytest/network/real browser required,
-same as every other test file in this project.
+Tests for bayt_playwright.py. The extraction transform and date/URL helpers are
+pure functions tested directly; scrape_bayt_term()/scrape_bayt() run against a
+small fake Playwright browser/page. No network or real browser needed.
+Run: python3 test_bayt_playwright.py
 """
 
 import inspect
@@ -112,11 +100,10 @@ class FakeResponse:
 
 
 class FakePage:
-    """Mimics just enough of Playwright's sync Page API for
-    scrape_bayt_term() to run against — goto/wait_for_selector/evaluate/close.
-    `plan` maps a term to what that term's fake page should do, so different
-    tests can exercise the success path, an HTTP error, and a
-    no-results/timeout case without needing three separate fake classes."""
+    """Just enough of Playwright's sync Page API (goto/wait_for_selector/evaluate/
+        close). `plan` maps a term to its behaviour: success, HTTP error, or
+        no results / timeout.
+    """
 
     def __init__(self, term, plan):
         self.term = term
@@ -147,10 +134,8 @@ class FakeBrowser:
 
     def new_page(self, user_agent=None):
         assert user_agent  # scrape_bayt_term must always set a real UA, not JobSpy's default
-        # FakePage is keyed by term, but new_page() doesn't know the term —
-        # scrape_bayt_term() is what ties them together via closure below,
-        # so this fake just hands back a page pre-loaded with whatever the
-        # NEXT queued behavior is.
+        # new_page() doesn't know the term, so hand back a page loaded with the next
+        # queued behaviour.
         page = FakePage(self._next_term, self.plan)
         self.pages_opened.append(page)
         return page
@@ -192,21 +177,14 @@ check("every opened fake page was closed (page.close() in the finally: block)",
 print("\n-- scrape.py wiring: run_bayt_playwright_searches() is what main() calls --")
 
 main_source = inspect.getsource(scrape.main)
-check("main() calls run_bayt_playwright_searches(), not the retired run_bayt_searches()",
+check("main() calls run_bayt_playwright_searches()",
       "run_bayt_playwright_searches(" in main_source)
-check("main() no longer calls the retired run_bayt_searches( ) directly",
-      "run_bayt_searches(debug=debug)" not in main_source.split("run_bayt_playwright_searches")[0]
-      if "run_bayt_playwright_searches" in main_source else False)
+check("the retired JobSpy Bayt path is gone",
+      not hasattr(scrape, "run_bayt_searches"))
 
 wrapper_source = inspect.getsource(scrape.run_bayt_playwright_searches)
 check("run_bayt_playwright_searches() delegates to bayt_playwright.scrape_bayt(), doesn't reimplement scraping itself",
       "scrape_bayt(" in wrapper_source and "from bayt_playwright import scrape_bayt" in wrapper_source)
-
-# run_bayt_searches() itself must still exist, unbroken, just unused — same
-# "kept as a rollback path" convention as test_bayt_retired.py already
-# verified for the Glassdoor-style retirement.
-check("the old JobSpy-based run_bayt_searches() is still defined (kept intact as a rollback path)",
-      hasattr(scrape, "run_bayt_searches") and inspect.isgeneratorfunction(scrape.run_bayt_searches))
 
 print(f"\n{'ALL PASSED' if failures == 0 else f'{failures} FAILURE(S)'}")
 sys.exit(1 if failures else 0)

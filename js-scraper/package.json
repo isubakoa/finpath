@@ -1,8 +1,8 @@
 {
-  "name": "finpath-js-scraper",
+  "name": "zenpath-js-scraper",
   "private": true,
   "type": "module",
-  "description": "Scheduled browser-based scraper for FinPath's JavaScript-only career sites — see README.md.",
+  "description": "Scheduled headless-browser scraper for ZenPath's JavaScript-only careers boards (writes ../data/js-snapshot.json) — see README.md.",
   "scripts": {
     "scrape": "node scrape.js"
   },

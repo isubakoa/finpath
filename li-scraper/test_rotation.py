@@ -1,39 +1,12 @@
 """
-Offline sanity checks for scrape.py's rotation/accumulation logic — no
-network, no JobSpy dependency. Run with `python3 test_rotation.py`.
+Offline checks for scrape.py's rotation and accumulation: chunks cover the grid
+exactly, results merge across runs instead of being overwritten, and roles
+expire after EXPIRY_DAYS. No network, no JobSpy. Run: python3 test_rotation.py
 
-This is the part of the September 2026 scope increase that most needs its
-own verification: with 38 title terms x 25 locations = 950 combinations,
-each searched against both LI and Indeed, no single run can cover them
-all (see scrape.py's module docstring), so results have to accumulate
-across runs and expire old entries instead of being overwritten wholesale
-each time. These tests check that merge logic in isolation — it's agnostic
-to which site a role's `source` says it came from — since the real thing
-can't be run against live LI/Indeed data in this environment (see
-README.md's "Not yet live-tested" note).
-
-ZENPATH Phase 4 — every `fresh`/`fresh_open_market` dict below was rewritten
-to key on role_identity(slug_or_employer_key, title, location), matching how
-build_fresh_roles() actually keys them in production since Phase 1.4 (see
-scrape.py's module docstring and merge_and_prune()'s own docstring). Before
-this fix, every case here keyed its synthetic `fresh` dicts by job URL
-instead — a leftover from before 1.4 introduced identity-based (not
-URL-based) deduping. Most cases still happened to pass anyway (nothing in
-them ever needed the fresh-role key to actually MATCH an existing one — see
-Cases 1/3/4/6, which either have no prior entry to match against or no
-fresh entry to match with), which is exactly how this went unnoticed: Case
-5 was the only one actually exercising "does a fresh role get correctly
-recognized as the SAME role as an existing one," and it was failing on
-every run. Since `_merge_identity_roles()` computes each EXISTING role's
-identity internally but takes each FRESH role's identity directly from its
-dict key (matching build_fresh_roles()'s real contract — see
-merge_and_prune()'s docstring), a URL-keyed fresh dict here could never
-match anything, silently. Because this file's exit code gates the
-"Run scraper"/"Commit updated snapshot" steps in
-.github/workflows/scrape-li.yml, this one failing case meant the scheduled
-workflow was failing at this step on every run — never reaching the scraper
-at all — since whichever push first drifted this file out of sync with the
-real keying scheme.
+Fresh-role dicts are keyed by role_identity(key, title, location), exactly as
+build_fresh_roles() keys them; keying them by URL instead makes every
+"same role seen again" case silently fail to match (Case 5 guards this).
+This file gates the scraper in CI, so a failure here stops the scheduled run.
 """
 
 from datetime import datetime, timedelta, timezone
@@ -61,11 +34,9 @@ def days_ago(n):
 
 
 def fresh_entry(key, title, location, role):
-    """Builds one {identity: (key, role)} entry the same way
-    build_fresh_roles() does in production — identity is role_identity(key,
-    title, location), not the role's job_url. See this file's own module
-    docstring for why that distinction is exactly what Case 5 below is
-    checking."""
+    """One {identity: (key, role)} entry, keyed the way build_fresh_roles() keys
+        them (role_identity, not job_url) -- see the module docstring.
+    """
     return {role_identity(key, title, location): (key, role)}
 
 
@@ -74,12 +45,9 @@ combos = all_combos()
 check("total combo count", len(combos), len(SEARCH_TERMS) * len(LOCATIONS))
 check("no duplicate combos", len(set(combos)), len(combos))
 
-# 2026-09-28 — PRIORITY_LOCATIONS (Singapore/Dubai/Netherlands) carved out of the
-# ordinary rotation into their own always-considered sweep (see scrape.py's module
-# docstring's "PRIORITY MARKETS" section). COMBOS_PER_RUN/current_chunk_index() now
-# chunk through rotating_combos() (the remaining 12 locations), not all_combos() (all
-# 15) — the checks below confirm that split is exact (no combo lost or duplicated
-# between the two pools) and that the rotation-cycle math reflects the smaller pool.
+# PRIORITY_LOCATIONS get their own sweep; COMBOS_PER_RUN chunks only the
+# rotating pool. Check the two pools partition the grid exactly and the cycle
+# math uses the smaller pool.
 rotating = rotating_combos()
 priority = priority_combos()
 check("rotating combo count", len(rotating), len(SEARCH_TERMS) * len(ROTATING_LOCATIONS))
@@ -162,11 +130,8 @@ check("Case 6: beta expired away entirely", "beta" in snap["companies"], False)
 check("Case 6: gamma added fresh", "gamma" in snap["companies"], True)
 
 print("-- merge_and_prune: openMarket branch (Phase 2.5) --")
-# Case 7: same identity-refresh behavior as Case 5, but on the open-market side —
-# fresh_open_market_roles is keyed by normalize_employer_name(employer), not a slug
-# (see merge_and_prune()'s own docstring), and this parameter was entirely untested
-# in this file before Phase 4 (test_match.py covers it more exhaustively — this is
-# just confirming the rotation-across-runs behavior applies identically here too).
+# Case 7: same refresh-on-re-seen behaviour as Case 5, on the open-market side
+# (keyed by normalize_employer_name(employer) instead of a slug).
 existing = {"companies": {}, "openMarket": {"roles": [
     {"employer": "Example Fintech", "market": "Singapore", "title": "Director of Product Design",
      "location": "Singapore", "url": "https://li.com/jobs/OM1", "postedDate": days_ago(10),

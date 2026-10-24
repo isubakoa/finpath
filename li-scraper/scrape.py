@@ -1,250 +1,47 @@
 """
-FinPath — LI + Indeed coverage via JobSpy (github.com/speedyapply/JobSpy),
-plus Bayt via a dedicated Playwright scraper (see *** BAYT: NOW VIA
-PLAYWRIGHT *** below, and bayt_playwright.py's own module docstring for the
-full story). Glassdoor and Google were both evaluated and retired outright,
-neither replaced — see *** GLASSDOOR: RETIRED *** and *** GOOGLE: RETIRED
-*** below.
+li-scraper: finds design/product roles on job boards and writes
+data/li-snapshot.json, which check.php merges into ZenPath alongside each
+company's own careers board.
 
-2026-10-20 — two more sources added, both Netherlands-specific job boards
-Isu asked to be evaluated and wired in: welcome_to_nl.py (welcome-to-nl.nl,
-via its own Elastic App Search backend — a broad general-purpose Dutch
-portal, title-filtered like every other source) and uxwork.py (uxwork.nl,
-via its own plain JSON search endpoint — already a dedicated UX/product
-board, so no title filtering needed on top of what it already is). Neither
-needs Playwright — both are plain requests/JSON, like every source here
-except Bayt. See each module's own docstring for the full story (how their
-backends were found, what's confirmed vs. still-unverified, and why
-uxwork.py — unlike every other source — takes no `terms` argument). A
-third site Isu also asked about, englishjobsearch.nl, was evaluated and
-deliberately NOT added: it's a white-labeled Talent.com instance (real
-overlap with the LI/Indeed coverage this file already has) whose own job
-links are tracking-token redirects rather than stable URLs — too close to
-the exact URL-identity bug class (id-vs-url, the sync blind-replace) the
-php-ftp frontend has already been bitten by twice. Worth revisiting if the
-other two prove out and Isu wants the extra coverage anyway.
+Sources (one generator each, all yielding (source, row)):
+  li, indeed    JobSpy keyword searches over the SEARCH_TERMS x LOCATIONS grid
+                (run_searches). LI is paced; Indeed isn't rate-limited.
+  bayt          headless-Chromium scrape (bayt_playwright.py) -- JobSpy's Bayt
+                adapter gets 403'd everywhere. No location axis, all terms, every run.
+  welcometonl   welcome-to-nl.nl's search backend (welcome_to_nl.py).
+  uxwork        uxwork.nl's JSON search, one call covers everything (uxwork.py).
+Glassdoor and Google were evaluated and retired in 2026-09 (bot-detection /
+CAPTCHA walls we won't defeat; Glassdoor's API is gone). englishjobsearch.nl
+was evaluated and skipped (tracking-redirect URLs, overlaps LI/Indeed).
 
-Runs keyword searches against three of JobSpy's eight supported sites (your
-trimmed Product + Design/UX title list, across your target-region list — see
-SEARCH_TERMS/LOCATIONS below). Writes li-snapshot.json with two top-level
-sections:
-  - `companies: { <slug>: { roles: [...] } }` — results (a) from one of the
-    231 tracked companies — matched by name, see match.py — that (b) pass
-    the exact same isRoleRelevant() title filter index.html itself applies.
-    This is the original shape check.php has always expected from
-    js-scraper's snapshot.json, byte-for-byte unchanged by Phase 2.
-  - `openMarket: { roles: [...] }` (Phase 2, new; broadened to all LOCATIONS
-    2026-09-23, LOCATIONS trimmed 25 -> 15 the same day per your explicit
-    market picks) — a flat, no-slug list of postings that matched NO
-    tracked company but are still worth surfacing: it clears
-    open_market_gate() (relevant, real target-or-below-tier fit — not
-    "stretch"; loosened 2026-09-28 from target-tier-only, see
-    open_market_gate()'s own docstring for why) — see
-    build_fresh_roles()/open_market_gate(). Staffing/recruitment agency
-    postings (Robert Walters, Michael Page, etc.) are INCLUDED as of
-    2026-09-28, per explicit request — agencies.py's is_agency() blocklist
-    still exists but open_market_gate() no longer calls it; see that
-    function's docstring. Every location this file already searches (all
-    of LOCATIONS, not a narrower subset) is eligible; a `market` field (see
-    market_for_location()) labels which one. As of 2026-10-17 a posting
-    whose own scraped location can't be resolved to one of those LOCATIONS
-    markets (is_known_market()) is dropped — not a return to a narrower
-    allowlist, just closing the gap that let results actually based
-    somewhere never searched (India, in the case that got reported) ride
-    along unchecked; see the dated comment above market_for_location()'s
-    ISO_CODE_TO_MARKET for the full story. Sorted newest-first. Each role
-    in EITHER section carries its own `source` ("li", "indeed", or "bayt")
-    plus a `sources` array (Phase 1.4) for cross-site corroboration, so the
-    frontend can badge it correctly. LI and Indeed are both queried
-    unconditionally for every combo, open-market locations included — see
-    run_searches() below — so every open-market market has the same
-    two-source floor as every tracked-company market does. As of
-    2026-09-23, both sections also carry `sponsorshipSignal` (a list of
-    matched sponsorship/relocation phrases from the posting's own
-    description — see SPONSORSHIP_KEYWORDS/sponsorship_signal() below);
-    always `[]` for a LinkedIn-only role, since linkedin_fetch_description
-    stays off (see run_searches()'s docstring) — Indeed and Bayt return a
-    description with no extra request, so those sites are covered for free.
-ZipRecruiter (US/Canada only — a poor fit for a mostly non-US target-region
-list), Naukri (India) and BDJobs (Bangladesh) were deliberately left out —
-see README.md's "Widening scope further" for the reasoning behind every
-site, included or not.
+Output:
+  companies   {slug: {roles: [...]}} -- postings from a tracked company in
+              data/companies.json (matched by employer name, match.py) that
+              pass the same title-relevance filter the app uses.
+  openMarket  {roles: [...], searchedMarkets, priorityMarkets, ...} -- postings
+              from untracked employers that clear open_market_gate() (relevant,
+              target- or below-tier fit) and are located in a searched market
+              (is_known_market). Agencies are included on purpose. Newest first.
+Every role carries `source`, a `sources` list (cross-site corroboration,
+precedence in SOURCE_PRECEDENCE) and `sponsorshipSignal` (visa/relocation
+phrases found in the description; always [] for LI, whose descriptions cost an
+extra request each and stay off).
 
-*** IMPORTANT — READ THIS BEFORE CHANGING TERMS/LOCATIONS/SCHEDULE ***
-38 title phrases x 15 locations = 570 (term, location) combinations as of
-2026-09-24 (trimmed from 25 locations/950 combos the same day, at the
-user's explicit request, after being walked through the full list of 25
-and choosing which 15 to keep — see LOCATIONS below for the current list).
-Originally 108 x 17 = 1,836 before a September 2026 term-list trim brought
-it to 38 x 25 = 950; this round's location trim is a second, independent
-reduction on top of that one. Each combination is searched against LI and
-Indeed via JobSpy — two independent requests per combo, each in its own
-try/except so one site's failure never takes the other's result down for
-that same combo. Only LI gets the randomized pacing pause between the two
-JobSpy calls: Indeed has no rate limiting per JobSpy's own docs (see
-README's "Indeed coverage" section). Glassdoor and Google used to be part
-of this grid too — both retired outright 2026-09-24, see the module
-docstring's "GLASSDOOR: RETIRED" and "GOOGLE: RETIRED" sections; neither is
-searched at all anymore, by any method. Bayt is architecturally different
-from LI/Indeed — no location parameter at all (it "searches
-internationally" per JobSpy's own README) — so it isn't part of this
-per-combo grid either, searched separately and unchunked; see
-run_bayt_playwright_searches() below. There is still no way to run all 570 combinations in a single pass
-without either proxies or getting blocked on the LI side almost
-immediately — see li-scraper/README.md's "How the rotation works" section
-for the full
-explanation. Instead, each run covers one CHUNK of the full combination
-list (COMBOS_PER_RUN of them), chosen deterministically from the current
-time so consecutive scheduled runs walk through the whole list in order and
-wrap back around — a full cycle takes ROTATION_CYCLE_HOURS (printed below)
-to complete. As of 2026-09-28, COMBOS_PER_RUN=114 divides the 570-combo grid
-into exactly 5 equal chunks -> a 10-hour cycle at today's 2-hour scheduled
-cadence (SCHEDULE_INTERVAL_HOURS below), at ~1,368 LI requests/day — see
-COMBOS_PER_RUN's own comment below for how that number was chosen, the
-2026-09-28 tightening, and the two levers (grid size, combos/run) that went
-into it. (This paragraph previously said "COMBOS_PER_RUN=95 ... a 6-hour
-cycle" — stale even before the 2026-09-28 change: that math was from when
-runs fired hourly, before the 2026-09-25 move to a 2-hour cadence, which
-alone had already pushed the real cycle to ~12h without this paragraph
-being updated to say so.) Results
-accumulate into li-snapshot.json across runs (merged, not overwritten) and
-a role is only dropped after EXPIRY_DAYS without being re-confirmed — so a
-company found on Monday doesn't vanish from the tracker on Tuesday just
-because today's chunk didn't include that company's search terms.
+Rotation: the full grid can't be searched in one run without getting blocked
+on LI, so each scheduled run covers one chunk of the ROTATING_LOCATIONS grid
+(COMBOS_PER_RUN combos, chosen from wall-clock time, so it self-heals when
+GitHub skips a tick) plus, every other run, a full sweep of PRIORITY_LOCATIONS
+(Singapore, Dubai, Netherlands). Results accumulate across runs; a role is
+dropped only after EXPIRY_DAYS without being seen again. Cycle lengths are
+printed at the start of every run and published in openMarket for the app.
 
-*** PRIORITY MARKETS (2026-09-28) — Singapore, UAE (Dubai), Netherlands ***
-Isu's 3 priority markets — Singapore, Dubai (searched as "Dubai, United Arab
-Emirates"), and the Netherlands (searched as the existing bare "Netherlands"
-LOCATIONS entry — already broad enough to cover Amsterdam and the rest of
-the country, so no separate Amsterdam-only entry was added; a bare-country
-search was already this file's own established pattern for every other
-country-level LOCATIONS entry) no longer sit in the ordinary rotation with
-the other 12 locations. They're pulled out into their own PRIORITY_LOCATIONS
-list and searched, EVERY TERM, as a separate sweep layered on top of
-whichever rotating chunk a run would have covered anyway — see
-PRIORITY_LOCATIONS/ROTATING_LOCATIONS/priority_combos()/priority_sweep_due()
-below. Two things this deliberately achieves together:
-  1. The other 12 (now "rotating") locations are NOT slowed down — pulling 3
-     locations out shrinks the rotating grid (570 -> 456 combos), so at the
-     same COMBOS_PER_RUN, those 12 locations' own full-rotation cycle is if
-     anything slightly FASTER than before (~8h vs ~10h), never slower.
-  2. The priority sweep runs on every OTHER scheduled run (~4h worst-case
-     gap, not the ~10h/12h an ordinary rotation turn would mean) — "every
-     run" (~2h) was considered and costed out first, but doubles total daily
-     LI/Indeed request volume on top of the COMBOS_PER_RUN=95->114 increase
-     from the same day; "every other run" was Isu's explicit choice instead,
-     for roughly half that added cost while still being far more frequent
-     than these 3 markets' old rotation turn.
-See priority_sweep_due()'s own docstring for exactly how "every other run"
-is computed (deterministic from wall-clock time, same self-healing
-philosophy as current_chunk_index() — no persisted state, no counter of how
-many real runs have actually fired, so ticks GitHub drops or delays don't
-desync it).
-
-*** BAYT: NOW VIA PLAYWRIGHT, NOT JOBSPY (2026-09-24) ***
-JobSpy's own Bayt adapter (run_bayt_searches() below) got an outright 403
-on every single request — confirmed both from GitHub Actions AND from a
-real home/office IP via a standalone diagnostic script, so this was never
-a GitHub-Actions-specific IP block. A `user_agent` override (a real Chrome
-UA, not JobSpy's default) didn't fix it either. JobSpy's own maintainers,
-in a GitHub issue about the closely analogous Google/ZipRecruiter/Glassdoor
-situation, say sites in this class need "a JS-executing fetch (Playwright
-etc.)" — not a header or proxy tweak. You explicitly asked to keep Bayt
-working rather than retire it (it's this scraper's only Middle
-East-focused source, and covers UAE heavily), so run_bayt_playwright_searches()
-below replaces the JobSpy call with a real headless-Chromium scrape via
-bayt_playwright.py — see that file's module docstring for the verified DOM
-selectors and the full reasoning. run_bayt_searches() (the old JobSpy path)
-is left fully intact below, just no longer called from main() — a
-ready rollback if the Playwright approach ever needs to be abandoned.
-
-*** GLASSDOOR: RETIRED (2026-09-24, after a same-day Playwright attempt) ***
-JobSpy's own Glassdoor adapter (removed — see below) got a 400/403
-("location not parsed") on every real request, the same shape of failure
-Bayt originally had. A same-day Playwright replacement was built and
-shipped, following the same reasoning that fixed Bayt: an initial manual
-check with a real, headed browser tab got a normal, fully-rendered results
-page on the first try, suggesting — wrongly, as it turned out — that
-Glassdoor doesn't bot-block real browsers the way Google does.
-
-That manual check used a headed browser, not the headless Chromium
-`sync_playwright()` actually launches in production, and the two behaved
-differently. The first live GitHub Actions run of the Playwright version
-came back with 0 Glassdoor results out of 63 eligible combos attempted. A
-local diagnostic (run against the real, unmodified scraper code, from a
-real residential IP — ruling out a GitHub-Actions-specific block) showed
-exactly why: Glassdoor's own homepage returned HTTP 401, titled
-"Authenticating...", running a script that redirects straight to
-`glassdoor.com/member/profile/login?reason=bot-detection&...` —
-Cloudflare's bot-management layer explicitly detecting the headless
-browser itself (not just "can this client run JS", which is what let Bayt
-through) and gating it behind a login wall, citing bot-detection as the
-reason in the URL itself.
-
-Getting past a page that explicitly declares itself a bot-detection
-response would mean deploying stealth countermeasures — spoofing
-`navigator.webdriver`, faking browser fingerprints, that whole toolkit —
-specifically to defeat a site's active anti-automation defense. That's a
-hard line regardless of the reason or who's asking, the same one that
-ruled out Google below. Separately, real research (not a guess) confirmed
-there's no legitimate way around it either: Glassdoor's official v1
-partner API (api.glassdoor.com) has returned HTTP 410 Gone since
-2025-08-20 — dead even for existing partner-key holders — and any new API
-access has required an undisclosed, enterprise-only sales process since
-2024, not a fit for this project. So Glassdoor is retired outright, same
-as Google: glassdoor_playwright.py, test_glassdoor_playwright.py, and
-every Glassdoor-specific code path that used to live in this file
-(GLASSDOOR_COUNTRY, run_glassdoor_searches(), run_glassdoor_playwright_
-searches()) have been deleted entirely rather than kept as a rollback —
-there's no working approach to roll back to. If this ever needs
-revisiting, the real alternative isn't a scraper at all: paid third-party
-job-data aggregators (e.g. JobsPipe, TheirStack) relicense Glassdoor's
-data themselves — a vendor decision, not something to build against
-unilaterally.
-
-*** GOOGLE: RETIRED, NOT REPLACED (2026-09-24) ***
-JobSpy's Google adapter returns 0 rows with an "initial cursor not found"
-warning on every request — no loud error the way Bayt's JobSpy adapter
-had, just silent nothing. Real diagnosis (a JobSpy maintainer's own
-account of this exact situation): Google serves an HTTP-200 "enable
-JavaScript" bootstrap shell to any non-JS-executing HTTP client — in
-principle the same root cause Bayt had, and initially thought to be
-Glassdoor's too (see above — Glassdoor's real problem turned out to be
-different and worse: active headless-browser detection, not just a JS
-requirement). It was NOT built. Loading Google's own search results page
-in a real browser — a single manual request, no automation, no scale at
-all — got an immediate "unusual traffic... verify you're not a robot"
-interstitial on the very first try, unlike Bayt (which loaded cleanly, and
-still does via Playwright today). Building recurring automated
-infrastructure specifically to defeat Google's own bot-check, against
-Google's own search results specifically (not a job board), at an hourly
-schedule, is a materially different and more serious thing than Bayt's
-case — Google's Terms of Service explicitly prohibit automated querying of
-its search results, and actually solving/bypassing a CAPTCHA-class
-challenge is out of scope regardless of the reason (the same reasoning
-that ultimately caught up with Glassdoor too, once its headless-specific
-Cloudflare block came to light — see above). So Google is retired
-outright: run_google_searches() below is extracted verbatim from what
-used to be inline in run_searches(), kept intact as a reference, but never
-called from main() or from anywhere else. If Google coverage matters
-enough to revisit, the real, compliant path is Google's official Custom
-Search JSON API — but that returns general web-search snippets/links, not
-Google's special Jobs-panel data, so it would need real re-architecture
-(crawling each linked page separately) rather than being a drop-in
-replacement; not scoped or built.
-
-The Bayt Playwright addition adds a real new per-run cost — a full
-Chromium install in CI, plus 38 real browser page loads every run — that
-the old JobSpy call didn't have. Worth watching in the first several live
-GitHub Actions runs before fully trusting the normal hourly cadence; see
-the workflow's own comments.
-
-USAGE (locally or in the GitHub Actions workflow — see .github/workflows/):
+Usage (locally, or via .github/workflows/scrape-li.yml):
     pip install -r requirements.txt
-    playwright install --with-deps chromium   # needed once, for the Bayt scraper
+    playwright install --with-deps chromium   # once, for Bayt
     python scrape.py
-    python scrape.py --debug         # prints every kept/dropped result, no file write
-    python scrape.py --chunk N       # force a specific chunk index (for testing)
+    python scrape.py --debug          # print every kept/dropped result, write nothing
+    python scrape.py --chunk N        # force a rotation chunk
+    python scrape.py --priority | --no-priority   # force the priority sweep on/off
 """
 
 import json
@@ -260,27 +57,17 @@ from match import (
     build_index,
     match_company,
     is_role_relevant,
-    fit_tier,
     normalize_scraped_title,
     normalize_employer_name,
     role_identity,
     open_market_gate,
 )
 
-# ---- 1.4: cross-site dedupe source precedence — when the same normalized
-# ---- (employer, title, location) identity is found via more than one site
-# ---- (this run, or across runs once merge_and_prune() folds them together),
-# ---- whichever site ranks lowest here supplies the role's canonical
-# ---- url/source; every site that found it is retained in the role's
-# ---- "sources" array regardless. "ats" is here (ranked highest) for
-# ---- forward-compat with index.html's own directly-fetched roles, which
-# ---- use the same precedence concept — this scraper itself never produces
-# ---- an "ats"-sourced row today.
-# ---- 2026-10-20 — welcometonl/uxwork added, ranked below bayt: both are
-# ---- lower-traffic/narrower NL-only sources, so an existing LI/Indeed/Bayt
-# ---- row for the same identity should keep supplying the canonical url
-# ---- rather than have a newly-added source silently take over.
-SOURCE_PRECEDENCE = {"ats": 0, "li": 1, "indeed": 2, "glassdoor": 3, "google": 4, "bayt": 5, "welcometonl": 6, "uxwork": 7}
+# When the same (employer, title, location) identity is found on several sites,
+# the lowest-ranked site supplies the canonical url/source; all sites stay in
+# `sources`. The NL-only boards rank last so an existing LI/Indeed/Bayt row
+# keeps its url. Unknown sources rank after everything listed.
+SOURCE_PRECEDENCE = {"ats": 0, "li": 1, "indeed": 2, "bayt": 3, "welcometonl": 4, "uxwork": 5}
 
 
 def _source_rank(source):
@@ -288,23 +75,13 @@ def _source_rank(source):
 
 
 def _merge_role_records(prior, new):
-    """Combine a previously-seen role record with a freshly (re-)scraped one
-    for the same normalized identity (1.4) — used both within a single run
-    (build_fresh_roles(), when two of this run's raw rows collide) and across
-    runs (merge_and_prune(), when this run reconfirms a role carried over
-    from an earlier one). The freshest lastSeenAt/postedDate always wins (the
-    newer scrape just reconfirmed the role is still live), but the canonical
-    source/url is whichever record ranks higher in SOURCE_PRECEDENCE — so a
-    lower-precedence site re-finding an already-established ATS/LinkedIn
-    posting doesn't demote its canonical URL. "sources" is always the union
-    of both, so corroboration accumulates and is never lost across runs.
-
-    2026-09-23: "sponsorshipSignal" follows the exact same union reasoning as
-    "sources" — once ANY corroborating source's description has surfaced a
-    matched phrase, that evidence should never be lost just because the
-    canonical record this round happens to come from a source with no
-    description (e.g. a LinkedIn row winning on SOURCE_PRECEDENCE after an
-    Indeed row already established a signal)."""
+    """Combine an earlier record with a fresh one for the same identity -- within
+        a run (two sites, same posting) and across runs (a carried-over role seen
+        again). The freshest lastSeenAt/postedDate wins; the canonical source/url
+        is whichever ranks higher in SOURCE_PRECEDENCE; `sources` and
+        `sponsorshipSignal` are unions, so corroboration is never lost when the
+        canonical record comes from a source without a description.
+    """
     sources = sorted(
         set(prior.get("sources") or ([prior["source"]] if prior.get("source") else []))
         | set(new.get("sources") or ([new["source"]] if new.get("source") else [])),
@@ -322,17 +99,10 @@ def _merge_role_records(prior, new):
     return merged_role
 
 
-# ---- Sponsorship/relocation keyword heuristic (2026-09-23) — a per-posting
-# ---- signal, separate from and complementary to companies.py's existing
-# ---- manually-curated, company-level `sponsorship`/`sponsorshipNote` fields
-# ---- (index.html's About panel already documents those as "a rough,
-# ---- size-and-market-based signal, not a verified guarantee" — this is the
-# ---- same spirit, applied per-listing instead of per-company). Literal,
-# ---- case-insensitive substring matching against the posting's own
-# ---- description text — deliberately not fuzzy/NLP, same "exact-match,
-# ---- conservative" philosophy as agencies.py's is_agency() and
-# ---- market_for_location()'s MARKET_ALIASES: a false "this posting offers
-# ---- sponsorship" claim is a worse failure than an occasional missed one.
+# ---- Sponsorship/relocation phrases, per posting ----
+# Separate from companies.json's company-level `sponsorship` notes. Literal,
+# case-insensitive substring matching on the description -- deliberately not
+# fuzzy: a false "offers sponsorship" is worse than a missed one.
 SPONSORSHIP_KEYWORDS = [
     "visa sponsorship",
     "relocation support",
@@ -340,13 +110,9 @@ SPONSORSHIP_KEYWORDS = [
     "global talent",
 ]
 
-# A small set of negation cues checked immediately before a matched phrase —
-# catches the most common real-world false positive ("no visa sponsorship
-# available", "unable to offer relocation support") without pretending to be
-# a real negation parser. This is a best-effort guard, not a guarantee: it
-# won't catch every phrasing (e.g. a negation several clauses earlier), which
-# is exactly why the frontend surfaces this as "a phrase was found," never as
-# "this employer confirmed sponsorship" — see index.html's About panel.
+# Negation cues checked just before a match ("no visa sponsorship", "unable to
+# offer relocation support"). Best-effort, not a parser -- which is why the app
+# says "a phrase was found", never "sponsorship confirmed".
 _SPONSORSHIP_NEGATION_CUES = (
     "no ", "not ", "without ", "unable to", "cannot ", "can't ", "won't ",
     "does not", "doesn't", "unfortunately",
@@ -360,14 +126,10 @@ def _has_nearby_negation(text, match_start):
 
 
 def sponsorship_signal(description):
-    """Returns the list of SPONSORSHIP_KEYWORDS phrases found in `description`
-    (empty list = none found, including for an empty/missing description —
-    the common case for a LinkedIn-only row, since linkedin_fetch_description
-    stays off). Always a list, never a bare boolean, so the frontend can show
-    *which* phrase(s) actually matched rather than one opaque flag. Only the
-    first occurrence of each keyword is checked against
-    _has_nearby_negation() — good enough for a flag, not meant to be an
-    exhaustive report of every mention in a long description."""
+    """SPONSORSHIP_KEYWORDS phrases found in `description` ([] for none or no
+        description). A list rather than a bool so the app can show which phrase
+        matched. Only each keyword's first occurrence is negation-checked.
+    """
     if not description:
         return []
     text = description.lower()
@@ -378,16 +140,10 @@ def sponsorship_signal(description):
             hits.append(keyword)
     return hits
 
-OUTPUT_PATH = "li-snapshot.json"
+OUTPUT_PATH = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "li-snapshot.json"))
 
-# ---- Trimmed September 2026 from the original 108 (27 Product + 81
-# ---- Design/UX) down to 38 (9 Product + 29 Design/UX), to shrink the
-# ---- rotation cycle for freshness/footprint reasons — see README.md's
-# ---- "How the rotation works". This is your reviewed and confirmed list,
-# ---- kept exactly as sent (including a deliberate choice to not carry
-# ---- forward explicit "Director of Product"/"Head of Product"/"VP of
-# ---- Product"-style Product-lane terms — flagged at the time, kept as-is
-# ---- per your call). ----
+# ---- Search terms: 9 product + 29 design/UX titles (trimmed from 108 in
+# ---- 2026-09 to shorten the rotation). ----
 PRODUCT_TERMS = [
     "Product Manager",
     "Product Owner",
@@ -434,22 +190,9 @@ DESIGN_TERMS = [
 
 SEARCH_TERMS = PRODUCT_TERMS + DESIGN_TERMS
 
-# Your target-region list. Bare country names ("Japan", "Australia",
-# "Netherlands", ...) resolve broadly to anywhere in that country via LI's
-# own location search; "City, Country" entries (Kuala Lumpur, Dubai)
-# resolve to that specific metro only — that distinction is intentional
-# (your call), not something this script enforces itself.
-#
-# 2026-09-24: trimmed from 25 entries to these 15, at your explicit request
-# to reduce scraper load/block-risk, after being shown the full list and
-# choosing which markets to keep. Cut: Taiwan, France, Luxembourg,
-# Switzerland, Austria, Denmark, Norway, Belgium, Spain, and one of the two
-# UAE entries (Abu Dhabi — Dubai stays, and both always collapsed to the
-# same "United Arab Emirates" canonical market/label anyway, see
-# CANONICAL_MARKETS below, so keeping just one loses no distinct market,
-# only the 2x-search-frequency UAE used to get from having two entries).
-# INDEED_COUNTRY/INDEED_LOCATION_OVERRIDE below were trimmed to match —
-# every kept entry here has (at minimum) an INDEED_COUNTRY mapping.
+# Target markets. Bare country names search the whole country; "City,
+# Country" entries search that metro only. Every entry needs an INDEED_COUNTRY
+# mapping below.
 LOCATIONS = [
     "Singapore",
     "Hong Kong",
@@ -468,16 +211,9 @@ LOCATIONS = [
     "Dubai, United Arab Emirates",
 ]
 
-# ---- 2026-09-28 — Isu's 3 priority markets, pulled out of the ordinary
-# ---- rotation into their own always-considered sweep (every term, every
-# ---- other run) — see the module docstring's "PRIORITY MARKETS" section for
-# ---- the full reasoning, and priority_combos()/priority_sweep_due() below
-# ---- for the mechanism. "Netherlands" here (not a separate "Amsterdam"
-# ---- entry) is Isu's explicit choice — the existing bare-country entry
-# ---- already covers Amsterdam plus the rest of the country, matching how
-# ---- every other bare-country LOCATIONS entry above already behaves.
-# ---- Must be a subset of LOCATIONS (checked at import time below) — these
-# ---- strings have to match a LOCATIONS entry exactly, not add a new one.
+# Searched in full (every term) every other run instead of waiting for their
+# rotation turn -- see priority_combos() / priority_sweep_due(). Must be exact
+# LOCATIONS entries (asserted below). "Netherlands" already covers Amsterdam.
 PRIORITY_LOCATIONS = [
     "Singapore",
     "Dubai, United Arab Emirates",
@@ -486,32 +222,14 @@ PRIORITY_LOCATIONS = [
 assert all(loc in LOCATIONS for loc in PRIORITY_LOCATIONS), \
     "PRIORITY_LOCATIONS must be an exact subset of LOCATIONS"
 
-# The remaining 12 locations — what actually gets chunked/rotated by
-# COMBOS_PER_RUN. Smaller than the full LOCATIONS list now that
-# PRIORITY_LOCATIONS is searched separately every other run instead — see
-# rotating_combos()/priority_combos() below.
+# What COMBOS_PER_RUN actually rotates through.
 ROTATING_LOCATIONS = [loc for loc in LOCATIONS if loc not in PRIORITY_LOCATIONS]
 
-# ---- 2026-09-23 — open market broadened to every LOCATIONS entry, per your
-# ---- call: "keep it open and broad across all market but specific to the
-# ---- pre-defined job titles." Previously (Phase 2.1, then the UAE addition)
-# ---- an unmatched-company posting only got a second look for the
-# ---- open-market feed when its location was one of a 3-market allowlist
-# ---- (Singapore/Netherlands/UAE) — everywhere else it was dropped even
-# ---- though this file already searches all 25 LOCATIONS for every one of
-# ---- the 38 pre-defined titles (see the module docstring's combo-count
-# ---- note). That allowlist is gone: eligibility is open_market_gate()
-# ---- (relevant + target-or-below-tier fit — agency postings included as of
-# ---- 2026-09-28, see that function's docstring) PLUS, as of 2026-10-17 (see
-# ---- that date's note on market_for_location()/is_known_market() below), a
-# ---- real check that the posting's own scraped location actually resolves
-# ---- to one of these 15 markets — not a narrow 3-market allowlist like the
-# ---- old gate, but not "anything goes" either.
-# ---- CANONICAL_MARKETS below only supplies the `market` label
-# ---- build_fresh_roles() attaches for display/filtering (the Rules &
-# ---- Sources per-market toggles, the "Open market · <market>" chip),
-# ---- derived by collapsing every LOCATIONS "City, Country" entry (Dubai/Abu
-# ---- Dhabi, Kuala Lumpur) down to its country, deduped in LOCATIONS order.
+# ---- Markets ----
+# Open-market postings are eligible from any searched market (open_market_gate()
+# for title/fit, is_known_market() for location). CANONICAL_MARKETS is LOCATIONS
+# collapsed to countries ("Dubai, United Arab Emirates" -> "United Arab
+# Emirates"), in LOCATIONS order -- the `market` label the app filters on.
 def _canonical_market_name(location_entry):
     return location_entry.split(",")[-1].strip() if "," in location_entry else location_entry
 
@@ -522,74 +240,24 @@ for _loc_entry in LOCATIONS:
     if _canonical not in CANONICAL_MARKETS:
         CANONICAL_MARKETS.append(_canonical)
 
-# A market whose real-world postings commonly abbreviate the country name
-# differently than CANONICAL_MARKETS spells it out, checked as an extra
-# substring alongside the market's own name in market_for_location() below —
-# "UAE" is a very common informal abbreviation LinkedIn/Indeed location
-# fields use ("Dubai, UAE") that wouldn't otherwise contain the literal
-# phrase "united arab emirates". Every market not listed here just matches
-# on its own lowercase name.
+# Common abbreviations a location field uses instead of the canonical name
+# ("Dubai, UAE"), checked as extra substrings in market_for_location().
 MARKET_ALIASES = {
     "United Arab Emirates": ["uae"],
 }
 
-# ---- 2026-10-17 — added after Isu reported genuine India postings showing
-# ---- up in the Open Market feed despite India never being one of the
-# ---- searched LOCATIONS. Root cause: the 2026-09-23 broadening above
-# ---- correctly removed the old narrow 3-market allowlist, but in doing so
-# ---- left NO location check at all — market_for_location() only ever
-# ---- existed as a display label and explicitly never returned None (see
-# ---- its own docstring, now out of date), so a posting whose location
-# ---- can't be resolved to one of our markets was still kept, just labeled
-# ---- with its raw, unresolved location text. LinkedIn/Indeed/Bayt do this
-# ---- more than you'd expect — a search scoped to "Singapore" or "United
-# ---- Kingdom" can still return a posting actually based in India, Pakistan,
-# ---- the US, etc. (global job-board behavior, not a bug in the search call
-# ---- itself) — and with nothing checking the result's own location
-# ---- afterward, every one of those leaked straight into the feed.
-# ----
-# ---- real snapshot data audited this date: 6760 kept open-market roles,
-# ---- 113 of them labeled India/Bengaluru/Mumbai/Chennai/Pune/Gurgaon
-# ---- (genuine leaks), plus smaller leaks from the US, Canada, Pakistan,
-# ---- Saudi Arabia, Qatar, Morocco, Poland, Egypt, Türkiye, Sudan, Spain,
-# ---- Slovenia, and Tunisia — none of those are LOCATIONS entries.
-# ----
-# ---- the fix is NOT a return to the old narrow allowlist (Isu's "keep it
-# ---- open and broad across all markets" call from 2026-09-23 still stands
-# ---- for all 15 LOCATIONS/CANONICAL_MARKETS) — it's making the EXISTING
-# ---- "which of our markets is this" resolution actually capable of
-# ---- recognizing a posting as being in one of them, so unresolved genuinely
-# ---- means "not one of our markets" rather than "we couldn't be bothered to
-# ---- check." market_for_location() alone wasn't reliable enough to gate on
-# ---- as-is: real Indeed rows in particular come back as "City, StateCode,
-# ---- CC" (e.g. "Berlin, BE, DE", "Stockholm, AB, SE", "Dubai, DU, AE") —
-# ---- an ISO-2 country code, never the spelled-out country name — which the
-# ---- old substring-on-full-name check could never match, and LinkedIn
-# ---- sometimes drops the country entirely for a "Greater X Metropolitan
-# ---- Area"/"X Area" phrasing with no code at all. Gating on the old
-# ---- function as-is would have silently hidden hundreds of perfectly real
-# ---- UK/Germany/Sweden/Korea/Singapore/etc. postings along with the actual
-# ---- India leak — a worse regression than the bug being fixed. So
-# ---- market_for_location() itself was extended with two more resolution
-# ---- passes (ISO_CODE_TO_MARKET, checked against the location's own last
-# ---- comma-separated segment; then CITY_ALIASES, a short, evidence-based
-# ---- list built directly from this date's real snapshot's remaining
-# ---- unresolved-but-legitimate rows) before anything gates on its result.
-# ----
-# ---- CITY_ALIASES is deliberately conservative about ambiguous names: a
-# ---- real "Berlin, El Salvador" row surfaced in the same audit (not
-# ---- Germany!), which is exactly why "berlin" is NOT a city alias here —
-# ---- same reasoning kept "cambridge" and "perth" out (Cambridge, MA;
-# ---- Perth, Scotland both real). Where a name is genuinely ambiguous, this
-# ---- deliberately drops the (rare, usually single-occurrence) legitimate
-# ---- posting rather than risk letting an off-market one back in — the
-# ---- failure mode Isu actually flagged was a false positive, not a false
-# ---- negative, so that's the direction this errs in when unsure.
-# ----
-# ---- is_known_market() is the new boolean gate: build_fresh_roles()'s
-# ---- open-market branch now requires it before keeping a row, exactly
-# ---- where open_market_gate() (title/employer) is already checked — see
-# ---- that function's call site below.
+# ---- Resolving a raw location to one of our markets ----
+# Searches scoped to one country still return postings based elsewhere (India,
+# the US, Pakistan...), so open market only keeps a posting whose own location
+# resolves to a searched market. Plain substring matching on country names
+# isn't enough: Indeed often returns "City, StateCode, CC" ("Berlin, BE, DE")
+# and LinkedIn sometimes "Greater X Area" with no country at all, so
+# market_for_location() also checks the last comma segment against
+# ISO_CODE_TO_MARKET and falls back to CITY_ALIASES.
+#
+# Ambiguous city names are left out on purpose (a real "Berlin, El Salvador"
+# posting exists; Cambridge MA, Perth Scotland): when unsure, drop the rare
+# legitimate posting rather than let an off-market one in.
 ISO_CODE_TO_MARKET = {
     "sg": "Singapore", "hk": "Hong Kong", "jp": "Japan", "kr": "South Korea",
     "nz": "New Zealand", "au": "Australia", "nl": "Netherlands", "it": "Italy",
@@ -598,13 +266,9 @@ ISO_CODE_TO_MARKET = {
     "ae": "United Arab Emirates",
 }
 
-# "Greater X Area"/"X Metropolitan Area"-style results carry no country name
-# or code at all. Each of these was confirmed against the 2026-10-17 audit's
-# real (and otherwise-unresolved) data — see the dated note above for why
-# ambiguous names (Berlin, Cambridge, Perth, Rome, London, Manchester — each
-# has a real same-named place outside these 15 markets, or was already
-# covered by ISO_CODE_TO_MARKET for every real row observed) are deliberately
-# left out rather than guessed at.
+# "Greater X Area" / "X Metropolitan Area" shapes with no country marker, each
+# seen in real data. Ambiguous names (Berlin, Cambridge, Perth, Rome, London,
+# Manchester) are deliberately absent -- see above.
 CITY_ALIASES = {
     "amsterdam": "Netherlands", "eindhoven": "Netherlands", "utrecht": "Netherlands",
     "rotterdam": "Netherlands", "the hague": "Netherlands", "den haag": "Netherlands",
@@ -629,22 +293,12 @@ CITY_ALIASES = {
 
 
 def market_for_location(location):
-    """Best-effort canonical market label for a raw scraped location string —
-    used for display/filtering (the Rules & Sources per-market toggles, the
-    "Open market · <market>" chip) AND, as of 2026-10-17, as the thing
-    is_known_market() checks before a posting is allowed into the open-market
-    feed at all — see the dated comment above ISO_CODE_TO_MARKET for why a
-    location this can't resolve is no longer assumed to be fine. Three
-    resolution passes, in order: (1) the original substring-match against
-    each CANONICAL_MARKETS name (+ MARKET_ALIASES) — e.g. "Amsterdam, North
-    Holland, Netherlands" contains "netherlands" outright; (2) ISO_CODE_TO_MARKET,
-    checked both as an exact match (a source that returns a bare "SG"/"NL"/"AE"
-    instead of a full location string) and against the location's own last
-    comma-separated segment (the common "City, StateCode, CC" shape real
-    Indeed rows use, e.g. "Berlin, BE, DE"); (3) CITY_ALIASES, for the
-    "Greater X Area" shape that carries no country marker at all. Returns
-    None when none of the three resolve anything — that's the new "not one
-    of our markets" signal; see is_known_market()."""
+    """Canonical market for a raw location, or None if it isn't one of ours. Three
+        passes: (1) CANONICAL_MARKETS names + MARKET_ALIASES as substrings;
+        (2) ISO_CODE_TO_MARKET, exact ("SG") or on the last comma segment
+        ("Berlin, BE, DE"); (3) CITY_ALIASES. Used both as the display label and,
+        via is_known_market(), as open market's location gate.
+    """
     loc = (location or "").strip()
     if not loc:
         return None
@@ -665,24 +319,14 @@ def market_for_location(location):
 
 
 def is_known_market(location):
-    """True when market_for_location(location) resolves to one of our 15
-    searched markets — the open-market feed's location gate (2026-10-17, see
-    the dated comment above ISO_CODE_TO_MARKET for why this exists and how
-    it's deliberately NOT the old narrow 3-market allowlist). Kept as its own
-    named function, rather than inlining `market_for_location(...) is not
-    None` at the one call site, so the gate's intent reads clearly there."""
+    """Open market's location gate: the location resolves to a searched market."""
     return market_for_location(location) is not None
 
 
-# Every LOCATIONS entry mapped to the exact country_indeed string JobSpy's
-# Indeed adapter expects (verified against JobSpy's own supported-countries
-# list — these are case-/spelling-sensitive on JobSpy's side, not something
-# to guess at). All 15 are supported. The two remaining "City, Country"
-# entries also get a trimmed, city-only LOCATION_FOR_INDEED override below,
-# since Indeed treats `location` as an in-country search modifier on top of
-# `country_indeed`, not a repeat of the country name. Trimmed 2026-09-24 to
-# match LOCATIONS above (Taiwan/France/Luxembourg/Switzerland/Austria/
-# Denmark/Norway/Belgium/Spain/Abu Dhabi entries removed).
+# LOCATIONS -> JobSpy's country_indeed strings (case- and spelling-sensitive;
+# verified against JobSpy's supported list). "City, Country" entries also get a
+# city-only INDEED_LOCATION_OVERRIDE, since Indeed treats `location` as a
+# modifier within country_indeed.
 INDEED_COUNTRY = {
     "Singapore": "Singapore",
     "Hong Kong": "Hong Kong",
@@ -705,253 +349,76 @@ INDEED_LOCATION_OVERRIDE = {
     "Dubai, United Arab Emirates": "Dubai",
 }
 
-# Google ignores `location`/`hours_old`/etc. entirely once `google_search_term`
-# is set (JobSpy builds the literal `q=` string from it verbatim, no parsing
-# on JobSpy's side) — so the "near <location>" and time-window phrasing has
-# to be embedded by hand, following the exact convention JobSpy's own README
-# example uses ("software engineer jobs near San Francisco, CA since
-# yesterday"). HOURS_OLD (240h / 10 days) doesn't map cleanly onto Google's
-# four literal time-phrase buckets (get_time_range() in JobSpy's own source:
-# "since yesterday" <=24h, "in the last 3 days" <=72h, "in the last week"
-# <=168h, else "in the last month") — "in the last month" is the safe
-# superset choice (never narrower than the 10-day window the other sites
-# use), not an attempt at an exact match. A Google result older than 10 days
-# just rides the same EXPIRY_DAYS/lastSeenAt lifecycle as everything else
-# once it's matched and kept — see build_fresh_roles/merge_and_prune.
-GOOGLE_TIME_PHRASE = "in the last month"
-
-
-def google_query(term, location):
-    return f"{term} jobs near {location} {GOOGLE_TIME_PHRASE}"
-
 RESULTS_WANTED_PER_SEARCH = 20
-# ---- Phase 2.6 originally asked for more results per search (50 instead of
-# ---- 20) on any OPEN_MARKET_LOCATIONS-eligible combo, since that widened
-# ---- net directly widened open-market coverage for a small 3-market
-# ---- allowlist. 2026-09-23: now that open-market eligibility covers every
-# ---- LOCATIONS entry (not a 3-market subset — see market_for_location()'s
-# ---- note above), applying that same +50 boost everywhere would mean
-# ---- meaningfully more requests across all 950 combos, not just a handful
-# ---- — a real footprint/rate-limit tradeoff, and your explicit call was to
-# ---- keep the flat 20-per-search default instead and take the filtering
-# ---- fix without also scraping harder. RESULTS_WANTED_OPEN_MARKET/
-# ---- _results_wanted_for() are retired; every combo now just uses
-# ---- RESULTS_WANTED_PER_SEARCH directly, open-market-eligible or not.
-# ---- "sorted by recency" from the spec is NOT implemented as a JobSpy call
-# ---- parameter — scrape_jobs() has no sort/date-ordering parameter at all
-# ---- (checked directly against JobSpy's own README before writing this;
-# ---- inventing one that doesn't exist would just crash the next live run).
-# ---- Recency ordering is applied instead where it actually matters for a
-# ---- consumer — merge_and_prune() sorts openMarket.roles[] by postedDate
-# ---- (falling back to lastSeenAt) before it's written to the snapshot.
+# JobSpy has no sort parameter, so recency ordering happens in
+# merge_and_prune() (openMarket roles sorted by postedDate, then lastSeenAt).
 HOURS_OLD = 240  # 10 days — comfortably wider than one rotation cycle (see below),
                  # so a role posted right after its combo's turn is still visible
                  # the next time that combo comes up.
 
-# Polite, but randomized rather than a flat delay — September 2026, paired
-# with the move to hourly runs (below): a perfectly uniform 8.0s gap between
-# every single request, run after run, is a very identifiable non-human
-# pattern; a random point in a tight range costs nothing in total run time
-# (same ~6-8 minutes either way) but doesn't look mechanically scripted.
-# Shared by LI and Google — see the module docstring for why Google gets the
-# same caution as LI despite not being explicitly flagged as rate-limited by
-# JobSpy's docs (it scrapes google.com directly, a generally block-happy
-# surface, and there's no cost to being cautious here versus real evidence).
+# Randomized rather than a fixed delay -- a perfectly uniform gap between
+# requests looks scripted; a random point in a tight range costs nothing.
 PAUSE_BETWEEN_SEARCHES_SECONDS_MIN = 5
 PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
 
-# Bayt has no location parameter at all (see module docstring), so it isn't
-# part of the term x location grid or the chunked rotation — it's cheap
-# enough (38 requests, one per SEARCH_TERMS entry, no location multiplier)
-# to just run in full every single scheduled run rather than needing its own
-# rotation logic. Same randomized-pause treatment as Google/LI: JobSpy's docs
-# don't call Bayt out as rate-limited either way, so this is the same
-# "no evidence yet, so don't assume it's as tolerant as Indeed" hedge.
-BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MIN = 5
-BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
-
-# ---- Rotation: see the module docstring. One run = one chunk of the full
-# ---- term x location grid, chosen deterministically from wall-clock time so
-# ---- scheduled runs naturally advance through the whole grid and wrap
-# ---- around. Tune COMBOS_PER_RUN to trade off per-run LI load against
-# ---- how long a full cycle takes (both printed at the top of every run).
-# ---- 2026-09-24: two changes landed together — LOCATIONS was trimmed
-# ---- 25 -> 15 (see LOCATIONS' own comment above) AND this was set to 95
-# ---- (from 60). The grid trim alone (950 -> 570 combos) would have sped
-# ---- the old 60/run pace up to a ~9.5h cycle for free, at LOWER daily
-# ---- volume than before (24*60=1,440/day, same as the very first
-# ---- baseline). Instead, 95 was chosen so the smaller grid divides evenly
-# ---- into exactly 6 chunks (570/95=6.0) -> a 6-hour cycle, matching what
-# ---- had just been approved (and shipped, then superseded by this round)
-# ---- at COMBOS_PER_RUN=160 on the old 950-combo grid — same freshness,
-# ---- but at ~2,280 LI requests/day instead of ~3,840/day (a ~40% cut),
-# ---- and a real safety-margin win too: the deliberate pacing pauses alone
-# ---- (see PAUSE_BETWEEN_SEARCHES_* above) total ~16s/combo, so 95 combos
-# ---- is ~25 minutes of guaranteed pause time per run, well clear of the
-# ---- 60-minute gap between scheduled runs (versus ~43 minutes at the
-# ---- previous 160/950 combination) — a run finishing late enough to
-# ---- overlap the next one is now a lot less likely. If real GitHub
-# ---- Actions run logs confirm plenty of margin, both COMBOS_PER_RUN and
-# ---- LOCATIONS have room to grow again later; this was chosen to bank
-# ---- the smaller grid as risk reduction, not to spend it on more speed.
-# ----
-# ---- 2026-09-28 (current) — that "room to grow later" was cashed in: at
-# ---- today's 2-hour scheduled cadence (see SCHEDULE_INTERVAL_HOURS below),
-# ---- 95 combos/run meant a full rotation took ~12h (6 chunks x 2h) — so any
-# ---- one (term, location) combo, including every tracked-company-adjacent
-# ---- open-market search, only got re-checked twice a day. Isu asked
-# ---- specifically for a shorter rotation, then explicitly asked for a
-# ---- smaller daily-volume increase than an initial 190/3-chunk/6h option
-# ---- would have meant — see that tradeoff below. Raised to
-# ---- COMBOS_PER_RUN=114, which divides the 570-combo grid evenly
-# ---- (570/114=5.0) -> exactly 5 chunks -> a 10-hour full-rotation cycle,
-# ---- a real (if more modest than 190's) improvement on the previous ~12h.
-# ---- 142 was floated first (roughly midway between 95 and 190) but doesn't
-# ---- divide 570 evenly — ceil(570/142)=5 chunks too, the same cycle length
-# ---- as 114, just with an oddly-shaped last chunk of only 2 combos instead
-# ---- of 5 equal 114-combo chunks — so 114 gets the identical 10h cycle with
-# ---- no uneven chunk, strictly better than 142 for this purpose. Cost/safety
-# ---- check, computed directly against the actual code (today there is
-# ---- exactly ONE time.sleep() per combo in run_searches(), drawn from
-# ---- PAUSE_BETWEEN_SEARCHES_SECONDS_MIN..MAX = 5..11s, averaging 8s/combo —
-# ---- the older "~16s/combo" figure a previous version of this comment used
-# ---- appears to predate a since-simplified run_searches() and was not
-# ---- reused here): 114 combos x ~8s = ~15 minutes of guaranteed pause time
-# ---- per run, comfortably inside the 120-minute gap between scheduled runs
-# ---- (~87% margin left over, versus ~89% margin at 95 combos/~12.7min
-# ---- before this change) — checkout/dependency-install/Chromium-install/
-# ---- the offline test suites/Bayt's own 38-request pass/actual JobSpy
-# ---- network latency beyond the deliberate pause all add more wall-clock
-# ---- time on top of that ~15min figure and aren't accounted for here, same
-# ---- caveat previous versions of this comment carried. The real tradeoff is
-# ---- still daily request volume, just a smaller one than 190 would have
-# ---- meant: 114/95 = 1.2x as many combos searched per day at the same 2h
-# ---- cadence (12 runs/day either way), so both LI and Indeed's daily
-# ---- request count go to ~1,368/day each (~2,736/day combined) instead of
-# ---- ~1,140/1,140/2,280 before this change — a ~20% increase, versus the
-# ---- ~100% increase 190 would have been. If even this proves to be a real
-# ---- block-risk concern once real Actions run logs confirm (or don't) that
-# ---- the margin actually holds up in practice, dial COMBOS_PER_RUN back
-# ---- down rather than re-widening LOCATIONS/SEARCH_TERMS to compensate —
-# ---- same "which lever" guidance as before.
-# ----
-# ---- 2026-09-28 (same day, second change) — Singapore/Dubai/Netherlands
-# ---- pulled out into PRIORITY_LOCATIONS (see that list's own comment and
-# ---- the module docstring's "PRIORITY MARKETS" section), so this constant
-# ---- now divides ROTATING_LOCATIONS' smaller 456-combo grid (12 locations
-# ---- x 38 terms), not the full 570. COMBOS_PER_RUN itself is UNCHANGED at
-# ---- 114 — it happens to still divide the new grid evenly too
-# ---- (456/114=4.0) -> exactly 4 chunks -> an ~8-hour full-rotation cycle
-# ---- for the 12 rotating locations, down from ~10h, at the exact same
-# ---- ~1,368/day LI/Indeed request volume this constant already meant
-# ---- before today's second change — none of that ~1,368/day cost is new;
-# ---- it's simply now spread over a smaller pool, which is why the cycle
-# ---- got shorter "for free." All of the added request volume from the
-# ---- priority sweep (another ~1,368/day — see PRIORITY_LOCATIONS/
-# ---- priority_combos() for the accounting) is separate and additional to
-# ---- what's described in this comment block.
-COMBOS_PER_RUN = 114
-# Scheduling history, kept in full so a future change doesn't have to
-# rediscover this by trial and error:
-#   - Originally hourly ("0 * * * *"). Fired wildly irregularly in practice
-#     (gaps from 45min to ~6h between runs, at least one run missing
-#     outright) — see .github/workflows/scrape-li.yml's header comment for
-#     the full diagnosis (GitHub's scheduler documented to drop `schedule`
-#     triggers anchored at minute 0 under load).
-#   - 2026-09-25, round 1: moved to every 3h, off the top of the hour
-#     ("13 */3 * * *") — fixed both the minute-0 congestion and cut total
-#     Actions-minutes burned.
-#   - 2026-09-25, round 2 (this value): tightened back to every 2h, same
-#     minute offset ("13 */2 * * *") — Isu's explicit follow-up call,
-#     trading back some of round 1's cut in favor of a shorter gap between a
-#     role going live on LI and this scraper's next chance to find it. Still
-#     off minute 0, so the original congestion fix is unaffected either way.
-# This value must always match the cron's *interval* in
-# .github/workflows/scrape-li.yml (the hour spacing — e.g. 2 for "every 2
-# hours" — not the minute offset), or the chunk-rotation math below picks
-# the wrong bucket. At 2h, the runtime-overlap concern noted in
-# COMBOS_PER_RUN's comment above (114 combos ~= 15min of guaranteed pause
-# time versus a 120-minute gap, as of the 2026-09-28 tightening — see that
-# comment for the current numbers) is still comfortably clear — nowhere near
-# the tightness of the original 60-minute hourly gap — so this value
-# (SCHEDULE_INTERVAL_HOURS itself) is unchanged by that round; only
-# COMBOS_PER_RUN moved. The (rotating-pool) grid took ~10h to fully rotate
-# right after that change (total_chunks = 5, cycle_hours = 5 * 2), versus
-# ~12h before it and ~18h at the round-1 3h cadence.
+# ---- Rotation ----
+# One run = one chunk of ROTATING_LOCATIONS x SEARCH_TERMS (456 combos), picked
+# from wall-clock time so runs walk the whole grid and wrap around. 114 divides
+# the grid into 4 equal chunks -> a full rotation every ~8h at the 2h cadence,
+# about 1,368 LI and 1,368 Indeed requests a day (the priority sweep adds about
+# the same again). Pacing alone is ~8s/combo, so ~15 min per run, well inside
+# the 2h gap.
 #
-# 2026-09-28 (same day, second change) — PRIORITY_LOCATIONS (Singapore,
-# Dubai, Netherlands) carved out of the rotating pool into their own
-# always-swept set (see COMBOS_PER_RUN's own comment and the module
-# docstring's "PRIORITY MARKETS" section). The rotating pool COMBOS_PER_RUN
-# actually chunks shrank from 570 to 456 combos as a result, so total_chunks
-# dropped from 5 to 4 and the rotating cycle from ~10h to ~8h — a side
-# effect of the pool shrinking, not a new tuning decision; COMBOS_PER_RUN
-# itself did not change. This is on top of, not instead of, the priority
-# sweep's own separate every-other-run cadence (priority_sweep_due(), same
-# SCHEDULE_INTERVAL_HOURS-wide buckets as this file's other rotation math).
-# Raise COMBOS_PER_RUN, not this value, if rotation
-# speed ever needs tuning independently of the firing interval.
-SCHEDULE_INTERVAL_HOURS = 2  # must match the cron interval in .github/workflows/scrape-li.yml
+# The lever for rotation speed vs. request volume (block risk) is this number.
+# Prefer lowering it over widening LOCATIONS/SEARCH_TERMS if LinkedIn starts
+# blocking runs.
+COMBOS_PER_RUN = 114
+# Wall-clock bucket size for the rotation and the priority sweep. Must match
+# SCHEDULE_INTERVAL_HOURS in .github/workflows/scrape-li.yml's gate step: the
+# workflow fires every 15 minutes, but only runs when this much time has passed
+# since the last snapshot commit. Tune COMBOS_PER_RUN, not this, to change
+# rotation speed.
+SCHEDULE_INTERVAL_HOURS = 2  # must match .github/workflows/scrape-li.yml's gate
 
-# A role not re-confirmed within this many days is dropped from the
-# snapshot — see the module docstring's "accumulate, don't overwrite" note.
-# Kept safely above 2x a full rotation cycle so normal rotation timing never
-# prunes a role that just hasn't had its combo's turn yet.
+# A role not seen again within this many days is dropped. Kept well above two
+# full rotations, so a role is never pruned just for waiting its turn.
 EXPIRY_DAYS = 14
 
 
 def all_combos():
-    """Every (term, location) combo across the FULL LOCATIONS list (570, priority and
-    rotating markets together) — total-grid accounting/tests only. main() doesn't search
-    this directly any more; see rotating_combos()/priority_combos() below for what
-    actually gets searched each run."""
+    """Every combo across all of LOCATIONS (priority + rotating) -- for accounting
+        and tests; main() searches rotating_combos()/priority_combos() instead.
+    """
     return [(term, loc) for term in SEARCH_TERMS for loc in LOCATIONS]
 
 
 def rotating_combos():
-    """(term, location) combos for ROTATING_LOCATIONS only — the 12 non-priority
-    markets. This is what COMBOS_PER_RUN/current_chunk_index() actually chunk through
-    each run; see the module docstring's "PRIORITY MARKETS" section."""
+    """Combos for ROTATING_LOCATIONS -- what COMBOS_PER_RUN chunks through."""
     return [(term, loc) for term in SEARCH_TERMS for loc in ROTATING_LOCATIONS]
 
 
 def priority_combos():
-    """(term, location) combos for PRIORITY_LOCATIONS — every term, every one of the 3
-    priority markets. Layered on top of the current run's rotating chunk when
-    priority_sweep_due() says this run's turn has come up — see that function."""
+    """Every term x every PRIORITY_LOCATIONS entry; added on top of a run's
+        rotating chunk when priority_sweep_due().
+    """
     return [(term, loc) for term in SEARCH_TERMS for loc in PRIORITY_LOCATIONS]
 
 
 def current_chunk_index(total_chunks, forced=None):
     if forced is not None:
         return forced % total_chunks
-    # Deterministic, stateless: which SCHEDULE_INTERVAL_HOURS-wide bucket of
-    # wall-clock time are we in right now, since the Unix epoch. Consecutive
-    # scheduled runs land in consecutive buckets — the cron (currently fires
-    # every 15 minutes, off :00/:30, with a separate gate step deciding which
-    # ticks actually do real work — see .github/workflows/scrape-li.yml's
-    # "round 3" header comment) doesn't need to land exactly on each
-    # SCHEDULE_INTERVAL_HOURS boundary for this to work: it's a multi-hour-
-    # wide bucket, so any real run landing somewhere inside it advances this
-    # by 1 without needing to persist any state between runs. A
-    # manually-triggered or delayed run may occasionally repeat or skip a
-    # chunk — harmless, it evens out over the next cycle.
+    # Which SCHEDULE_INTERVAL_HOURS-wide bucket of wall-clock time this is.
+    # Consecutive real runs land in consecutive buckets without any stored state;
+    # a delayed or manual run may repeat or skip a chunk, which evens out.
     bucket = int(time.time() // (SCHEDULE_INTERVAL_HOURS * 3600))
     return bucket % total_chunks
 
 
 def priority_sweep_due(forced=None):
-    """2026-09-28 — whether THIS run includes the guaranteed PRIORITY_LOCATIONS sweep on
-    top of its normal rotating chunk. See the module docstring's "PRIORITY MARKETS"
-    section for the full reasoning (why these 3 markets were pulled out of the rotation,
-    why "every other run" rather than "every run"). Same wall-clock-bucket approach as
-    current_chunk_index() (deliberately the SAME SCHEDULE_INTERVAL_HOURS-wide bucket, not
-    a separate clock) — due on even-numbered buckets, not due on odd ones, which in
-    practice means roughly every other real run includes the sweep and the other half
-    don't. Deterministic and stateless: derived fresh from wall-clock time every run, not
-    from a counter of how many real runs have actually fired, so a tick GitHub drops or
-    delays doesn't desync it — the next run that actually fires just checks "is the
-    CURRENT bucket even or odd," with nothing to remember from the last one."""
+    """Whether this run adds the PRIORITY_LOCATIONS sweep: due on even-numbered
+        wall-clock buckets (same buckets as current_chunk_index()), so roughly
+        every other real run. Stateless, so a dropped GitHub tick can't desync it.
+    """
     if forced is not None:
         return forced % 2 == 0
     bucket = int(time.time() // (SCHEDULE_INTERVAL_HOURS * 3600))
@@ -959,42 +426,17 @@ def priority_sweep_due(forced=None):
 
 
 def run_searches(combos, debug=False):
-    """Yields (source, row) for this run's chunk of (term, location)
-    combinations — source is "li" or "indeed"; row is a raw JobSpy result
-    (dict-like). Imports jobspy lazily so match.py/test_match.py can be
-    exercised without the dependency installed.
-
-    *** 2026-09-24: Glassdoor and Google used to be inline here too — see
-    "GLASSDOOR: RETIRED" and "GOOGLE: RETIRED" in the module docstring.
-    Glassdoor's old JobSpy-based logic (and its Playwright replacement) was
-    deleted outright, not kept as a rollback — see the module docstring for
-    why. Google's old logic is preserved verbatim in run_google_searches()
-    below (retired, no longer called at all — there's no Playwright
-    replacement for Google, see the module docstring for why). Only LI and
-    Indeed remain here. ***
-
-    Each site is run as its own independent scrape_jobs() call per combo,
-    each in its own try/except — deliberately, so any one site's failure
-    (an unsupported country value, a transient error, a block) can never
-    take another site's result for that same combo down with it. Only LI
-    gets the randomized pacing pause now (Google used to share this
-    reasoning; see PAUSE_BETWEEN_SEARCHES_*'s comment above, unchanged from
-    before Google's retirement).
-
-    Description availability (2026-09-23, checked directly against JobSpy's
-    own README before writing this): Indeed returns a `description` field
-    on every row with no extra parameter needed. LI is the one exception —
-    JobSpy only populates it when linkedin_fetch_description=True is
-    passed, which adds one extra request PER RESULT ("increases requests by
-    O(n)" per JobSpy's own docs) — a real cost given LI is this scraper's
-    single biggest source. Deliberately left off (see the
-    linkedin_fetch_description=False call below) — a LI-only role's
-    `sponsorshipSignal` (see sponsorship_signal() above) will always be [],
-    not because nothing was found but because nothing was ever fetched to
-    look at. Revisit if this proves to be a real gap once more data has
-    accumulated (a LI-corroborated role that also turns up on Indeed/Bayt
-    still gets a description via that second source — see
-    _merge_role_records()'s sponsorshipSignal union)."""
+    """Yields ("li" | "indeed", raw JobSpy row) for this run's combos. jobspy is
+        imported lazily so the tests run without it.
+    
+        Each site gets its own scrape_jobs() call and try/except per combo, so one
+        site's failure never costs the other's result. Only LI is paced.
+    
+        Indeed returns descriptions for free; LI only does with
+        linkedin_fetch_description=True, which costs one extra request per result
+        on our biggest source -- so it stays off, and LI-only roles never get a
+        sponsorshipSignal (a role also found on Indeed/Bayt does, via the merge).
+    """
     from jobspy import scrape_jobs
 
     for term, location in combos:
@@ -1005,7 +447,7 @@ def run_searches(combos, debug=False):
                 site_name=["linkedin"],
                 search_term=term,
                 location=location,
-                results_wanted=RESULTS_WANTED_PER_SEARCH,  # 2.6, flat since 2026-09-23
+                results_wanted=RESULTS_WANTED_PER_SEARCH,
                 hours_old=HOURS_OLD,
                 linkedin_fetch_description=False,
                 verbose=1 if debug else 0,
@@ -1031,7 +473,7 @@ def run_searches(combos, debug=False):
                     search_term=term,
                     location=indeed_location,
                     country_indeed=indeed_country,
-                    results_wanted=RESULTS_WANTED_PER_SEARCH,  # 2.6, flat since 2026-09-23
+                    results_wanted=RESULTS_WANTED_PER_SEARCH,
                     hours_old=HOURS_OLD,
                     verbose=1 if debug else 0,
                 )
@@ -1043,111 +485,27 @@ def run_searches(combos, debug=False):
                     yield ("indeed", row)
 
 
-def run_google_searches(combos, debug=False):
-    """*** RETIRED 2026-09-24, NO LONGER CALLED FROM main() AT ALL — see the
-    module docstring's "GOOGLE: RETIRED" section. Unlike Bayt, there is no
-    Playwright replacement for this one. *** Extracted verbatim from what
-    used to be inline in run_searches() above. Left fully intact purely as
-    a reference/rollback path; not exercised by any live code path today.
-    JobSpy's Google adapter returns 0 rows with an "initial cursor not
-    found" warning on every real request — Google serves an HTTP-200
-    "enable JavaScript" bootstrap shell to non-JS HTTP clients (per a
-    JobSpy maintainer's own account of this exact failure mode), so this
-    doesn't even fail loudly the way Bayt's 403s did."""
-    from jobspy import scrape_jobs
-
-    for term, location in combos:
-        query = google_query(term, location)
-        if debug:
-            print(f"[scrape] searching (google): {query!r}", file=sys.stderr)
-        try:
-            df4 = scrape_jobs(
-                site_name=["google"],
-                google_search_term=query,
-                results_wanted=RESULTS_WANTED_PER_SEARCH,  # 2.6, flat since 2026-09-23
-                verbose=1 if debug else 0,
-            )
-        except Exception as e:  # noqa: BLE001 — same isolation as run_searches()
-            print(f"[scrape] google search failed ({query!r}): {e}", file=sys.stderr)
-            df4 = None
-        if df4 is not None and len(df4):
-            for row in df4.to_dict(orient="records"):
-                yield ("google", row)
-        time.sleep(random.uniform(PAUSE_BETWEEN_SEARCHES_SECONDS_MIN, PAUSE_BETWEEN_SEARCHES_SECONDS_MAX))
-
-
-def run_bayt_searches(debug=False):
-    """*** RETIRED 2026-09-24, NO LONGER CALLED FROM main() — see the module
-    docstring's "BAYT: NOW VIA PLAYWRIGHT, NOT JOBSPY" section. *** JobSpy's
-    Bayt adapter gets an outright 403 on every request regardless of IP or
-    user_agent — confirmed both from GitHub Actions and from a real home
-    IP. Left fully intact (not deleted) purely as a ready rollback path if
-    the Playwright replacement (run_bayt_playwright_searches() below) ever
-    needs to be abandoned; not exercised by any live code path today.
-
-    Originally: yields (source, row) for every one of SEARCH_TERMS against
-    Bayt — all 38, every run, not chunked (see BAYT_PAUSE_BETWEEN_SEARCHES_*'s
-    comment above for why this doesn't need the term x location rotation
-    the other four sites use: Bayt takes no location parameter at all, so
-    there's no location axis to rotate through, and 38 requests/run is
-    cheap enough to just always run in full). Same try/except-per-search
-    isolation as run_searches()."""
-    from jobspy import scrape_jobs
-
-    for term in SEARCH_TERMS:
-        if debug:
-            print(f"[scrape] searching (bayt): {term!r}", file=sys.stderr)
-        try:
-            df = scrape_jobs(
-                site_name=["bayt"],
-                search_term=term,
-                results_wanted=RESULTS_WANTED_PER_SEARCH,
-                verbose=1 if debug else 0,
-            )
-        except Exception as e:  # noqa: BLE001 — one bad search must not kill the whole run
-            print(f"[scrape] bayt search failed ({term!r}): {e}", file=sys.stderr)
-            df = None
-        if df is not None and len(df):
-            for row in df.to_dict(orient="records"):
-                yield ("bayt", row)
-        time.sleep(random.uniform(BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MIN, BAYT_PAUSE_BETWEEN_SEARCHES_SECONDS_MAX))
-
-
 def run_bayt_playwright_searches(debug=False):
-    """Yields (source, row) for every SEARCH_TERMS entry against Bayt, via a
-    real headless-Chromium Playwright scrape — the replacement for
-    run_bayt_searches() above (see the module docstring's "BAYT: NOW VIA
-    PLAYWRIGHT" section for why). Thin wrapper around
-    bayt_playwright.scrape_bayt() — imports it lazily, inside this
-    function, so scrape.py itself stays importable (match.py/test_match.py/
-    test_rotation.py, none of which need Bayt at all) without the
-    playwright package installed, same reasoning as jobspy's own lazy
-    import in run_searches()/run_bayt_searches()."""
+    """Yields (source, row) for every SEARCH_TERMS entry against Bayt via a
+    headless-Chromium scrape (bayt_playwright.py). Imported lazily so this
+    module stays importable by the tests without playwright installed --
+    same as jobspy's lazy import in run_searches()."""
     from bayt_playwright import scrape_bayt
 
     yield from scrape_bayt(SEARCH_TERMS, debug=debug)
 
 
 def run_welcome_to_nl_searches(debug=False):
-    """Yields (source, row) for every SEARCH_TERMS entry against
-    welcome-to-nl.nl's own Elastic App Search backend — thin wrapper
-    around welcome_to_nl.scrape_welcome_to_nl(), same lazy-import-inside-
-    the-function reasoning as run_bayt_playwright_searches() above (so
-    match.py/test_match.py stay importable without the `requests` package
-    installed, same as they already don't need `playwright` installed).
-    2026-10-20, see this module's own docstring for the full story."""
+    """Yields ("welcometonl", row) for every SEARCH_TERMS entry (welcome_to_nl.py,
+        imported lazily like the others).
+    """
     from welcome_to_nl import scrape_welcome_to_nl
 
     yield from scrape_welcome_to_nl(SEARCH_TERMS, debug=debug)
 
 
 def run_uxwork_searches(debug=False):
-    """Yields (source, row) from uxwork.nl's own plain JSON search
-    endpoint — thin wrapper around uxwork.scrape_uxwork(). Unlike every
-    other run_*_searches() function here, this one takes no `terms`/combos
-    at all: uxwork.nl is already a dedicated UX/product-design board, one
-    call already covers every discipline — see uxwork.py's own module
-    docstring for why. 2026-10-20."""
+    """Yields ("uxwork", row) from uxwork.nl -- one call, no terms (uxwork.py)."""
     from uxwork import scrape_uxwork
 
     yield from scrape_uxwork(debug=debug)
@@ -1166,62 +524,34 @@ def normalize_posted_date(value):
 
 
 def _clean_str(value):
-    """Coerce a raw JobSpy result field to a string. JobSpy returns a pandas
-    DataFrame under the hood, and pandas represents a missing value as NaN —
-    a float, not None or "". `value or ""` doesn't catch that, because
-    float('nan') is truthy in Python (only None/0/""/empty containers are
-    falsy) — so an ungated `row.get(...) or ""` lets a raw NaN float sail
-    through and blow up the moment any downstream code (match.py's regex
-    substitutions, is_role_relevant's string checks) tries to treat it as a
-    string. `value != value` is True only for NaN among common types, so
-    this catches it without needing a pandas import here."""
+    """Coerce a raw JobSpy field to str. Pandas represents a missing value as NaN,
+        a truthy float, so `value or ""` lets it through to string code; `value !=
+        value` catches NaN without importing pandas.
+    """
     if value is None or (isinstance(value, float) and value != value):
         return ""
     return str(value)
 
 
 def build_fresh_roles(rows, index, today_iso, debug=False):
-    """Filters this run's raw results down to real matches, keyed by
-    role_identity() (1.4: normalized employer+title+location — NOT job_url;
-    the same real posting frequently turns up at a different URL per site,
-    or even a fresh URL on the same site on a later run, and that's exactly
-    the cross-site duplication Phase 0 set out to measure). rows: iterable
-    of (source, row) — source is "li", "indeed", or "bayt", tagged onto the kept role (plus retained in its "sources" array
-    when more than one site reports the same identity) so the frontend badge
-    shows which site(s) actually found it.
-
-    Returns (fresh, fresh_open_market) — two separate identity-keyed dicts,
-    same (identity -> (key, role)) shape. `fresh` is unchanged from before
-    Phase 2: tracked-company matches only, `key` is the company slug.
-    `fresh_open_market` is new (2.2; broadened 2026-09-23): a posting that
-    matched NO tracked company but clears open_market_gate() (relevant +
-    real target-or-below-tier fit — see that function's own docstring for
-    the 2026-09-28 loosening from target-only, and for the same-day removal
-    of its agency-blocklist check) AND is_known_market() (2026-10-17 — the
-    posting's own scraped location actually resolves to one of our 15
-    searched markets; see the dated comment above market_for_location()'s
-    ISO_CODE_TO_MARKET for why this exists — it is not the old narrow
-    3-market allowlist, every LOCATIONS entry is still fair game, this just
-    stops a result that's actually based somewhere we never searched, e.g.
-    India, from riding in alongside the ones that are). `market_for_location()`
-    labels which market a kept role is in for display/filtering, same
-    function the gate itself now uses. Keyed the same way as `fresh` but
-    with `key` being normalize_employer_name(employer) instead of a slug
-    (there's no slug — that's the whole point of "open market"). Every other
-    unmatched posting — failing open_market_gate() on title/employer, or
-    is_known_market() on location — is still just dropped, exactly as
-    before.
-
-    A URL is still required and still deduped on its own first (`duplicate`
-    below) — that's a much cheaper, unambiguous check (the literal same URL
-    really is the literal same JobSpy row) and catches the common case
-    before the heavier identity-based merge ever runs."""
+    """Filter this run's raw (source, row) results down to real matches, keyed by
+        role_identity() (normalized employer + title + location, not URL -- the
+        same posting often has a different URL per site, or a new one later).
+    
+        Returns (fresh, fresh_open_market), both {identity: (key, role)}:
+          fresh              tracked-company matches; key = company slug.
+          fresh_open_market  no tracked match, but open_market_gate() (title/fit)
+                             and is_known_market() (location) both pass;
+                             key = normalize_employer_name(employer).
+        Everything else is dropped. Exact-URL duplicates are dropped first, as a
+        cheap check before the identity merge.
+    """
     fresh = {}  # identity tuple -> (slug, role dict)
     fresh_open_market = {}  # identity tuple -> (normalized employer key, role dict) — 2.2
     seen_urls = set()
     kept = dropped_company = dropped_title = duplicate = merged_cross_site = 0
     kept_open_market = dropped_open_market_strict = merged_cross_site_open_market = 0
-    dropped_off_market = 0  # 2026-10-17 — location doesn't resolve to one of our 15 markets
+    dropped_off_market = 0  # location doesn't resolve to a searched market
 
     for source, row in rows:
         url = _clean_str(row.get("job_url"))
@@ -1231,13 +561,9 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
         seen_urls.add(url)
 
         employer = _clean_str(row.get("company"))
-        # 1.5: strip CTA-button run-on text and, only when the site gave no
-        # location, recover one that's run into the title text itself.
-        # _clean_str() first, same as employer above — normalize_scraped_title()
-        # ultimately just does str(value), which doesn't catch a raw pandas
-        # NaN float the way _clean_str()'s explicit `value != value` check
-        # does (see _clean_str()'s own docstring for the production crash
-        # this guards against).
+        # Strip CTA run-on text and, only when the site gave no location, recover one
+        # from the title. _clean_str() first: normalize_scraped_title() would
+        # str() a NaN.
         title, location = normalize_scraped_title(_clean_str(row.get("title")), _clean_str(row.get("location")))
         slug = match_company(employer, index)
 
@@ -1245,24 +571,9 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
             dropped_company += 1
             if debug:
                 print(f"[match] no company match: {employer!r} — {row.get('title')!r}", file=sys.stderr)
-            # 2.2 (broadened 2026-09-23): not a tracked company — still worth
-            # a second look for the open-market feed, gated on title/employer
-            # (open_market_gate()) and, as of 2026-10-17, on location actually
-            # resolving to one of our 15 markets (is_known_market() — see the
-            # dated comment above market_for_location()'s ISO_CODE_TO_MARKET
-            # for why this was added back: not the old narrow 3-market
-            # allowlist, every LOCATIONS entry still qualifies, this just
-            # catches a result that's actually based somewhere we never
-            # searched, e.g. India, before it reaches the title/employer gate.
-            # An empty employer (e.g. a NaN "company" field — see _clean_str()'s
-            # docstring) can never qualify: an "open market" posting with no
-            # employer name to show is useless in the UI, not just noise.
-            # Previously this was accidentally caught by the location
-            # allowlist (an empty-employer row's location was essentially
-            # never one of the 3 old markets) rather than by an explicit
-            # check — is_known_market() isn't a reliable stand-in for that
-            # coincidence either (an empty-employer row can still have a
-            # perfectly real market), so this still guards it directly.
+            # Not a tracked company: a candidate for open market. Requires a searched
+            # market (is_known_market) and a non-empty employer -- an open-market row with
+            # no employer name is useless in the app.
             if not is_known_market(location):
                 dropped_off_market += 1
                 if debug:
@@ -1361,36 +672,17 @@ def load_existing_snapshot():
 
 
 def _merge_identity_roles(existing_items, fresh_roles, cutoff):
-    """Shared merge mechanics behind both branches of merge_and_prune()
-    (tracked-company and, as of Phase 2.5, open-market — "extended not
-    forked" per the backlog: one function doing both jobs, not a
-    copy-pasted merge_and_prune_open_market(). The two branches differ
-    enough in OUTPUT shape (tracked groups by slug into
-    {slug: {"roles": [...]}}, open-market is a flat, recency-sorted list —
-    see merge_and_prune() below) that fully sharing the grouping step too
-    wasn't worth the extra indirection; this covers everything upstream of
-    that: flattening, merging, and expiry.
-
-    existing_items: iterable of (key, role) pairs already extracted from
-    wherever they're grouped in the existing snapshot (key is a company
-    slug for tracked roles, normalize_employer_name(employer) for
-    open-market ones — either way, whatever role_identity() expects as its
-    first argument). fresh_roles: {identity: (key, role)} found THIS run.
-
-    Returns (kept_items, stats) — kept_items is a list of (key, role) pairs
-    (this run's fresh roles, upserted/merged via _merge_role_records(), plus
-    everything carried over that hasn't hit EXPIRY_DAYS since its own
-    lastSeenAt); stats is {"added","updated","carried_over","expired"}.
-
-    Roles written before 1.4 shipped only have a singular "source"/"url", no
-    "sources" array yet — backfilled from "source" here on the fly so every
-    role is on the new shape again the first time it's touched, no separate
-    migration needed for this field specifically (li-scraper/migrate_titles.py
-    handles the still-outstanding title/location text migration). Roles
-    written before the 2026-09-23 sponsorship-keyword addition are backfilled
-    the same way, to an empty list — not because a description was checked
-    and found nothing, just because no description was ever fetched/scanned
-    for that role yet."""
+    """Merge mechanics shared by both branches of merge_and_prune() (tracked and
+        open market); they differ only in output shape, handled there.
+    
+        existing_items: (key, role) pairs from the existing snapshot (key = slug,
+        or normalized employer for open market). fresh_roles: {identity: (key,
+        role)} from this run. Returns (kept_items, stats): this run's roles merged
+        via _merge_role_records(), plus carried-over roles younger than
+        EXPIRY_DAYS since lastSeenAt; stats counts added/updated/carried_over/
+        expired. Older roles missing `sources` or `sponsorshipSignal` are
+        backfilled here.
+    """
     merged = {}
     for key, role in existing_items:
         identity = role_identity(key, role.get("title", ""), role.get("location", ""))
@@ -1427,15 +719,11 @@ def _merge_identity_roles(existing_items, fresh_roles, cutoff):
 
 
 def merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=None, debug=False):
-    """existing: the snapshot loaded from disk (accumulated from prior runs).
-    fresh_roles: {identity: (slug, role)} found THIS run (1.4: identity is
-    role_identity()'s normalized employer+title+location tuple, not a URL —
-    see build_fresh_roles()). fresh_open_market_roles: the second dict
-    build_fresh_roles() now returns (2.2/2.5) — same shape, but keyed by
-    normalized employer text instead of a slug, since there's no tracked
-    company to resolve to. Returns the merged, pruned snapshot — "companies"
-    unchanged in shape from before Phase 2, plus a new top-level "openMarket"
-    key (2.5) — no synthetic slugs, never merged into "companies"."""
+    """Merge this run's results into the snapshot loaded from disk and prune
+        expired roles. Returns {"companies": {slug: {"roles": [...]}},
+        "openMarket": {"roles": [...]}}; open-market roles are never filed under
+        a company.
+    """
     cutoff = (datetime.now(timezone.utc) - timedelta(days=EXPIRY_DAYS)).strftime("%Y-%m-%d")
     fresh_open_market_roles = fresh_open_market_roles or {}
 
@@ -1449,22 +737,19 @@ def merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=No
     for slug, role in kept_items:
         companies_out.setdefault(slug, {"roles": []})["roles"].append(role)
 
-    # 2.5: same identity/expiry mechanics, applied to the open-market side.
-    # normalize_employer_name(role["employer"]) recomputes the same key a
-    # role was first filed under (see build_fresh_roles()) — nothing extra
-    # needs to be persisted on the role dict just to re-derive it next run.
+    # Same mechanics on the open-market side; the key is re-derived from the
+    # employer. Carried-over roles go through the same market gate as fresh ones,
+    # so a rule change applies to the whole snapshot on the next run.
     existing_open_market_items = (
-        (normalize_employer_name(role.get("employer", "")), role)
+        (normalize_employer_name(role.get("employer", "")), dict(role, market=market_for_location(role.get("location", ""))))
         for role in existing.get("openMarket", {}).get("roles", [])
+        if is_known_market(role.get("location", ""))
     )
     kept_open_market_items, om_stats = _merge_identity_roles(
         existing_open_market_items, fresh_open_market_roles, cutoff
     )
-    # 2.6: "sorted by recency" — see RESULTS_WANTED_OPEN_MARKET's comment on
-    # why this isn't a JobSpy call parameter instead. Newest postedDate
-    # first; a role with no postedDate sorts last (not first) — "" is the
-    # lexicographically smallest fallback value, so reverse=True puts it at
-    # the end, not the start.
+    # Newest postedDate first; roles without one sort last ("" is smallest, and
+    # reverse=True puts it at the end).
     open_market_roles_out = [role for _, role in kept_open_market_items]
     open_market_roles_out.sort(key=lambda r: (r.get("postedDate") or "", r.get("lastSeenAt") or ""), reverse=True)
 
@@ -1492,9 +777,7 @@ def main():
     forced_chunk = None
     if "--chunk" in sys.argv:
         forced_chunk = int(sys.argv[sys.argv.index("--chunk") + 1])
-    # 2026-09-28 — manual overrides for testing the priority sweep, same spirit as
-    # --chunk above: `--priority` forces the sweep on this run, `--no-priority` forces
-    # it off, regardless of what the wall-clock bucket would otherwise say.
+    # --priority / --no-priority force the priority sweep on or off, like --chunk.
     forced_priority = None
     if "--priority" in sys.argv:
         forced_priority = 0  # even -> due, per priority_sweep_due()
@@ -1511,13 +794,8 @@ def main():
     combos_this_run = this_chunk + priority
 
     cycle_hours = total_chunks * SCHEDULE_INTERVAL_HOURS
-    # 2 JobSpy requests/combo now (li + indeed only — google and glassdoor
-    # both retired outright, see the module docstring) + a flat 38 Bayt page
-    # loads via Playwright, not a JobSpy request — see
-    # run_bayt_playwright_searches() — + up to 38*MAX_PAGES_PER_TERM
-    # welcome-to-nl.nl requests (see welcome_to_nl.py) + 1 uxwork.nl request
-    # (see uxwork.py — one call covers every term, not per-term like
-    # everything else here).
+    # 2 JobSpy requests per combo (li + indeed) + one Bayt page load per term
+    # + up to 2 welcome-to-nl.nl requests per term + 1 uxwork.nl request.
     max_requests_this_run = len(combos_this_run) * 2 + len(SEARCH_TERMS) + len(SEARCH_TERMS) * 2 + 1
     print(
         f"[scrape] rotating pool: {len(rotating)} combos ({len(SEARCH_TERMS)} terms x "
@@ -1533,7 +811,7 @@ def main():
           + f" = {len(combos_this_run)} combos x li+indeed (JobSpy) "
           f"+ {len(SEARCH_TERMS)} bayt page loads (Playwright) "
           f"+ up to {len(SEARCH_TERMS) * 2} welcome-to-nl.nl requests + 1 uxwork.nl request "
-          f"= up to {max_requests_this_run} requests; google and glassdoor both retired, neither searched at all")
+          f"= up to {max_requests_this_run} requests")
 
     index = build_index(COMPANIES, ALIASES)
     rows = (
@@ -1552,6 +830,15 @@ def main():
     fresh_roles, fresh_open_market_roles = build_fresh_roles(rows, index, today_iso, debug=debug)
     existing = load_existing_snapshot()
     snapshot = merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=fresh_open_market_roles, debug=debug)
+
+    # What the app's "which markets" tooltip shows -- published here so it can
+    # never drift from LOCATIONS / the rotation settings.
+    snapshot["openMarket"].update({
+        "searchedMarkets": list(CANONICAL_MARKETS),
+        "priorityMarkets": [_canonical_market_name(loc) for loc in PRIORITY_LOCATIONS],
+        "fullCycleHours": cycle_hours,
+        "prioritySweepHours": 2 * SCHEDULE_INTERVAL_HOURS,
+    })
 
     open_market_count = len(snapshot["openMarket"]["roles"])
     if debug:

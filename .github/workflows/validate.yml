@@ -1,0 +1,30 @@
+# Fast guard for the company list and matching code. Runs on every push that
+# touches them -- not behind the scrapers' elapsed-time gate, so a bad entry
+# fails within seconds. Standard library only: no installs, no network.
+name: Validate companies.json + matching
+
+on:
+  push:
+    paths:
+      - "data/companies.json"
+      - "js-scraper/scrape.js"
+      - "li-scraper/*.py"
+      - ".github/workflows/validate.yml"
+  pull_request:
+  workflow_dispatch: {}
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: li-scraper
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate companies.json
+        run: python test_companies_json.py
+      - name: Company matching tests
+        run: python test_match.py

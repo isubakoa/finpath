@@ -1,57 +1,31 @@
 """
-Matching logic shared by scrape.py — kept in its own file so it can be
-unit-tested in isolation (see test_match.py) without pulling in JobSpy or
-network code.
+Matching logic for scrape.py, kept separate so it can be tested without JobSpy
+or the network (test_match.py).
 
-Jobs:
-  1. is_role_relevant(title)  — the exact same Design/UX/Product/Strategy
-     title filter as index.html's isRoleRelevant(), ported line-for-line so
-     a role that would be filtered out in the tracker is filtered out here
-     too, and nothing slips through that the tracker would've hidden anyway.
-  2. fit_tier(title) — index.html's two-axis computeFit() (seniorityTier x
-     domainTier, weaker axis wins), used to decide which roles are worth the
-     (rate-limit-sensitive) LI request budget — see scrape.py — and, once
-     Phase 2 lands, to gate the open-market feed.
-  3. normalize_scraped_title(title, location) — index.html's
-     normalizeScrapedTitle(): strips CTA suffix text a raw scrape sometimes
-     drags in ("View Job", "Apply Now", ...) and, only when location came
-     back empty/unknown, recovers a trailing "City, Region" run-on from the
-     title text itself.
-  4. role_identity(slug, title, location) — the normalized (employer, title,
-     location) key scrape.py's build_fresh_roles() dedupes on (Phase 1.4),
-     so the same real posting found via two different sites (or re-posted
-     under a fresh URL later) collapses into one role instead of two.
-  5. match_company(employer_name, companies) — given a posting's employer
-     name, find which (if any) of the tracked companies it is, so postings
-     can be filed under the right slug in li-snapshot.json.
+  is_role_relevant(title)        the app's isRoleRelevant() title filter, so the
+                                 scraper keeps exactly what the app would show
+  fit_tier(title)                the app's two-axis computeFit(): seniority x
+                                 domain, the weaker axis wins
+  normalize_scraped_title(t, l)  the app's normalizeScrapedTitle(): strip
+                                 CTA text ("Apply Now"...) and, only when the
+                                 location is unknown, recover a trailing
+                                 "City, Region" from the title
+  role_identity(key, t, l)       the (employer, title, location) key used to
+                                 dedupe the same posting across sites
+  match_company(name, index)     which tracked company (if any) an employer
+                                 name belongs to
 
-PHASE 1 NOTE (Sep 2026): #1/#2/#3 below were, before this phase, a byte-for-
--byte-in-sync port of index.html's own logic. Over time index.html moved
-ahead on its own (the hard-exclusion tier, the two-axis fit split, and the
-title/location cleanup all shipped there first and were battle-tested on
-real curated/live-checked role data before this file caught up) — Phase 1
-is that catch-up: everything below is now ported from index.html's *current*
-behavior, not re-derived from the original spec text, specifically to avoid
-regressing logic index.html already had working in production. Keep it in
-sync with index.html's equivalents (CTA_SUFFIX_RE/TRAILING_LOCATION_RE,
-NEGATIVE_TITLE_TERMS, the seniority/domain regexes, alwaysAllow) going
-forward.
+The first three are ports of app.js's logic (NEGATIVE_TITLE_TERMS,
+SENIOR_QUALIFIER_RE, the seniority/domain regexes, CTA_SUFFIX_RE /
+TRAILING_LOCATION_RE, alwaysAllow). Change both sides together.
 """
 
 import re
 
-# ---- Ported from index.html's isRoleRelevant() ----
-# 1.1: "marketing manager" removed — it was matching plain marketing-manager
-# titles like "Growth Marketing Manager, Credit Products" and letting them
-# bypass the NEGATIVE check entirely (the actual bug: NEGATIVE already
-# catches bare "marketing", so removing this bypass is the whole fix, no
-# other change needed). "product marketing" is kept: it's a narrow enough
-# phrase (a title has to literally contain those two words together) that
-# the false-positive risk is low, and removing it would newly exclude titles
-# like "Senior Product Marketing Manager" that TITLE_CASES has long asserted
-# should stay relevant-but-below-tier — judged not worth changing as part of
-# this fix. Re-ordered so the hybrid design/engineering titles lead and
-# "product marketing" reads as the one deliberately-kept exception.
+# ---- Ported from the app's isRoleRelevant() ----
+# ALWAYS_ALLOW lets a title through even if NEGATIVE would block it. Bare
+# "marketing manager" is deliberately absent (it let plain marketing roles in);
+# "product marketing" stays because it's narrow and TITLE_CASES expects it.
 ALWAYS_ALLOW = re.compile(
     r"(ux engineer|ui engineer|design engineer|design technologist|"
     r"creative technologist|product marketing)",
@@ -70,16 +44,10 @@ NEGATIVE = re.compile(
     re.IGNORECASE,
 )
 
-# ---- 1.2/1.3: ported from index.html's NEGATIVE_TITLE_TERMS +
-# ---- matchNegativeFilters()/SENIOR_QUALIFIER_RE. A hard exclusion — unlike
-# ---- NEGATIVE above (which only blocks ALWAYS_ALLOW/POSITIVE from making a
-# ---- title relevant in the first place), a match_negative_filters() hit
-# ---- means "actively below what we're looking for", checked first by both
-# ---- is_role_relevant() and domain_tier(). Extended here (both this file
-# ---- and index.html, 1.3) with the full spec list: procurement, logistics,
-# ---- warehouse, facilities, cabin crew, onboard — index.html previously
-# ---- only had junior/intern/graduate/trainee/apprentice/catering/legal/
-# ---- 변호사/compliance/temp-contract.
+# ---- Hard exclusions (the app's NEGATIVE_TITLE_TERMS / matchNegativeFilters) ----
+# Unlike NEGATIVE above (which only stops ALWAYS_ALLOW/POSITIVE from making a
+# title relevant), a match here means "below what we're looking for" and is
+# checked first by is_role_relevant() and domain_tier().
 NEGATIVE_TITLE_TERMS = [
     (re.compile(r"\bjunior\b", re.IGNORECASE), "junior"),
     (re.compile(r"\bintern(ship)?\b", re.IGNORECASE), "intern"),
@@ -98,18 +66,16 @@ NEGATIVE_TITLE_TERMS = [
     (re.compile(r"cabin\s*crew", re.IGNORECASE), "cabin crew"),
     (re.compile(r"\bonboard\b", re.IGNORECASE), "onboard"),
 ]
-# "Associate" alone reads junior; "Associate/AVP, Product Experience" or
-# "Associate Director" doesn't — matches index.html's SENIOR_QUALIFIER_RE
-# exception exactly.
+# "Associate" alone reads junior; "Associate/AVP ..." or "Associate Director"
+# doesn't. Same exception as the app's SENIOR_QUALIFIER_RE.
 SENIOR_QUALIFIER_RE = re.compile(r"\b(avp|vp|vice[\s-]?president|director)\b", re.IGNORECASE)
 _ASSOCIATE_RE = re.compile(r"\bassociate\b", re.IGNORECASE)
 
 
 def match_negative_filters(title):
-    """Every hard-exclusion reason this title matches (empty list = none).
-    Ported from index.html's matchNegativeFilters() — its per-user
-    learnedExclusions() step is frontend/state-specific and has no
-    equivalent here."""
+    """Every hard-exclusion reason this title matches ([] = none). The app's
+        per-user learned exclusions have no equivalent here.
+    """
     t = title or ""
     hits = [label for pattern, label in NEGATIVE_TITLE_TERMS if pattern.search(t)]
     if _ASSOCIATE_RE.search(t) and not SENIOR_QUALIFIER_RE.search(t):
@@ -117,15 +83,9 @@ def match_negative_filters(title):
     return hits
 
 
-# ---- 1.3: ported from index.html's seniorityTier()/domainTier()/
-# ---- computeFit() — the two-axis split ("target" only if BOTH the
-# ---- seniority word AND the domain phrasing clear the bar; the weaker axis
-# ---- decides) replacing the old single-regex fit_tier(). `\bavp\b` added to
-# ---- the seniority regex to match index.html (this file's old TARGET_TIER
-# ---- didn't have it). The old BELOW_TIER regex is gone — it was dead code
-# ---- (defined but never actually checked; fit_tier() just fell through to
-# ---- "below" for anything that didn't match TARGET_TIER) and is properly
-# ---- superseded by match_negative_filters()/domain_tier() now anyway.
+# ---- Fit tiers (the app's seniorityTier/domainTier/computeFit) ----
+# "target" only if BOTH the seniority word and the domain phrasing clear the
+# bar; the weaker axis decides.
 TARGET_TIER = re.compile(
     r"(director|head of|\bvp\b|vice president|principal|staff|\blead\b|\bgroup\b|chief|\bavp\b)",
     re.IGNORECASE,
@@ -169,18 +129,10 @@ def is_role_relevant(title):
 
 
 def fit_tier(title):
-    """1.2: a hard-excluded title (junior/intern/associate-without-
-    qualifier/etc.) reports its own "excluded" tier rather than falling
-    through to seniority_tier()/domain_tier()'s "stretch" — in practice
-    is_role_relevant() already drops these before a kept role ever reaches
-    fit_tier(), so this only shows up in diagnostics (Phase 0's measurement
-    CSV logs fit_tier() for every raw row, kept or not) and any future
-    caller that wants to distinguish "genuinely below-tier" from "shouldn't
-    be in the running at all". seniority_tier()/domain_tier() stay faithful,
-    byte-for-byte ports of index.html's own functions (including index.html's
-    "stretch" — not "excluded" — for a hard-excluded title on that axis), so
-    a standalone caller mirroring index.html's fitReasons()-style breakdown
-    still gets index.html's exact three-tier answer."""
+    """Like the app's computeFit(), except a hard-excluded title reports "excluded"
+        instead of "stretch" (is_role_relevant() drops those before they get here
+        anyway). seniority_tier()/domain_tier() stay exact ports of the app's.
+    """
     if match_negative_filters(title):
         return "excluded"
     sen, dom = seniority_tier(title), domain_tier(title)
@@ -188,54 +140,15 @@ def fit_tier(title):
 
 
 def open_market_gate(title, employer):
-    """Phase 2.4 — single, named gate deciding whether an unmatched-company
-    posting enters the open-market feed. 2026-09-23: this is now the ONLY
-    gate — there is no location restriction upstream in scrape.py anymore
-    (open market originally required the posting's location to be one of a
-    3-market allowlist; that's gone, per the call to keep it "open and broad
-    across all market but specific to the pre-defined job titles" — every
-    location scrape.py already searches is eligible, filtered purely by
-    title here). Kept only if ALL of:
-      - is_role_relevant(title)
-      - fit_tier(title) in ("target", "below") — deliberately the real
-        post-1.3 two-axis tier, not the old single-regex one. "stretch"
-        (and a hard-excluded title, which reports its own "excluded" tier —
-        see fit_tier()'s own docstring) never qualify for open market.
-
-    2026-09-28 — loosened from fit_tier(title) == "target" only: the
-    target-only gate turned out to be the single biggest reason Open Market
-    consistently showed far fewer roles than the tracked-Companies list,
-    which has no fit-tier gate at all (a tracked company's openRoles[] is
-    shown at every tier once merged in — see index.php's mergeLiveResultIntoCompany(),
-    which only re-applies is_role_relevant(), not a tier check). Most real
-    postings land at "below" rather than "target" on the two-axis tier, so
-    that one extra condition was throwing out the majority of otherwise-
-    relevant open-market hits. Dropping it to target-or-below brings Open
-    Market's admission criteria in line with what Companies already shows,
-    while "stretch" (barely design/product-adjacent at all) and hard
-    exclusions (junior/intern/associate-without-qualifier/etc.) still don't
-    qualify — this was never a blanket removal of the tier filter, just
-    matching it to what the rest of the app already considers "worth
-    showing".
-
-    2026-09-28 (same day) — the agency-blocklist check (is_agency_fn(employer),
-    an `is_agency_fn` parameter this function used to take) was ALSO removed,
-    per an explicit separate request: staffing/recruitment agency postings
-    (Robert Walters, Michael Page, etc.) are wanted in Open Market now, not
-    filtered out. agencies.py's is_agency() and its AGENCY_NAMES list are
-    untouched and still importable — nothing here deletes the blocklist
-    itself, this function just no longer consults it, so reinstating it
-    later (or using it somewhere else, e.g. a display-only "via agency" tag)
-    is a small, self-contained change rather than rebuilding it from
-    scratch. Every call site was updated to match (scrape.py's
-    `from agencies import is_agency` and the single open_market_gate() call
-    both dropped the now-unused argument).
-
-    A third criterion from the spec — not user-excluded — is a per-viewer,
-    client-side-only concept (index.html's learnedExclusions mechanism,
-    Phase 4.4's planned employer-suppression equivalent) with no
-    server-side data to check here; this function can't and doesn't
-    implement it, index.html's own frontend filtering does."""
+    """Whether an untracked employer's posting enters the open-market feed. The
+        only eligibility gate (scrape.py separately requires a searched market):
+          - is_role_relevant(title), and
+          - fit_tier(title) is "target" or "below" -- never "stretch" or "excluded".
+        "below" is included because most real postings land there, and tracked
+        companies show every tier; target-only made open market look empty.
+        Staffing agencies are included on purpose (since 2026-09-28).
+        Per-viewer hides ("Not relevant", learned exclusions) happen in the app.
+    """
     if not is_role_relevant(title):
         return False
     if fit_tier(title) not in ("target", "below"):
@@ -243,17 +156,11 @@ def open_market_gate(title, employer):
     return True
 
 
-# ---- 1.5: ported from index.html's CTA_SUFFIX_RE/TRAILING_LOCATION_RE/
-# ---- isUnknownLocation()/normalizeScrapedTitle() — already applied there to
-# ---- index.html's own curated openRoles (see index.html's "reused verbatim"
-# ---- comment). A raw scrape sometimes drags trailing UI-button text into
-# ---- the title ("Head of Design View Job"), or — when the site gave no
-# ---- separate location field — runs the location straight into the title
-# ---- text with nothing but a comma between them; this recovers both,
-# ---- conservatively: the trailing-location recovery only ever fires when
-# ---- the location field came back empty/unknown in the first place, so a
-# ---- perfectly normal comma in a real title (e.g. "Director, Product
-# ---- Design") is never touched once a real location is present.
+# ---- Title/location cleanup (the app's normalizeScrapedTitle) ----
+# Scrapes sometimes drag button text into the title ("Head of Design View Job")
+# or run the location into it when there's no location field. The trailing-
+# location recovery only fires when the location is empty/unknown, so a normal
+# comma in a title ("Director, Product Design") is never touched.
 CTA_SUFFIX_RE = re.compile(
     r"\s*[·|:\-–—]?\s*(view job|apply now|apply here|apply today|learn more|see job|read more|apply)\s*$",
     re.IGNORECASE,
@@ -279,11 +186,9 @@ def is_unknown_location(loc):
 
 
 def normalize_scraped_title(raw_title, raw_location):
-    """Returns (title, location) — see the module docstring's #3. Emits ""
-    (never "Not specified") for a still-unknown location once this runs;
-    index.html's existing isUnknownLocation()/locationLabel() already render
-    "" as an em dash, so scrape.py doesn't need its own placeholder string
-    any more (1.5)."""
+    """Returns (title, location). An unknown location becomes "" (the app renders
+        it as an em dash).
+    """
     title = collapse_whitespace(raw_title)
     location = collapse_whitespace(raw_location)
     changed = True
@@ -302,7 +207,7 @@ def normalize_scraped_title(raw_title, raw_location):
     return title, location
 
 
-# ---- 1.4: cross-site duplicate identity ----
+# ---- Cross-site duplicate identity ----
 _IDENTITY_PUNCT_RE = re.compile(r"[^\w\s]")
 
 
@@ -313,49 +218,30 @@ def _normalize_identity_text(s):
 
 
 def normalize_employer_name(name):
-    """Public wrapper around _normalize() (below, company-name matching) for
-    callers outside this file that need the same normalized-employer form
-    company matching itself uses, without reaching into a leading-
-    underscore "private" helper directly. Used by agencies.py (Phase 2.3's
-    blocklist check) and scrape.py's open-market identity building (Phase
-    2.2) — an open-market posting has no resolved company slug the way a
-    tracked one does, so this is what role_identity() below gets passed
-    instead for those. Defined here rather than next to _normalize() itself
-    since it's conceptually part of this "public surface for callers
-    outside match.py" section."""
+    """Public wrapper around _normalize() for callers outside this module -- an
+        open-market posting has no slug, so its role_identity() key is the
+        normalized employer name.
+    """
     return _normalize(name)
 
 
 def role_identity(employer_key, title, location):
-    """The (employer, title, location) key build_fresh_roles() dedupes
-    postings on, regardless of which site found them or what URL they're
-    at — see scrape.py's SOURCE_PRECEDENCE for how a conflict between two
-    sites reporting "the same" identity is resolved. employer_key is
-    either a tracked company's already-resolved slug (the common case —
-    more canonical and collision-checked than re-normalizing the raw
-    employer string, see find_collisions() below) or, for an unmatched
-    open-market posting (Phase 2.2, which has no slug to resolve to),
-    normalize_employer_name()'s normalized form of the raw employer string
-    itself. Known, accepted limitation: two genuinely different open reqs
-    at the same company with the literal same title and location (not
-    unheard of for a large employer running two identical-titled searches)
-    collapse into one row here — the same class of trade-off as the
-    Boost/Volvo company-name collisions documented further down, judged
-    acceptable given Phase 0 measured the real cross-site duplicate rate at
-    low single digits."""
+    """The (employer, title, location) key build_fresh_roles() dedupes on, whatever
+        site or URL a posting came from (conflicts resolved by scrape.py's
+        SOURCE_PRECEDENCE). employer_key is the tracked slug, or the normalized
+        employer name for open-market postings. Accepted limitation: two
+        genuinely different reqs with identical title and location at the same
+        employer collapse into one row.
+    """
     return (employer_key, _normalize_identity_text(title), _normalize_identity_text(location))
 
 
 # ---- Company-name matching ----
 
-# Stripped as whole words only (case-insensitive), so real brand words that
-# happen to contain these letters (e.g. "Grab") are untouched.
-# Deliberately narrow — only generic corporate-form suffixes, never a word
-# that could be part of what actually distinguishes one tracked company's
-# name from another (e.g. "International", "Investments", "Digital" are
-# left alone: stripping those turned "Network International" into the
-# dangerously generic "network" during testing, so anything not a clear
-# legal/corporate suffix stays in the name).
+# Stripped as whole words only, so brand words containing these letters
+# ("Grab") are untouched. Deliberately narrow: words like "International" or
+# "Digital" stay, because stripping them made names dangerously generic
+# ("Network International" -> "network").
 _LEGAL_SUFFIXES = re.compile(
     r"\b(inc|incorporated|ltd|limited|llc|llp|plc|corp|corporation|co|company|"
     r"group|holdings?|pte|pty|gmbh|ag|nv|n\.v|sa|s\.a|bhd|berhad|bank|banking)\b\.?",
@@ -372,11 +258,7 @@ _MIN_CONTAINMENT_LEN = 5
 
 
 def _normalize(name):
-    # `name or ""` alone doesn't catch a raw pandas NaN (a float — truthy in
-    # Python, so it sails past an `or` check) landing here from a caller that
-    # didn't already sanitize it (see scrape.py's _clean_str for the same
-    # issue at the source) — guard directly rather than relying solely on
-    # every caller remembering to pre-clean.
+    # A pandas NaN is a float and truthy, so `name or ""` doesn't catch it.
     if name is None or (isinstance(name, float) and name != name):
         name = ""
     else:
@@ -403,7 +285,7 @@ def _aliases_for(name):
 
 def build_index(companies, aliases_by_slug=None):
     """Pre-compute normalized alias -> slug lookups once per run, instead of
-    re-normalizing all 143 names for every LI result."""
+    re-normalizing every tracked name for every LI result."""
     aliases_by_slug = aliases_by_slug or {}
     exact = {}   # normalized name -> slug
     fuzzy = []   # (normalized name, slug) for containment matching
@@ -435,28 +317,14 @@ def match_company(employer_name, index):
 
 
 def find_collisions(companies, aliases_by_slug=None):
-    """Diagnostic, not used by scrape.py itself: every normalized alias that
-    two or more *different* companies would both register as an exact-match
-    key. build_index()'s `exact` dict is a plain last-write-wins assignment,
-    so before this existed, a collision like this was invisible -- whichever
-    company happened to be declared later in COMPANIES silently won, and
-    every LI/Indeed posting for the other company got filed under the wrong
-    slug with no error, no warning, nothing (found 2026-09 two different
-    ways: "Boost Bank"/"Boost" both normalize to "boost" once "Bank" is
-    stripped as a legal suffix, and separately "du"'s own alias list used to
-    contain a phrase starting with "Emirates" that was shadowing the
-    "Emirates Airline" entry added in the same batch).
-
-    Returns {normalized_key: [slug, slug, ...]} (sorted) for every such
-    case. Some of these are genuine, irreducible ambiguities -- two real
-    companies whose names become identical text after normalization, not
-    something a smarter matching algorithm can fix (Boost/Boost Bank
-    literally share the same careers site) -- and are expected to stay
-    reviewed-and-accepted rather than "fixed." test_match.py asserts this
-    function's output against that reviewed allowlist, so a genuinely NEW,
-    undeclared collision fails the test suite immediately instead of
-    silently misfiling roles the way the Emirates/du one did before being
-    caught by hand.
+    """Every normalized alias that two or more different companies would register
+        as an exact-match key. build_index() is last-write-wins, so a collision
+        silently files one company's postings under the other (it happened with
+        du/Emirates). test_match.py asserts this against a reviewed allowlist
+        (e.g. Boost / Boost Bank, which genuinely normalize to the same text), so
+        any new collision fails the tests.
+    
+        Returns {normalized_key: [slug, ...]}.
     """
     aliases_by_slug = aliases_by_slug or {}
     claims = {}  # normalized key -> set of slugs that registered it

@@ -1,14 +1,10 @@
 """
-Offline sanity checks for match.py — no network, no JobSpy dependency, so
-these can run anywhere with plain `python3 test_match.py` (including in an
-environment where python-jobspy itself can't be installed, which is how
-these were actually verified before this scraper was ever run against real
-LI data — see li-scraper/README.md's "Not yet live-tested" note).
+Offline checks for match.py and scrape.py's matching/merging -- no network, no
+JobSpy. Run: python3 test_match.py
 """
 
 from datetime import datetime, timedelta, timezone
 
-from agencies import is_agency
 from companies import COMPANIES, ALIASES
 from match import (
     build_index,
@@ -34,137 +30,84 @@ from scrape import (  # top-level scrape.py imports have no jobspy dependency �
 
 INDEX = build_index(COMPANIES, ALIASES)
 
-# build_fresh_roles() takes (source, row) tuples since September 2026's Indeed
-# addition, extended the same month to glassdoor/google/bayt — this exercises
-# that all five sources' rows flow through company matching, title filtering,
-# and de-dup identically, and that each kept role is tagged with the source
-# it actually came from (not hardcoded) — build_fresh_roles() itself is
-# entirely source-agnostic (it just passes whatever string it's given straight
-# through to the kept role's "source" field), so these cases mainly guard
-# against a future edit accidentally special-casing one source over another.
+# build_fresh_roles() takes (source, row) tuples and is source-agnostic: every
+# source's rows go through the same matching, filtering and dedup, and keep the
+# source they came from.
 #
-# The float("nan") cases below reproduce a real production crash from the
-# first live GitHub Actions run (2026-09-09): JobSpy returns a pandas
-# DataFrame, and pandas represents a missing field as NaN — a float, not
-# None or "" — which `row.get(...) or ""` doesn't catch (float('nan') is
-# truthy), so a NaN company name reached match.py's regex substitution as a
-# raw float and crashed with `TypeError: expected string or bytes-like
-# object, got 'float'`. Fixed via _clean_str() in scrape.py (and a matching
-# guard in match.py's _normalize()) — these cases must keep passing.
+# The float("nan") cases reproduce a real crash: JobSpy rows are pandas, a
+# missing field is NaN (a truthy float), and it reached match.py's regexes.
+# scrape.py's _clean_str() and match.py's _normalize() guard against it.
 #
-# Case #1 (li, url1) and case #10 (google, url9) are the SAME normalized
-# identity on purpose (Wise / "Head of Design" / London) — Phase 1.4's
-# cross-site dedupe test: two different sites, two different URLs, one real
-# posting, so build_fresh_roles() must collapse them into a single kept
-# entry instead of two.
+# Cases #1 (li) and #10 (welcometonl) are the same posting (Wise / Head of
+# Design / London) on two sites with two URLs -- they must merge into one role.
 FRESH_ROLES_CASES = [
     ("li", {"job_url": "https://x.test/1", "company": "Wise", "title": "Head of Design", "location": "London"}),
-    # 2026-09-23 — description carries a sponsorship keyword; li itself never fetches
-    # descriptions (linkedin_fetch_description stays off), but Indeed's row here does,
-    # exercising the tracked-company branch of the sponsorship-signal wiring.
+    # Indeed returns descriptions (LI's stay off): exercises the sponsorship signal
+    # on the tracked-company branch.
     ("indeed", {"job_url": "https://x.test/2", "company": "HSBC Holdings plc", "title": "Senior UX Researcher", "location": "Singapore",
                 "description": "We offer visa sponsorship for qualified candidates."}),
-    # 2026-09-23 — a genuine employer name, no tracked-company match, "Head of Design" is
-    # relevant/target-tier: this used to ALSO qualify for the open-market branch (kept there)
-    # purely because market_for_location() never returned None back then, on top of its
-    # original purpose of proving the tracked-company path drops it (no slug).
-    # 2026-10-17 — flipped back to dropped: its raw location "Berlin" has no country code or
-    # name attached, and "berlin" is deliberately NOT a CITY_ALIASES entry (a real "Berlin, El
-    # Salvador" posting turned up in the audit that added this gate — see scrape.py's dated
-    # comment above ISO_CODE_TO_MARKET), so market_for_location() now returns None and
-    # is_known_market() fails it before open_market_gate() is ever reached.
-    ("indeed", {"job_url": "https://x.test/3", "company": "Some Totally Unrelated Company", "title": "Head of Design", "location": "Berlin"}),  # dropped from tracked-company matching (no slug); ALSO dropped open-market (2026-10-17 — unresolvable location)
+    # Untracked employer with a relevant title, but a bare "Berlin" location has no
+    # country marker and "berlin" is deliberately not a CITY_ALIASES entry (a real
+    # "Berlin, El Salvador" posting exists), so is_known_market() drops it before
+    # the open-market gate.
+    ("indeed", {"job_url": "https://x.test/3", "company": "Some Totally Unrelated Company", "title": "Head of Design", "location": "Berlin"}),  # dropped from tracked matching (no slug) and from open market (unresolvable location)
     ("li", {"job_url": "https://x.test/4", "company": "Wise", "title": "Software Engineer", "location": "London"}),  # dropped: title not relevant
     ("li", {"job_url": "https://x.test/1", "company": "Wise", "title": "Head of Design (dup)", "location": "London"}),  # dropped: duplicate URL
-    # 2026-09-23 — also proves the open-market branch's explicit empty-employer guard: title is
-    # relevant/target-tier and "London" is a location open market would otherwise accept, so
-    # without that guard a NaN/blank employer would leak into the feed with nothing to display.
+    # Also proves open market's empty-employer guard: relevant title, accepted
+    # location, but a NaN/blank employer must not reach the feed.
     ("li", {"job_url": "https://x.test/5", "company": float("nan"), "title": "Head of Design", "location": "London"}),  # dropped, not crashed: NaN company (dropped from BOTH branches — no slug, and open-market's employer guard)
-    ("li", {"job_url": "https://x.test/6", "company": "Wise", "title": "Head of Design", "location": float("nan")}),  # kept: NaN location -> "" (1.5 — no more "Not specified")
+    ("li", {"job_url": "https://x.test/6", "company": "Wise", "title": "Head of Design", "location": float("nan")}),  # kept: NaN location -> ""
     ("indeed", {"job_url": "https://x.test/7", "company": "Wise", "title": float("nan"), "location": "London"}),  # dropped, not crashed: NaN title
-    ("glassdoor", {"job_url": "https://x.test/8", "company": "Wise", "title": "Senior Product Designer", "location": "Singapore"}),  # kept, source=glassdoor
-    # 2026-09-23 — the canonical record for this identity stays li's (case #1, no
-    # description, wins SOURCE_PRECEDENCE) but this google row's description carries a
-    # sponsorship keyword — exercises _merge_role_records()'s sponsorshipSignal UNION
-    # (evidence from a non-canonical source must still survive the merge).
-    ("google", {"job_url": "https://x.test/9", "company": "Wise", "title": "Head of Design", "location": "London",
-                "description": "We welcome international candidates from around the world."}),  # 1.4: same identity as case #1 — merges, doesn't add a 6th kept entry
+    ("bayt", {"job_url": "https://x.test/8", "company": "Wise", "title": "Senior Product Designer", "location": "Singapore"}),  # kept, source=bayt
+    # The canonical record stays li's (case #1, no description, wins
+    # SOURCE_PRECEDENCE), but this row's description has a sponsorship keyword --
+    # the merged role's sponsorshipSignal must keep it (union across sources).
+    ("welcometonl", {"job_url": "https://x.test/9", "company": "Wise", "title": "Head of Design", "location": "London",
+                "description": "We welcome international candidates from around the world."}),  # same identity as case #1 — merges, doesn't add another kept entry
     ("bayt", {"job_url": "https://x.test/10", "company": "Wise", "title": "UX Researcher", "location": "Dubai"}),  # kept, source=bayt
-    # 2.2 — open-market cases: none of these employers are tracked companies.
-    ("li", {"job_url": "https://x.test/11", "company": "Some Random Singapore Startup Pte Ltd", "title": "Head of Product Design", "location": "Singapore"}),  # kept open-market: relevant, target-tier, SG, not an agency
-    # 2026-09-23 — this glassdoor row's description carries THREE sponsorship keywords at
-    # once; merges with #11 (li, no description) into the same open-market identity, same
-    # union-merge exercise as case #9 above but for the open-market branch.
-    ("glassdoor", {"job_url": "https://x.test/11b", "company": "Some Random Singapore Startup Pte Ltd", "title": "Head of Product Design", "location": "Singapore",
-                   "description": "We offer relocation support and welcome applications from international candidates as part of our Global Talent program."}),  # 1.4-style merge: same open-market identity as #11, different site/URL
-    # 2026-09-28 — was "dropped: relevant but only 'below' tier, not 'target' —
-    # fails open_market_gate()" before that gate was loosened to accept
-    # target-OR-below tier (see match.py's open_market_gate() docstring for
-    # why). Same title/employer/location as before; now a DIFFERENT open-market
-    # identity than case #11/#11b above (different title: "Product Designer" vs
-    # "Head of Product Design"), so it's its own new kept entry, not a merge.
-    ("indeed", {"job_url": "https://x.test/12", "company": "Some Random Singapore Startup Pte Ltd", "title": "Product Designer", "location": "Singapore"}),  # kept open-market (below-tier, now eligible); still relevant, SG, not an agency
-    # 2026-09-28 — was "dropped: would otherwise qualify, but Robert Walters is
-    # agency-blocklisted" before open_market_gate() stopped consulting the
-    # agency blocklist (per explicit request — see match.py's open_market_gate()
-    # docstring). Now kept: proves a staffing-agency employer is no longer
-    # excluded from the open-market feed. is_agency("Robert Walters") is still
-    # True (that function/list is untouched, see the AGENCY_CASES block below) —
-    # the gate just doesn't call it any more.
-    ("li", {"job_url": "https://x.test/13", "company": "Robert Walters", "title": "Head of Product Design", "location": "Netherlands"}),  # kept open-market (2026-09-28): relevant, target-tier, agency blocklist no longer consulted
-    # 2026-09-23 — open market broadened to every LOCATIONS entry: before this round, Germany
-    # wasn't one of the 3-market allowlist (SG/NL/UAE) and this case was DROPPED even though the
-    # title/employer would otherwise qualify. Now kept — proves the broadening actually works for
-    # a market well outside the old allowlist, not just the 3 markets that were already special-cased.
-    ("li", {"job_url": "https://x.test/14", "company": "Some Random Startup GmbH", "title": "Head of Product Design", "location": "Germany"}),  # kept open-market: relevant, target-tier, not an agency — market is now irrelevant to eligibility
-    # UAE added 2026-09-23 (market expansion round) — same "genuine open-market employer" shape as
-    # #11, using the "UAE" abbreviation (not the spelled-out "United Arab Emirates" that appears in
-    # LOCATIONS) to exercise MARKET_ALIASES.
-    ("indeed", {"job_url": "https://x.test/15", "company": "Some Random Dubai Startup FZE", "title": "Head of Product Design", "location": "Dubai, UAE"}),  # kept open-market: relevant, target-tier, UAE (via alias), not an agency
-    # Sponsorship negation guard (2026-09-23) — the description literally contains the
-    # substring "visa sponsorship", but negated ("not able to offer"/"unfortunately"
-    # nearby) — sponsorshipSignal must come back empty, not a false positive.
+    # Open-market cases: none of these employers are tracked companies.
+    ("li", {"job_url": "https://x.test/11", "company": "Some Random Singapore Startup Pte Ltd", "title": "Head of Product Design", "location": "Singapore"}),  # kept open-market: relevant, target tier, SG
+    # Three sponsorship keywords at once; merges with #11 (li, no description) into
+    # the same open-market identity -- the union-merge check on the open-market side.
+    ("bayt", {"job_url": "https://x.test/11b", "company": "Some Random Singapore Startup Pte Ltd", "title": "Head of Product Design", "location": "Singapore",
+                   "description": "We offer relocation support and welcome applications from international candidates as part of our Global Talent program."}),  # same open-market identity as #11, different site/URL
+    # "below"-tier title: open_market_gate() accepts target or below. A different
+    # title from #11/#11b, so its own kept entry, not a merge.
+    ("indeed", {"job_url": "https://x.test/12", "company": "Some Random Singapore Startup Pte Ltd", "title": "Product Designer", "location": "Singapore"}),  # kept open-market: below tier, relevant, SG
+    # Staffing agency, otherwise qualifying: agencies are included in open market.
+    ("li", {"job_url": "https://x.test/13", "company": "Robert Walters", "title": "Head of Product Design", "location": "Netherlands"}),  # kept open-market: relevant, target tier (agencies included)
+    # A searched market outside SG/NL/UAE: open market covers every searched market.
+    ("li", {"job_url": "https://x.test/14", "company": "Some Random Startup GmbH", "title": "Head of Product Design", "location": "Germany"}),  # kept open-market: relevant, target tier, Germany
+    # "UAE" abbreviation (not the spelled-out LOCATIONS form) exercises MARKET_ALIASES.
+    ("indeed", {"job_url": "https://x.test/15", "company": "Some Random Dubai Startup FZE", "title": "Head of Product Design", "location": "Dubai, UAE"}),  # kept open-market: relevant, target tier, UAE via alias
+    # Negation guard: the description contains "visa sponsorship" but negated
+    # ("unfortunately ... not able to offer"), so sponsorshipSignal must be [].
     ("indeed", {"job_url": "https://x.test/16", "company": "Some Random NL Open Market Co", "title": "Head of Product Design", "location": "Netherlands",
-                "description": "Unfortunately, we are not able to offer visa sponsorship for this role at this time."}),  # kept open-market (relevant/target-tier/NL/not agency); sponsorshipSignal must be [] despite the substring being present
-    # 2026-10-17 — direct regression test for the reported bug: a real India posting (otherwise
-    # perfectly qualifying title/employer) must NOT reach the open-market feed. India has never
-    # been one of the 15 LOCATIONS/CANONICAL_MARKETS entries.
-    ("li", {"job_url": "https://x.test/17", "company": "Some Random Startup Pvt Ltd", "title": "Head of Product Design", "location": "Bengaluru, India"}),  # dropped open-market (2026-10-17): relevant/target-tier/not-agency, but India isn't a searched market
-    # 2026-10-17 — proves the new ISO_CODE_TO_MARKET resolution pass: Indeed's common
-    # "City, StateCode, CountryCode" shape, with no spelled-out country name anywhere, must
-    # still resolve (to Germany here) and be KEPT — this is exactly the shape that a naive
-    # "drop anything market_for_location() can't resolve" fix would have wrongly hidden too.
+                "description": "Unfortunately, we are not able to offer visa sponsorship for this role at this time."}),  # kept open-market; sponsorshipSignal must be [] despite the substring
+    # Regression test: an otherwise-qualifying India posting must not reach open
+    # market -- India isn't a searched market.
+    ("li", {"job_url": "https://x.test/17", "company": "Some Random Startup Pvt Ltd", "title": "Head of Product Design", "location": "Bengaluru, India"}),  # dropped open-market: India isn't a searched market
+    # Indeed's "City, StateCode, CountryCode" shape with no country name must
+    # resolve via ISO_CODE_TO_MARKET (Germany) and be kept -- a naive "drop
+    # anything unresolvable" rule would wrongly hide it.
     ("indeed", {"job_url": "https://x.test/18", "company": "Some Random Berlin Startup GmbH", "title": "Head of Product Design", "location": "Berlin, BE, DE"}),  # kept open-market: resolves via last-comma-segment ISO code, market=Germany
 ]
 
-# 1.5 — (raw_title, raw_location, expected_title, expected_location), tested
-# directly against normalize_scraped_title(), ported from index.html's
-# normalizeScrapedTitle()/CTA_SUFFIX_RE/TRAILING_LOCATION_RE.
+# (raw_title, raw_location, expected_title, expected_location) for
+# normalize_scraped_title() -- a port of the app's normalizeScrapedTitle().
 NORMALIZE_CASES = [
     # CTA suffix stripped regardless of whether location is already known.
     ("Head of Design - View Job", "London", "Head of Design", "London"),
     ("Senior Product Designer | Apply Now", "Singapore", "Senior Product Designer", "Singapore"),
-    # Trailing "City, Country" recovered from the title, but ONLY when the
-    # site gave no location of its own (or the old "Not specified"
-    # placeholder — same as truly empty for this purpose). Note the title
-    # itself needs a comma ahead of the city for this to work cleanly — the
-    # recovery regex matches a run of Title-Case words on each side of a
-    # comma, so a title made ENTIRELY of Title-Case words with no comma of
-    # its own (e.g. "Staff Product Designer Rotterdam, Netherlands") is a
-    # real, known ambiguity it can't safely resolve (the city name is
-    # indistinguishable from more title words) and is deliberately left
-    # untouched rather than guessed at wrong — see TRAILING_LOCATION_RE's
-    # comment. This is inherited as-is from index.html's own regex, not
-    # something Phase 1.5 set out to fix.
+    # A trailing "City, Country" is recovered from the title only when the site
+    # gave no location. It needs a comma before the city: a title made entirely of
+    # Title-Case words ("Staff Product Designer Rotterdam, Netherlands") is
+    # ambiguous and deliberately left alone -- same limitation as the app's regex.
     ("Product Designer, Amsterdam, Netherlands", "", "Product Designer", "Amsterdam, Netherlands"),
     ("Product Designer, Amsterdam, Netherlands", "Not specified", "Product Designer", "Amsterdam, Netherlands"),
-    # The known ambiguity itself, documented as a passing case rather than
-    # silently unhandled: left untouched, not guessed at wrong.
+    # The known ambiguity itself: left untouched rather than guessed wrong.
     ("Staff Product Designer Rotterdam, Netherlands", "", "Staff Product Designer Rotterdam, Netherlands", ""),
-    # A perfectly normal comma'd title is left alone once a real location is
-    # already present — must NOT get mangled by the recovery regex (real
-    # LI/Indeed titles routinely end in ", Principal" / ", Architect" / a
-    # second job-title clause with nothing to do with location).
+    # A normal comma'd title is left alone once a real location is present.
     ("Director, Product Design", "Netherlands", "Director, Product Design", "Netherlands"),
     ("Product Management, Principal", "Kuala Lumpur, Malaysia", "Product Management, Principal", "Kuala Lumpur, Malaysia"),
     # Whitespace collapse.
@@ -182,7 +125,12 @@ CASES = [
     ("WorldRemit", "zepz-worldremit-sendwave"),
     ("Sendwave", "zepz-worldremit-sendwave"),
     ("Solarisbank", "solaris-solarisbank"),
-    ("Network International", "network-international"),
+    # "International" is deliberately not stripped as a legal suffix (it once
+    # turned "Network International" into a bare, dangerously generic
+    # "network"). Network International itself is no longer tracked, so this
+    # guards the same rule with a company that is.
+    ("Fidelity International", "fidelity-international"),
+    ("Random Fidelity Solutions Inc", None),  # must NOT false-match via "fidelity"
     ("Random Network Solutions Inc", None),  # must NOT false-match via "network"
     ("DBS Bank Ltd", "dbs-bank"),
     ("DBS", "dbs-bank"),
@@ -196,63 +144,42 @@ CASES = [
 ]
 
 # Every normalized name/alias that two different companies both claim as an
-# exact-match key, as of the last time this was reviewed. build_index()'s
-# `exact` dict is last-write-wins with no collision detection of its own, so
-# without this test a new collision (e.g. a future company whose name also
-# reduces to "boost" once suffixes are stripped) would fail silently --
-# postings would just get filed under the wrong slug with nothing to notice.
-# Each entry here has been individually reviewed and accepted:
+# exact-match key -- reviewed and accepted. build_index() is last-write-wins,
+# so without this check a new collision would silently misfile postings.
 #
-#   "boost" -> boost / boost-bank: genuinely affiliated companies (Boost
-#   Bank is a 2024 digital-banking JV between Axiata's Boost and RHB, and
-#   literally shares Boost's own careers.myboost.co board per its note in
-#   index.html) whose names become identical text once "Bank" is stripped
-#   as a legal/corporate suffix. There's no text-only way to tell a real
-#   "Boost" posting from a real "Boost Bank" posting apart, and since both
-#   businesses share one careers site anyway, a stray misfile between the
-#   two slugs has minimal practical impact on what a reviewer sees. Adding
-#   a special-case exception to _normalize() for this one pair was judged
-#   riskier (touches shared normalization logic used by all 210 companies)
-#   than documenting and testing for it here.
+#   "boost" -> boost / boost-bank: affiliated companies (Boost Bank is Axiata's
+#   Boost + RHB) sharing one careers board, whose names become identical once
+#   "Bank" is stripped. A stray misfile between them is harmless, and special-
+#   casing _normalize() for one pair would be riskier.
 #
-# If this test starts failing because find_collisions() returns something
-# NOT in this allowlist, that's a real new bug (same class as the du/Emirates
-# collision caught and fixed in Sep 2026) -- go fix companies.py's aliases,
-# don't just widen the allowlist.
+# If this fails with something new, fix the aliases in data/companies.json --
+# don't widen the allowlist.
 KNOWN_COLLISIONS = {
     "boost": ["boost", "boost-bank"],
 }
 
-# (title, expected is_role_relevant(), expected fit_tier()) — covers 1.1
-# (ALWAYS_ALLOW's "marketing manager" removal), 1.2 (hard exclusion ->
-# "excluded"), and 1.3 (the two-axis seniority/domain split, replacing the
-# old single-regex tier). Several of the pre-Phase-1 rows' expected tiers
-# changed here on purpose: the two-axis split is a genuinely different (and
-# stricter) algorithm than the old single TARGET_TIER regex, not a
-# regression — see match.py's fit_tier()/domain_tier() comments. This is the
-# same demotion pattern the Phase 0 report flagged in real SG/NL data (e.g.
-# "VP, Design Strategy" has real seniority but only a DOMAIN_BROADER
-# "strategy" match, not a DOMAIN_CORE design phrase, so the weaker domain
-# axis correctly pulls it down to "below").
+# (title, expected is_role_relevant(), expected fit_tier()). Fit is two-axis:
+# seniority x domain, the weaker wins -- e.g. "VP, Design Strategy" has strong
+# seniority but only DOMAIN_BROADER "strategy", so it's "below".
 TITLE_CASES = [
     ("Director, Product Design", True, "target"),
     ("Head of UX Research", True, "target"),
     ("Senior Product Designer", True, "below"),
-    ("Software Engineer", False, "stretch"),  # was "below" pre-1.3 — no seniority AND no domain signal at all
-    ("Design Engineer", True, "stretch"),  # alwaysAllow-relevant, but "design engineer" isn't a DOMAIN_CORE phrase and has no seniority word either
-    ("VP, Design Strategy", True, "below"),  # was "target" pre-1.3 — strong seniority, but "strategy" is only DOMAIN_BROADER, not DOMAIN_CORE
-    ("Product Marketing Manager", True, "below"),  # still relevant via the narrow "product marketing" ALWAYS_ALLOW exception (1.1) — "manager" alone isn't a target-tier word
-    ("Sales Manager", False, "stretch"),  # was "below" pre-1.3
+    ("Software Engineer", False, "stretch"),  # no seniority and no domain signal
+    ("Design Engineer", True, "stretch"),  # alwaysAllow-relevant, but "design engineer" isn't a DOMAIN_CORE phrase and has no seniority word
+    ("VP, Design Strategy", True, "below"),  # strong seniority, but "strategy" is only DOMAIN_BROADER
+    ("Product Marketing Manager", True, "below"),  # relevant via the narrow "product marketing" ALWAYS_ALLOW exception; "manager" alone isn't target-tier
+    ("Sales Manager", False, "stretch"),  # not relevant
     ("Data Scientist, Product Analytics", False, "below"),
-    # 1.1 acceptance case: bare "marketing manager" no longer bypasses via
-    # ALWAYS_ALLOW — NEGATIVE's "marketing" correctly excludes it now.
+    # Bare "marketing manager" doesn't bypass via ALWAYS_ALLOW; NEGATIVE's
+    # "marketing" excludes it.
     ("Growth Marketing Manager, Credit Products", False, "below"),
-    # 1.2 acceptance cases: hard exclusion.
+    # Hard exclusions:
     ("Junior Product Designer", False, "excluded"),
     ("Associate Product Designer", False, "excluded"),  # "associate" with no AVP/VP/Director qualifier
     ("Associate Director, Product Design", True, "target"),  # the AVP/VP/Director exception — not excluded
-    ("Associate/AVP, Product Experience", True, "below"),  # acceptance case: not excluded (AVP qualifies), but "Product Experience" is only DOMAIN_BROADER so overall tier is "below", not "target"
-    # 1.3 acceptance case: catering + the newly-added "onboard" both hard-exclude.
+    ("Associate/AVP, Product Experience", True, "below"),  # not excluded (AVP qualifies), but "Product Experience" is only DOMAIN_BROADER, so "below"
+    # Catering and "onboard" both hard-exclude.
     ("BA Cityflyer Catering & Onboard Product Lead", False, "excluded"),
 ]
 
@@ -278,8 +205,8 @@ def run():
     print("-- match_negative_filters (1.2/1.3 hard exclusion, direct) --")
     NEGATIVE_FILTER_CASES = [
         ("Junior Product Designer", ["junior"]),
-        ("Procurement Manager", ["procurement"]),  # 1.3 extension
-        ("Cabin Crew Product Lead", ["cabin crew"]),  # 1.3 extension
+        ("Procurement Manager", ["procurement"]),
+        ("Cabin Crew Product Lead", ["cabin crew"]),
         ("Associate Product Designer", ["associate (without AVP/VP/Director)"]),
         ("Associate Director, Product Design", []),  # the AVP/VP/Director exception
         ("Senior Product Designer", []),
@@ -316,16 +243,16 @@ def run():
     fresh_checks = [
         ("did not crash on NaN fields (the actual production bug)", not crashed),
         ("kept exactly 5 distinct identities (2 dropped no-company-match [unrelated + NaN], 2 dropped "
-         "title-not-relevant [irrelevant + NaN], 1 duplicate URL, and case #1/#10's li+google merged into one "
+         "title-not-relevant [irrelevant + NaN], 1 duplicate URL, and case #1/#10's li+welcometonl merged into one "
          "identity rather than counting as a 6th — 1.4)", len(fresh) == 5),
-        ("li+google Head of Design/Wise/London merged into one identity (1.4)", id_wise_design_london in fresh),
-        ("...merged role's canonical source is li, not google (outranks it in SOURCE_PRECEDENCE)",
+        ("li+welcometonl Head of Design/Wise/London merged into one identity (1.4)", id_wise_design_london in fresh),
+        ("...merged role's canonical source is li, not welcometonl (outranks it in SOURCE_PRECEDENCE)",
          fresh.get(id_wise_design_london, (None, {}))[1].get("source") == "li"),
-        ("...merged role's sources array retains both li and google",
-         sorted(fresh.get(id_wise_design_london, (None, {}))[1].get("sources", [])) == ["google", "li"]),
-        ("...merged role's canonical url is li's (case #1's), not google's (case #10's)",
+        ("...merged role's sources array retains both li and welcometonl",
+         sorted(fresh.get(id_wise_design_london, (None, {}))[1].get("sources", [])) == ["li", "welcometonl"]),
+        ("...merged role's canonical url is li's (case #1's), not welcometonl's (case #10's)",
          fresh.get(id_wise_design_london, (None, {}))[1].get("url") == "https://x.test/1"),
-        ("...merged role's sponsorshipSignal keeps google's (case #9's) match even though li "
+        ("...merged role's sponsorshipSignal keeps welcometonl's (case #9's) match even though li "
          "(no description) won canonical status — the UNION, not just the canonical record's own signal",
          fresh.get(id_wise_design_london, (None, {}))[1].get("sponsorshipSignal") == ["international candidates"]),
         ("hsbc role (indeed, case #2, has a description) carries its own sponsorshipSignal",
@@ -335,7 +262,7 @@ def run():
         ("hsbc role filed under correct slug", fresh.get(id_hsbc_senior_ux_researcher_sg, (None, {}))[0] == "hsbc"),
         ("NaN-location role kept, location is '' — not 'Not specified' (1.5)",
          fresh.get(id_wise_design_unknown, (None, {}))[1].get("location") == ""),
-        ("glassdoor role tagged source=glassdoor", fresh.get(id_wise_senior_pd_sg, (None, {}))[1].get("source") == "glassdoor"),
+        ("bayt role tagged source=bayt", fresh.get(id_wise_senior_pd_sg, (None, {}))[1].get("source") == "bayt"),
         ("bayt role tagged source=bayt", fresh.get(id_wise_ux_researcher_dubai, (None, {}))[1].get("source") == "bayt"),
     ]
     for label, ok in fresh_checks:
@@ -355,32 +282,25 @@ def run():
     id_om_germany = role_identity(
         normalize_employer_name("Some Random Startup GmbH"), "Head of Product Design", "Germany"
     )
-    # 2026-10-17 — case #3 (bare "Berlin", no country marker) used to be kept here too (see its
-    # dated comment in FRESH_ROLES_CASES above for why that flipped); kept as a named identity
-    # purely so the "must NOT be kept" assertion below has something concrete to check against.
+    # Case #3 (bare "Berlin") must NOT be kept; named so the assertion below can
+    # check it.
     id_om_berlin_unrelated = role_identity(
         normalize_employer_name("Some Totally Unrelated Company"), "Head of Design", "Berlin"
     )
-    # 2026-10-17 — case #17: a real India posting, otherwise fully qualifying — must NOT leak
-    # into the open-market feed. Direct regression test for the reported bug.
+    # Case #17: an otherwise-qualifying India posting must not reach open market.
     id_om_india = role_identity(
         normalize_employer_name("Some Random Startup Pvt Ltd"), "Head of Product Design", "Bengaluru, India"
     )
-    # 2026-10-17 — case #18: Indeed's "City, StateCode, CountryCode" shape with no spelled-out
-    # country name — must resolve via ISO_CODE_TO_MARKET and be kept, market=Germany.
+    # Case #18: "City, StateCode, CountryCode" resolves via ISO_CODE_TO_MARKET -> Germany.
     id_om_berlin_iso = role_identity(
         normalize_employer_name("Some Random Berlin Startup GmbH"), "Head of Product Design", "Berlin, BE, DE"
     )
-    # 2026-09-28 — case #12 ("Product Designer" @ the same SG startup as #11/#11b) is now its
-    # own kept open-market identity: open_market_gate() was loosened to accept "below" tier, not
-    # just "target" (see match.py). Different title than #11/#11b ("Product Designer" vs "Head of
-    # Product Design"), so it's a distinct identity, not a merge into id_om_startup_sg.
+    # Case #12 ("Product Designer", below tier) is its own kept identity -- a
+    # different title from #11/#11b, not a merge.
     id_om_startup_sg_below = role_identity(
         normalize_employer_name("Some Random Singapore Startup Pte Ltd"), "Product Designer", "Singapore"
     )
-    # 2026-09-28 (second change, same day) — case #13 (Robert Walters) is now its own kept
-    # open-market identity too: open_market_gate() stopped consulting the agency blocklist
-    # (see match.py's docstring). Distinct employer from every other case, so its own identity.
+    # Case #13 (Robert Walters, an agency) is kept: agencies are included.
     id_om_robert_walters = role_identity(
         normalize_employer_name("Robert Walters"), "Head of Product Design", "Netherlands"
     )
@@ -416,9 +336,9 @@ def run():
         ("...carries the raw employer display name",
          fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("employer") == "Some Random Singapore Startup Pte Ltd"),
         ("...tagged with market=Singapore", fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("market") == "Singapore"),
-        ("...li+glassdoor (cases #11/#11b) merged, sources retains both",
-         sorted(fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("sources", [])) == ["glassdoor", "li"]),
-        ("...canonical source is li (outranks glassdoor)",
+        ("...li+bayt (cases #11/#11b) merged, sources retains both",
+         sorted(fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("sources", [])) == ["bayt", "li"]),
+        ("...canonical source is li (outranks bayt)",
          fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("source") == "li"),
         ("the UAE startup role (case #15, 'Dubai, UAE' — the abbreviated form) is keyed under its "
          "normalized employer text too", id_om_startup_uae in fresh_open_market),
@@ -426,20 +346,14 @@ def run():
          "'united arab emirates' substring)",
          fresh_open_market.get(id_om_startup_uae, (None, {}))[1].get("market") == "United Arab Emirates"),
         ("...tagged with source=indeed", fresh_open_market.get(id_om_startup_uae, (None, {}))[1].get("source") == "indeed"),
-        # 2026-09-28 (second change, same day) — was "Robert Walters (case #13) did not leak
-        # into the open-market feed despite otherwise qualifying" before open_market_gate()
-        # stopped consulting the agency blocklist. Now the opposite is true: it's SUPPOSED to
-        # be kept, as the direct proof the agency-blocklist removal actually took effect.
+        # Agencies are included in open market.
         ("Robert Walters (case #13) IS now kept open-market — direct proof the 2026-09-28 "
          "open_market_gate() agency-blocklist removal took effect",
          id_om_robert_walters in fresh_open_market),
         ("...carries the raw employer display name",
          fresh_open_market.get(id_om_robert_walters, (None, {}))[1].get("employer") == "Robert Walters"),
         ("...tagged with market=Netherlands", fresh_open_market.get(id_om_robert_walters, (None, {}))[1].get("market") == "Netherlands"),
-        # 2026-09-28 — was "case #12 (below-tier title) still did not leak in — the gate is
-        # unchanged, only the location restriction upstream of it was removed" before
-        # open_market_gate() was loosened to accept "below" tier. Now the opposite is true: it's
-        # SUPPOSED to be kept, as the direct proof the loosening actually took effect.
+        # Below-tier titles are included in open market.
         ("case #12 (below-tier title 'Product Designer') IS now kept open-market — direct proof "
          "the 2026-09-28 open_market_gate() loosening (target-only -> target-or-below) took "
          "effect, not just that the location restriction stays removed",
@@ -447,11 +361,11 @@ def run():
         ("...carries the raw employer display name, same employer as #11/#11b but a distinct "
          "identity (different title)",
          fresh_open_market.get(id_om_startup_sg_below, (None, {}))[1].get("employer") == "Some Random Singapore Startup Pte Ltd"),
-        ("...tagged with source=indeed (case #12's own source, not merged with #11/#11b's li/glassdoor)",
+        ("...tagged with source=indeed (case #12's own source, not merged with #11/#11b's li/bayt)",
          fresh_open_market.get(id_om_startup_sg_below, (None, {}))[1].get("source") == "indeed"),
-        # 2026-09-23 — sponsorship signal on the open-market branch.
+        # Sponsorship signal on the open-market branch.
         ("SG startup role's sponsorshipSignal is the union of li's (#11, no description) and "
-         "glassdoor's (#11b, three keywords) — canonical source is still li, signal isn't",
+         "bayt's (#11b, three keywords) — canonical source is still li, signal isn't",
          fresh_open_market.get(id_om_startup_sg, (None, {}))[1].get("sponsorshipSignal") ==
          sorted(["relocation support", "international candidates", "global talent"])),
         ("UAE startup role (case #15) has no description at all -> sponsorshipSignal is []",
@@ -478,34 +392,26 @@ def run():
         ("Dubai, United Arab Emirates", "United Arab Emirates"),  # the spelled-out form (matches LOCATIONS verbatim)
         ("Abu Dhabi, United Arab Emirates", "United Arab Emirates"),  # both UAE cities collapse to one canonical market
         ("Dubai, UAE", "United Arab Emirates"),  # the common abbreviated form — via MARKET_ALIASES, not a literal LOCATIONS substring
-        ("AE", "United Arab Emirates"),  # bare country-code form
-        # 2026-09-23 — previously these returned None (dropped, not an OPEN_MARKET_LOCATIONS
-        # market); now every LOCATIONS-derived market resolves to a real label, since this
-        # function is a display label, not a gate, for any of the 25 already-searched locations.
-        ("Kuala Lumpur, Malaysia", "Malaysia"),  # city-qualified LOCATIONS entry collapses to its country
+        ("AE", "United Arab Emirates"),
+        # Every searched location resolves to a market label.
+        ("Kuala Lumpur, Malaysia", "Malaysia"),
         ("Berlin, Germany", "Germany"),  # a bare-country LOCATIONS entry, well outside the old 3-market allowlist
         ("Sydney, NSW, Australia", "Australia"),
         ("Tokyo, Japan", "Japan"),
-        # 2026-10-17 — ISO_CODE_TO_MARKET's last-comma-segment pass: Indeed's common
-        # "City, StateCode, CountryCode" shape, no spelled-out country name anywhere.
+        # ISO_CODE_TO_MARKET's last-segment pass: "City, StateCode, CountryCode".
         ("Berlin, BE, DE", "Germany"),
         ("London, ENG, GB", "United Kingdom"),
         ("Stockholm, AB, SE", "Sweden"),
         ("Outram, S00, SG", "Singapore"),
-        # 2026-10-17 — CITY_ALIASES pass: "Greater X (Metropolitan) Area" shape, no country
-        # marker at all.
+        # CITY_ALIASES: "Greater X Area" with no country marker.
         ("Greater Tokyo Area", "Japan"),
         ("Greater Kuala Lumpur", "Malaysia"),
-        # 2026-10-17 — the whole reason this gate exists: a real location this file never
-        # searches for now returns None (not a raw-text fallback) so build_fresh_roles() can
-        # drop it — see scrape.py's dated comment above ISO_CODE_TO_MARKET for the full story
-        # (a real India leak is what prompted this).
+        # A location we never search returns None, so build_fresh_roles() drops it.
         ("Reykjavik, Iceland", None),
         ("Bengaluru, India", None),
         ("", None),
-        # 2026-10-17 — deliberately conservative: a real "Berlin, El Salvador" posting surfaced
-        # in the audit that added this gate, which is exactly why "berlin" is not a bare
-        # CITY_ALIASES entry — this must resolve to neither Germany nor anything else.
+        # "berlin" is deliberately not a bare CITY_ALIASES entry -- a real "Berlin, El
+        # Salvador" posting exists. Must resolve to nothing.
         ("Berlin, El Salvador", None),
     ]
     for raw, expected in MARKET_FOR_LOCATION_CASES:
@@ -517,14 +423,8 @@ def run():
     print("-- open-market: CANONICAL_MARKETS derivation (2026-09-23, sanity; "
           "LOCATIONS trimmed 25 -> 15 on 2026-09-24 — see below) --")
     canonical_checks = [
-        # 2026-09-24: LOCATIONS trimmed from 25 entries to 15 (see scrape.py's
-        # LOCATIONS comment) — this dropped Abu Dhabi, the second of the two
-        # UAE entries that used to collapse into one canonical market, so
-        # there's no longer any 2-LOCATIONS-entries -> 1-market collapsing at
-        # all: 15 LOCATIONS entries now produce 15 distinct canonical markets
-        # (was 24 markets from 25 entries, when Dubai + Abu Dhabi were the
-        # only pair sharing a market). This number is a tripwire, not a
-        # derived value — update it deliberately if LOCATIONS changes again.
+        # A tripwire, not a derived value: 15 LOCATIONS entries -> 15 distinct markets.
+        # Update deliberately if LOCATIONS changes.
         ("15 distinct canonical markets from 15 LOCATIONS entries (no more "
          "multi-entry collapsing since only one UAE entry remains)",
          len(CANONICAL_MARKETS) == 15),
@@ -573,44 +473,18 @@ def run():
     failures += 0 if all_covered else 1
     print(f"  {'OK ' if all_covered else 'FAIL'}  every SPONSORSHIP_KEYWORDS entry is exercised by at least one case above")
 
-    print("-- open-market: is_agency() (2.3) --")
-    AGENCY_CASES = [
-        ("Robert Walters", True),
-        ("Michael Page", True),
-        ("Robert Walters Pte Ltd", True),  # legal suffixes stripped, still an exact match
-        ("Robert Half International", False),  # deliberately NOT a match — exact-match only, not fuzzy containment (see is_agency()'s docstring)
-        ("Some Random Startup", False),
-    ]
-    for employer, expected in AGENCY_CASES:
-        got = is_agency(employer)
-        ok = got == expected
-        failures += 0 if ok else 1
-        print(f"  {'OK ' if ok else 'FAIL'}  {employer!r:30s} -> {got!s:5s} (expected {expected!s})")
-
     print("-- open-market: open_market_gate() (2.4) --")
-    # 2026-09-28, round 1 — open_market_gate() loosened from fit_tier=="target" only to
-    # fit_tier in ("target", "below") — see match.py's open_market_gate() docstring. The
-    # "Product Designer" case below flips from False to True; "Design Coordinator" is new,
-    # added specifically to prove "stretch" tier still doesn't qualify (the loosening was
-    # target-or-below, not "accept everything relevant") — see its own inline note.
-    #
-    # 2026-09-28, round 2 (same day) — open_market_gate() dropped its is_agency_fn parameter
-    # entirely (agency postings are no longer excluded, per explicit request — see the
-    # function's own docstring). Every case tuple below lost its trailing agency-fn argument
-    # to match the new two-arg signature, and the Robert Walters case's expected value flipped
-    # from False to True (it would already have qualified on title/tier alone — agency status
-    # is simply no longer consulted). is_agency() itself is untouched and still directly unit
-    # tested above (AGENCY_CASES) — only this gate stopped calling it.
+    # open_market_gate(title, employer): relevant and target-or-below tier only.
+    # "Design Coordinator" proves "stretch" still doesn't qualify; agencies
+    # (Robert Walters) qualify like anyone else.
     OPEN_MARKET_GATE_CASES = [
-        ("Head of Product Design", "Random Co", True),  # target tier — qualified before and after
+        ("Head of Product Design", "Random Co", True),  # relevant, "below" tier — qualifies
         ("Product Designer", "Random Co", True),  # relevant, "below" tier — now qualifies (was False pre-2026-09-28)
-        # relevant (bare "design" matches POSITIVE) but neither DOMAIN_CORE nor DOMAIN_BROADER
-        # matches "design coordinator" as a phrase, so domain_tier == "stretch"; seniority_tier is
-        # "below" (no seniority word) but the WEAKER axis wins fit_tier(), so this is "stretch"
-        # overall, not "below" — proves the loosening didn't accidentally admit stretch-tier titles.
+        # Relevant (bare "design" matches POSITIVE) but no DOMAIN_CORE/BROADER phrase,
+        # so domain is "stretch" and the weaker axis wins.
         ("Design Coordinator", "Random Co", False),  # relevant, but "stretch" tier — still excluded
-        ("Junior Product Designer", "Random Co", False),  # hard-excluded — not relevant at all
-        ("Head of Product Design", "Robert Walters", True),  # agency, target tier — now qualifies (was False pre-round-2; agency blocklist no longer consulted)
+        ("Junior Product Designer", "Random Co", False),
+        ("Head of Product Design", "Robert Walters", True),  # agency, target tier — qualifies
     ]
     for title, employer, expected in OPEN_MARKET_GATE_CASES:
         got = open_market_gate(title, employer)
@@ -670,7 +544,7 @@ def run():
         unexpected = {k: v for k, v in got_collisions.items() if k not in KNOWN_COLLISIONS}
         missing = {k: v for k, v in KNOWN_COLLISIONS.items() if k not in got_collisions}
         if unexpected:
-            print(f"        unexpected new collision(s), go fix companies.py: {unexpected}")
+            print(f"        unexpected new collision(s), go fix companies.json: {unexpected}")
         if missing:
             print(f"        expected collision(s) no longer present (update KNOWN_COLLISIONS if fixed on purpose): {missing}")
 
@@ -679,7 +553,7 @@ def run():
         + len(fresh_checks) + len(om_checks)
         + len(MARKET_FOR_LOCATION_CASES) + len(canonical_checks)
         + len(SPONSORSHIP_CASES) + 1  # +1: the all_covered SPONSORSHIP_KEYWORDS-coverage check
-        + len(AGENCY_CASES) + len(OPEN_MARKET_GATE_CASES)
+        + len(OPEN_MARKET_GATE_CASES)
         + len(merge_om_checks) + 1  # +1: find_collisions() == KNOWN_COLLISIONS
     )
     print(f"\n{total_cases - failures}/{total_cases} passed")

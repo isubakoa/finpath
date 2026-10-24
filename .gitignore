@@ -5,14 +5,16 @@
 
 
 # MD Files
-
 README.md
 **/README.md
-
 CHANGES.md
 **/CHANGES.md
 
 
 # Files
-
 diagnoses.py
+
+
+# Python bytecode
+__pycache__/
+*.pyc

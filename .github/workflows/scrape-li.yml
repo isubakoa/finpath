@@ -1,136 +1,20 @@
+# li-scraper: LinkedIn / Indeed / Bayt / welcome-to-nl / uxwork -> data/li-snapshot.json
+#
+# Scheduling: GitHub's `schedule` trigger is best-effort and routinely drops or
+# delays runs (we saw 5-7h gaps on a 2h cron). So the cron fires every 15
+# minutes and the first step is a cheap gate that only lets the real run
+# through once SCHEDULE_INTERVAL_HOURS have passed since data/li-snapshot.json
+# was last committed. Self-healing: the next tick that fires after the
+# interval does the work. scrape.py picks its rotation chunk from wall-clock
+# time, so skipped ticks don't skew coverage. Off-minute offsets (3/18/33/48)
+# avoid GitHub's congested top-of-hour.
+#
+# Tuning what each run searches (markets, terms, combos per run) happens in
+# scrape.py, not here. SCHEDULE_INTERVAL_HOURS below must match scrape.py's.
 name: Scrape LI coverage (JobSpy)
 
-# Scheduling history, kept in full (per Isu's explicit ask, 2026-09-25) so a
-# future change to this cron doesn't have to rediscover any of this by trial
-# and error — see li-scraper/scrape.py's SCHEDULE_INTERVAL_HOURS comment for
-# the same history from the rotation-math side:
-#
-#   - Originally hourly ("0 * * * *"), 24/7. Tightened from every 2 hours in
-#     September 2026 to shrink the gap between a role going live on LI and
-#     this scraper's next chance to find it, since index.php's Today tab
-#     gates on freshness (originally calendar-day-posted; since 2026-09-23,
-#     a rolling 24h window from first-seen — see README.md's "How the
-#     rotation works" and scrape.py's module docstring).
-#   - 2026-09-25, round 1: that hourly-at-minute-0 schedule turned out to
-#     fire wildly irregularly in practice — commit history on main showed
-#     gaps anywhere from 45 minutes to nearly 6 hours between runs, and at
-#     least one run number (out of #118-121) never showed up in the Actions
-#     run list at all. Root cause, as far as it could be confirmed without
-#     direct Actions-API access: GitHub's own scheduler is documented to
-#     delay or silently DROP `schedule` triggers anchored at the top of the
-#     hour (minute 0), since every workflow on GitHub scheduled that way
-#     competes for the same "high load" window — see
-#     https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#schedule.
-#     Fixed by moving off :00 (to minute 13) AND backing off from hourly to
-#     every 3h, both deliberately, at Isu's explicit choice, over just the
-#     minute-offset fix alone.
-#   - 2026-09-25, round 2: tightened back to every 2 hours, same minute-13
-#     offset — Isu's explicit follow-up call, trading back some of round 1's
-#     Actions-minutes savings in favor of a shorter gap between a role going
-#     live and this scraper finding it, same motivation as the original
-#     hourly-to-2h tightening above. The minute-0 congestion fix from round
-#     1 is untouched either way — only the *interval* changed back, not the
-#     offset.
-#   - 2026-09-25, round 3 (current): round 2's off-:00 fix turned out to
-#     help but not fully solve it — even at minute 13, real gaps between
-#     runs kept coming in at 5-7 hours instead of 2, confirmed directly
-#     against the Actions run history (not guessed): runs landed
-#     22:50, 01:01 (+2h11m), 06:52 (+5h51m), 12:13 (+5h21m), then nothing for
-#     3h50m+ after that. GitHub's own docs describe `schedule` as
-#     best-effort and explicitly say it "may be delayed" without any upper
-#     bound promised — moving off minute 0 reduces exposure to the single
-#     worst congestion point but doesn't make the trigger reliable overall,
-#     especially for a lower-traffic repo like this one.
-#
-#     Fix: decouple "how often GitHub attempts to fire this workflow" from
-#     "how often the real scrape actually runs." The cron below now fires
-#     every 15 minutes (cheap — the new gate step below is the ONLY thing
-#     that runs on most ticks, and exits in a few seconds) instead of every
-#     2 hours; a new first step compares wall-clock time against the last
-#     commit that actually touched li-snapshot.json (via the GitHub REST
-#     API, not a full git clone — see the gate step's own comments) and
-#     skips every other step unless at least SCHEDULE_INTERVAL_HOURS (2h)
-#     have genuinely passed. This is self-healing: however many attempts
-#     GitHub drops or delays in a row, the very next one that actually fires
-#     sees "yes, enough real time has passed" and does the work — the
-#     effective worst-case lag becomes "however long GitHub takes to fire
-#     ANY of the 8 attempts per 2h window," not "however long GitHub takes
-#     to fire ONE specific attempt anchored to one exact minute," which is a
-#     much easier bar to clear. li-scraper/scrape.py's
-#     current_chunk_index() is unaffected — it already computes its chunk
-#     purely from wall-clock time (see its own comment), with no dependency
-#     on how many times this workflow was invoked, so gated-out ticks that
-#     never reach `python scrape.py` don't skew the rotation at all.
-#
-# As of 2026-09-24, the 950-combo grid was trimmed to 570 (LOCATIONS 25 ->
-# 15, your explicit market picks, to cut load/block-risk) and
-# COMBOS_PER_RUN was set to 95 so the grid divides into exactly 6 chunks. At
-# today's 2h cadence, that 6-chunk grid took ~12h to fully rotate (vs ~18h
-# at round 1's 3h cadence, ~6h at the original hourly cadence), at roughly
-# 1.5x round 1's daily LI request volume.
-#
-# 2026-09-28 — COMBOS_PER_RUN raised 95 -> 114 (still an even divisor of the
-# 570-combo grid: 570/114=5 chunks exactly) specifically to shorten that
-# rotation, after Isu asked for a shorter cycle but then explicitly asked
-# for a smaller daily-volume increase than an initial 190/3-chunk/6h option
-# would have meant — see scrape.py's COMBOS_PER_RUN comment for the full
-# reasoning, why 114 (not the also-considered 142, which doesn't divide 570
-# evenly), and the runtime-overlap math (still comfortably clear at 2h:
-# ~15min of guaranteed pause time for 114 combos versus the 120-minute gap
-# between runs). Same 2h cadence, same SCHEDULE_INTERVAL_HOURS=2 below, only
-# the chunk size changed — the grid now takes ~10h to fully rotate instead
-# of ~12h, at a more modest ~20% increase in daily LI/Indeed request volume
-# (~1,368/day each, up from ~1,140/day each). If that rotation speed or
-# request volume ever needs tuning again, raise or lower COMBOS_PER_RUN
-# rather than touching this cron — see that comment for the current safety
-# margin.
-# IMPORTANT: SCHEDULE_INTERVAL_HOURS below (2) is what actually governs both
-# the rotation chunking AND, as of round 3, the gate step's threshold — it
-# must match li-scraper/scrape.py's own SCHEDULE_INTERVAL_HOURS constant.
-# The cron's *frequency* (every 15 min, as of round 3) is deliberately no
-# longer the thing that controls real run spacing — only SCHEDULE_INTERVAL_HOURS
-# does that now, via the gate step. See scrape.py's module docstring.
-#
-# 2026-09-28 (same day, two further changes, no cron/gate changes needed for
-# either — both are about WHAT scrape.py searches per run, not WHEN this
-# workflow fires):
-#   1. Open-market staffing/recruitment agency postings (Robert Walters,
-#      Michael Page, etc.) are now INCLUDED, per explicit request —
-#      li-scraper/match.py's open_market_gate() no longer consults
-#      agencies.py's is_agency() blocklist. See that function's own
-#      docstring for the full reasoning; agencies.py itself is untouched.
-#   2. Isu's 3 priority markets (Singapore, Dubai, Netherlands — the last
-#      covering Amsterdam too) no longer sit in the ordinary COMBOS_PER_RUN
-#      rotation with the other 12 locations. They're pulled into their own
-#      always-considered sweep, run EVERY TERM against all 3, layered on top
-#      of whichever rotating chunk a run would have covered anyway, on every
-#      OTHER real run (~4h worst-case gap) — see scrape.py's module
-#      docstring "PRIORITY MARKETS" section and priority_sweep_due() for the
-#      full mechanism and cost reasoning. This is a pure scrape.py-side
-#      change (PRIORITY_LOCATIONS/ROTATING_LOCATIONS/priority_combos()/
-#      priority_sweep_due(), all keyed off the same SCHEDULE_INTERVAL_HOURS
-#      wall-clock buckets current_chunk_index() already used) — nothing here
-#      needed to change for it to work: the gate step's job is still just
-#      "has enough wall-clock time passed since the last real commit," which
-#      is unaffected by what that next real run decides to search internally.
-#   Net effect on daily request volume: the rotating pool's own chunk size
-#   (COMBOS_PER_RUN=114) is unchanged, so its own ~1,368/day LI+Indeed
-#   request volume is unchanged too (see the 2026-09-28 COMBOS_PER_RUN entry
-#   above) — it's simply now spread over 456 rotating combos instead of 570,
-#   so its own full-rotation cycle got shorter (~8h, down from ~10h) as a
-#   side effect, not a new tuning decision. On top of that, the priority
-#   sweep adds roughly another ~1,368/day (3 markets x 38 terms x 2
-#   sites/combo x ~1 sweep every ~4h), since "every other run" was Isu's
-#   explicit choice over "every run" (which would have doubled that added
-#   cost) — see the module docstring for the full trade-off as it was
-#   presented and decided.
 on:
   schedule:
-    # Round 3: fires every 15 minutes (offset 3 past the hour, still off
-    # minute :00/:30 per the round-1 lesson above) so the gate step below
-    # gets frequent chances to catch up even if GitHub drops or delays
-    # several attempts in a row. This is NOT how often the real scrape
-    # runs — see SCHEDULE_INTERVAL_HOURS above and the gate step below.
     - cron: "3,18,33,48 * * * *"
   push:
     paths:
@@ -138,52 +22,10 @@ on:
       - "li-scraper/match.py"
       - "li-scraper/companies.py"
       - "li-scraper/requirements.txt"
-      - "li-scraper/bayt_playwright.py" # 2026-09-24: Bayt's dedicated Playwright scraper, see scrape.py's module docstring
+      - "li-scraper/bayt_playwright.py"
+      - "data/companies.json"
   workflow_dispatch: {}
 
-# 2026-09-29 — added after a real failure: "Run scraper" took 58m56s (the
-# priority-sweep-inclusive runs added 2026-09-28 roughly double a run's own
-# combo count on the runs that include one, on top of real JobSpy/Playwright
-# network latency well beyond the guaranteed-pause estimate — see
-# scrape.py's module docstring's request-volume accounting, which was never
-# about run DURATION), then failed to push: "[rejected] main -> main (fetch
-# first) ... the remote contains work that you do not have locally."
-#
-# Root cause: the round-3 gate step (see its own comment below) decides
-# whether to run based on time since the LAST COMMIT, not on whether a scrape
-# is currently IN PROGRESS. The cron fires every 15 minutes. Once a real run
-# starts, it can take up to ~an hour to reach its own commit — during that
-# entire window, every 15-minute tick still sees "the last real commit was
-# >= SCHEDULE_INTERVAL_HOURS ago" (because the in-flight run hasn't committed
-# yet) and starts ANOTHER full scrape run alongside it, with no coordination
-# between them. Each of those extra runs does a real, complete, wasted scrape
-# (extra LI/Indeed/Bayt load, extra block-risk) and then all of them race to
-# commit+push — only the first one to reach the push wins; every other one
-# gets exactly the rejection above, discarding that run's own work (harmless,
-# since li-snapshot.json is fully regenerable — no data is actually lost —
-# but the Actions minutes and the extra scrape traffic against LI/Indeed/Bayt
-# both are).
-#
-# This bug predates 2026-09-28's priority-sweep/agency changes — any run
-# lasting longer than one 15-minute tick was already exposed to it — but a
-# run duration under ~15 minutes made it rare enough not to have been hit
-# yet; a ~58-minute run makes it close to certain (roughly 3-4 extra
-# overlapping runs get kicked off before the first one finally commits).
-#
-# Fix: a `concurrency` group serializes this workflow — GitHub queues any
-# new run of this workflow while one is already in progress instead of
-# starting it alongside the running one, and only keeps at most one queued
-# run waiting (a newer trigger replaces an older still-queued one, so no
-# backlog builds up). `cancel-in-progress: false` is deliberate, not the
-# default left alone: it must NOT cancel the in-progress run — with a
-# ~1-hour scrape and 15-minute ticks, `cancel-in-progress: true` would mean
-# every in-flight scrape gets killed by the next tick before it ever
-# finishes, and no real run would ever complete (a livelock, strictly worse
-# than the bug this fixes). With this in place, the one queued run that
-# eventually gets its turn re-runs the gate step first (as every run does)
-# and — since the previous run's commit has landed by then — correctly sees
-# "not enough time has passed" and exits immediately without scraping again;
-# see the gate step's own comment below for that logic.
 concurrency:
   group: scrape-li
   cancel-in-progress: false
@@ -198,20 +40,14 @@ jobs:
       run:
         working-directory: li-scraper
     steps:
-      # 2026-09-25, round 3 — see the top-of-file comment for the full
-      # reasoning. Deliberately the very first step, before checkout: uses
-      # the GitHub REST API (via the auto-provided GITHUB_TOKEN, already
-      # granted contents:write below, which covers read) to ask "when was
-      # li-snapshot.json last actually committed on main?" without needing
-      # a git clone at all for what is, on most ticks, a no-op check. Only
-      # when the answer is "at least SCHEDULE_INTERVAL_HOURS ago" (or "never
-      # committed yet") does the rest of the job — checkout included — run.
+      # Runs before checkout (asks the REST API for the snapshot's last commit),
+      # so a skipped tick costs seconds. Same gate as scrape.yml's.
       - name: Gate on elapsed time since last real run
         id: gate
         working-directory: .
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SNAPSHOT_PATH: li-scraper/li-snapshot.json
+          SNAPSHOT_PATH: data/li-snapshot.json
           SCHEDULE_INTERVAL_HOURS: "2" # must match li-scraper/scrape.py's SCHEDULE_INTERVAL_HOURS
         run: |
           set -euo pipefail
@@ -249,19 +85,13 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         run: pip install -r requirements.txt
 
-      # 2026-09-24: needed for bayt_playwright.py — JobSpy's own Bayt
-      # integration is blocked outright (403 on every request, confirmed
-      # from both GitHub Actions and a real home IP — see scrape.py's
-      # module docstring), so Bayt is now scraped directly via a real
-      # headless Chromium browser instead. `pip install playwright` alone
-      # only installs the Python package; the browser binary itself still
-      # needs this separate step, same as js-scraper's own
-      # `npx playwright install --with-deps chromium` step in
-      # .github/workflows/scrape.yml (the Node equivalent of this same
-      # requirement, already proven working in this repo).
-      - name: Install Chromium (Playwright)
+      - name: Install Chromium (Playwright, for Bayt)
         if: steps.gate.outputs.should_run == 'true'
         run: playwright install --with-deps chromium
+
+      - name: Validate companies.json
+        if: steps.gate.outputs.should_run == 'true'
+        run: python test_companies_json.py
 
       - name: Run offline matching tests
         if: steps.gate.outputs.should_run == 'true'
@@ -271,14 +101,6 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         run: python test_rotation.py
 
-      # 2026-09-24: covers bayt_playwright.py's own logic (URL/date helpers,
-      # DOM-extraction-to-row transform) plus scrape.py's wiring to it, via
-      # a fake browser/page object — no real network or installed Chromium
-      # needed, so this runs alongside the existing offline test steps above
-      # rather than needing the Chromium-install step to have happened
-      # first. (A matching Glassdoor-Playwright test step lived here too,
-      # briefly — removed 2026-09-24 along with glassdoor_playwright.py
-      # itself; see scrape.py's module docstring, "GLASSDOOR: RETIRED".)
       - name: Run offline Bayt-Playwright tests
         if: steps.gate.outputs.should_run == 'true'
         run: python test_bayt_playwright.py
@@ -287,40 +109,17 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         run: python scrape.py
 
-      # 2026-09-29, round 2 — the concurrency group above (see its own dated
-      # comment) stops this workflow's OWN runs from overlapping each other,
-      # but it can't stop main from moving in the ~1-hour a run like this
-      # spends scraping: js-scraper's separate scrape.yml workflow commits
-      # "Refresh snapshot.json" to the same main branch on its own
-      # independent schedule, and a person can push to main by hand at any
-      # time too (this repo's actual history shows both happening) — neither
-      # is in this workflow's concurrency group, so a plain `git push` here
-      # still failed with "[rejected] ... fetch first" the first time this
-      # was hit, from a commit that landed on main WHILE this run was still
-      # scraping. That failure discarded the whole run's freshly-scraped
-      # snapshot (regenerable, not a data-loss risk, but a wasted ~1-hour run
-      # and a real risk of the workflow silently never updating
-      # li-snapshot.json if every run kept losing this race).
-      #
-      # Fix: retry the push, fetching and rebasing onto the new tip in
-      # between attempts, instead of failing outright on the first
-      # rejection. This is safe by construction, not just "probably fine":
-      # this step's own commit only ever touches li-snapshot.json, and the
-      # concurrency group above already guarantees no OTHER run of this same
-      # workflow can be racing it — so whatever new commit(s) appeared on
-      # main in the meantime are guaranteed not to touch li-snapshot.json,
-      # meaning the rebase has nothing to conflict with; it just replays this
-      # run's one commit onto the new tip. The rebase --abort/hard-fail path
-      # below exists only as a tripwire in case that assumption is ever
-      # broken (e.g. someone hand-edits li-snapshot.json directly on main) —
-      # it should never actually trigger in normal operation.
+      # This run's commit only touches data/li-snapshot.json, so if main moved
+      # meanwhile (scrape.yml or a person pushed), rebasing onto it can't
+      # conflict — retry the push a few times instead of losing the run.
       - name: Commit updated snapshot
         if: steps.gate.outputs.should_run == 'true'
+        working-directory: .
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add li-snapshot.json
+          git add data/li-snapshot.json
           if git diff --staged --quiet; then
             echo "No changes to commit."
             exit 0
@@ -335,14 +134,14 @@ jobs:
             if [ "$attempt" -eq "$attempts" ]; then
               break
             fi
-            echo "Push rejected on attempt $attempt/$attempts — main moved since this run's checkout (another workflow's or a person's commit, not touching li-snapshot.json — see this step's own comment above). Fetching origin/main and rebasing this run's commit onto it, then retrying..."
+            echo "Push rejected on attempt $attempt/$attempts — main moved since checkout. Rebasing onto origin/main and retrying..."
             git fetch origin main
             if ! git rebase origin/main; then
-              echo "::error::Unexpected rebase conflict onto origin/main while replaying the li-snapshot.json commit — this should be impossible if only this workflow ever touches that file (see this step's comment above). Aborting rather than guessing at a resolution; a human needs to look at what else changed li-snapshot.json on main."
+              echo "::error::Unexpected rebase conflict while replaying the li-snapshot.json commit — something else changed data/li-snapshot.json on main. Aborting rather than guessing."
               git rebase --abort
               exit 1
             fi
             sleep $(( (RANDOM % 20) + 5 ))
           done
-          echo "::error::Failed to push after $attempts attempts — main kept moving faster than this loop could catch up (repeated concurrent commits from elsewhere). Investigate what's committing to main this often; this run's freshly-scraped snapshot was NOT saved."
+          echo "::error::Failed to push after $attempts attempts — main kept moving. This run's snapshot was NOT saved."
           exit 1

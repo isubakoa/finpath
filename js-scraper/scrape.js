@@ -1,62 +1,25 @@
-// scrape.js — run on a schedule by GitHub Actions (see workflow.yml in this folder).
-//
-// For each company below, this opens its careers page in a real (headless)
-// browser, waits for the page's own JavaScript to finish rendering the job
-// list, then pulls out every link matching that company's `linkPattern` —
-// the same idea as check.php's "html" adapter (PHP/php-ftp/check.php), just
-// with an actual browser doing the rendering step first, which is the one
-// thing a plain PHP curl request can never do.
-//
-// Output is snapshot.json, in exactly the shape check.php's SNAPSHOT_URL
-// feature expects:
+// js-scraper: careers boards that only render with JavaScript. Opens each
+// company's page in headless Chromium, collects links matching its
+// `linkPattern`, keeps the relevant titles, and writes ../data/js-snapshot.json:
 //   { "generatedAt": "...", "companies": { "<slug>": { "ok": true, "roles": [...] } } }
-// check.php fetches that file and merges each company's roles in, the same
-// as any other live-checked company.
+// check.php reads it for companies whose ats is {type: "snapshot"}.
+// Run by .github/workflows/scrape.yml; locally: node scrape.js [--debug <slug>].
 
 import { chromium } from "playwright";
 import { writeFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
-// 2026-09-25 — fixed a real bug: this used to be `writeFileSync("snapshot.json", ...)`,
-// a path resolved against the PROCESS's current working directory, not this
-// file's own location. That was silently wrong: .github/workflows/scrape.yml
-// runs `node scrape.js` with `working-directory: ./js-scraper`, so every
-// single run for weeks was writing to js-scraper/snapshot.json — a file
-// that's never committed (the "Commit updated snapshot" workflow step runs
-// at the repo root and does `git add snapshot.json`, meaning the ROOT
-// snapshot.json, a completely different file the scraper never touched) —
-// while check.php's live SNAPSHOT_URL
-// (https://raw.githubusercontent.com/.../main/snapshot.json, confirmed
-// directly against the deployed file) kept serving whatever was last
-// committed there: 2026-09-09, "Relocate", 16 days stale by the time this
-// was caught, even though every scheduled run reported "success" (the
-// commit step's `git diff --staged --quiet && exit 0` treats "nothing
-// changed" as a normal, silent no-op, so a wrong-but-unchanging file never
-// surfaced as a failure). Computing the target path from this script's own
-// location (rather than a bare relative literal, and rather than trusting
-// the workflow's working-directory to always match) means the output lands
-// at the repo root regardless of where the process happens to be launched
-// from — correct today, and safe against a future workflow reorganization
-// reintroducing the same class of bug.
+// Resolved from this file's location, not the working directory: a bare
+// relative path once wrote to the wrong file for weeks while every run reported
+// success.
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const SNAPSHOT_PATH = join(__dirname, "..", "snapshot.json");
+const SNAPSHOT_PATH = join(__dirname, "..", "data", "js-snapshot.json");
 
-// Ported from index.html's isRoleRelevant() — keep these three regexes
-// byte-for-byte in sync with that function if it ever changes (same
-// convention li-scraper/match.py already follows for its own copy).
-//
-// Added 2026-09: this file used to write every href matching a company's
-// linkPattern straight to snapshot.json, unfiltered by title, on the theory
-// that check.php/index.html would filter it on the way in anyway. That was
-// true, but it meant snapshot.json carried every open role at every scraped
-// company regardless of relevance — Atlassian's "all jobs" page alone was
-// contributing 230 raw entries for ~1-2 that were ever actually Design/UX/
-// Product-relevant, and Netflix/Google's broad search pages threatened to
-// make that worse. Filtering here, at the source, keeps the file down to
-// what could plausibly ever be shown, with no change in what the tracker
-// actually displays (the same filter was always applied downstream).
+// Ports of the app's isRoleRelevant() (same as li-scraper/match.py) -- change
+// all three together. Filtering here keeps the snapshot to roles the app could
+// ever show (Atlassian's all-jobs page alone is ~230 entries).
 const ALWAYS_ALLOW = /(ux engineer|ui engineer|design engineer|design technologist|creative technologist|product marketing|marketing manager)/i;
 const POSITIVE = /(design|\bux\b|\bui\b|user experience|\bproduct\b|strategist|strategy|(user|customer|product) research|research (lead|manager|strategist))/i;
 const NEGATIVE = /(engineer|developer|dev\b|qa\b|quality assurance|sales|marketing|legal|counsel|finance|accounting|account manager|recruit|talent acquisition|\bhr\b|human resources|data scientist|analyst|logistics|warehouse|driver|technician)/i;
@@ -66,30 +29,19 @@ function isRoleRelevant(title) {
   return POSITIVE.test(t) && !NEGATIVE.test(t);
 }
 
-// ---- Companies to scrape -------------------------------------------------
-//
-// Each entry needs `urls` (one or more pages that actually list jobs — not
-// always the top-level careers page) and a `linkPattern` (a JS regex
-// matching that company's real job-posting URLs, confirmed by hand against
-// the live site — see "Adding a company" below). Get this wrong and you'll
-// silently get zero roles back, not an error, so always verify a new
-// pattern with `node scrape.js --debug <slug>` before relying on it.
-//
-// Why more than one URL: a lot of career sites show only a handful of
-// "featured" postings on their plain /careers page and load the rest via
-// pagination or infinite scroll, which is a pain to automate reliably. Where
-// the site has its own filter (a `?team=...` or `?department=...` query
-// param, found by using the site's own filter UI once and reading the
-// resulting URL), it's both simpler and more targeted to scrape that
-// filtered URL directly instead — see Adyen below for a real example.
+// ---- Companies ----
+// Each entry: `slug` (= the company's ats.slug in data/companies.json), `urls`
+// (pages that list jobs; prefer the site's own filtered URLs, e.g. ?team=...,
+// over fighting pagination), and `linkPattern` (a regex for its real job URLs).
+// A wrong pattern returns zero roles, not an error -- verify with
+// `node scrape.js --debug <slug>`. Optional: waitForSelector, settleDelayMs,
+// titleSelector (title is a child of the link), titleAncestorSelector +
+// titleAncestorTitleSelector (title sits outside the link).
 const COMPANIES = [
   {
     slug: "adyen",
-    // careers.adyen.com/vacancies on its own only renders 5 unfiltered
-    // "featured" roles out of 225 total, with the rest behind infinite
-    // scroll. Using the site's own team filter (found via its filter
-    // dropdown, which updates the URL) goes straight to the roles that
-    // matter instead of trying to automate scrolling through everything.
+    // The plain vacancies page shows 5 of ~225 roles (infinite scroll); the team
+    // filter URLs go straight to the relevant ones.
     urls: [
       "https://careers.adyen.com/vacancies?team=Product+Management",
       "https://careers.adyen.com/vacancies?team=Strategy+%26+Execution",
@@ -99,66 +51,41 @@ const COMPANIES = [
   },
   {
     slug: "klarna",
-    // Klarna's careers site (klarna.com/careers) links out to a Deel-hosted
-    // job board at jobs.deel.com/klarna. All open roles render in one page
-    // (no pagination/infinite-scroll to worry about — confirmed by hand),
-    // but the raw server HTML only contains the job *links*, not their
-    // titles (those are filled in by client-side React after load), so
-    // check.php's plain "html" scraper can't read this one — it needs an
-    // actual browser, same as Adyen.
+    // Deel-hosted board; titles are filled in client-side, so check.php's plain
+    // HTML adapter can't read it.
     urls: ["https://jobs.deel.com/klarna"],
     linkPattern: /\/klarna\/job-details\/[a-f0-9-]+\/overview/,
     waitForSelector: 'a[href*="/job-details/"]',
-    // Each job card is one big <a> wrapping the title plus location,
-    // employment type, and salary all mashed together in its text content —
-    // the actual title lives in a single child element, so pull that
-    // specifically instead of the whole card's text.
+    // The <a> wraps the whole card; the title is the <p>.
     titleSelector: "p",
   },
   {
     slug: "atlassian",
-    // atlassian.com/company/careers/all-jobs renders its full ~225-role
-    // list (every function, every location) directly on the page once its
-    // own JS runs — no pagination or infinite scroll to fight, unlike most
-    // boards here. Design/Product roles are filtered client-side by the
-    // app itself, same as every other company.
+    // The full role list renders on one page; relevance filtering does the rest.
     urls: ["https://www.atlassian.com/company/careers/all-jobs"],
     linkPattern: /\/company\/careers\/details\/\d+/,
     waitForSelector: 'a[href*="/company/careers/details/"]',
   },
   {
     slug: "fidelity-international",
-    // Fidelity's careers site is a Workday tenant (fil.wd3.myworkdayjobs.com/001)
-    // under the hood — confirmed via its own public API — but it's scraped
-    // here rather than wired into check.php's existing "workday" adapter,
-    // per how this batch of companies was deliberately handled. The search
-    // results page renders real per-role links once its JS runs.
+    // A Workday tenant (fil.wd3), scraped rather than wired into check.php's
+    // workday adapter.
     urls: ["https://fil.wd3.myworkdayjobs.com/en-US/001?q=design"],
     linkPattern: /\/en-US\/001\/job\//,
     waitForSelector: 'a[href*="/en-US/001/job/"]',
-    // See the settleDelayMs comment in scrapeOneUrl — this tenant's job tiles
-    // render with a dead placeholder href first, then swap to the real URL.
+    // Workday renders a placeholder href first -- see settleDelayMs in scrapeOneUrl.
     settleDelayMs: 2000,
   },
   {
     slug: "abu-dhabi-investment-authority-adia",
-    // ADIA's board is hosted on Workable (jobs.workable.com), under a
-    // company-id URL rather than the usual apply.workable.com/<slug>
-    // pattern check.php's own "workable" adapter expects — still just a
-    // rendered job list once the page loads, so it scrapes fine.
+    // Workable, but under a company-id URL that check.php's workable adapter doesn't use.
     urls: ["https://jobs.workable.com/company/5pvYKyK1ijbASjzk6Pg7kT/jobs-at-abu-dhabi-investment-authority"],
     linkPattern: /\/view\/[A-Za-z0-9]+\//,
     waitForSelector: 'a[href*="/view/"]',
   },
   {
     slug: "natwest-group",
-    // jobs.natwestgroup.com runs on a "Talemetry" recruiting platform (a
-    // genuine public JSON API sits underneath, confirmed by network
-    // inspection, but not wired in directly per how this batch was
-    // handled). The search results page renders real per-role links, but
-    // each <a> wraps the whole card — title, location, salary, remote
-    // status, req ID and posted-date all concatenated — so titleSelector
-    // picks out just the title from its own <p class="job__title">.
+    // Talemetry platform; each <a> wraps the whole card, title in p.job__title.
     urls: ["https://jobs.natwestgroup.com/search/jobs?q=design"],
     linkPattern: /\/jobs\/\d+-/,
     waitForSelector: 'a[href^="/jobs/"]',
@@ -166,12 +93,8 @@ const COMPANIES = [
   },
   {
     slug: "bank-of-new-zealand-bnz",
-    // BNZ's board (nab.eightfold.ai, filtered to the "bnz" microsite) sits
-    // on parent NAB's Eightfold instance. Its job cards render as real
-    // anchor links, but each card's title lives in a hashed CSS-module div
-    // inside the link rather than being the link's own direct text, hence
-    // titleSelector — the class always starts with "title-" even though
-    // the hash suffix changes per deploy.
+    // Parent NAB's Eightfold instance (bnz microsite). Title in a hashed
+    // "title-..." CSS-module div inside the link.
     urls: ["https://nab.eightfold.ai/careers?microsite=bnz&query=design"],
     linkPattern: /\/careers\/job\/\d+/,
     waitForSelector: 'a[href*="/careers/job/"]',
@@ -179,12 +102,7 @@ const COMPANIES = [
   },
   {
     slug: "national-australia-bank-nab",
-    // NAB's own careers page (nab.com.au/about-us/careers) links straight to
-    // this same Eightfold instance, just filtered to the "nab" microsite
-    // instead of "bnz" — same platform, same card/title markup, so this is
-    // BNZ's entry with the microsite param swapped. The site's previous note
-    // ("PageUp board") was stale; NAB moved to Eightfold at some point and
-    // this is the real, current board.
+    // Same Eightfold instance as BNZ, nab microsite.
     urls: ["https://nab.eightfold.ai/careers?microsite=nab&query=design"],
     linkPattern: /\/careers\/job\/\d+/,
     waitForSelector: 'a[href*="/careers/job/"]',
@@ -192,17 +110,9 @@ const COMPANIES = [
   },
   {
     slug: "abn-amro",
-    // werkenbijabnamro.nl/en/vacancies. Its keyword-filter query param
-    // turned out to be silently ignored server-side (confirmed by network
-    // inspection — the same unfiltered call fires regardless of the
-    // param), and its pagination is JS-only with nothing reflected in the
-    // URL, so this only ever reaches page 1: the 8 most-recently-created
-    // vacancies, sorted newest-first (of ~71 total). A known gap, but the
-    // freshest postings are what matter most for a tool like this. Each
-    // card's title lives in an <h2> a few DOM levels up from its own
-    // "Show vacancy" link (the link's own text is just that CTA), so this
-    // uses titleAncestorSelector/titleAncestorTitleSelector instead of the
-    // usual in-link titleSelector.
+    // The keyword filter is ignored server-side and pagination is JS-only, so this
+    // only reaches page 1 (the 8 newest of ~71). The link text is just "Show
+    // vacancy"; the title is an <h2> in the enclosing card.
     urls: ["https://www.werkenbijabnamro.nl/en/vacancies"],
     linkPattern: /\/en\/vacancy\/\d+/,
     waitForSelector: 'a[href*="/en/vacancy/"]',
@@ -211,12 +121,8 @@ const COMPANIES = [
   },
   {
     slug: "cimb-group",
-    // CIMB's Malaysia board runs on Oracle Fusion Recruiting Cloud
-    // (ejox.fa.ap1.oraclecloud.com) — the same platform check.php already
-    // has a direct adapter for elsewhere, but scraped here per how this
-    // batch was handled. Its own keyword filter works server-side (unlike
-    // ABN AMRO's). Each card's title lives in a sibling span next to the
-    // link rather than inside it.
+    // Oracle Recruiting Cloud; the keyword filter works server-side. Title is a
+    // sibling span of the link.
     urls: ["https://ejox.fa.ap1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?keyword=design"],
     linkPattern: /\/hcmUI\/CandidateExperience\/en\/sites\/CX_1\/job\/\d+/,
     waitForSelector: 'a[href*="/job/"]',
@@ -225,15 +131,8 @@ const COMPANIES = [
   },
   {
     slug: "aspire",
-    // Aspire's actual live board turned out to be on Revolut People
-    // (revolutpeople.com/aspire), reached via an iframe wrapper hosted at
-    // people-jobs.com/aspire — not the Greenhouse board this company's own
-    // notes previously assumed (that may have been true once; it isn't
-    // now). All 35 current openings render on one page. Job cards use
-    // CSS-in-JS with hashed class names and no heading tags at all, so the
-    // title is picked out as the innermost non-nested <span> in the card
-    // (the outer spans repeat the title concatenated with "Featured" and
-    // the location, which is why a plain in-link text grab wouldn't work).
+    // The live board is on Revolut People (via an iframe at people-jobs.com).
+    // Hashed CSS-in-JS classes, no headings: the title is the innermost <span>.
     urls: ["https://revolutpeople.com/aspire/public/careers/"],
     linkPattern: /\/aspire\/public\/careers\/position\//,
     waitForSelector: 'a[href*="/position/"]',
@@ -241,29 +140,17 @@ const COMPANIES = [
   },
   {
     slug: "kiwibank",
-    // Kiwibank's careers portal runs on parent-independent Cornerstone
-    // OnDemand (kiwibankpeople.csod.com) — a genuinely JS-only board (the
-    // raw HTML response is a near-empty shell). Job cards render as real
-    // anchor links once the page's own JS runs, with clean title text
-    // directly in the link, so no titleSelector is needed here. Only the
-    // first ~18 of the site's 33 listed openings render without further
-    // scrolling/interaction; a known, acceptable coverage gap.
+    // Cornerstone OnDemand, JS-only. Only the first ~18 of ~33 openings render
+    // without scrolling -- accepted gap.
     urls: ["https://kiwibankpeople.csod.com/ux/ats/careersite/1/home?c=kiwibankpeople"],
     linkPattern: /\/requisition\/\d+/,
     waitForSelector: 'a[href*="requisition"]',
   },
   {
     slug: "american-express",
-    // careers.americanexpress.com runs on Oracle Fusion Recruiting Cloud
-    // (Candidate Experience / "CX_1" site) but is wrapped in heavy
-    // client-side bot-protection scripting, and unlike other companies on
-    // this platform (e.g. CIMB), the raw HTML response contains no job
-    // data at all — it's rendered entirely from an API call this file's
-    // simple GET can't replicate, so it needs a real browser. Each job
-    // card's anchor is empty (title lives in a same-card
-    // <search-result-item-header>/.job-tile__title element referenced via
-    // aria-labelledby rather than DOM nesting), so this reuses the
-    // ancestor-selector approach already built for CIMB/ABN AMRO.
+    // Oracle Recruiting Cloud behind bot-protection; the raw HTML has no job data.
+    // Anchors are empty -- the title sits in the card, found via the ancestor
+    // selectors.
     urls: ["https://careers.americanexpress.com/en/sites/CX_1/jobs?keyword=design"],
     linkPattern: /\/en\/sites\/CX_1\/job\/\d+/,
     waitForSelector: 'a[href*="/en/sites/CX_1/job/"]',
@@ -272,49 +159,23 @@ const COMPANIES = [
   },
   {
     slug: "standard-chartered",
-    // jobs.standardchartered.com runs the modern SAP SuccessFactors Career
-    // Site Builder 2.0 (a full client-rendered SPA — the raw HTML has no
-    // job data, unlike the older SuccessFactors template several other
-    // companies in this project turned out to be on). Once rendered, job
-    // cards are plain, clean anchor links with the title as their own
-    // text — no titleSelector needed.
+    // SAP SuccessFactors Career Site Builder (client-rendered). Clean anchor text.
     urls: ["https://jobs.standardchartered.com/search/?q=design"],
     linkPattern: /\/job\/[^/]+\/\d+-/,
     waitForSelector: 'a[href^="/job/"]',
   },
   {
     slug: "bmw-group",
-    // jobs.bmwgroup.com is BMW's own vanity domain fronting the same
-    // platform as Standard Chartered above — the modern SAP SuccessFactors
-    // Career Site Builder (career5.successfactors.eu/career?career_company=
-    // bmwag underneath, confirmed via its "Sign In" link) — a full
-    // client-rendered SPA with no job data in the raw HTML. Once rendered,
-    // job cards are plain anchor links matching the exact same
-    // /job/<title-slug>/<numeric-id>-<locale> shape Standard Chartered uses,
-    // title as the link's own text — no titleSelector needed. NOTE (2026-09
-    // research): BMW's "Design" job-field copy explicitly covers automotive/
-    // vehicle design, not Product/UX, so a bare keyword search on "design"
-    // mostly surfaces IT/manufacturing/internship roles (63 raw matches at
-    // research time, nearly all unrelated) — isRoleRelevant()'s title filter
-    // above handles this the same way it already does for Google/Atlassian's
-    // similarly broad searches; left in rather than dropped since it's no
-    // worse than those.
+    // Same SuccessFactors Career Site Builder as Standard Chartered. "Design" here
+    // mostly means automotive/IT roles; the relevance filter handles it.
     urls: ["https://jobs.bmwgroup.com/search?q=design"],
     linkPattern: /\/job\/[^/]+\/\d+-/,
     waitForSelector: 'a[href^="/job/"]',
   },
   {
     slug: "netflix",
-    // ATS confirmed as Eightfold.ai (2026-09 research) — same platform as
-    // NAB/BNZ above, just on Netflix's own vanity domain rather than the
-    // shared eightfold.ai one. netflix.eightfold.ai redirects here. Real
-    // per-role URLs are confirmed live (explore.jobs.netflix.net/careers/
-    // job/<id>), and the search page returns embedded JSON with those same
-    // IDs even though the rendered DOM needs JS. titleSelector borrowed
-    // from NAB/BNZ's Eightfold instance on the assumption Eightfold reuses
-    // the same generated CSS-module class scheme across deployments — that
-    // assumption is UNVERIFIED for this specific tenant; check the Actions
-    // log after the first real run rather than trusting this blindly.
+    // Eightfold on Netflix's own domain. titleSelector borrowed from NAB/BNZ's
+    // Eightfold instance (assumed same CSS scheme -- check the Actions log).
     urls: ["https://explore.jobs.netflix.net/careers?query=Design&domain=netflix.com&sort_by=relevance"],
     linkPattern: /\/careers\/job\/\d+/,
     waitForSelector: 'a[href*="/careers/job/"]',
@@ -322,15 +183,8 @@ const COMPANIES = [
   },
   {
     slug: "google",
-    // careers.google.com / google.com's own careers search (2026-09
-    // research) confirmed JS-rendered with no working href on direct fetch.
-    // URL, wait selector and linkPattern below are sourced from a
-    // documented third-party Playwright scraper (not independently
-    // rendered/verified here, since this environment can't reach Google's
-    // site either) — that same source flags Google's careers site as
-    // actively resistant to automated scraping. Best-effort: worth checking
-    // the Actions log specifically for this one after the first real run,
-    // since it's meaningfully more likely to fail than the rest of this file.
+    // Best-effort: URL/selector from a third-party Playwright scraper, not verified
+    // here, and Google resists automated scraping. Watch the Actions log.
     urls: ["https://www.google.com/about/careers/applications/jobs/results?q=UX"],
     linkPattern: /\/jobs\/results\/\d+-[a-z0-9-]+/i,
     waitForSelector: "li.zE6MFb",
@@ -338,16 +192,7 @@ const COMPANIES = [
   },
   {
     slug: "ericsson",
-    // ATS confirmed as an Eightfold AI front end (2026-09 research) —
-    // jobs.ericsson.com/careers, same generated platform as NAB/BNZ/Netflix
-    // above. Ericsson's actual apply-flow redirects into SAP SuccessFactors
-    // (career2.successfactors.eu) on submission, but that backend split
-    // doesn't matter here: this scrapes Eightfold's own real, browsable
-    // listing/detail pages, not SuccessFactors directly, so it isn't the
-    // kind of bespoke SuccessFactors integration this project has ruled out
-    // — same reasoning as Klarna's Deel-hosted board above. A target-tier
-    // Principal UX/UI Designer (Bangalore) role was confirmed live at
-    // research time.
+    // Eightfold front end (apply flow goes to SuccessFactors, irrelevant here).
     urls: ["https://jobs.ericsson.com/careers?query=Design&domain=ericsson.com&sort_by=relevance"],
     linkPattern: /\/careers\/job\/\d+/,
     waitForSelector: 'a[href*="/careers/job/"]',
@@ -355,42 +200,18 @@ const COMPANIES = [
   },
   {
     slug: "vodafone",
-    // ATS confirmed as Eightfold AI (2026-09 research) — jobs.vodafone.com/careers.
-    // A legacy SAP SuccessFactors board (opportunities.vodafone.com) still
-    // resolves but appears to hold only closed/archived postings; SuccessFactors
-    // itself is deliberately unsupported for direct integration regardless, so
-    // this scrapes the current Eightfold board only, same pattern as Netflix/
-    // NAB/BNZ above.
+    // Eightfold. The legacy SuccessFactors board only holds closed postings.
     urls: ["https://jobs.vodafone.com/careers?query=Design&domain=vodafone.com&sort_by=relevance"],
     linkPattern: /\/careers\/job\/\d+/,
     waitForSelector: 'a[href*="/careers/job/"]',
     titleSelector: '[class^="title-"]',
   },
-  // deutsche-telekom removed 2026-09-17: careers.telekom.com turned out to
-  // have its own first-party JSON search API (api/jobs-proxy/search), found
-  // via real browser network inspection — genuinely a better source than this
-  // scraper (fresher, no browser overhead, and it happens to also cover
-  // T-Systems' own postings from the same combined index). Now wired directly
-  // into check.php as the `telekom` adapter type; see php-ftp/README.md.
+  // Deutsche Telekom moved to check.php's `telekom` adapter (first-party JSON API,
+  // also covers T-Systems).
   {
     slug: "meta",
-    // metacareers.com (www.metacareers.com/jobs) previously looked
-    // unreachable by any automated method — direct fetches got HTTP 429
-    // (rate-limited) on every attempt across several passes, and the
-    // working theory was that this was infrastructure-level bot-blocking
-    // that would likely defeat a headless scraper too. That theory turned
-    // out to be wrong: a real browser (2026-09-17) loads the page and its
-    // full "697 Items" results with zero issues — the 429s were specific to
-    // the plain-fetch method used in earlier passes, not to automation in
-    // general. The page itself is a heavy internal Facebook/Comet GraphQL
-    // app (rotating doc_ids, an `lsd` CSRF token minted per page-load) —
-    // genuinely not a candidate for a direct check.php adapter, unlike
-    // Deutsche Telekom/Microsoft above — but the rendered DOM is completely
-    // ordinary: real `<a href="/profile/job_details/<id>">` links, each
-    // wrapping a plain `<h3>` with the job title (Meta's own class names
-    // on these elements are auto-generated atomic CSS, e.g. "x1i10hfl...",
-    // and would be too unstable to select against directly — `h3` inside
-    // the link is what's actually stable here).
+    // Plain fetches get 429s, but a real browser loads it fine. Class names are
+    // generated atomic CSS, so select the stable <h3> inside each job link.
     urls: ["https://www.metacareers.com/jobs?q=design"],
     linkPattern: /\/profile\/job_details\/\d+/,
     waitForSelector: 'a[href*="/profile/job_details/"]',
@@ -398,25 +219,9 @@ const COMPANIES = [
   },
   {
     slug: "citibank",
-    // jobs.citi.com's own search page ("powered by Eightfold" is mentioned
-    // only for its separate "Match Me" resume-matching feature, which is a
-    // red herring) turned out to be a Phenom-People-style front end in its
-    // own right, but digging into its actual API calls (via real browser
-    // network inspection, 2026-10-22) found the true underlying board is a
-    // SEPARATE Eightfold tenant at citi.eightfold.ai — same platform as
-    // NAB/BNZ/Netflix/Ericsson/Vodafone above, confirmed by the identical
-    // /careers/job/<id> link shape and title-<hash> class naming. Citi's
-    // tenant blocks the generic /api/apply/v2/jobs endpoint those others
-    // use (403 "Not authorized for PCSX" — it uses a differently-named
-    // /api/pcsx/search endpoint instead, also public/unauthenticated but a
-    // different shape check.php's existing "eightfold" adapter doesn't
-    // speak), so this scrapes the rendered page directly rather than
-    // needing a new check.php adapter variant. 20 real per-role links
-    // confirmed live, titles genuinely design-relevant (e.g. "UX Product
-    // Design Lead", "UX and Human Factors Design") — a raw "design"
-    // keyword still pulls in some noise (e.g. "Design System Developer –
-    // Angular", a dev role) same as every other broad-keyword company here;
-    // isRoleRelevant() above is what keeps that in check.
+    // jobs.citi.com fronts a separate Eightfold tenant whose API shape check.php's
+    // eightfold adapter doesn't speak, so the rendered page is scraped. A broad
+    // "design" query brings some dev-role noise; the relevance filter handles it.
     urls: ["https://citi.eightfold.ai/careers?query=design&domain=citi.com&sort_by=relevance"],
     linkPattern: /\/careers\/job\/\d+/,
     waitForSelector: 'a[href*="/careers/job/"]',
@@ -424,47 +229,19 @@ const COMPANIES = [
   },
   {
     slug: "heineken",
-    // careers.theheinekencompany.com is a Drupal site (confirmed via its
-    // "Views Exposed Filter" form markup) covering every HEINEKEN-owned
-    // brewery/brand worldwide — 735 total open roles company-wide. Its
-    // visible keyword search box posts to a different endpoint than the
-    // page actually reads on load (?keywords=/?q= in the URL are both
-    // silently ignored — confirmed: identical 735-job unfiltered count
-    // either way), but the "Job Functions" facet filter genuinely works
-    // as a plain GET param: job_functions[]=211 is "Digital & Technology"
-    // (found via the real <option value="211"> in its own markup) and
-    // correctly narrows to 30 jobs. Only the first 10 of those 30 render
-    // without further pagination (a known, accepted gap elsewhere in this
-    // project, e.g. ABN AMRO) — none of the visible 10 are Design/UX
-    // (Technology Specialist, Agile PM, Data & Analytics Manager, Technical
-    // Product Owner, Solution Engineer, etc.), though this is a partial
-    // check, not a confirmed-complete zero like TomTom/KPMG. Title is the
-    // link's own direct text, no titleSelector needed; a second, empty-text
-    // anchor per job card is automatically dropped by this scraper's own
-    // minimum-title-length filter.
+    // Drupal; the keyword box is ignored, but the Job Functions facet works:
+    // job_functions[]=211 = Digital & Technology (30 roles). Only the first 10
+    // render without pagination -- a partial check. Empty duplicate anchors are
+    // dropped by the minimum-title-length filter.
     urls: ["https://careers.theheinekencompany.com/job-listing?job_functions%5B%5D=211"],
     linkPattern: /\/job\/[^/]+\/[^/]+\/[^/]+$/i,
     waitForSelector: 'a[href*="/job/"]',
   },
   {
     slug: "unilever",
-    // careers.unilever.com runs on Oracle Taleo (confirmed via its
-    // /en/job/<city>/<slug>/<orgId>/<jobId> URL shape, the classic Taleo
-    // Career Section pattern) — a platform this project has already
-    // deliberately decided not to build a direct check.php adapter for
-    // (see the Spark NZ entry's own note re: "deliberately-unsupported
-    // SuccessFactors/Taleo/iCIMS"), so this is scraped instead. Its own
-    // keyword filter genuinely works server-side (confirmed: a nonsense
-    // query returns 0 results, "UX designer"/"product designer" both
-    // return 0, "design" alone returns 55 — real matches, just almost
-    // entirely packaging/process-engineering roles that happen to mention
-    // "design" in a non-UX sense). A confirmed, complete zero for real
-    // Design/UX/Product-design hiring right now. The raw HTML already
-    // contains the full job list with no client JS needed, but each
-    // card's title sits in its own <h2 class="global-job-list__title">
-    // alongside a location <span> inside the same link, so titleSelector
-    // is used rather than check.php's plain "html" adapter (whose exact
-    // text-extraction behavior for a nested title wasn't confirmed).
+    // Oracle Taleo (not given a direct adapter, by policy). The keyword filter works
+    // server-side; "design" returns packaging/engineering roles. Title is an
+    // <h2 class="global-job-list__title"> inside the link.
     urls: ["https://careers.unilever.com/en/search-jobs/design"],
     linkPattern: /\/en\/job\/[^/]+\/[^/]+\/\d+\/\d+$/i,
     waitForSelector: 'a[href*="/en/job/"]',
@@ -472,42 +249,19 @@ const COMPANIES = [
   },
   {
     slug: "transavia",
-    // werkenbijtransavia.com (not transavia.recruitee.com, which redirects
-    // here) is a white-labeled Recruitee board on a custom domain —
-    // confirmed via its own CDN asset host (careers.recruiteecdn.com).
-    // Recruitee isn't one of check.php's direct adapter types, so this is
-    // scraped rather than wired in directly. All 12 of Transavia's current
-    // openings read directly off the page, 2026-10-22: Cockpit/Technische
-    // Dienst/Kantoor roles only (pilots, legal, platform engineer, safety
-    // engineer, domain architect, aircraft mechanics) — a confirmed,
-    // complete zero for Design/UX/Product, consistent with this being a
-    // 3,000-person airline rather than a design-led tech company. Each job
-    // card renders several <a href="/o/<slug>"> elements (one with the real
-    // title text, others just "Bekijk vacature" or a bare "nl"/"en" locale
-    // switch), but the title-bearing one is always first in document order
-    // and this scraper keeps the first match per URL, so no titleSelector
-    // is needed — the locale-switch variants carry a query string, so the
-    // linkPattern is end-anchored to exclude them rather than scraping
-    // three near-duplicate entries per role.
+    // White-labeled Recruitee board (no check.php adapter). Each card has several
+    // /o/<slug> links; the first carries the title and this scraper keeps the first
+    // match per URL. The pattern is end-anchored to skip the locale-switch links
+    // (they have a query string).
     urls: ["https://werkenbijtransavia.com/vacatures"],
     linkPattern: /\/o\/[a-z0-9-]+$/i,
     waitForSelector: 'a[href^="/o/"]',
   },
   {
     slug: "vanderlande",
-    // careers.vanderlande.com is a WordPress site with a custom "careers"
-    // REST API plugin behind it (/wp-json/careers/v1/vacancy/...), but that
-    // JSON endpoint turned out unreachable via a plain `fetch()` from this
-    // page's own context (returned undefined rather than throwing or
-    // responding — not pursued further; the rendered page works fine and
-    // needed no extra investigation once this stopped working). Its own
-    // ?vacancy_keyword= filter DOES work server-side (unlike ABN AMRO/KPMG
-    // above) — confirmed live: "Junior UI/UX Designer Intern" (Dubai)
-    // surfaced on a "design" search, 2026-10-22. Job cards share the same
-    // <a class="new-project"> wrapper as this site's unrelated "life at
-    // Vanderlande" blog-post cards, so linkPattern is anchored to
-    // "/all-jobs/" specifically to avoid scraping blog posts; title lives
-    // in the card's own <h3>.
+    // WordPress with a careers API that wasn't reachable by plain fetch; the
+    // rendered page works. ?vacancy_keyword= filters server-side. Job cards share a
+    // wrapper class with blog cards, hence the /all-jobs/ anchor; title in <h3>.
     urls: ["https://careers.vanderlande.com/all-jobs/?vacancy_keyword=design"],
     linkPattern: /\/all-jobs\/[a-z0-9-]+\/?$/i,
     waitForSelector: "a.new-project",
@@ -515,20 +269,8 @@ const COMPANIES = [
   },
   {
     slug: "tomtom",
-    // tomtom.com/careers/joboverview/ runs on TomTom's own first-party
-    // careers API (www.tomtom.com/api/careers/jobs — a genuine public,
-    // unauthenticated JSON endpoint, confirmed 2026-10-22), not any
-    // third-party ATS, so there's no check.php adapter type for it. Read
-    // that API directly to check EVERY one of the company's current
-    // openings by title: a confirmed, complete zero — all 17 are
-    // Engineering/IT/Sales/HR, nothing Design/UX/Product-design (one
-    // "Program Manager - Delivery" sits in the API's own "Product"
-    // category but isn't a design role). Wired into js-scraper against the
-    // rendered page (not the JSON API, which this scraper's generic
-    // href-extraction can't consume directly) for ongoing live monitoring.
-    // Each card's title lives in its own <p class="headline3"> inside the
-    // link, alongside team/location text that would otherwise get mashed
-    // into one string.
+    // TomTom's own careers API (no adapter type for it); monitored via the rendered
+    // page. Title in p.headline3.
     urls: ["https://www.tomtom.com/careers/joboverview/"],
     linkPattern: /\/careers\/jobdetails\/[a-f0-9-]+\/[a-z0-9-]+\/?$/i,
     waitForSelector: 'a[href*="/careers/jobdetails/"]',
@@ -536,29 +278,9 @@ const COMPANIES = [
   },
   {
     slug: "kpmg",
-    // kpmg.com/xx/en/home/careers.html (the global entry point) redirects
-    // by country — followed it to the Netherlands one specifically
-    // (kpmg.com/nl/en/home/careers.html -> werkenbijkpmg.nl), consistent
-    // with this project's own Dutch-market focus and with how
-    // companies.py's own alias comment already calls out "KPMG Nederland"
-    // by name. The site's own ?s= keyword param is silently ignored
-    // (confirmed: identical 185-count results regardless of query), same
-    // failure mode as ABN AMRO above, BUT this one has a genuine escape
-    // hatch: a full, public, unauthenticated JSON dump of literally every
-    // vacancy lives at /_lunr/vacancies (the backing data for the page's
-    // own Lunr/ItemsJS client-side search widget) — read directly
-    // (2026-10-22) to check EVERY one of KPMG NL's 185 live roles by title,
-    // not just the ~20 that render on page 1: only two even contain the
-    // word "design", and both are "Organizational/Digital Organization
-    // Design" management-consulting roles, not product/UX design. So this
-    // is a confirmed, complete, genuine-zero finding for product/UX/design
-    // coverage, not the usual "page-1-only, hope the rest doesn't matter"
-    // gap — still wired up against the ordinary rendered /vacatures page
-    // (not the JSON dump, which this scraper's generic href-extraction
-    // can't consume directly) so any new design-relevant posting still
-    // gets caught live going forward. Each card's title is in its own
-    // <h3> inside the link, same markup Bunq's Framer board happens to
-    // share.
+    // KPMG Netherlands (werkenbijkpmg.nl). The ?s= filter is ignored; the full
+    // vacancy list is public at /_lunr/vacancies, which showed no product/UX roles
+    // (2026-10-22). Monitored via the rendered page; title in <h3>.
     urls: ["https://www.werkenbijkpmg.nl/vacatures"],
     linkPattern: /\/vacature\/[a-z0-9-]+$/i,
     waitForSelector: 'a[href^="/vacature/"]',
@@ -566,52 +288,19 @@ const COMPANIES = [
   },
   {
     slug: "bunq",
-    // careers.bunq.com/positions is a Framer-built site (not a third-party
-    // ATS at all) — but, unlike most Framer/React sites in this project,
-    // its full job list (20 real roles, confirmed 2026-10-22) is already
-    // present in the raw server HTML on a cold, credential-less fetch, no
-    // client JS needed to render it. Each job card is one big <a> wrapping
-    // an <article> that contains the real title in its own
-    // <h3 data-framer-name="Title">, with other card text (department
-    // badge, etc.) alongside it, so titleSelector picks the h3 specifically
-    // rather than grabbing the whole card's mashed-together text.
+    // Framer site with the full list in the raw HTML. Each <a> wraps an <article>;
+    // the title is <h3 data-framer-name="Title">.
     urls: ["https://careers.bunq.com/positions"],
     linkPattern: /\/positions\/[a-z0-9-]+$/i,
     waitForSelector: 'a[href*="/positions/"]',
     titleSelector: 'h3[data-framer-name="Title"]',
   },
-  // Still need a confirmed pattern (see README "Companies not yet wired up"):
-  // wefox — its main careers page (careers.wefox.com) is currently broken/
-  // unreachable and its company-wide board on join.com shows zero open
-  // positions, so there's nothing live to verify a scraper against right
-  // now. Trade Republic turned out not to need this file at all — it runs
-  // on Greenhouse under the hood, so it's wired directly into check.php's
-  // existing "greenhouse" adapter instead (see php-ftp/README.md).
-  //
-  // Hang Seng Bank and Mubadala Investment Company were both investigated
-  // for this same batch and both turned out to have a real platform behind
-  // them (HSBC Group's Eightfold-powered careers portal for Hang Seng;
-  // Mubadala's own "Takafo" recruiting system) — genuine public JSON search
-  // APIs exist for both, confirmed by hand. But neither one's job cards
-  // render as real anchor elements: both navigate purely through JS click
-  // handlers (a React "position-card" div for Hang Seng, a Vuetify button
-  // for Mubadala) with no href or data-id anywhere in the DOM to scrape.
-  // This file's href-pattern approach fundamentally can't reach either one
-  // without simulating clicks per card, which is a different (much
-  // slower, much more fragile) kind of scraper than everything else here.
-  // Left out of this batch; a direct check.php adapter would actually be
-  // the simpler fix for these two specifically, whenever that's revisited.
-  //
-  // UBS was investigated as part of the "enterprise platforms" backlog
-  // (jobs.ubs.com runs IBM/Kenexa BrassRing, confirmed via its page's own
-  // meta tags) and turned out to be a different kind of dead end: it's
-  // genuinely session-state-dependent rather than architecturally
-  // unreachable. A fresh page load sometimes renders real job cards (real
-  // anchor links, clean titles) and sometimes renders a JSON preload blob
-  // with an empty job array, with no reliable way from the outside to tell
-  // which one a given request will get — repeated fresh loads (no reused
-  // cookies) came back empty far more often than not. A scheduled scraper
-  // hitting a coin-flip page isn't worth wiring in; left out of this batch.
+  // Not scraped:
+  //   - wefox: careers site broken, no open roles on its join.com board.
+  //   - Hang Seng Bank, Mubadala: job cards are JS click handlers with no href to
+  //     collect; a direct check.php adapter (both have public JSON APIs) would be
+  //     the better fix.
+  //   - UBS: BrassRing board that randomly renders empty -- not worth scheduling.
 ];
 
 const TIMEOUT_MS = 30000;
@@ -624,37 +313,19 @@ async function scrapeOneUrl(browser, url, company) {
     try {
       await page.goto(url, { waitUntil: "networkidle", timeout: TIMEOUT_MS });
     } catch (gotoErr) {
-      // American Express started failing here in production with "Timeout
-      // 30000ms exceeded" waiting for networkidle. A real (non-headless,
-      // interactive) browser loads the same URL and reaches idle within a
-      // few seconds with the job data fully rendered, so the page itself
-      // isn't broken — this is almost certainly the bot-protection layer
-      // giving GitHub Actions' headless browser a slower/harder challenge
-      // than an interactive one gets, not confirmed further than that.
-      // Only swallow this specific timeout and fall through to
-      // waitForSelector below, which gets its own fresh timeout budget to
-      // wait for the job content to show up — a real navigation failure
-      // (bad URL, DNS, connection refused) still fails the company loudly.
+      // Swallow only the networkidle timeout (bot protection makes headless loads
+      // slow; Amex did this in production) and let waitForSelector below wait for the
+      // content. Real navigation failures still fail the company.
       if (!/Timeout .*exceeded/i.test(String((gotoErr && gotoErr.message) || gotoErr))) throw gotoErr;
     }
     if (company.waitForSelector) {
-      // Best-effort: if the selector never shows up (page structure changed,
-      // or genuinely zero roles right now), fall through and scrape whatever
-      // did render rather than failing the whole page.
+      // Best-effort: if the selector never appears, scrape whatever rendered.
       await page.waitForSelector(company.waitForSelector, { timeout: TIMEOUT_MS }).catch(() => {});
     }
     if (company.settleDelayMs) {
-      // Some SPA career sites (Fidelity International's Workday tenant is the
-      // known case) render their job-tile <a> elements with a placeholder
-      // href — literally https://community.workday.com/invalid-url, Workday's
-      // own generic dead-link landing page — for one render pass before their
-      // client-side router swaps in the real per-job URL a moment later.
-      // waitForSelector above is satisfied the instant the tile exists, which
-      // can land right in that placeholder window, so a company that hits
-      // this needs one more real wait for the swap to happen before we read
-      // hrefs out of the DOM. Left at 0 (skipped) for every other company —
-      // most sites don't do this and the extra wait is pure wasted time for
-      // them.
+      // Some SPAs (Fidelity's Workday) render job links with a placeholder href
+      // (community.workday.com/invalid-url) before swapping in the real URL; give
+      // those companies a moment before reading hrefs. 0 (skipped) for everyone else.
       await page.waitForTimeout(company.settleDelayMs);
     }
 
@@ -671,19 +342,12 @@ async function scrapeOneUrl(browser, url, company) {
           return;
         }
         if (!pattern.test(abs) || seen.has(abs)) return;
-        // Defense in depth against the Workday placeholder-href issue (see the
-        // settleDelayMs comment above scrapeOneUrl's waitForSelector call): even
-        // with the settle wait, never let this specific known-dead marker through.
+        // Never let the Workday placeholder through, even after the settle wait.
         if (/community\.workday\.com\/invalid-url/i.test(abs)) return;
-        // Most sites' job links are plain text, so the whole anchor's text
-        // is the title. Some (Klarna's Deel-hosted board, for one) wrap a
-        // whole card — title, location, salary — in one <a>, in which case
-        // titleSelector picks out just the title from a child element.
-        // A few (ABN AMRO, CIMB Group) put the real title text OUTSIDE the
-        // link entirely — the link itself is just a "View"/"Show" CTA — in
-        // which case titleAncestorSelector finds the enclosing card via
-        // a.closest(...) and titleAncestorTitleSelector picks the title out
-        // of it instead.
+        // Title: the link's own text by default; titleSelector for a child element
+        // when the link wraps a whole card; titleAncestorSelector +
+        // titleAncestorTitleSelector when the link is just a CTA and the title lives in
+        // the enclosing card.
         let title = "";
         if (titleAncestorSelector && titleAncestorTitleSelector) {
           const ancestor = a.closest(titleAncestorSelector);
@@ -740,20 +404,13 @@ async function scrapeCompany(browser, company, { debug = false } = {}) {
     if (errors.length) errors.forEach((e) => console.log(`  ! ${e}`));
   }
 
-  // A company only fails outright if every one of its URLs failed — a
-  // partial failure (one filtered URL down, another fine) still returns
-  // whatever roles were found rather than throwing the good ones away.
+  // Fail a company only if every one of its URLs failed; keep partial results.
   if (roles.length === 0 && errors.length === urls.length && urls.length > 0) {
     return { ok: false, error: errors.join("; ") };
   }
 
-  // Title-relevance filter (see isRoleRelevant() above) — applied here,
-  // after the debug log above so --debug runs still show every raw match
-  // for troubleshooting a linkPattern/selector, but before anything reaches
-  // snapshot.json. A company with a broad "all jobs" page (Atlassian) or an
-  // unfiltered search (Google) would otherwise write hundreds of irrelevant
-  // roles to the file for zero downstream benefit, since check.php/
-  // index.html always filtered them right back out on the way in.
+  // Relevance filter after the debug log (so --debug shows every raw match) and
+  // before the snapshot is written.
   const relevant = roles.filter((r) => isRoleRelevant(r.title));
   if (debug && relevant.length !== roles.length) {
     console.log(`[${company.slug}] ${roles.length - relevant.length} of ${roles.length} dropped as not title-relevant, ${relevant.length} kept`);
