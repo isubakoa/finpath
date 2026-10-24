@@ -5236,6 +5236,14 @@
       "ats": {
         "type": "snapshot",
         "slug": "vodafone"
+      },
+      "match": {
+        "aliases": [
+          "VodafoneThree",
+          "Vodafone Three",
+          "Three UK"
+        ],
+        "note": "VodafoneThree (Vodafone UK + Three UK, merged 2025) hires through jobs.vodafone.com."
       }
     },
     {
@@ -5257,6 +5265,16 @@
       "ats": {
         "type": "bt",
         "query": "design"
+      },
+      "match": {
+        "aliases": [
+          "BT",
+          "EE",
+          "Openreach",
+          "BT Business",
+          "EE Limited"
+        ],
+        "note": "BT, EE and Openreach share jobs.bt.com. 'BT' and 'EE' only match exactly."
       }
     },
     {
@@ -8321,6 +8339,573 @@
           "NTUC Income",
           "Income Insurance Limited"
         ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "KPN",
+      "slug": "kpn",
+      "category": "Telecom",
+      "hq": "Rotterdam, Netherlands",
+      "founded": 1989,
+      "asia": "limited",
+      "asiaNote": "Netherlands only",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Dutch incumbent telecom operator (mobile, broadband, business IT).",
+      "url": "https://jobs.kpn.com/vacatures",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "jobs.kpn.com is fed by SmartRecruiters; company 'KPN' (43 roles on 2026-10-24, with cities). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "smartrecruiters",
+        "slug": "KPN"
+      },
+      "match": {
+        "aliases": [
+          "Koninklijke KPN",
+          "KPN B.V.",
+          "KPN N.V."
+        ],
+        "note": "'KPN' is under the 5-character containment minimum, so it matches exactly."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "VodafoneZiggo",
+      "slug": "vodafoneziggo",
+      "category": "Telecom",
+      "hq": "Utrecht, Netherlands",
+      "founded": 2016,
+      "asia": "limited",
+      "asiaNote": "Netherlands only",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Dutch mobile and cable operator, a 50/50 joint venture of Vodafone Group and Liberty Global.",
+      "url": "https://careers.vodafoneziggo.com/vacatures",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Own site, server-rendered, 8 per page (38 roles on 2026-10-24); job cards link by title, paged with ?page=N. Read by js-scraper (see js-scraper/scrape.js); shows 'not present in snapshot' until its next run. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "snapshot",
+        "slug": "vodafoneziggo"
+      },
+      "match": {
+        "aliases": [
+          "Vodafone Ziggo",
+          "Ziggo"
+        ],
+        "note": "Separate employer from Vodafone Group (tracked as 'vodafone')."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Odido",
+      "slug": "odido",
+      "category": "Telecom",
+      "hq": "The Hague, Netherlands",
+      "founded": 2023,
+      "asia": "limited",
+      "asiaNote": "Netherlands only",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Dutch mobile and broadband operator, formerly T-Mobile Netherlands (renamed 2023).",
+      "url": "https://werkenbij.odido.nl/vacatures",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "werkenbij.odido.nl (Serena CMS), browser-rendered, 10 per page (59 roles on 2026-10-24, 36 of them in shops). js-scraper reads the non-shop fields (Corporate Support, Marketing en Communicatie, Sales, Finance); there's no tech or design field. Read by js-scraper (see js-scraper/scrape.js); shows 'not present in snapshot' until its next run. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "snapshot",
+        "slug": "odido"
+      },
+      "match": {
+        "aliases": [
+          "Odido Netherlands",
+          "Odido Nederland"
+        ],
+        "note": "No 'T-Mobile Netherlands' alias: containment works both ways, so it would also claim a bare 'T-Mobile' employer (T-Mobile US / Deutsche Telekom)."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Liberty Global",
+      "slug": "liberty-global",
+      "category": "Telecom",
+      "hq": "London, UK (operations); Denver, USA",
+      "founded": 2005,
+      "asia": "limited",
+      "asiaNote": "Europe and the US",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Telecom and tech investor: owns or co-owns Virgin Media O2, VodafoneZiggo, Telenet and Sunrise. Offices in Amsterdam, London and Denver.",
+      "url": "https://libertyglobal.wd3.myworkdayjobs.com/Liberty_Global_Careers",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Workday tenant 'libertyglobal' (wd3, site Liberty_Global_Careers; 34 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workday",
+        "slug": "libertyglobal",
+        "wdNum": "3",
+        "site": "Liberty_Global_Careers"
+      },
+      "match": {
+        "aliases": [
+          "Liberty Global plc",
+          "Liberty Global Ltd"
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Bird (MessageBird)",
+      "slug": "bird",
+      "category": "Telecom",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 2011,
+      "asia": "some",
+      "asiaNote": "Remote roles across APAC and the US",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Customer-communications platform (SMS, WhatsApp, email APIs), formerly MessageBird.",
+      "url": "https://bird.com/careers",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Own site bird.com/careers, server-rendered (3 roles on 2026-10-24); title is the card's text-h2 span. Greenhouse 'bird' is the scooter company, not this one. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "html",
+        "url": "https://bird.com/careers",
+        "linkPattern": "#/careers/[a-z0-9-]+$#",
+        "titleClass": "text-h2"
+      },
+      "match": {
+        "aliases": [
+          "MessageBird",
+          "Bird.com",
+          "MessageBird B.V."
+        ],
+        "note": "Accepted risk: an employer listed as just 'Bird' (e.g. Bird Rides) matches exactly."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "CM.com",
+      "slug": "cm-com",
+      "category": "Telecom",
+      "hq": "Breda, Netherlands",
+      "founded": 1999,
+      "asia": "some",
+      "asiaNote": "Offices in Singapore and across Asia",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Conversational-commerce and payments platform (messaging, voice, payments), listed on Euronext Amsterdam.",
+      "url": "https://jobs.cm.com/all-jobs",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Recruitee board on its own domain (cmcom.recruitee.com). The all-jobs page holds the newest 10 of 20 roles (2026-10-24); titles come with a 'New' tag appended. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "html",
+        "url": "https://jobs.cm.com/all-jobs",
+        "linkPattern": "#/o/[a-z0-9-]+$#",
+        "titleClass": "title"
+      },
+      "match": {
+        "aliases": [
+          "CM.com Netherlands",
+          "CM Telecom",
+          "CM Payments"
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Eurofiber",
+      "slug": "eurofiber",
+      "category": "Telecom",
+      "hq": "Utrecht, Netherlands",
+      "founded": 2000,
+      "asia": "limited",
+      "asiaNote": "Netherlands, Belgium, France, Germany",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Business fibre-network operator in the Benelux, France and Germany.",
+      "url": "https://careers.eurofiber.com/nl/vacatures",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "careers.eurofiber.com is fed by SmartRecruiters; company 'Eurofiber1' (11 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "smartrecruiters",
+        "slug": "Eurofiber1"
+      },
+      "match": {
+        "aliases": [
+          "Eurofiber Nederland",
+          "Eurofiber Group"
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "DELTA Fiber",
+      "slug": "delta-fiber",
+      "category": "Telecom",
+      "hq": "Middelburg, Netherlands",
+      "founded": 2021,
+      "asia": "limited",
+      "asiaNote": "Netherlands only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Dutch fibre broadband operator (DELTA, Caiway, Kabel Noord).",
+      "url": "https://werkenbij.deltafiber.nl/vacatures",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "werkenbij.deltafiber.nl is fed by Recruitee; board 'deltafibernederland' (13 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "html",
+        "url": "https://deltafibernederland.recruitee.com/",
+        "linkPattern": "#/o/[a-z0-9-]+$#"
+      },
+      "match": {
+        "aliases": [
+          "DELTA Fiber Nederland",
+          "DELTA Fiber Nederland B.V.",
+          "Delta Fiber"
+        ],
+        "note": "Accepted risk: containment works both ways, so an employer listed as just 'Delta' matches; 'Delta Air Lines' doesn't."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Lebara",
+      "slug": "lebara",
+      "category": "Telecom",
+      "hq": "Amsterdam, Netherlands",
+      "founded": 2001,
+      "asia": "limited",
+      "asiaNote": "Europe only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Mobile virtual network operator for international callers.",
+      "url": "https://www.lebara.com/",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "lebara.com returns 403 to ZenPath's server and no board (SmartRecruiters, Workable, Greenhouse, Lever, Ashby) was found (2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Lebara Mobile",
+          "Lebara Group"
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Virgin Media O2",
+      "slug": "virgin-media-o2",
+      "category": "Telecom",
+      "hq": "London, UK",
+      "founded": 2021,
+      "asia": "limited",
+      "asiaNote": "UK only",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "UK mobile and broadband operator, a 50/50 joint venture of Liberty Global and Telefónica.",
+      "url": "https://jobs.virginmediao2.co.uk/en_US/careersmarketplace/SearchJobs",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "Avature board, server-rendered, but fixed at 8 per page with a full-text search that mostly returns retail and field-sales roles (213 roles, 127 for 'design' on 2026-10-24), so it isn't read directly. Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Virgin Media",
+          "VMO2",
+          "Virgin Media O2 Business",
+          "Virgin Media Business"
+        ],
+        "note": "'O2' is too short for containment and 'O2 Telefónica' still goes to telefonica. Accepted risk: a bare 'Virgin' or 'Media' employer matches through 'Virgin Media'."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Sky",
+      "slug": "sky",
+      "category": "Telecom",
+      "hq": "London (Osterley), UK",
+      "founded": 1990,
+      "asia": "limited",
+      "asiaNote": "UK and Europe only",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "European media and broadband group (Sky UK, Sky Italia, Sky Deutschland), owned by Comcast.",
+      "url": "https://careers.sky.com/jobs",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "careers.sky.com is browser-rendered over Workday; read by js-scraper from 'design', 'product', 'UX' and 'research' searches (the public Workday site Sky_Careers only carries ~36 Italy/Czech roles). Read by js-scraper (see js-scraper/scrape.js); shows 'not present in snapshot' until its next run. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "snapshot",
+        "slug": "sky"
+      },
+      "match": {
+        "aliases": [
+          "Sky UK",
+          "Sky Group",
+          "Sky UK Limited",
+          "Sky Limited"
+        ],
+        "note": "'Sky' is under the 5-character containment minimum, so it matches exactly."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Colt Technology Services",
+      "slug": "colt",
+      "category": "Telecom",
+      "hq": "London, UK",
+      "founded": 1992,
+      "asia": "strong",
+      "asiaNote": "Offices in Tokyo, Singapore, Hong Kong and Bengaluru",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Business network, voice and data-centre connectivity provider across Europe and Asia.",
+      "url": "https://joblistings.colt.net/search/?q=design",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "SAP SuccessFactors site, server-rendered; a 'design' search returned 25 roles on 2026-10-24. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "html",
+        "url": "https://joblistings.colt.net/search/?q=design",
+        "linkPattern": "#/job/[^/]+/\\d+/#"
+      },
+      "match": {
+        "aliases": [
+          "Colt",
+          "Colt Technology Services Group"
+        ],
+        "note": "'Colt' is under the 5-character containment minimum, so it matches exactly."
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Lycamobile",
+      "slug": "lycamobile",
+      "category": "Telecom",
+      "hq": "London, UK",
+      "founded": 2006,
+      "asia": "some",
+      "asiaNote": "Lyca Group operates in Asia (e.g. Sri Lanka)",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "Mobile virtual network operator for international callers.",
+      "url": "https://www.lycamobile.co.uk/",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "No careers board found on lycamobile.co.uk or lycamobile.com, or on SmartRecruiters, Workable, Greenhouse, Lever or Ashby (2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Lyca Mobile",
+          "Lycamobile UK",
+          "Lyca Group"
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Hyperoptic",
+      "slug": "hyperoptic",
+      "category": "Telecom",
+      "hq": "London, UK",
+      "founded": 2011,
+      "asia": "limited",
+      "asiaNote": "UK only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "UK full-fibre broadband provider.",
+      "url": "https://careers.hyperoptic.com/jobs/home/",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "Session-based ATS (careers.hyperoptic.com, results tied to a per-visit pagestamp) that returns 404 to ZenPath's server (2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Hyperoptic Ltd",
+          "Hyperoptic Limited"
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "Community Fibre",
+      "slug": "community-fibre",
+      "category": "Telecom",
+      "hq": "London, UK",
+      "founded": 2010,
+      "asia": "limited",
+      "asiaNote": "UK only",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "London full-fibre broadband provider.",
+      "url": "https://careers.communityfibre.co.uk/jobs",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Teamtailor board, server-rendered (4 roles on 2026-10-24); titles from the company-link-style span inside each link. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "html",
+        "url": "https://careers.communityfibre.co.uk/jobs",
+        "linkPattern": "#/jobs/\\d+-[a-z0-9-]+$#i",
+        "titleClass": "company-link-style"
+      },
+      "match": {
+        "aliases": [
+          "Community Fibre Limited",
+          "Community Fibre Ltd"
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "CityFibre",
+      "slug": "cityfibre",
+      "category": "Telecom",
+      "hq": "London, UK",
+      "founded": 2011,
+      "asia": "limited",
+      "asiaNote": "UK only",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "UK wholesale full-fibre network builder.",
+      "url": "https://cityfibre.com/careers/all-jobs",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "cityfibre.com's job pages link to SmartRecruiters; company 'CityFibre'. Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "smartrecruiters",
+        "slug": "CityFibre"
+      },
+      "match": {
+        "aliases": [
+          "CityFibre Infrastructure Holdings",
+          "City Fibre"
+        ]
+      }
+    },
+    {
+      "region": "Europe/UK",
+      "name": "1GLOBAL (Truphone)",
+      "slug": "1global",
+      "category": "Telecom",
+      "hq": "London, UK",
+      "founded": 2006,
+      "asia": "some",
+      "asiaNote": "Offices in Hong Kong and Singapore",
+      "sponsorship": "uncertain",
+      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
+      "note": "eSIM and IoT connectivity provider; Truphone was acquired and rebranded as 1GLOBAL in 2023 (not part of Vodafone).",
+      "url": "https://apply.workable.com/1global/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Workable account '1global' (75 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "workable",
+        "slug": "1global"
+      },
+      "match": {
+        "aliases": [
+          "Truphone",
+          "1GLOBAL",
+          "1Global",
+          "Truphone Limited"
+        ]
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Viasat (Inmarsat)",
+      "slug": "viasat",
+      "category": "Telecom",
+      "hq": "Carlsbad, USA; Inmarsat in London, UK",
+      "founded": 1986,
+      "asia": "some",
+      "asiaNote": "Offices in Singapore and across APAC",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Satellite communications group; acquired Inmarsat (London) in 2023.",
+      "url": "https://careers.viasat.com/jobs",
+      "openStatus": "uncertain",
+      "openRoles": [],
+      "openNote": "iCIMS board (careers.viasat.com); its search returns 405 to ZenPath's server (2026-10-24). Covered through job-site matches.",
+      "ats": {
+        "type": "unknown"
+      },
+      "match": {
+        "aliases": [
+          "Inmarsat",
+          "Viasat Inc",
+          "Viasat Inc.",
+          "Inmarsat Global"
+        ]
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Twilio",
+      "slug": "twilio",
+      "category": "Enterprise Software",
+      "hq": "San Francisco, USA (London office)",
+      "founded": 2008,
+      "asia": "some",
+      "asiaNote": "Offices in Singapore, Tokyo and Bengaluru",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Cloud communications platform (messaging, voice, email APIs).",
+      "url": "https://www.twilio.com/en-us/company/jobs",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Greenhouse board 'twilio' (134 roles on 2026-10-24). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "greenhouse",
+        "slug": "twilio"
+      },
+      "match": {
+        "aliases": [
+          "Twilio Inc",
+          "Twilio Inc."
+        ]
+      }
+    },
+    {
+      "region": "Global",
+      "name": "Vonage",
+      "slug": "vonage",
+      "category": "Enterprise Software",
+      "hq": "Holmdel, USA (London office); owned by Ericsson",
+      "founded": 2001,
+      "asia": "some",
+      "asiaNote": "Sydney and APAC offices",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
+      "note": "Communications APIs and business phone platform, owned by Ericsson since 2022.",
+      "url": "https://www.vonage.com/careers/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Greenhouse board 'vonage' (23 roles on 2026-10-24, incl. London). Checked live by ZenPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "ats": {
+        "type": "greenhouse",
+        "slug": "vonage"
+      },
+      "match": {
+        "aliases": [
+          "Vonage Holdings",
+          "Vonage UK"
+        ],
+        "note": "Separate board from Ericsson (tracked as 'ericsson')."
       }
     }
   ]

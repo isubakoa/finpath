@@ -379,6 +379,34 @@ const COMPANIES = [
     waitForSelector: 'a[href*="/positions/"]',
     titleSelector: 'h3[data-framer-name="Title"]',
   },
+  {
+    slug: "vodafoneziggo",
+    // Server-rendered list, 8 per page (38 roles on 2026-10-24); ?page=N pages it.
+    // Each card has a plain title link.
+    urls: [1, 2, 3, 4, 5, 6].map((n) => `https://careers.vodafoneziggo.com/vacatures/filters/sort/date:desc?page=${n}`),
+    linkPattern: /\/vacatures\/[a-z0-9-]+-\d+$/,
+    waitForSelector: 'a[href*="/vacatures/"]',
+  },
+  {
+    slug: "odido",
+    // Serena CMS, rendered from its own API, 10 per page with no URL paging. 36 of
+    // ~59 roles are shop jobs, so read the other fields, each of which fits on one
+    // page. The title link comes before the "Bekijk vacature" link to the same url.
+    urls: ["corporate-support-1", "marketing-en-communicatie-1", "sales-1", "finance-2"].map(
+      (f) => `https://werkenbij.odido.nl/vacatures/vakgebied-1/${f}`,
+    ),
+    linkPattern: /\/vacature\/\d+\/[a-z0-9-]+$/,
+    waitForSelector: 'a[href*="/vacature/"]',
+  },
+  {
+    slug: "sky",
+    // careers.sky.com renders its Workday jobs client-side; each search shows every
+    // match. The link wraps title, team and location; the title div's class is hashed.
+    urls: ["design", "product", "UX", "research"].map((q) => `https://careers.sky.com/jobs?search=${q}`),
+    linkPattern: /\/jobs\/t-R\d+$/,
+    waitForSelector: 'a[href*="/jobs/t-"]',
+    titleSelector: '[class^="jobTitle_"]',
+  },
   // Not scraped:
   //   - wefox: careers site broken, no open roles on its join.com board.
   //   - Hang Seng Bank, Mubadala: job cards are JS click handlers with no href to
