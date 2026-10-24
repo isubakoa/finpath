@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T01:50:28.742Z",
+  "generatedAt": "2026-10-24T06:40:45.082Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -239,44 +239,7 @@
     },
     "fidelity-international": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Senior Manager, Product Development and Management",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Senior-Manager--Product-Development-and-Management_J71483-7?q=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Product Owner - Fixed Income",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Hong-Kong-Office-New/Product-Owner---Fixed-Income_J70844?q=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Associate Director, Product Development and Management",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Associate-Director--Product-Development-and-Management_J69422-1?q=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Manager, Product Development and Management",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Tokyo-Office/Manager--Product-Development-and-Management_J71092?q=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Product Management APAC ex Japan - Associate Director / Senior Manager (9-month contract)",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Hong-Kong-Office-New/FTC---Product-Management-APAC-ex-Japan---Associate-Director_J72338-1?q=design",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Customer Acquisition Marketing Manager",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Kingswood-Fields-Office/Customer-Acquisition-Marketing-Manager_J68850-1?q=design",
-          "location": "",
-          "postedDate": null
-        }
-      ]
+      "roles": []
     },
     "abu-dhabi-investment-authority-adia": {
       "ok": true,
@@ -532,20 +495,14 @@
           "postedDate": null
         },
         {
-          "title": "Radio HW Design Power Amplifier",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Radio HW Digital Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Power Designer",
           "url": "https://jobs.ericsson.com/careers/job/563121777223184?domain=ericsson.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Radio HW Design Power Amplifier",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
           "location": "",
           "postedDate": null
         },
@@ -561,14 +518,20 @@
       "ok": true,
       "roles": [
         {
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Cloud Solution Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -585,14 +548,14 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
+          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
+          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137387?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -603,14 +566,14 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
+          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
+          "title": "FS Architecture & Design, Assoc. Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018697741021?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
@@ -679,8 +642,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Global Design & Construction Program Lead - Senior Vice President",
-          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
+          "title": "Digital Design Service Pillar Lead - Senior Vice President",
+          "url": "https://citi.eightfold.ai/careers/job/859035930025?domain=citi.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "UX and Human Factors Design",
+          "url": "https://citi.eightfold.ai/careers/job/859038267995?domain=citi.com",
           "location": "",
           "postedDate": null
         },
@@ -697,14 +666,8 @@
           "postedDate": null
         },
         {
-          "title": "UX and Human Factors Design",
-          "url": "https://citi.eightfold.ai/careers/job/859038267995?domain=citi.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Digital Design Service Pillar Lead - Senior Vice President",
-          "url": "https://citi.eightfold.ai/careers/job/859035930025?domain=citi.com",
+          "title": "Global Design & Construction Program Lead - Senior Vice President",
+          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
           "location": "",
           "postedDate": null
         },
@@ -780,14 +743,14 @@
           "postedDate": null
         },
         {
-          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
+          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
+          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
           "location": "",
           "postedDate": null
         },
