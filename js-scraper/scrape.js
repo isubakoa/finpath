@@ -241,6 +241,24 @@ const COMPANIES = [
     waitForSelector: 'a[href*="/job/"]',
   },
   {
+    slug: "telenor",
+    // Telenor left Workday (its old tenant now redirects to an invalid-url page). The
+    // group board aggregates every subsidiary's Teamtailor site, 20 jobs per server-
+    // rendered page; links point at each subsidiary's own domain. Four pages = room
+    // for 80 (43 open on 2026-10-24). End-anchored to skip /applications/new links.
+    urls: [1, 2, 3, 4].map((n) => `https://careers.telenor.com/jobs?page=${n}`),
+    linkPattern: /\/jobs\/\d+-[^/?#]+$/,
+    waitForSelector: 'a[href*="/jobs/"]',
+  },
+  {
+    slug: "aramco",
+    // SuccessFactors search page. Loads instantly in a browser but times out from the
+    // FTP host (check.php), so it's scraped here instead. Each card repeats its link.
+    urls: ["https://careers.aramco.com/search/?q=design"],
+    linkPattern: /\/job\/[^/]+\/\d+\/$/,
+    waitForSelector: "a.jobTitle-link",
+  },
+  {
     slug: "unilever",
     // Oracle Taleo (not given a direct adapter, by policy). The keyword filter works
     // server-side; "design" returns packaging/engineering roles. Title is an

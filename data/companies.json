@@ -3697,11 +3697,10 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Now confirmed live and directly fetchable — careers.aramco.com runs the same plain server-rendered SuccessFactors template as ANZ/GIC/SAP, no browser/session needed. A 'design' keyword search returns 107 matches, entirely engineering roles except two: an Instructional Designer and an Organization Design/Development Practitioner — both genuine matches under this tool's title-matching rules, but honestly neither is a product/UX design role (they're L&D/HR-adjacent). As expected for an oil & gas major, no Director/Principal-level product design role exists.",
+      "openNote": "SuccessFactors careers site (careers.aramco.com). The search page loads instantly in a browser but times out from the FTP host, so since 2026-10-24 it's scraped by js-scraper (keyword \"design\" search) instead of check.php's html adapter. Design hits are mostly architecture, engineering and instructional design.",
       "ats": {
-        "type": "html",
-        "url": "https://careers.aramco.com/search/?q=design",
-        "linkPattern": "#/job/[^/]+/\\d+/#i"
+        "type": "snapshot",
+        "slug": "aramco"
       }
     },
     {
@@ -4925,7 +4924,7 @@
       "sponsorshipNote": "Large, established global employer; standard visa-sponsorship routes typically apply. Not individually checked against an official sponsor registry; heuristic only.",
       "note": "Global careers hub is a directory of ~40+ country-specific sites rather than one board; North America confirmed on iCIMS.",
       "url": "https://holdings.panasonic/global/corporate/careers.html",
-      "openStatus": "match",
+      "openStatus": "uncertain",
       "openRoles": [
         {
           "id": "panasonic-r0",
@@ -4938,13 +4937,9 @@
           "status": "not-started"
         }
       ],
-      "openNote": "CAPTCHA GONE, RE-VERIFIED LIVE (2026-09-24, real browser + a cold, cookie-less fetch of the exact same page — both agree): careers.sg.panasonic.com no longer presents the Cloudflare Turnstile challenge confirmed here on 2026-09-17. The site appears to have moved to a different careers-portal vendor since then (footer now credits 'IQDYNAMICS', a classic server-rendered ASP.NET listing, not the earlier CAPTCHA-gated one) — a genuinely different, and this time directly fetchable, board. All 18 current Singapore openings across Panasonic Asia Pacific, Panasonic Factory Solutions Asia Pacific, Panasonic Connect Asia, Panasonic R&D Center Singapore and Panasonic Projector & Display Asia Pacific were read directly from the raw HTML (no JS needed). Exactly one is Design/Product-relevant, and it's an intern posting, well below this tracker's usual Director+/Senior bar — included anyway since it's the honest current state, same as how other companies' below-target ICs are shown rather than hidden. Malaysia (SAP SuccessFactors) and the NA iCIMS board remain deliberately unsupported per this project's platform-wide stance; Philippines still just links out to a generic JobStreet search rather than running its own ATS.",
+      "openNote": "careers.sg.panasonic.com, the Singapore/APAC portal checked since 2026-09-24, returns \"Not Found\" as of 2026-10-24 (the vendor site is gone) and no replacement board was found. Back to job-site coverage only (li-scraper) until a new careers source turns up.",
       "ats": {
-        "type": "html",
-        "url": "https://careers.sg.panasonic.com",
-        "linkPattern": "#ApplyJob\\.aspx\\?id=\\d+#i",
-        "titleAncestorClass": "jobContainer",
-        "titleClass": "jobTitle"
+        "type": "unknown"
       }
     },
     {
@@ -5370,15 +5365,13 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — an EU Blue Card / national work-permit route (or the equivalent EEA skilled-worker route, since Norway is EEA rather than EU) is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "Norway's national telecom group, historically one of the more Asia-exposed European telcos via minority stakes — that exposure has been actively shrinking through 2025-2026 divestments.",
-      "url": "https://telenorgroup.wd3.myworkdayjobs.com/TelenorGroup_careers",
+      "url": "https://careers.telenor.com/jobs",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Runs on Workday (tenant telenorgroup.wd3.myworkdayjobs.com, site TelenorGroup_careers) — wired via check.php's existing workday adapter. No design-relevant postings surfaced in this pass, though a direct live crawl of the tenant hit server errors in this environment and wasn't exhaustively verified — treat as 'none found' rather than a confirmed zero. A separate subsidiary, Telenor Cyberdefence, runs its own unrelated Teamtailor board.",
+      "openNote": "Telenor left Workday by 2026-10-24 (the old telenorgroup.wd3 tenant redirects to Workday's invalid-url page; check.php got HTTP 422). Its group board careers.telenor.com/jobs aggregates every subsidiary's Teamtailor site (43 jobs on 2026-10-24, 20 per page) and is read by js-scraper. Checked 2026-10-24: one product role, Product Lead; no UX/design roles.",
       "ats": {
-        "type": "workday",
-        "slug": "telenorgroup",
-        "wdNum": "3",
-        "site": "TelenorGroup_careers"
+        "type": "snapshot",
+        "slug": "telenor"
       }
     },
     {
