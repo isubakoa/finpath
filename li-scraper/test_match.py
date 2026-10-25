@@ -406,6 +406,15 @@ def run():
         # CITY_ALIASES: "Greater X Area" with no country marker.
         ("Greater Tokyo Area", "Japan"),
         ("Greater Kuala Lumpur", "Malaysia"),
+        # Smaller Dutch cities and provinces (2026-10-25).
+        ("Haarlem, North Holland", "Netherlands"),
+        ("Hoofddorp", "Netherlands"),
+        ("Almere Stad", "Netherlands"),
+        ("Weesp, Noord-Holland", "Netherlands"),
+        ("Greater Alkmaar Area", "Netherlands"),
+        ("Gelderland", "Netherlands"),
+        # Left out on purpose: short names inside other words.
+        ("Ede, Ethiopia", None),
         # A location we never search returns None, so build_fresh_roles() drops it.
         ("Reykjavik, Iceland", None),
         ("Bengaluru, India", None),

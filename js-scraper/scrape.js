@@ -1,12 +1,13 @@
 // js-scraper: careers boards that only render with JavaScript. Opens each
 // company's page in headless Chromium, collects links matching its
-// `linkPattern`, keeps the relevant titles, and writes ../data/js-snapshot.json:
+// `linkPattern`, keeps the relevant titles, finds each role's location (see
+// "Locations" below), and writes ../data/js-snapshot.json:
 //   { "generatedAt": "...", "companies": { "<slug>": { "ok": true, "roles": [...] } } }
 // check.php reads it for companies whose ats is {type: "snapshot"}.
 // Run by .github/workflows/scrape.yml; locally: node scrape.js [--debug <slug>].
 
 import { chromium } from "playwright";
-import { writeFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
@@ -37,7 +38,9 @@ function isRoleRelevant(title) {
 // `node scrape.js --debug <slug>`. Optional: waitForSelector, settleDelayMs,
 // titleSelector (title is a child of the link), titleAncestorSelector +
 // titleAncestorTitleSelector (title sits outside the link), titleStrip (a regex
-// removed from each title, e.g. screen-reader text).
+// removed from each title, e.g. screen-reader text), locationSelector (+
+// locationAncestorSelector, the card to search; default the link) when the
+// listing shows the location in an element the generic card check misses.
 const COMPANIES = [
   {
     slug: "adyen",
@@ -49,6 +52,9 @@ const COMPANIES = [
     ],
     linkPattern: /\/vacancies\/\d+-/,
     waitForSelector: 'a[href*="/vacancies/"]',
+    // Card columns: title link, team, city.
+    locationAncestorSelector: "li",
+    locationSelector: ".vacancies-list-item > :nth-child(3)",
   },
   {
     slug: "klarna",
@@ -66,6 +72,9 @@ const COMPANIES = [
     urls: ["https://www.atlassian.com/company/careers/all-jobs"],
     linkPattern: /\/company\/careers\/details\/\d+/,
     waitForSelector: 'a[href*="/company/careers/details/"]',
+    // A table: title cell, then "City or Remote".
+    locationAncestorSelector: "tr",
+    locationSelector: "td:nth-child(2)",
   },
   {
     slug: "fidelity-international",
@@ -419,6 +428,54 @@ const TIMEOUT_MS = 30000;
 const USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36";
 
+// ---- Locations ----
+// The app filters roles by location, so a role without one can't be filtered
+// out. Each role's location comes from, in order:
+//   1. the listing: locationSelector, else any element in the job's card whose
+//      class/id/itemprop/data-* says "location" (as check.php's html adapter);
+//   2. the previous snapshot, for a url already resolved on an earlier run;
+//   3. the posting page itself: its schema.org JobPosting data (Eightfold, Meta,
+//      Teamtailor, Workday...), else a "Location: ..." line in its text.
+// Step 3 opens one page per new role, at most MAX_POSTING_LOOKUPS per run (the
+// rest wait for the next run), and stops early for a company whose postings
+// keep showing no location.
+const MAX_POSTING_LOOKUPS = 80;
+const POSTING_MISSES_BEFORE_GIVING_UP = 3;
+const POSTING_SETTLE_MS = 1500;
+const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+
+// "NO" -> "Norway", so the app's country matching works; anything else as is.
+function countryName(value) {
+  const v = String(value || "").trim();
+  if (/^[A-Z]{2}$/.test(v)) {
+    try {
+      return regionNames.of(v) || v;
+    } catch {
+      return v;
+    }
+  }
+  return v;
+}
+
+function cleanLocation(text) {
+  return String(text || "").replace(/\s+/g, " ").replace(/^locations?\s*:?\s*/i, "").trim();
+}
+
+function previousLocations() {
+  try {
+    const previous = JSON.parse(readFileSync(SNAPSHOT_PATH, "utf8"));
+    const byUrl = {};
+    Object.values(previous.companies || {}).forEach((c) => {
+      (c.roles || []).forEach((r) => {
+        if (r.url && r.location) byUrl[r.url] = r.location;
+      });
+    });
+    return byUrl;
+  } catch {
+    return {}; // first run, or an unreadable file: everything is looked up
+  }
+}
+
 async function scrapeOneUrl(browser, url, company) {
   const page = await browser.newPage({ userAgent: USER_AGENT });
   try {
@@ -441,19 +498,48 @@ async function scrapeOneUrl(browser, url, company) {
       await page.waitForTimeout(company.settleDelayMs);
     }
 
-    const roles = await page.evaluate(({ patternSource, titleSelector, titleAncestorSelector, titleAncestorTitleSelector }) => {
+    const roles = await page.evaluate(({ patternSource, titleSelector, titleAncestorSelector, titleAncestorTitleSelector, locationSelector, locationAncestorSelector }) => {
       const pattern = new RegExp(patternSource);
+      const absolute = (a) => {
+        try {
+          return new URL(a.getAttribute("href") || "", location.href).href;
+        } catch {
+          return "";
+        }
+      };
+      const clean = (t) => (t || "").replace(/\s+/g, " ").trim();
+      // The job's card: the largest ancestor of the link holding no other job link.
+      const cardOf = (a, abs) => {
+        let card = a;
+        for (let depth = 0; depth < 8; depth++) {
+          const parent = card.parentElement;
+          if (!parent || parent === document.body) break;
+          const other = [...parent.querySelectorAll("a[href]")].some((x) => {
+            const h = absolute(x);
+            return h !== abs && pattern.test(h);
+          });
+          if (other) break;
+          card = parent;
+        }
+        return card;
+      };
+      const cardLocation = (card, title) => {
+        for (const el of card.querySelectorAll("*")) {
+          const marker = [...el.attributes]
+            .filter((at) => ["class", "id", "itemprop"].includes(at.name) || at.name.startsWith("data-"))
+            .map((at) => `${at.name} ${at.value}`)
+            .join(" ");
+          if (!/location/i.test(marker) || /relocation/i.test(marker)) continue;
+          const text = clean(el.textContent).replace(/^locations?\s*:?\s*/i, "");
+          if (text.length >= 2 && text.length <= 120 && text !== title) return text;
+        }
+        return "";
+      };
       const seen = new Set();
       const out = [];
       document.querySelectorAll("a[href]").forEach((a) => {
-        const href = a.getAttribute("href") || "";
-        let abs;
-        try {
-          abs = new URL(href, location.href).href;
-        } catch {
-          return;
-        }
-        if (!pattern.test(abs) || seen.has(abs)) return;
+        const abs = absolute(a);
+        if (!abs || !pattern.test(abs) || seen.has(abs)) return;
         // Never let the Workday placeholder through, even after the settle wait.
         if (/community\.workday\.com\/invalid-url/i.test(abs)) return;
         // Title: the link's own text by default; titleSelector for a child element
@@ -470,10 +556,18 @@ async function scrapeOneUrl(browser, url, company) {
           const titleEl = titleSelector ? a.querySelector(titleSelector) : null;
           title = (titleEl || a).textContent || "";
         }
-        title = title.replace(/\s+/g, " ").trim();
+        title = clean(title);
         if (title.length < 3) return;
+        let loc = "";
+        if (locationSelector) {
+          const scope = locationAncestorSelector ? a.closest(locationAncestorSelector) : a;
+          const el = scope ? scope.querySelector(locationSelector) : null;
+          loc = el ? clean(el.textContent) : "";
+        } else {
+          loc = cardLocation(cardOf(a, abs), title);
+        }
         seen.add(abs);
-        out.push({ title, url: abs });
+        out.push({ title, url: abs, location: loc });
       });
       return out;
     }, {
@@ -481,6 +575,8 @@ async function scrapeOneUrl(browser, url, company) {
       titleSelector: company.titleSelector || null,
       titleAncestorSelector: company.titleAncestorSelector || null,
       titleAncestorTitleSelector: company.titleAncestorTitleSelector || null,
+      locationSelector: company.locationSelector || null,
+      locationAncestorSelector: company.locationAncestorSelector || null,
     });
 
     await page.close();
@@ -488,6 +584,69 @@ async function scrapeOneUrl(browser, url, company) {
   } catch (err) {
     await page.close().catch(() => {});
     throw err;
+  }
+}
+
+// Step 3 of "Locations": the location a posting page states, or "".
+async function postingLocation(browser, url) {
+  const page = await browser.newPage({ userAgent: USER_AGENT });
+  try {
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: TIMEOUT_MS });
+    await page
+      .waitForFunction(() => document.querySelector('script[type="application/ld+json"]') || document.body.innerText.length > 800, null, { timeout: 10000 })
+      .catch(() => {});
+    await page.waitForTimeout(POSTING_SETTLE_MS);
+    const found = await page.evaluate(() => {
+      const places = [];
+      const visit = (node) => {
+        if (!node || typeof node !== "object") return;
+        if (Array.isArray(node)) return node.forEach(visit);
+        if ([].concat(node["@type"] || []).includes("JobPosting")) {
+          [].concat(node.jobLocation || []).forEach((place) => {
+            const address = place && place.address;
+            if (typeof address === "string") return places.push(address);
+            if (!address) return;
+            const country = address.addressCountry && typeof address.addressCountry === "object" ? address.addressCountry.name : address.addressCountry;
+            places.push({ city: address.addressLocality || "", country: country || "" });
+          });
+          if (!places.length && /TELECOMMUTE/i.test(String(node.jobLocationType || ""))) places.push("Remote");
+        }
+        if (node["@graph"]) visit(node["@graph"]);
+      };
+      document.querySelectorAll('script[type="application/ld+json"]').forEach((s) => {
+        try {
+          visit(JSON.parse(s.textContent));
+        } catch {
+          // malformed JSON-LD: ignore that block
+        }
+      });
+      if (places.length) return { places };
+      // A labelled line: "Location: Amsterdam" / "Job Location (Long): ..." (the value
+      // may sit on the next line), "Location London", or Material's "location_on" icon
+      // text followed by the value.
+      const text = (document.querySelector("main") || document.body).innerText;
+      const patterns = [
+        /^[ \t]*(?:job\s+|office\s+)?location(?:s|\(s\))?(?:\s*\(long\))?[ \t]*:\s*([^\n]{2,100})/im,
+        /^[ \t]*(?:job\s+)?location[ \t]+([^\n]{2,100})$/im,
+        /^[ \t]*location_on[ \t]*\n\s*([^\n]{2,100})/im,
+      ];
+      for (const re of patterns) {
+        const m = text.match(re);
+        if (m) return { text: m[1] };
+      }
+      return {};
+    });
+    await page.close();
+    if (found.places) {
+      const labels = found.places.map((p) =>
+        typeof p === "string" ? cleanLocation(p) : [cleanLocation(p.city), countryName(p.country)].filter(Boolean).join(", "),
+      );
+      return [...new Set(labels.filter(Boolean))].join("; ");
+    }
+    return found.text ? cleanLocation(found.text) : "";
+  } catch {
+    await page.close().catch(() => {});
+    return "";
   }
 }
 
@@ -514,7 +673,7 @@ async function scrapeCompany(browser, company, { debug = false } = {}) {
 
   if (debug) {
     console.log(`[${company.slug}] ${roles.length} matching link(s) found across ${urls.length} URL(s):`);
-    roles.forEach((r) => console.log(`  - ${r.title}  ->  ${r.url}`));
+    roles.forEach((r) => console.log(`  - ${r.title}  [${r.location || "no location on the listing"}]  ->  ${r.url}`));
     if (errors.length) errors.forEach((e) => console.log(`  ! ${e}`));
   }
 
@@ -529,7 +688,30 @@ async function scrapeCompany(browser, company, { debug = false } = {}) {
   if (debug && relevant.length !== roles.length) {
     console.log(`[${company.slug}] ${roles.length - relevant.length} of ${roles.length} dropped as not title-relevant, ${relevant.length} kept`);
   }
-  return { ok: true, roles: relevant.map((r) => ({ ...r, location: "", postedDate: null })) };
+  return { ok: true, roles: relevant.map((r) => ({ title: r.title, url: r.url, location: r.location, postedDate: null })) };
+}
+
+// Steps 2 and 3 of "Locations", for roles whose listing showed none.
+async function fillLocations(browser, companies, known) {
+  let lookups = 0;
+  for (const [slug, result] of Object.entries(companies)) {
+    if (!result.ok) continue;
+    let misses = 0;
+    for (const role of result.roles) {
+      if (role.location) continue;
+      if (known[role.url]) {
+        role.location = known[role.url];
+        continue;
+      }
+      if (lookups >= MAX_POSTING_LOOKUPS || misses >= POSTING_MISSES_BEFORE_GIVING_UP) continue;
+      lookups++;
+      role.location = await postingLocation(browser, role.url);
+      misses = role.location ? 0 : misses + 1;
+    }
+    const located = result.roles.filter((r) => r.location).length;
+    if (result.roles.length) console.log(`  ${slug}: location for ${located} of ${result.roles.length} role(s)`);
+  }
+  console.log(`Posting pages opened for locations: ${lookups} (max ${MAX_POSTING_LOOKUPS} per run).`);
 }
 
 async function main() {
@@ -551,6 +733,9 @@ async function main() {
     const r = companies[company.slug];
     console.log(r.ok ? `  ok — ${r.roles.length} role(s)` : `  failed — ${r.error}`);
   }
+  console.log("\nLocations:");
+  await fillLocations(browser, companies, debug ? {} : previousLocations());
+  if (debug) Object.values(companies).forEach((r) => (r.roles || []).forEach((role) => console.log(`  - ${role.title}  [${role.location || "none found"}]`)));
   await browser.close();
 
   if (!debug) {
