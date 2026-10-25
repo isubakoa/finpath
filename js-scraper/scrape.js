@@ -261,14 +261,6 @@ const COMPANIES = [
     waitForSelector: 'a[href*="/jobs/"]',
   },
   {
-    slug: "aramco",
-    // SuccessFactors search page. Loads instantly in a browser but times out from the
-    // FTP host (check.php), so it's scraped here instead. Each card repeats its link.
-    urls: ["https://careers.aramco.com/search/?q=design"],
-    linkPattern: /\/job\/[^/]+\/\d+\/$/,
-    waitForSelector: "a.jobTitle-link",
-  },
-  {
     slug: "triodos-bank",
     // SuccessFactors Career Site Builder, browser-rendered; clean title links.
     urls: ["https://careers.triodos.com/search/?q=&locationsearch=&searchResultView=LIST"],

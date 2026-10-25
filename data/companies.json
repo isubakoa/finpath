@@ -402,7 +402,8 @@
       "ats": {
         "type": "html",
         "url": "https://career.spendesk.com",
-        "linkPattern": "#career\\.spendesk\\.com/jobs/\\d+-#"
+        "linkPattern": "#career\\.spendesk\\.com/jobs/\\d+-#",
+        "locationLastText": true
       }
     },
     {
@@ -2058,7 +2059,8 @@
       "ats": {
         "type": "html",
         "url": "https://endowus.careers-page.com",
-        "linkPattern": "#/jobs/[a-f0-9\\-]{36}$#"
+        "linkPattern": "#/jobs/[a-f0-9\\-]{36}$#",
+        "locationClass": "text-quarterary"
       }
     },
     {
@@ -2101,7 +2103,8 @@
       "ats": {
         "type": "html",
         "url": "https://syfe.careers-page.com",
-        "linkPattern": "#/jobs/[a-f0-9\\-]{36}$#"
+        "linkPattern": "#/jobs/[a-f0-9\\-]{36}$#",
+        "locationClass": "text-quarterary"
       }
     },
     {
@@ -3174,7 +3177,8 @@
         "url": "https://www.tngdigital.com.my/careers/jobs",
         "linkPattern": "#/job/\\d+#i",
         "titleAncestorClass": "job-position",
-        "titleClass": "title"
+        "titleClass": "title",
+        "location": "Kuala Lumpur, Malaysia"
       },
       "match": {
         "aliases": [
@@ -3281,7 +3285,8 @@
       "ats": {
         "type": "html",
         "url": "https://versa.com.my/job/",
-        "linkPattern": "#/job/[^/]+/$#i"
+        "linkPattern": "#/job/[^/]+/$#i",
+        "location": "Kuala Lumpur, Malaysia"
       }
     },
     {
@@ -3663,48 +3668,6 @@
     },
     {
       "region": "Global",
-      "name": "Aramco",
-      "slug": "aramco",
-      "category": "Energy & Resources (Oil & Gas)",
-      "hq": "Dhahran, Saudi Arabia",
-      "founded": 1933,
-      "asia": "limited",
-      "asiaNote": "Some Asia-facing commercial/refining ties (China, Japan, South Korea joint ventures) but no notable design-org presence in APAC.",
-      "sponsorship": "uncertain",
-      "sponsorshipNote": "Saudi Arabia (not UAE) requires its own work-visa/Iqama sponsorship process — outside the candidate's explicitly stated Dubai/Abu Dhabi UAE preference, and less standardized for a Western product-design leader than the other markets on this list; flagging this as a genuine mismatch, not just a heuristic caveat.",
-      "note": "State oil major; extremely unlikely to have a dedicated product/UX design leadership org at Director level — included per request, but geographically and functionally a weak fit for this candidate (Saudi Arabia, not UAE; core business is not digital-product-led).",
-      "url": "https://careers.aramco.com/",
-      "openStatus": "match",
-      "openRoles": [
-        {
-          "id": "aramco-r0",
-          "title": "Instructional Designer",
-          "location": "UK (expat)",
-          "level": "IC — not a product/UX design role",
-          "fit": "below",
-          "firstSeen": "2026-09-08",
-          "url": "https://careers.aramco.com/expat_uk/job/Instructional-Designer/857036823/",
-          "status": "not-started"
-        },
-        {
-          "id": "aramco-r1",
-          "title": "Organization Design/Development Practitioner",
-          "location": "US (expat)",
-          "level": "IC — HR/org-design role, not product/UX design",
-          "fit": "below",
-          "firstSeen": "2026-09-08",
-          "url": "https://careers.aramco.com/expat_us/job/Organization-DesignDevelopment-Practitioner/857137423/",
-          "status": "not-started"
-        }
-      ],
-      "openNote": "SuccessFactors careers site (careers.aramco.com). The search page loads instantly in a browser but times out from the FTP host, so since 2026-10-24 it's scraped by js-scraper (keyword \"design\" search) instead of check.php's html adapter. Design hits are mostly architecture, engineering and instructional design.",
-      "ats": {
-        "type": "snapshot",
-        "slug": "aramco"
-      }
-    },
-    {
-      "region": "Global",
       "name": "Visa",
       "slug": "visa",
       "category": "Payments Network",
@@ -4038,7 +4001,8 @@
       "ats": {
         "type": "html",
         "url": "https://jobs.totalenergies.com/en_US/careers/SearchJobs/?search=designer",
-        "linkPattern": "#/JobDetail/[^/]+/\\d+#i"
+        "linkPattern": "#/JobDetail/[^/]+/\\d+#i",
+        "locationClass": "list-item-jobCountry"
       }
     },
     {
@@ -4558,7 +4522,8 @@
       "ats": {
         "type": "html",
         "url": "https://jobs.zalando.com/en/what-we-do/product-design-and-user-experience",
-        "linkPattern": "#/en/jobs/\\d+-[^\"]+#"
+        "linkPattern": "#/en/jobs/\\d+-[^\"]+#",
+        "locationClass": "text-ellipsis"
       }
     },
     {
@@ -4643,7 +4608,8 @@
       "ats": {
         "type": "html",
         "url": "https://careers.legodigitalplay.com/jobs",
-        "linkPattern": "#/jobs/\\d+-[^\"]+#"
+        "linkPattern": "#/jobs/\\d+-[^\"]+#",
+        "locationLastText": true
       },
       "match": {
         "aliases": [
@@ -7747,7 +7713,8 @@
         "type": "html",
         "url": "https://chip.teamtailor.com/jobs",
         "linkPattern": "#/jobs/\\d+-[a-z0-9-]+$#i",
-        "titleClass": "company-link-style"
+        "titleClass": "company-link-style",
+        "location": "London, United Kingdom"
       },
       "match": {
         "aliases": [
@@ -8760,7 +8727,8 @@
         "type": "html",
         "url": "https://careers.communityfibre.co.uk/jobs",
         "linkPattern": "#/jobs/\\d+-[a-z0-9-]+$#i",
-        "titleClass": "company-link-style"
+        "titleClass": "company-link-style",
+        "location": "London, United Kingdom"
       },
       "match": {
         "aliases": [
