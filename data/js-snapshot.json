@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T20:07:52.930Z",
+  "generatedAt": "2026-10-25T00:44:23.499Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -543,18 +543,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "VodafoneThree - Cyber Security Senior Consultant - Secure by Design",
-          "url": "https://jobs.vodafone.com/careers/job/563018698264820?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "",
@@ -567,26 +555,20 @@
           "postedDate": null
         },
         {
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "VodafoneThree - Cyber Security Senior Consultant - Secure by Design",
+          "url": "https://jobs.vodafone.com/careers/job/563018698264820?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
           "title": "Cloud Solution Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
-          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697137387?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
@@ -603,20 +585,26 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
+          "url": "https://jobs.vodafone.com/careers/job/563018697137387?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Secure by Design Solution Expert - VOIS",
           "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
           "location": "",
           "postedDate": null
         }
@@ -685,8 +673,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "UX Product Design Lead",
-          "url": "https://citi.eightfold.ai/careers/job/859037066595?domain=citi.com",
+          "title": "UX and Human Factors Design",
+          "url": "https://citi.eightfold.ai/careers/job/859038267995?domain=citi.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Global Design & Construction Program Lead - Senior Vice President",
+          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
           "location": "",
           "postedDate": null
         },
@@ -697,20 +691,14 @@
           "postedDate": null
         },
         {
-          "title": "UX and Human Factors Design",
-          "url": "https://citi.eightfold.ai/careers/job/859038267995?domain=citi.com",
+          "title": "UX Product Design Lead",
+          "url": "https://citi.eightfold.ai/careers/job/859037066595?domain=citi.com",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Digital Design Service Pillar Lead - Senior Vice President",
           "url": "https://citi.eightfold.ai/careers/job/859035930025?domain=citi.com",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Global Design & Construction Program Lead - Senior Vice President",
-          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
           "location": "",
           "postedDate": null
         },
@@ -790,6 +778,183 @@
       "ok": false,
       "error": "https://careers.aramco.com/search/?q=design: page.evaluate: Execution context was destroyed, most likely because of a navigation"
     },
+    "triodos-bank": {
+      "ok": true,
+      "roles": []
+    },
+    "backbase": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Senior UX Designer",
+          "url": "https://www.backbase.com/careers/jobs/8194709-senior-ux-designer",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "(Agentic) Product Manager",
+          "url": "https://www.backbase.com/careers/jobs/8188394-agentic-product-manager",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "(Agentic) Product Manager",
+          "url": "https://www.backbase.com/careers/jobs/8188381-agentic-product-manager",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "euronext": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Product Manager, Digital Assets - CSD & Settlement",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r29337-france-product-manager-digital-assets-csd-settlement",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Manager – Issuer Services",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r29197-denmark-product-manager-issuer-services",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product & Business Development Manager",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r29288-norway-product-business-development-manager",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager - Compliance Product",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r28179-france-senior-product-manager-compliance-product",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Manager iBabs (Dutch speaker)",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r29201-netherlands-product-manager-ibabs-dutch-speaker",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Marketing Manager",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r28603-united-kingdom-marketing-manager",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Issuance Product Manager",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r28518-portugal-issuance-product-manager",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Digital Transformation & User Experience Tech Lead",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r28529-norway-digital-transformation-user-experience-tech-lead",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Junior Proxy Product Owner",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r27099-portugal-junior-proxy-product-owner",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Manager, Digital Assets",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r27755-france-product-manager-digital-assets",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Specialist - Cash Equity & Market Data",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r25957-france-product-specialist-cash-equity-market-data",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "nn-group": {
+      "ok": true,
+      "roles": []
+    },
+    "aegon": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Service Design",
+          "url": "https://www.aegon.com/careers/vacancies/spain/madrid/customer-service/service-design",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "goldman-sachs": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Asset & Wealth Management, Private Wealth Management, Learning Design & Delivery, Vice President - New York",
+          "url": "https://higher.gs.com/roles/181839",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Asset & Wealth Management, Private Wealth Management, Investment Strategy Group, Associate - New York",
+          "url": "https://higher.gs.com/roles/181508",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Transaction Banking, Channels Product Manager, Associate",
+          "url": "https://higher.gs.com/roles/185197",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Asset & Wealth Management–New York-Vice President, Product Management-4993008",
+          "url": "https://higher.gs.com/roles/185037",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "morgan-stanley": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Regional Workplace Strategy & Design Lead APAC, Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549796897507?domain=morganstanley.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Client Segment Risk Conduct, Controls & Governance - Control Design - Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549799090035?domain=morganstanley.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior UX Design Lead - Advisory - Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549800099839?domain=morganstanley.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Low Latency Electronic Trading Network Design Engineer",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549799463520?domain=morganstanley.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Associate, UX Designer – Equity Zen",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549797369091?domain=morganstanley.com",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
     "unilever": {
       "ok": true,
       "roles": []
@@ -802,14 +967,14 @@
       "ok": true,
       "roles": [
         {
-          "title": "Junior UI/UX Designer Intern",
-          "url": "https://careers.vanderlande.com/all-jobs/junior-ui-ux-designer-intern-68269271/",
+          "title": "Working Student (m/f/d) Product Management",
+          "url": "https://careers.vanderlande.com/all-jobs/working-student-m-f-d-product-management-68143096/",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Working Student (m/f/d) Product Management",
-          "url": "https://careers.vanderlande.com/all-jobs/working-student-m-f-d-product-management-68143096/",
+          "title": "Junior UI/UX Designer Intern",
+          "url": "https://careers.vanderlande.com/all-jobs/junior-ui-ux-designer-intern-68269271/",
           "location": "",
           "postedDate": null
         },
@@ -883,6 +1048,44 @@
         {
           "title": "Head of Product",
           "url": "https://careers.bunq.com/positions/head-of-product-6",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "vodafoneziggo": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Senior Strategy Manager",
+          "url": "https://careers.vodafoneziggo.com/vacatures/senior-strategy-manager-7121",
+          "location": "",
+          "postedDate": null
+        }
+      ]
+    },
+    "odido": {
+      "ok": true,
+      "roles": []
+    },
+    "sky": {
+      "ok": true,
+      "roles": [
+        {
+          "title": "Principal Product Designer (UX)",
+          "url": "https://careers.sky.com/jobs/t-R0059082",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Sr. Product Manager (6 month Fixed Term Contract)",
+          "url": "https://careers.sky.com/jobs/t-R0059436",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Owner - Tag Management",
+          "url": "https://careers.sky.com/jobs/t-R0053421",
           "location": "",
           "postedDate": null
         }
