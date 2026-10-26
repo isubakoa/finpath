@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T05:45:24.386Z",
+  "generatedAt": "2026-10-26T11:58:03.576Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -263,12 +263,6 @@
           "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Hong-Kong-Office-New/FTC---Product-Management-APAC-ex-Japan---Associate-Director_J72338-1?q=design",
           "location": "Hong Kong Office New, Hong Kong",
           "postedDate": null
-        },
-        {
-          "title": "Customer Acquisition Marketing Manager",
-          "url": "https://fil.wd3.myworkdayjobs.com/en-US/001/job/Kingswood-Fields-Office/Customer-Acquisition-Marketing-Manager_J68850-1?q=design",
-          "location": "Kingswood Fields Office, United Kingdom",
-          "postedDate": null
         }
       ]
     },
@@ -490,36 +484,6 @@
       "ok": true,
       "roles": [
         {
-          "title": "Network Design Optimization Internship",
-          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
-          "location": "Kyiv, Ukraine",
-          "postedDate": null
-        },
-        {
-          "title": "Radio Unit Design Lead",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
-          "location": "Yokohama, Japan",
-          "postedDate": null
-        },
-        {
-          "title": "Radio Frequency design and support",
-          "url": "https://jobs.ericsson.com/careers/job/563121777418239?domain=ericsson.com",
-          "location": "Stockholm, Sweden",
-          "postedDate": null
-        },
-        {
-          "title": "New Grad-Board Power Design-BJ",
-          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
-          "location": "Beijing, China",
-          "postedDate": null
-        },
-        {
-          "title": "Staff Compiler Design Engineer",
-          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
-          "location": "Hybrid",
-          "postedDate": null
-        },
-        {
           "title": "Radio HW Design Power Amplifier",
           "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
           "location": "Yokohama, Japan",
@@ -532,9 +496,33 @@
           "postedDate": null
         },
         {
+          "title": "Network Design Optimization Internship",
+          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
+          "location": "Kyiv, Ukraine",
+          "postedDate": null
+        },
+        {
+          "title": "New Grad-Board Power Design-BJ",
+          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
+          "location": "Beijing, China",
+          "postedDate": null
+        },
+        {
           "title": "Manager of System Design Team 1",
           "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
           "location": "Hybrid",
+          "postedDate": null
+        },
+        {
+          "title": "AI Motion Design Specialist",
+          "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
+          "location": "Hybrid",
+          "postedDate": null
+        },
+        {
+          "title": "Radio Unit Design Lead",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "location": "Yokohama, Japan",
           "postedDate": null
         }
       ]
@@ -543,9 +531,9 @@
       "ok": true,
       "roles": [
         {
-          "title": "VodafoneThree - Cyber Security Senior Consultant - Secure by Design",
-          "url": "https://jobs.vodafone.com/careers/job/563018698264820?domain=vodafone.com",
-          "location": "Newbury, United Kingdom",
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "Milan, Italy",
           "postedDate": null
         },
         {
@@ -555,27 +543,27 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "Hybrid",
-          "postedDate": null
-        },
-        {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "Milan, Italy",
-          "postedDate": null
-        },
-        {
           "title": "Data Centers Design & Implementation Expert",
           "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "Hybrid",
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697137387?domain=vodafone.com",
+          "title": "VodafoneThree - Cyber Security Senior Consultant - Secure by Design",
+          "url": "https://jobs.vodafone.com/careers/job/563018698264820?domain=vodafone.com",
+          "location": "Newbury, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "Hybrid",
+          "postedDate": null
+        },
+        {
+          "title": "GTM Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
+          "location": "Madrid, Spain",
           "postedDate": null
         },
         {
@@ -587,24 +575,6 @@
         {
           "title": "Secure by Design Solution Expert - VOIS",
           "url": "https://jobs.vodafone.com/careers/job/563018697137605?domain=vodafone.com",
-          "location": "Hybrid",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
-          "location": "Hybrid",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Consultant - SD‑WAN & Network Security - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698042082?domain=vodafone.com",
-          "location": "Hybrid",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697137384?domain=vodafone.com",
           "location": "Hybrid",
           "postedDate": null
         }
@@ -673,14 +643,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "UX and Human Factors Design",
-          "url": "https://citi.eightfold.ai/careers/job/859038267995?domain=citi.com",
-          "location": "Hybrid",
-          "postedDate": null
-        },
-        {
-          "title": "Video Design Lead: Multimedia",
-          "url": "https://citi.eightfold.ai/careers/job/859037414561?domain=citi.com",
+          "title": "Global Design & Construction Program Lead - Senior Vice President",
+          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
           "location": "Hybrid",
           "postedDate": null
         },
@@ -697,8 +661,14 @@
           "postedDate": null
         },
         {
-          "title": "Global Design & Construction Program Lead - Senior Vice President",
-          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
+          "title": "Video Design Lead: Multimedia",
+          "url": "https://citi.eightfold.ai/careers/job/859037414561?domain=citi.com",
+          "location": "Hybrid",
+          "postedDate": null
+        },
+        {
+          "title": "UX and Human Factors Design",
+          "url": "https://citi.eightfold.ai/careers/job/859038267995?domain=citi.com",
           "location": "Hybrid",
           "postedDate": null
         },
@@ -732,8 +702,8 @@
       "ok": true,
       "roles": [
         {
-          "title": "Technical Product Owner [Freddy.Innovate & Digital Commerce Innovation]",
-          "url": "https://careers.theheinekencompany.com/job/heineken-krakow/poland/technical-product-owner-freddyinnovate-digital-commerce-innovation",
+          "title": "Technical Product Owner [Innovation-AI & Digital Commerce Innovation]",
+          "url": "https://careers.theheinekencompany.com/job/heineken-krakow/poland/technical-product-owner-innovation-ai-digital-commerce-innovation",
           "location": "HEINEKEN Kraków Kraków, Poland",
           "postedDate": null
         },
@@ -897,6 +867,12 @@
           "postedDate": null
         },
         {
+          "title": "Asset & Wealth Management, Private Wealth Management, Investment Strategy Group, Associate - New York",
+          "url": "https://higher.gs.com/roles/181508",
+          "location": "New York·United States",
+          "postedDate": null
+        },
+        {
           "title": "Product Management, Asset & Wealth Management, London, Vice President",
           "url": "https://higher.gs.com/roles/186125",
           "location": "London·United Kingdom",
@@ -905,12 +881,6 @@
         {
           "title": "Senior Quantitative Strategist, Global Banking & Markets, Marquee Portfolio Analytics",
           "url": "https://higher.gs.com/roles/185024",
-          "location": "New York·United States",
-          "postedDate": null
-        },
-        {
-          "title": "Asset & Wealth Management, Private Wealth Management, Investment Strategy Group, Associate - New York",
-          "url": "https://higher.gs.com/roles/181508",
           "location": "New York·United States",
           "postedDate": null
         },
@@ -947,12 +917,6 @@
           "title": "Senior UX Design Lead - Advisory - Vice President",
           "url": "https://morganstanley.eightfold.ai/careers/job/549800099839?domain=morganstanley.com",
           "location": "New York, United States",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Low Latency Electronic Trading Network Design Engineer",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549799463520?domain=morganstanley.com",
-          "location": "Hong Kong SAR China",
           "postedDate": null
         },
         {
@@ -1044,11 +1008,25 @@
     },
     "tomtom": {
       "ok": true,
-      "roles": []
+      "roles": [
+        {
+          "title": "Product Manager – Traffic (Flow, Jams, Speed Profiles & Moderation)",
+          "url": "https://www.tomtom.com/careers/jobdetails/c3472fe3-b453-4a35-9791-11facf886758/product-manager-traffic-flow-jams-speed-profiles-moderation/",
+          "location": "Amsterdam, The Netherlands",
+          "postedDate": null
+        }
+      ]
     },
     "kpmg": {
       "ok": true,
-      "roles": []
+      "roles": [
+        {
+          "title": "Consultant Strategy & Operations - Health",
+          "url": "https://www.werkenbijkpmg.nl/vacature/consultant-strategy-operations-health",
+          "location": "Amstelveen",
+          "postedDate": null
+        }
+      ]
     },
     "bunq": {
       "ok": true,
