@@ -19,7 +19,7 @@ from match import (
     open_market_gate,
 )
 from scrape import (  # top-level scrape.py imports have no jobspy dependency —
-    build_fresh_roles,                                    # it's only imported lazily inside run_searches()
+    build_fresh_roles,                                    # it's only imported lazily inside run_indeed_searches()
     merge_and_prune,
     CANONICAL_MARKETS,
     EXPIRY_DAYS,

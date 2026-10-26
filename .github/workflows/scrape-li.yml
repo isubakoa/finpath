@@ -1,12 +1,13 @@
-# li-scraper: LinkedIn / Indeed / Bayt / welcome-to-nl / uxwork -> data/li-snapshot.json
+# li-scraper: LinkedIn / Indeed / welcome-to-nl / uxwork -> data/li-snapshot.json
 #
 # Scheduling: GitHub's `schedule` trigger is best-effort and routinely drops or
 # delays runs (we saw 5-7h gaps on a 2h cron). So the cron fires every 15
 # minutes and the first step is a cheap gate that only lets the real run
 # through once SCHEDULE_INTERVAL_HOURS have passed since data/li-snapshot.json
 # was last committed. Self-healing: the next tick that fires after the
-# interval does the work. scrape.py picks its rotation chunk from wall-clock
-# time, so skipped ticks don't skew coverage. Off-minute offsets (3/18/33/48)
+# interval does the work. LinkedIn searches only what's new since each search
+# last completed, and Indeed picks its rotation chunk from wall-clock time, so
+# skipped ticks don't lose coverage. Off-minute offsets (3/18/33/48)
 # avoid GitHub's congested top-of-hour.
 #
 # Tuning what each run searches (markets, terms, combos per run) happens in
@@ -22,7 +23,8 @@ on:
       - "li-scraper/match.py"
       - "li-scraper/companies.py"
       - "li-scraper/requirements.txt"
-      - "li-scraper/bayt_playwright.py"
+      - "li-scraper/linkedin_guest.py"
+      - "li-scraper/uxwork.py"
       - "data/companies.json"
   workflow_dispatch: {}
 
@@ -85,7 +87,7 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         run: pip install -r requirements.txt
 
-      - name: Install Chromium (Playwright, for Bayt)
+      - name: Install Chromium (Playwright, for uxwork)
         if: steps.gate.outputs.should_run == 'true'
         run: playwright install --with-deps chromium
 
@@ -101,9 +103,9 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         run: python test_rotation.py
 
-      - name: Run offline Bayt-Playwright tests
+      - name: Run offline LinkedIn/Indeed tests
         if: steps.gate.outputs.should_run == 'true'
-        run: python test_bayt_playwright.py
+        run: python test_linkedin.py
 
       - name: Run offline uxwork tests
         if: steps.gate.outputs.should_run == 'true'

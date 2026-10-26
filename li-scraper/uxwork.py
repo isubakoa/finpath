@@ -8,14 +8,27 @@ The board is design-only already, so no per-term searches are needed.
 
 Fixed 2026-10-24: the old request sent page=jobsearch plus "Alle" filter values,
 which made search.php return [] -- uxwork contributed zero rows from day one.
+
+Fetched through headless Chromium since 2026-10-26: uxwork.nl is on SiteGround
+(x-sg-cdn), whose anti-bot check answers a suspicious client (GitHub's runner,
+plain `requests`) with a JavaScript challenge page and a 2xx status instead of the
+JSON. A real browser solves the challenge and keeps the cookie, so the browser
+opens the jobs page, waits until search.php answers with JSON (the challenge may
+take a few seconds and a reload), then pages through it from inside the page, like
+the site's own search.js. robots.txt asks for Crawl-delay: 10, so pages are 10 s
+apart.
 """
+import json
 import re
 import sys
 from datetime import datetime, timedelta, timezone
 
-import requests
-
-SEARCH_URL = "https://uxwork.nl/search.php"
+JOBS_PAGE_URL = "https://uxwork.nl/en/jobs/"
+SEARCH_PATH = "/search.php"
+PAGE_TIMEOUT_MS = 30000
+CRAWL_DELAY_SECONDS = 10  # uxwork.nl's robots.txt
+CHALLENGE_ATTEMPTS = 4  # page loads to wait out SiteGround's check before giving up
+CHALLENGE_WAIT_MS = 5000
 
 # English-language roles only (filt_set_lan=Engels, ~90 of ~240), matching the rest of
 # this project. "Banen" = jobs, as opposed to internships/courses/events. Other
@@ -27,8 +40,6 @@ DEFAULT_PARAMS = {
     "lang": "en",
 }
 MAX_PAGES = 40  # ~21 per page; a safety cap, the no-new-urls check normally ends first.
-
-REQUEST_TIMEOUT_SECONDS = 20
 
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -100,27 +111,40 @@ def _item_to_row(item):
     }
 
 
-def scrape_uxwork(debug=False):
-    """Yields ("uxwork", row) for every current, non-sponsored posting, paging
-        search.php until a page adds no new url.
+# Runs in the jobs page: the same request the site's own search.js makes.
+_FETCH_JS = """
+async ({path, params}) => {
+  const r = await fetch(path + "?" + new URLSearchParams(params), {headers: {Accept: "application/json"}});
+  return {status: r.status, text: await r.text()};
+}
+"""
+
+
+def _page_through(fetch_page, pause=lambda: None):
+    """Yields ("uxwork", row) for every current, non-sponsored posting, asking
+        fetch_page(n) -> (status, body text) for page 1, 2, ... (pause() between)
+        until a page adds no new url (the site repeats earlier results past the
+        last page).
     """
-    headers = {
-        "Accept": "application/json",
-        "Referer": "https://uxwork.nl/en/jobs/",
-        "User-Agent": USER_AGENT,
-    }
     seen_urls = set()
     kept = 0
+    page = 0
     for page in range(1, MAX_PAGES + 1):
+        if page > 1:
+            pause()
         try:
-            resp = requests.get(SEARCH_URL, params={**DEFAULT_PARAMS, "page": str(page)},
-                                headers=headers, timeout=REQUEST_TIMEOUT_SECONDS)
-            if resp.status_code >= 400:
-                print(f"[uxwork] page {page}: HTTP {resp.status_code}: {resp.text[:200]!r}", file=sys.stderr)
-                break
-            items = resp.json()
+            status, text = fetch_page(page)
         except Exception as e:  # noqa: BLE001 — one bad call must not kill the run
             print(f"[uxwork] page {page}: request failed: {type(e).__name__}: {e}", file=sys.stderr)
+            break
+        if status >= 400:
+            print(f"[uxwork] page {page}: HTTP {status}: {text[:200]!r}", file=sys.stderr)
+            break
+        try:
+            items = json.loads(text)
+        except ValueError:
+            # Shows what came back instead (a bot check, an error page...).
+            print(f"[uxwork] page {page}: not JSON (HTTP {status}): {text[:200]!r}", file=sys.stderr)
             break
         if not isinstance(items, list):
             print(f"[uxwork] page {page}: unexpected response shape: {type(items).__name__}", file=sys.stderr)
@@ -137,6 +161,48 @@ def scrape_uxwork(debug=False):
         if not added:
             break
     if kept == 0:
-        print("[uxwork] 0 rows -- search.php may have changed (see uxwork.py docstring)", file=sys.stderr)
-    elif debug:
+        print("[uxwork] 0 rows -- see the lines above, and uxwork.py's docstring", file=sys.stderr)
+    else:
         print(f"[uxwork] {kept} rows from {page} page(s)", file=sys.stderr)
+
+
+def _is_json_list(text):
+    try:
+        return isinstance(json.loads(text), list)
+    except ValueError:
+        return False
+
+
+def scrape_uxwork():
+    """Yields ("uxwork", row) like the other sources, fetching through headless
+        Chromium (see the module docstring). Playwright is imported lazily so the
+        tests run without it.
+    """
+    from playwright.sync_api import sync_playwright
+
+    params = lambda n: {"path": SEARCH_PATH, "params": {**DEFAULT_PARAMS, "page": str(n)}}  # noqa: E731
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        try:
+            page = browser.new_page(user_agent=USER_AGENT)
+            first = None
+            for attempt in range(1, CHALLENGE_ATTEMPTS + 1):
+                try:
+                    page.goto(JOBS_PAGE_URL, timeout=PAGE_TIMEOUT_MS, wait_until="networkidle")
+                    first = page.evaluate(_FETCH_JS, params(1))
+                except Exception as e:  # noqa: BLE001 — retried below, then reported
+                    first = {"status": 0, "text": f"{type(e).__name__}: {e}"}
+                if first["status"] < 400 and _is_json_list(first["text"]):
+                    break
+                if attempt < CHALLENGE_ATTEMPTS:
+                    page.wait_for_timeout(CHALLENGE_WAIT_MS)  # let the challenge finish, then reload
+
+            def fetch_page(n):
+                if n == 1:
+                    return first["status"], first["text"]
+                r = page.evaluate(_FETCH_JS, params(n))
+                return r["status"], r["text"]
+
+            yield from _page_through(fetch_page, pause=lambda: page.wait_for_timeout(CRAWL_DELAY_SECONDS * 1000))
+        finally:
+            browser.close()

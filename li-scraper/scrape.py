@@ -4,32 +4,38 @@ data/li-snapshot.json, which check.php merges into ZenPath alongside each
 company's own careers board.
 
 Sources (one generator each, all yielding (source, row)):
-  li, indeed    JobSpy keyword searches over the SEARCH_TERMS x LOCATIONS grid
-                (run_searches). LI is paced; Indeed isn't rate-limited.
-  bayt          headless-Chromium scrape (bayt_playwright.py) -- JobSpy's Bayt
-                adapter gets 403'd everywhere. No location axis, all terms, every run.
+  li            LinkedIn's public job search (linkedin_guest.py), every market on
+                every run: the terms combined into a few OR queries, each searched
+                only for the time since it last succeeded (run_linkedin).
+  indeed        JobSpy keyword searches over the SEARCH_TERMS x LOCATIONS grid,
+                in rotating chunks (run_indeed_searches).
   welcometonl   welcome-to-nl.nl's search backend (welcome_to_nl.py).
-  uxwork        uxwork.nl's JSON search, paged until nothing new (~5 pages; uxwork.py).
-Glassdoor and Google were evaluated and retired in 2026-09 (bot-detection /
-CAPTCHA walls we won't defeat; Glassdoor's API is gone). englishjobsearch.nl
-was evaluated and skipped (tracking-redirect URLs, overlaps LI/Indeed).
+  uxwork        uxwork.nl's JSON search through headless Chromium (uxwork.py).
+Retired: Glassdoor and Google (2026-09: bot walls; Glassdoor's API is gone), Bayt
+(2026-10-26: Cloudflare refused GitHub's runner on 35 of 38 searches, its
+robots.txt bars crawling search results, and it added ~14 roles in our markets
+that LinkedIn/Indeed don't already cover). englishjobsearch.nl was evaluated and
+skipped (tracking-redirect URLs, overlaps LI/Indeed).
 
 Output:
   companies   {slug: {roles: [...]}} -- postings from a tracked company in
               data/companies.json (matched by employer name, match.py) that
               pass the same title-relevance filter the app uses.
-  openMarket  {roles: [...], searchedMarkets, priorityMarkets, ...} -- postings
-              from untracked employers that clear open_market_gate() (relevant,
-              target- or below-tier fit) and are located in a searched market
-              (is_known_market). Agencies are included on purpose. Newest first.
+  openMarket  {roles: [...], searchedMarkets, priorityMarkets, sourceHealth, ...}
+              -- postings from untracked employers that clear open_market_gate()
+              (relevant, target- or below-tier fit) and are located in a searched
+              market (is_known_market). Agencies are included on purpose. Newest
+              first. sourceHealth is this run's per-source report (the app warns
+              when a source was blocked or came back empty).
+  linkedinCoverage  {"<location>|<keywords>": ISO time} -- when each LinkedIn
+              search last completed, so the next run asks only for what's newer.
 Every role carries `source`, a `sources` list (cross-site corroboration,
 precedence in SOURCE_PRECEDENCE) and `sponsorshipSignal` (visa/relocation
 phrases found in the description; always [] for LI, whose descriptions cost an
 extra request each and stay off).
 
-Rotation: the full grid can't be searched in one run without getting blocked
-on LI, so each scheduled run covers one chunk of the ROTATING_LOCATIONS grid
-(COMBOS_PER_RUN combos, chosen from wall-clock time, so it self-heals when
+Indeed rotation: each scheduled run covers one chunk of the ROTATING_LOCATIONS
+grid (COMBOS_PER_RUN combos, chosen from wall-clock time, so it self-heals when
 GitHub skips a tick) plus, every other run, a full sweep of PRIORITY_LOCATIONS
 (Singapore, Dubai, Netherlands). Results accumulate across runs; a role is
 dropped only after EXPIRY_DAYS without being seen again. Cycle lengths are
@@ -37,14 +43,15 @@ printed at the start of every run and published in openMarket for the app.
 
 Usage (locally, or via .github/workflows/scrape-li.yml):
     pip install -r requirements.txt
-    playwright install --with-deps chromium   # once, for Bayt
+    playwright install --with-deps chromium   # once, for uxwork
     python scrape.py
     python scrape.py --debug          # print every kept/dropped result, write nothing
-    python scrape.py --chunk N        # force a rotation chunk
-    python scrape.py --priority | --no-priority   # force the priority sweep on/off
+    python scrape.py --chunk N        # force an Indeed rotation chunk
+    python scrape.py --priority | --no-priority   # force Indeed's priority sweep on/off
 """
 
 import json
+import logging
 import math
 import os
 import random
@@ -67,6 +74,7 @@ from match import (
 # the lowest-ranked site supplies the canonical url/source; all sites stay in
 # `sources`. The NL-only boards rank last so an existing LI/Indeed/Bayt row
 # keeps its url. Unknown sources rank after everything listed.
+# "bayt" stays (retired 2026-10-26) until its last roles expire from the snapshot.
 SOURCE_PRECEDENCE = {"ats": 0, "li": 1, "indeed": 2, "bayt": 3, "welcometonl": 4, "uxwork": 5}
 
 
@@ -369,29 +377,57 @@ INDEED_LOCATION_OVERRIDE = {
     "Dubai, United Arab Emirates": "Dubai",
 }
 
-RESULTS_WANTED_PER_SEARCH = 20
-# JobSpy has no sort parameter, so recency ordering happens in
+# Indeed (JobSpy). JobSpy has no sort parameter, so recency ordering happens in
 # merge_and_prune() (openMarket roles sorted by postedDate, then lastSeenAt).
+RESULTS_WANTED_PER_SEARCH = 20
 HOURS_OLD = 240  # 10 days — comfortably wider than one rotation cycle (see below),
                  # so a role posted right after its combo's turn is still visible
                  # the next time that combo comes up.
 
-# Randomized rather than a fixed delay -- a perfectly uniform gap between
+# Indeed: randomized rather than a fixed delay -- a perfectly uniform gap between
 # requests looks scripted; a random point in a tight range costs nothing.
 PAUSE_BETWEEN_SEARCHES_SECONDS_MIN = 5
 PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
 
-# ---- Rotation ----
+# ---- LinkedIn (run_linkedin, linkedin_guest.py) ----
+# Every market on every run, one search per keyword group. Each search asks only
+# for postings since it last completed (+ a margin, within the min/max), so a
+# search is usually one request. Requests are spaced LINKEDIN_PAUSE_SECONDS apart;
+# a block is waited out once (Retry-After if LinkedIn sends one), and a second
+# block ends LinkedIn for the run -- unfinished searches keep their old coverage
+# time and get a wider window next run. LINKEDIN_MAX_REQUESTS_PER_RUN caps a run
+# (stalest searches go first, the rest wait for the next run).
+LINKEDIN_PAUSE_SECONDS = (8, 15)
+LINKEDIN_WINDOW_MARGIN_SECONDS = 3600
+LINKEDIN_MIN_WINDOW_SECONDS = 3 * 3600
+LINKEDIN_MAX_WINDOW_SECONDS = 7 * 86400
+LINKEDIN_FIRST_WINDOW_SECONDS = 2 * 86400  # a search with no coverage record yet
+LINKEDIN_BLOCK_WAIT_SECONDS = 90
+LINKEDIN_MAX_BLOCK_WAIT_SECONDS = 300
+LINKEDIN_MAX_REQUESTS_PER_RUN = 120
+
+
+class ErrorLogCount(logging.Handler):
+    """Counts JobSpy's error log lines for one site -- its only sign of a failed
+        or blocked search, since it returns an empty result rather than raising.
+    """
+
+    def __init__(self):
+        super().__init__(level=logging.ERROR)
+        self.count = 0
+
+    def emit(self, record):
+        self.count += 1
+
+
+# ---- Indeed rotation ----
 # One run = one chunk of ROTATING_LOCATIONS x SEARCH_TERMS (456 combos), picked
 # from wall-clock time so runs walk the whole grid and wrap around. 114 divides
-# the grid into 4 equal chunks -> a full rotation every ~8h at the 2h cadence,
-# about 1,368 LI and 1,368 Indeed requests a day (the priority sweep adds about
-# the same again). Pacing alone is ~8s/combo, so ~15 min per run, well inside
-# the 2h gap.
+# the grid into 4 equal chunks -> a full rotation every ~8h at the 2h cadence
+# (the priority sweep adds as much again every other run). Pacing is ~8s/combo,
+# so ~15 min per run. LinkedIn doesn't rotate (see run_linkedin).
 #
 # The lever for rotation speed vs. request volume (block risk) is this number.
-# Prefer lowering it over widening LOCATIONS/SEARCH_TERMS if LinkedIn starts
-# blocking runs.
 COMBOS_PER_RUN = 114
 # Wall-clock bucket size for the rotation and the priority sweep. Must match
 # SCHEDULE_INTERVAL_HOURS in .github/workflows/scrape-li.yml's gate step: the
@@ -406,8 +442,8 @@ EXPIRY_DAYS = 14
 
 
 def all_combos():
-    """Every combo across all of LOCATIONS (priority + rotating) -- for accounting
-        and tests; main() searches rotating_combos()/priority_combos() instead.
+    """Every Indeed combo across all of LOCATIONS (priority + rotating) -- for
+        accounting and tests; main() searches rotating_combos()/priority_combos().
     """
     return [(term, loc) for term in SEARCH_TERMS for loc in LOCATIONS]
 
@@ -445,50 +481,132 @@ def priority_sweep_due(forced=None):
     return bucket % 2 == 0
 
 
-def run_searches(combos, debug=False):
-    """Yields ("li" | "indeed", raw JobSpy row) for this run's combos. jobspy is
-        imported lazily so the tests run without it.
-    
-        Each site gets its own scrape_jobs() call and try/except per combo, so one
-        site's failure never costs the other's result. Only LI is paced.
-    
-        Indeed returns descriptions for free; LI only does with
-        linkedin_fetch_description=True, which costs one extra request per result
-        on our biggest source -- so it stays off, and LI-only roles never get a
-        sponsorshipSignal (a role also found on Indeed/Bayt does, via the merge).
+def linkedin_searches():
+    """(location, keywords) for every LinkedIn search: each market x each keyword group."""
+    from linkedin_guest import keyword_groups
+
+    groups = keyword_groups(SEARCH_TERMS)
+    return [(loc, kw) for loc in LOCATIONS for kw in groups]
+
+
+def linkedin_key(location, keywords):
+    return f"{location}|{keywords}"
+
+
+def _iso_utc(epoch):
+    return datetime.fromtimestamp(epoch, timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _epoch(iso):
+    try:
+        return datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc).timestamp()
+    except (TypeError, ValueError):
+        return None
+
+
+def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time):
+    """LinkedIn for this run (see the LinkedIn constants). Returns (rows, coverage,
+        health): rows as ("li", row); coverage updated for the searches that
+        completed (searches no longer configured are dropped); health for
+        sourceHealth.
     """
-    from jobspy import scrape_jobs
+    from linkedin_guest import Blocked, search
 
-    for term, location in combos:
-        if debug:
-            print(f"[scrape] searching (li): {term!r} @ {location!r}", file=sys.stderr)
-        try:
-            df = scrape_jobs(
-                site_name=["linkedin"],
-                search_term=term,
-                location=location,
-                results_wanted=RESULTS_WANTED_PER_SEARCH,
-                hours_old=HOURS_OLD,
-                linkedin_fetch_description=False,
-                verbose=1 if debug else 0,
-            )
-        except Exception as e:  # noqa: BLE001 — one bad search must not kill the whole run
-            print(f"[scrape] li search failed ({term!r} @ {location!r}): {e}", file=sys.stderr)
-            df = None
-        if df is not None and len(df):
-            for row in df.to_dict(orient="records"):
-                yield ("li", row)
-        time.sleep(random.uniform(PAUSE_BETWEEN_SEARCHES_SECONDS_MIN, PAUSE_BETWEEN_SEARCHES_SECONDS_MAX))
+    if get is None:
+        import requests
+        session = requests.Session()
+        get = session.get
 
-        indeed_country = INDEED_COUNTRY.get(location)
-        if not indeed_country:
-            indeed_location = None  # shouldn't happen — every LOCATIONS entry has a mapping — but skip cleanly if it ever doesn't
-        else:
+    searches = linkedin_searches()
+    keys = {linkedin_key(loc, kw) for loc, kw in searches}
+    coverage = {k: v for k, v in (coverage or {}).items() if k in keys}
+    # Stalest first, so a run cut short still moves the oldest searches forward.
+    searches.sort(key=lambda s: _epoch(coverage.get(linkedin_key(*s))) or 0)
+
+    def pause():
+        sleep(random.uniform(*LINKEDIN_PAUSE_SECONDS))
+
+    rows, requests_made, done, blocks = [], 0, 0, 0
+    stopped = False
+    for i, (location, keywords) in enumerate(searches):
+        if requests_made >= LINKEDIN_MAX_REQUESTS_PER_RUN:
+            print(f"[linkedin] request budget ({LINKEDIN_MAX_REQUESTS_PER_RUN}) used; "
+                  f"{len(searches) - i} search(es) wait for the next run", file=sys.stderr)
+            break
+        if i:
+            pause()
+        started = now()
+        last = _epoch(coverage.get(linkedin_key(location, keywords)))
+        window = (LINKEDIN_FIRST_WINDOW_SECONDS if last is None
+                  else min(max(started - last + LINKEDIN_WINDOW_MARGIN_SECONDS, LINKEDIN_MIN_WINDOW_SECONDS),
+                           LINKEDIN_MAX_WINDOW_SECONDS))
+        found = None
+        for attempt in (1, 2):
+            try:
+                found, n = search(get, keywords, location, window, pause)
+                requests_made += n
+                break
+            except Blocked as b:
+                requests_made += b.requests
+                rows.extend(("li", r) for r in b.rows)
+                blocks += 1
+                if attempt == 2:
+                    stopped = True
+                    print(f"[linkedin] blocked again (HTTP {b.status}); no more LinkedIn this run", file=sys.stderr)
+                    break
+                wait = min(b.wait or LINKEDIN_BLOCK_WAIT_SECONDS, LINKEDIN_MAX_BLOCK_WAIT_SECONDS)
+                print(f"[linkedin] blocked (HTTP {b.status}); waiting {wait}s, then one retry", file=sys.stderr)
+                sleep(wait)
+            except Exception as e:  # noqa: BLE001 — one bad search must not kill the run
+                requests_made += 1
+                print(f"[linkedin] {location!r} failed: {type(e).__name__}: {e}", file=sys.stderr)
+                break
+        if stopped:
+            break
+        if found is not None:
+            rows.extend(("li", r) for r in found)
+            coverage[linkedin_key(location, keywords)] = _iso_utc(started)
+            done += 1
+
+    end = now()
+    covered = [_epoch(coverage.get(linkedin_key(*s))) for s in searches]
+    stalest = max(((end - c) / 3600 if c else None) for c in covered) if all(covered) else None
+    health = {
+        "searches": len(searches), "done": done, "requests": requests_made, "blocked": blocks,
+        "stoppedEarly": stopped, "rows": len(rows),
+        # Hours since the least recently completed search (None: some never completed).
+        "stalestHours": round(stalest, 1) if stalest is not None else None,
+    }
+    print(f"[linkedin] {done} of {len(searches)} searches done, {requests_made} requests, {blocks} block(s)"
+          + ("; stopped early" if stopped else ""), file=sys.stderr)
+    return rows, coverage, health
+
+
+def run_indeed_searches(combos, debug=False, scrape_jobs=None, sleep=time.sleep):
+    """Indeed for this run's combos, paced, one scrape_jobs() call and try/except
+        per combo. Returns (rows as ("indeed", row), health). jobspy is imported
+        lazily so the tests run without it (they pass scrape_jobs/sleep).
+    """
+    if scrape_jobs is None:
+        from jobspy import scrape_jobs
+
+    errors = ErrorLogCount()
+    indeed_logger = logging.getLogger("jobspy.indeed")
+    indeed_logger.addHandler(errors)
+    rows, failed = [], 0
+    try:
+        for i, (term, location) in enumerate(combos):
+            if i:
+                sleep(random.uniform(PAUSE_BETWEEN_SEARCHES_SECONDS_MIN, PAUSE_BETWEEN_SEARCHES_SECONDS_MAX))
+            indeed_country = INDEED_COUNTRY.get(location)
+            if not indeed_country:
+                continue  # shouldn't happen — every LOCATIONS entry has a mapping — but skip cleanly if it ever doesn't
             indeed_location = INDEED_LOCATION_OVERRIDE.get(location, location)
             if debug:
                 print(f"[scrape] searching (indeed): {term!r} @ {indeed_location!r} ({indeed_country})", file=sys.stderr)
+            before = errors.count
             try:
-                df2 = scrape_jobs(
+                df = scrape_jobs(
                     site_name=["indeed"],
                     search_term=term,
                     location=indeed_location,
@@ -497,22 +615,17 @@ def run_searches(combos, debug=False):
                     hours_old=HOURS_OLD,
                     verbose=1 if debug else 0,
                 )
-            except Exception as e:  # noqa: BLE001 — same isolation as the LI call above
+            except Exception as e:  # noqa: BLE001 — one bad search must not kill the run
                 print(f"[scrape] indeed search failed ({term!r} @ {indeed_location!r}): {e}", file=sys.stderr)
-                df2 = None
-            if df2 is not None and len(df2):
-                for row in df2.to_dict(orient="records"):
-                    yield ("indeed", row)
-
-
-def run_bayt_playwright_searches(debug=False):
-    """Yields (source, row) for every SEARCH_TERMS entry against Bayt via a
-    headless-Chromium scrape (bayt_playwright.py). Imported lazily so this
-    module stays importable by the tests without playwright installed --
-    same as jobspy's lazy import in run_searches()."""
-    from bayt_playwright import scrape_bayt
-
-    yield from scrape_bayt(SEARCH_TERMS, debug=debug)
+                df = None
+                errors.count += 1
+            failed += errors.count > before
+            if df is not None and len(df):
+                rows.extend(("indeed", row) for row in df.to_dict(orient="records"))
+    finally:
+        indeed_logger.removeHandler(errors)
+    print(f"[scrape] indeed: {len(combos) - failed} of {len(combos)} searches ok, {len(rows)} results", file=sys.stderr)
+    return rows, {"searches": len(combos), "failed": failed, "rows": len(rows)}
 
 
 def run_welcome_to_nl_searches(debug=False):
@@ -524,11 +637,12 @@ def run_welcome_to_nl_searches(debug=False):
     yield from scrape_welcome_to_nl(SEARCH_TERMS, debug=debug)
 
 
-def run_uxwork_searches(debug=False):
-    """Yields ("uxwork", row) from uxwork.nl -- a few pages, no terms (uxwork.py)."""
+def run_uxwork_searches():
+    """Yields ("uxwork", row) from uxwork.nl -- a few pages, no terms (uxwork.py,
+        through headless Chromium; imported lazily like the others)."""
     from uxwork import scrape_uxwork
 
-    yield from scrape_uxwork(debug=debug)
+    yield from scrape_uxwork()
 
 
 def normalize_posted_date(value):
@@ -814,50 +928,52 @@ def main():
     combos_this_run = this_chunk + priority
 
     cycle_hours = total_chunks * SCHEDULE_INTERVAL_HOURS
-    # 2 JobSpy requests per combo (li + indeed) + one Bayt page load per term
-    # + up to 2 welcome-to-nl.nl requests per term + ~5 uxwork.nl pages.
-    max_requests_this_run = len(combos_this_run) * 2 + len(SEARCH_TERMS) + len(SEARCH_TERMS) * 2 + 5
     print(
-        f"[scrape] rotating pool: {len(rotating)} combos ({len(SEARCH_TERMS)} terms x "
-        f"{len(ROTATING_LOCATIONS)} rotating locations), {COMBOS_PER_RUN}/run -> {total_chunks} "
-        f"chunks -> full cycle ~{cycle_hours}h (~{cycle_hours / 24:.1f} days). Priority pool: "
-        f"{len(PRIORITY_LOCATIONS)} markets ({', '.join(PRIORITY_LOCATIONS)}) x {len(SEARCH_TERMS)} "
-        f"terms = {len(priority_combos())} combos, swept every other run "
-        f"(~{2 * SCHEDULE_INTERVAL_HOURS}h worst-case gap). "
-        f"[cycle length set independently of which sites are queried — see COMBOS_PER_RUN's own comment]"
+        f"[scrape] LinkedIn: {len(linkedin_searches())} searches ({len(LOCATIONS)} markets x keyword groups), "
+        f"every run. Indeed: rotating pool of {len(rotating)} combos ({len(SEARCH_TERMS)} terms x "
+        f"{len(ROTATING_LOCATIONS)} rotating locations), {COMBOS_PER_RUN}/run -> {total_chunks} chunks -> "
+        f"full cycle ~{cycle_hours}h; priority pool {len(PRIORITY_LOCATIONS)} markets ({', '.join(PRIORITY_LOCATIONS)}) "
+        f"x {len(SEARCH_TERMS)} terms, swept every other run (~{2 * SCHEDULE_INTERVAL_HOURS}h)."
     )
-    print(f"[scrape] this run: rotating chunk {chunk_index + 1}/{total_chunks} ({len(this_chunk)} combos)"
-          + (f" + priority sweep ({len(priority)} combos)" if include_priority else " (priority sweep not due this run)")
-          + f" = {len(combos_this_run)} combos x li+indeed (JobSpy) "
-          f"+ {len(SEARCH_TERMS)} bayt page loads (Playwright) "
-          f"+ up to {len(SEARCH_TERMS) * 2} welcome-to-nl.nl requests + ~5 uxwork.nl pages "
-          f"= up to {max_requests_this_run} requests")
+    print(f"[scrape] this run: Indeed chunk {chunk_index + 1}/{total_chunks} ({len(this_chunk)} combos)"
+          + (f" + priority sweep ({len(priority)} combos)" if include_priority else " (priority sweep not due)")
+          + f"; LinkedIn up to {LINKEDIN_MAX_REQUESTS_PER_RUN} requests; welcome-to-nl up to "
+          f"{len(SEARCH_TERMS) * 2} requests; uxwork ~5 pages")
 
     index = build_index(COMPANIES, ALIASES)
-    rows = (
-        list(run_searches(combos_this_run, debug=debug))
-        + list(run_bayt_playwright_searches(debug=debug))
-        + list(run_welcome_to_nl_searches(debug=debug))
-        + list(run_uxwork_searches(debug=debug))
-    )
+    existing = load_existing_snapshot()
+    checked_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    li_rows, coverage, li_health = run_linkedin(existing.get("linkedinCoverage"))
+    indeed_rows, indeed_health = run_indeed_searches(combos_this_run, debug=debug)
+    welcome_rows = list(run_welcome_to_nl_searches(debug=debug))
+    uxwork_rows = list(run_uxwork_searches())
+    rows = li_rows + indeed_rows + welcome_rows + uxwork_rows
     counts = {}
     for source, _ in rows:
         counts[source] = counts.get(source, 0) + 1
-    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "bayt", "welcometonl", "uxwork"))
+    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "welcometonl", "uxwork"))
     print(f"[scrape] {len(rows)} raw results this run ({counts_str})")
 
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     fresh_roles, fresh_open_market_roles = build_fresh_roles(rows, index, today_iso, debug=debug)
-    existing = load_existing_snapshot()
     snapshot = merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=fresh_open_market_roles, debug=debug)
+    snapshot["linkedinCoverage"] = coverage
 
-    # What the app's "which markets" tooltip shows -- published here so it can
-    # never drift from LOCATIONS / the rotation settings.
+    # What the app's "which markets" tooltip and source warnings show -- published
+    # here so they can never drift from LOCATIONS / the rotation settings.
     snapshot["openMarket"].update({
         "searchedMarkets": list(CANONICAL_MARKETS),
         "priorityMarkets": [_canonical_market_name(loc) for loc in PRIORITY_LOCATIONS],
         "fullCycleHours": cycle_hours,
         "prioritySweepHours": 2 * SCHEDULE_INTERVAL_HOURS,
+        "linkedinEveryHours": SCHEDULE_INTERVAL_HOURS,
+        "sourceHealth": {
+            "checkedAt": checked_at,
+            "linkedin": li_health,
+            "indeed": indeed_health,
+            "welcometonl": {"rows": len(welcome_rows)},
+            "uxwork": {"rows": len(uxwork_rows)},
+        },
     })
 
     open_market_count = len(snapshot["openMarket"]["roles"])
