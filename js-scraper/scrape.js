@@ -449,8 +449,13 @@ function countryName(value) {
   return v;
 }
 
+// What some cards show in place of a location ("Hybrid", "All locations"): treated
+// as none, so the posting page is read instead.
+const PLACELESS = /^(fully\s+)?(remote|hybrid|on-?site|in office|flexible|all locations|multiple locations|various locations)$/i;
+
 function cleanLocation(text) {
-  return String(text || "").replace(/\s+/g, " ").replace(/^locations?\s*:?\s*/i, "").trim();
+  const t = String(text || "").replace(/\s+/g, " ").replace(/^locations?\s*:?\s*/i, "").trim();
+  return PLACELESS.test(t) ? "" : t;
 }
 
 function previousLocations() {
@@ -459,7 +464,7 @@ function previousLocations() {
     const byUrl = {};
     Object.values(previous.companies || {}).forEach((c) => {
       (c.roles || []).forEach((r) => {
-        if (r.url && r.location) byUrl[r.url] = r.location;
+        if (r.url && cleanLocation(r.location)) byUrl[r.url] = r.location;
       });
     });
     return byUrl;
@@ -680,7 +685,7 @@ async function scrapeCompany(browser, company, { debug = false } = {}) {
   if (debug && relevant.length !== roles.length) {
     console.log(`[${company.slug}] ${roles.length - relevant.length} of ${roles.length} dropped as not title-relevant, ${relevant.length} kept`);
   }
-  return { ok: true, roles: relevant.map((r) => ({ title: r.title, url: r.url, location: r.location, postedDate: null })) };
+  return { ok: true, roles: relevant.map((r) => ({ title: r.title, url: r.url, location: cleanLocation(r.location), postedDate: null })) };
 }
 
 // Steps 2 and 3 of "Locations", for roles whose listing showed none.
