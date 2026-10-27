@@ -44,7 +44,7 @@ ATS_REQUIRED = {
     "smartrecruiters": {"slug"}, "workable": {"slug"}, "pinpoint": {"slug"},
     "bamboohr": {"slug"}, "workday": {"slug", "wdNum"},
     "oraclecloud": {"host", "site"}, "html": {"url", "linkPattern"},
-    "hibob": {"host"}, "eightfold": {"host", "domain"}, "revolutpeople": {"slug"},
+    "hibob": {"host"}, "eightfold": {"host", "domain"}, "revolutpeople": {"slug"}, "phenom": {"url"},
     "snapshot": {"slug"},
     "unknown": set(), "other": set(),
     # one-off, company-specific adapters in check.php

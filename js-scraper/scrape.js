@@ -444,6 +444,30 @@ const COMPANIES = [
     titleSelector: ".job-title",
     locationSelector: ".data-location .value",
   },
+  {
+    slug: "siemens",
+    // Avature: the HTML holds 6 results, the browser renders ~21 per search; the RSS
+    // feed ignores the search. Each card's first JobDetail link carries the title.
+    urls: ["design", "UX", "product+manager"].map((q) => `https://jobs.siemens.com/en_US/externaljobs/SearchJobs/?search=${q}`),
+    linkPattern: /\/externaljobs\/JobDetail\/\d+$/,
+    waitForSelector: 'a[href*="/JobDetail/"]',
+  },
+  {
+    slug: "virgin-media-o2",
+    // Avature, server-rendered, 8 per page (jobOffset); full-text "design" search had
+    // 127 hits on 2026-10-27. The title link comes before the "View job" link.
+    urls: Array.from({ length: 16 }, (_, i) => `https://jobs.virginmediao2.co.uk/en_US/careersmarketplace/SearchJobs?search=design&jobOffset=${i * 8}`),
+    linkPattern: /\/careersmarketplace\/JobDetail\/[^/]+\/\d+$/,
+    waitForSelector: 'a[href*="/JobDetail/"]',
+  },
+  {
+    slug: "viasat",
+    // Jibe front end over iCIMS; its JSON API needs a session, the rendered page doesn't.
+    urls: ["design", "product"].flatMap((q) => ["Singapore", "United Kingdom"].map((l) =>
+      `https://careers.viasat.com/jobs?keywords=${q}&location=${encodeURIComponent(l)}&page=1`)),
+    linkPattern: /careers\.viasat\.com\/jobs\/\d+\?lang=/,
+    waitForSelector: 'a[href*="/jobs/"][href*="lang="]',
+  },
   // Not scraped:
   //   - wefox: careers site broken, no open roles on its join.com board.
   //   - Hang Seng Bank, Mubadala: job cards are JS click handlers with no href to

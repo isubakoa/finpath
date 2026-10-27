@@ -5159,10 +5159,12 @@
       "url": "https://orange.jobs/gb/en",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Careers site (orange.jobs) runs on Phenom People — not one of check.php's supported adapters and no confirmed scrapable job-card structure was found (its own job-area categories don't even list a Design function). The one design-adjacent posting found (a French communications-design internship) no longer resolves. No Director/Head/UX/Product Design role found as of 2026-09-12. RE-INVESTIGATED (2026-09-17, real browser): confirmed the search UI genuinely filters server-side (orange.jobs/gb/en/search-results?keywords=design gave a real, different 148-result set, not the unfiltered board — all noise, enterprise/network 'design' roles same as BT/Fujitsu's platforms, nothing UX/product-relevant). But unlike BT/Fujitsu's clean single-endpoint recruiting API, Phenom People's real data layer here is a single generic POST endpoint (orange.jobs/widgets) that multiplexes dozens of different operations through one URL with a request-body-encoded operation name (getChatbotConfigurations, getJobStatusListV2, refineSearch, validateJwtToken, and others all hit this same path) — every response actually captured this pass was one of the auxiliary ones (chatbot config, cart count, token validation), and the real job-search request's body/shape couldn't be captured (its response wasn't retrievable via this pass's network tools, and it didn't fire through a plain window.fetch call this page's UI could be monkey-patched to catch). A genuinely harder integration surface than BT/Fujitsu's, consistent with why this stayed unsupported originally — not a dead end, just not solved this pass.",
+      "openNote": "orange.jobs runs on Phenom (915 roles, mostly France and Belgium, on 2026-10-27); check.php reads the first 50 results of its server-side \"design\" search from the data each page carries.",
       "ats": {
-        "type": "unknown",
-        "slug": null
+        "type": "phenom",
+        "url": "https://orange.jobs/gb/en",
+        "keyword": "design",
+        "pages": 5
       }
     },
     {
@@ -5993,13 +5995,12 @@
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "Diversified industrial conglomerate (automation, healthcare via Siemens Healthineers, mobility, energy); large-scale global engineering org.",
       "url": "https://www.siemens.com/careers",
-      "openStatus": "uncertain",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "Runs on Avature (confirmed via meta-avature.portal.id/name tags), domain jobs.siemens.com/[locale]/externaljobs/... . The job search is a dynamic form with no static listing content available via fetch — could not enumerate current openings. No Director/Head/VP/Principal/Staff/Lead Product Design/UX/Strategy role confirmed either way.",
+      "openNote": "jobs.siemens.com (Avature) renders only 6 results in its HTML and the rest in the browser, and its RSS feed ignores the search, so js-scraper reads its \"design\", \"UX\" and \"product manager\" searches (2026-10-27).",
       "ats": {
-        "type": "other",
-        "slug": null,
-        "vendor": "Avature (jobs.siemens.com/[locale]/externaljobs/...)"
+        "type": "snapshot",
+        "slug": "siemens"
       }
     },
     {
@@ -6972,11 +6973,13 @@
       "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
       "note": "Dutch retail bank (formerly SNS); its brands are being merged under the ASN Bank name.",
       "url": "https://werkenbij.asnbank.nl/",
-      "openStatus": "uncertain",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "Careers site werkenbij.asnbank.nl runs on Phenom and only renders its search in a full browser session; not wired in yet (2026-10-24). Covered through job-site matches.",
+      "openNote": "werkenbij.asnbank.nl runs on Phenom; each search-results page carries its 10 jobs as data in the HTML, readable without a browser session (44 roles on 2026-10-27). check.php reads every page.",
       "ats": {
-        "type": "unknown"
+        "type": "phenom",
+        "url": "https://werkenbij.asnbank.nl/nl/nl",
+        "pages": 6
       },
       "match": {
         "aliases": [
@@ -8581,11 +8584,12 @@
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
       "note": "UK mobile and broadband operator, a 50/50 joint venture of Liberty Global and Telefónica.",
       "url": "https://jobs.virginmediao2.co.uk/en_US/careersmarketplace/SearchJobs",
-      "openStatus": "uncertain",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "Avature board, server-rendered, but fixed at 8 per page with a full-text search that mostly returns retail and field-sales roles (213 roles, 127 for 'design' on 2026-10-24), so it isn't read directly. Covered through job-site matches.",
+      "openNote": "Avature board, server-rendered 8 per page with full-text search (127 hits for \"design\" on 2026-10-27, mostly retail and field sales); js-scraper reads every page of that search.",
       "ats": {
-        "type": "unknown"
+        "type": "snapshot",
+        "slug": "virgin-media-o2"
       },
       "match": {
         "aliases": [
@@ -8808,11 +8812,12 @@
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry.",
       "note": "Satellite communications group; acquired Inmarsat (London) in 2023.",
       "url": "https://careers.viasat.com/jobs",
-      "openStatus": "uncertain",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "iCIMS board (careers.viasat.com); its search returns 405 to ZenPath's server (2026-10-24). Covered through job-site matches.",
+      "openNote": "careers.viasat.com is a Jibe front end over iCIMS whose job API needs a browser session; js-scraper reads its \"design\" and \"product\" searches for Singapore and the UK (2026-10-27).",
       "ats": {
-        "type": "unknown"
+        "type": "snapshot",
+        "slug": "viasat"
       },
       "match": {
         "aliases": [
