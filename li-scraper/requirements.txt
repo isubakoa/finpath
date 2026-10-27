@@ -3,5 +3,7 @@
 python-jobspy==1.4.1
 
 # LinkedIn's public job search (linkedin_guest.py) and welcome-to-nl.nl.
+# curl_cffi (also a JobSpy dependency) is linkedin_guest's "chrome" client.
 requests
+curl_cffi
 beautifulsoup4

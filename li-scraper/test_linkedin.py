@@ -51,7 +51,7 @@ check("packed into groups of at most MAX_PHRASES_PER_GROUP",
 check("'Product Designer' isn't dropped for containing 'Product' alone (whole phrases only)",
       lg.keyword_groups(["Product", "Product Designer", "Productivity Lead"]) == ['"product" OR "productivity lead"'])
 real = lg.keyword_groups(scrape.SEARCH_TERMS)
-check(f"the real 38 terms become a few groups ({len(real)})", 2 <= len(real) <= 4)
+check(f"the real {len(scrape.SEARCH_TERMS)} terms become a few groups ({len(real)})", 2 <= len(real) <= 4)
 
 print("\n-- parse_cards() --")
 rows = lg.parse_cards(card(4321, "Associate Design Director") + card(99, "UX Lead", company="Acme", location="London, England, United Kingdom", posted="2026-10-25"))
@@ -121,19 +121,33 @@ NOW = 1_800_000_000  # fixed clock
 iso = scrape._iso_utc
 searches = scrape.linkedin_searches()
 keys = [scrape.linkedin_key(*s) for s in searches]
+PAUSE, BACKOFF = scrape.LINKEDIN_PAUSE_SECONDS, scrape.LINKEDIN_BLOCK_BACKOFF_SECONDS
+# The real budget (30) is below the number of searches (33); most cases here check
+# other behaviour, so they lift it and the budget case restores it.
+BUDGET = scrape.LINKEDIN_MAX_REQUESTS_PER_RUN
+scrape.LINKEDIN_MAX_REQUESTS_PER_RUN = len(searches) + 10
 
 
 class FakeLinkedIn:
-    """Answers every search with one posting; `plan` blocks the n-th request."""
+    """Answers the search page with 200 (recorded in `warm`), and every search
+        request with one posting; the n-th search request in `block_at` gets a 429.
+    """
 
-    def __init__(self, block_at=()):
-        self.requests = []
+    def __init__(self, block_at=(), warm_status=200):
+        self.requests, self.headers, self.warm = [], [], []
         self.block_at = set(block_at)
+        self.warm_status = warm_status
 
     def get(self, url, params=None, headers=None, timeout=None):
+        if url == lg.SEARCH_PAGE_URL:
+            self.warm.append((params, headers))
+            if self.warm_status is None:
+                raise ConnectionError("no route")
+            return Resp(self.warm_status, "<html><title>Jobs</title></html>")
         self.requests.append(params)
+        self.headers.append(headers)
         if len(self.requests) in self.block_at:
-            return Resp(429, "")
+            return Resp(429, "<html><head><title>LinkedIn: Too Many Requests</title></head></html>")
         return Resp(200, card(len(self.requests), "Design Lead", location=params["location"]))
 
 
@@ -145,12 +159,28 @@ check(f"every market x keyword group searched once ({len(searches)} searches, on
 check("no coverage yet -> the first-run window (12h)", all(p["f_TPR"] == f"r{12 * 3600}" for p in fake.requests))
 check("each completed search is recorded with its start time", coverage == {k: iso(NOW) for k in keys})
 check("rows are tagged li", len(rows) == len(searches) and all(s == "li" for s, _ in rows))
-check("requests are spaced (one pause between searches)", len(sleeps) == len(searches) - 1
-      and all(scrape.LINKEDIN_PAUSE_SECONDS[0] <= x <= scrape.LINKEDIN_PAUSE_SECONDS[1] for x in sleeps))
+check("human pace: a pause after the warm-up and between searches, each within LINKEDIN_PAUSE_SECONDS",
+      len(sleeps) == len(searches) and all(PAUSE[0] <= x <= PAUSE[1] for x in sleeps) and PAUSE[0] >= 60)
 check("health: nothing blocked, all done, stalest 0h, no first block",
       (health["blocked"], health["stoppedEarly"], health["stalestHours"], health["firstBlockRequest"]) == (0, False, 0.0, None))
-check("one log entry per request: time, market, group, offset, window, status, size",
+check("one log entry per search request: time, market, group, offset, window, status, size",
       len(log) == len(searches) and set(log[0]) == {"s", "loc", "g", "start", "windowH", "status", "bytes"} and log[0]["status"] == 200 and log[0]["windowH"] == 12.0)
+check("warm-up: the public search page is loaded once, first, for the first search, as a navigation",
+      len(fake.warm) == 1 and fake.warm[0][0]["keywords"] == fake.requests[0]["keywords"]
+      and fake.warm[0][0]["location"] == fake.requests[0]["location"]
+      and fake.warm[0][1]["Sec-Fetch-Mode"] == "navigate")
+check("health records the warm-up status and the variant (None when the client is injected)",
+      (health["warmStatus"], health["variant"]) == (200, None))
+check("search requests look like the page's own calls: Referer is that search's page, cors fetch",
+      all(h["Referer"] == lg.referer(p["keywords"], p["location"]) and h["Sec-Fetch-Mode"] == "cors"
+          for p, h in zip(fake.requests, fake.headers)))
+check("the Referer is the search page with the search's keywords and location",
+      lg.referer('"ux lead"', "Singapore") == "https://www.linkedin.com/jobs/search?keywords=%22ux+lead%22&location=Singapore&distance=50")
+
+fake = FakeLinkedIn(warm_status=None)
+rows, coverage, health, log = scrape.run_linkedin({}, get=fake.get, sleep=lambda s: None, now=lambda: NOW)
+check("a failed warm-up is recorded (status 0) and the searches still run",
+      health["warmStatus"] == 0 and health["done"] == len(searches))
 
 fake = FakeLinkedIn()
 cov = {k: iso(NOW - 2 * 3600) for k in keys}
@@ -168,16 +198,17 @@ check("searches no longer configured are dropped from coverage", "Gone Market|\"
 fake = FakeLinkedIn(block_at={3})
 sleeps = []
 rows, coverage, health, log = scrape.run_linkedin({}, get=fake.get, sleep=sleeps.append, now=lambda: NOW)
-check("one block: back off 60s, retry that search, carry on (all searches done)",
-      health["done"] == len(searches) and health["blocked"] == 1 and 60 in sleeps and not health["stoppedEarly"])
-check("...the first block is recorded (request 3)", health["firstBlockRequest"] == 3 and log[2]["status"] == 429)
+check(f"one block: wait out the penalty ({BACKOFF[0]}s), probe that search once, carry on (all searches done)",
+      health["done"] == len(searches) and health["blocked"] == 1 and sleeps.count(BACKOFF[0]) == 1 and not health["stoppedEarly"])
+check("...the first block is recorded (request 3) with the block page's title",
+      health["firstBlockRequest"] == 3 and log[2]["status"] == 429 and log[2]["title"] == "LinkedIn: Too Many Requests")
 
 fake = FakeLinkedIn(block_at={3, 4})
 sleeps = []
 cov = {k: iso(NOW - 2 * 3600) for k in keys}
 rows, coverage, health, log = scrape.run_linkedin(cov, get=fake.get, sleep=sleeps.append, now=lambda: NOW)
-check("blocked again on the retry: back off longer (120s), skip that search, carry on with the rest",
-      120 in sleeps and health["done"] == len(searches) - 1 and not health["stoppedEarly"])
+check("blocked again on the probe: wait again, skip that search, carry on with the rest",
+      sleeps.count(BACKOFF[-1]) == 2 and health["done"] == len(searches) - 1 and not health["stoppedEarly"])
 check("...the skipped search keeps its old coverage time", sum(1 for v in coverage.values() if v == iso(NOW - 2 * 3600)) == 1)
 
 fake = FakeLinkedIn(block_at=set(range(3, 200)))
@@ -185,13 +216,21 @@ sleeps = []
 rows, coverage, health, log = scrape.run_linkedin(cov, get=fake.get, sleep=sleeps.append, now=lambda: NOW)
 check(f"{scrape.LINKEDIN_MAX_BLOCKS_IN_A_ROW} blocks in a row: LinkedIn stops for this run",
       health["stoppedEarly"] and health["blocked"] == scrape.LINKEDIN_MAX_BLOCKS_IN_A_ROW and len(fake.requests) == 2 + scrape.LINKEDIN_MAX_BLOCKS_IN_A_ROW)
-check("...backing off 60s, 120s, 240s in between", [x for x in sleeps if x >= 60] == [60, 120, 240])
+check("...a penalty wait after each block but the last", [x for x in sleeps if x > PAUSE[1]] == [BACKOFF[-1]] * (scrape.LINKEDIN_MAX_BLOCKS_IN_A_ROW - 1))
 check("...the 2 searches done keep the new time, the rest their old one",
       sum(1 for v in coverage.values() if v == iso(NOW)) == 2 and sum(1 for v in coverage.values() if v == iso(NOW - 2 * 3600)) == len(keys) - 2)
 check("...health reports it", (health["done"], health["stalestHours"], health["firstBlockRequest"]) == (2, 2.0, 3))
 
+fake = FakeLinkedIn(block_at={1, 2, 3})
+rows, coverage, health, log = scrape.run_linkedin({}, get=fake.get, sleep=lambda s: None, now=lambda: NOW)
+check("an address penalised from the start costs 3 requests, then LinkedIn stops for the run",
+      len(fake.requests) == 3 and health["stoppedEarly"] and health["done"] == 0)
+
+
 class RetryAfter(FakeLinkedIn):
     def get(self, url, params=None, headers=None, timeout=None):
+        if url == lg.SEARCH_PAGE_URL:
+            return Resp(200, "")
         self.requests.append(params)
         if len(self.requests) == 1:
             return Resp(429, "", {"Retry-After": "999"})
@@ -201,13 +240,22 @@ sleeps = []
 scrape.run_linkedin({}, get=fake.get, sleep=sleeps.append, now=lambda: NOW)
 check("a Retry-After is honoured, capped at LINKEDIN_MAX_BLOCK_WAIT_SECONDS", scrape.LINKEDIN_MAX_BLOCK_WAIT_SECONDS in sleeps)
 
-saved = scrape.LINKEDIN_MAX_REQUESTS_PER_RUN
-scrape.LINKEDIN_MAX_REQUESTS_PER_RUN = 5
+scrape.LINKEDIN_MAX_REQUESTS_PER_RUN = BUDGET
 fake = FakeLinkedIn()
 rows, coverage, health, log = scrape.run_linkedin({}, get=fake.get, sleep=lambda s: None, now=lambda: NOW)
-scrape.LINKEDIN_MAX_REQUESTS_PER_RUN = saved
-check("the request budget ends the run's LinkedIn part; the rest wait (never covered -> stalestHours None)",
-      len(fake.requests) == 5 and health["done"] == 5 and health["stalestHours"] is None and not health["stoppedEarly"])
+check(f"the request budget ({BUDGET}) ends the run's LinkedIn part; the rest wait (never covered -> stalestHours None)",
+      len(fake.requests) == BUDGET and health["done"] == BUDGET and health["stalestHours"] is None and not health["stoppedEarly"])
+check("the budget at the human pace fits well inside the 2h cadence (< 60 min of pauses)",
+      BUDGET * PAUSE[1] < 60 * 60)
+
+print("\n-- open_session(): both client variants build --")
+for variant in lg.VARIANTS:
+    try:
+        get = lg.open_session(variant)
+        check(f"{variant!r} gives a get()", callable(get))
+    except ImportError as e:
+        check(f"{variant!r} gives a get() ({e})", False)
+check("page_title reads a block page's title", lg.page_title("<html><title>\n Too  Many </title>") == "Too Many")
 
 print("\n-- run_indeed_searches(): failures counted from JobSpy's error log --")
 

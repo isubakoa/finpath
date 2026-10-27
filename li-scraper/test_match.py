@@ -397,14 +397,15 @@ def run():
         ("Kuala Lumpur, Malaysia", "Malaysia"),
         ("Berlin, Germany", "Germany"),  # a bare-country LOCATIONS entry, well outside the old 3-market allowlist
         ("Sydney, NSW, Australia", "Australia"),
-        ("Tokyo, Japan", "Japan"),
+        ("Tokyo, Japan", None),  # Japan dropped from LOCATIONS 2026-10-27
         # ISO_CODE_TO_MARKET's last-segment pass: "City, StateCode, CountryCode".
         ("Berlin, BE, DE", "Germany"),
         ("London, ENG, GB", "United Kingdom"),
-        ("Stockholm, AB, SE", "Sweden"),
+        ("Stockholm, AB, SE", None),  # Sweden dropped 2026-10-27
+        ("Milan, MI, IT", "Italy"),
         ("Outram, S00, SG", "Singapore"),
         # CITY_ALIASES: "Greater X Area" with no country marker.
-        ("Greater Tokyo Area", "Japan"),
+        ("Greater Tokyo Area", None),
         ("Greater Kuala Lumpur", "Malaysia"),
         # Smaller Dutch cities and provinces (2026-10-25).
         ("Haarlem, North Holland", "Netherlands"),
@@ -430,13 +431,13 @@ def run():
         print(f"  {'OK ' if ok else 'FAIL'}  {raw!r:45s} -> {got!r} (expected {expected!r})")
 
     print("-- open-market: CANONICAL_MARKETS derivation (2026-09-23, sanity; "
-          "LOCATIONS trimmed 25 -> 15 on 2026-09-24 — see below) --")
+          "LOCATIONS trimmed 25 -> 15 on 2026-09-24, 15 -> 11 on 2026-10-27) --")
     canonical_checks = [
-        # A tripwire, not a derived value: 15 LOCATIONS entries -> 15 distinct markets.
+        # A tripwire, not a derived value: 11 LOCATIONS entries -> 11 distinct markets.
         # Update deliberately if LOCATIONS changes.
-        ("15 distinct canonical markets from 15 LOCATIONS entries (no more "
+        ("11 distinct canonical markets from 11 LOCATIONS entries (no "
          "multi-entry collapsing since only one UAE entry remains)",
-         len(CANONICAL_MARKETS) == 15),
+         len(CANONICAL_MARKETS) == 11),
         ("Singapore present (bare LOCATIONS entry, unchanged)", "Singapore" in CANONICAL_MARKETS),
         ("Germany present — never eligible for open market before the broadening round",
          "Germany" in CANONICAL_MARKETS),

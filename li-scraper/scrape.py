@@ -57,6 +57,7 @@ import os
 import random
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 from companies import COMPANIES, ALIASES
@@ -151,14 +152,14 @@ def sponsorship_signal(description):
 
 OUTPUT_PATH = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "li-snapshot.json"))
 
-# ---- Search terms: 9 product + 29 design/UX titles (trimmed from 108 in
-# ---- 2026-09 to shorten the rotation). ----
+# ---- Search terms: 8 product + 26 design/UX titles (trimmed from 108 in
+# ---- 2026-09; 2026-10-27: research terms and Marketing Manager removed, Design
+# ---- Director and Associate Design Director added). ----
 PRODUCT_TERMS = [
     "Product Manager",
     "Product Owner",
     "Product Lead",
     "Product Strategist",
-    "Marketing Manager",
     "Senior Product Manager",
     "Lead Product Manager",
     "Principal Product Manager",
@@ -181,11 +182,6 @@ DESIGN_TERMS = [
     "UX Strategist",
     "UX Consultant",
     "UX Specialist",
-    "UX Researcher",
-    "User Researcher",
-    "Design Researcher",
-    "Lead UX Researcher",
-    "Senior UX Researcher",
     "Senior Design Manager",
     "Senior UX Manager",
     "Design Strategist",
@@ -195,25 +191,24 @@ DESIGN_TERMS = [
     "VP of Design",
     "Head of Product Design",
     "Head of Design",
+    "Design Director",
+    "Associate Design Director",
 ]
 
 SEARCH_TERMS = PRODUCT_TERMS + DESIGN_TERMS
 
-# Target markets. Bare country names search the whole country; "City,
-# Country" entries search that metro only. Every entry needs an INDEED_COUNTRY
+# Target markets (2026-10-27: Japan, South Korea, Sweden and Portugal removed).
+# Bare country names search the whole country; "City, Country" entries search
+# that metro only. Every entry needs an INDEED_COUNTRY
 # mapping below.
 LOCATIONS = [
     "Singapore",
     "Hong Kong",
-    "Japan",
-    "South Korea",
     "New Zealand",
     "Australia",
     "Netherlands",
     "Italy",
-    "Sweden",
     "Germany",
-    "Portugal",
     "United Kingdom",
     "Ireland",
     "Kuala Lumpur, Malaysia",
@@ -268,9 +263,9 @@ MARKET_ALIASES = {
 # posting exists; Cambridge MA, Perth Scotland): when unsure, drop the rare
 # legitimate posting rather than let an off-market one in.
 ISO_CODE_TO_MARKET = {
-    "sg": "Singapore", "hk": "Hong Kong", "jp": "Japan", "kr": "South Korea",
+    "sg": "Singapore", "hk": "Hong Kong",
     "nz": "New Zealand", "au": "Australia", "nl": "Netherlands", "it": "Italy",
-    "se": "Sweden", "de": "Germany", "pt": "Portugal", "gb": "United Kingdom",
+    "de": "Germany", "gb": "United Kingdom",
     "uk": "United Kingdom", "ie": "Ireland", "my": "Malaysia",
     "ae": "United Arab Emirates",
 }
@@ -304,16 +299,10 @@ CITY_ALIASES = {
     "noord-brabant": "Netherlands", "north brabant": "Netherlands",
     "gelderland": "Netherlands", "flevoland": "Netherlands", "overijssel": "Netherlands",
     "sydney": "Australia", "melbourne": "Australia", "brisbane": "Australia",
-    "tokyo": "Japan",
     "munich": "Germany", "hamburg": "Germany", "stuttgart": "Germany",
     "nuremberg": "Germany",
     "milan": "Italy", "padova": "Italy", "padua": "Italy", "vicenza": "Italy",
-    "seoul": "South Korea", "incheon": "South Korea", "busan": "South Korea",
     "kuala lumpur": "Malaysia",
-    "lisbon": "Portugal", "porto": "Portugal",
-    "stockholm": "Sweden", "vasteras": "Sweden", "västerås": "Sweden",
-    "goteborg": "Sweden", "göteborg": "Sweden", "gothenburg": "Sweden",
-    "malmo": "Sweden", "malmö": "Sweden",
     "dublin": "Ireland", "cork": "Ireland",
     "auckland": "New Zealand", "wellington": "New Zealand", "christchurch": "New Zealand",
     "blackpool": "United Kingdom",
@@ -359,15 +348,11 @@ def is_known_market(location):
 INDEED_COUNTRY = {
     "Singapore": "Singapore",
     "Hong Kong": "Hong Kong",
-    "Japan": "Japan",
-    "South Korea": "South Korea",
     "New Zealand": "New Zealand",
     "Australia": "Australia",
     "Netherlands": "Netherlands",
     "Italy": "Italy",
-    "Sweden": "Sweden",
     "Germany": "Germany",
-    "Portugal": "Portugal",
     "United Kingdom": "UK",
     "Ireland": "Ireland",
     "Kuala Lumpur, Malaysia": "Malaysia",
@@ -391,28 +376,31 @@ PAUSE_BETWEEN_SEARCHES_SECONDS_MIN = 5
 PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
 
 # ---- LinkedIn (run_linkedin, linkedin_guest.py) ----
-# Every market on every run, one search per keyword group. Each search asks only
-# for postings since it last completed (+ a margin, within the min/max), so a
-# search is usually one request. Requests are spaced LINKEDIN_PAUSE_SECONDS apart.
-# A block (429/999/403) is backed off (LINKEDIN_BLOCK_BACKOFF_SECONDS, or
-# Retry-After) and the search retried once; then the run moves on -- JobSpy got
-# ~58% of its searches through from the same runners while blocks came and went,
-# so one block isn't treated as the end. LinkedIn stops for the run after
-# LINKEDIN_MAX_BLOCKS_IN_A_ROW blocks in a row or LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS
-# of waiting. Unfinished searches keep their old coverage time and get a wider
-# window next run. LINKEDIN_MAX_REQUESTS_PER_RUN caps a run (stalest first).
-# Every request is logged (snapshot linkedinLastRun) and each run summarised
-# (linkedinHistory, last LINKEDIN_HISTORY_RUNS runs) to tune these from evidence.
-LINKEDIN_PAUSE_SECONDS = (8, 15)
+# Each market x keyword group is one search. Each search asks only for postings
+# since it last completed (+ a margin, within the min/max), so a search is
+# usually one request. Human pace (2026-10-27, see linkedin_guest.py): requests
+# are LINKEDIN_PAUSE_SECONDS apart and a run makes at most
+# LINKEDIN_MAX_REQUESTS_PER_RUN, stalest searches first, so a run that can't
+# reach every search still moves the oldest ones forward and the rest get a wider
+# window next time (nothing is lost while the gap is under the 7-day maximum).
+# A block (429/999/403) waits out LinkedIn's penalty (LINKEDIN_BLOCK_BACKOFF_SECONDS,
+# or Retry-After) and probes once with the same search; then the run moves on.
+# LinkedIn stops for the run after LINKEDIN_MAX_BLOCKS_IN_A_ROW blocks in a row or
+# LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS of waiting. The session is warmed on the
+# public search page first, and the client variant (linkedin_guest.VARIANTS) is
+# picked at random per run. Every request is logged (snapshot linkedinLastRun) and
+# each run summarised (linkedinHistory, last LINKEDIN_HISTORY_RUNS runs, with the
+# variant) to tune these from evidence.
+LINKEDIN_PAUSE_SECONDS = (60, 90)
 LINKEDIN_WINDOW_MARGIN_SECONDS = 3600
 LINKEDIN_MIN_WINDOW_SECONDS = 3 * 3600
 LINKEDIN_MAX_WINDOW_SECONDS = 7 * 86400
 LINKEDIN_FIRST_WINDOW_SECONDS = 12 * 3600  # a search with no coverage record yet
-LINKEDIN_BLOCK_BACKOFF_SECONDS = (60, 120, 240)  # by blocks in a row
+LINKEDIN_BLOCK_BACKOFF_SECONDS = (300,)  # by blocks in a row; the penalty lifted after 2-4 min
 LINKEDIN_MAX_BLOCK_WAIT_SECONDS = 300  # cap on a Retry-After
-LINKEDIN_MAX_BLOCKS_IN_A_ROW = 4
+LINKEDIN_MAX_BLOCKS_IN_A_ROW = 3
 LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS = 15 * 60
-LINKEDIN_MAX_REQUESTS_PER_RUN = 120
+LINKEDIN_MAX_REQUESTS_PER_RUN = 30  # ~40 min at the pause above
 LINKEDIN_HISTORY_RUNS = 120  # ~10 days at the 2h cadence
 
 
@@ -430,14 +418,14 @@ class ErrorLogCount(logging.Handler):
 
 
 # ---- Indeed rotation ----
-# One run = one chunk of ROTATING_LOCATIONS x SEARCH_TERMS (456 combos), picked
-# from wall-clock time so runs walk the whole grid and wrap around. 114 divides
-# the grid into 4 equal chunks -> a full rotation every ~8h at the 2h cadence
-# (the priority sweep adds as much again every other run). Pacing is ~8s/combo,
-# so ~15 min per run. LinkedIn doesn't rotate (see run_linkedin).
+# One run = one chunk of ROTATING_LOCATIONS x SEARCH_TERMS (272 combos since the
+# 2026-10-27 trim), picked from wall-clock time so runs walk the whole grid and
+# wrap around. 68 divides the grid into 4 equal chunks -> a full rotation every
+# ~8h at the 2h cadence (the priority sweep adds its own combos every other run).
+# Pacing is ~8s/combo, so ~9 min per run. LinkedIn doesn't rotate (see run_linkedin).
 #
 # The lever for rotation speed vs. request volume (block risk) is this number.
-COMBOS_PER_RUN = 114
+COMBOS_PER_RUN = 68
 # Wall-clock bucket size for the rotation and the priority sweep. Must match
 # SCHEDULE_INTERVAL_HOURS in .github/workflows/scrape-li.yml's gate step: the
 # workflow fires every 15 minutes, but only runs when this much time has passed
@@ -513,18 +501,18 @@ def _epoch(iso):
         return None
 
 
-def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time):
+def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time, variant=None):
     """LinkedIn for this run (see the LinkedIn constants). Returns (rows, coverage,
         health, request_log): rows as ("li", row); coverage updated for the searches
         that completed (searches no longer configured are dropped); health for
-        sourceHealth and linkedinHistory; request_log one entry per request.
+        sourceHealth and linkedinHistory; request_log one entry per search request
+        (the warm-up is in health). `get` replaces the HTTP client (tests).
     """
-    from linkedin_guest import Blocked, search
+    from linkedin_guest import BLOCK_STATUSES, VARIANTS, Blocked, open_session, page_title, search, warm_up
 
     if get is None:
-        import requests
-        session = requests.Session()
-        get = session.get
+        variant = variant or random.choice(VARIANTS)
+        get = open_session(variant)
 
     searches = linkedin_searches()
     keys = {linkedin_key(loc, kw) for loc, kw in searches}
@@ -546,6 +534,8 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time):
             request_log.append(entry)
             raise
         entry.update(status=resp.status_code, bytes=len(resp.text or ""))
+        if resp.status_code in BLOCK_STATUSES:
+            entry["title"] = page_title(resp.text)
         request_log.append(entry)
         return resp
 
@@ -555,6 +545,9 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time):
     rows, requests_made, done, blocks, capped = [], 0, 0, 0, 0
     blocks_in_a_row = waited = 0
     stopped = False
+    warm_status = warm_up(get, searches[0][1], searches[0][0]) if searches else None
+    if searches:
+        pause()
     for i, (location, keywords) in enumerate(searches):
         if requests_made >= LINKEDIN_MAX_REQUESTS_PER_RUN:
             print(f"[linkedin] request budget ({LINKEDIN_MAX_REQUESTS_PER_RUN}) used; "
@@ -608,8 +601,10 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time):
     end = now()
     covered = [_epoch(coverage.get(linkedin_key(*s))) for s in searches]
     stalest = max(((end - c) / 3600 if c else None) for c in covered) if all(covered) else None
-    first_block = next((n for n, e in enumerate(request_log, 1) if e["status"] in (403, 429, 999)), None)
+    first_block = next((n for n, e in enumerate(request_log, 1) if e["status"] in BLOCK_STATUSES), None)
     health = {
+        # Client variant (linkedin_guest.open_session) and the warm-up's HTTP status.
+        "variant": variant, "warmStatus": warm_status,
         "searches": len(searches), "done": done, "requests": requests_made, "blocked": blocks,
         "stoppedEarly": stopped, "rows": len(rows), "capped": capped,
         # Hours since the least recently completed search (None: some never completed).
@@ -619,7 +614,8 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time):
         "firstBlockSecs": request_log[first_block - 1]["s"] if first_block else None,
         "minutes": round((end - run_started) / 60, 1),
     }
-    print(f"[linkedin] {done} of {len(searches)} searches done, {requests_made} requests, {blocks} block(s)"
+    print(f"[linkedin] {variant or 'injected'} client, warm-up HTTP {warm_status}; "
+          f"{done} of {len(searches)} searches done, {requests_made} requests, {blocks} block(s)"
           + (f", first at request {first_block}" if first_block else "")
           + ("; stopped early" if stopped else ""), file=sys.stderr)
     return rows, coverage, health, request_log
@@ -978,9 +974,13 @@ def main():
     index = build_index(COMPANIES, ALIASES)
     existing = load_existing_snapshot()
     checked_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    li_rows, coverage, li_health, li_log = run_linkedin(existing.get("linkedinCoverage"))
-    indeed_rows, indeed_health = run_indeed_searches(combos_this_run, debug=debug)
-    welcome_rows = list(run_welcome_to_nl_searches(debug=debug))
+    # LinkedIn spends most of its ~40 min pausing between requests (human pace), so
+    # it runs alongside Indeed and Welcome to NL rather than before them.
+    with ThreadPoolExecutor(max_workers=1) as pool:
+        linkedin = pool.submit(run_linkedin, existing.get("linkedinCoverage"))
+        indeed_rows, indeed_health = run_indeed_searches(combos_this_run, debug=debug)
+        welcome_rows = list(run_welcome_to_nl_searches(debug=debug))
+        li_rows, coverage, li_health, li_log = linkedin.result()
     rows = li_rows + indeed_rows + welcome_rows
     counts = {}
     for source, _ in rows:
@@ -1005,7 +1005,8 @@ def main():
         "priorityMarkets": [_canonical_market_name(loc) for loc in PRIORITY_LOCATIONS],
         "fullCycleHours": cycle_hours,
         "prioritySweepHours": 2 * SCHEDULE_INTERVAL_HOURS,
-        "linkedinEveryHours": SCHEDULE_INTERVAL_HOURS,
+        # At best one request per search, LINKEDIN_MAX_REQUESTS_PER_RUN per run.
+        "linkedinEveryHours": math.ceil(li_health["searches"] / LINKEDIN_MAX_REQUESTS_PER_RUN) * SCHEDULE_INTERVAL_HOURS,
         "sourceHealth": {
             "checkedAt": checked_at,
             "linkedin": li_health,

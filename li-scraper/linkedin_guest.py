@@ -11,7 +11,7 @@ Why (R&D 2026-10-26, after a run lost 48 of 114 LinkedIn searches to HTTP 429):
     ~230-460 LinkedIn requests per run.
   - This client cuts that to roughly one request per (keyword group, market):
       * keywords are combined with OR ('"product manager" OR "product owner"'),
-        which the guest search honours, so 38 terms become a few groups;
+        which the guest search honours, so the search terms become a few groups;
       * the time window (f_TPR, any number of seconds) covers only the time since
         that search last succeeded, plus a margin, so a page rarely fills up;
       * pages are spaced out, and a search reads at most MAX_PAGES_PER_SEARCH
@@ -23,6 +23,21 @@ Why (R&D 2026-10-26, after a run lost 48 of 114 LinkedIn searches to HTTP 429):
         run widens their window and nothing is lost.
   Every request is logged into the snapshot (scrape.py), so blocking patterns can
   be read across many runs rather than guessed from one.
+
+Human pace (2026-10-27, from the 06:46Z run's per-request log): a fresh address
+gets a burst of ~5 requests 10-13 s apart, then 429s; once penalised, a retry 60 s
+later fails but a single request after 2-4 min gets through, and the next one
+12 s after it fails again. Some runner addresses arrive already penalised. So a
+run now behaves like one person browsing (scrape.py's LinkedIn constants): a
+minute or more between requests, ~30 requests at most, a 5-minute wait before a
+single probe after a block. It also looks more like a browser:
+  - the public search page is loaded first (warm_up), which sets LinkedIn's
+    session cookies, and later requests carry it as the Referer, the way the
+    page's own "see more jobs" calls do;
+  - two clients are tried, one per run, chosen at random and recorded in the
+    run's history (open_session): plain `requests`, and curl_cffi impersonating
+    Chrome, whose TLS and HTTP/2 fingerprint matches a real browser rather than
+    Python's. The history shows which gets through more often.
 
 Endpoint: GET https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search
   keywords, location, distance (JobSpy's default, kept), f_TPR=r<seconds>,
@@ -38,6 +53,7 @@ import sys
 from bs4 import BeautifulSoup
 
 SEARCH_URL = "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search"
+SEARCH_PAGE_URL = "https://www.linkedin.com/jobs/search"  # the public page that calls SEARCH_URL
 JOB_URL = "https://www.linkedin.com/jobs/view/{id}"
 PAGE_SIZE = 10
 MAX_PAGES_PER_SEARCH = 3  # 30 postings, newest first; a busier window skips its oldest (logged)
@@ -45,14 +61,74 @@ DISTANCE_MILES = 50
 MAX_PHRASES_PER_GROUP = 10
 REQUEST_TIMEOUT_SECONDS = 20
 BLOCK_STATUSES = (403, 429, 999)
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-        "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+VARIANTS = ("requests", "chrome")  # see open_session
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36"
+)
+# Loading the search page (a navigation).
+PAGE_HEADERS = {
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "none",
+    "Upgrade-Insecure-Requests": "1",
 }
+# The page's own result calls (fetch from the page). Referer is added per search.
+API_HEADERS = {
+    "Accept": "*/*",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin",
+}
+
+
+def open_session(variant):
+    """A session's get() for one client variant:
+        "requests" - Python requests with a Chrome User-Agent;
+        "chrome"   - curl_cffi impersonating Chrome (its User-Agent, header order,
+                     TLS and HTTP/2 fingerprint; it sets the User-Agent itself).
+        Both keep cookies across requests.
+    """
+    if variant == "chrome":
+        from curl_cffi import requests as cffi_requests
+        return cffi_requests.Session(impersonate="chrome").get
+    import requests
+    session = requests.Session()
+    session.headers["User-Agent"] = USER_AGENT
+    return session.get
+
+
+def search_page_params(keywords, location):
+    return {"keywords": keywords, "location": location, "distance": DISTANCE_MILES}
+
+
+def referer(keywords, location):
+    """The search page URL a browser would be on for this search."""
+    from urllib.parse import urlencode
+    return SEARCH_PAGE_URL + "?" + urlencode(search_page_params(keywords, location))
+
+
+def warm_up(get, keywords, location):
+    """Loads the public search page once, as a visitor would before the page asks
+        for more results, so the session holds LinkedIn's cookies. Returns the HTTP
+        status (0 when the request failed); a failure doesn't stop the run.
+    """
+    try:
+        resp = get(SEARCH_PAGE_URL, params=search_page_params(keywords, location),
+                   headers=PAGE_HEADERS, timeout=REQUEST_TIMEOUT_SECONDS)
+    except Exception as e:  # noqa: BLE001 — the searches can still be tried without it
+        print(f"[linkedin] warm-up failed: {type(e).__name__}: {e}", file=sys.stderr)
+        return 0
+    return resp.status_code
+
+
+def page_title(html):
+    """<title> of a page, for logging what a block page says (≤80 chars)."""
+    m = re.search(r"<title[^>]*>(.*?)</title>", html or "", flags=re.S | re.I)
+    return re.sub(r"\s+", " ", m.group(1)).strip()[:80] if m else ""
 
 
 def keyword_groups(terms, max_phrases=MAX_PHRASES_PER_GROUP):
@@ -126,7 +202,8 @@ def fetch_page(get, keywords, location, window_seconds, start):
         "sortBy": "DD",
         "start": start,
     }
-    resp = get(SEARCH_URL, params=params, headers=HEADERS, timeout=REQUEST_TIMEOUT_SECONDS)
+    headers = dict(API_HEADERS, Referer=referer(keywords, location))
+    resp = get(SEARCH_URL, params=params, headers=headers, timeout=REQUEST_TIMEOUT_SECONDS)
     if resp.status_code in BLOCK_STATUSES:
         retry_after = resp.headers.get("Retry-After", "")
         raise Blocked(resp.status_code, int(retry_after) if retry_after.isdigit() else None)
