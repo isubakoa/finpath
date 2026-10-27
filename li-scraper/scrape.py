@@ -4,9 +4,10 @@ data/li-snapshot.json, which check.php merges into ZenPath alongside each
 company's own careers board.
 
 Sources (one generator each, all yielding (source, row)):
-  li            LinkedIn's public job search (linkedin_guest.py), every market on
-                every run: the terms combined into a few OR queries, each searched
-                only for the time since it last succeeded (run_linkedin).
+  li            LinkedIn's public job search (linkedin_guest.py) at human pace:
+                the terms combined into a few OR queries per market, each searched
+                only for the time since it last succeeded, stalest first, up to
+                LINKEDIN_MAX_REQUESTS_PER_RUN requests a run (run_linkedin).
   indeed        JobSpy keyword searches over the SEARCH_TERMS x LOCATIONS grid,
                 in rotating chunks (run_indeed_searches).
   welcometonl   welcome-to-nl.nl's search backend (welcome_to_nl.py).
@@ -22,7 +23,7 @@ Output:
   companies   {slug: {roles: [...]}} -- postings from a tracked company in
               data/companies.json (matched by employer name, match.py) that
               pass the same title-relevance filter the app uses.
-  openMarket  {roles: [...], searchedMarkets, priorityMarkets, sourceHealth, ...}
+  openMarket  {roles: [...], searchedMarkets, searchTerms, priorityMarkets, sourceHealth, ...}
               -- postings from untracked employers that clear open_market_gate()
               (relevant, target- or below-tier fit) and are located in a searched
               market (is_known_market). Agencies are included on purpose. Newest
@@ -197,7 +198,8 @@ DESIGN_TERMS = [
 
 SEARCH_TERMS = PRODUCT_TERMS + DESIGN_TERMS
 
-# Target markets (2026-10-27: Japan, South Korea, Sweden and Portugal removed).
+# Target markets (2026-10-27: Japan, South Korea, Sweden and Portugal removed). The
+# app's accepted countries (app.js TARGET_COUNTRY_NAMES) are the same list.
 # Bare country names search the whole country; "City, Country" entries search
 # that metro only. Every entry needs an INDEED_COUNTRY
 # mapping below.
@@ -1002,6 +1004,7 @@ def main():
     # here so they can never drift from LOCATIONS / the rotation settings.
     snapshot["openMarket"].update({
         "searchedMarkets": list(CANONICAL_MARKETS),
+        "searchTerms": list(SEARCH_TERMS),
         "priorityMarkets": [_canonical_market_name(loc) for loc in PRIORITY_LOCATIONS],
         "fullCycleHours": cycle_hours,
         "prioritySweepHours": 2 * SCHEDULE_INTERVAL_HOURS,
