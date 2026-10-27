@@ -1,8 +1,9 @@
 {
-  "generatedAt": "2026-10-27T12:52:46.513Z",
+  "generatedAt": "2026-10-27T16:21:52.603Z",
   "companies": {
     "adyen": {
       "ok": true,
+      "found": 8,
       "roles": [
         {
           "title": "Group Product Manager, APAC [Head of Products, APAC]",
@@ -50,10 +51,12 @@
     },
     "klarna": {
       "ok": true,
+      "found": 97,
       "roles": []
     },
     "atlassian": {
       "ok": true,
+      "found": 346,
       "roles": [
         {
           "title": "Senior Design Manager, Strategy Collection",
@@ -233,6 +236,7 @@
     },
     "fidelity-international": {
       "ok": true,
+      "found": 20,
       "roles": [
         {
           "title": "Senior Manager, Product Development and Management",
@@ -268,14 +272,17 @@
     },
     "abu-dhabi-investment-authority-adia": {
       "ok": true,
+      "found": 5,
       "roles": []
     },
     "natwest-group": {
       "ok": true,
+      "found": 0,
       "roles": []
     },
     "bank-of-new-zealand-bnz": {
       "ok": true,
+      "found": 14,
       "roles": [
         {
           "title": "UX Content Designer",
@@ -287,6 +294,7 @@
     },
     "national-australia-bank-nab": {
       "ok": true,
+      "found": 19,
       "roles": [
         {
           "title": "Solution Design - Fraud",
@@ -322,10 +330,12 @@
     },
     "abn-amro": {
       "ok": true,
+      "found": 8,
       "roles": []
     },
     "cimb-group": {
       "ok": true,
+      "found": 25,
       "roles": [
         {
           "title": "Manager, GS IC SBF Office - Solution & Design MY",
@@ -349,52 +359,24 @@
     },
     "aspire": {
       "ok": true,
-      "roles": [
-        {
-          "title": "Partner Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/partner-marketing-manager-831f2ae4-7cb0-4f85-b162-e07f55149737",
-          "location": "Remote: CN (Remote)",
-          "postedDate": null
-        },
-        {
-          "title": "AI Product Manager, FinCrime",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/ai-product-manager-fin-crime-ef285596-5640-47e2-a882-cccebe127c45",
-          "location": "Office: IN (Bengaluru)",
-          "postedDate": null
-        },
-        {
-          "title": "Field Marketing Manager",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/field-marketing-manager-ff554506-c7f8-4d31-bb03-9ff26719c296",
-          "location": "Office: US (San Francisco)",
-          "postedDate": null
-        },
-        {
-          "title": "Growth Strategist Intern",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/growth-strategist-intern-3299041d-d3ad-4946-9564-456c455a2298",
-          "location": "Office: SG (Singapore)",
-          "postedDate": null
-        },
-        {
-          "title": "Product Manager (Expense Management)",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/product-manager-expense-management-32f0fce0-7106-4eb9-911e-b445daa7abab",
-          "location": "Office: IN (Gurgaon)",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Product Manager – AspireBooks",
-          "url": "https://revolutpeople.com/aspire/public/careers/position/senior-product-manager-aspire-books-52bce63d-8b58-4d1d-bae1-97b1e94bbb31",
-          "location": "Office: IN (Bengaluru)",
-          "postedDate": null
-        }
-      ]
+      "found": 0,
+      "roles": []
     },
     "kiwibank": {
       "ok": true,
+      "found": 12,
       "roles": []
     },
     "american-express": {
       "ok": true,
+      "found": 10,
       "roles": [
+        {
+          "title": "Director - Content Design",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26015698/?keyword=design",
+          "location": "New York, NY, United States",
+          "postedDate": null
+        },
         {
           "title": "Senior Product Designer",
           "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26015472/?keyword=design",
@@ -420,27 +402,22 @@
           "postedDate": null
         },
         {
-          "title": "Senior Manager - Global Lounge Design Strategy",
-          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26012667/?keyword=design",
+          "title": "Senior UX Researcher",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26015631/?keyword=design",
           "location": "New York, NY, United States",
           "postedDate": null
         },
         {
-          "title": "Campus - Internship Programme - Undergraduate - Product Manager - 2027 (UK - Burgess Hill)",
-          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26013764/?keyword=design",
-          "location": "BURGESS HILL, WEST SUSSEX, United Kingdom",
-          "postedDate": null
-        },
-        {
-          "title": "Campus - Internship Programme - Undergraduate - Product Manager - 2027 (UK - London)",
-          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26013766/?keyword=design",
-          "location": "LONDON, United Kingdom",
+          "title": "Senior Manager - Global Lounge Design Strategy",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26012667/?keyword=design",
+          "location": "New York, NY, United States",
           "postedDate": null
         }
       ]
     },
     "standard-chartered": {
       "ok": true,
+      "found": 10,
       "roles": [
         {
           "title": "Designer - Mox",
@@ -476,6 +453,7 @@
     },
     "bmw-group": {
       "ok": true,
+      "found": 10,
       "roles": [
         {
           "title": "Junior Designer, Interaction Design",
@@ -511,33 +489,18 @@
     },
     "netflix": {
       "ok": true,
+      "found": 0,
       "roles": []
     },
     "google": {
       "ok": true,
+      "found": 0,
       "roles": []
     },
     "ericsson": {
       "ok": true,
+      "found": 20,
       "roles": [
-        {
-          "title": "New Grad-Board Power Design-BJ",
-          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
-          "location": "Beijing, China",
-          "postedDate": null
-        },
-        {
-          "title": "AI Motion Design Specialist",
-          "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
-          "location": "Budapest, Hungary",
-          "postedDate": null
-        },
-        {
-          "title": "Manager of System Design Team 1",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
-          "location": "Yokohama, Japan",
-          "postedDate": null
-        },
         {
           "title": "Network Design Optimization Internship",
           "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
@@ -551,6 +514,30 @@
           "postedDate": null
         },
         {
+          "title": "Radio Unit Design Lead",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "location": "Yokohama, Japan",
+          "postedDate": null
+        },
+        {
+          "title": "Radio Frequency design and support",
+          "url": "https://jobs.ericsson.com/careers/job/563121777418239?domain=ericsson.com",
+          "location": "Stockholm, Sweden",
+          "postedDate": null
+        },
+        {
+          "title": "Manager of System Design Team 1",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
+          "location": "Yokohama, Japan",
+          "postedDate": null
+        },
+        {
+          "title": "AI Motion Design Specialist",
+          "url": "https://jobs.ericsson.com/careers/job/563121776553445?domain=ericsson.com",
+          "location": "Budapest, Hungary",
+          "postedDate": null
+        },
+        {
           "title": "Radio HW Design Power Amplifier",
           "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
           "location": "Yokohama, Japan",
@@ -560,29 +547,12 @@
     },
     "vodafone": {
       "ok": true,
+      "found": 17,
       "roles": [
         {
           "title": "Data Centers Design & Implementation Expert",
           "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
           "location": "Istanbul, Türkiye",
-          "postedDate": null
-        },
-        {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
-          "location": "Düsseldorf, Germany",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "Lisbon, Portugal",
-          "postedDate": null
-        },
-        {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "Milan, Italy",
           "postedDate": null
         },
         {
@@ -592,9 +562,21 @@
           "postedDate": null
         },
         {
-          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "Düsseldorf, Germany",
+          "postedDate": null
+        },
+        {
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "Milan, Italy",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "location": "Lisbon, Portugal",
           "postedDate": null
         },
         {
@@ -604,21 +586,28 @@
           "postedDate": null
         },
         {
-          "title": "GTM Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
-          "location": "Madrid, Spain",
-          "postedDate": null
-        },
-        {
           "title": "FS Architecture & Design, Assoc. Manager",
           "url": "https://jobs.vodafone.com/careers/job/563018697741021?domain=vodafone.com",
           "location": "Giza, Egypt",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
+          "location": "Pune, India",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "location": "Düsseldorf, Germany",
           "postedDate": null
         }
       ]
     },
     "meta": {
       "ok": true,
+      "found": 10,
       "roles": [
         {
           "title": "Product Design Prototyper, Human Interface",
@@ -667,36 +656,13 @@
           "url": "https://www.metacareers.com/profile/job_details/788152294069957",
           "location": "Seattle, United States",
           "postedDate": null
-        },
-        {
-          "title": "Softgoods Product Design Engineering Intern",
-          "url": "https://www.metacareers.com/profile/job_details/1111723361506997",
-          "location": "Sunnyvale, United States",
-          "postedDate": null
         }
       ]
     },
     "citibank": {
       "ok": true,
+      "found": 20,
       "roles": [
-        {
-          "title": "UX Product Design Lead",
-          "url": "https://citi.eightfold.ai/careers/job/859037066595?domain=citi.com",
-          "location": "Tampa, United States",
-          "postedDate": null
-        },
-        {
-          "title": "Digital Design Service Pillar Lead - Senior Vice President",
-          "url": "https://citi.eightfold.ai/careers/job/859035930025?domain=citi.com",
-          "location": "Pune, India",
-          "postedDate": null
-        },
-        {
-          "title": "Video Design Lead: Multimedia",
-          "url": "https://citi.eightfold.ai/careers/job/859037414561?domain=citi.com",
-          "location": "New York, United States",
-          "postedDate": null
-        },
         {
           "title": "UX and Human Factors Design",
           "url": "https://citi.eightfold.ai/careers/job/859038267995?domain=citi.com",
@@ -706,6 +672,24 @@
         {
           "title": "Global Design & Construction Program Lead - Senior Vice President",
           "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
+          "location": "New York, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Digital Design Service Pillar Lead - Senior Vice President",
+          "url": "https://citi.eightfold.ai/careers/job/859035930025?domain=citi.com",
+          "location": "Pune, India",
+          "postedDate": null
+        },
+        {
+          "title": "UX Product Design Lead",
+          "url": "https://citi.eightfold.ai/careers/job/859037066595?domain=citi.com",
+          "location": "Tampa, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Video Design Lead: Multimedia",
+          "url": "https://citi.eightfold.ai/careers/job/859037414561?domain=citi.com",
           "location": "New York, United States",
           "postedDate": null
         },
@@ -737,6 +721,7 @@
     },
     "heineken": {
       "ok": true,
+      "found": 36,
       "roles": [
         {
           "title": "Technical Product Owner [Innovation-AI & Digital Commerce Innovation]",
@@ -772,6 +757,7 @@
     },
     "telenor": {
       "ok": true,
+      "found": 39,
       "roles": [
         {
           "title": "Product Lead",
@@ -783,10 +769,12 @@
     },
     "triodos-bank": {
       "ok": true,
+      "found": 8,
       "roles": []
     },
     "backbase": {
       "ok": true,
+      "found": 64,
       "roles": [
         {
           "title": "Senior UX Designer",
@@ -810,6 +798,7 @@
     },
     "euronext": {
       "ok": true,
+      "found": 145,
       "roles": [
         {
           "title": "Product Manager, Digital Assets - CSD & Settlement",
@@ -875,10 +864,12 @@
     },
     "nn-group": {
       "ok": true,
+      "found": 10,
       "roles": []
     },
     "aegon": {
       "ok": true,
+      "found": 21,
       "roles": [
         {
           "title": "Service Design",
@@ -890,6 +881,7 @@
     },
     "goldman-sachs": {
       "ok": true,
+      "found": 59,
       "roles": [
         {
           "title": "Asset & Wealth Management, Private Wealth Management, Learning Design & Delivery, Vice President - New York",
@@ -916,27 +908,16 @@
           "postedDate": null
         },
         {
-          "title": "Corporate Treasury, Treasury, Deposits Coverage and Strategy, Vice President, New York",
-          "url": "https://higher.gs.com/roles/179299",
-          "location": "New York·United States",
-          "postedDate": null
-        },
-        {
           "title": "Transaction Banking, Channels Product Manager, Associate",
           "url": "https://higher.gs.com/roles/185197",
           "location": "Dallas·United States",
-          "postedDate": null
-        },
-        {
-          "title": "Asset & Wealth Management, Marcus Savings, US Commercial Strategy, Associate, Richardson, TX",
-          "url": "https://higher.gs.com/roles/180435",
-          "location": "Richardson·United States",
           "postedDate": null
         }
       ]
     },
     "morgan-stanley": {
       "ok": true,
+      "found": 18,
       "roles": [
         {
           "title": "Client Segment Risk Conduct, Controls & Governance - Control Design - Vice President",
@@ -945,15 +926,15 @@
           "postedDate": null
         },
         {
-          "title": "Regional Workplace Strategy & Design Lead APAC, Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549796897507?domain=morganstanley.com",
-          "location": "Hong Kong SAR China",
-          "postedDate": null
-        },
-        {
           "title": "Senior UX Design Lead - Advisory - Vice President",
           "url": "https://morganstanley.eightfold.ai/careers/job/549800099839?domain=morganstanley.com",
           "location": "New York, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Regional Workplace Strategy & Design Lead APAC, Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549796897507?domain=morganstanley.com",
+          "location": "Hong Kong SAR China",
           "postedDate": null
         },
         {
@@ -972,6 +953,7 @@
     },
     "unilever": {
       "ok": true,
+      "found": 7,
       "roles": [
         {
           "title": "Brand Design Manager",
@@ -983,10 +965,12 @@
     },
     "transavia": {
       "ok": true,
+      "found": 12,
       "roles": []
     },
     "vanderlande": {
       "ok": true,
+      "found": 261,
       "roles": [
         {
           "title": "Junior UI/UX Designer Intern",
@@ -1040,6 +1024,7 @@
     },
     "tomtom": {
       "ok": true,
+      "found": 20,
       "roles": [
         {
           "title": "Product Manager – Traffic (Flow, Jams, Speed Profiles & Moderation)",
@@ -1057,10 +1042,12 @@
     },
     "kpmg": {
       "ok": true,
+      "found": 19,
       "roles": []
     },
     "bunq": {
       "ok": true,
+      "found": 20,
       "roles": [
         {
           "title": "(Senior) Product Owner",
@@ -1084,6 +1071,7 @@
     },
     "vodafoneziggo": {
       "ok": true,
+      "found": 42,
       "roles": [
         {
           "title": "Senior Strategy Manager",
@@ -1095,10 +1083,12 @@
     },
     "odido": {
       "ok": true,
+      "found": 16,
       "roles": []
     },
     "sky": {
       "ok": true,
+      "found": 9,
       "roles": [
         {
           "title": "Principal Product Designer (UX)",
