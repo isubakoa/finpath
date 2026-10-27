@@ -44,10 +44,11 @@ ATS_REQUIRED = {
     "smartrecruiters": {"slug"}, "workable": {"slug"}, "pinpoint": {"slug"},
     "bamboohr": {"slug"}, "workday": {"slug", "wdNum"},
     "oraclecloud": {"host", "site"}, "html": {"url", "linkPattern"},
-    "hibob": {"host"}, "eightfold": {"host"}, "snapshot": {"slug"},
+    "hibob": {"host"}, "eightfold": {"host", "domain"}, "revolutpeople": {"slug"},
+    "snapshot": {"slug"},
     "unknown": set(), "other": set(),
     # one-off, company-specific adapters in check.php
-    "nordea": set(), "lloyds": set(), "dassault": set(), "amazon": set(),
+    "nordea": set(), "dassault": set(), "amazon": set(),
     "telekom": set(), "microsoft": set(), "emirates": set(), "line": set(),
     "bt": set(), "fujitsu": set(), "capgemini": set(), "klm": set(),
     "lufthansa": set(), "tiktok": set(),

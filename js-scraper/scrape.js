@@ -93,14 +93,7 @@ const COMPANIES = [
     linkPattern: /\/view\/[A-Za-z0-9]+\//,
     waitForSelector: 'a[href*="/view/"]',
   },
-  {
-    slug: "natwest-group",
-    // Talemetry platform; each <a> wraps the whole card, title in p.job__title.
-    urls: ["https://jobs.natwestgroup.com/search/jobs?q=design"],
-    linkPattern: /\/jobs\/\d+-/,
-    waitForSelector: 'a[href^="/jobs/"]',
-    titleSelector: ".job__title",
-  },
+
   {
     slug: "bank-of-new-zealand-bnz",
     // Parent NAB's Eightfold instance (bnz microsite). Title in a hashed
@@ -139,15 +132,7 @@ const COMPANIES = [
     titleAncestorSelector: ".job-tile",
     titleAncestorTitleSelector: ".job-tile__title",
   },
-  {
-    slug: "aspire",
-    // The live board is on Revolut People (via an iframe at people-jobs.com).
-    // Hashed CSS-in-JS classes, no headings: the title is the innermost <span>.
-    urls: ["https://revolutpeople.com/aspire/public/careers/"],
-    linkPattern: /\/aspire\/public\/careers\/position\//,
-    waitForSelector: 'a[href*="/position/"]',
-    titleSelector: "span:not(:has(span))",
-  },
+
   {
     slug: "kiwibank",
     // Cornerstone OnDemand, JS-only. Only the first ~18 of ~33 openings render
@@ -182,23 +167,16 @@ const COMPANIES = [
     linkPattern: /\/job\/[^/]+\/\d+-/,
     waitForSelector: 'a[href^="/job/"]',
   },
-  {
-    slug: "netflix",
-    // Eightfold on Netflix's own domain. titleSelector borrowed from NAB/BNZ's
-    // Eightfold instance (assumed same CSS scheme -- check the Actions log).
-    urls: ["https://explore.jobs.netflix.net/careers?query=Design&domain=netflix.com&sort_by=relevance"],
-    linkPattern: /\/careers\/job\/\d+/,
-    waitForSelector: 'a[href*="/careers/job/"]',
-    titleSelector: '[class^="title-"]',
-  },
+
   {
     slug: "google",
-    // Best-effort: URL/selector from a third-party Playwright scraper, not verified
-    // here, and Google resists automated scraping. Watch the Actions log.
+    // The result links are empty overlays; each job's title is the h3 in its <li>
+    // (checked 2026-10-27: the old li/h2 class names were gone, so nothing matched).
     urls: ["https://www.google.com/about/careers/applications/jobs/results?q=UX"],
     linkPattern: /\/jobs\/results\/\d+-[a-z0-9-]+/i,
-    waitForSelector: "li.zE6MFb",
-    titleSelector: "h2.p1N2lc",
+    waitForSelector: 'a[href*="jobs/results/"]',
+    titleAncestorSelector: "li",
+    titleAncestorTitleSelector: "h3",
   },
   {
     slug: "ericsson",
@@ -407,6 +385,64 @@ const COMPANIES = [
     linkPattern: /\/jobs\/t-R\d+$/,
     waitForSelector: 'a[href*="/jobs/t-"]',
     titleSelector: '[class^="jobTitle_"]',
+  },
+  // 2026-10-27: these answer check.php's server with 403/405 or a different page
+  // (moved from check.php's html/lloyds adapters), or need paging.
+  {
+    slug: "xero",
+    urls: ["https://careers.xero.com/jobs/"],
+    linkPattern: /\/jobs\/[a-f0-9-]{36}\//,
+    waitForSelector: 'a[href*="/jobs/"]',
+  },
+  {
+    slug: "grab-grab-financial-group",
+    urls: ["https://www.grab.careers/en/teams/ux-and-design/"],
+    linkPattern: /\/en\/jobs\/\d+\//,
+    waitForSelector: 'a[href*="/en/jobs/"]',
+  },
+  {
+    slug: "bnp-paribas",
+    urls: ["https://group.bnpparibas/en/careers/all-job-offers"],
+    linkPattern: /\/careers\/job-offer\//,
+    waitForSelector: 'a[href*="/careers/job-offer/"]',
+  },
+  {
+    slug: "rabobank",
+    urls: ["https://rabobank.jobs/en/search/?q=design"],
+    linkPattern: /\/en\/job\/[^/]+\/JR_\d+\//i,
+    waitForSelector: 'a[href*="/en/job/"]',
+  },
+  {
+    slug: "sap",
+    // SuccessFactors search, server-rendered.
+    urls: ["https://jobs.sap.com/search/?q=design"],
+    linkPattern: /\/job\/[^/]+\/\d+\//,
+    waitForSelector: 'a[href*="/job/"]',
+  },
+  {
+    slug: "mambu",
+    // iCIMS board, full list in the iframe page.
+    urls: ["https://careers-mambu.icims.com/jobs/search?ss=1&in_iframe=1"],
+    linkPattern: /\/jobs\/\d+\/[^?]+\/job/i,
+    waitForSelector: 'a[href*="/jobs/"]',
+  },
+  {
+    slug: "optus",
+    // 10 per page, no keyword filter (133 roles on 2026-10-27); pages past the end
+    // come back empty.
+    urls: Array.from({ length: 15 }, (_, i) => `https://careers.optus.com.au/jobs/page/${i + 1}`),
+    linkPattern: /careers\.optus\.com\.au\/[a-z0-9-]+\/job\/\d+$/,
+    waitForSelector: 'a[href*="/job/"]',
+  },
+  {
+    slug: "lloyds-banking-group",
+    // AEM job search; the link wraps title, location, salary and end date. A hidden
+    // template card's href holds "$$reference$$" (no digits), so the pattern skips it.
+    urls: ["https://www.lloydsbankinggroup.com/careers/job-search.html?t=design"],
+    linkPattern: /\/careers\/job-search\/workday-job\.\d+\.html/,
+    waitForSelector: 'a[href*="workday-job."] .job-title',
+    titleSelector: ".job-title",
+    locationSelector: ".data-location .value",
   },
   // Not scraped:
   //   - wefox: careers site broken, no open roles on its join.com board.

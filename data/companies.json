@@ -14,7 +14,7 @@
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "Super-app scale; large in-house product & design org across 15+ countries.",
       "url": "https://www.revolut.com/careers/",
-      "openStatus": "below-target",
+      "openStatus": "uncertain",
       "openRoles": [
         {
           "id": "revolut-r0",
@@ -37,11 +37,10 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Careers site (revolut.com/careers) actually renders live postings server-side. The Product & Design team page lists 14 open roles (Product Designer x3, Graphic/Motion/3D/Digital Designer, 2 intern/grad design roles, plus non-design roles) — none carry Director/Head/VP/Principal/Staff/Lead qualifiers.",
+      "openNote": "revolut.com/careers returns 403 to ZenPath's server (2026-10-27), and in a browser it shows only a handful of roles with a client-side \"show more\" and no readable feed, so Revolut is covered by the job sites (LinkedIn, Indeed) only for now.",
       "ats": {
-        "type": "html",
-        "url": "https://www.revolut.com/careers/",
-        "linkPattern": "#/careers/position/#"
+        "type": "unknown",
+        "slug": null
       }
     },
     {
@@ -751,11 +750,10 @@
       "url": "https://mambu.com/en/careers",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Confirmed live and directly fetchable — Mambu's iCIMS board (careers-mambu.icims.com) turns out to render its full job list as plain server-side HTML behind an iframe wrapper, no browser/session needed. All 5 current openings checked (Customer Success Manager x2, Senior Software Engineer x2, Senior Account Executive) — none Design/UX/Product Design.",
+      "openNote": "Mambu's iCIMS board returns 405 to ZenPath's server since 2026-10-27; js-scraper reads it in a browser.",
       "ats": {
-        "type": "html",
-        "url": "https://careers-mambu.icims.com/jobs/search?ss=1&in_iframe=1",
-        "linkPattern": "#/jobs/\\d+/[^?]+/job#i"
+        "type": "snapshot",
+        "slug": "mambu"
       }
     },
     {
@@ -885,14 +883,16 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "One of the largest APAC banking footprints of any global bank.",
-      "url": "https://www.hsbc.com/careers",
+      "url": "https://apply.careers.hsbc.com/search/?q=design",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "mycareer.hsbc.com turns out to run Avature (same platform as TotalEnergies/UniCredit/Macquarie), with a real server-rendered '/en_GB/external/PipelineDetail/<slug>/<id>' job page and a working '?search=' keyword filter — confirmed directly fetchable, no browser/session needed, and (unlike UniCredit/Macquarie) small enough that raising pipelineRecordsPerPage gets every match in one request rather than hitting a pagination-depth limit. But this board itself appears to be a limited pipeline (44 open roles company-wide, mostly Poland GSC/Global Service Centre ops and engineering roles) rather than HSBC's full global vacancy list — 24 roles match 'design' as a keyword (matching body-text like 'design and development', not the title), and none of the 24 titles are Design/UX/Product roles. Wired in for ongoing monitoring regardless.",
+      "openNote": "HSBC's job search moved to apply.careers.hsbc.com (SuccessFactors) (2026-10-27); the old mycareer.hsbc.com search now lists nothing. Its \"design\" search is server-rendered, 25 per page, incl. UI/UX and product roles.",
       "ats": {
         "type": "html",
-        "url": "https://mycareer.hsbc.com/en_GB/external/SearchJobs/?search=design&pipelineRecordsPerPage=50",
-        "linkPattern": "#/en_GB/external/PipelineDetail/[^/]+/\\d+$#i"
+        "url": "https://apply.careers.hsbc.com/search/?q=design",
+        "linkPattern": "#/job/[^/]+/\\d+/#",
+        "locationClass": "location",
+        "locationLastText": true
       }
     },
     {
@@ -978,11 +978,10 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Confirmed live directly on group.bnpparibas/en/careers. A 'Lead UX Designer' posting found via search 404'd on fetch and could not be verified as live. No Director/Head-of-Design-level role confirmed.",
+      "openNote": "group.bnpparibas returns 403 to ZenPath's server since 2026-10-27; js-scraper reads the job-offers page in a browser.",
       "ats": {
-        "type": "html",
-        "url": "https://group.bnpparibas/en/careers/all-job-offers",
-        "linkPattern": "#/careers/job-offer/#"
+        "type": "snapshot",
+        "slug": "bnp-paribas"
       }
     },
     {
@@ -1261,11 +1260,10 @@
       "url": "https://www.grab.careers/en/teams/ux-and-design/",
       "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "Grab's UX-and-Design team page is plain server-rendered HTML — job titles and links both readable directly. Now live-checked via check.php's html scraper. 5 current roles as of the last check, all plain Senior Product Designer, below the Director/Head/VP or Principal/Staff/Lead bar.",
+      "openNote": "grab.careers returns 403 to ZenPath's server since 2026-10-27; js-scraper reads the UX & Design team page in a browser.",
       "ats": {
-        "type": "html",
-        "url": "https://www.grab.careers/en/teams/ux-and-design/",
-        "linkPattern": "#/en/jobs/\\d+/#"
+        "type": "snapshot",
+        "slug": "grab-grab-financial-group"
       },
       "match": {
         "aliases": [
@@ -1301,9 +1299,9 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Its board actually moved off Greenhouse entirely — now on Revolut People (revolutpeople.com/aspire, reached via an iframe at people-jobs.com/aspire), confirmed live via the browser scraper. 35 current openings; 'AI Product Lead US' is the one target-tier Product/Design-relevant match. No pure design titles currently open.",
+      "openNote": "Board on Revolut People (revolutpeople.com/aspire/public/careers); its public postings API returns every role (42 on 2026-10-27).",
       "ats": {
-        "type": "snapshot",
+        "type": "revolutpeople",
         "slug": "aspire"
       }
     },
@@ -1322,11 +1320,10 @@
       "url": "https://careers.xero.com/jobs/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Its full jobs listing (careers.xero.com/jobs/) is plain server-rendered HTML — job titles and links both readable directly. Now live-checked via check.php's html scraper. Team-overview page previously stated 'Design: 0 open vacancies' (Product team separately shows a handful of non-design roles).",
+      "openNote": "careers.xero.com returns 403 to ZenPath's server since 2026-10-27; js-scraper reads the same listing in a browser.",
       "ats": {
-        "type": "html",
-        "url": "https://careers.xero.com/jobs/",
-        "linkPattern": "#/jobs/[a-f0-9\\-]{36}/#"
+        "type": "snapshot",
+        "slug": "xero"
       }
     },
     {
@@ -1419,11 +1416,12 @@
       "url": "https://www.commbank.com.au/about-us/careers.html",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "Workday board (cba.wd3.myworkdayjobs.com) is JS-rendered and did not return postings to static fetch or a direct API attempt (400 error); web-search budget was exhausted before an alternate verification path could be tried. Genuinely unverified.",
+      "openNote": "Workday tenant cba.wd3, career site CommBank_Careers, linked from commbank.com.au/careers (2026-10-27: the default site name returned 404; \"design\" search shows 113).",
       "ats": {
         "type": "workday",
         "slug": "cba",
-        "wdNum": "3"
+        "wdNum": "3",
+        "site": "CommBank_Careers"
       },
       "match": {
         "aliases": [
@@ -1623,11 +1621,10 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Confirmed live via check.php's html adapter against rabobank.jobs's own search results, applications for the Design Lead role close 15 Sept 2026. Domain caveat on that first role: it's a Marketing Design Lead (brand/marketing collateral), not Product/UX Design — a title-level match but a functional mismatch for a payments/fintech product-design background, and it's a 12-month fixed-term contract. The second role, Senior Experience Designer – Business Lending, is a genuine Strategic Service Designer opening and a much closer domain fit.",
+      "openNote": "rabobank.jobs returns 403 to ZenPath's server since 2026-10-27; js-scraper reads its \"design\" search in a browser.",
       "ats": {
-        "type": "html",
-        "url": "https://rabobank.jobs/en/search/?q=design",
-        "linkPattern": "#/en/job/[^/]+/JR_\\d+/#i"
+        "type": "snapshot",
+        "slug": "rabobank"
       }
     },
     {
@@ -1817,9 +1814,9 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Reconfirmed live via check.php's own new 'lloyds' adapter, hitting the same AEM JSON search endpoint the old note found manually (.../c_119_fragment_resul.results.json?t=design). Page 1 alone (25 of 41 total 'design' matches) already surfaces 6 genuine design-relevant roles: Design Researcher, Service Design Lead, Content Designer, two Senior UX Designer postings, and a Gamification Designer — three shown above. Real caveat across all of them: essentially every one is a 12-month Fixed Term Contract, not a permanent role — worth knowing before getting excited about the 'target' tier on Service Design Lead. A 'Design Lead (12 Month FTC/Secondment)' and 'Product Director - Guarantees' (both promising, the latter a genuine Director-level title) exist on page 2, outside this adapter's single-page reach — a known gap.",
+      "openNote": "Lloyds' job search (AEM) answers ZenPath's server with a different page since 2026-10-27, so js-scraper reads its \"design\" search in a browser.",
       "ats": {
-        "type": "lloyds",
+        "type": "snapshot",
         "slug": "lloyds-banking-group"
       },
       "match": {
@@ -1865,10 +1862,12 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Now confirmed live via the browser scraper — the three previously-tracked roles (Product Designer, Senior/Digital Product Designer) are gone from the board; in their place is a single 'Design Operations Lead' req (R-00281850) posted simultaneously across four UK offices (London, Manchester, Bristol, Edinburgh — two shown here, the other two are the same role). Its own platform is a 'Talemetry' recruiting system with a genuine public search API, scraped here rather than given its own check.php adapter per how this batch was handled.",
+      "openNote": "jobs.natwestgroup.com's \"design\" search is server-rendered (25 per page, title in p.job__title) -- read by check.php since 2026-10-27, when js-scraper's browser on GitHub stopped seeing any jobs on it.",
       "ats": {
-        "type": "snapshot",
-        "slug": "natwest-group"
+        "type": "html",
+        "url": "https://jobs.natwestgroup.com/search/jobs?q=design",
+        "linkPattern": "#/jobs/\\d+-#",
+        "titleClass": "job__title"
       }
     },
     {
@@ -3357,11 +3356,10 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Now confirmed live and directly fetchable — jobs.sap.com turns out to run the same plain server-rendered SuccessFactors template as ANZ/GIC (jobs.sap.com/search/), no browser/session needed. A 'design' keyword search returns 598 total matches; page 1 alone has 16 genuinely Design/UX-titled roles — all Associate/Senior IC level, no Director/Principal/Head of Design listing found. Design hiring is clearly active here, just not at target seniority.",
+      "openNote": "jobs.sap.com returns 403 to ZenPath's server since 2026-10-27; js-scraper reads its \"design\" search in a browser.",
       "ats": {
-        "type": "html",
-        "url": "https://jobs.sap.com/search/?q=design",
-        "linkPattern": "#/job/[^/]+/\\d+/#i"
+        "type": "snapshot",
+        "slug": "sap"
       }
     },
     {
@@ -3390,11 +3388,12 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Amadeus's careers portal runs on Workday (amadeus.wd502.myworkdayjobs.com — tenant 'amadeus'). This is JS-rendered and not directly crawlable via search snippets. A 'Lead UX/UI Designer' role surfaced via a third-party aggregator but could not be reconfirmed as still live on the primary Workday board. Marked uncertain — a Workday CXS API call would be needed for a reliable current check.",
+      "openNote": "Workday tenant amadeus.wd502, career site \"jobs\" (2026-10-27: moved from wd3; \"design\" search shows 95, incl. Senior UX Designer in London).",
       "ats": {
         "type": "workday",
         "slug": "amadeus",
-        "wdNum": "502"
+        "wdNum": "502",
+        "site": "jobs"
       }
     },
     {
@@ -3712,11 +3711,12 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Visa's careers portal runs on Workday (visa.wd5.myworkdayjobs.com/Visa). Couldn't query the Workday API directly, but TheMuse (a job aggregator that generally mirrors live ATS feeds) surfaced several currently-live-looking Visa design leadership roles — most notably 'Senior Director, Head of Visa Design Studio' based in Singapore, an excellent direct level+region match — plus 'Head of Product Design' (Stockholm) and 'Staff Product Designer' (Berlin). Recommend re-verifying these on visa.wd5.myworkdayjobs.com/Visa directly before applying, since aggregator mirrors can lag the live board.",
+      "openNote": "corporate.visa.com/en/jobs redirects to Workday tenant visa.wd5, career site \"Visa\" (2026-10-27: the default site name returned 404; \"design\" search shows 475).",
       "ats": {
         "type": "workday",
         "slug": "visa",
-        "wdNum": "5"
+        "wdNum": "5",
+        "site": "Visa"
       }
     },
     {
@@ -3953,12 +3953,13 @@
           "status": "not-started"
         }
       ],
-      "openNote": "careers.salesforce.com is a branded front-end over Workday (salesforce.wd12.myworkdayjobs.com / salesforce.wd1.myworkdayjobs.com backend confirmed via search). Confirmed multiple live Lead/Principal Product Designer reqs (Slack, Agentforce Platform, Agentforce Revenue Management) via direct careers.salesforce.com URLs — an exact seniority match — but all are US-based (SF/Seattle/NY/Atlanta); no APAC/Singapore-specific Principal Designer req surfaced in this pass. Worth a location-filtered follow-up given Salesforce's Singapore APAC HQ.",
+      "openNote": "Workday tenant salesforce.wd12, career site External_Career_Site (2026-10-27: the default site name returned 422; \"design\" search shows 744).",
       "ats": {
         "type": "workday",
         "slug": "salesforce",
         "wdNum": "12",
-        "altWdNum": "1"
+        "altWdNum": "1",
+        "site": "External_Career_Site"
       }
     },
     {
@@ -4073,11 +4074,12 @@
           "status": "not-started"
         }
       ],
-      "openNote": "PayPal's careers portal runs on Workday (paypal.wd1.myworkdayjobs.com — tenant 'paypal'), with a branded front-end at careers.pypl.com that has a dedicated 'Design & User Experience' category page. A LI-mirrored 'Principal Product Designer' (New York) req was found showing PayPal does hire at target seniority, but currency and region fit (NY, not a target hub) are both uncertain from this pass. No APAC/Singapore-based design leadership req confirmed — worth a direct Workday location-filtered search.",
+      "openNote": "Workday tenant paypal.wd1, career site \"jobs\" (2026-10-27: the old default site name returned 404; \"design\" search shows 194).",
       "ats": {
         "type": "workday",
         "slug": "paypal",
-        "wdNum": "1"
+        "wdNum": "1",
+        "site": "jobs"
       }
     },
     {
@@ -4185,12 +4187,12 @@
       "url": "https://careers.adobe.com/us/en/search-results",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "Confirmed ATS is Workday. No Director+ Product Design/UX/PM role in a target region was confirmed via research on 2026-09-09, but Workday's facet search wasn't exhaustively queried across every target region — flagged uncertain rather than a confirmed none.",
+      "openNote": "Workday tenant adobe.wd5, career site external_experienced (2026-10-27: the old wd6 host no longer exists; \"design\" search shows 291).",
       "ats": {
         "type": "workday",
         "slug": "adobe",
-        "site": "external_career_site",
-        "wdNum": "6"
+        "wdNum": "5",
+        "site": "external_experienced"
       }
     },
     {
@@ -4241,10 +4243,12 @@
       "url": "https://jobs.netflix.com/",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "UPDATE (2026-09): ATS confirmed as Eightfold.ai (same platform NAB/BNZ already use), hosted on Netflix's own vanity domain — netflix.eightfold.ai redirects to explore.jobs.netflix.net/careers, confirmed via real per-role URLs (explore.jobs.netflix.net/careers/job/790317917022). Wired into js-scraper — no longer stuck waiting on a scraper, this is that scraper.",
+      "openNote": "Eightfold career site whose job cards are click handlers with no links; read through its public API (218 \"design\" matches on 2026-10-27).",
       "ats": {
-        "type": "snapshot",
-        "slug": "netflix"
+        "type": "eightfold",
+        "host": "explore.jobs.netflix.net",
+        "domain": "netflix.com",
+        "query": "design"
       }
     },
     {
@@ -4341,11 +4345,10 @@
           "status": "not-started"
         }
       ],
-      "openNote": "stripe.com/jobs renders job listings in raw HTML at load; no Greenhouse/Lever/Ashby signature found, so treated as a custom in-house board. No Director/Head/VP/Principal/Staff-level Product Design, UX, or Product Management/Strategy role in a target region was found — Singapore listings seen were individual-contributor level (Product Manager – SEA, Account Executive).",
+      "openNote": "Greenhouse board \"stripe\" (2026-10-27: stripe.com/jobs moved to /careers and stopped listing jobs in its HTML; the board API carries all 711 roles).",
       "ats": {
-        "type": "html",
-        "url": "https://stripe.com/jobs",
-        "linkPattern": "#/jobs/listing/[^/]+/\\d+#"
+        "type": "greenhouse",
+        "slug": "stripe"
       }
     },
     {
@@ -5603,11 +5606,10 @@
       "url": "https://careers.optus.com.au/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Likely runs on SAP SuccessFactors — a company-specific SuccessFactors login endpoint was found (career10.successfactors.com/career?career_company=C0001088737P), though this wasn't independently confirmed beyond that one signal. If confirmed, this is a deliberately unsupported ATS for this tracker. No design-relevant postings surfaced across the first page of ~114 open roles or targeted design/UX searches, though the full listing wasn't exhaustively paged through.",
+      "openNote": "careers.optus.com.au lists 133 roles over ~14 pages of 10 with no keyword filter, so js-scraper reads every page (2026-10-27: job ids changed from hex to numbers).",
       "ats": {
-        "type": "html",
-        "url": "https://careers.optus.com.au/jobs",
-        "linkPattern": "#https://careers\\.optus\\.com\\.au/[a-z0-9-]+/job/[A-F0-9]{20,40}#i"
+        "type": "snapshot",
+        "slug": "optus"
       }
     },
     {
@@ -5687,11 +5689,11 @@
       "url": "https://careers.one.nz/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Confirmed running on SAP SuccessFactors (rmkcdn.successfactors.com assets, career10.successfactors.com auth links, jobs2web recruitment-marketing parameters) — a deliberately unsupported ATS for this tracker, marked unknown. No design roles found across its Technology (8 open) or Experience & Commercial (6 open) categories as of 2026-09-12.",
+      "openNote": "One NZ's SuccessFactors site, newest 25 roles (2026-10-27: the \"view all jobs\" page stopped listing jobs in its HTML).",
       "ats": {
         "type": "html",
-        "url": "https://careers.one.nz/viewalljobs/",
-        "linkPattern": "#https://careers\\.one\\.nz/job/[^\"]+/\\d+/#"
+        "url": "https://careers.one.nz/search/?q=&sortColumn=referencedate&sortDirection=desc",
+        "linkPattern": "#/job/[^/]+/\\d+/#"
       },
       "match": {
         "aliases": [
@@ -5725,11 +5727,11 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Careers portal runs on SAP SuccessFactors (career10.successfactors.com / rmkcdn.successfactors.com asset references) — a deliberately unsupported ATS for this tracker, marked unknown. Only one design-relevant role is currently open (an internship); a Director of Experience Design seat exists in the org chart but isn't currently an open requisition. Also being checked via li-scraper (LinkedIn/Indeed) as a supplement, since the ATS itself can't be automated.",
+      "openNote": "Singtel Group's SuccessFactors site; its \"design\" search is server-rendered (2026-10-27: the home page stopped listing jobs).",
       "ats": {
         "type": "html",
-        "url": "https://groupcareers.singtel.com/",
-        "linkPattern": "#https://groupcareers\\.singtel\\.com/job/[^\"]+/\\d+/#"
+        "url": "https://groupcareers.singtel.com/search/?q=design",
+        "linkPattern": "#/job/[^/]+/\\d+/#"
       }
     },
     {
@@ -6196,7 +6198,7 @@
       "url": "https://www.dynatrace.com/company/careers/",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "Runs on SAP SuccessFactors Career Site Builder (confirmed via cookies on apply.careers.dynatrace.com); listing pages are JS-rendered (static fetch shows '0 open positions' placeholders even when jobs exist). A likely Principal-level Design & Experience role appears to exist, but two separate fetches returned inconsistent exact titles ('Principal Product Experience Designer' vs. 'Principal Design & Experience Lead / UX Management') — not trusted enough to list as a verified role; confirm manually before relying on it.",
+      "openNote": "dynatrace.com/careers/jobs renders its 108 roles in the browser from a Coveo search service, with no filter or page parameters in the URL and no readable feed (checked 2026-10-27), so Dynatrace is covered by the job sites only.",
       "ats": {
         "type": "other",
         "slug": null,
@@ -6247,13 +6249,13 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "Global meal-kit/D2C food group (HelloFresh, Green Chef, Factor, and other brands).",
-      "url": "https://www.hellofreshgroup.com/en/careers/",
-      "openStatus": "uncertain",
+      "url": "https://careers.hellofresh.com/",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "The given hellofreshgroup.com/en/careers/ URL 404s — the real board is careers.hellofresh.com (Greenhouse-confirmed via ?gh_jid= params, but careers.hellofresh.com blocks automated fetches with a 403, so the exact main board token could not be determined; a separate alumni/referral board uses token 4lu44n1n37w012k, not the main one). Two promising titles surfaced via search — 'Director UX Design' (Berlin) and 'Associate Director, Design' (New York) — both would score target-tier if live, but neither could be directly verified as currently open; treat as plausible leads requiring manual confirmation, not verified openings. (2026-10-24: ats changed from greenhouse with no board token -- which made every live check request an empty Greenhouse board and fail -- to unknown, until the real token is found; still covered by li-scraper's LI/Indeed matching.)",
+      "openNote": "Greenhouse board \"hellofresh\" (the API behind careers.hellofresh.com; 382 roles on 2026-10-27, incl. Director, Product in Paris). The careers site itself returns 403 to ZenPath's server, the board API doesn't.",
       "ats": {
-        "type": "unknown",
-        "slug": null
+        "type": "greenhouse",
+        "slug": "hellofresh"
       }
     },
     {
