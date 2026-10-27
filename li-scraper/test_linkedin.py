@@ -76,7 +76,7 @@ def get_returning(resp):
 
 lg.fetch_page(get_returning(Resp(200, card(1, "Design Lead"))), '"design lead"', "Netherlands", 10800.4, 20)
 check("asks for the window in seconds, newest first, at the right offset",
-      seen_params[-1] == {"keywords": '"design lead"', "location": "Netherlands", "f_TPR": "r10800", "sortBy": "DD", "start": 20})
+      seen_params[-1] == {"keywords": '"design lead"', "location": "Netherlands", "distance": 50, "f_TPR": "r10800", "sortBy": "DD", "start": 20})
 check("the empty page is an empty result, not a block", lg.fetch_page(get_returning(Resp(200, EMPTY_PAGE)), "k", "l", 3600, 0) == [])
 for status in (429, 999, 403):
     try:
@@ -106,15 +106,15 @@ def paged_get(total):
 
 get, calls = paged_get(23)
 pauses = []
-rows, n = lg.search(get, "k", "l", 3600, lambda: pauses.append(1))
-check("23 postings -> 3 requests (10 + 10 + 3), all rows", (len(rows), n, calls) == (23, 3, [0, 10, 20]))
+rows, n, capped = lg.search(get, "k", "l", 3600, lambda: pauses.append(1))
+check("23 postings -> 3 requests (10 + 10 + 3), all rows, not capped", (len(rows), n, calls, capped) == (23, 3, [0, 10, 20], False))
 check("pauses between pages, not before the first", len(pauses) == 2)
 get, calls = paged_get(10)
-rows, n = lg.search(get, "k", "l", 3600, lambda: None)
+rows, n, capped = lg.search(get, "k", "l", 3600, lambda: None)
 check("exactly one full page -> one more request that comes back empty", (len(rows), n) == (10, 2))
 get, calls = paged_get(500)
-rows, n = lg.search(get, "k", "l", 3600, lambda: None, max_pages=3)
-check("stops at the page cap", (len(rows), n) == (30, 3))
+rows, n, capped = lg.search(get, "k", "l", 3600, lambda: None)
+check("never reads past MAX_PAGES_PER_SEARCH (3) pages; reports it capped", (len(rows), n, capped, lg.MAX_PAGES_PER_SEARCH) == (30, 3, True, 3))
 
 print("\n-- run_linkedin(): windows, coverage, blocks, budget --")
 NOW = 1_800_000_000  # fixed clock
@@ -139,23 +139,25 @@ class FakeLinkedIn:
 
 fake = FakeLinkedIn()
 sleeps = []
-rows, coverage, health = scrape.run_linkedin({}, get=fake.get, sleep=sleeps.append, now=lambda: NOW)
+rows, coverage, health, log = scrape.run_linkedin({}, get=fake.get, sleep=sleeps.append, now=lambda: NOW)
 check(f"every market x keyword group searched once ({len(searches)} searches, one request each)",
       len(fake.requests) == len(searches) and health["done"] == len(searches))
-check("no coverage yet -> the first-run window", all(p["f_TPR"] == f"r{scrape.LINKEDIN_FIRST_WINDOW_SECONDS}" for p in fake.requests))
+check("no coverage yet -> the first-run window (12h)", all(p["f_TPR"] == f"r{12 * 3600}" for p in fake.requests))
 check("each completed search is recorded with its start time", coverage == {k: iso(NOW) for k in keys})
 check("rows are tagged li", len(rows) == len(searches) and all(s == "li" for s, _ in rows))
 check("requests are spaced (one pause between searches)", len(sleeps) == len(searches) - 1
       and all(scrape.LINKEDIN_PAUSE_SECONDS[0] <= x <= scrape.LINKEDIN_PAUSE_SECONDS[1] for x in sleeps))
-check("health: nothing blocked, all done, stalest 0h",
-      (health["blocked"], health["stoppedEarly"], health["stalestHours"]) == (0, False, 0.0))
+check("health: nothing blocked, all done, stalest 0h, no first block",
+      (health["blocked"], health["stoppedEarly"], health["stalestHours"], health["firstBlockRequest"]) == (0, False, 0.0, None))
+check("one log entry per request: time, market, group, offset, window, status, size",
+      len(log) == len(searches) and set(log[0]) == {"s", "loc", "g", "start", "windowH", "status", "bytes"} and log[0]["status"] == 200 and log[0]["windowH"] == 12.0)
 
 fake = FakeLinkedIn()
 cov = {k: iso(NOW - 2 * 3600) for k in keys}
 cov[keys[0]] = iso(NOW - 30 * 3600)
 cov[keys[1]] = iso(NOW - 30 * 86400)
 cov["Gone Market|\"old\""] = iso(NOW)
-rows, coverage, health = scrape.run_linkedin(cov, get=fake.get, sleep=lambda s: None, now=lambda: NOW)
+rows, coverage, health, log = scrape.run_linkedin(cov, get=fake.get, sleep=lambda s: None, now=lambda: NOW)
 windows = {(p["location"], p["keywords"]): p["f_TPR"] for p in fake.requests}
 check("2h since the last success -> the minimum window (3h)", windows[searches[2]] == f"r{scrape.LINKEDIN_MIN_WINDOW_SECONDS}")
 check("30h since -> 31h (gap + 1h margin)", windows[searches[0]] == f"r{31 * 3600}")
@@ -165,22 +167,44 @@ check("searches no longer configured are dropped from coverage", "Gone Market|\"
 
 fake = FakeLinkedIn(block_at={3})
 sleeps = []
-rows, coverage, health = scrape.run_linkedin({}, get=fake.get, sleep=sleeps.append, now=lambda: NOW)
-check("one block: wait, retry that search, carry on (all searches done)", health["done"] == len(searches) and health["blocked"] == 1)
-check("...the wait is LINKEDIN_BLOCK_WAIT_SECONDS when LinkedIn gives no Retry-After", scrape.LINKEDIN_BLOCK_WAIT_SECONDS in sleeps)
+rows, coverage, health, log = scrape.run_linkedin({}, get=fake.get, sleep=sleeps.append, now=lambda: NOW)
+check("one block: back off 60s, retry that search, carry on (all searches done)",
+      health["done"] == len(searches) and health["blocked"] == 1 and 60 in sleeps and not health["stoppedEarly"])
+check("...the first block is recorded (request 3)", health["firstBlockRequest"] == 3 and log[2]["status"] == 429)
 
 fake = FakeLinkedIn(block_at={3, 4})
+sleeps = []
 cov = {k: iso(NOW - 2 * 3600) for k in keys}
-rows, coverage, health = scrape.run_linkedin(cov, get=fake.get, sleep=lambda s: None, now=lambda: NOW)
-check("blocked again on the retry: LinkedIn stops for this run", health["stoppedEarly"] and len(fake.requests) == 4)
-check("...the two searches done keep the new time, the rest keep their old one",
+rows, coverage, health, log = scrape.run_linkedin(cov, get=fake.get, sleep=sleeps.append, now=lambda: NOW)
+check("blocked again on the retry: back off longer (120s), skip that search, carry on with the rest",
+      120 in sleeps and health["done"] == len(searches) - 1 and not health["stoppedEarly"])
+check("...the skipped search keeps its old coverage time", sum(1 for v in coverage.values() if v == iso(NOW - 2 * 3600)) == 1)
+
+fake = FakeLinkedIn(block_at=set(range(3, 200)))
+sleeps = []
+rows, coverage, health, log = scrape.run_linkedin(cov, get=fake.get, sleep=sleeps.append, now=lambda: NOW)
+check(f"{scrape.LINKEDIN_MAX_BLOCKS_IN_A_ROW} blocks in a row: LinkedIn stops for this run",
+      health["stoppedEarly"] and health["blocked"] == scrape.LINKEDIN_MAX_BLOCKS_IN_A_ROW and len(fake.requests) == 2 + scrape.LINKEDIN_MAX_BLOCKS_IN_A_ROW)
+check("...backing off 60s, 120s, 240s in between", [x for x in sleeps if x >= 60] == [60, 120, 240])
+check("...the 2 searches done keep the new time, the rest their old one",
       sum(1 for v in coverage.values() if v == iso(NOW)) == 2 and sum(1 for v in coverage.values() if v == iso(NOW - 2 * 3600)) == len(keys) - 2)
-check("...health reports it", (health["done"], health["blocked"], health["stalestHours"]) == (2, 2, 2.0))
+check("...health reports it", (health["done"], health["stalestHours"], health["firstBlockRequest"]) == (2, 2.0, 3))
+
+class RetryAfter(FakeLinkedIn):
+    def get(self, url, params=None, headers=None, timeout=None):
+        self.requests.append(params)
+        if len(self.requests) == 1:
+            return Resp(429, "", {"Retry-After": "999"})
+        return Resp(200, card(len(self.requests), "Design Lead"))
+fake = RetryAfter()
+sleeps = []
+scrape.run_linkedin({}, get=fake.get, sleep=sleeps.append, now=lambda: NOW)
+check("a Retry-After is honoured, capped at LINKEDIN_MAX_BLOCK_WAIT_SECONDS", scrape.LINKEDIN_MAX_BLOCK_WAIT_SECONDS in sleeps)
 
 saved = scrape.LINKEDIN_MAX_REQUESTS_PER_RUN
 scrape.LINKEDIN_MAX_REQUESTS_PER_RUN = 5
 fake = FakeLinkedIn()
-rows, coverage, health = scrape.run_linkedin({}, get=fake.get, sleep=lambda s: None, now=lambda: NOW)
+rows, coverage, health, log = scrape.run_linkedin({}, get=fake.get, sleep=lambda s: None, now=lambda: NOW)
 scrape.LINKEDIN_MAX_REQUESTS_PER_RUN = saved
 check("the request budget ends the run's LinkedIn part; the rest wait (never covered -> stalestHours None)",
       len(fake.requests) == 5 and health["done"] == 5 and health["stalestHours"] is None and not health["stoppedEarly"])

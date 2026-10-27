@@ -5,7 +5,3 @@ python-jobspy==1.4.1
 # LinkedIn's public job search (linkedin_guest.py) and welcome-to-nl.nl.
 requests
 beautifulsoup4
-
-# uxwork.nl is fetched through headless Chromium (uxwork.py). The browser itself
-# is installed separately: playwright install --with-deps chromium
-playwright

@@ -14,13 +14,19 @@ Why (R&D 2026-10-26, after a run lost 48 of 114 LinkedIn searches to HTTP 429):
         which the guest search honours, so 38 terms become a few groups;
       * the time window (f_TPR, any number of seconds) covers only the time since
         that search last succeeded, plus a margin, so a page rarely fills up;
-      * pages are spaced out, a block (429/999/403) is waited out once, and a
-        second block ends LinkedIn for the run -- searches not completed keep their
-        old "covered until" time, so the next run widens their window and nothing
-        is lost.
+      * pages are spaced out, and a search reads at most MAX_PAGES_PER_SEARCH
+        pages: blocks in the first runs (2026-10-26/27) hit while paging 3-7 pages
+        deep, and JobSpy, which got ~58% of its searches through from the same
+        runners, never read past page 2;
+      * a block is backed off and the run carries on (scrape.py run_linkedin);
+        searches not completed keep their old "covered until" time, so the next
+        run widens their window and nothing is lost.
+  Every request is logged into the snapshot (scrape.py), so blocking patterns can
+  be read across many runs rather than guessed from one.
 
 Endpoint: GET https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search
-  keywords, location, f_TPR=r<seconds>, sortBy=DD, start (pages of 10).
+  keywords, location, distance (JobSpy's default, kept), f_TPR=r<seconds>,
+  sortBy=DD, start (pages of 10).
   Returns an HTML fragment of <li> cards; an empty result is a near-empty page.
 Card markup (verified 2026-10-26): div.base-search-card[data-entity-urn=
   "urn:li:jobPosting:<id>"], h3.base-search-card__title, h4.base-search-card__subtitle,
@@ -34,7 +40,8 @@ from bs4 import BeautifulSoup
 SEARCH_URL = "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search"
 JOB_URL = "https://www.linkedin.com/jobs/view/{id}"
 PAGE_SIZE = 10
-MAX_PAGES_PER_SEARCH = 10  # 100 postings; only a long catch-up window gets near it
+MAX_PAGES_PER_SEARCH = 3  # 30 postings, newest first; a busier window skips its oldest (logged)
+DISTANCE_MILES = 50
 MAX_PHRASES_PER_GROUP = 10
 REQUEST_TIMEOUT_SECONDS = 20
 BLOCK_STATUSES = (403, 429, 999)
@@ -114,6 +121,7 @@ def fetch_page(get, keywords, location, window_seconds, start):
     params = {
         "keywords": keywords,
         "location": location,
+        "distance": DISTANCE_MILES,
         "f_TPR": f"r{int(window_seconds)}",
         "sortBy": "DD",
         "start": start,
@@ -133,10 +141,10 @@ def fetch_page(get, keywords, location, window_seconds, start):
 
 def search(get, keywords, location, window_seconds, pause, max_pages=MAX_PAGES_PER_SEARCH):
     """Every posting for one (keywords, location) within the window, page by page,
-        pause() between pages. Returns (rows, requests_made). Past max_pages the
-        oldest postings in the window are skipped (logged) rather than retried
-        forever. Blocked propagates to the caller, with the rows so far on the
-        exception (`rows`, `requests`).
+        pause() between pages. Returns (rows, requests_made, capped). Past
+        max_pages the oldest postings in the window are skipped (capped=True,
+        logged) rather than retried forever. Blocked propagates to the caller, with
+        the rows so far on the exception (`rows`, `requests`).
     """
     rows, seen, requests_made = [], set(), 0
     for page in range(max_pages):
@@ -152,6 +160,6 @@ def search(get, keywords, location, window_seconds, pause, max_pages=MAX_PAGES_P
         seen.update(r["job_url"] for r in new)
         rows.extend(new)
         if len(page_rows) < PAGE_SIZE or not new:
-            return rows, requests_made
+            return rows, requests_made, False
     print(f"[linkedin] {location!r}: page cap ({max_pages}) reached; older postings in the window skipped", file=sys.stderr)
-    return rows, requests_made
+    return rows, requests_made, True

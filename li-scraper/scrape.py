@@ -10,11 +10,12 @@ Sources (one generator each, all yielding (source, row)):
   indeed        JobSpy keyword searches over the SEARCH_TERMS x LOCATIONS grid,
                 in rotating chunks (run_indeed_searches).
   welcometonl   welcome-to-nl.nl's search backend (welcome_to_nl.py).
-  uxwork        uxwork.nl's JSON search through headless Chromium (uxwork.py).
 Retired: Glassdoor and Google (2026-09: bot walls; Glassdoor's API is gone), Bayt
 (2026-10-26: Cloudflare refused GitHub's runner on 35 of 38 searches, its
 robots.txt bars crawling search results, and it added ~14 roles in our markets
-that LinkedIn/Indeed don't already cover). englishjobsearch.nl was evaluated and
+that LinkedIn/Indeed don't already cover), uxwork.nl (2026-10-27: its SiteGround
+firewall answers GitHub's runner with HTTP 403 even in a real browser; it never
+delivered a row from the runner). englishjobsearch.nl was evaluated and
 skipped (tracking-redirect URLs, overlaps LI/Indeed).
 
 Output:
@@ -43,7 +44,6 @@ printed at the start of every run and published in openMarket for the app.
 
 Usage (locally, or via .github/workflows/scrape-li.yml):
     pip install -r requirements.txt
-    playwright install --with-deps chromium   # once, for uxwork
     python scrape.py
     python scrape.py --debug          # print every kept/dropped result, write nothing
     python scrape.py --chunk N        # force an Indeed rotation chunk
@@ -74,7 +74,8 @@ from match import (
 # the lowest-ranked site supplies the canonical url/source; all sites stay in
 # `sources`. The NL-only boards rank last so an existing LI/Indeed/Bayt row
 # keeps its url. Unknown sources rank after everything listed.
-# "bayt" stays (retired 2026-10-26) until its last roles expire from the snapshot.
+# "bayt" and "uxwork" stay (retired 2026-10-26/27) until their last roles expire
+# from the snapshot.
 SOURCE_PRECEDENCE = {"ats": 0, "li": 1, "indeed": 2, "bayt": 3, "welcometonl": 4, "uxwork": 5}
 
 
@@ -392,19 +393,27 @@ PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
 # ---- LinkedIn (run_linkedin, linkedin_guest.py) ----
 # Every market on every run, one search per keyword group. Each search asks only
 # for postings since it last completed (+ a margin, within the min/max), so a
-# search is usually one request. Requests are spaced LINKEDIN_PAUSE_SECONDS apart;
-# a block is waited out once (Retry-After if LinkedIn sends one), and a second
-# block ends LinkedIn for the run -- unfinished searches keep their old coverage
-# time and get a wider window next run. LINKEDIN_MAX_REQUESTS_PER_RUN caps a run
-# (stalest searches go first, the rest wait for the next run).
+# search is usually one request. Requests are spaced LINKEDIN_PAUSE_SECONDS apart.
+# A block (429/999/403) is backed off (LINKEDIN_BLOCK_BACKOFF_SECONDS, or
+# Retry-After) and the search retried once; then the run moves on -- JobSpy got
+# ~58% of its searches through from the same runners while blocks came and went,
+# so one block isn't treated as the end. LinkedIn stops for the run after
+# LINKEDIN_MAX_BLOCKS_IN_A_ROW blocks in a row or LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS
+# of waiting. Unfinished searches keep their old coverage time and get a wider
+# window next run. LINKEDIN_MAX_REQUESTS_PER_RUN caps a run (stalest first).
+# Every request is logged (snapshot linkedinLastRun) and each run summarised
+# (linkedinHistory, last LINKEDIN_HISTORY_RUNS runs) to tune these from evidence.
 LINKEDIN_PAUSE_SECONDS = (8, 15)
 LINKEDIN_WINDOW_MARGIN_SECONDS = 3600
 LINKEDIN_MIN_WINDOW_SECONDS = 3 * 3600
 LINKEDIN_MAX_WINDOW_SECONDS = 7 * 86400
-LINKEDIN_FIRST_WINDOW_SECONDS = 2 * 86400  # a search with no coverage record yet
-LINKEDIN_BLOCK_WAIT_SECONDS = 90
-LINKEDIN_MAX_BLOCK_WAIT_SECONDS = 300
+LINKEDIN_FIRST_WINDOW_SECONDS = 12 * 3600  # a search with no coverage record yet
+LINKEDIN_BLOCK_BACKOFF_SECONDS = (60, 120, 240)  # by blocks in a row
+LINKEDIN_MAX_BLOCK_WAIT_SECONDS = 300  # cap on a Retry-After
+LINKEDIN_MAX_BLOCKS_IN_A_ROW = 4
+LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS = 15 * 60
 LINKEDIN_MAX_REQUESTS_PER_RUN = 120
+LINKEDIN_HISTORY_RUNS = 120  # ~10 days at the 2h cadence
 
 
 class ErrorLogCount(logging.Handler):
@@ -506,9 +515,9 @@ def _epoch(iso):
 
 def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time):
     """LinkedIn for this run (see the LinkedIn constants). Returns (rows, coverage,
-        health): rows as ("li", row); coverage updated for the searches that
-        completed (searches no longer configured are dropped); health for
-        sourceHealth.
+        health, request_log): rows as ("li", row); coverage updated for the searches
+        that completed (searches no longer configured are dropped); health for
+        sourceHealth and linkedinHistory; request_log one entry per request.
     """
     from linkedin_guest import Blocked, search
 
@@ -519,19 +528,42 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time):
 
     searches = linkedin_searches()
     keys = {linkedin_key(loc, kw) for loc, kw in searches}
+    groups = sorted({kw for _, kw in searches}, key=[kw for _, kw in searches].index)
     coverage = {k: v for k, v in (coverage or {}).items() if k in keys}
     # Stalest first, so a run cut short still moves the oldest searches forward.
     searches.sort(key=lambda s: _epoch(coverage.get(linkedin_key(*s))) or 0)
 
+    run_started = now()
+    request_log = []
+
+    def logged_get(url, params=None, **kw):
+        entry = {"s": round(now() - run_started), "loc": params["location"], "g": groups.index(params["keywords"]),
+                 "start": params["start"], "windowH": round(int(params["f_TPR"][1:]) / 3600, 1)}
+        try:
+            resp = get(url, params=params, **kw)
+        except Exception as e:  # noqa: BLE001 — logged, then handled by the caller
+            entry.update(status=0, error=type(e).__name__)
+            request_log.append(entry)
+            raise
+        entry.update(status=resp.status_code, bytes=len(resp.text or ""))
+        request_log.append(entry)
+        return resp
+
     def pause():
         sleep(random.uniform(*LINKEDIN_PAUSE_SECONDS))
 
-    rows, requests_made, done, blocks = [], 0, 0, 0
+    rows, requests_made, done, blocks, capped = [], 0, 0, 0, 0
+    blocks_in_a_row = waited = 0
     stopped = False
     for i, (location, keywords) in enumerate(searches):
         if requests_made >= LINKEDIN_MAX_REQUESTS_PER_RUN:
             print(f"[linkedin] request budget ({LINKEDIN_MAX_REQUESTS_PER_RUN}) used; "
                   f"{len(searches) - i} search(es) wait for the next run", file=sys.stderr)
+            break
+        if blocks_in_a_row >= LINKEDIN_MAX_BLOCKS_IN_A_ROW or waited >= LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS:
+            stopped = True
+            print(f"[linkedin] {blocks_in_a_row} blocks in a row / {waited}s waited; "
+                  f"no more LinkedIn this run ({len(searches) - i} search(es) wait)", file=sys.stderr)
             break
         if i:
             pause()
@@ -543,43 +575,54 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time):
         found = None
         for attempt in (1, 2):
             try:
-                found, n = search(get, keywords, location, window, pause)
+                found, n, was_capped = search(logged_get, keywords, location, window, pause)
                 requests_made += n
+                capped += was_capped
+                blocks_in_a_row = 0
                 break
             except Blocked as b:
                 requests_made += b.requests
                 rows.extend(("li", r) for r in b.rows)
                 blocks += 1
-                if attempt == 2:
-                    stopped = True
-                    print(f"[linkedin] blocked again (HTTP {b.status}); no more LinkedIn this run", file=sys.stderr)
+                blocks_in_a_row += 1
+                if blocks_in_a_row >= LINKEDIN_MAX_BLOCKS_IN_A_ROW:
                     break
-                wait = min(b.wait or LINKEDIN_BLOCK_WAIT_SECONDS, LINKEDIN_MAX_BLOCK_WAIT_SECONDS)
-                print(f"[linkedin] blocked (HTTP {b.status}); waiting {wait}s, then one retry", file=sys.stderr)
+                step = LINKEDIN_BLOCK_BACKOFF_SECONDS[min(blocks_in_a_row, len(LINKEDIN_BLOCK_BACKOFF_SECONDS)) - 1]
+                wait = min(b.wait or step, LINKEDIN_MAX_BLOCK_WAIT_SECONDS)
+                print(f"[linkedin] blocked (HTTP {b.status}) on {location!r}, request {len(request_log)}; waiting {wait}s"
+                      + (", then one retry" if attempt == 1 else ", then the next search"), file=sys.stderr)
                 sleep(wait)
+                waited += wait
             except Exception as e:  # noqa: BLE001 — one bad search must not kill the run
                 requests_made += 1
                 print(f"[linkedin] {location!r} failed: {type(e).__name__}: {e}", file=sys.stderr)
                 break
-        if stopped:
-            break
         if found is not None:
             rows.extend(("li", r) for r in found)
             coverage[linkedin_key(location, keywords)] = _iso_utc(started)
             done += 1
+    # The last search can end on the block that reaches the limit, without the
+    # loop's own check running again.
+    stopped = stopped or blocks_in_a_row >= LINKEDIN_MAX_BLOCKS_IN_A_ROW
 
     end = now()
     covered = [_epoch(coverage.get(linkedin_key(*s))) for s in searches]
     stalest = max(((end - c) / 3600 if c else None) for c in covered) if all(covered) else None
+    first_block = next((n for n, e in enumerate(request_log, 1) if e["status"] in (403, 429, 999)), None)
     health = {
         "searches": len(searches), "done": done, "requests": requests_made, "blocked": blocks,
-        "stoppedEarly": stopped, "rows": len(rows),
+        "stoppedEarly": stopped, "rows": len(rows), "capped": capped,
         # Hours since the least recently completed search (None: some never completed).
         "stalestHours": round(stalest, 1) if stalest is not None else None,
+        # Which request was the first refused, and how far into the run (tuning evidence).
+        "firstBlockRequest": first_block,
+        "firstBlockSecs": request_log[first_block - 1]["s"] if first_block else None,
+        "minutes": round((end - run_started) / 60, 1),
     }
     print(f"[linkedin] {done} of {len(searches)} searches done, {requests_made} requests, {blocks} block(s)"
+          + (f", first at request {first_block}" if first_block else "")
           + ("; stopped early" if stopped else ""), file=sys.stderr)
-    return rows, coverage, health
+    return rows, coverage, health, request_log
 
 
 def run_indeed_searches(combos, debug=False, scrape_jobs=None, sleep=time.sleep):
@@ -635,14 +678,6 @@ def run_welcome_to_nl_searches(debug=False):
     from welcome_to_nl import scrape_welcome_to_nl
 
     yield from scrape_welcome_to_nl(SEARCH_TERMS, debug=debug)
-
-
-def run_uxwork_searches():
-    """Yields ("uxwork", row) from uxwork.nl -- a few pages, no terms (uxwork.py,
-        through headless Chromium; imported lazily like the others)."""
-    from uxwork import scrape_uxwork
-
-    yield from scrape_uxwork()
 
 
 def normalize_posted_date(value):
@@ -938,26 +973,30 @@ def main():
     print(f"[scrape] this run: Indeed chunk {chunk_index + 1}/{total_chunks} ({len(this_chunk)} combos)"
           + (f" + priority sweep ({len(priority)} combos)" if include_priority else " (priority sweep not due)")
           + f"; LinkedIn up to {LINKEDIN_MAX_REQUESTS_PER_RUN} requests; welcome-to-nl up to "
-          f"{len(SEARCH_TERMS) * 2} requests; uxwork ~5 pages")
+          f"{len(SEARCH_TERMS) * 2} requests")
 
     index = build_index(COMPANIES, ALIASES)
     existing = load_existing_snapshot()
     checked_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    li_rows, coverage, li_health = run_linkedin(existing.get("linkedinCoverage"))
+    li_rows, coverage, li_health, li_log = run_linkedin(existing.get("linkedinCoverage"))
     indeed_rows, indeed_health = run_indeed_searches(combos_this_run, debug=debug)
     welcome_rows = list(run_welcome_to_nl_searches(debug=debug))
-    uxwork_rows = list(run_uxwork_searches())
-    rows = li_rows + indeed_rows + welcome_rows + uxwork_rows
+    rows = li_rows + indeed_rows + welcome_rows
     counts = {}
     for source, _ in rows:
         counts[source] = counts.get(source, 0) + 1
-    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "welcometonl", "uxwork"))
+    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "welcometonl"))
     print(f"[scrape] {len(rows)} raw results this run ({counts_str})")
 
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     fresh_roles, fresh_open_market_roles = build_fresh_roles(rows, index, today_iso, debug=debug)
     snapshot = merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=fresh_open_market_roles, debug=debug)
     snapshot["linkedinCoverage"] = coverage
+    # Evidence for tuning the LinkedIn settings: this run's requests, and a summary
+    # of the last LINKEDIN_HISTORY_RUNS runs.
+    snapshot["linkedinLastRun"] = li_log
+    history = existing.get("linkedinHistory") if isinstance(existing.get("linkedinHistory"), list) else []
+    snapshot["linkedinHistory"] = (history + [{"at": checked_at, **li_health}])[-LINKEDIN_HISTORY_RUNS:]
 
     # What the app's "which markets" tooltip and source warnings show -- published
     # here so they can never drift from LOCATIONS / the rotation settings.
@@ -972,7 +1011,6 @@ def main():
             "linkedin": li_health,
             "indeed": indeed_health,
             "welcometonl": {"rows": len(welcome_rows)},
-            "uxwork": {"rows": len(uxwork_rows)},
         },
     })
 

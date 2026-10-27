@@ -1,4 +1,4 @@
-# li-scraper: LinkedIn / Indeed / welcome-to-nl / uxwork -> data/li-snapshot.json
+# li-scraper: LinkedIn / Indeed / welcome-to-nl -> data/li-snapshot.json
 #
 # Scheduling: GitHub's `schedule` trigger is best-effort and routinely drops or
 # delays runs (we saw 5-7h gaps on a 2h cron). So the cron fires every 15
@@ -24,7 +24,6 @@ on:
       - "li-scraper/companies.py"
       - "li-scraper/requirements.txt"
       - "li-scraper/linkedin_guest.py"
-      - "li-scraper/uxwork.py"
       - "data/companies.json"
   workflow_dispatch: {}
 
@@ -87,10 +86,6 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         run: pip install -r requirements.txt
 
-      - name: Install Chromium (Playwright, for uxwork)
-        if: steps.gate.outputs.should_run == 'true'
-        run: playwright install --with-deps chromium
-
       - name: Validate companies.json
         if: steps.gate.outputs.should_run == 'true'
         run: python test_companies_json.py
@@ -106,10 +101,6 @@ jobs:
       - name: Run offline LinkedIn/Indeed tests
         if: steps.gate.outputs.should_run == 'true'
         run: python test_linkedin.py
-
-      - name: Run offline uxwork tests
-        if: steps.gate.outputs.should_run == 'true'
-        run: python test_uxwork.py
 
       - name: Run scraper
         if: steps.gate.outputs.should_run == 'true'
