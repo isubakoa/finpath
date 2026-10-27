@@ -685,7 +685,9 @@ async function scrapeCompany(browser, company, { debug = false } = {}) {
   if (debug && relevant.length !== roles.length) {
     console.log(`[${company.slug}] ${roles.length - relevant.length} of ${roles.length} dropped as not title-relevant, ${relevant.length} kept`);
   }
-  return { ok: true, roles: relevant.map((r) => ({ title: r.title, url: r.url, location: cleanLocation(r.location), postedDate: null })) };
+  // `found`: job links seen before the title filter. 0 means the pages listed no jobs
+  // at all -- changed or blocked -- and check.php flags it (boardError).
+  return { ok: true, found: roles.length, roles: relevant.map((r) => ({ title: r.title, url: r.url, location: cleanLocation(r.location), postedDate: null })) };
 }
 
 // Steps 2 and 3 of "Locations", for roles whose listing showed none.
