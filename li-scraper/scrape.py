@@ -378,21 +378,21 @@ PAUSE_BETWEEN_SEARCHES_SECONDS_MIN = 5
 PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
 
 # ---- LinkedIn (run_linkedin, linkedin_guest.py) ----
-# Each market x keyword group is one search. Each search asks only for postings
-# since it last completed (+ a margin, within the min/max), so a search is
-# usually one request. Human pace (2026-10-27, see linkedin_guest.py): requests
-# are LINKEDIN_PAUSE_SECONDS apart and a run makes at most
-# LINKEDIN_MAX_REQUESTS_PER_RUN, stalest searches first, so a run that can't
-# reach every search still moves the oldest ones forward and the rest get a wider
-# window next time (nothing is lost while the gap is under the 7-day maximum).
-# A block (429/999/403) waits out LinkedIn's penalty (LINKEDIN_BLOCK_BACKOFF_SECONDS,
-# or Retry-After) and probes once with the same search; then the run moves on.
-# LinkedIn stops for the run after LINKEDIN_MAX_BLOCKS_IN_A_ROW blocks in a row or
-# LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS of waiting. The session is warmed on the
-# public search page first, and the client variant (linkedin_guest.VARIANTS) is
-# picked at random per run. Every request is logged (snapshot linkedinLastRun) and
-# each run summarised (linkedinHistory, last LINKEDIN_HISTORY_RUNS runs, with the
-# variant) to tune these from evidence.
+# Each market x keyword group is one search, and each search is one load of
+# LinkedIn's public search page (up to ~60 postings), asking only for postings
+# since that search last completed (+ a margin, within the min/max). Human pace
+# (2026-10-27, see linkedin_guest.py): searches are LINKEDIN_PAUSE_SECONDS apart
+# and a run makes at most LINKEDIN_MAX_REQUESTS_PER_RUN requests, stalest searches
+# first, so a run cut short still moves the oldest ones forward and the rest get a
+# wider window next time (nothing is lost while the gap is under the 7-day maximum).
+# A block (429/999/403, the sign-in wall, or a page without job cards) waits out
+# LinkedIn's penalty (LINKEDIN_BLOCK_BACKOFF_SECONDS, or Retry-After) and retries the
+# same search once; then the run moves on. LinkedIn stops for the run after
+# LINKEDIN_MAX_BLOCKS_IN_A_ROW blocks in a row or LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS
+# of waiting. The client variant (linkedin_guest.VARIANTS) is picked at random per
+# run. Every request is logged (snapshot linkedinLastRun) and each run summarised
+# (linkedinHistory, last LINKEDIN_HISTORY_RUNS runs, with the variant) to tune these
+# from evidence.
 LINKEDIN_PAUSE_SECONDS = (60, 90)
 LINKEDIN_WINDOW_MARGIN_SECONDS = 3600
 LINKEDIN_MIN_WINDOW_SECONDS = 3 * 3600
@@ -402,7 +402,7 @@ LINKEDIN_BLOCK_BACKOFF_SECONDS = (300,)  # by blocks in a row; the penalty lifte
 LINKEDIN_MAX_BLOCK_WAIT_SECONDS = 300  # cap on a Retry-After
 LINKEDIN_MAX_BLOCKS_IN_A_ROW = 3
 LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS = 15 * 60
-LINKEDIN_MAX_REQUESTS_PER_RUN = 30  # ~40 min at the pause above
+LINKEDIN_MAX_REQUESTS_PER_RUN = 36  # every search plus a few retries; ~45 min at the pause above
 LINKEDIN_HISTORY_RUNS = 120  # ~10 days at the 2h cadence
 
 
@@ -507,10 +507,10 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time, variant=No
     """LinkedIn for this run (see the LinkedIn constants). Returns (rows, coverage,
         health, request_log): rows as ("li", row); coverage updated for the searches
         that completed (searches no longer configured are dropped); health for
-        sourceHealth and linkedinHistory; request_log one entry per search request
-        (the warm-up is in health). `get` replaces the HTTP client (tests).
+        sourceHealth and linkedinHistory; request_log one entry per request.
+        `get` replaces the HTTP client (tests).
     """
-    from linkedin_guest import BLOCK_STATUSES, VARIANTS, Blocked, open_session, page_title, search, warm_up
+    from linkedin_guest import VARIANTS, Blocked, open_session, page_title, search, search_url
 
     if get is None:
         variant = variant or random.choice(VARIANTS)
@@ -525,31 +525,17 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time, variant=No
 
     run_started = now()
     request_log = []
+    last_response = {}
 
-    def logged_get(url, params=None, **kw):
-        entry = {"s": round(now() - run_started), "loc": params["location"], "g": groups.index(params["keywords"]),
-                 "start": params["start"], "windowH": round(int(params["f_TPR"][1:]) / 3600, 1)}
-        try:
-            resp = get(url, params=params, **kw)
-        except Exception as e:  # noqa: BLE001 — logged, then handled by the caller
-            entry.update(status=0, error=type(e).__name__)
-            request_log.append(entry)
-            raise
-        entry.update(status=resp.status_code, bytes=len(resp.text or ""))
-        if resp.status_code in BLOCK_STATUSES:
-            entry["title"] = page_title(resp.text)
-        request_log.append(entry)
+    def recording_get(url, **kw):
+        resp = get(url, **kw)
+        last_response["resp"] = resp
         return resp
-
-    def pause():
-        sleep(random.uniform(*LINKEDIN_PAUSE_SECONDS))
 
     rows, requests_made, done, blocks, capped = [], 0, 0, 0, 0
     blocks_in_a_row = waited = 0
     stopped = False
-    warm_status = warm_up(get, searches[0][1], searches[0][0]) if searches else None
-    if searches:
-        pause()
+    referer = None
     for i, (location, keywords) in enumerate(searches):
         if requests_made >= LINKEDIN_MAX_REQUESTS_PER_RUN:
             print(f"[linkedin] request budget ({LINKEDIN_MAX_REQUESTS_PER_RUN}) used; "
@@ -561,7 +547,7 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time, variant=No
                   f"no more LinkedIn this run ({len(searches) - i} search(es) wait)", file=sys.stderr)
             break
         if i:
-            pause()
+            sleep(random.uniform(*LINKEDIN_PAUSE_SECONDS))
         started = now()
         last = _epoch(coverage.get(linkedin_key(location, keywords)))
         window = (LINKEDIN_FIRST_WINDOW_SECONDS if last is None
@@ -569,29 +555,41 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time, variant=No
                            LINKEDIN_MAX_WINDOW_SECONDS))
         found = None
         for attempt in (1, 2):
+            if requests_made >= LINKEDIN_MAX_REQUESTS_PER_RUN:
+                break
+            requests_made += 1
+            last_response.clear()
+            entry = {"s": round(now() - run_started), "loc": location, "g": groups.index(keywords),
+                     "windowH": round(window / 3600, 1)}
+            request_log.append(entry)
             try:
-                found, n, was_capped = search(logged_get, keywords, location, window, pause)
-                requests_made += n
+                found, was_capped = search(recording_get, keywords, location, window, referer=referer)
+                entry.update(status=200, cards=len(found))
                 capped += was_capped
                 blocks_in_a_row = 0
+                referer = search_url(keywords, location, window)
                 break
             except Blocked as b:
-                requests_made += b.requests
-                rows.extend(("li", r) for r in b.rows)
+                resp = last_response.get("resp")
+                entry.update(status=b.status, blocked=True, title=page_title(resp.text) if resp is not None else "")
                 blocks += 1
                 blocks_in_a_row += 1
                 if blocks_in_a_row >= LINKEDIN_MAX_BLOCKS_IN_A_ROW:
                     break
                 step = LINKEDIN_BLOCK_BACKOFF_SECONDS[min(blocks_in_a_row, len(LINKEDIN_BLOCK_BACKOFF_SECONDS)) - 1]
                 wait = min(b.wait or step, LINKEDIN_MAX_BLOCK_WAIT_SECONDS)
-                print(f"[linkedin] blocked (HTTP {b.status}) on {location!r}, request {len(request_log)}; waiting {wait}s"
+                print(f"[linkedin] blocked (HTTP {b.status}{', ' + entry['title'] if entry['title'] else ''}) on "
+                      f"{location!r}, request {len(request_log)}; waiting {wait}s"
                       + (", then one retry" if attempt == 1 else ", then the next search"), file=sys.stderr)
                 sleep(wait)
                 waited += wait
             except Exception as e:  # noqa: BLE001 — one bad search must not kill the run
-                requests_made += 1
+                entry.update(status=getattr(last_response.get("resp"), "status_code", 0), error=type(e).__name__)
                 print(f"[linkedin] {location!r} failed: {type(e).__name__}: {e}", file=sys.stderr)
                 break
+            finally:
+                if "resp" in last_response:
+                    entry["bytes"] = len(last_response["resp"].text or "")
         if found is not None:
             rows.extend(("li", r) for r in found)
             coverage[linkedin_key(location, keywords)] = _iso_utc(started)
@@ -603,10 +601,9 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time, variant=No
     end = now()
     covered = [_epoch(coverage.get(linkedin_key(*s))) for s in searches]
     stalest = max(((end - c) / 3600 if c else None) for c in covered) if all(covered) else None
-    first_block = next((n for n, e in enumerate(request_log, 1) if e["status"] in BLOCK_STATUSES), None)
+    first_block = next((n for n, e in enumerate(request_log, 1) if e.get("blocked")), None)
     health = {
-        # Client variant (linkedin_guest.open_session) and the warm-up's HTTP status.
-        "variant": variant, "warmStatus": warm_status,
+        "variant": variant,  # client (linkedin_guest.open_session); None when injected
         "searches": len(searches), "done": done, "requests": requests_made, "blocked": blocks,
         "stoppedEarly": stopped, "rows": len(rows), "capped": capped,
         # Hours since the least recently completed search (None: some never completed).
@@ -616,8 +613,8 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time, variant=No
         "firstBlockSecs": request_log[first_block - 1]["s"] if first_block else None,
         "minutes": round((end - run_started) / 60, 1),
     }
-    print(f"[linkedin] {variant or 'injected'} client, warm-up HTTP {warm_status}; "
-          f"{done} of {len(searches)} searches done, {requests_made} requests, {blocks} block(s)"
+    print(f"[linkedin] {variant or 'injected'} client: {done} of {len(searches)} searches done, "
+          f"{requests_made} requests, {blocks} block(s)"
           + (f", first at request {first_block}" if first_block else "")
           + ("; stopped early" if stopped else ""), file=sys.stderr)
     return rows, coverage, health, request_log
