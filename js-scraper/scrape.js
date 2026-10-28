@@ -557,9 +557,12 @@ async function scrapeOneUrl(browser, url, company) {
 
     const roles = await page.evaluate(({ patternSource, titleSelector, titleAncestorSelector, titleAncestorTitleSelector, locationSelector, locationAncestorSelector }) => {
       const pattern = new RegExp(patternSource);
+      // Relative to the page's <base> when it has one, as a browser resolves it:
+      // Google's board links are "jobs/results/<id>" under <base href=".../applications/">,
+      // so resolving against location.href doubled "jobs/" (broken links, 2026-10-28).
       const absolute = (a) => {
         try {
-          return new URL(a.getAttribute("href") || "", location.href).href;
+          return new URL(a.getAttribute("href") || "", document.baseURI).href;
         } catch {
           return "";
         }
