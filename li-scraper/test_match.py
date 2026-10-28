@@ -467,7 +467,7 @@ def run():
         ("No relocation support is provided for this position.", []),  # negated ("no ")
         ("This role does not include visa sponsorship.", []),  # negated ("does not")
         ("Great benefits and a competitive salary package.", []),  # no keyword at all
-        ("", []),  # empty description — the common case for a LinkedIn-only row
+        ("", []),  # empty description — the common case for an LI-only row
         (None, []),  # missing description field entirely (row.get() returns None)
     ]
     for description, expected in SPONSORSHIP_CASES:

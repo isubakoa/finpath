@@ -4,17 +4,17 @@ data/li-snapshot.json, which check.php merges into ZenPath alongside each
 company's own careers board.
 
 Sources (one generator each, all yielding (source, row)):
-  li            LinkedIn's public job search (linkedin_guest.py) at human pace:
+  li            LI's public job search (li_guest.py) at human pace:
                 the terms combined into a few OR queries per market, each searched
                 only for the time since it last succeeded, stalest first, up to
-                LINKEDIN_MAX_REQUESTS_PER_RUN requests a run (run_linkedin).
+                LI_MAX_REQUESTS_PER_RUN requests a run (run_li).
   indeed        JobSpy keyword searches over the SEARCH_TERMS x LOCATIONS grid,
                 in rotating chunks (run_indeed_searches).
   welcometonl   welcome-to-nl.nl's search backend (welcome_to_nl.py).
 Retired: Glassdoor and Google (2026-09: bot walls; Glassdoor's API is gone), Bayt
 (2026-10-26: Cloudflare refused GitHub's runner on 35 of 38 searches, its
 robots.txt bars crawling search results, and it added ~14 roles in our markets
-that LinkedIn/Indeed don't already cover), uxwork.nl (2026-10-27: its SiteGround
+that LI/Indeed don't already cover), uxwork.nl (2026-10-27: its SiteGround
 firewall answers GitHub's runner with HTTP 403 even in a real browser; it never
 delivered a row from the runner). englishjobsearch.nl was evaluated and
 skipped (tracking-redirect URLs, overlaps LI/Indeed).
@@ -29,7 +29,7 @@ Output:
               market (is_known_market). Agencies are included on purpose. Newest
               first. sourceHealth is this run's per-source report (the app warns
               when a source was blocked or came back empty).
-  linkedinCoverage  {"<location>|<keywords>": ISO time} -- when each LinkedIn
+  liCoverage  {"<location>|<keywords>": ISO time} -- when each LI
               search last completed, so the next run asks only for what's newer.
 Every role carries `source`, a `sources` list (cross-site corroboration,
 precedence in SOURCE_PRECEDENCE) and `sponsorshipSignal` (visa/relocation
@@ -257,7 +257,7 @@ MARKET_ALIASES = {
 # the US, Pakistan...), so open market only keeps a posting whose own location
 # resolves to a searched market. Plain substring matching on country names
 # isn't enough: Indeed often returns "City, StateCode, CC" ("Berlin, BE, DE")
-# and LinkedIn sometimes "Greater X Area" with no country at all, so
+# and LI sometimes "Greater X Area" with no country at all, so
 # market_for_location() also checks the last comma segment against
 # ISO_CODE_TO_MARKET and falls back to CITY_ALIASES.
 #
@@ -377,33 +377,35 @@ HOURS_OLD = 240  # 10 days — comfortably wider than one rotation cycle (see be
 PAUSE_BETWEEN_SEARCHES_SECONDS_MIN = 5
 PAUSE_BETWEEN_SEARCHES_SECONDS_MAX = 11
 
-# ---- LinkedIn (run_linkedin, linkedin_guest.py) ----
+# ---- LI (run_li, li_guest.py) ----
 # Each market x keyword group is one search, and each search is one load of
-# LinkedIn's public search page (up to ~60 postings), asking only for postings
+# LI's public search page (up to ~60 postings), asking only for postings
 # since that search last completed (+ a margin, within the min/max). Human pace
-# (2026-10-27, see linkedin_guest.py): searches are LINKEDIN_PAUSE_SECONDS apart
-# and a run makes at most LINKEDIN_MAX_REQUESTS_PER_RUN requests, stalest searches
+# (2026-10-27, see li_guest.py): searches are LI_PAUSE_SECONDS apart
+# and a run makes at most LI_MAX_REQUESTS_PER_RUN requests, stalest searches
 # first, so a run cut short still moves the oldest ones forward and the rest get a
 # wider window next time (nothing is lost while the gap is under the 7-day maximum).
-# A block (429/999/403, the sign-in wall, or a page without job cards) waits out
-# LinkedIn's penalty (LINKEDIN_BLOCK_BACKOFF_SECONDS, or Retry-After) and retries the
-# same search once; then the run moves on. LinkedIn stops for the run after
-# LINKEDIN_MAX_BLOCKS_IN_A_ROW blocks in a row or LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS
-# of waiting. The client variant (linkedin_guest.VARIANTS) is picked at random per
-# run. Every request is logged (snapshot linkedinLastRun) and each run summarised
-# (linkedinHistory, last LINKEDIN_HISTORY_RUNS runs, with the variant) to tune these
+# A results page with no cards is a search with no new postings (done, no wait).
+# A block (429/999/403, the sign-in wall, or a cardless page that isn't the
+# search's results page) waits out LI's penalty
+# (LI_BLOCK_BACKOFF_SECONDS, or Retry-After) and retries the same search
+# once; then the run moves on. LI stops for the run after
+# LI_MAX_BLOCKS_IN_A_ROW blocks in a row or LI_MAX_BLOCK_WAIT_TOTAL_SECONDS
+# of waiting. The client variant (li_guest.VARIANTS) is picked at random per
+# run. Every request is logged (snapshot liLastRun) and each run summarised
+# (liHistory, last LI_HISTORY_RUNS runs, with the variant) to tune these
 # from evidence.
-LINKEDIN_PAUSE_SECONDS = (60, 90)
-LINKEDIN_WINDOW_MARGIN_SECONDS = 3600
-LINKEDIN_MIN_WINDOW_SECONDS = 3 * 3600
-LINKEDIN_MAX_WINDOW_SECONDS = 7 * 86400
-LINKEDIN_FIRST_WINDOW_SECONDS = 12 * 3600  # a search with no coverage record yet
-LINKEDIN_BLOCK_BACKOFF_SECONDS = (300,)  # by blocks in a row; the penalty lifted after 2-4 min
-LINKEDIN_MAX_BLOCK_WAIT_SECONDS = 300  # cap on a Retry-After
-LINKEDIN_MAX_BLOCKS_IN_A_ROW = 3
-LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS = 15 * 60
-LINKEDIN_MAX_REQUESTS_PER_RUN = 36  # every search plus a few retries; ~45 min at the pause above
-LINKEDIN_HISTORY_RUNS = 120  # ~10 days at the 2h cadence
+LI_PAUSE_SECONDS = (60, 90)
+LI_WINDOW_MARGIN_SECONDS = 3600
+LI_MIN_WINDOW_SECONDS = 3 * 3600
+LI_MAX_WINDOW_SECONDS = 7 * 86400
+LI_FIRST_WINDOW_SECONDS = 12 * 3600  # a search with no coverage record yet
+LI_BLOCK_BACKOFF_SECONDS = (300,)  # by blocks in a row; the penalty lifted after 2-4 min
+LI_MAX_BLOCK_WAIT_SECONDS = 300  # cap on a Retry-After
+LI_MAX_BLOCKS_IN_A_ROW = 3
+LI_MAX_BLOCK_WAIT_TOTAL_SECONDS = 15 * 60
+LI_MAX_REQUESTS_PER_RUN = 36  # every search plus a few retries; ~45 min at the pause above
+LI_HISTORY_RUNS = 120  # ~10 days at the 2h cadence
 
 
 class ErrorLogCount(logging.Handler):
@@ -424,7 +426,7 @@ class ErrorLogCount(logging.Handler):
 # 2026-10-27 trim), picked from wall-clock time so runs walk the whole grid and
 # wrap around. 68 divides the grid into 4 equal chunks -> a full rotation every
 # ~8h at the 2h cadence (the priority sweep adds its own combos every other run).
-# Pacing is ~8s/combo, so ~9 min per run. LinkedIn doesn't rotate (see run_linkedin).
+# Pacing is ~8s/combo, so ~9 min per run. LI doesn't rotate (see run_li).
 #
 # The lever for rotation speed vs. request volume (block risk) is this number.
 COMBOS_PER_RUN = 68
@@ -480,15 +482,15 @@ def priority_sweep_due(forced=None):
     return bucket % 2 == 0
 
 
-def linkedin_searches():
-    """(location, keywords) for every LinkedIn search: each market x each keyword group."""
-    from linkedin_guest import keyword_groups
+def li_searches():
+    """(location, keywords) for every LI search: each market x each keyword group."""
+    from li_guest import keyword_groups
 
     groups = keyword_groups(SEARCH_TERMS)
     return [(loc, kw) for loc in LOCATIONS for kw in groups]
 
 
-def linkedin_key(location, keywords):
+def li_key(location, keywords):
     return f"{location}|{keywords}"
 
 
@@ -503,25 +505,25 @@ def _epoch(iso):
         return None
 
 
-def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time, variant=None):
-    """LinkedIn for this run (see the LinkedIn constants). Returns (rows, coverage,
+def run_li(coverage, get=None, sleep=time.sleep, now=time.time, variant=None):
+    """LI for this run (see the LI constants). Returns (rows, coverage,
         health, request_log): rows as ("li", row); coverage updated for the searches
         that completed (searches no longer configured are dropped); health for
-        sourceHealth and linkedinHistory; request_log one entry per request.
+        sourceHealth and liHistory; request_log one entry per request.
         `get` replaces the HTTP client (tests).
     """
-    from linkedin_guest import VARIANTS, Blocked, open_session, page_title, search, search_url
+    from li_guest import VARIANTS, Blocked, open_session, page_title, search, search_url
 
     if get is None:
         variant = variant or random.choice(VARIANTS)
         get = open_session(variant)
 
-    searches = linkedin_searches()
-    keys = {linkedin_key(loc, kw) for loc, kw in searches}
+    searches = li_searches()
+    keys = {li_key(loc, kw) for loc, kw in searches}
     groups = sorted({kw for _, kw in searches}, key=[kw for _, kw in searches].index)
     coverage = {k: v for k, v in (coverage or {}).items() if k in keys}
     # Stalest first, so a run cut short still moves the oldest searches forward.
-    searches.sort(key=lambda s: _epoch(coverage.get(linkedin_key(*s))) or 0)
+    searches.sort(key=lambda s: _epoch(coverage.get(li_key(*s))) or 0)
 
     run_started = now()
     request_log = []
@@ -537,25 +539,25 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time, variant=No
     stopped = False
     referer = None
     for i, (location, keywords) in enumerate(searches):
-        if requests_made >= LINKEDIN_MAX_REQUESTS_PER_RUN:
-            print(f"[linkedin] request budget ({LINKEDIN_MAX_REQUESTS_PER_RUN}) used; "
+        if requests_made >= LI_MAX_REQUESTS_PER_RUN:
+            print(f"[li] request budget ({LI_MAX_REQUESTS_PER_RUN}) used; "
                   f"{len(searches) - i} search(es) wait for the next run", file=sys.stderr)
             break
-        if blocks_in_a_row >= LINKEDIN_MAX_BLOCKS_IN_A_ROW or waited >= LINKEDIN_MAX_BLOCK_WAIT_TOTAL_SECONDS:
+        if blocks_in_a_row >= LI_MAX_BLOCKS_IN_A_ROW or waited >= LI_MAX_BLOCK_WAIT_TOTAL_SECONDS:
             stopped = True
-            print(f"[linkedin] {blocks_in_a_row} blocks in a row / {waited}s waited; "
-                  f"no more LinkedIn this run ({len(searches) - i} search(es) wait)", file=sys.stderr)
+            print(f"[li] {blocks_in_a_row} blocks in a row / {waited}s waited; "
+                  f"no more LI this run ({len(searches) - i} search(es) wait)", file=sys.stderr)
             break
         if i:
-            sleep(random.uniform(*LINKEDIN_PAUSE_SECONDS))
+            sleep(random.uniform(*LI_PAUSE_SECONDS))
         started = now()
-        last = _epoch(coverage.get(linkedin_key(location, keywords)))
-        window = (LINKEDIN_FIRST_WINDOW_SECONDS if last is None
-                  else min(max(started - last + LINKEDIN_WINDOW_MARGIN_SECONDS, LINKEDIN_MIN_WINDOW_SECONDS),
-                           LINKEDIN_MAX_WINDOW_SECONDS))
+        last = _epoch(coverage.get(li_key(location, keywords)))
+        window = (LI_FIRST_WINDOW_SECONDS if last is None
+                  else min(max(started - last + LI_WINDOW_MARGIN_SECONDS, LI_MIN_WINDOW_SECONDS),
+                           LI_MAX_WINDOW_SECONDS))
         found = None
         for attempt in (1, 2):
-            if requests_made >= LINKEDIN_MAX_REQUESTS_PER_RUN:
+            if requests_made >= LI_MAX_REQUESTS_PER_RUN:
                 break
             requests_made += 1
             last_response.clear()
@@ -574,36 +576,36 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time, variant=No
                 entry.update(status=b.status, blocked=True, title=page_title(resp.text) if resp is not None else "")
                 blocks += 1
                 blocks_in_a_row += 1
-                if blocks_in_a_row >= LINKEDIN_MAX_BLOCKS_IN_A_ROW:
+                if blocks_in_a_row >= LI_MAX_BLOCKS_IN_A_ROW:
                     break
-                step = LINKEDIN_BLOCK_BACKOFF_SECONDS[min(blocks_in_a_row, len(LINKEDIN_BLOCK_BACKOFF_SECONDS)) - 1]
-                wait = min(b.wait or step, LINKEDIN_MAX_BLOCK_WAIT_SECONDS)
-                print(f"[linkedin] blocked (HTTP {b.status}{', ' + entry['title'] if entry['title'] else ''}) on "
+                step = LI_BLOCK_BACKOFF_SECONDS[min(blocks_in_a_row, len(LI_BLOCK_BACKOFF_SECONDS)) - 1]
+                wait = min(b.wait or step, LI_MAX_BLOCK_WAIT_SECONDS)
+                print(f"[li] blocked (HTTP {b.status}{', ' + entry['title'] if entry['title'] else ''}) on "
                       f"{location!r}, request {len(request_log)}; waiting {wait}s"
                       + (", then one retry" if attempt == 1 else ", then the next search"), file=sys.stderr)
                 sleep(wait)
                 waited += wait
             except Exception as e:  # noqa: BLE001 — one bad search must not kill the run
                 entry.update(status=getattr(last_response.get("resp"), "status_code", 0), error=type(e).__name__)
-                print(f"[linkedin] {location!r} failed: {type(e).__name__}: {e}", file=sys.stderr)
+                print(f"[li] {location!r} failed: {type(e).__name__}: {e}", file=sys.stderr)
                 break
             finally:
                 if "resp" in last_response:
                     entry["bytes"] = len(last_response["resp"].text or "")
         if found is not None:
             rows.extend(("li", r) for r in found)
-            coverage[linkedin_key(location, keywords)] = _iso_utc(started)
+            coverage[li_key(location, keywords)] = _iso_utc(started)
             done += 1
     # The last search can end on the block that reaches the limit, without the
     # loop's own check running again.
-    stopped = stopped or blocks_in_a_row >= LINKEDIN_MAX_BLOCKS_IN_A_ROW
+    stopped = stopped or blocks_in_a_row >= LI_MAX_BLOCKS_IN_A_ROW
 
     end = now()
-    covered = [_epoch(coverage.get(linkedin_key(*s))) for s in searches]
+    covered = [_epoch(coverage.get(li_key(*s))) for s in searches]
     stalest = max(((end - c) / 3600 if c else None) for c in covered) if all(covered) else None
     first_block = next((n for n, e in enumerate(request_log, 1) if e.get("blocked")), None)
     health = {
-        "variant": variant,  # client (linkedin_guest.open_session); None when injected
+        "variant": variant,  # client (li_guest.open_session); None when injected
         "searches": len(searches), "done": done, "requests": requests_made, "blocked": blocks,
         "stoppedEarly": stopped, "rows": len(rows), "capped": capped,
         # Hours since the least recently completed search (None: some never completed).
@@ -613,7 +615,7 @@ def run_linkedin(coverage, get=None, sleep=time.sleep, now=time.time, variant=No
         "firstBlockSecs": request_log[first_block - 1]["s"] if first_block else None,
         "minutes": round((end - run_started) / 60, 1),
     }
-    print(f"[linkedin] {variant or 'injected'} client: {done} of {len(searches)} searches done, "
+    print(f"[li] {variant or 'injected'} client: {done} of {len(searches)} searches done, "
           f"{requests_made} requests, {blocks} block(s)"
           + (f", first at request {first_block}" if first_block else "")
           + ("; stopped early" if stopped else ""), file=sys.stderr)
@@ -959,7 +961,7 @@ def main():
 
     cycle_hours = total_chunks * SCHEDULE_INTERVAL_HOURS
     print(
-        f"[scrape] LinkedIn: {len(linkedin_searches())} searches ({len(LOCATIONS)} markets x keyword groups), "
+        f"[scrape] LI: {len(li_searches())} searches ({len(LOCATIONS)} markets x keyword groups), "
         f"every run. Indeed: rotating pool of {len(rotating)} combos ({len(SEARCH_TERMS)} terms x "
         f"{len(ROTATING_LOCATIONS)} rotating locations), {COMBOS_PER_RUN}/run -> {total_chunks} chunks -> "
         f"full cycle ~{cycle_hours}h; priority pool {len(PRIORITY_LOCATIONS)} markets ({', '.join(PRIORITY_LOCATIONS)}) "
@@ -967,19 +969,19 @@ def main():
     )
     print(f"[scrape] this run: Indeed chunk {chunk_index + 1}/{total_chunks} ({len(this_chunk)} combos)"
           + (f" + priority sweep ({len(priority)} combos)" if include_priority else " (priority sweep not due)")
-          + f"; LinkedIn up to {LINKEDIN_MAX_REQUESTS_PER_RUN} requests; welcome-to-nl up to "
+          + f"; LI up to {LI_MAX_REQUESTS_PER_RUN} requests; welcome-to-nl up to "
           f"{len(SEARCH_TERMS) * 2} requests")
 
     index = build_index(COMPANIES, ALIASES)
     existing = load_existing_snapshot()
     checked_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    # LinkedIn spends most of its ~40 min pausing between requests (human pace), so
+    # LI spends most of its ~40 min pausing between requests (human pace), so
     # it runs alongside Indeed and Welcome to NL rather than before them.
     with ThreadPoolExecutor(max_workers=1) as pool:
-        linkedin = pool.submit(run_linkedin, existing.get("linkedinCoverage"))
+        li_job = pool.submit(run_li, existing.get("liCoverage"))
         indeed_rows, indeed_health = run_indeed_searches(combos_this_run, debug=debug)
         welcome_rows = list(run_welcome_to_nl_searches(debug=debug))
-        li_rows, coverage, li_health, li_log = linkedin.result()
+        li_rows, coverage, li_health, li_log = li_job.result()
     rows = li_rows + indeed_rows + welcome_rows
     counts = {}
     for source, _ in rows:
@@ -990,12 +992,12 @@ def main():
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     fresh_roles, fresh_open_market_roles = build_fresh_roles(rows, index, today_iso, debug=debug)
     snapshot = merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=fresh_open_market_roles, debug=debug)
-    snapshot["linkedinCoverage"] = coverage
-    # Evidence for tuning the LinkedIn settings: this run's requests, and a summary
-    # of the last LINKEDIN_HISTORY_RUNS runs.
-    snapshot["linkedinLastRun"] = li_log
-    history = existing.get("linkedinHistory") if isinstance(existing.get("linkedinHistory"), list) else []
-    snapshot["linkedinHistory"] = (history + [{"at": checked_at, **li_health}])[-LINKEDIN_HISTORY_RUNS:]
+    snapshot["liCoverage"] = coverage
+    # Evidence for tuning the LI settings: this run's requests, and a summary
+    # of the last LI_HISTORY_RUNS runs.
+    snapshot["liLastRun"] = li_log
+    history = existing.get("liHistory") if isinstance(existing.get("liHistory"), list) else []
+    snapshot["liHistory"] = (history + [{"at": checked_at, **li_health}])[-LI_HISTORY_RUNS:]
 
     # What the app's "which markets" tooltip and source warnings show -- published
     # here so they can never drift from LOCATIONS / the rotation settings.
@@ -1005,11 +1007,11 @@ def main():
         "priorityMarkets": [_canonical_market_name(loc) for loc in PRIORITY_LOCATIONS],
         "fullCycleHours": cycle_hours,
         "prioritySweepHours": 2 * SCHEDULE_INTERVAL_HOURS,
-        # At best one request per search, LINKEDIN_MAX_REQUESTS_PER_RUN per run.
-        "linkedinEveryHours": math.ceil(li_health["searches"] / LINKEDIN_MAX_REQUESTS_PER_RUN) * SCHEDULE_INTERVAL_HOURS,
+        # At best one request per search, LI_MAX_REQUESTS_PER_RUN per run.
+        "liEveryHours": math.ceil(li_health["searches"] / LI_MAX_REQUESTS_PER_RUN) * SCHEDULE_INTERVAL_HOURS,
         "sourceHealth": {
             "checkedAt": checked_at,
-            "linkedin": li_health,
+            "li": li_health,
             "indeed": indeed_health,
             "welcometonl": {"rows": len(welcome_rows)},
         },

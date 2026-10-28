@@ -1,7 +1,7 @@
 """
-LinkedIn's public (logged-out) job search, read directly instead of through JobSpy.
+LI's public (logged-out) job search, read directly instead of through JobSpy.
 
-How LinkedIn treats GitHub's runners (R&D 2026-10-26/27, from per-request logs):
+How LI treats GitHub's runners (R&D 2026-10-26/27, from per-request logs):
   - its results feed (jobs-guest/.../seeMoreJobPostings, 10 cards a request, what
     JobSpy and this client used to call) allows a fresh address ~5 requests 10-13 s
     apart, then 429s; once penalised, single requests minutes apart mostly fail
@@ -10,11 +10,14 @@ How LinkedIn treats GitHub's runners (R&D 2026-10-26/27, from per-request logs):
     200 while the feed refused the same address a minute later, and again after 5
     minutes: the two are limited separately;
   - the search page is server-rendered with every matching card, up to ~60
-    (checked 2026-10-27: 55 of 55 in one page, no extra calls). With no match it
-    fills in with unrelated recent jobs in that market, so a page without job
-    cards is a sign-in wall or bot check, never "no results".
+    (checked 2026-10-27: 55 of 55 in one page, no extra calls). A search with no
+    match can come back as LI's own results page with no cards (the 2026-10-27
+    22:34Z run: Kuala Lumpur, niche titles, 200, ~95 KB, the same page on retry). That
+    page's <title> repeats the keywords; a sign-in wall or bot check's doesn't. So
+    a page without cards is "no new jobs" when its title is our search, and a
+    block otherwise (is_results_page).
 So each search is ONE request for the public search page, read like a person
-browsing (scrape.py's LinkedIn constants: a minute or more between searches, a
+browsing (scrape.py's LI constants: a minute or more between searches, a
 capped number per run, a 5-minute wait before one retry after a block):
   - keywords are combined with OR ('"product manager" OR "product owner"'), so the
     search terms become a few groups (keyword_groups);
@@ -31,19 +34,21 @@ capped number per run, a 5-minute wait before one retry after a block):
 Every request is logged into the snapshot (scrape.py), so blocking patterns can be
 read across many runs rather than guessed from one.
 
-Page: GET https://www.linkedin.com/jobs/search
+Page: GET SITE + /jobs/search
   keywords, location, distance (JobSpy's default, kept), f_TPR=r<seconds>, sortBy=DD.
 Card markup (verified 2026-10-26/27): div.base-search-card[data-entity-urn=
   "urn:li:jobPosting:<id>"], h3.base-search-card__title, h4.base-search-card__subtitle,
   span.job-search-card__location, time[datetime].
 """
+import html as html_lib
 import re
 import sys
 
 from bs4 import BeautifulSoup
 
-SEARCH_PAGE_URL = "https://www.linkedin.com/jobs/search"
-JOB_URL = "https://www.linkedin.com/jobs/view/{id}"
+SITE = "https://www.linkedin.com"  # the site's address, written only here
+SEARCH_PAGE_URL = SITE + "/jobs/search"
+JOB_URL = SITE + "/jobs/view/{id}"
 PAGE_MAX_CARDS = 60  # the page's own limit (55 of 55 seen in one page); a full page is "capped"
 DISTANCE_MILES = 50
 MAX_PHRASES_PER_GROUP = 10
@@ -87,6 +92,18 @@ def page_title(html):
     """<title> of a page, for logging what a block page says (≤80 chars)."""
     m = re.search(r"<title[^>]*>(.*?)</title>", html or "", flags=re.S | re.I)
     return re.sub(r"\s+", " ", m.group(1)).strip()[:80] if m else ""
+
+
+def is_results_page(html, keywords):
+    """True when the page is LI's results page for this search: its <title>
+        repeats the search's first phrase (any case; LI capitalises some
+        words, e.g. '"principal Product Designer" OR ...'). A sign-in wall or bot
+        check has its own title (a sign-up or login page).
+    """
+    m = re.search(r"<title[^>]*>(.*?)</title>", html or "", flags=re.S | re.I)
+    title = re.sub(r"\s+", " ", html_lib.unescape(m.group(1))).lower() if m else ""
+    first = keywords.split(" OR ")[0].strip().strip('"').lower()
+    return bool(first) and first in title
 
 
 def keyword_groups(terms, max_phrases=MAX_PHRASES_PER_GROUP):
@@ -135,7 +152,7 @@ def parse_cards(html):
 
 
 class Blocked(Exception):
-    """LinkedIn refused a request (rate limit or bot check). `wait` is its
+    """LI refused a request (rate limit or bot check). `wait` is its
         Retry-After in seconds, when it gave one.
     """
 
@@ -160,9 +177,10 @@ def search_url(keywords, location, window_seconds):
 def search(get, keywords, location, window_seconds, referer=None):
     """Every posting for one (keywords, location) within the window, from one load
         of the public search page. Returns (rows, capped): capped when the page is
-        full, so older postings in the window may be missing (logged). Raises
-        Blocked when LinkedIn refuses: a block status, a redirect to its sign-in
-        wall, or a page without job cards.
+        full, so older postings in the window may be missing (logged). A results
+        page without cards is no new postings: ([], False). Raises Blocked when
+        LI refuses: a block status, a redirect to its sign-in wall, or a
+        page without job cards that isn't this search's results page.
     """
     headers = dict(PAGE_HEADERS)
     if referer:
@@ -173,10 +191,14 @@ def search(get, keywords, location, window_seconds, referer=None):
         raise Blocked(resp.status_code, int(retry_after) if retry_after.isdigit() else None)
     if resp.status_code != 200:
         raise RuntimeError(f"HTTP {resp.status_code}")
-    rows = parse_cards(resp.text) if "authwall" not in str(getattr(resp, "url", "")) else []
+    if "authwall" in str(getattr(resp, "url", "")):
+        raise Blocked(resp.status_code)
+    rows = parse_cards(resp.text)
     if not rows:
+        if is_results_page(resp.text, keywords):
+            return [], False
         raise Blocked(resp.status_code)
     capped = len(rows) >= PAGE_MAX_CARDS
     if capped:
-        print(f"[linkedin] {location!r}: page full ({len(rows)}); older postings in the window may be missing", file=sys.stderr)
+        print(f"[li] {location!r}: page full ({len(rows)}); older postings in the window may be missing", file=sys.stderr)
     return rows, capped
