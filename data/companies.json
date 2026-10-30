@@ -14,7 +14,7 @@
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "Super-app scale; large in-house product & design org across 15+ countries.",
       "url": "https://www.revolut.com/careers/",
-      "openStatus": "uncertain",
+      "openStatus": "none",
       "openRoles": [
         {
           "id": "revolut-r0",
@@ -37,10 +37,10 @@
           "status": "not-started"
         }
       ],
-      "openNote": "revolut.com/careers returns 403 to ZenPath's server (2026-10-27), and in a browser it shows only a handful of roles with a client-side \"show more\" and no readable feed, so Revolut is covered by the job sites (LI, Indeed) only for now.",
+      "openNote": "revolut.com/careers returns 403 to ZenPath's server and shows only a few roles behind \"show more\", but the page's embedded data (__NEXT_DATA__ props.pageProps.positions) carries every open role (~314 on 2026-10-30) with id, title and locations. The browser scraper reads that data (its pageData mode, added 2026-10-30) and builds each position URL from the title and id. Office places read 'City, Country'; remote ones 'Remote, Country', which the app drops.",
       "ats": {
-        "type": "unknown",
-        "slug": null
+        "type": "snapshot",
+        "slug": "revolut"
       }
     },
     {
@@ -996,13 +996,17 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "World's largest wealth manager.",
-      "url": "https://www.ubs.com/global/en/careers.html",
-      "openStatus": "uncertain",
+      "url": "https://jobs.ubs.com/TGNewUI/Search/Home/Home?partnerid=25008&siteid=5155",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "RE-CONFIRMED (2026-09): still BrassRing/Kenexa, no unauthenticated stable feed; checked for a Workday migration too — no ubs.wd*.myworkdayjobs.com tenant exists. Re-investigated: UBS's board (jobs.ubs.com) actually runs IBM/Kenexa BrassRing, not Taleo. Confirmed it does contain real design-relevant roles (e.g. 'GWM LatAm Business Transformation Consultant') — but the page is genuinely session-state-dependent: repeated fresh loads with no reused cookies came back with an empty job array far more often than not, with no reliable way to tell in advance which a given request will get. Not stable enough to automate via either a direct fetch or a scheduled scraper. RETRIED AGAIN (2026-09-17, real browser): the real search UI works and did surface one live, genuinely design-titled role — 'Senior Conversation Designer - Experience Design Center of Excellence' (Zürich, Marketing and Communications / Personal & Corporate Banking) — confirmed via an actual keyword search against jobs.ubs.com's UI, not a guess. It's a Senior IC title, not Director/Head/Principal/Staff, so it wouldn't meet this list's seniority bar even if stably linkable. It isn't: the job's own deep-link URL ('...PageType=JobDetails&jobid=346866') returned 'this link is no longer valid / your session has expired' on a fresh top-level navigation, even from the same browser session that had just searched for it — confirming the session-dependency is a real architectural property of this BrassRing instance (job detail pages only resolve via continuous in-app routing, not as stable shareable URLs), not an artifact of headless/stateless fetching. Also confirmed the plain POST endpoints behind the search box (TgNewUI/Search/Ajax/MatchedJobs, KeywordAutoComplete) 500 on any request that doesn't carry the exact session cookie plus the exact request shape the Angular app itself constructs — not reproducible with a simple form-encoded body. No adapter is feasible here without a stateful, JS-capable scraper.",
+      "openNote": "IBM BrassRing board jobs.ubs.com (partnerid 25008, siteid 5155; link from Isu, 2026-10-30). Its job-list API (ProcessSortAndShowMoreJobs, 50 a page, newest first) answers inside a session: ZenPath first loads the search page for its cookies and __RequestVerificationToken (sent back as the RFT header). 591 roles on 2026-10-30, read in 12 pages, all 591 returned reliably in a browser test; incl. 'Senior Service Designer / UX Strategist' and 'Senior Conversation Designer' (Zürich). Location is formtext23 ('Switzerland - Zürich').",
       "ats": {
-        "type": "unknown",
-        "slug": null
+        "type": "brassring",
+        "host": "jobs.ubs.com",
+        "partnerId": "25008",
+        "siteId": "5155",
+        "locationField": "formtext23",
+        "pages": 12
       }
     },
     {
@@ -3877,7 +3881,7 @@
       "sponsorship": "likely",
       "sponsorshipNote": "One of the largest and longest-established global tech/consulting employers with a very well-known visa-sponsorship track record; heuristic only.",
       "note": "IBM Design is a historically well-regarded in-house design org (IBM Design Language, Carbon Design System) with studios worldwide including APAC; a legitimate target for enterprise design leadership given the candidate's background.",
-      "url": "https://www.ibm.com/careers/design-and-ux",
+      "url": "https://www.ibm.com/careers/search",
       "openStatus": "below-target",
       "openRoles": [
         {
@@ -3901,10 +3905,9 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Found two real, separate IBM job boards, neither convertible to a live check.php adapter this pass. (1) ibm.com/careers/search's 'Design & UX' category filter is precise and confirmed real (18 current roles, both examples above pulled from it) but its backend (www-api.ibm.com/search/api/v2) needs an enterprise-search 'appId'/'scopes' schema that wasn't discoverable without further digging — a 400 with validation errors, not a wall, so worth revisiting. (2) careers.ibm.com runs Avature (same platform as HSBC/UniCredit/Macquarie/TotalEnergies, confirmed via its portalpacks JS bundle) and has real 'JobDetail?jobId=' postings including a live 'Senior Experience Strategy Designer' (Milan) and 'Presales Security Architect-Solution Design' — but unlike those other Avature tenants, this one only returns real data with session cookies attached (credentials:'include'); a stateless request (credentials:'omit', what check.php sends) gets an empty 202, the same session-gating pattern that keeps UBS unconverted. Both example roles above are confirmed live as of this pass. RETRIED (2026-09-16): re-fetched ibm.com/careers/search looking for the appId/scopes config that would unlock www-api.ibm.com/search/api/v2 — this pass's page-fetching tool strips <script> tag contents when converting a page to readable text, so any inline JS config (almost certainly where a Coveo-style appId/scopes pair would live) is invisible to it regardless of whether it's actually present; couldn't confirm one way or the other. Still unconverted. On careers.ibm.com's session-gating: a js-scraper-based real-browser session would carry cookies naturally where check.php's stateless fetch can't, so that's plausibly worth a future attempt — deliberately not attempted this pass, out of scope. RETRIED AGAIN (2026-09-16, real browser): confirmed the \"Design & UX\" filter page genuinely renders 16 real jobs — titles, levels, and locations all visible in the rendered output — but with real network-request capture this time, no XHR call to www-api.ibm.com (or any other API host) was observed while loading it, meaning the data is either server-rendered directly into the initial HTML or hydrated from a same-page embedded JSON payload rather than fetched separately; either way, the raw document response is dominated by page-head boilerplate (analytics/tag-manager scripts, hreflang links, etc.) that exceeded this pass's tools' capture length before reaching the body content, so the exact mechanism and any usable link pattern still couldn't be confirmed. RE-INVESTIGATED AGAIN (2026-09-17, real browser, full network capture this time): still couldn't pin down the mechanism, but this time for a more precise reason — the page's own `__NEXT_DATA__` script tag (Next.js's usual place for SSR-embedded data) was checked directly and contains only UI translation labels, no job payload, and no XHR/fetch call to any API host was ever observed loading in a full, unfiltered capture of every request the page made. The only non-asset network activity is a handful of POSTs to obfuscated-looking paths (e.g. /VicqG9/p2RYp4/...) that return 201 with no body — consistent with a bot-management telemetry/sensor endpoint (Akamai-style), not a data API. Whatever renders these 16 job cards, it isn't happening through a channel this pass's tools can observe. Genuinely still moot regardless: the current 16 are still all Entry Level/Internship plus a handful of Professional-tier (non-Director+) roles — User Experience Designer (Taipei), Service Designer (Public Sector, multiple cities), User Researcher (Public Sector, multiple cities) — so nothing senior is being missed by staying unconverted.",
+      "openNote": "ibm.com/careers/search reads a public search API (www-api.ibm.com/search/api/v2, appId careers, scope careers2); ZenPath asks it for the Design & UX and Product Management categories only (18 roles on 2026-10-30). Job links go to careers.ibm.com JobDetail pages.",
       "ats": {
-        "type": "unknown",
-        "slug": null
+        "type": "ibm"
       }
     },
     {
@@ -4892,8 +4895,8 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Large, established global employer; standard visa-sponsorship routes typically apply. Not individually checked against an official sponsor registry; heuristic only.",
       "note": "Global careers hub is a directory of ~40+ country-specific sites rather than one board; North America confirmed on iCIMS.",
-      "url": "https://holdings.panasonic/global/corporate/careers.html",
-      "openStatus": "uncertain",
+      "url": "https://careers.na.panasonic.com/jobs",
+      "openStatus": "none",
       "openRoles": [
         {
           "id": "panasonic-r0",
@@ -4906,9 +4909,23 @@
           "status": "not-started"
         }
       ],
-      "openNote": "careers.sg.panasonic.com, the Singapore/APAC portal checked since 2026-09-24, returns \"Not Found\" as of 2026-10-24 (the vendor site is gone) and no replacement board was found. Back to job-site coverage only (li-scraper) until a new careers source turns up.",
+      "openNote": "Jibe career site careers.na.panasonic.com (found by Isu, 2026-10-30): run by Panasonic North America but lists ~500 roles worldwide, incl. Singapore, Australia, UK, Netherlands, Germany, Ireland, New Zealand and UAE (mostly avionics/engineering). Read from its public JSON API one target market at a time (each posting carries its full description, ~20 KB). careers.sg.panasonic.com, the APAC portal used before, is gone.",
       "ats": {
-        "type": "unknown"
+        "type": "jibe",
+        "host": "careers.na.panasonic.com",
+        "locations": [
+          "Singapore",
+          "Hong Kong",
+          "Malaysia",
+          "Australia",
+          "New Zealand",
+          "United Arab Emirates",
+          "Netherlands",
+          "Italy",
+          "Germany",
+          "United Kingdom",
+          "Ireland"
+        ]
       }
     },
     {
@@ -6037,12 +6054,14 @@
       "sponsorshipNote": "Large multinational with offices across several visa-friendly markets — the sponsoring entity depends on which office the role sits in. Not individually verified for a specific location.",
       "note": "Major e-commerce platform; well-known for a strong, design-forward product culture (Shopify Polaris design system).",
       "url": "https://www.shopify.com/careers",
-      "openStatus": "uncertain",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "RE-INVESTIGATED (2026-09-24, real browser + cold fetches): shopify.com/careers is a custom-built board (React Router / Remix, no third-party ATS at all — confirmed no vendor domain anywhere). Its main /careers page genuinely IS server-rendered and directly fetchable with zero JS — but it only ever returns a fixed 'grab bag' of ~39 postings that deliberately excludes all four of Engineering, Design, Product and Commercial (those route to separate discipline pages instead), so it's fetchable but useless for this tracker's purposes. Design/Product roles were tracked down through the page's own 'Filter by interest' search box: typing a keyword filters client-side against that same ~39-item grab bag — it is NOT a real search against Shopify's full job database (confirmed: the exact same requests fire regardless of query string; no server round-trip happens at all). Typing 'design' or 'product' doesn't surface individual postings — it surfaces exactly one generic, evergreen 'Designers' (or 'Product Management') listing per discipline, which is a talent-pool / general-application page, not a real job requisition — confirmed by resolving its link and finding it's the same single UUID regardless of which specific design/product role you're looking for. In short: Shopify does not appear to expose individual Product/UX Design job requisitions through any URL-addressable or fetchable channel at all, static or dynamic — this isn't a bot-detection block (nothing here resembles a CAPTCHA or rate-limit), it's that the underlying per-role data doesn't seem to be public. Genuinely unconvertible with the evidence found so far, not just 'not yet found'.",
+      "openNote": "shopify.com/careers now lists individual roles, server-rendered (25 on 2026-10-30; link from Isu). Shopify is remote by design: every role reads 'Remote - <region>' (Americas, Singapore, Hong Kong, UK, Ireland), so ZenPath, which doesn't track remote roles, shows none of them; 'Designers' is a general talent-pool listing, not a requisition.",
       "ats": {
-        "type": "unknown",
-        "slug": null
+        "type": "html",
+        "url": "https://www.shopify.com/careers",
+        "linkPattern": "#/careers/[a-z0-9-]+_[0-9a-f-]{36}$#",
+        "titleClass": "text-careers-subhead"
       }
     },
     {
@@ -6078,7 +6097,7 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "European HR-tech unicorn; runs its own Personio product for its own hiring (dogfooded).",
-      "url": "https://www.personio.com/careers/",
+      "url": "https://www.personio.com/about-personio/careers/",
       "openStatus": "match",
       "openRoles": [
         {
@@ -6092,11 +6111,9 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Confirmed live via direct fetch (application form active at research time). Note: several <company>.jobs.personio.com domains found in search (e.g. deskbird.jobs.personio.com, flatpay.jobs.personio.com) are OTHER companies using Personio's HR-tech product for their own hiring, not Personio itself — worth care not to confuse these with Personio's own board.",
+      "openNote": "personio.com/about-personio/careers reads every posting from the site's own JSON list (www.personio.com/api/careers/jobs/list; 80 roles on 2026-10-30, offices Berlin, Munich, London, Dublin and more). Other companies' boards on Personio's product (<company>.jobs.personio.com) are not Personio's own.",
       "ats": {
-        "type": "other",
-        "slug": null,
-        "vendor": "Personio (self-hosted, own product) — personio.com/careers/[uuid]/apply/"
+        "type": "personio"
       }
     },
     {
@@ -6196,14 +6213,12 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Large multinational with offices across several visa-friendly markets — the sponsoring entity depends on which office the role sits in. Not individually verified for a specific location.",
       "note": "Application-observability/APM platform; enterprise software with a dedicated Design & Experience team.",
-      "url": "https://www.dynatrace.com/company/careers/",
-      "openStatus": "uncertain",
+      "url": "https://www.dynatrace.com/careers/jobs/",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "dynatrace.com/careers/jobs renders its 108 roles in the browser from a Coveo search service, with no filter or page parameters in the URL and no readable feed (checked 2026-10-27), so Dynatrace is covered by the job sites only.",
+      "openNote": "dynatrace.com/careers/jobs renders from Coveo through the site's own proxy (www.dynatrace.com/api/coveo/search/), which adds the search token itself: all ~110 roles in one request (found 2026-10-30). Offices are mostly Austria (Linz, Vienna, Graz), plus Barcelona, Gdansk and US/UK sales roles.",
       "ats": {
-        "type": "other",
-        "slug": null,
-        "vendor": "SAP SuccessFactors Career Site Builder"
+        "type": "dynatrace"
       }
     },
     {
@@ -6422,14 +6437,13 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "Mercedes-Benz Group AG (legal entity name since the 2022 Daimler split); luxury/premium vehicle manufacturer.",
-      "url": "https://group.mercedes-benz.com/careers/",
-      "openStatus": "uncertain",
+      "url": "https://jobs.mercedes-benz.com/en",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "group.mercedes-benz.com/careers/ links to jobs.mercedes-benz.com/en, whose application backend is Oracle Taleo (tas-daimler.taleo.net); individual job URLs follow jobs.mercedes-benz.com/en/[slug]-[reqNumber]-[jobCode] (e.g. .../ux-designer-232775-mer00046w9). Could not fetch working search results from the Taleo-backed board. Search sampling found only individual-contributor titles ('UX Designer', 'UI Design', 'UX Designer (Visual & Motion)', student/intern roles) — no Director/Head/VP/Principal/Staff/Lead-level role surfaced, but this is a soft negative, not a full board crawl.",
+      "openNote": "jobs.mercedes-benz.com reads a public search API (jobs.api.mercedes-benz.com/search, a JSON query in ?data=). ZenPath asks for titles matching design / UX / product (a broad match, ~700 on 2026-10-30, 500 a request) and keeps one posting per title and place (the same role is often published several times).",
       "ats": {
-        "type": "other",
-        "slug": null,
-        "vendor": "Oracle Taleo (tas-daimler.taleo.net)"
+        "type": "mercedes",
+        "pages": 2
       }
     },
     {
@@ -7116,12 +7130,15 @@
       "sponsorship": "uncertain",
       "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
       "note": "Retail investing app, owned by ABN AMRO since 2024.",
-      "url": "https://getbux.com/",
-      "openStatus": "uncertain",
+      "url": "https://careers.getbux.com/jobs",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "No careers page found (getbux.com/careers 404, no Greenhouse/Lever/Ashby board on 2026-10-24); likely hires through ABN AMRO. Covered through job-site matches.",
+      "openNote": "Teamtailor board at careers.getbux.com/jobs (found by Isu, 2026-10-29), server-rendered (3 roles, all Amsterdam). The city is the card's last text; the work mode (Hybrid) is dropped.",
       "ats": {
-        "type": "unknown"
+        "type": "html",
+        "url": "https://careers.getbux.com/jobs",
+        "linkPattern": "#careers\\.getbux\\.com/jobs/\\d+-#",
+        "locationLastText": true
       },
       "match": {
         "aliases": [
@@ -7144,12 +7161,14 @@
       "sponsorship": "uncertain",
       "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
       "note": "Business account and invoicing fintech for European SMEs.",
-      "url": "https://finom.co/",
-      "openStatus": "uncertain",
+      "url": "https://jobs.eu.lever.co/pnlfin",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "finom.co's careers pages return 404 and no Greenhouse/Lever/Ashby/Workable board exists (2026-10-24). Covered through job-site matches.",
+      "openNote": "Lever EU board jobs.eu.lever.co/pnlfin (Finom's legal name PNL Fintech), found 2026-10-30: 79 roles, nearly all remote, which ZenPath doesn't track (Lever's workplaceType), so few will show.",
       "ats": {
-        "type": "unknown"
+        "type": "lever",
+        "slug": "pnlfin",
+        "region": "eu"
       },
       "match": {
         "aliases": [
@@ -7823,7 +7842,7 @@
       "url": "https://careers.sea.com/",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "Hires through Sea Group's careers site (careers.sea.com), which has no public board ZenPath can read; no Greenhouse/Lever/Workday board found (2026-10-24). Covered through job-site matches.",
+      "openNote": "careers.sea.com refused the browser outright on 2026-10-30, as before; no other board found. Covered through job-site matches.",
       "ats": {
         "type": "unknown"
       },
@@ -7846,12 +7865,15 @@
       "sponsorship": "uncertain",
       "sponsorshipNote": "Smaller or younger employer — no clear signal on Employment Pass sponsorship; not individually checked.",
       "note": "Ant Group's Singapore digital wholesale bank for SMEs.",
-      "url": "https://www.anextbank.com/",
-      "openStatus": "uncertain",
+      "url": "https://anext.com.sg/bank/careers/",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "No public job board found (no Greenhouse/Lever/Workable/Workday, 2026-10-24). Covered through job-site matches.",
+      "openNote": "anext.com.sg/bank/careers (found by Isu, 2026-10-29) sends applicants to Ant International's job search (ant-intl.com/en/job-search), which reads a public API for the whole group (~200 roles, 30 a page). ANEXT's roles are the ones whose name contains \"ANEXT\" (17 on 2026-10-30, all Singapore, incl. a UX Designer and a Senior Product Manager).",
       "ats": {
-        "type": "unknown"
+        "type": "antgroup",
+        "bgCode": "M7892",
+        "nameMatch": "ANEXT",
+        "pages": 8
       },
       "match": {
         "aliases": [
@@ -7906,7 +7928,7 @@
       "url": "https://careers.societegenerale.com/",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "Own careers site (careers.societegenerale.com) with no public feed or server-rendered list ZenPath can read (2026-10-24). Covered through job-site matches.",
+      "openNote": "careers.societegenerale.com searches through its own proxy (search-proxy.php) in front of an SG Markets API that needs an OAuth token; the page itself carries no titles (2026-10-30). Covered through job-site matches.",
       "ats": {
         "type": "unknown"
       },
@@ -7931,12 +7953,15 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
       "note": "Corporate and investment banking arm of Crédit Agricole.",
-      "url": "https://www.ca-cib.com/careers",
-      "openStatus": "uncertain",
+      "url": "https://jobs.ca-cib.com/job/list-of-all-jobs.aspx?all=1&LCID=2057",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "No public job board found for CA-CIB (no Workday/SmartRecruiters tenant, 2026-10-24). Covered through job-site matches.",
+      "openNote": "Talentsoft board jobs.ca-cib.com (linked from ca-cib.com/careers), server-rendered, found 2026-10-30. The all-jobs list shows the newest 100 of ~350 roles on its first page, so older postings aren't read; the city is the card's last line.",
       "ats": {
-        "type": "unknown"
+        "type": "html",
+        "url": "https://jobs.ca-cib.com/job/list-of-all-jobs.aspx?all=1&LCID=2057",
+        "linkPattern": "#/job/job-[a-z0-9-]+_\\d+\\.aspx$#i",
+        "locationLastText": true
       },
       "match": {
         "aliases": [
@@ -8046,12 +8071,17 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
       "note": "Japanese megabank.",
-      "url": "https://www.mizuhogroup.com/asia-pacific/careers",
-      "openStatus": "uncertain",
+      "url": "https://xjobs.brassring.com/TGnewUI/Search/Home/Home?partnerid=26255&siteid=5812",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "Only an Americas Workday board was found (mizuho.wd1, site mizuhoamericas), which wouldn't show Singapore roles; no Asia-Pacific board found (2026-10-24). Covered through job-site matches.",
+      "openNote": "Mizuho Bank Singapore's IBM BrassRing board (xjobs.brassring.com, partnerid 26255, siteid 5812; linked from mizuhogroup.com/asia-pacific/singapore/about/career), read like UBS's (session first, then the job-list API): 37 roles on 2026-10-30. The board has no location field, so roles are filed under Singapore.",
       "ats": {
-        "type": "unknown"
+        "type": "brassring",
+        "host": "xjobs.brassring.com",
+        "partnerId": "26255",
+        "siteId": "5812",
+        "location": "Singapore",
+        "pages": 1
       },
       "match": {
         "aliases": [
@@ -8100,12 +8130,15 @@
       "sponsorship": "uncertain",
       "sponsorshipNote": "Smaller or younger employer — no clear signal on Employment Pass sponsorship; not individually checked.",
       "note": "Buy-now-pay-later app from Advance Intelligence Group.",
-      "url": "https://www.atome.sg/",
-      "openStatus": "uncertain",
+      "url": "https://hire-r1.mokahr.com/apply/advancetest-sg/100004054#/jobs",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "No group job board found (Workable's 'atome' account is Atome Thailand with no roles; no Lever/Greenhouse board, 2026-10-24). Covered through job-site matches.",
+      "openNote": "MokaHR career site for Atome Financial / Advance Intelligence Group (found by Isu, 2026-10-29): hire-r1.mokahr.com/apply/advancetest-sg/100004054, read from its public jobs API (51 roles on 2026-10-30 across Singapore, Malaysia, Indonesia, Philippines and Thailand; 50 a request).",
       "ats": {
-        "type": "unknown"
+        "type": "mokahr",
+        "orgId": "advancetest-sg",
+        "siteId": "100004054",
+        "pages": 2
       },
       "match": {
         "aliases": [
@@ -8272,12 +8305,16 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
       "note": "Singapore life insurer (OCBC group).",
-      "url": "https://www.greateasternlife.com/sg/en/careers.html",
-      "openStatus": "uncertain",
+      "url": "https://gecareers.taleo.net/careersection/ex_singapore/jobsearch.ftl?lang=en&portal=8116760849",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "No public job board found (no Workday/SuccessFactors tenant, 2026-10-24). Covered through job-site matches.",
+      "openNote": "Taleo career section gecareers.taleo.net/careersection/ex_singapore (linked from greateasternlife.com/sg/en/careers/employee.html), read through its JSON search endpoint, 25 a page (73 roles on 2026-10-30, incl. 'Vice President, Digital Experience Studio (UX Design)' and 'AVP, Content Design').",
       "ats": {
-        "type": "unknown"
+        "type": "taleo",
+        "host": "gecareers.taleo.net",
+        "section": "ex_singapore",
+        "portal": "8116760849",
+        "pages": 4
       },
       "match": {
         "aliases": [
@@ -8299,12 +8336,14 @@
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — Singapore's Employment Pass (or the home country's work-permit route) is the standard path for specialist design hires at firms this size. Not individually checked.",
       "note": "Singapore insurer, formerly NTUC Income.",
-      "url": "https://www.income.com.sg/careers",
-      "openStatus": "uncertain",
+      "url": "https://etvy.fa.ap2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "No public job board found (2026-10-24). Covered through job-site matches.",
+      "openNote": "Oracle Recruiting Cloud site CX_1 on etvy.fa.ap2.oraclecloud.com (linked from income.com.sg/careers), found 2026-10-30: 66 roles, all Singapore.",
       "ats": {
-        "type": "unknown"
+        "type": "oraclecloud",
+        "host": "etvy.fa.ap2.oraclecloud.com",
+        "site": "CX_1"
       },
       "match": {
         "aliases": [
@@ -8557,12 +8596,13 @@
       "sponsorship": "uncertain",
       "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
       "note": "Mobile virtual network operator for international callers.",
-      "url": "https://www.lebara.com/",
-      "openStatus": "uncertain",
+      "url": "https://www.lebara.de/en/ueber-lebara/stellenangebote.html",
+      "openStatus": "none",
       "openRoles": [],
-      "openNote": "lebara.com returns 403 to ZenPath's server and no board (SmartRecruiters, Workable, Greenhouse, Lever, Ashby) was found (2026-10-24). Covered through job-site matches.",
+      "openNote": "Lebara Germany's vacancies page (lebara.de, Düsseldorf; found by Isu, 2026-10-30) lists roles that link to Occupop application pages (3 on 2026-10-30). The list is rendered in the browser, so the browser scraper reads it. lebara.com itself returns 403 to ZenPath's server and has no board.",
       "ats": {
-        "type": "unknown"
+        "type": "snapshot",
+        "slug": "lebara"
       },
       "match": {
         "aliases": [
@@ -8675,7 +8715,7 @@
       "url": "https://www.lycamobile.co.uk/",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "No careers board found on lycamobile.co.uk or lycamobile.com, or on SmartRecruiters, Workable, Greenhouse, Lever or Ashby (2026-10-24). Covered through job-site matches.",
+      "openNote": "Lyca Mobile Netherlands has a careers page (lycamobile.nl/en/careers, found by Isu, 2026-10-30): a short hand-written list (2 roles on 2026-10-30, Amsterdam, apply by email). Not tracked: the list is page text rendered in the browser and its links don't follow one pattern (/en/careers/<role>/ and /en/<role>/), so they can't be told apart from the site's menu links. No board found on lycamobile.co.uk / lycamobile.com. Covered through job-site matches.",
       "ats": {
         "type": "unknown"
       },
@@ -8702,7 +8742,7 @@
       "url": "https://careers.hyperoptic.com/jobs/home/",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "Session-based ATS (careers.hyperoptic.com, results tied to a per-visit pagestamp) that returns 404 to ZenPath's server (2026-10-24). Covered through job-site matches.",
+      "openNote": "Eploy board (careers.hyperoptic.com): its results page needs a per-visit pagestamp from the home page and answers 202 without one, even in a browser (2026-10-30). Covered through job-site matches.",
       "ats": {
         "type": "unknown"
       },

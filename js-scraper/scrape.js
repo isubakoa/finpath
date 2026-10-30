@@ -41,6 +41,10 @@ function isRoleRelevant(title) {
 // removed from each title, e.g. screen-reader text), locationSelector (+
 // locationAncestorSelector, the card to search; default the link) when the
 // listing shows the location in an element the generic card check misses.
+// `pageData` replaces link collection for a Next.js page whose list shows only a
+// few links but carries every role in its embedded data: a function given the
+// page's parsed __NEXT_DATA__ that returns [{title, url, location}] (no
+// linkPattern then; a page without __NEXT_DATA__ fails the company).
 const COMPANIES = [
   {
     slug: "adyen",
@@ -468,12 +472,41 @@ const COMPANIES = [
     linkPattern: /careers\.viasat\.com\/jobs\/\d+\?lang=/,
     waitForSelector: 'a[href*="/jobs/"][href*="lang="]',
   },
+  {
+    slug: "lebara",
+    // Lebara Germany's vacancies page (Düsseldorf) renders its list in the browser
+    // (the raw HTML has no job links); each role links to its Occupop application page.
+    urls: ["https://www.lebara.de/en/ueber-lebara/stellenangebote.html"],
+    linkPattern: /api\.occupop\.com\/job\/application\/[a-z0-9-]+/,
+    waitForSelector: 'a[href*="occupop.com/job/application/"]',
+  },
+  {
+    slug: "revolut",
+    // revolut.com/careers shows a handful of roles behind "show more" (and returns 403
+    // to ZenPath's server), but its page data holds every open role (~314 on
+    // 2026-10-30) with id, title and locations. A position URL is the title slugged
+    // plus the id (the site resolves it by id; checked against its own links).
+    urls: ["https://www.revolut.com/careers/"],
+    pageData: (data) => {
+      const positions = (data && data.props && data.props.pageProps && data.props.pageProps.positions) || [];
+      const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+      return positions.filter((p) => p && p.id && p.text).map((p) => ({
+        title: p.text.trim(),
+        url: `https://www.revolut.com/careers/position/${slug(p.text)}-${p.id}/`,
+        // Office places as "City, Country"; remote ones as "Remote, Country", which the
+        // app drops (a role offered only remotely isn't tracked).
+        location: [...new Set((p.locations || []).map((l) =>
+          l.type === "remote" ? `Remote, ${l.country || ""}`.replace(/, $/, "") : [l.name, l.country].filter(Boolean).join(", ")))].join("; "),
+      }));
+    },
+  },
   // Not scraped:
   //   - wefox: careers site broken, no open roles on its join.com board.
   //   - Hang Seng Bank, Mubadala: job cards are JS click handlers with no href to
   //     collect; a direct check.php adapter (both have public JSON APIs) would be
   //     the better fix.
-  //   - UBS: BrassRing board that randomly renders empty -- not worth scheduling.
+  //   - UBS, Mizuho: BrassRing boards, read by check.php's brassring adapter instead
+  //     (its job-list API works inside a session the adapter opens first).
 ];
 
 const TIMEOUT_MS = 30000;
@@ -553,6 +586,19 @@ async function scrapeOneUrl(browser, url, company) {
       // (community.workday.com/invalid-url) before swapping in the real URL; give
       // those companies a moment before reading hrefs. 0 (skipped) for everyone else.
       await page.waitForTimeout(company.settleDelayMs);
+    }
+    if (company.pageData) {
+      const data = await page.evaluate(() => {
+        const el = document.getElementById("__NEXT_DATA__");
+        try {
+          return el ? JSON.parse(el.textContent) : null;
+        } catch {
+          return null;
+        }
+      });
+      await page.close();
+      if (!data) throw new Error("no __NEXT_DATA__ page data");
+      return company.pageData(data, url);
     }
 
     const roles = await page.evaluate(({ patternSource, titleSelector, titleAncestorSelector, titleAncestorTitleSelector, locationSelector, locationAncestorSelector }) => {

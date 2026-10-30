@@ -45,13 +45,15 @@ ATS_REQUIRED = {
     "bamboohr": {"slug"}, "workday": {"slug", "wdNum"},
     "oraclecloud": {"host", "site"}, "html": {"url", "linkPattern"},
     "hibob": {"host"}, "eightfold": {"host", "domain"}, "revolutpeople": {"slug"}, "phenom": {"url"},
+    "taleo": {"host", "section", "portal"}, "mokahr": {"orgId", "siteId"}, "jibe": {"host", "locations"}, "brassring": {"host", "partnerId", "siteId"},
     "snapshot": {"slug"},
     "unknown": set(), "other": set(),
     # one-off, company-specific adapters in check.php
     "nordea": set(), "dassault": set(), "amazon": set(),
     "telekom": set(), "microsoft": set(), "emirates": set(), "line": set(),
     "bt": set(), "fujitsu": set(), "capgemini": set(), "klm": set(),
-    "lufthansa": set(), "tiktok": set(),
+    "lufthansa": set(), "tiktok": set(), "antgroup": {"bgCode", "nameMatch"},
+    "dynatrace": set(), "ibm": set(), "mercedes": set(), "personio": set(),
 }
 ROLE_REQUIRED = {"id", "title", "url"}
 MATCH_KEYS = {"name", "aliases", "note"}
