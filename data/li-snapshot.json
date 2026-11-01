@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T19:04:16Z",
+  "generatedAt": "2026-11-01T23:02:14Z",
   "companies": {
     "google": {
       "roles": [
@@ -4790,7 +4790,7 @@
         {
           "title": "Menswear Designer",
           "location": "Eagle Farm, QLD, Australia",
-          "url": "https://au.indeed.com/viewjob?jk=95cedb6a9fc66a05",
+          "url": "https://au.indeed.com/viewjob?jk=81a9a9cee1be95cf",
           "postedDate": "2026-10-27",
           "source": "indeed",
           "sources": [
@@ -5416,6 +5416,18 @@
           "location": "Holt, ENG, UK",
           "url": "https://uk.indeed.com/viewjob?jk=05be8e829c195c77",
           "postedDate": "2026-10-31",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-01"
+        },
+        {
+          "title": "Creative Director (Original Photography) - Services Content Design, International",
+          "location": "London, ENG, UK",
+          "url": "https://uk.indeed.com/viewjob?jk=4f2f48e0a2f13e37",
+          "postedDate": "2026-10-25",
           "source": "indeed",
           "sources": [
             "indeed"
@@ -15901,6 +15913,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-10-31"
+        },
+        {
+          "title": "Advertiser Engagement and Creative Operations Product Specialist, GMPT, TikTok Australia",
+          "location": "Sydney, New South Wales, Australia",
+          "url": "https://www.linkedin.com/jobs/view/4485402961",
+          "postedDate": "2026-11-01",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-01"
         }
       ]
     },
@@ -16584,7 +16608,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-10-30"
+          "lastSeenAt": "2026-11-01"
         },
         {
           "title": "European Lending Product Director (All Genders)",
@@ -16642,6 +16666,18 @@
           "source": "indeed",
           "sources": [
             "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-01"
+        },
+        {
+          "title": "Payments Product & Market Manager Vice President - Australia and New Zealand (Sydney)",
+          "location": "Sydney, New South Wales, Australia",
+          "url": "https://www.linkedin.com/jobs/view/4441667396",
+          "postedDate": "2026-11-01",
+          "source": "li",
+          "sources": [
+            "li"
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-01"
@@ -18644,7 +18680,7 @@
         "market": "Australia",
         "title": "Digital Product Lead",
         "location": "Melbourne, Victoria, Australia",
-        "url": "https://www.linkedin.com/jobs/view/4485930566",
+        "url": "https://www.linkedin.com/jobs/view/4486100404",
         "postedDate": "2026-11-01",
         "source": "li",
         "sources": [
@@ -19377,6 +19413,104 @@
         "source": "indeed",
         "sources": [
           "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
+        "employer": "Bluebird",
+        "market": "Australia",
+        "title": "Product Owner | Renewable Energy | Series A",
+        "location": "Sydney, New South Wales, Australia",
+        "url": "https://www.linkedin.com/jobs/view/4484014341",
+        "postedDate": "2026-11-01",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
+        "employer": "Deckers Brands",
+        "market": "Hong Kong",
+        "title": "VP, Product Development- Asia",
+        "location": "Kowloon, Hong Kong SAR",
+        "url": "https://www.linkedin.com/jobs/view/4411194759",
+        "postedDate": "2026-11-01",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
+        "employer": "Auror",
+        "market": "New Zealand",
+        "title": "Director Product Management (Win the Data)",
+        "location": "Auckland, Auckland, New Zealand",
+        "url": "https://www.linkedin.com/jobs/view/4485993764",
+        "postedDate": "2026-11-01",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
+        "employer": "The Onset",
+        "market": "Australia",
+        "title": "Senior Product Manager \u2013 Data Products | AdTech",
+        "location": "Sydney, New South Wales, Australia",
+        "url": "https://www.linkedin.com/jobs/view/4485995692",
+        "postedDate": "2026-11-01",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
+        "employer": "Fujifilm Australia",
+        "market": "Australia",
+        "title": "Product Manager (Modality Systems) - Healthcare",
+        "location": "Sydney, New South Wales, Australia",
+        "url": "https://www.linkedin.com/jobs/view/4485994382",
+        "postedDate": "2026-11-01",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
+        "employer": "Clean Energy Regulator",
+        "market": "Australia",
+        "title": "Assistant Manager \u2013 Product Management",
+        "location": "Canberra, Australian Capital Territory, Australia",
+        "url": "https://www.linkedin.com/jobs/view/4485428085",
+        "postedDate": "2026-11-01",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
+        "employer": "Linktree",
+        "market": "Australia",
+        "title": "Senior Creative Strategist",
+        "location": "Melbourne, Victoria, Australia",
+        "url": "https://www.linkedin.com/jobs/view/4440278564",
+        "postedDate": "2026-11-01",
+        "source": "li",
+        "sources": [
+          "li"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-01"
@@ -23403,6 +23537,20 @@
         "lastSeenAt": "2026-11-01"
       },
       {
+        "employer": "Anthesis Group",
+        "market": "United Kingdom",
+        "title": "Associate Strategy Director",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=461a80af12f4f21b",
+        "postedDate": "2026-10-30",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
         "employer": "Hired",
         "market": "New Zealand",
         "title": "UX Designer (Remote)",
@@ -23580,20 +23728,6 @@
         "source": "li",
         "sources": [
           "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-31"
-      },
-      {
-        "employer": "Anthesis Group",
-        "market": "United Kingdom",
-        "title": "Associate Strategy Director",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=461a80af12f4f21b",
-        "postedDate": "2026-10-30",
-        "source": "indeed",
-        "sources": [
-          "indeed"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-10-31"
@@ -30391,6 +30525,48 @@
         "lastSeenAt": "2026-11-01"
       },
       {
+        "employer": "Sweat Pants Agency",
+        "market": "United Kingdom",
+        "title": "Media Buyer / Creative Strategist",
+        "location": "Leeds, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=f440ff13a95c9fb8",
+        "postedDate": "2026-10-29",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
+        "employer": "Wellington Management",
+        "market": "United Kingdom",
+        "title": "Investment Risk Strategist",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=6b86481ffdcfc496",
+        "postedDate": "2026-10-29",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
+        "employer": "VML",
+        "market": "United Kingdom",
+        "title": "Senior CX Strategist",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=1d0271fd016bf41a",
+        "postedDate": "2026-10-29",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
         "employer": "Phocas Software",
         "market": "Australia",
         "title": "Senior Product Marketing Manager",
@@ -30466,48 +30642,6 @@
         "title": "Senior Product Manager \u2013 Tax and Recs (Europe)",
         "location": "Dublin, D, Ireland",
         "url": "https://ie.indeed.com/viewjob?jk=c53292d974148b09",
-        "postedDate": "2026-10-29",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-31"
-      },
-      {
-        "employer": "Sweat Pants Agency",
-        "market": "United Kingdom",
-        "title": "Media Buyer / Creative Strategist",
-        "location": "Leeds, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=f440ff13a95c9fb8",
-        "postedDate": "2026-10-29",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-31"
-      },
-      {
-        "employer": "Wellington Management",
-        "market": "United Kingdom",
-        "title": "Investment Risk Strategist",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=6b86481ffdcfc496",
-        "postedDate": "2026-10-29",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-31"
-      },
-      {
-        "employer": "VML",
-        "market": "United Kingdom",
-        "title": "Senior CX Strategist",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=1d0271fd016bf41a",
         "postedDate": "2026-10-29",
         "source": "indeed",
         "sources": [
@@ -36021,6 +36155,34 @@
         "lastSeenAt": "2026-11-01"
       },
       {
+        "employer": "Jazz Pharmaceuticals",
+        "market": "Ireland",
+        "title": "Director, Business Strategy and Operations, Pipeline and Project Management (PPM) & Data Science (EDGE)",
+        "location": "Dublin, D, Ireland",
+        "url": "https://ie.indeed.com/viewjob?jk=7cc29a5a15e40a23",
+        "postedDate": "2026-10-28",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
+        "employer": "Jazz Pharmaceuticals",
+        "market": "Ireland",
+        "title": "Director, Business Strategy & Operations, Research",
+        "location": "Dublin, D, Ireland",
+        "url": "https://ie.indeed.com/viewjob?jk=3ec141331aa05665",
+        "postedDate": "2026-10-28",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
         "employer": "MHR",
         "market": "United Kingdom",
         "title": "Product Owner",
@@ -36096,34 +36258,6 @@
         "title": "Product Line Manager",
         "location": "Sarego, VEN, Italy",
         "url": "https://it.indeed.com/viewjob?jk=12639bce501f318b",
-        "postedDate": "2026-10-28",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-31"
-      },
-      {
-        "employer": "Jazz Pharmaceuticals",
-        "market": "Ireland",
-        "title": "Director, Business Strategy and Operations, Pipeline and Project Management (PPM) & Data Science (EDGE)",
-        "location": "Dublin, D, Ireland",
-        "url": "https://ie.indeed.com/viewjob?jk=7cc29a5a15e40a23",
-        "postedDate": "2026-10-28",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-31"
-      },
-      {
-        "employer": "Jazz Pharmaceuticals",
-        "market": "Ireland",
-        "title": "Director, Business Strategy & Operations, Research",
-        "location": "Dublin, D, Ireland",
-        "url": "https://ie.indeed.com/viewjob?jk=3ec141331aa05665",
         "postedDate": "2026-10-28",
         "source": "indeed",
         "sources": [
@@ -42435,6 +42569,20 @@
         "lastSeenAt": "2026-11-01"
       },
       {
+        "employer": "Rolls-Royce",
+        "market": "United Kingdom",
+        "title": "Chief of Product Industrialisation",
+        "location": "Derby, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=5418bf68583364e1",
+        "postedDate": "2026-10-27",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-01"
+      },
+      {
         "employer": "Johnson & Johnson",
         "market": "Netherlands",
         "title": "MSAT Strategy & Development Director",
@@ -44997,20 +45145,6 @@
         "lastSeenAt": "2026-10-28"
       },
       {
-        "employer": "Rolls-Royce",
-        "market": "United Kingdom",
-        "title": "Chief of Product Industrialisation",
-        "location": "Derby, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=5418bf68583364e1",
-        "postedDate": "2026-10-27",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-28"
-      },
-      {
         "employer": "Realworks BV",
         "market": "Netherlands",
         "title": "Technisch Product Owner",
@@ -45772,20 +45906,6 @@
         "title": "Product Manager",
         "location": "Oakleigh, Victoria, Australia",
         "url": "https://www.linkedin.com/jobs/view/4481849460",
-        "postedDate": "2026-10-27",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-27"
-      },
-      {
-        "employer": "Bluebird",
-        "market": "Australia",
-        "title": "Product Owner | Renewable Energy | Series A",
-        "location": "Sydney, New South Wales, Australia",
-        "url": "https://www.linkedin.com/jobs/view/4484014341",
         "postedDate": "2026-10-27",
         "source": "li",
         "sources": [
@@ -92535,20 +92655,6 @@
         "lastSeenAt": "2026-10-20"
       },
       {
-        "employer": "Deckers Brands",
-        "market": "Hong Kong",
-        "title": "VP, Product Development- Asia",
-        "location": "Kowloon, Hong Kong SAR",
-        "url": "https://www.linkedin.com/jobs/view/4411194759",
-        "postedDate": "2026-10-11",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-20"
-      },
-      {
         "employer": "Open Government Products",
         "market": "Singapore",
         "title": "Staff Product Designer",
@@ -97787,25 +97893,25 @@
     "prioritySweepHours": 4,
     "liEveryHours": 2,
     "sourceHealth": {
-      "checkedAt": "2026-11-01T18:51:44Z",
+      "checkedAt": "2026-11-01T22:42:41Z",
       "li": {
         "variant": "chrome",
         "searches": 33,
-        "done": 1,
-        "requests": 4,
+        "done": 4,
+        "requests": 7,
         "blocked": 3,
         "stoppedEarly": true,
-        "rows": 9,
+        "rows": 30,
         "capped": 0,
-        "stalestHours": 12.2,
+        "stalestHours": 16.2,
         "firstBlockRequest": 2,
-        "firstBlockSecs": 75,
-        "minutes": 12.5
+        "firstBlockSecs": 71,
+        "minutes": 19.6
       },
       "indeed": {
         "searches": 68,
         "failed": 0,
-        "rows": 647
+        "rows": 866
       },
       "welcometonl": {
         "rows": 1700
@@ -97818,11 +97924,11 @@
     "Singapore|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-01T14:04:41Z",
     "Hong Kong|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-01T14:05:55Z",
     "Hong Kong|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-01T14:06:56Z",
-    "Hong Kong|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-01T06:50:54Z",
+    "Hong Kong|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-01T22:42:41Z",
     "New Zealand|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-01T06:52:21Z",
-    "New Zealand|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-01T06:53:27Z",
-    "New Zealand|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-01T06:54:28Z",
-    "Australia|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-01T06:55:51Z",
+    "New Zealand|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-01T22:54:56Z",
+    "New Zealand|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-01T22:56:11Z",
+    "Australia|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-01T22:57:13Z",
     "Australia|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-01T06:57:04Z",
     "Australia|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-01T06:58:24Z",
     "Netherlands|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-01T06:59:44Z",
@@ -97850,42 +97956,69 @@
   "liLastRun": [
     {
       "s": 0,
-      "loc": "Singapore",
-      "g": 1,
-      "windowH": 13.1,
+      "loc": "Hong Kong",
+      "g": 2,
+      "windowH": 16.9,
       "status": 200,
-      "cards": 9,
-      "bytes": 132097
+      "cards": 5,
+      "bytes": 116342
     },
     {
-      "s": 75,
-      "loc": "Hong Kong",
-      "g": 2,
-      "windowH": 13.0,
-      "status": 429,
-      "blocked": true,
-      "title": "",
-      "bytes": 24633
-    },
-    {
-      "s": 375,
-      "loc": "Hong Kong",
-      "g": 2,
-      "windowH": 13.0,
-      "status": 429,
-      "blocked": true,
-      "title": "",
-      "bytes": 24633
-    },
-    {
-      "s": 751,
+      "s": 71,
       "loc": "New Zealand",
       "g": 0,
-      "windowH": 13.2,
+      "windowH": 16.9,
       "status": 429,
       "blocked": true,
       "title": "",
       "bytes": 24633
+    },
+    {
+      "s": 371,
+      "loc": "New Zealand",
+      "g": 0,
+      "windowH": 16.9,
+      "status": 429,
+      "blocked": true,
+      "title": "",
+      "bytes": 24633
+    },
+    {
+      "s": 735,
+      "loc": "New Zealand",
+      "g": 1,
+      "windowH": 17.0,
+      "status": 200,
+      "cards": 6,
+      "bytes": 121911
+    },
+    {
+      "s": 810,
+      "loc": "New Zealand",
+      "g": 2,
+      "windowH": 17.0,
+      "status": 200,
+      "cards": 6,
+      "bytes": 119625
+    },
+    {
+      "s": 873,
+      "loc": "Australia",
+      "g": 0,
+      "windowH": 17.0,
+      "status": 429,
+      "blocked": true,
+      "title": "",
+      "bytes": 24633
+    },
+    {
+      "s": 1173,
+      "loc": "Australia",
+      "g": 0,
+      "windowH": 17.0,
+      "status": 200,
+      "cards": 13,
+      "bytes": 145761
     }
   ],
   "liHistory": [
@@ -98218,6 +98351,21 @@
       "firstBlockRequest": 2,
       "firstBlockSecs": 75,
       "minutes": 12.5
+    },
+    {
+      "at": "2026-11-01T22:42:41Z",
+      "variant": "chrome",
+      "searches": 33,
+      "done": 4,
+      "requests": 7,
+      "blocked": 3,
+      "stoppedEarly": true,
+      "rows": 30,
+      "capped": 0,
+      "stalestHours": 16.2,
+      "firstBlockRequest": 2,
+      "firstBlockSecs": 71,
+      "minutes": 19.6
     }
   ]
 }
