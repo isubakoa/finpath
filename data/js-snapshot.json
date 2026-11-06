@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T18:43:54.247Z",
+  "generatedAt": "2026-11-06T00:06:07.566Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -301,7 +301,7 @@
     },
     "national-australia-bank-nab": {
       "ok": true,
-      "found": 18,
+      "found": 19,
       "roles": [
         {
           "title": "Senior Product Designer - Personal Everyday Banking",
@@ -342,7 +342,7 @@
     },
     "kiwibank": {
       "ok": true,
-      "found": 11,
+      "found": 12,
       "roles": [
         {
           "title": "Senior Product Lead - 2x Roles",
@@ -603,33 +603,33 @@
           "postedDate": null
         },
         {
-          "title": "Network Design Optimization Internship",
-          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
-          "location": "Ukraine",
-          "postedDate": null
-        },
-        {
           "title": "Radio HW Digital Design",
           "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
           "location": "Yokohama, Japan",
           "postedDate": null
         },
         {
-          "title": "Radio Unit Design Lead",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "title": "Manager of System Design Team 1",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
           "location": "Yokohama, Japan",
           "postedDate": null
         },
         {
-          "title": "CAD Design Enablement TPM",
-          "url": "https://jobs.ericsson.com/careers/job/563121777484574?domain=ericsson.com",
-          "location": "Austin, United States",
+          "title": "Radio Frequency design and support",
+          "url": "https://jobs.ericsson.com/careers/job/563121777418239?domain=ericsson.com",
+          "location": "Stockholm, Sweden",
           "postedDate": null
         },
         {
           "title": "Staff Compiler Design Engineer",
           "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
           "location": "Austin, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Network Design Optimization Internship",
+          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
+          "location": "Ukraine",
           "postedDate": null
         }
       ]
@@ -657,21 +657,15 @@
           "postedDate": null
         },
         {
-          "title": "VodafoneThree - Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018698300761?domain=vodafone.com",
-          "location": "United Kingdom",
-          "postedDate": null
-        },
-        {
           "title": "Secure by Design Manager",
           "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "Lisbon, Portugal",
           "postedDate": null
         },
         {
-          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
-          "location": "Düsseldorf, Germany",
+          "title": "VodafoneThree - Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018698300761?domain=vodafone.com",
+          "location": "United Kingdom",
           "postedDate": null
         },
         {
@@ -681,8 +675,14 @@
           "postedDate": null
         },
         {
-          "title": "Senior Manager - Secure by Design - CIS - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698178807?domain=vodafone.com",
+          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "location": "Düsseldorf, Germany",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
           "location": "Pune, India",
           "postedDate": null
         }
@@ -760,7 +760,7 @@
         },
         {
           "title": "Video Design Lead: Multimedia",
-          "url": "https://citi.eightfold.ai/careers/job/859037414561?domain=citi.com",
+          "url": "https://citi.eightfold.ai/careers/job/859038754123?domain=citi.com",
           "location": "New York, United States",
           "postedDate": null
         },
@@ -773,6 +773,12 @@
         {
           "title": "Senior Service Designer",
           "url": "https://citi.eightfold.ai/careers/job/859038766423?domain=citi.com",
+          "location": "Mississauga, Canada",
+          "postedDate": null
+        },
+        {
+          "title": "Service Designer",
+          "url": "https://citi.eightfold.ai/careers/job/859038766410?domain=citi.com",
           "location": "Mississauga, Canada",
           "postedDate": null
         },
@@ -816,7 +822,7 @@
     },
     "telenor": {
       "ok": true,
-      "found": 36,
+      "found": 35,
       "roles": []
     },
     "triodos-bank": {
@@ -934,7 +940,7 @@
     },
     "goldman-sachs": {
       "ok": true,
-      "found": 60,
+      "found": 59,
       "roles": [
         {
           "title": "Asset & Wealth Management, Private Wealth Management, Learning Design & Delivery, Vice President - New York",
@@ -952,12 +958,6 @@
           "title": "Asset & Wealth Management, Product Management, Associate",
           "url": "https://higher.gs.com/roles/162928",
           "location": "New York·United States",
-          "postedDate": null
-        },
-        {
-          "title": "Transaction Banking (TxB), Product Management, Vice President, London",
-          "url": "https://higher.gs.com/roles/185092",
-          "location": "London·United Kingdom",
           "postedDate": null
         },
         {
@@ -979,9 +979,9 @@
       "found": 18,
       "roles": [
         {
-          "title": "Regional Workplace Strategy & Design Lead APAC, Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549796897507?domain=morganstanley.com",
-          "location": "Hong Kong SAR China",
+          "title": "Client Segment Risk Conduct, Controls & Governance - Control Design - Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549799090035?domain=morganstanley.com",
+          "location": "Harrison, United States",
           "postedDate": null
         },
         {
@@ -991,9 +991,9 @@
           "postedDate": null
         },
         {
-          "title": "Client Segment Risk Conduct, Controls & Governance - Control Design - Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549799090035?domain=morganstanley.com",
-          "location": "Harrison, United States",
+          "title": "Regional Workplace Strategy & Design Lead APAC, Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549796897507?domain=morganstanley.com",
+          "location": "Hong Kong SAR China",
           "postedDate": null
         },
         {
@@ -1003,33 +1003,15 @@
           "postedDate": null
         },
         {
-          "title": "Workplace Analytics & Strategy, Executive Director",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549800871280?domain=morganstanley.com",
-          "location": "Harrison, United States",
-          "postedDate": null
-        },
-        {
           "title": "Digital Assets Strategy and Execution - Vice President",
           "url": "https://morganstanley.eightfold.ai/careers/job/549800706516?domain=morganstanley.com",
           "location": "Harrison, United States",
           "postedDate": null
         },
         {
-          "title": "FX Option Quantitative Strategist, Associate / Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549799861761?domain=morganstanley.com",
-          "location": "Hong Kong SAR China",
-          "postedDate": null
-        },
-        {
-          "title": "Insurance & Annuities Strategy / Product Manager, Assistant Vice President/Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549800454240?domain=morganstanley.com",
-          "location": "Harrison, United States; New York, United States",
-          "postedDate": null
-        },
-        {
-          "title": "Commodities Product Controllers, Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549800625266?domain=morganstanley.com",
-          "location": "Singapore; Hong Kong SAR China",
+          "title": "Operations Transformation - Vice President - Change, Analytics & Strategy",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549796235008?domain=morganstanley.com",
+          "location": "Mumbai, India",
           "postedDate": null
         }
       ]
@@ -1053,8 +1035,14 @@
     },
     "vanderlande": {
       "ok": true,
-      "found": 246,
+      "found": 245,
       "roles": [
+        {
+          "title": "Product Owner",
+          "url": "https://careers.vanderlande.com/all-jobs/product-owner-jr38554/",
+          "location": "Marietta, GA USA, United States of America",
+          "postedDate": null
+        },
         {
           "title": "Junior UI/UX Designer Intern",
           "url": "https://careers.vanderlande.com/all-jobs/junior-ui-ux-designer-intern-68269271/",
@@ -1080,14 +1068,14 @@
           "postedDate": null
         },
         {
-          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
+          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
           "location": "Veghel, Netherlands",
           "postedDate": null
         },
         {
-          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
+          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
           "location": "Veghel, Netherlands",
           "postedDate": null
         },
@@ -1285,7 +1273,7 @@
     },
     "rabobank": {
       "ok": true,
-      "found": 5,
+      "found": 1,
       "roles": [
         {
           "title": "Graduation Internship Design Research | Platform Quality | Utrecht",
@@ -1307,7 +1295,7 @@
     },
     "optus": {
       "ok": true,
-      "found": 137,
+      "found": 138,
       "roles": [
         {
           "title": "Product Designer",
@@ -1330,8 +1318,26 @@
     },
     "siemens": {
       "ok": true,
-      "found": 18,
+      "found": 16,
       "roles": [
+        {
+          "title": "Electrical Design Engineering Intern",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/516376",
+          "location": "Wendell, North Carolina, United States of America",
+          "postedDate": null
+        },
+        {
+          "title": "Mechanical Design Engineer",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527731",
+          "location": "Fort Worth, Texas, United States of America",
+          "postedDate": null
+        },
+        {
+          "title": "UX Designer",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/513629",
+          "location": "Mason, Ohio, United States of America",
+          "postedDate": null
+        },
         {
           "title": "Degree Apprentice - Software Design Engineer",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527509",
@@ -1345,33 +1351,9 @@
           "postedDate": null
         },
         {
-          "title": "Mechanical Design Engineer",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527731",
-          "location": "Fort Worth, Texas, United States of America",
-          "postedDate": null
-        },
-        {
-          "title": "Design Engineer (Product care / Design to Order)",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527386",
-          "location": "Goa, Goa, India",
-          "postedDate": null
-        },
-        {
-          "title": "Civil Design Engineer @Siemens Mobility Egypt",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527006",
-          "location": "Cairo, Al Qahirah, Egypt",
-          "postedDate": null
-        },
-        {
-          "title": "UX Designer",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/513629",
-          "location": "Mason, Ohio, United States of America",
-          "postedDate": null
-        },
-        {
-          "title": "Frontend / UX Engineer - Robotics Data Operations, Kitchener, ON",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/510688",
-          "location": "Kitchener, Ontario, Canada",
+          "title": "Principal Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526689",
+          "location": "Bellevue, Washington, United States of America",
           "postedDate": null
         },
         {
@@ -1381,15 +1363,21 @@
           "postedDate": null
         },
         {
-          "title": "Principal Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526691",
+          "title": "Senior Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526716",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Senior Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526716",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526715",
           "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526713",
+          "location": "Bellevue, Washington, United States of America",
           "postedDate": null
         },
         {
@@ -1397,24 +1385,12 @@
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525305",
           "location": "Milan, Milano, Italy",
           "postedDate": null
-        },
-        {
-          "title": "Principal Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526693",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "CPQ Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/524904",
-          "location": "Peachtree Corners, Georgia, United States of America",
-          "postedDate": null
         }
       ]
     },
     "virgin-media-o2": {
       "ok": true,
-      "found": 127,
+      "found": 126,
       "roles": []
     },
     "viasat": {
@@ -1447,8 +1423,202 @@
       "roles": []
     },
     "revolut": {
-      "ok": false,
-      "error": "https://www.revolut.com/careers/: no __NEXT_DATA__ page data"
+      "ok": true,
+      "found": 282,
+      "roles": [
+        {
+          "title": "Product Strategy Manager",
+          "url": "https://www.revolut.com/careers/position/product-strategy-manager-b6d53c51-c29c-4f2e-90e8-a8eba158858e/",
+          "location": "Remote, India; Remote, Poland; Remote, Portugal; Remote, Romania; Remote, Spain; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Product Strategy Manager (6-month Internship)",
+          "url": "https://www.revolut.com/careers/position/product-strategy-manager-6-month-internship-997830c1-0b4d-439b-a2bb-19772e428e31/",
+          "location": "Remote, India; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Strategy & Operations Manager (Credit)",
+          "url": "https://www.revolut.com/careers/position/strategy-operations-manager-credit-b3bfe84e-b0c7-4904-8373-40dcd07fdd81/",
+          "location": "Remote, Brazil; Krakow, Poland; Remote, Lithuania; Madrid, Spain; Remote, Poland; Remote, Portugal; Remote, Romania; Remote, Spain; Vilnius, Lithuania",
+          "postedDate": null
+        },
+        {
+          "title": "Strategy & Operations Manager",
+          "url": "https://www.revolut.com/careers/position/strategy-operations-manager-c2682b06-5ec5-4897-a29b-3671809d6fb9/",
+          "location": "Remote, Argentina",
+          "postedDate": null
+        },
+        {
+          "title": "Strategy & Operations Manager",
+          "url": "https://www.revolut.com/careers/position/strategy-operations-manager-07b266e3-67ff-452d-b82a-38d4bc2c8e9f/",
+          "location": "Remote, Israel",
+          "postedDate": null
+        },
+        {
+          "title": "Graduate Programme 2027: Strategy & Operations Manager",
+          "url": "https://www.revolut.com/careers/position/graduate-programme-2027-strategy-operations-manager-f95a2dda-30a6-4fef-af87-db97199df832/",
+          "location": "Barcelona, Spain; Dubai, United Arab Emirates; Krakow, Poland; Lisbon, Portugal; London, United Kingdom; Madrid, Spain; Remote, Poland; Remote, Portugal; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Internship Programme 2027: Strategy & Operations Manager",
+          "url": "https://www.revolut.com/careers/position/internship-programme-2027-strategy-operations-manager-aa3cc201-5808-4d7e-ba8e-e82e443d90d3/",
+          "location": "Barcelona, Spain; Dubai, United Arab Emirates; Krakow, Poland; Lisbon, Portugal; London, United Kingdom; Madrid, Spain; Remote, Poland; Remote, Portugal; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Strategy & Operations Manager",
+          "url": "https://www.revolut.com/careers/position/strategy-operations-manager-e26a85ea-4992-4d5b-9662-3351b25d5e3d/",
+          "location": "Dubai, United Arab Emirates",
+          "postedDate": null
+        },
+        {
+          "title": "Strategy & Operations Manager (Crypto)",
+          "url": "https://www.revolut.com/careers/position/strategy-operations-manager-crypto-1f673184-3fe0-4a7b-9593-d7ecbe0fcc09/",
+          "location": "Bangalore, India; Barcelona, Spain; Remote, India; Dubai, United Arab Emirates; Krakow, Poland; Lisbon, Portugal; Remote, Lithuania; Madrid, Spain; Mumbai, India; Remote, Poland; Remote, Portugal; Remote, Spain; Remote, United Arab Emirates; Vilnius, Lithuania",
+          "postedDate": null
+        },
+        {
+          "title": "Strategy & Operations Manager",
+          "url": "https://www.revolut.com/careers/position/strategy-operations-manager-9cc8dc61-a265-4da9-91c2-5424c0d98cc6/",
+          "location": "Remote, India",
+          "postedDate": null
+        },
+        {
+          "title": "Strategy & Operations Manager (Physical Presence)",
+          "url": "https://www.revolut.com/careers/position/strategy-operations-manager-physical-presence-fd8c0737-c6c2-4dd6-b3a5-fae6f2fa5e09/",
+          "location": "Remote, Colombia",
+          "postedDate": null
+        },
+        {
+          "title": "Strategy & Operations Manager",
+          "url": "https://www.revolut.com/careers/position/strategy-operations-manager-76ac942e-7717-4bbf-912d-2adf91b23b0d/",
+          "location": "Bangalore, India; Barcelona, Spain; Remote, Brazil; Remote, India; Dubai, United Arab Emirates; Krakow, Poland; Lisbon, Portugal; Remote, Lithuania; Madrid, Spain; Mumbai, India; Remote, Poland; Remote, Portugal; Sao Paulo, Brazil; Remote, Spain; Remote, United Arab Emirates; Vilnius, Lithuania",
+          "postedDate": null
+        },
+        {
+          "title": "Strategy & Operations Manager",
+          "url": "https://www.revolut.com/careers/position/strategy-operations-manager-d04b3f4c-5b2d-4592-8649-a6634b10e151/",
+          "location": "Remote, Australia",
+          "postedDate": null
+        },
+        {
+          "title": "Credit Manager (Product)",
+          "url": "https://www.revolut.com/careers/position/credit-manager-product-92e04817-f950-4b94-8b2a-6f2cbbe6d054/",
+          "location": "London, United Kingdom; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Credit Product Manager",
+          "url": "https://www.revolut.com/careers/position/credit-product-manager-e9459ffe-afcc-4e58-a1cd-7ab7da326e11/",
+          "location": "Remote, Israel",
+          "postedDate": null
+        },
+        {
+          "title": "Credit Product Manager",
+          "url": "https://www.revolut.com/careers/position/credit-product-manager-04bf0992-3b62-48c4-a20c-aa744c8ad6e1/",
+          "location": "New York, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Credit Product Manager",
+          "url": "https://www.revolut.com/careers/position/credit-product-manager-c37edbed-3313-4f80-bb74-1aed57fbaa82/",
+          "location": "Remote, Colombia",
+          "postedDate": null
+        },
+        {
+          "title": "Product Owner (UX)",
+          "url": "https://www.revolut.com/careers/position/product-owner-ux-c7435e41-593c-4a1d-88ff-1a9259143d80/",
+          "location": "Remote, Cyprus; Dubai, United Arab Emirates; Dublin, Ireland; Remote, France; Remote, Germany; Remote, Ireland; London, United Kingdom; Madrid, Spain; Remote, Portugal; Remote, Romania; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Internship Programme 2027: Product Owner (UX)",
+          "url": "https://www.revolut.com/careers/position/internship-programme-2027-product-owner-ux-d19156aa-506a-4cf5-bea2-2f4c999a1c41/",
+          "location": "Barcelona, Spain; Dubai, United Arab Emirates; Krakow, Poland; Lisbon, Portugal; London, United Kingdom; Madrid, Spain; Remote, Poland; Remote, Portugal; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Graduate Programme 2027: Product Owner (UX)",
+          "url": "https://www.revolut.com/careers/position/graduate-programme-2027-product-owner-ux-48244271-6656-42f9-ab2c-caf4531593d3/",
+          "location": "Barcelona, Spain; Dubai, United Arab Emirates; Krakow, Poland; Lisbon, Portugal; London, United Kingdom; Madrid, Spain; Remote, Poland; Remote, Portugal; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Graduate Programme 2027: Product Designer",
+          "url": "https://www.revolut.com/careers/position/graduate-programme-2027-product-designer-6487c60b-fff9-4519-aa1d-f5c6b26f7602/",
+          "location": "Barcelona, Spain; Dubai, United Arab Emirates; Krakow, Poland; Lisbon, Portugal; London, United Kingdom; Madrid, Spain; Remote, Poland; Remote, Portugal; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Internship Programme 2027: Product Designer",
+          "url": "https://www.revolut.com/careers/position/internship-programme-2027-product-designer-c2c28fdc-8cc9-4b3f-9e9b-126c723edb7a/",
+          "location": "Barcelona, Spain; Dubai, United Arab Emirates; Krakow, Poland; Lisbon, Portugal; London, United Kingdom; Madrid, Spain; Remote, Poland; Remote, Portugal; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Product Designer",
+          "url": "https://www.revolut.com/careers/position/product-designer-3c464d62-846f-49eb-81a3-67747a9b8cfd/",
+          "location": "Remote, Cyprus; Remote, Czech Republic; Remote, France; Remote, Germany; Remote, Greece; London, United Kingdom; Remote, Poland; Remote, Portugal; Remote, Serbia; Remote, Spain; Remote, Sweden; Remote, Turkey; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Product Owner (Technical)",
+          "url": "https://www.revolut.com/careers/position/product-owner-technical-5beb1f80-446c-41b8-b59c-c34bd557bc7b/",
+          "location": "Remote, Cyprus; Remote, Czech Republic; Dublin, Ireland; Remote, France; Remote, Germany; Remote, Greece; Remote, Ireland; London, United Kingdom; Madrid, Spain; Remote, Portugal; Remote, Romania; Remote, Serbia; Remote, Spain; Remote, Sweden; Remote, Turkey; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Head of Product (Fraud)",
+          "url": "https://www.revolut.com/careers/position/head-of-product-fraud-a953a854-e74a-46f6-bed2-5720030a0862/",
+          "location": "Remote, Austria; Bangalore, India; Berlin, Germany; Remote, Cyprus; Dublin, Ireland; Remote, France; Remote, Germany; Remote, Ireland; Krakow, Poland; Remote, Lithuania; London, United Kingdom; Madrid, Spain; Remote, Poland; Remote, Portugal; Remote, Romania; Remote, Spain; Remote, Sweden; Remote, United Arab Emirates; Remote, United Kingdom; Vilnius, Lithuania",
+          "postedDate": null
+        },
+        {
+          "title": "Internship Programme 2027: Product Owner (Technical)",
+          "url": "https://www.revolut.com/careers/position/internship-programme-2027-product-owner-technical-9bb26c86-9461-4e89-a460-7dc9a067b018/",
+          "location": "Barcelona, Spain; Dubai, United Arab Emirates; Lisbon, Portugal; London, United Kingdom; Madrid, Spain; Remote, Portugal; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Graduate Programme 2027: Product Owner (Technical)",
+          "url": "https://www.revolut.com/careers/position/graduate-programme-2027-product-owner-technical-554c4b14-c988-4c35-bd06-702acf4f36f7/",
+          "location": "Barcelona, Spain; Dubai, United Arab Emirates; Krakow, Poland; Lisbon, Portugal; London, United Kingdom; Madrid, Spain; Remote, Poland; Remote, Portugal; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Operations Manager (Product)",
+          "url": "https://www.revolut.com/careers/position/operations-manager-product-c99af113-ba97-4543-84f1-76c572c00ec4/",
+          "location": "Bangalore, India; Remote, Brazil; Remote, India; Dubai, United Arab Emirates; Krakow, Poland; Lisbon, Portugal; Madrid, Spain; Mumbai, India; Remote, Poland; Remote, Portugal; Remote, Romania; Sao Paulo, Brazil; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Product Marketing Manager (Crypto)",
+          "url": "https://www.revolut.com/careers/position/product-marketing-manager-crypto-ef7bd853-526b-47ec-b506-d25ca9298dcc/",
+          "location": "Barcelona, Spain; Dubai, United Arab Emirates; London, United Kingdom; Madrid, Spain; Remote, Portugal; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Graduate Growth Marketing Manager",
+          "url": "https://www.revolut.com/careers/position/graduate-growth-marketing-manager-7f98a3d3-3b16-44db-bf24-1c1ea37d5dbd/",
+          "location": "Remote, Germany; Remote, Mexico; Mexico City, Mexico; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Graduate Growth Marketing Manager (Performance Marketing)",
+          "url": "https://www.revolut.com/careers/position/graduate-growth-marketing-manager-performance-marketing-f2e6dec9-aefd-4108-9c1c-74fed0e421cb/",
+          "location": "Remote, France; Remote, Germany; Remote, Spain; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Product Designer (Platform)",
+          "url": "https://www.revolut.com/careers/position/product-designer-platform-1182efdd-0355-4b8e-8d09-975f04aef43b/",
+          "location": "Remote, Argentina; Barcelona, Spain; Remote, Brazil; Remote, Cyprus; Remote, Czech Republic; Dubai, United Arab Emirates; Remote, France; Remote, Germany; Remote, Ireland; Lisbon, Portugal; London, United Kingdom; Madrid, Spain; Remote, Mexico; Remote, Portugal; Remote, Serbia; Remote, Singapore; Remote, Spain; Remote, Sweden; Remote, United Arab Emirates; Remote, United Kingdom",
+          "postedDate": null
+        }
+      ]
     }
   }
 }
