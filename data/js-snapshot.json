@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T16:59:21.160Z",
+  "generatedAt": "2026-11-07T20:54:04.175Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -307,7 +307,7 @@
     },
     "national-australia-bank-nab": {
       "ok": true,
-      "found": 18,
+      "found": 19,
       "roles": [
         {
           "title": "Senior Product Designer - Personal Everyday Banking",
@@ -627,21 +627,21 @@
           "postedDate": null
         },
         {
-          "title": "Radio Unit Design Lead",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "title": "CAD Design Enablement TPM",
+          "url": "https://jobs.ericsson.com/careers/job/563121777484574?domain=ericsson.com",
+          "location": "Austin, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Radio HW Design Power Amplifier",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
           "location": "Yokohama, Japan",
           "postedDate": null
         },
         {
-          "title": "Radio Frequency design and support",
-          "url": "https://jobs.ericsson.com/careers/job/563121777418239?domain=ericsson.com",
-          "location": "Stockholm, Sweden",
-          "postedDate": null
-        },
-        {
-          "title": "Network Design Optimization Internship",
-          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
-          "location": "Kyiv, Ukraine",
+          "title": "Radio Unit Design Lead",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "location": "Yokohama, Japan",
           "postedDate": null
         },
         {
@@ -655,19 +655,19 @@
           "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
           "location": "Beijing, China",
           "postedDate": null
-        },
-        {
-          "title": "CAD Design Enablement TPM",
-          "url": "https://jobs.ericsson.com/careers/job/563121777484574?domain=ericsson.com",
-          "location": "Austin, United States",
-          "postedDate": null
         }
       ]
     },
     "vodafone": {
       "ok": true,
-      "found": 19,
+      "found": 20,
       "roles": [
+        {
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "Milan, Italy",
+          "postedDate": null
+        },
         {
           "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
@@ -681,21 +681,15 @@
           "postedDate": null
         },
         {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "Milan, Italy",
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "location": "Lisbon, Portugal",
           "postedDate": null
         },
         {
           "title": "VodafoneThree - Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018698300761?domain=vodafone.com",
           "location": "United Kingdom",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "Lisbon, Portugal",
           "postedDate": null
         },
         {
@@ -708,6 +702,18 @@
           "title": "GTM Design Manager",
           "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
           "location": "Madrid, Spain",
+          "postedDate": null
+        },
+        {
+          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
+          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
+          "location": "Pune, India",
           "postedDate": null
         }
       ]
@@ -978,12 +984,6 @@
       "found": 18,
       "roles": [
         {
-          "title": "Regional Workplace Strategy & Design Lead APAC, Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549796897507?domain=morganstanley.com",
-          "location": "Hong Kong SAR China",
-          "postedDate": null
-        },
-        {
           "title": "Client Segment Risk Conduct, Controls & Governance - Control Design - Vice President",
           "url": "https://morganstanley.eightfold.ai/careers/job/549799090035?domain=morganstanley.com",
           "location": "Harrison, United States",
@@ -996,15 +996,15 @@
           "postedDate": null
         },
         {
-          "title": "Associate, UX Designer – Equity Zen",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549797369091?domain=morganstanley.com",
-          "location": "New York, United States",
+          "title": "Regional Workplace Strategy & Design Lead APAC, Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549796897507?domain=morganstanley.com",
+          "location": "Hong Kong SAR China",
           "postedDate": null
         },
         {
-          "title": "Workplace Analytics & Strategy, Executive Director",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549800871280?domain=morganstanley.com",
-          "location": "Harrison, United States",
+          "title": "Associate, UX Designer – Equity Zen",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549797369091?domain=morganstanley.com",
+          "location": "New York, United States",
           "postedDate": null
         },
         {
@@ -1014,21 +1014,9 @@
           "postedDate": null
         },
         {
-          "title": "FX Option Quantitative Strategist, Associate / Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549799861761?domain=morganstanley.com",
-          "location": "Hong Kong SAR China",
-          "postedDate": null
-        },
-        {
-          "title": "Insurance & Annuities Strategy / Product Manager, Assistant Vice President/Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549800454240?domain=morganstanley.com",
-          "location": "Harrison, United States; New York, United States",
-          "postedDate": null
-        },
-        {
-          "title": "Commodities Product Controllers, Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549800625266?domain=morganstanley.com",
-          "location": "Singapore; Hong Kong SAR China",
+          "title": "Operations Transformation - Vice President - Change, Analytics & Strategy",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549796235008?domain=morganstanley.com",
+          "location": "Mumbai, India",
           "postedDate": null
         }
       ]
@@ -1052,7 +1040,7 @@
     },
     "vanderlande": {
       "ok": true,
-      "found": 242,
+      "found": 241,
       "roles": [
         {
           "title": "Junior UI/UX Designer Intern",
@@ -1103,15 +1091,15 @@
           "postedDate": null
         },
         {
-          "title": "Mechanical Design Engineer",
-          "url": "https://careers.vanderlande.com/all-jobs/mechanical-design-engineer-jr38643/",
-          "location": "Pune I, India",
-          "postedDate": null
-        },
-        {
           "title": "Product Owner",
           "url": "https://careers.vanderlande.com/all-jobs/product-owner-jr38554/",
           "location": "Marietta, GA USA, United States of America",
+          "postedDate": null
+        },
+        {
+          "title": "Mechanical Design Engineer",
+          "url": "https://careers.vanderlande.com/all-jobs/mechanical-design-engineer-jr38643/",
+          "location": "Pune I, India",
           "postedDate": null
         }
       ]
@@ -1278,18 +1266,18 @@
     },
     "rabobank": {
       "ok": true,
-      "found": 2,
+      "found": 5,
       "roles": [
-        {
-          "title": "Graduation Internship Design Research | Platform Quality | Utrecht",
-          "url": "https://rabobank.jobs/en/job/graduation-internship-design-research-or-platform-quality-or-utrecht/JR_00147181/?",
-          "location": "Utrecht, nl",
-          "postedDate": null
-        },
         {
           "title": "Design Lead - Online Banking",
           "url": "https://rabobank.jobs/en/job/design-lead-online-banking/JR_00146837/?",
           "location": "Sydney, au",
+          "postedDate": null
+        },
+        {
+          "title": "Graduation Internship Design Research | Platform Quality | Utrecht",
+          "url": "https://rabobank.jobs/en/job/graduation-internship-design-research-or-platform-quality-or-utrecht/JR_00147181/?",
+          "location": "Utrecht, nl",
           "postedDate": null
         }
       ]
@@ -1329,7 +1317,7 @@
     },
     "siemens": {
       "ok": true,
-      "found": 18,
+      "found": 17,
       "roles": [
         {
           "title": "Degree Apprentice - Software Design Engineer",
@@ -1338,9 +1326,9 @@
           "postedDate": null
         },
         {
-          "title": "Electrical Design Engineer Schematic - COMOS, Eplan",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/522256",
-          "location": "Pune, Maharashtra, India",
+          "title": "Electrical Design Engineering Intern",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/516376",
+          "location": "Wendell, North Carolina, United States of America",
           "postedDate": null
         },
         {
@@ -1350,15 +1338,9 @@
           "postedDate": null
         },
         {
-          "title": "Civil Design Engineer @Siemens Mobility Egypt",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527006",
-          "location": "Cairo, Al Qahirah, Egypt",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Mechanical Design Engineer - Digital Engineering PACS",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/519702",
-          "location": "Wendell, North Carolina, United States of America",
+          "title": "Spatial Experience Designer – CAD & 3D Visualization – English Speaker (m/f/d)",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525290",
+          "location": "Amadora, Lisboa, Portugal",
           "postedDate": null
         },
         {
@@ -1368,21 +1350,27 @@
           "postedDate": null
         },
         {
+          "title": "Protection, Control & Automation Panel Design Engineer",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527121",
+          "location": "Wendell, North Carolina, United States of America",
+          "postedDate": null
+        },
+        {
           "title": "Assistant Product Manager/ Product Manager 產品副理/ 產品經理",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/517446",
           "location": "Taipei, Taipei shih, Taiwan, Province of China",
           "postedDate": null
         },
         {
-          "title": "Senior Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526716",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "Junior Product Manager",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525305",
           "location": "Milan, Milano, Italy",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526716",
+          "location": "",
           "postedDate": null
         },
         {
