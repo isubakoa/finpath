@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T10:50:44.697Z",
+  "generatedAt": "2026-11-07T16:59:21.160Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -445,6 +445,12 @@
           "url": "https://jobs.standardchartered.com/job/Asso-Dir%2C-MAR-Trade-Surv_-Design-&amp;-Automation/63633-en_GB",
           "location": "Bangalore, IND",
           "postedDate": null
+        },
+        {
+          "title": "Product Owner, Digital Acquisition",
+          "url": "https://jobs.standardchartered.com/job/Product-Owner%2C-Digital-Acquisition/58307-en_GB",
+          "location": "Bukit Jalil KL, MYS",
+          "postedDate": null
         }
       ]
     },
@@ -621,15 +627,21 @@
           "postedDate": null
         },
         {
-          "title": "Radio HW Design Power Amplifier",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
+          "title": "Radio Unit Design Lead",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
           "location": "Yokohama, Japan",
           "postedDate": null
         },
         {
-          "title": "Radio Unit Design Lead",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
-          "location": "Yokohama, Japan",
+          "title": "Radio Frequency design and support",
+          "url": "https://jobs.ericsson.com/careers/job/563121777418239?domain=ericsson.com",
+          "location": "Stockholm, Sweden",
+          "postedDate": null
+        },
+        {
+          "title": "Network Design Optimization Internship",
+          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
+          "location": "Kyiv, Ukraine",
           "postedDate": null
         },
         {
@@ -645,9 +657,9 @@
           "postedDate": null
         },
         {
-          "title": "Radio HW Digital Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121776262135?domain=ericsson.com",
-          "location": "Yokohama, Japan",
+          "title": "CAD Design Enablement TPM",
+          "url": "https://jobs.ericsson.com/careers/job/563121777484574?domain=ericsson.com",
+          "location": "Austin, United States",
           "postedDate": null
         }
       ]
@@ -657,27 +669,9 @@
       "found": 19,
       "roles": [
         {
-          "title": "VodafoneThree - Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018698300761?domain=vodafone.com",
-          "location": "United Kingdom",
-          "postedDate": null
-        },
-        {
           "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
           "location": "Düsseldorf, Germany",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
-          "location": "Lisbon, Portugal",
-          "postedDate": null
-        },
-        {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "Milan, Italy",
           "postedDate": null
         },
         {
@@ -687,21 +681,27 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
-          "location": "Pune, India",
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "Milan, Italy",
           "postedDate": null
         },
         {
-          "title": "Senior Manager - Secure by Design - CIS - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698178807?domain=vodafone.com",
-          "location": "Pune, India",
+          "title": "VodafoneThree - Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018698300761?domain=vodafone.com",
+          "location": "United Kingdom",
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
-          "location": "Pune, India",
+          "title": "Secure by Design Manager",
+          "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
+          "location": "Lisbon, Portugal",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "location": "Düsseldorf, Germany",
           "postedDate": null
         },
         {
@@ -984,15 +984,15 @@
           "postedDate": null
         },
         {
-          "title": "Senior UX Design Lead - Advisory - Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549800099839?domain=morganstanley.com",
-          "location": "New York, United States",
-          "postedDate": null
-        },
-        {
           "title": "Client Segment Risk Conduct, Controls & Governance - Control Design - Vice President",
           "url": "https://morganstanley.eightfold.ai/careers/job/549799090035?domain=morganstanley.com",
           "location": "Harrison, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Senior UX Design Lead - Advisory - Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549800099839?domain=morganstanley.com",
+          "location": "New York, United States",
           "postedDate": null
         },
         {
@@ -1052,8 +1052,14 @@
     },
     "vanderlande": {
       "ok": true,
-      "found": 243,
+      "found": 242,
       "roles": [
+        {
+          "title": "Junior UI/UX Designer Intern",
+          "url": "https://careers.vanderlande.com/all-jobs/junior-ui-ux-designer-intern-68269271/",
+          "location": "Dubai, United Arab Emirates",
+          "postedDate": null
+        },
         {
           "title": "Design Safety Expert",
           "url": "https://careers.vanderlande.com/all-jobs/design-safety-expert-jr33945/",
@@ -1097,21 +1103,15 @@
           "postedDate": null
         },
         {
-          "title": "Product Owner",
-          "url": "https://careers.vanderlande.com/all-jobs/product-owner-jr38554/",
-          "location": "Marietta, GA USA, United States of America",
-          "postedDate": null
-        },
-        {
           "title": "Mechanical Design Engineer",
           "url": "https://careers.vanderlande.com/all-jobs/mechanical-design-engineer-jr38643/",
           "location": "Pune I, India",
           "postedDate": null
         },
         {
-          "title": "Junior UI/UX Designer Intern",
-          "url": "https://careers.vanderlande.com/all-jobs/junior-ui-ux-designer-intern-68269271/",
-          "location": "Dubai, United Arab Emirates",
+          "title": "Product Owner",
+          "url": "https://careers.vanderlande.com/all-jobs/product-owner-jr38554/",
+          "location": "Marietta, GA USA, United States of America",
           "postedDate": null
         }
       ]
@@ -1332,9 +1332,15 @@
       "found": 18,
       "roles": [
         {
-          "title": "Civil Design Engineer @Siemens Mobility Egypt",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527006",
-          "location": "Cairo, Al Qahirah, Egypt",
+          "title": "Degree Apprentice - Software Design Engineer",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527509",
+          "location": "Congleton, Cheshire East, UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND",
+          "postedDate": null
+        },
+        {
+          "title": "Electrical Design Engineer Schematic - COMOS, Eplan",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/522256",
+          "location": "Pune, Maharashtra, India",
           "postedDate": null
         },
         {
@@ -1344,21 +1350,15 @@
           "postedDate": null
         },
         {
+          "title": "Civil Design Engineer @Siemens Mobility Egypt",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527006",
+          "location": "Cairo, Al Qahirah, Egypt",
+          "postedDate": null
+        },
+        {
           "title": "Senior Mechanical Design Engineer - Digital Engineering PACS",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/519702",
           "location": "Wendell, North Carolina, United States of America",
-          "postedDate": null
-        },
-        {
-          "title": "Sr. Building Automation Design Engineer - PLC Controls",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525192",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Sr. Building Automation Design Engineer - PLC & Industrial Controls",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/523831",
-          "location": "",
           "postedDate": null
         },
         {
@@ -1380,6 +1380,12 @@
           "postedDate": null
         },
         {
+          "title": "Junior Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525305",
+          "location": "Milan, Milano, Italy",
+          "postedDate": null
+        },
+        {
           "title": "Principal Product Manager",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526693",
           "location": "",
@@ -1394,12 +1400,6 @@
         {
           "title": "Principal Product Manager",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526691",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Product Marketing Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/528385",
           "location": "",
           "postedDate": null
         }
@@ -1430,7 +1430,7 @@
     },
     "lebara": {
       "ok": true,
-      "found": 0,
+      "found": 3,
       "roles": []
     },
     "revolut": {
