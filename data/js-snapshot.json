@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T20:54:04.175Z",
+  "generatedAt": "2026-11-08T00:18:23.824Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -307,7 +307,7 @@
     },
     "national-australia-bank-nab": {
       "ok": true,
-      "found": 19,
+      "found": 18,
       "roles": [
         {
           "title": "Senior Product Designer - Personal Everyday Banking",
@@ -660,7 +660,7 @@
     },
     "vodafone": {
       "ok": true,
-      "found": 20,
+      "found": 19,
       "roles": [
         {
           "title": "Cloud Solution Design Engineer",
@@ -699,20 +699,14 @@
           "postedDate": null
         },
         {
-          "title": "GTM Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
-          "location": "Madrid, Spain",
-          "postedDate": null
-        },
-        {
-          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
-          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
-          "location": "",
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
+          "location": "Pune, India",
           "postedDate": null
         },
         {
           "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
           "location": "Pune, India",
           "postedDate": null
         }
@@ -863,15 +857,8 @@
     },
     "triodos-bank": {
       "ok": true,
-      "found": 10,
-      "roles": [
-        {
-          "title": "Visual designer web / mobile",
-          "url": "https://careers.triodos.com/job/Visual-designer-web-mobile/996-en_US",
-          "location": "LA Driebergen-Rijsenburg, NLD",
-          "postedDate": null
-        }
-      ]
+      "found": 0,
+      "roles": []
     },
     "backbase": {
       "ok": true,
@@ -1040,7 +1027,7 @@
     },
     "vanderlande": {
       "ok": true,
-      "found": 241,
+      "found": 240,
       "roles": [
         {
           "title": "Junior UI/UX Designer Intern",
@@ -1067,14 +1054,14 @@
           "postedDate": null
         },
         {
-          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
+          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
           "location": "Veghel, Netherlands",
           "postedDate": null
         },
         {
-          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
+          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
           "location": "Veghel, Netherlands",
           "postedDate": null
         },
@@ -1266,18 +1253,18 @@
     },
     "rabobank": {
       "ok": true,
-      "found": 5,
+      "found": 2,
       "roles": [
-        {
-          "title": "Design Lead - Online Banking",
-          "url": "https://rabobank.jobs/en/job/design-lead-online-banking/JR_00146837/?",
-          "location": "Sydney, au",
-          "postedDate": null
-        },
         {
           "title": "Graduation Internship Design Research | Platform Quality | Utrecht",
           "url": "https://rabobank.jobs/en/job/graduation-internship-design-research-or-platform-quality-or-utrecht/JR_00147181/?",
           "location": "Utrecht, nl",
+          "postedDate": null
+        },
+        {
+          "title": "Design Lead - Online Banking",
+          "url": "https://rabobank.jobs/en/job/design-lead-online-banking/JR_00146837/?",
+          "location": "Sydney, au",
           "postedDate": null
         }
       ]
@@ -1317,7 +1304,7 @@
     },
     "siemens": {
       "ok": true,
-      "found": 17,
+      "found": 18,
       "roles": [
         {
           "title": "Degree Apprentice - Software Design Engineer",
@@ -1338,9 +1325,21 @@
           "postedDate": null
         },
         {
+          "title": "Civil Design Engineer @Siemens Mobility Egypt",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527006",
+          "location": "Cairo, Al Qahirah, Egypt",
+          "postedDate": null
+        },
+        {
           "title": "Spatial Experience Designer – CAD & 3D Visualization – English Speaker (m/f/d)",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525290",
           "location": "Amadora, Lisboa, Portugal",
+          "postedDate": null
+        },
+        {
+          "title": "Protection Design Engineer - Abu Dhabi, UAE",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/523901",
+          "location": "Abu Dhabi, Abu Dhabi, United Arab Emirates",
           "postedDate": null
         },
         {
@@ -1350,27 +1349,21 @@
           "postedDate": null
         },
         {
-          "title": "Protection, Control & Automation Panel Design Engineer",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527121",
-          "location": "Wendell, North Carolina, United States of America",
-          "postedDate": null
-        },
-        {
           "title": "Assistant Product Manager/ Product Manager 產品副理/ 產品經理",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/517446",
           "location": "Taipei, Taipei shih, Taiwan, Province of China",
           "postedDate": null
         },
         {
-          "title": "Junior Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525305",
-          "location": "Milan, Milano, Italy",
-          "postedDate": null
-        },
-        {
           "title": "Senior Product Manager",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526716",
           "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Junior Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525305",
+          "location": "Milan, Milano, Italy",
           "postedDate": null
         },
         {
@@ -1418,7 +1411,7 @@
     },
     "lebara": {
       "ok": true,
-      "found": 3,
+      "found": 0,
       "roles": []
     },
     "revolut": {
