@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-08T02:23:49Z",
+  "generatedAt": "2026-11-08T08:40:50Z",
   "companies": {
     "google": {
       "roles": [
@@ -4275,7 +4275,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-07"
+          "lastSeenAt": "2026-11-08"
         },
         {
           "title": "Senior Product Operations Manager",
@@ -8224,6 +8224,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-07"
+        },
+        {
+          "title": "Strategy and Program Manager",
+          "location": "Amsterdam, Netherlands",
+          "url": "https://boards.greenhouse.io/adyen/jobs/8334748",
+          "postedDate": "2026-11-07",
+          "source": "welcometonl",
+          "sources": [
+            "welcometonl"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-08"
         }
       ]
     },
@@ -12008,6 +12020,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-10-29"
+        },
+        {
+          "title": "Senior Innovation Strategy Manger",
+          "location": "London, ENG, UK",
+          "url": "https://uk.indeed.com/viewjob?jk=35d47401e1710f32",
+          "postedDate": "2026-11-02",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-08"
         }
       ]
     },
@@ -14743,7 +14767,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-03"
+          "lastSeenAt": "2026-11-08"
         },
         {
           "title": "Automotive Software Product Manager (f/d/m)",
@@ -15507,7 +15531,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-07"
+          "lastSeenAt": "2026-11-08"
         },
         {
           "title": "Card Issuance Product Manager - Global Payment",
@@ -16016,6 +16040,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-06"
+        },
+        {
+          "title": "Senior Product Manager",
+          "location": "Singapore, S00, Singapore",
+          "url": "https://sg.indeed.com/viewjob?jk=6a97943a81489265",
+          "postedDate": "2026-11-06",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-08"
         }
       ]
     },
@@ -20079,6 +20115,90 @@
   "openMarket": {
     "roles": [
       {
+        "employer": "GSK",
+        "market": "United Kingdom",
+        "title": "Product Director, Evidence Preparation",
+        "location": "London, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4477331258",
+        "postedDate": "2026-11-08",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "CHEFS CULINAR",
+        "market": "Germany",
+        "title": "UX/UI Designer f\u00fcr Websites und digitale Services (m/w/d)",
+        "location": "Weeze, North Rhine-Westphalia, Germany",
+        "url": "https://www.linkedin.com/jobs/view/4487638470",
+        "postedDate": "2026-11-08",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "BoF Careers",
+        "market": "Italy",
+        "title": "Digital Applications Product Manager",
+        "location": "Milan, Lombardy, Italy",
+        "url": "https://www.linkedin.com/jobs/view/4487649055",
+        "postedDate": "2026-11-08",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "Whizmo",
+        "market": "United Arab Emirates",
+        "title": "UX/UI Designer",
+        "location": "Dubai, United Arab Emirates",
+        "url": "https://www.linkedin.com/jobs/view/4487634520",
+        "postedDate": "2026-11-08",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "FLYERALARM.ae",
+        "market": "United Arab Emirates",
+        "title": "Product Development & Category Specialist \u2014 German Speaking",
+        "location": "Dubai, United Arab Emirates",
+        "url": "https://www.linkedin.com/jobs/view/4488760928",
+        "postedDate": "2026-11-08",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "GreenSketch",
+        "market": "Singapore",
+        "title": "Product Manager",
+        "location": "Singapore, Singapore",
+        "url": "https://www.linkedin.com/jobs/view/4486678357",
+        "postedDate": "2026-11-08",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
         "employer": "Bureau of Meteorology",
         "market": "Australia",
         "title": "Digital Product Lead",
@@ -20342,6 +20462,76 @@
         "source": "indeed",
         "sources": [
           "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "Hunter Bond",
+        "market": "United Kingdom",
+        "title": "AI EPR Product Specialist - HealthTech - Remote - \u00a380,000-\u00a3100,000 + Bonus",
+        "location": "England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4486658749",
+        "postedDate": "2026-11-07",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "Otto Group one.O",
+        "market": "Germany",
+        "title": "Product Lead SAP Platform & Technology (w/m/d)",
+        "location": "Dresden, Saxony, Germany",
+        "url": "https://www.linkedin.com/jobs/view/4486659579",
+        "postedDate": "2026-11-07",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "VAN HEES GmbH",
+        "market": "Germany",
+        "title": "Werkstudent (m/w/d) Product Management Lebensmittelindustrie",
+        "location": "Walluf, Hesse, Germany",
+        "url": "https://www.linkedin.com/jobs/view/4486658712",
+        "postedDate": "2026-11-07",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "Hadrian",
+        "market": "Netherlands",
+        "title": "Senior Product Marketing Manager",
+        "location": "Amsterdam, Netherlands",
+        "url": "https://careers.hadrian.io/jobs/8634835-senior-product-marketing-manager",
+        "postedDate": "2026-11-07",
+        "source": "welcometonl",
+        "sources": [
+          "welcometonl"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "ING Nederland",
+        "market": "Netherlands",
+        "title": "Senior Strategy Consultant, AI & Data Transformation",
+        "location": "Amsterdam, Netherlands",
+        "url": "https://careers.ing.com/en/job/amsterdam/senior-strategy-consultant-ai-and-data-transformation/3121/46679846592",
+        "postedDate": "2026-11-07",
+        "source": "welcometonl",
+        "sources": [
+          "welcometonl"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-08"
@@ -23555,6 +23745,78 @@
         "lastSeenAt": "2026-11-08"
       },
       {
+        "employer": "Phorest",
+        "market": "Australia",
+        "title": "Product Marketing Manager",
+        "location": "Fortitude Valley, QLD, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=f952baeac7e01552",
+        "postedDate": "2026-11-06",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "Caterpillar",
+        "market": "Australia",
+        "title": "Lead Product Owner, Productivity Solutions",
+        "location": "Redcliffe, WA, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=bfa7ba6d89f54adb",
+        "postedDate": "2026-11-06",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [
+          "visa sponsorship"
+        ],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "Sport Conrad",
+        "market": "Germany",
+        "title": "Product Owner PIM mit Teamverantwortung (m/w/d)",
+        "location": "Garmisch-Partenkirchen, BY, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=620bea8b283678ef",
+        "postedDate": "2026-11-06",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "Nuffield Health",
+        "market": "United Kingdom",
+        "title": "Digital Product Owner - Digital Fitness",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=3ed389974e5c6a46",
+        "postedDate": "2026-11-06",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "QLD CURR & ASSESS AUTH",
+        "market": "Australia",
+        "title": "Executive Director, Strategy, Planning and Corporate Support",
+        "location": "Brisbane, QLD, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=e225037137615bc8",
+        "postedDate": "2026-11-06",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
         "employer": "Alpaca",
         "market": "United Kingdom",
         "title": "Product Manager - Brokerage - UK",
@@ -23588,20 +23850,6 @@
         "title": "Senior Learning Experience Designer, Digital Product (Contract)",
         "location": "Dubai, United Arab Emirates",
         "url": "https://www.linkedin.com/jobs/view/4488412500",
-        "postedDate": "2026-11-06",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-07"
-      },
-      {
-        "employer": "Hunter Bond",
-        "market": "United Kingdom",
-        "title": "AI EPR Product Specialist - HealthTech - Remote - \u00a380,000-\u00a3100,000 + Bonus",
-        "location": "England, United Kingdom",
-        "url": "https://www.linkedin.com/jobs/view/4486294281",
         "postedDate": "2026-11-06",
         "source": "li",
         "sources": [
@@ -24283,39 +24531,11 @@
         "lastSeenAt": "2026-11-06"
       },
       {
-        "employer": "GSK",
-        "market": "United Kingdom",
-        "title": "Product Director, Evidence Preparation",
-        "location": "London, England, United Kingdom",
-        "url": "https://www.linkedin.com/jobs/view/4477331258",
-        "postedDate": "2026-11-06",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-06"
-      },
-      {
         "employer": "Compass Group",
         "market": "United Kingdom",
         "title": "Product Owner",
         "location": "Birmingham, England, United Kingdom",
         "url": "https://www.linkedin.com/jobs/view/4488063669",
-        "postedDate": "2026-11-06",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-06"
-      },
-      {
-        "employer": "CHEFS CULINAR",
-        "market": "Germany",
-        "title": "UX/UI Designer f\u00fcr Websites und digitale Services (m/w/d)",
-        "location": "Weeze, North Rhine-Westphalia, Germany",
-        "url": "https://www.linkedin.com/jobs/view/4486949873",
         "postedDate": "2026-11-06",
         "source": "li",
         "sources": [
@@ -29719,7 +29939,7 @@
         "market": "United Kingdom",
         "title": "Senior Product Manager",
         "location": "Oxford, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=e23748e9e9774994",
+        "url": "https://uk.indeed.com/viewjob?jk=70814d2bb307f39d",
         "postedDate": "2026-11-05",
         "source": "indeed",
         "sources": [
@@ -30070,6 +30290,104 @@
         "lastSeenAt": "2026-11-08"
       },
       {
+        "employer": "EPAM Systems",
+        "market": "Germany",
+        "title": "Cybersecurity Product and Offerings Manager",
+        "location": "M\u00fcnchen, BY, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=d271217fce403d0c",
+        "postedDate": "2026-11-05",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "BBBank",
+        "market": "Germany",
+        "title": "Product Manager (m/w/d) Savings & Deposits",
+        "location": "Karlsruhe, BW, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=022f21ca66a84b87",
+        "postedDate": "2026-11-05",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "IPSEN",
+        "market": "United Kingdom",
+        "title": "Program Manager - New Product Introduction & Commercial Readiness",
+        "location": "Wrexham, WLS, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=caeb992ca7556e39",
+        "postedDate": "2026-11-05",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "Impression Digital",
+        "market": "United Kingdom",
+        "title": "Paid Social Strategist",
+        "location": "Nottingham, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=d4df96c0c86edb46",
+        "postedDate": "2026-11-05",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "Simon-Kucher & Partners",
+        "market": "Germany",
+        "title": "AI Product Manager (m/f/d)",
+        "location": "Berlin, BE, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=2a298251797fd58d",
+        "postedDate": "2026-11-05",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "Medipulse",
+        "market": "Germany",
+        "title": "Product & Customer Success Manager (m/w/d)",
+        "location": "M\u00fcnchen, BY, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=6d14e499f6083bf1",
+        "postedDate": "2026-11-05",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "E-wise",
+        "market": "Netherlands",
+        "title": "Product Marketing Manager (PE-Academy)",
+        "location": "Utrecht Leidsche Rijn, UT, Netherlands",
+        "url": "https://nl.indeed.com/viewjob?jk=ad60f85bfa087cca",
+        "postedDate": "2026-11-05",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
         "employer": "Compass Group",
         "market": "United Kingdom",
         "title": "Product Owner",
@@ -30103,20 +30421,6 @@
         "title": "Senior Digital & Social Media Manager \u2013 Strategy & Performance (Freelance)",
         "location": "Dubai, DU, United Arab Emirates",
         "url": "https://ae.indeed.com/viewjob?jk=0c32e066f724f980",
-        "postedDate": "2026-11-05",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-07"
-      },
-      {
-        "employer": "EPAM Systems",
-        "market": "Germany",
-        "title": "Cybersecurity Product and Offerings Manager",
-        "location": "M\u00fcnchen, BY, Germany",
-        "url": "https://de.indeed.com/viewjob?jk=d271217fce403d0c",
         "postedDate": "2026-11-05",
         "source": "indeed",
         "sources": [
@@ -37283,20 +37587,6 @@
         "lastSeenAt": "2026-11-08"
       },
       {
-        "employer": "LYNX",
-        "market": "Netherlands",
-        "title": "Senior Product Manager Awareness & Lead Acquisition East",
-        "location": "Amsterdam, Netherlands",
-        "url": "https://lynxbroker-jobs.softgarden.io/job/68522592/Senior-Product-Manager-Awareness-Lead-Acquisition-East?jobDbPVId=289580147&l=en",
-        "postedDate": "2026-11-04",
-        "source": "welcometonl",
-        "sources": [
-          "welcometonl"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-07"
-      },
-      {
         "employer": "Edenred",
         "market": "United Kingdom",
         "title": "Product Owner of Processing",
@@ -37306,6 +37596,20 @@
         "source": "indeed",
         "sources": [
           "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "LYNX",
+        "market": "Netherlands",
+        "title": "Senior Product Manager Awareness & Lead Acquisition East",
+        "location": "Amsterdam, Netherlands",
+        "url": "https://lynxbroker-jobs.softgarden.io/job/68522592/Senior-Product-Manager-Awareness-Lead-Acquisition-East?jobDbPVId=289580147&l=en",
+        "postedDate": "2026-11-04",
+        "source": "welcometonl",
+        "sources": [
+          "welcometonl"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-07"
@@ -39350,20 +39654,6 @@
         "title": "Product Manager Automation Lab Devices (x|w|m)",
         "location": "G\u00f6ttingen, Lower Saxony, Germany",
         "url": "https://www.linkedin.com/jobs/view/4473760266",
-        "postedDate": "2026-11-04",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-05"
-      },
-      {
-        "employer": "Otto Group one.O",
-        "market": "Germany",
-        "title": "Product Lead SAP Platform & Technology (w/m/d)",
-        "location": "Dresden, Saxony, Germany",
-        "url": "https://www.linkedin.com/jobs/view/4485547416",
         "postedDate": "2026-11-04",
         "source": "li",
         "sources": [
@@ -44189,6 +44479,34 @@
         "lastSeenAt": "2026-11-08"
       },
       {
+        "employer": "PERSOL",
+        "market": "Singapore",
+        "title": "Product Specialist/Manager",
+        "location": "Singapore, S00, Singapore",
+        "url": "https://sg.indeed.com/viewjob?jk=728049ff012a56ca",
+        "postedDate": "2026-11-03",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
+        "employer": "Aquila Nova Private Limited",
+        "market": "Singapore",
+        "title": "Product & Solutions Designer",
+        "location": "Geylang, S00, Singapore",
+        "url": "https://sg.indeed.com/viewjob?jk=693f93f2fbad0cf9",
+        "postedDate": "2026-11-03",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
         "employer": "Zellis",
         "market": "United Kingdom",
         "title": "Senior Product Operations Manager",
@@ -44222,20 +44540,6 @@
         "title": "PRINCIPAL STRATEGY PROGRAM MANAGER \u2013 HIG HBM PSE",
         "location": "Singapore, S00, Singapore",
         "url": "https://sg.indeed.com/viewjob?jk=196ce439d8e8f384",
-        "postedDate": "2026-11-03",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-07"
-      },
-      {
-        "employer": "PERSOL",
-        "market": "Singapore",
-        "title": "Product Specialist/Manager",
-        "location": "Singapore, S00, Singapore",
-        "url": "https://sg.indeed.com/viewjob?jk=728049ff012a56ca",
         "postedDate": "2026-11-03",
         "source": "indeed",
         "sources": [
@@ -44516,20 +44820,6 @@
         "title": "Product Owner, Data Analytics Platform",
         "location": "Auckland City, N, New Zealand",
         "url": "https://nz.indeed.com/viewjob?jk=82bc16fea82af2e7",
-        "postedDate": "2026-11-03",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-06"
-      },
-      {
-        "employer": "Aquila Nova Private Limited",
-        "market": "Singapore",
-        "title": "Product & Solutions Designer",
-        "location": "Geylang, S00, Singapore",
-        "url": "https://sg.indeed.com/viewjob?jk=693f93f2fbad0cf9",
         "postedDate": "2026-11-03",
         "source": "indeed",
         "sources": [
@@ -44936,20 +45226,6 @@
         "title": "(Senior) Product Manager Events (gn)",
         "location": "D\u00fcsseldorf, North Rhine-Westphalia, Germany",
         "url": "https://www.linkedin.com/jobs/view/4485026417",
-        "postedDate": "2026-11-03",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-04"
-      },
-      {
-        "employer": "VAN HEES GmbH",
-        "market": "Germany",
-        "title": "Werkstudent (m/w/d) Product Management Lebensmittelindustrie",
-        "location": "Walluf, Hesse, Germany",
-        "url": "https://www.linkedin.com/jobs/view/4485033201",
         "postedDate": "2026-11-03",
         "source": "li",
         "sources": [
@@ -51361,6 +51637,20 @@
         "lastSeenAt": "2026-11-08"
       },
       {
+        "employer": "AccountsIQ Limited",
+        "market": "Ireland",
+        "title": "Senior Product Marketing Manager",
+        "location": "Dublin, D, Ireland",
+        "url": "https://ie.indeed.com/viewjob?jk=d6f9d43b918f423c",
+        "postedDate": "2026-11-02",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
         "employer": "Scaleway",
         "market": "Italy",
         "title": "UX Researcher",
@@ -51690,20 +51980,6 @@
         "title": "Content Strategist",
         "location": "Dublin, D, Ireland",
         "url": "https://ie.indeed.com/viewjob?jk=a0b27cbc47f2bde2",
-        "postedDate": "2026-11-02",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-04"
-      },
-      {
-        "employer": "AccountsIQ Limited",
-        "market": "Ireland",
-        "title": "Senior Product Marketing Manager",
-        "location": "Dublin, D, Ireland",
-        "url": "https://ie.indeed.com/viewjob?jk=d6f9d43b918f423c",
         "postedDate": "2026-11-02",
         "source": "indeed",
         "sources": [
@@ -111589,6 +111865,20 @@
         "lastSeenAt": "2026-11-08"
       },
       {
+        "employer": "Beyond Sports",
+        "market": "Netherlands",
+        "title": "Senior Product Designer",
+        "location": "Alkmaar, Netherlands",
+        "url": "https://jobs.ashbyhq.com/wearebeyondsports/e2ef33f7-e227-4d38-81eb-d8d588943126",
+        "postedDate": "2026-10-14",
+        "source": "welcometonl",
+        "sources": [
+          "welcometonl"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
         "employer": "Chainels",
         "market": "Netherlands",
         "title": "Product Owner, Integrations Marketplace",
@@ -111743,6 +112033,20 @@
         "lastSeenAt": "2026-10-25"
       },
       {
+        "employer": "Picqer",
+        "market": "Netherlands",
+        "title": "Product designer",
+        "location": "Arnhem, Netherlands",
+        "url": "https://picqer.com/nl/vacatures/product-designer",
+        "postedDate": "2026-09-30",
+        "source": "welcometonl",
+        "sources": [
+          "welcometonl"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
         "employer": "Secfi",
         "market": "Netherlands",
         "title": "Lead Product Designer",
@@ -111841,6 +112145,20 @@
         "lastSeenAt": "2026-11-03"
       },
       {
+        "employer": "Eneco ",
+        "market": "Netherlands",
+        "title": "Medior Product Designer",
+        "location": "Rotterdam, Netherlands",
+        "url": "https://www.werkenbijeneco.nl/vacatures/medior-product-designer-3212",
+        "postedDate": "2026-08-31",
+        "source": "welcometonl",
+        "sources": [
+          "welcometonl"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-08"
+      },
+      {
         "employer": "Al Futtaim Group",
         "market": "United Arab Emirates",
         "title": "Product Owner - Customer Engagement Platform (Builder) | Al-Futtaim Automotive",
@@ -111853,20 +112171,6 @@
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-10-25"
-      },
-      {
-        "employer": "Beyond Sports",
-        "market": "Netherlands",
-        "title": "Senior Product Designer",
-        "location": "Alkmaar, Netherlands",
-        "url": "https://jobs.ashbyhq.com/wearebeyondsports/8646ead1-4c4e-414e-9148-f9b2031ed5dd",
-        "postedDate": "2026-08-08",
-        "source": "welcometonl",
-        "sources": [
-          "welcometonl"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-08"
       },
       {
         "employer": "Careem",
@@ -112011,7 +112315,7 @@
     "prioritySweepHours": 4,
     "liEveryHours": 2,
     "sourceHealth": {
-      "checkedAt": "2026-11-08T01:45:41Z",
+      "checkedAt": "2026-11-08T08:03:55Z",
       "li": {
         "variant": "chrome",
         "searches": 33,
@@ -112019,17 +112323,17 @@
         "requests": 22,
         "blocked": 3,
         "stoppedEarly": true,
-        "rows": 60,
+        "rows": 74,
         "capped": 0,
-        "stalestHours": 7.7,
-        "firstBlockRequest": 10,
-        "firstBlockSecs": 652,
-        "minutes": 38.1
+        "stalestHours": 6.8,
+        "firstBlockRequest": 1,
+        "firstBlockSecs": 0,
+        "minutes": 36.9
       },
       "indeed": {
         "searches": 170,
         "failed": 0,
-        "rows": 2427
+        "rows": 2422
       },
       "welcometonl": {
         "rows": 1700
@@ -112037,15 +112341,15 @@
     }
   },
   "liCoverage": {
-    "Singapore|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T01:48:10Z",
+    "Singapore|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T08:33:41Z",
     "Singapore|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-08T01:52:56Z",
-    "Singapore|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T01:49:33Z",
-    "Hong Kong|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T01:50:41Z",
+    "Singapore|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T08:34:41Z",
+    "Hong Kong|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T08:35:49Z",
     "Hong Kong|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-08T01:51:47Z",
     "Hong Kong|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T01:54:12Z",
     "New Zealand|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T02:08:59Z",
     "New Zealand|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-08T01:55:27Z",
-    "New Zealand|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-07T18:40:06Z",
+    "New Zealand|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T08:03:55Z",
     "Australia|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T02:10:28Z",
     "Australia|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-08T02:11:45Z",
     "Australia|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T02:12:49Z",
@@ -112054,224 +112358,224 @@
     "Netherlands|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T02:16:05Z",
     "Italy|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T02:17:31Z",
     "Italy|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-08T02:18:48Z",
-    "Italy|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-07T22:31:23Z",
-    "Germany|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-07T22:32:46Z",
-    "Germany|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-07T22:34:00Z",
-    "Germany|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-07T22:35:15Z",
-    "United Kingdom|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-07T22:36:46Z",
-    "United Kingdom|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-07T22:38:09Z",
-    "United Kingdom|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-07T22:39:15Z",
-    "Ireland|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T01:45:41Z",
-    "Ireland|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-07T22:51:42Z",
-    "Ireland|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-07T22:52:44Z",
-    "Kuala Lumpur, Malaysia|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-07T22:54:01Z",
+    "Italy|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T08:10:21Z",
+    "Germany|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T08:11:41Z",
+    "Germany|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-08T08:12:43Z",
+    "Germany|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T08:14:07Z",
+    "United Kingdom|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T08:15:14Z",
+    "United Kingdom|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-08T08:16:26Z",
+    "United Kingdom|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T08:17:51Z",
+    "Ireland|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T08:31:29Z",
+    "Ireland|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-08T08:19:19Z",
+    "Ireland|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T08:20:26Z",
+    "Kuala Lumpur, Malaysia|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T08:21:38Z",
     "Kuala Lumpur, Malaysia|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-08T02:07:39Z",
-    "Kuala Lumpur, Malaysia|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-07T22:55:08Z",
-    "Dubai, United Arab Emirates|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-07T22:56:16Z",
-    "Dubai, United Arab Emirates|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-07T22:57:27Z",
-    "Dubai, United Arab Emirates|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T01:47:07Z"
+    "Kuala Lumpur, Malaysia|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T08:22:52Z",
+    "Dubai, United Arab Emirates|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T08:24:18Z",
+    "Dubai, United Arab Emirates|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-08T08:25:22Z",
+    "Dubai, United Arab Emirates|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-08T08:32:35Z"
   },
   "liLastRun": [
     {
       "s": 0,
-      "loc": "Ireland",
-      "g": 0,
-      "windowH": 12.4,
-      "status": 200,
-      "cards": 15,
-      "bytes": 152214
-    },
-    {
-      "s": 86,
-      "loc": "Dubai, United Arab Emirates",
+      "loc": "New Zealand",
       "g": 2,
-      "windowH": 12.3,
-      "status": 200,
-      "cards": 0,
-      "bytes": 93275
-    },
-    {
-      "s": 150,
-      "loc": "Singapore",
-      "g": 0,
-      "windowH": 12.3,
-      "status": 200,
-      "cards": 14,
-      "bytes": 150844
-    },
-    {
-      "s": 232,
-      "loc": "Singapore",
-      "g": 2,
-      "windowH": 12.3,
-      "status": 200,
-      "cards": 9,
-      "bytes": 130880
+      "windowH": 14.4,
+      "status": 429,
+      "blocked": true,
+      "title": "",
+      "bytes": 24633
     },
     {
       "s": 300,
-      "loc": "Hong Kong",
+      "loc": "New Zealand",
+      "g": 2,
+      "windowH": 14.4,
+      "status": 200,
+      "cards": 1,
+      "bytes": 111220
+    },
+    {
+      "s": 386,
+      "loc": "Italy",
+      "g": 2,
+      "windowH": 10.6,
+      "status": 200,
+      "cards": 2,
+      "bytes": 115672
+    },
+    {
+      "s": 465,
+      "loc": "Germany",
       "g": 0,
-      "windowH": 12.3,
+      "windowH": 10.6,
+      "status": 200,
+      "cards": 14,
+      "bytes": 160403
+    },
+    {
+      "s": 527,
+      "loc": "Germany",
+      "g": 1,
+      "windowH": 10.6,
+      "status": 200,
+      "cards": 3,
+      "bytes": 120812
+    },
+    {
+      "s": 611,
+      "loc": "Germany",
+      "g": 2,
+      "windowH": 10.6,
       "status": 200,
       "cards": 4,
-      "bytes": 114841
+      "bytes": 122575
     },
     {
-      "s": 366,
-      "loc": "Hong Kong",
+      "s": 679,
+      "loc": "United Kingdom",
+      "g": 0,
+      "windowH": 10.6,
+      "status": 200,
+      "cards": 16,
+      "bytes": 165700
+    },
+    {
+      "s": 751,
+      "loc": "United Kingdom",
       "g": 1,
-      "windowH": 12.3,
+      "windowH": 10.6,
       "status": 200,
-      "cards": 1,
-      "bytes": 102650
+      "cards": 3,
+      "bytes": 121514
     },
     {
-      "s": 435,
-      "loc": "Singapore",
+      "s": 835,
+      "loc": "United Kingdom",
+      "g": 2,
+      "windowH": 10.6,
+      "status": 200,
+      "cards": 10,
+      "bytes": 143170
+    },
+    {
+      "s": 923,
+      "loc": "Ireland",
       "g": 1,
-      "windowH": 12.3,
+      "windowH": 10.5,
       "status": 200,
-      "cards": 5,
-      "bytes": 118012
+      "cards": 0,
+      "bytes": 92560
     },
     {
-      "s": 511,
-      "loc": "Hong Kong",
+      "s": 991,
+      "loc": "Ireland",
       "g": 2,
-      "windowH": 12.3,
+      "windowH": 10.5,
       "status": 200,
-      "cards": 1,
-      "bytes": 100968
+      "cards": 0,
+      "bytes": 90570
     },
     {
-      "s": 586,
-      "loc": "New Zealand",
-      "g": 1,
-      "windowH": 12.3,
-      "status": 200,
-      "cards": 1,
-      "bytes": 103235
-    },
-    {
-      "s": 652,
-      "loc": "New Zealand",
-      "g": 2,
-      "windowH": 8.3,
-      "status": 429,
-      "blocked": true,
-      "title": "",
-      "bytes": 24633
-    },
-    {
-      "s": 952,
-      "loc": "New Zealand",
-      "g": 2,
-      "windowH": 8.3,
-      "status": 429,
-      "blocked": true,
-      "title": "",
-      "bytes": 24633
-    },
-    {
-      "s": 1318,
+      "s": 1062,
       "loc": "Kuala Lumpur, Malaysia",
-      "g": 1,
-      "windowH": 8.4,
+      "g": 0,
+      "windowH": 10.5,
       "status": 200,
       "cards": 2,
-      "bytes": 108655
+      "bytes": 120960
     },
     {
-      "s": 1398,
-      "loc": "New Zealand",
-      "g": 0,
-      "windowH": 8.3,
-      "status": 200,
-      "cards": 1,
-      "bytes": 103534
-    },
-    {
-      "s": 1487,
-      "loc": "Australia",
-      "g": 0,
-      "windowH": 4.8,
-      "status": 200,
-      "cards": 2,
-      "bytes": 107239
-    },
-    {
-      "s": 1564,
-      "loc": "Australia",
-      "g": 1,
-      "windowH": 4.8,
-      "status": 200,
-      "cards": 1,
-      "bytes": 103279
-    },
-    {
-      "s": 1628,
-      "loc": "Australia",
+      "s": 1137,
+      "loc": "Kuala Lumpur, Malaysia",
       "g": 2,
-      "windowH": 4.8,
-      "status": 200,
-      "cards": 1,
-      "bytes": 101064
-    },
-    {
-      "s": 1695,
-      "loc": "Netherlands",
-      "g": 0,
-      "windowH": 4.8,
-      "status": 200,
-      "cards": 2,
-      "bytes": 107992
-    },
-    {
-      "s": 1756,
-      "loc": "Netherlands",
-      "g": 1,
-      "windowH": 4.8,
+      "windowH": 10.5,
       "status": 200,
       "cards": 0,
-      "bytes": 92604
+      "bytes": 93258
     },
     {
-      "s": 1824,
-      "loc": "Netherlands",
-      "g": 2,
-      "windowH": 4.8,
-      "status": 200,
-      "cards": 1,
-      "bytes": 101814
-    },
-    {
-      "s": 1910,
-      "loc": "Italy",
+      "s": 1223,
+      "loc": "Dubai, United Arab Emirates",
       "g": 0,
-      "windowH": 4.8,
+      "windowH": 10.5,
       "status": 200,
-      "cards": 0,
-      "bytes": 92824
+      "cards": 6,
+      "bytes": 135161
     },
     {
-      "s": 1988,
-      "loc": "Italy",
+      "s": 1287,
+      "loc": "Dubai, United Arab Emirates",
       "g": 1,
-      "windowH": 4.8,
+      "windowH": 10.5,
       "status": 429,
       "blocked": true,
       "title": "",
       "bytes": 24633
     },
     {
-      "s": 2288,
-      "loc": "Italy",
+      "s": 1587,
+      "loc": "Dubai, United Arab Emirates",
       "g": 1,
-      "windowH": 4.8,
+      "windowH": 10.5,
+      "status": 200,
+      "cards": 1,
+      "bytes": 115663
+    },
+    {
+      "s": 1654,
+      "loc": "Ireland",
+      "g": 0,
+      "windowH": 7.8,
+      "status": 200,
+      "cards": 4,
+      "bytes": 123704
+    },
+    {
+      "s": 1719,
+      "loc": "Dubai, United Arab Emirates",
+      "g": 2,
+      "windowH": 7.8,
+      "status": 200,
+      "cards": 1,
+      "bytes": 113932
+    },
+    {
+      "s": 1785,
+      "loc": "Singapore",
+      "g": 0,
+      "windowH": 7.8,
+      "status": 200,
+      "cards": 6,
+      "bytes": 132915
+    },
+    {
+      "s": 1846,
+      "loc": "Singapore",
+      "g": 2,
+      "windowH": 7.8,
+      "status": 200,
+      "cards": 1,
+      "bytes": 110496
+    },
+    {
+      "s": 1914,
+      "loc": "Hong Kong",
+      "g": 0,
+      "windowH": 7.8,
+      "status": 429,
+      "blocked": true,
+      "title": "",
+      "bytes": 24633
+    },
+    {
+      "s": 2214,
+      "loc": "Hong Kong",
+      "g": 0,
+      "windowH": 7.8,
       "status": 200,
       "cards": 0,
-      "bytes": 92564
+      "bytes": 92882
     }
   ],
   "liHistory": [
@@ -112979,6 +113283,21 @@
       "firstBlockRequest": 10,
       "firstBlockSecs": 652,
       "minutes": 38.1
+    },
+    {
+      "at": "2026-11-08T08:03:55Z",
+      "variant": "chrome",
+      "searches": 33,
+      "done": 19,
+      "requests": 22,
+      "blocked": 3,
+      "stoppedEarly": true,
+      "rows": 74,
+      "capped": 0,
+      "stalestHours": 6.8,
+      "firstBlockRequest": 1,
+      "firstBlockSecs": 0,
+      "minutes": 36.9
     }
   ]
 }
