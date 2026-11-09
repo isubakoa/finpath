@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T02:03:47.638Z",
+  "generatedAt": "2026-11-09T09:08:57.855Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -307,7 +307,7 @@
     },
     "national-australia-bank-nab": {
       "ok": true,
-      "found": 18,
+      "found": 19,
       "roles": [
         {
           "title": "Senior Product Designer - Personal Everyday Banking",
@@ -348,7 +348,7 @@
     },
     "kiwibank": {
       "ok": true,
-      "found": 12,
+      "found": 14,
       "roles": [
         {
           "title": "Open Banking Product Lead",
@@ -633,29 +633,53 @@
           "postedDate": null
         },
         {
-          "title": "Radio Unit Design Lead",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
+          "title": "CAD Design Enablement TPM",
+          "url": "https://jobs.ericsson.com/careers/job/563121777484574?domain=ericsson.com",
+          "location": "Austin, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Radio HW Design Power Amplifier",
+          "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
           "location": "Yokohama, Japan",
           "postedDate": null
         },
         {
-          "title": "Network Design Optimization Internship",
-          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
-          "location": "Ukraine",
+          "title": "Manager of System Design Team 1",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
+          "location": "Yokohama, Japan",
           "postedDate": null
         },
         {
-          "title": "Radio Frequency design and support",
-          "url": "https://jobs.ericsson.com/careers/job/563121777418239?domain=ericsson.com",
-          "location": "Stockholm, Sweden",
+          "title": "New Grad-Board Power Design-BJ",
+          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
+          "location": "Beijing, China",
           "postedDate": null
         }
       ]
     },
     "vodafone": {
       "ok": true,
-      "found": 18,
+      "found": 17,
       "roles": [
+        {
+          "title": "Data Centers Design & Implementation Expert",
+          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
+          "location": "Istanbul, Türkiye",
+          "postedDate": null
+        },
+        {
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "Milan, Italy",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
+          "location": "Düsseldorf, Germany",
+          "postedDate": null
+        },
         {
           "title": "VodafoneThree - Design Engineer",
           "url": "https://jobs.vodafone.com/careers/job/563018698300761?domain=vodafone.com",
@@ -669,44 +693,20 @@
           "postedDate": null
         },
         {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "Milan, Italy",
-          "postedDate": null
-        },
-        {
-          "title": "Data Centers Design & Implementation Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018694716117?domain=vodafone.com",
-          "location": "Istanbul, Türkiye",
-          "postedDate": null
-        },
-        {
-          "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
-          "location": "Düsseldorf, Germany",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Manager - Secure by Design - CIS - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698178807?domain=vodafone.com",
-          "location": "Pune, India",
-          "postedDate": null
-        },
-        {
           "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
           "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
-          "location": "Pune, India",
+          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "location": "Düsseldorf, Germany",
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
+          "title": "Senior Manager - Secure by Design - CIS - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018698178807?domain=vodafone.com",
           "location": "Pune, India",
           "postedDate": null
         }
@@ -771,15 +771,15 @@
       "found": 20,
       "roles": [
         {
-          "title": "Global Design & Construction Program Lead - Senior Vice President",
-          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
-          "location": "New York, United States",
-          "postedDate": null
-        },
-        {
           "title": "International Office Design & Utility Lead - Vice President",
           "url": "https://citi.eightfold.ai/careers/job/859038663684?domain=citi.com",
           "location": "Mumbai, India",
+          "postedDate": null
+        },
+        {
+          "title": "Global Design & Construction Program Lead - Senior Vice President",
+          "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
+          "location": "New York, United States",
           "postedDate": null
         },
         {
@@ -792,6 +792,12 @@
           "title": "Senior Conceptual Campaign Designer",
           "url": "https://citi.eightfold.ai/careers/job/859038163646?domain=citi.com",
           "location": "London, United Kingdom",
+          "postedDate": null
+        },
+        {
+          "title": "Presentation Graphics Designer",
+          "url": "https://citi.eightfold.ai/careers/job/859037622899?domain=citi.com",
+          "location": "Hong Kong SAR China",
           "postedDate": null
         },
         {
@@ -944,6 +950,12 @@
       "found": 10,
       "roles": [
         {
+          "title": "Product Owner Core Banking",
+          "url": "https://www.nn-careers.com/en/vacancy/3699/product-owner-core-banking-1",
+          "location": "The Hague, Nederland",
+          "postedDate": null
+        },
+        {
           "title": "Strategy Consultant",
           "url": "https://www.nn-careers.com/en/vacancy/3692/strategy-consultant-3",
           "location": "The Hague, Nederland",
@@ -978,6 +990,12 @@
       "found": 18,
       "roles": [
         {
+          "title": "Regional Workplace Strategy & Design Lead APAC, Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549796897507?domain=morganstanley.com",
+          "location": "Hong Kong SAR China",
+          "postedDate": null
+        },
+        {
           "title": "Client Segment Risk Conduct, Controls & Governance - Control Design - Vice President",
           "url": "https://morganstanley.eightfold.ai/careers/job/549799090035?domain=morganstanley.com",
           "location": "Harrison, United States",
@@ -990,15 +1008,15 @@
           "postedDate": null
         },
         {
-          "title": "Regional Workplace Strategy & Design Lead APAC, Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549796897507?domain=morganstanley.com",
-          "location": "Hong Kong SAR China",
-          "postedDate": null
-        },
-        {
           "title": "Associate, UX Designer – Equity Zen",
           "url": "https://morganstanley.eightfold.ai/careers/job/549797369091?domain=morganstanley.com",
           "location": "New York, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Workplace Analytics & Strategy, Executive Director",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549800871280?domain=morganstanley.com",
+          "location": "Harrison, United States",
           "postedDate": null
         },
         {
@@ -1008,9 +1026,21 @@
           "postedDate": null
         },
         {
-          "title": "Operations Transformation - Vice President - Change, Analytics & Strategy",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549796235008?domain=morganstanley.com",
-          "location": "Mumbai, India",
+          "title": "FX Option Quantitative Strategist, Associate / Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549799861761?domain=morganstanley.com",
+          "location": "Hong Kong SAR China",
+          "postedDate": null
+        },
+        {
+          "title": "Insurance & Annuities Strategy / Product Manager, Assistant Vice President/Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549800454240?domain=morganstanley.com",
+          "location": "Harrison, United States; New York, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Commodities Product Controllers, Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549800625266?domain=morganstanley.com",
+          "location": "Singapore; Hong Kong SAR China",
           "postedDate": null
         }
       ]
@@ -1027,7 +1057,7 @@
     },
     "vanderlande": {
       "ok": true,
-      "found": 238,
+      "found": 237,
       "roles": [
         {
           "title": "Junior UI/UX Designer Intern",
@@ -1054,14 +1084,14 @@
           "postedDate": null
         },
         {
-          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
+          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
           "location": "Veghel, Netherlands",
           "postedDate": null
         },
         {
-          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
+          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
           "location": "Veghel, Netherlands",
           "postedDate": null
         },
@@ -1105,8 +1135,14 @@
     },
     "kpmg": {
       "ok": true,
-      "found": 15,
+      "found": 17,
       "roles": [
+        {
+          "title": "Senior Consultant Strategy & Operations Circulaire Economie",
+          "url": "https://www.werkenbijkpmg.nl/vacature/senior-consultant-strategy-operations-circulaire-economie",
+          "location": "Amstelveen",
+          "postedDate": null
+        },
         {
           "title": "Senior Consultant Strategy & Operations – Health",
           "url": "https://www.werkenbijkpmg.nl/vacature/senior-consultant-strategy-operations-health",
@@ -1122,12 +1158,6 @@
         {
           "title": "Senior Consultant Strategy & Risk Public sector",
           "url": "https://www.werkenbijkpmg.nl/vacature/senior-consultant-strategy-risk-public-sector",
-          "location": "Amstelveen",
-          "postedDate": null
-        },
-        {
-          "title": "Manager Real Estate - Strategy & Operations Public Sector",
-          "url": "https://www.werkenbijkpmg.nl/vacature/manager-real-estate-strategy-operations-public-sector",
           "location": "Amstelveen",
           "postedDate": null
         }
@@ -1182,7 +1212,7 @@
     },
     "sky": {
       "ok": true,
-      "found": 7,
+      "found": 8,
       "roles": [
         {
           "title": "Principal Product Designer (UX)",
@@ -1193,6 +1223,12 @@
         {
           "title": "Sr. Product Manager (6 month Fixed Term Contract)",
           "url": "https://careers.sky.com/jobs/t-R0059436",
+          "location": "London",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Technical Product Owner",
+          "url": "https://careers.sky.com/jobs/t-R0057733",
           "location": "London",
           "postedDate": null
         },
@@ -1253,18 +1289,18 @@
     },
     "rabobank": {
       "ok": true,
-      "found": 3,
+      "found": 5,
       "roles": [
-        {
-          "title": "Graduation Internship Design Research | Platform Quality | Utrecht",
-          "url": "https://rabobank.jobs/en/job/graduation-internship-design-research-or-platform-quality-or-utrecht/JR_00147181/?",
-          "location": "Utrecht, nl",
-          "postedDate": null
-        },
         {
           "title": "Design Lead - Online Banking",
           "url": "https://rabobank.jobs/en/job/design-lead-online-banking/JR_00146837/?",
           "location": "Sydney, au",
+          "postedDate": null
+        },
+        {
+          "title": "Graduation Internship Design Research | Platform Quality | Utrecht",
+          "url": "https://rabobank.jobs/en/job/graduation-internship-design-research-or-platform-quality-or-utrecht/JR_00147181/?",
+          "location": "Utrecht, nl",
           "postedDate": null
         }
       ]
@@ -1281,7 +1317,7 @@
     },
     "optus": {
       "ok": true,
-      "found": 132,
+      "found": 129,
       "roles": [
         {
           "title": "Product Designer",
@@ -1307,21 +1343,21 @@
       "found": 18,
       "roles": [
         {
-          "title": "Mechanical Design Engineer",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527731",
-          "location": "Fort Worth, Texas, United States of America",
+          "title": "Lead Design Engineer",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/523483",
+          "location": "Birmingham, Birmingham, UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND",
           "postedDate": null
         },
         {
-          "title": "Mechanical Design Engineering Co-op (North Carolina State University)",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/516375",
-          "location": "Wendell, North Carolina, United States of America",
+          "title": "Electrical Design Engineer Schematic - COMOS, Eplan",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/522256",
+          "location": "Pune, Maharashtra, India",
           "postedDate": null
         },
         {
-          "title": "Degree Apprentice - Software Design Engineer",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527509",
-          "location": "Congleton, Cheshire East, UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND",
+          "title": "Sr. Electrical Design Engineer TPS - DC",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/522258",
+          "location": "Pune, Maharashtra, India",
           "postedDate": null
         },
         {
@@ -1331,9 +1367,9 @@
           "postedDate": null
         },
         {
-          "title": "ETCS Trackside Design Engineer - Rail Signalling",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527810",
-          "location": "Valencia, Valencia/Valencia, Spain",
+          "title": "DFMA Project Manager (w/m/d) Design for Manufacturing and Automation",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/513714",
+          "location": "Berlin, Berlin, Germany",
           "postedDate": null
         },
         {
@@ -1349,9 +1385,21 @@
           "postedDate": null
         },
         {
-          "title": "Product Marketing Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/528385",
+          "title": "CPQ Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/524904",
+          "location": "Peachtree Corners, Georgia, United States of America",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526716",
           "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Junior Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525305",
+          "location": "Milan, Milano, Italy",
           "postedDate": null
         },
         {
@@ -1361,21 +1409,9 @@
           "postedDate": null
         },
         {
-          "title": "CPQ Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/524904",
-          "location": "Peachtree Corners, Georgia, United States of America",
-          "postedDate": null
-        },
-        {
-          "title": "Principal Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526691",
+          "title": "Product Marketing Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/528385",
           "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Junior Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525305",
-          "location": "Milan, Milano, Italy",
           "postedDate": null
         }
       ]
@@ -1387,7 +1423,7 @@
     },
     "viasat": {
       "ok": true,
-      "found": 28,
+      "found": 27,
       "roles": [
         {
           "title": "Product Development Program Manager, Ground Encryptor",
