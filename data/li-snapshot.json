@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T03:45:32Z",
+  "generatedAt": "2026-11-09T11:47:58Z",
   "companies": {
     "google": {
       "roles": [
@@ -7354,7 +7354,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-08"
+          "lastSeenAt": "2026-11-09"
         }
       ]
     },
@@ -9876,6 +9876,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-09"
+        },
+        {
+          "title": "Principal AI Product Manager",
+          "location": "Sydney, NSW, Australia",
+          "url": "https://au.indeed.com/viewjob?jk=af0e23508cb956f1",
+          "postedDate": "2026-11-09",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-09"
         }
       ]
     },
@@ -10000,6 +10012,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-05"
+        },
+        {
+          "title": "Director, Corporate Strategy EMEA",
+          "location": "City Of London, England, United Kingdom",
+          "url": "https://www.linkedin.com/jobs/view/4487697603",
+          "postedDate": "2026-11-09",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-09"
         }
       ]
     },
@@ -10988,6 +11012,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-08"
+        },
+        {
+          "title": "UI UX Designer",
+          "location": "Hong Kong",
+          "url": "https://hk.indeed.com/viewjob?jk=45e1b0b172a59e34",
+          "postedDate": "2026-11-09",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-09"
         }
       ]
     },
@@ -11052,6 +11088,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-08"
+        },
+        {
+          "title": "Data Product Manager",
+          "location": "United Kingdom",
+          "url": "https://www.linkedin.com/jobs/view/4487134924",
+          "postedDate": "2026-11-09",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-09"
         }
       ]
     },
@@ -11136,6 +11184,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-10-26"
+        },
+        {
+          "title": "Manager/Devices as a Service (DaaS) Product",
+          "location": "Dubai, Dubai, United Arab Emirates",
+          "url": "https://www.linkedin.com/jobs/view/4488832949",
+          "postedDate": "2026-11-09",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-09"
         }
       ]
     },
@@ -15644,14 +15704,14 @@
         {
           "title": "Design Lead",
           "location": "Dublin 2, County Dublin, Ireland",
-          "url": "https://www.linkedin.com/jobs/view/4475776474",
-          "postedDate": "2026-10-29",
+          "url": "https://www.linkedin.com/jobs/view/4487670350",
+          "postedDate": "2026-11-09",
           "source": "li",
           "sources": [
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-10-30"
+          "lastSeenAt": "2026-11-09"
         },
         {
           "title": "Insurance Product Development & Pricing (Financial Services) Senior Manager, Business Consulting",
@@ -15985,7 +16045,7 @@
           "title": "Product Owner",
           "location": "Newcastle Upon Tyne, England, United Kingdom",
           "url": "https://www.linkedin.com/jobs/view/4487286307",
-          "postedDate": "2026-11-08",
+          "postedDate": "2026-11-09",
           "source": "li",
           "sources": [
             "li"
@@ -18726,6 +18786,22 @@
           "lastSeenAt": "2026-11-05"
         }
       ]
+    },
+    "sky": {
+      "roles": [
+        {
+          "title": "Senior Technical Product Owner",
+          "location": "London, England, United Kingdom",
+          "url": "https://www.linkedin.com/jobs/view/4488831701",
+          "postedDate": "2026-11-09",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-09"
+        }
+      ]
     }
   },
   "openMarket": {
@@ -18922,6 +18998,650 @@
         "source": "li",
         "sources": [
           "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Joblet-AI",
+        "market": "United Kingdom",
+        "title": "UX Research Specialist (Remote)",
+        "location": "United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487699141",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Joblet-AI",
+        "market": "United Kingdom",
+        "title": "UI Designer (Remote)",
+        "location": "United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487690281",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Coursera",
+        "market": "Ireland",
+        "title": "Staff Product Manager",
+        "location": "Dublin, County Dublin, Ireland",
+        "url": "https://www.linkedin.com/jobs/view/4480715115",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Women First Jobs",
+        "market": "United Arab Emirates",
+        "title": "Product Manager \u2013 Infrastructure",
+        "location": "Dubai, United Arab Emirates",
+        "url": "https://www.linkedin.com/jobs/view/4487121861",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "The Premier League",
+        "market": "United Kingdom",
+        "title": "Senior Product Manager",
+        "location": "London, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4486389719",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "The Opportunity Hub UK",
+        "market": "United Kingdom",
+        "title": "Design Lead",
+        "location": "London Area, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487138660",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Fruition Group Ireland",
+        "market": "Ireland",
+        "title": "Product Owner",
+        "location": "Dublin, County Dublin, Ireland",
+        "url": "https://www.linkedin.com/jobs/view/4487692237",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "AfterQuery Experts",
+        "market": "Ireland",
+        "title": "Product Manager",
+        "location": "Dublin, County Dublin, Ireland",
+        "url": "https://www.linkedin.com/jobs/view/4487128328",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Soar",
+        "market": "United Arab Emirates",
+        "title": "Chief Product Officer",
+        "location": "Dubai, United Arab Emirates",
+        "url": "https://www.linkedin.com/jobs/view/4487140664",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "PGIM Ireland",
+        "market": "Ireland",
+        "title": "Director, Experience Design & Research | PGIM Ireland",
+        "location": "Letterkenny, County Donegal, Ireland",
+        "url": "https://www.linkedin.com/jobs/view/4444387332",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Dyson",
+        "market": "Malaysia",
+        "title": "IT Technical Product Owner",
+        "location": "Greater Kuala Lumpur",
+        "url": "https://www.linkedin.com/jobs/view/4454393454",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Hopper",
+        "market": "United Kingdom",
+        "title": "Principal Product Manager- Conversational AI",
+        "location": "London, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4453730645",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Descrial",
+        "market": "United Kingdom",
+        "title": "Product Designer",
+        "location": "London Area, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487135703",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Descrial",
+        "market": "United Kingdom",
+        "title": "Senior Product Manager",
+        "location": "London Area, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487138719",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Forge Holiday Group",
+        "market": "United Kingdom",
+        "title": "Product Manager",
+        "location": "Chester, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4466088600",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Zensai",
+        "market": "United Kingdom",
+        "title": "Senior Product Manager",
+        "location": "Wrexham, Wales, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487902076",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Trust In SODA",
+        "market": "United Kingdom",
+        "title": "Principle Product Manager",
+        "location": "London Area, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487685569",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Entity",
+        "market": "United Kingdom",
+        "title": "Senior Product Manager - Platform",
+        "location": "London Area, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4486289100",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Zebra People | B Corp\u2122",
+        "market": "United Kingdom",
+        "title": "Senior Product Manager",
+        "location": "London, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4465530639",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "MHR",
+        "market": "United Kingdom",
+        "title": "Product Manager",
+        "location": "Ruddington, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4488851382",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Decagon",
+        "market": "United Kingdom",
+        "title": "Senior Agent Product Manager",
+        "location": "London Area, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4241986635",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Archer",
+        "market": "United Kingdom",
+        "title": "Product Manager - Cloud Foundations (Cloud Service Enablement)",
+        "location": "Glasgow, Scotland, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487682262",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "CarbonChain",
+        "market": "United Kingdom",
+        "title": "Head of Product",
+        "location": "London Area, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487139867",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Autodesk",
+        "market": "United Kingdom",
+        "title": "Senior Principal Content Strategist",
+        "location": "United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4471002958",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Fenergo",
+        "market": "United Kingdom",
+        "title": "Senior Product Owner",
+        "location": "London, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4453700395",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Rail Delivery Group",
+        "market": "United Kingdom",
+        "title": "Retail and Product Specialist",
+        "location": "London, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4488839704",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Midnite",
+        "market": "United Kingdom",
+        "title": "VP of Product Design",
+        "location": "United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4479968862",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Brandwidth",
+        "market": "United Kingdom",
+        "title": "Digital Strategist",
+        "location": "London Area, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487144554",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "ASOS.com",
+        "market": "United Kingdom",
+        "title": "Head of CRM and Lifecycle Product - 12 month FTC",
+        "location": "London, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487141806",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Xe.com",
+        "market": "United Kingdom",
+        "title": "Director of Product Management",
+        "location": "London Area, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487678936",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Wayve",
+        "market": "United Kingdom",
+        "title": "Technical Product Manager, Development Vehicles",
+        "location": "London, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4488837268",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "WPR",
+        "market": "United Kingdom",
+        "title": "Product Owner",
+        "location": "London Area, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4488842211",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "CME Group",
+        "market": "United Kingdom",
+        "title": "Ld Product Owner",
+        "location": "Belfast, Northern Ireland, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4488811428",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Aurora Energy Research",
+        "market": "United Kingdom",
+        "title": "Product Manager \u2013 Asset Dispatch Modelling",
+        "location": "Oxford, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4467524792",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Archer",
+        "market": "United Kingdom",
+        "title": "Head of Network Product Management - Network Management",
+        "location": "London, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487671987",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "NewVerus",
+        "market": "United Kingdom",
+        "title": "Product Manager \u2013 Vertical ERP Software",
+        "location": "East Riding Of Yorkshire, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4480982985",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Jobgether",
+        "market": "United Kingdom",
+        "title": "Product and Content Marketer",
+        "location": "United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487694146",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Sompo",
+        "market": "United Kingdom",
+        "title": "Business Design Lead",
+        "location": "London, England, United Kingdom",
+        "url": "https://www.linkedin.com/jobs/view/4487699683",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Agoda",
+        "market": "Malaysia",
+        "title": "Senior Design Lead (Bangkok based, relocation provided)",
+        "location": "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+        "url": "https://www.linkedin.com/jobs/view/4487684405",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Agoda",
+        "market": "Malaysia",
+        "title": "Senior Design Lead (Bangkok based, relocation provided)",
+        "location": "Petaling Jaya, Selangor, Malaysia",
+        "url": "https://www.linkedin.com/jobs/view/4487692253",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Agoda",
+        "market": "Malaysia",
+        "title": "Senior Brand Design Lead (Bangkok based, relocation provided)",
+        "location": "Petaling Jaya, Selangor, Malaysia",
+        "url": "https://www.linkedin.com/jobs/view/4487685441",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Agoda",
+        "market": "Malaysia",
+        "title": "Senior Brand Design Lead (Bangkok based, relocation provided)",
+        "location": "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+        "url": "https://www.linkedin.com/jobs/view/4487676929",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Globant",
+        "market": "United Arab Emirates",
+        "title": "Senior Product Designer",
+        "location": "Dubai, United Arab Emirates",
+        "url": "https://www.linkedin.com/jobs/view/4487131889",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Brightwater Recruitment",
+        "market": "Ireland",
+        "title": "ETF Product Manager",
+        "location": "Dublin, County Dublin, Ireland",
+        "url": "https://www.linkedin.com/jobs/view/4488844126",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Jobgether",
+        "market": "Ireland",
+        "title": "Product and Content Marketer",
+        "location": "Ireland",
+        "url": "https://www.linkedin.com/jobs/view/4487678427",
+        "postedDate": "2026-11-09",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Bilue",
+        "market": "Australia",
+        "title": "Senior UX Researcher / Designer (5 week contract)",
+        "location": "Sydney, NSW, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=92fcc12dd4fafe36",
+        "postedDate": "2026-11-09",
+        "source": "indeed",
+        "sources": [
+          "indeed"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-09"
@@ -19478,34 +20198,6 @@
         "title": "Product Manager",
         "location": "Singapore, Singapore",
         "url": "https://www.linkedin.com/jobs/view/4486678357",
-        "postedDate": "2026-11-08",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-08"
-      },
-      {
-        "employer": "Joblet-AI",
-        "market": "United Kingdom",
-        "title": "UX Research Specialist (Remote)",
-        "location": "United Kingdom",
-        "url": "https://www.linkedin.com/jobs/view/4487632783",
-        "postedDate": "2026-11-08",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-08"
-      },
-      {
-        "employer": "Joblet-AI",
-        "market": "United Kingdom",
-        "title": "UI Designer (Remote)",
-        "location": "United Kingdom",
-        "url": "https://www.linkedin.com/jobs/view/4487633744",
         "postedDate": "2026-11-08",
         "source": "li",
         "sources": [
@@ -21176,20 +21868,6 @@
         "title": "Trading UX Strategist",
         "location": "Hong Kong SAR",
         "url": "https://www.linkedin.com/jobs/view/4486102947",
-        "postedDate": "2026-11-07",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-07"
-      },
-      {
-        "employer": "Coursera",
-        "market": "Ireland",
-        "title": "Staff Product Manager",
-        "location": "Dublin, County Dublin, Ireland",
-        "url": "https://www.linkedin.com/jobs/view/4480715115",
         "postedDate": "2026-11-07",
         "source": "li",
         "sources": [
@@ -23733,6 +24411,34 @@
         "lastSeenAt": "2026-11-09"
       },
       {
+        "employer": "Huel",
+        "market": "United Kingdom",
+        "title": "UI/UX Designer",
+        "location": "Birmingham, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=88f72a0e5c7e0505",
+        "postedDate": "2026-11-06",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "Brahma",
+        "market": "United Kingdom",
+        "title": "Mid UX/UI Designer",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=b93b3fd4813d40fd",
+        "postedDate": "2026-11-06",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
         "employer": "Exceltech Computers Pte. Ltd.",
         "market": "Singapore",
         "title": "Product Manager",
@@ -24337,39 +25043,11 @@
         "lastSeenAt": "2026-11-08"
       },
       {
-        "employer": "Huel",
-        "market": "United Kingdom",
-        "title": "UI/UX Designer",
-        "location": "Birmingham, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=88f72a0e5c7e0505",
-        "postedDate": "2026-11-06",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-08"
-      },
-      {
         "employer": "Spruce",
         "market": "United Kingdom",
         "title": "Senior Product Designer",
         "location": "Bristol, ENG, UK",
         "url": "https://uk.indeed.com/viewjob?jk=05cc503e7bf17059",
-        "postedDate": "2026-11-06",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-08"
-      },
-      {
-        "employer": "Brahma",
-        "market": "United Kingdom",
-        "title": "Mid UX/UI Designer",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=b93b3fd4813d40fd",
         "postedDate": "2026-11-06",
         "source": "indeed",
         "sources": [
@@ -28313,20 +28991,6 @@
         "lastSeenAt": "2026-11-06"
       },
       {
-        "employer": "Women First Jobs",
-        "market": "United Arab Emirates",
-        "title": "Product Manager \u2013 Infrastructure",
-        "location": "Dubai, United Arab Emirates",
-        "url": "https://www.linkedin.com/jobs/view/4486229462",
-        "postedDate": "2026-11-06",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-06"
-      },
-      {
         "employer": "Klook",
         "market": "Singapore",
         "title": "Senior Product Manager, User Journey",
@@ -30377,6 +31041,20 @@
         "title": "Senior Product Designer (UK Banking)",
         "location": "Remote, UK",
         "url": "https://uk.indeed.com/viewjob?jk=81d48191cf97eb36",
+        "postedDate": "2026-11-05",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-09"
+      },
+      {
+        "employer": "KnB Group Limited",
+        "market": "Hong Kong",
+        "title": "Own-Brand Product Development Specialist",
+        "location": "Lai Chi Kok, KOW, Hong Kong",
+        "url": "https://hk.indeed.com/viewjob?jk=19fc3770aa990b63",
         "postedDate": "2026-11-05",
         "source": "indeed",
         "sources": [
@@ -32463,20 +33141,6 @@
         "lastSeenAt": "2026-11-05"
       },
       {
-        "employer": "The Premier League",
-        "market": "United Kingdom",
-        "title": "Senior Product Manager",
-        "location": "London, England, United Kingdom",
-        "url": "https://www.linkedin.com/jobs/view/4486389719",
-        "postedDate": "2026-11-05",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-05"
-      },
-      {
         "employer": "Douglas",
         "market": "Germany",
         "title": "Product Owner Data Platform (f/m/x)",
@@ -32636,20 +33300,6 @@
         "title": "Lead Product Designer",
         "location": "Netherlands",
         "url": "https://www.linkedin.com/jobs/view/4485595885",
-        "postedDate": "2026-11-05",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-05"
-      },
-      {
-        "employer": "The Opportunity Hub UK",
-        "market": "United Kingdom",
-        "title": "Design Lead",
-        "location": "London Area, United Kingdom",
-        "url": "https://www.linkedin.com/jobs/view/4485596624",
         "postedDate": "2026-11-05",
         "source": "li",
         "sources": [
@@ -34876,20 +35526,6 @@
         "title": "Product, Pricing & Underwriting Risk Manager",
         "location": "Bolton, ENG, UK",
         "url": "https://uk.indeed.com/viewjob?jk=2529b78820834e35",
-        "postedDate": "2026-11-05",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-05"
-      },
-      {
-        "employer": "KnB Group Limited",
-        "market": "Hong Kong",
-        "title": "Own-Brand Product Development Specialist",
-        "location": "Lai Chi Kok, KOW, Hong Kong",
-        "url": "https://hk.indeed.com/viewjob?jk=19fc3770aa990b63",
         "postedDate": "2026-11-05",
         "source": "indeed",
         "sources": [
@@ -40510,20 +41146,6 @@
         "title": "Business & Product Management, Investments - MariBank",
         "location": "Singapore, Singapore",
         "url": "https://www.linkedin.com/jobs/view/4487215263",
-        "postedDate": "2026-11-04",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-04"
-      },
-      {
-        "employer": "Fruition Group Ireland",
-        "market": "Ireland",
-        "title": "Product Owner",
-        "location": "Dublin, County Dublin, Ireland",
-        "url": "https://www.linkedin.com/jobs/view/4486352571",
         "postedDate": "2026-11-04",
         "source": "li",
         "sources": [
@@ -53858,20 +54480,6 @@
         "title": "Financial Services Strategy & Transformation",
         "location": "Dublin, County Dublin, Ireland",
         "url": "https://www.linkedin.com/jobs/view/4484325544",
-        "postedDate": "2026-11-02",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-02"
-      },
-      {
-        "employer": "AfterQuery Experts",
-        "market": "Ireland",
-        "title": "Product Manager",
-        "location": "Dublin, County Dublin, Ireland",
-        "url": "https://www.linkedin.com/jobs/view/4484314377",
         "postedDate": "2026-11-02",
         "source": "li",
         "sources": [
@@ -98199,20 +98807,6 @@
         "lastSeenAt": "2026-10-26"
       },
       {
-        "employer": "Soar",
-        "market": "United Arab Emirates",
-        "title": "Chief Product Officer",
-        "location": "Dubai, United Arab Emirates",
-        "url": "https://www.linkedin.com/jobs/view/4482153476",
-        "postedDate": "2026-10-21",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-26"
-      },
-      {
         "employer": "Hippo Digital Limited",
         "market": "United Kingdom",
         "title": "Intermediate User Researcher",
@@ -103575,20 +104169,6 @@
         "lastSeenAt": "2026-10-26"
       },
       {
-        "employer": "PGIM Ireland",
-        "market": "Ireland",
-        "title": "Director, Experience Design & Research | PGIM Ireland",
-        "location": "Letterkenny, County Donegal, Ireland",
-        "url": "https://www.linkedin.com/jobs/view/4444387332",
-        "postedDate": "2026-10-19",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-26"
-      },
-      {
         "employer": "Pennylane",
         "market": "Germany",
         "title": "Product Design Manager",
@@ -104630,20 +105210,6 @@
         "title": "Customer AI & Analytics Product, Principal (Senior Manager for Data & AI Product Management)",
         "location": "Hong Kong, Hong Kong SAR",
         "url": "https://www.linkedin.com/jobs/view/4478216455",
-        "postedDate": "2026-10-18",
-        "source": "li",
-        "sources": [
-          "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-10-26"
-      },
-      {
-        "employer": "Dyson",
-        "market": "Malaysia",
-        "title": "IT Technical Product Owner",
-        "location": "Greater Kuala Lumpur",
-        "url": "https://www.linkedin.com/jobs/view/4454393454",
         "postedDate": "2026-10-18",
         "source": "li",
         "sources": [
@@ -106475,25 +107041,25 @@
     "prioritySweepHours": 4,
     "liEveryHours": 2,
     "sourceHealth": {
-      "checkedAt": "2026-11-09T03:02:18Z",
+      "checkedAt": "2026-11-09T11:22:16Z",
       "li": {
-        "variant": "requests",
+        "variant": "chrome",
         "searches": 33,
-        "done": 23,
-        "requests": 26,
+        "done": 10,
+        "requests": 13,
         "blocked": 3,
         "stoppedEarly": true,
-        "rows": 70,
-        "capped": 0,
-        "stalestHours": 3.8,
-        "firstBlockRequest": 15,
-        "firstBlockSecs": 1029,
-        "minutes": 43.2
+        "rows": 171,
+        "capped": 1,
+        "stalestHours": 8.8,
+        "firstBlockRequest": 4,
+        "firstBlockSecs": 203,
+        "minutes": 25.7
       },
       "indeed": {
         "searches": 68,
         "failed": 0,
-        "rows": 688
+        "rows": 673
       },
       "welcometonl": {
         "rows": 1700
@@ -106522,256 +107088,139 @@
     "Germany|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-09T03:31:38Z",
     "Germany|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-09T03:32:41Z",
     "Germany|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-09T03:34:10Z",
-    "United Kingdom|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-08T23:58:40Z",
-    "United Kingdom|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-08T23:59:41Z",
-    "United Kingdom|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-09T00:01:05Z",
-    "Ireland|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-09T00:15:05Z",
-    "Ireland|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-09T00:02:24Z",
-    "Ireland|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-09T00:03:32Z",
-    "Kuala Lumpur, Malaysia|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-09T00:04:47Z",
+    "United Kingdom|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-09T11:22:16Z",
+    "United Kingdom|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-09T11:23:20Z",
+    "United Kingdom|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-09T11:24:23Z",
+    "Ireland|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-09T11:42:57Z",
+    "Ireland|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-09T11:25:38Z",
+    "Ireland|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-09T11:31:45Z",
+    "Kuala Lumpur, Malaysia|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-09T11:32:59Z",
     "Kuala Lumpur, Malaysia|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-09T03:12:12Z",
-    "Kuala Lumpur, Malaysia|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-09T00:06:06Z",
-    "Dubai, United Arab Emirates|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-09T00:07:26Z",
-    "Dubai, United Arab Emirates|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-09T00:08:47Z",
+    "Kuala Lumpur, Malaysia|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-09T11:34:19Z",
+    "Dubai, United Arab Emirates|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-09T11:40:34Z",
+    "Dubai, United Arab Emirates|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-09T11:41:42Z",
     "Dubai, United Arab Emirates|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-09T03:02:18Z"
   },
   "liLastRun": [
     {
       "s": 0,
-      "loc": "Dubai, United Arab Emirates",
-      "g": 2,
-      "windowH": 7.5,
-      "status": 200,
-      "cards": 0,
-      "bytes": 93275
-    },
-    {
-      "s": 63,
-      "loc": "Singapore",
+      "loc": "United Kingdom",
       "g": 0,
-      "windowH": 7.5,
+      "windowH": 12.4,
       "status": 200,
-      "cards": 1,
-      "bytes": 113688
+      "cards": 60,
+      "bytes": 299624
     },
     {
-      "s": 151,
-      "loc": "Singapore",
+      "s": 64,
+      "loc": "United Kingdom",
+      "g": 1,
+      "windowH": 12.4,
+      "status": 200,
+      "cards": 22,
+      "bytes": 175216
+    },
+    {
+      "s": 128,
+      "loc": "United Kingdom",
       "g": 2,
-      "windowH": 7.5,
+      "windowH": 12.4,
       "status": 200,
-      "cards": 0,
-      "bytes": 90592
+      "cards": 29,
+      "bytes": 195526
     },
     {
-      "s": 214,
-      "loc": "Hong Kong",
-      "g": 0,
-      "windowH": 7.5,
-      "status": 200,
-      "cards": 4,
-      "bytes": 125847
-    },
-    {
-      "s": 275,
-      "loc": "Singapore",
+      "s": 203,
+      "loc": "Ireland",
       "g": 1,
-      "windowH": 7.5,
-      "status": 200,
-      "cards": 0,
-      "bytes": 92582
+      "windowH": 12.4,
+      "status": 429,
+      "blocked": true,
+      "title": "",
+      "bytes": 24633
     },
     {
-      "s": 359,
-      "loc": "Hong Kong",
+      "s": 503,
+      "loc": "Ireland",
+      "g": 1,
+      "windowH": 12.4,
+      "status": 200,
+      "cards": 5,
+      "bytes": 118027
+    },
+    {
+      "s": 570,
+      "loc": "Ireland",
       "g": 2,
-      "windowH": 7.5,
+      "windowH": 12.5,
       "status": 200,
-      "cards": 2,
-      "bytes": 115510
+      "cards": 3,
+      "bytes": 108588
     },
     {
-      "s": 429,
-      "loc": "Hong Kong",
-      "g": 1,
-      "windowH": 4.5,
-      "status": 200,
-      "cards": 2,
-      "bytes": 118043
-    },
-    {
-      "s": 508,
-      "loc": "New Zealand",
-      "g": 1,
-      "windowH": 4.5,
-      "status": 200,
-      "cards": 0,
-      "bytes": 92604
-    },
-    {
-      "s": 594,
+      "s": 643,
       "loc": "Kuala Lumpur, Malaysia",
-      "g": 1,
-      "windowH": 4.5,
-      "status": 200,
-      "cards": 1,
-      "bytes": 116135
-    },
-    {
-      "s": 670,
-      "loc": "New Zealand",
       "g": 0,
-      "windowH": 4.5,
+      "windowH": 12.5,
       "status": 200,
-      "cards": 2,
-      "bytes": 117271
+      "cards": 5,
+      "bytes": 121579
     },
     {
-      "s": 735,
-      "loc": "Australia",
-      "g": 0,
-      "windowH": 4.5,
-      "status": 200,
-      "cards": 16,
-      "bytes": 165616
-    },
-    {
-      "s": 803,
-      "loc": "Australia",
-      "g": 1,
-      "windowH": 4.5,
-      "status": 200,
-      "cards": 7,
-      "bytes": 134928
-    },
-    {
-      "s": 879,
-      "loc": "Australia",
+      "s": 724,
+      "loc": "Kuala Lumpur, Malaysia",
       "g": 2,
-      "windowH": 4.5,
-      "status": 200,
-      "cards": 12,
-      "bytes": 149048
-    },
-    {
-      "s": 940,
-      "loc": "Netherlands",
-      "g": 0,
-      "windowH": 4.5,
-      "status": 200,
-      "cards": 1,
-      "bytes": 113925
-    },
-    {
-      "s": 1029,
-      "loc": "Netherlands",
-      "g": 1,
-      "windowH": 4.5,
+      "windowH": 12.5,
       "status": 429,
       "blocked": true,
       "title": "",
       "bytes": 24633
     },
     {
-      "s": 1329,
-      "loc": "Netherlands",
-      "g": 1,
-      "windowH": 4.5,
-      "status": 200,
-      "cards": 1,
-      "bytes": 113626
-    },
-    {
-      "s": 1411,
-      "loc": "Netherlands",
+      "s": 1024,
+      "loc": "Kuala Lumpur, Malaysia",
       "g": 2,
-      "windowH": 4.6,
+      "windowH": 12.5,
       "status": 200,
-      "cards": 0,
-      "bytes": 90614
+      "cards": 6,
+      "bytes": 122269
     },
     {
-      "s": 1475,
-      "loc": "Italy",
+      "s": 1098,
+      "loc": "Dubai, United Arab Emirates",
       "g": 0,
-      "windowH": 4.6,
+      "windowH": 12.6,
       "status": 200,
-      "cards": 2,
-      "bytes": 117321
+      "cards": 18,
+      "bytes": 163898
     },
     {
-      "s": 1556,
-      "loc": "Italy",
+      "s": 1166,
+      "loc": "Dubai, United Arab Emirates",
       "g": 1,
-      "windowH": 4.6,
+      "windowH": 12.5,
       "status": 200,
-      "cards": 1,
-      "bytes": 113555
+      "cards": 8,
+      "bytes": 130898
     },
     {
-      "s": 1620,
-      "loc": "New Zealand",
-      "g": 2,
-      "windowH": 4.6,
-      "status": 200,
-      "cards": 3,
-      "bytes": 118082
-    },
-    {
-      "s": 1689,
-      "loc": "Italy",
-      "g": 2,
-      "windowH": 4.6,
-      "status": 200,
-      "cards": 0,
-      "bytes": 90574
-    },
-    {
-      "s": 1760,
-      "loc": "Germany",
+      "s": 1242,
+      "loc": "Ireland",
       "g": 0,
-      "windowH": 4.6,
-      "status": 200,
-      "cards": 10,
-      "bytes": 146663
-    },
-    {
-      "s": 1823,
-      "loc": "Germany",
-      "g": 1,
-      "windowH": 4.6,
-      "status": 200,
-      "cards": 2,
-      "bytes": 117689
-    },
-    {
-      "s": 1912,
-      "loc": "Germany",
-      "g": 2,
-      "windowH": 4.6,
-      "status": 200,
-      "cards": 3,
-      "bytes": 119101
-    },
-    {
-      "s": 1993,
-      "loc": "United Kingdom",
-      "g": 0,
-      "windowH": 4.6,
+      "windowH": 12.5,
       "status": 429,
       "blocked": true,
       "title": "",
       "bytes": 24633
     },
     {
-      "s": 2293,
-      "loc": "United Kingdom",
+      "s": 1542,
+      "loc": "Ireland",
       "g": 0,
-      "windowH": 4.6,
-      "status": 429,
-      "blocked": true,
-      "title": "",
-      "bytes": 24633
+      "windowH": 12.5,
+      "status": 200,
+      "cards": 15,
+      "bytes": 151903
     }
   ],
   "liHistory": [
@@ -107554,6 +108003,21 @@
       "firstBlockRequest": 15,
       "firstBlockSecs": 1029,
       "minutes": 43.2
+    },
+    {
+      "at": "2026-11-09T11:22:16Z",
+      "variant": "chrome",
+      "searches": 33,
+      "done": 10,
+      "requests": 13,
+      "blocked": 3,
+      "stoppedEarly": true,
+      "rows": 171,
+      "capped": 1,
+      "stalestHours": 8.8,
+      "firstBlockRequest": 4,
+      "firstBlockSecs": 203,
+      "minutes": 25.7
     }
   ]
 }
