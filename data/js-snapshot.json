@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T22:41:30.587Z",
+  "generatedAt": "2026-11-14T02:54:07.367Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -277,7 +277,7 @@
     },
     "national-australia-bank-nab": {
       "ok": true,
-      "found": 18,
+      "found": 19,
       "roles": [
         {
           "title": "Senior Product Designer - Personal Everyday Banking",
@@ -742,7 +742,7 @@
     },
     "heineken": {
       "ok": true,
-      "found": 40,
+      "found": 39,
       "roles": [
         {
           "title": "Technical Product Owner [Innovation-AI & Digital Commerce Innovation]",
@@ -883,7 +883,7 @@
     },
     "goldman-sachs": {
       "ok": true,
-      "found": 59,
+      "found": 60,
       "roles": [
         {
           "title": "GBM - Public Dept-London-Vice President-UX Designer – Design the Future of Operations Internal Workflow Platforms",
@@ -920,6 +920,12 @@
           "url": "https://higher.gs.com/roles/185092",
           "location": "London·United Kingdom",
           "postedDate": null
+        },
+        {
+          "title": "Asset & Wealth Management, Multi-Asset Solutions: Personalized Portfolios Investment Product Manager (Retirement), Vice President - Chicago",
+          "url": "https://higher.gs.com/roles/174474",
+          "location": "Chicago·United States",
+          "postedDate": null
         }
       ]
     },
@@ -927,6 +933,12 @@
       "ok": true,
       "found": 18,
       "roles": [
+        {
+          "title": "Regional Workplace Strategy & Design Lead APAC, Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549796897507?domain=morganstanley.com",
+          "location": "Hong Kong SAR China",
+          "postedDate": null
+        },
         {
           "title": "Senior UX Design Lead - Advisory - Vice President",
           "url": "https://morganstanley.eightfold.ai/careers/job/549800099839?domain=morganstanley.com",
@@ -940,27 +952,45 @@
           "postedDate": null
         },
         {
-          "title": "Regional Workplace Strategy & Design Lead APAC, Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549796897507?domain=morganstanley.com",
-          "location": "Hong Kong SAR China",
-          "postedDate": null
-        },
-        {
           "title": "Associate, UX Designer – Equity Zen",
           "url": "https://morganstanley.eightfold.ai/careers/job/549797369091?domain=morganstanley.com",
           "location": "New York, United States",
           "postedDate": null
         },
         {
-          "title": "Digital Client Experience & Platforms Product Owner – Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549796710569?domain=morganstanley.com",
+          "title": "Workplace Analytics & Strategy, Executive Director",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549800871280?domain=morganstanley.com",
           "location": "Harrison, United States",
           "postedDate": null
         },
         {
-          "title": "Digital Lending Platforms Product Manager - Assistant Vice President",
-          "url": "https://morganstanley.eightfold.ai/careers/job/549798884812?domain=morganstanley.com",
-          "location": "New York, United States",
+          "title": "Digital Assets Strategy and Execution - Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549800706516?domain=morganstanley.com",
+          "location": "Harrison, United States",
+          "postedDate": null
+        },
+        {
+          "title": "FX Option Quantitative Strategist, Associate / Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549799861761?domain=morganstanley.com",
+          "location": "Hong Kong SAR China",
+          "postedDate": null
+        },
+        {
+          "title": "Insurance & Annuities Strategy / Product Manager, Assistant Vice President/Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549800454240?domain=morganstanley.com",
+          "location": "Harrison, United States; New York, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Commodities Product Controllers, Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549800625266?domain=morganstanley.com",
+          "location": "Singapore; Hong Kong SAR China",
+          "postedDate": null
+        },
+        {
+          "title": "WM Administration - Strategy, Vice President",
+          "url": "https://morganstanley.eightfold.ai/careers/job/549800622271?domain=morganstanley.com",
+          "location": "Harrison, United States; New York, United States",
           "postedDate": null
         }
       ]
@@ -984,7 +1014,7 @@
     },
     "vanderlande": {
       "ok": true,
-      "found": 239,
+      "found": 238,
       "roles": [
         {
           "title": "Design Safety Expert",
@@ -1005,14 +1035,14 @@
           "postedDate": null
         },
         {
-          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
+          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
           "location": "Veghel, Netherlands",
           "postedDate": null
         },
         {
-          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
+          "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
+          "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
           "location": "Veghel, Netherlands",
           "postedDate": null
         },
@@ -1296,8 +1326,26 @@
     },
     "siemens": {
       "ok": true,
-      "found": 16,
+      "found": 17,
       "roles": [
+        {
+          "title": "Civil Design Engineer @Siemens Mobility Egypt",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527006",
+          "location": "Cairo, Al Qahirah, Egypt",
+          "postedDate": null
+        },
+        {
+          "title": "Electromechanical Design Intern (12 Months)",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527606",
+          "location": "Congleton or Newport",
+          "postedDate": null
+        },
+        {
+          "title": "Mechanical Design Engineer- PACS",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/496977",
+          "location": "Wendell, North Carolina, United States of America",
+          "postedDate": null
+        },
         {
           "title": "Design Engineering Co-op (North Carolina State University)",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/517700",
@@ -1311,33 +1359,9 @@
           "postedDate": null
         },
         {
-          "title": "Electromechanical Design Intern (12 Months)",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527606",
-          "location": "Congleton or Newport",
-          "postedDate": null
-        },
-        {
           "title": "UX Designer",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/513629",
           "location": "Mason, Ohio, United States of America",
-          "postedDate": null
-        },
-        {
-          "title": "Degree Apprentice - Software Design Engineer",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527509",
-          "location": "Congleton, Cheshire East, UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND",
-          "postedDate": null
-        },
-        {
-          "title": "Gas Turbine R&D - Mechanical Design Engineer",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525873",
-          "location": "Gurugram, Haryana, India",
-          "postedDate": null
-        },
-        {
-          "title": "Principal Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526689",
-          "location": "Bellevue, Washington, United States of America",
           "postedDate": null
         },
         {
@@ -1348,26 +1372,32 @@
         },
         {
           "title": "Product Marketing Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/528014",
+          "location": "Pune, Maharashtra, India",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526716",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Marketing Manager",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/528385",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Principal Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526689",
+          "location": "Bellevue, Washington, United States of America",
+          "postedDate": null
+        },
+        {
+          "title": "Principal Product Manager",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526691",
           "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "CPQ Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/524904",
-          "location": "Peachtree Corners, Georgia, United States of America",
-          "postedDate": null
-        },
-        {
-          "title": "Product Marketing Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/528014",
-          "location": "Pune, Maharashtra, India",
           "postedDate": null
         }
       ]
@@ -1403,7 +1433,7 @@
     },
     "lebara": {
       "ok": true,
-      "found": 0,
+      "found": 3,
       "roles": []
     },
     "revolut": {
