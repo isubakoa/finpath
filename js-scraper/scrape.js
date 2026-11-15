@@ -7,7 +7,7 @@
 // Run by .github/workflows/scrape.yml; locally: node scrape.js [--debug <slug>].
 
 import { chromium } from "playwright";
-import { readFileSync, writeFileSync } from "fs";
+import { mkdirSync, readFileSync, writeFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
@@ -17,6 +17,9 @@ import { dirname, join } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const SNAPSHOT_PATH = join(__dirname, "..", "data", "js-snapshot.json");
+// Per-company evidence when a page yields no job links or fails: a screenshot plus
+// status/title/final URL. Uploaded as a workflow artifact, never committed.
+const DEBUG_DIR = join(__dirname, "debug");
 
 // Ports of the app's isRoleRelevant() (same as li-scraper/match.py) -- change
 // all three together. Filtering here keeps the snapshot to roles the app could
@@ -45,6 +48,8 @@ function isRoleRelevant(title) {
 // few links but carries every role in its embedded data: a function given the
 // page's parsed __NEXT_DATA__ that returns [{title, url, location}] (no
 // linkPattern then; a page without __NEXT_DATA__ fails the company).
+// `frames: true` also collects links inside the page's iframes (iCIMS boards show
+// their list in an iframe and redirect a direct load of the iframe URL).
 const COMPANIES = [
   {
     slug: "adyen",
@@ -406,9 +411,13 @@ const COMPANIES = [
   },
   {
     slug: "bnp-paribas",
-    urls: ["https://group.bnpparibas/en/careers/all-job-offers"],
+    // Server-rendered, 10 per page; ?q= filters and ranks by relevance (checked
+    // 2026-11-15), so the first 3 pages cover the design roles.
+    urls: [1, 2, 3].map((p) => `https://group.bnpparibas/en/careers/all-job-offers?q=design&page=${p}`),
     linkPattern: /\/careers\/job-offer\//,
     waitForSelector: 'a[href*="/careers/job-offer/"]',
+    titleSelector: "h3",
+    locationSelector: ".offer-location",
   },
   {
     slug: "rabobank",
@@ -425,10 +434,11 @@ const COMPANIES = [
   },
   {
     slug: "mambu",
-    // iCIMS board, full list in the iframe page.
+    // iCIMS: a direct load of the iframe URL redirects to the wrapper page, which
+    // shows the list in #icims_content_iframe (2026-11-15).
     urls: ["https://careers-mambu.icims.com/jobs/search?ss=1&in_iframe=1"],
     linkPattern: /\/jobs\/\d+\/[^?]+\/job/i,
-    waitForSelector: 'a[href*="/jobs/"]',
+    frames: true,
   },
   {
     slug: "optus",
@@ -566,11 +576,108 @@ function previousLocations() {
   }
 }
 
-async function scrapeOneUrl(browser, url, company) {
+// Titles of bot-check interstitials (Cloudflare, Akamai, Revolut's own).
+const BLOCK_TITLE = /just a moment|security check|attention required|access denied|are you a robot|pardon our interruption/i;
+
+// Runs in the page (or an iframe): every link matching the company's pattern,
+// with its title and the location its listing shows.
+const collectLinks = ({ patternSource, titleSelector, titleAncestorSelector, titleAncestorTitleSelector, locationSelector, locationAncestorSelector }) => {
+  const pattern = new RegExp(patternSource);
+  // Relative to the page's <base> when it has one, as a browser resolves it:
+  // Google's board links are "jobs/results/<id>" under <base href=".../applications/">,
+  // so resolving against location.href doubled "jobs/" (broken links, 2026-10-28).
+  const absolute = (a) => {
+    try {
+      return new URL(a.getAttribute("href") || "", document.baseURI).href;
+    } catch {
+      return "";
+    }
+  };
+  const clean = (t) => (t || "").replace(/\s+/g, " ").trim();
+  // The job's card: the largest ancestor of the link holding no other job link.
+  const cardOf = (a, abs) => {
+    let card = a;
+    for (let depth = 0; depth < 8; depth++) {
+      const parent = card.parentElement;
+      if (!parent || parent === document.body) break;
+      const other = [...parent.querySelectorAll("a[href]")].some((x) => {
+        const h = absolute(x);
+        return h !== abs && pattern.test(h);
+      });
+      if (other) break;
+      card = parent;
+    }
+    return card;
+  };
+  const cardLocation = (card, title) => {
+    for (const el of card.querySelectorAll("*")) {
+      const marker = [...el.attributes]
+        .filter((at) => ["class", "id", "itemprop"].includes(at.name) || at.name.startsWith("data-"))
+        .map((at) => `${at.name} ${at.value}`)
+        .join(" ");
+      if (!/location/i.test(marker) || /relocation/i.test(marker)) continue;
+      const text = clean(el.textContent).replace(/^locations?\s*:?\s*/i, "");
+      if (text.length >= 2 && text.length <= 120 && text !== title) return text;
+    }
+    return "";
+  };
+  const seen = new Set();
+  const out = [];
+  document.querySelectorAll("a[href]").forEach((a) => {
+    const abs = absolute(a);
+    if (!abs || !pattern.test(abs) || seen.has(abs)) return;
+    // Never let the Workday placeholder through, even after the settle wait.
+    if (/community\.workday\.com\/invalid-url/i.test(abs)) return;
+    // Title: the link's own text by default; titleSelector for a child element
+    // when the link wraps a whole card; titleAncestorSelector +
+    // titleAncestorTitleSelector when the link is just a CTA and the title lives in
+    // the enclosing card.
+    let title = "";
+    if (titleAncestorSelector && titleAncestorTitleSelector) {
+      const ancestor = a.closest(titleAncestorSelector);
+      const ancestorTitleEl = ancestor ? ancestor.querySelector(titleAncestorTitleSelector) : null;
+      title = ancestorTitleEl ? ancestorTitleEl.textContent || "" : "";
+    }
+    if (!title) {
+      const titleEl = titleSelector ? a.querySelector(titleSelector) : null;
+      title = (titleEl || a).textContent || "";
+    }
+    title = clean(title);
+    if (title.length < 3) return;
+    let loc = "";
+    if (locationSelector) {
+      const scope = locationAncestorSelector ? a.closest(locationAncestorSelector) : a;
+      const el = scope ? scope.querySelector(locationSelector) : null;
+      loc = el ? clean(el.textContent) : "";
+    } else {
+      loc = cardLocation(cardOf(a, abs), title);
+    }
+    seen.add(abs);
+    out.push({ title, url: abs, location: loc });
+  });
+  return out;
+};
+
+// Screenshot + page facts for a URL that gave nothing; best-effort.
+async function saveDebug(page, company, index, info) {
+  try {
+    mkdirSync(DEBUG_DIR, { recursive: true });
+    const base = join(DEBUG_DIR, `${company.slug}-${index + 1}`);
+    await page.screenshot({ path: `${base}.png`, fullPage: false }).catch(() => {});
+    writeFileSync(`${base}.json`, JSON.stringify(info, null, 2));
+  } catch {
+    // never fail a run over debug output
+  }
+}
+
+async function scrapeOneUrl(browser, url, company, index = 0) {
   const page = await browser.newPage({ userAgent: USER_AGENT });
+  let status = null;
+  const facts = async (extra) => ({ url, finalUrl: page.url(), status, title: await page.title().catch(() => ""), ...extra });
   try {
     try {
-      await page.goto(url, { waitUntil: "networkidle", timeout: TIMEOUT_MS });
+      const response = await page.goto(url, { waitUntil: "networkidle", timeout: TIMEOUT_MS });
+      status = response ? response.status() : null;
     } catch (gotoErr) {
       // Swallow only the networkidle timeout (bot protection makes headless loads
       // slow; Amex did this in production) and let waitForSelector below wait for the
@@ -581,12 +688,27 @@ async function scrapeOneUrl(browser, url, company) {
       // Best-effort: if the selector never appears, scrape whatever rendered.
       await page.waitForSelector(company.waitForSelector, { timeout: TIMEOUT_MS }).catch(() => {});
     }
+    if (company.frames) {
+      // Wait for a matching link in any frame (an iframe's list loads after the page).
+      const pattern = company.linkPattern;
+      for (let waited = 0; waited < TIMEOUT_MS; waited += 1000) {
+        const hits = await Promise.all(page.frames().map((f) =>
+          f.evaluate((src) => [...document.querySelectorAll("a[href]")].some((a) => new RegExp(src).test(a.href)), pattern.source).catch(() => false)));
+        if (hits.some(Boolean)) break;
+        await page.waitForTimeout(1000);
+      }
+    }
     if (company.settleDelayMs) {
       // Some SPAs (Fidelity's Workday) render job links with a placeholder href
       // (community.workday.com/invalid-url) before swapping in the real URL; give
       // those companies a moment before reading hrefs. 0 (skipped) for everyone else.
       await page.waitForTimeout(company.settleDelayMs);
     }
+    const blocked = async () => {
+      const f = await facts();
+      return BLOCK_TITLE.test(f.title) || (status && status >= 400) ? f : null;
+    };
+    const describe = (f) => `HTTP ${f.status || "?"}, page "${f.title}"`;
     if (company.pageData) {
       const data = await page.evaluate(() => {
         const el = document.getElementById("__NEXT_DATA__");
@@ -596,95 +718,46 @@ async function scrapeOneUrl(browser, url, company) {
           return null;
         }
       });
+      if (!data) {
+        const f = await facts();
+        await saveDebug(page, company, index, f);
+        await page.close();
+        throw new Error(BLOCK_TITLE.test(f.title) || (status && status >= 400)
+          ? `page blocked or unavailable (${describe(f)})` : `no __NEXT_DATA__ page data (${describe(f)})`);
+      }
       await page.close();
-      if (!data) throw new Error("no __NEXT_DATA__ page data");
       return company.pageData(data, url);
     }
 
-    const roles = await page.evaluate(({ patternSource, titleSelector, titleAncestorSelector, titleAncestorTitleSelector, locationSelector, locationAncestorSelector }) => {
-      const pattern = new RegExp(patternSource);
-      // Relative to the page's <base> when it has one, as a browser resolves it:
-      // Google's board links are "jobs/results/<id>" under <base href=".../applications/">,
-      // so resolving against location.href doubled "jobs/" (broken links, 2026-10-28).
-      const absolute = (a) => {
-        try {
-          return new URL(a.getAttribute("href") || "", document.baseURI).href;
-        } catch {
-          return "";
-        }
-      };
-      const clean = (t) => (t || "").replace(/\s+/g, " ").trim();
-      // The job's card: the largest ancestor of the link holding no other job link.
-      const cardOf = (a, abs) => {
-        let card = a;
-        for (let depth = 0; depth < 8; depth++) {
-          const parent = card.parentElement;
-          if (!parent || parent === document.body) break;
-          const other = [...parent.querySelectorAll("a[href]")].some((x) => {
-            const h = absolute(x);
-            return h !== abs && pattern.test(h);
-          });
-          if (other) break;
-          card = parent;
-        }
-        return card;
-      };
-      const cardLocation = (card, title) => {
-        for (const el of card.querySelectorAll("*")) {
-          const marker = [...el.attributes]
-            .filter((at) => ["class", "id", "itemprop"].includes(at.name) || at.name.startsWith("data-"))
-            .map((at) => `${at.name} ${at.value}`)
-            .join(" ");
-          if (!/location/i.test(marker) || /relocation/i.test(marker)) continue;
-          const text = clean(el.textContent).replace(/^locations?\s*:?\s*/i, "");
-          if (text.length >= 2 && text.length <= 120 && text !== title) return text;
-        }
-        return "";
-      };
-      const seen = new Set();
-      const out = [];
-      document.querySelectorAll("a[href]").forEach((a) => {
-        const abs = absolute(a);
-        if (!abs || !pattern.test(abs) || seen.has(abs)) return;
-        // Never let the Workday placeholder through, even after the settle wait.
-        if (/community\.workday\.com\/invalid-url/i.test(abs)) return;
-        // Title: the link's own text by default; titleSelector for a child element
-        // when the link wraps a whole card; titleAncestorSelector +
-        // titleAncestorTitleSelector when the link is just a CTA and the title lives in
-        // the enclosing card.
-        let title = "";
-        if (titleAncestorSelector && titleAncestorTitleSelector) {
-          const ancestor = a.closest(titleAncestorSelector);
-          const ancestorTitleEl = ancestor ? ancestor.querySelector(titleAncestorTitleSelector) : null;
-          title = ancestorTitleEl ? ancestorTitleEl.textContent || "" : "";
-        }
-        if (!title) {
-          const titleEl = titleSelector ? a.querySelector(titleSelector) : null;
-          title = (titleEl || a).textContent || "";
-        }
-        title = clean(title);
-        if (title.length < 3) return;
-        let loc = "";
-        if (locationSelector) {
-          const scope = locationAncestorSelector ? a.closest(locationAncestorSelector) : a;
-          const el = scope ? scope.querySelector(locationSelector) : null;
-          loc = el ? clean(el.textContent) : "";
-        } else {
-          loc = cardLocation(cardOf(a, abs), title);
-        }
-        seen.add(abs);
-        out.push({ title, url: abs, location: loc });
-      });
-      return out;
-    }, {
+    const args = {
       patternSource: company.linkPattern.source,
       titleSelector: company.titleSelector || null,
       titleAncestorSelector: company.titleAncestorSelector || null,
       titleAncestorTitleSelector: company.titleAncestorTitleSelector || null,
       locationSelector: company.locationSelector || null,
       locationAncestorSelector: company.locationAncestorSelector || null,
-    });
+    };
+    const frames = company.frames ? page.frames() : [page.mainFrame()];
+    const roles = [];
+    const seen = new Set();
+    for (const frame of frames) {
+      const found = await frame.evaluate(collectLinks, args).catch(() => []);
+      found.forEach((r) => {
+        if (!seen.has(r.url)) {
+          seen.add(r.url);
+          roles.push(r);
+        }
+      });
+    }
 
+    if (!roles.length) {
+      const f = await blocked();
+      await saveDebug(page, company, index, f || (await facts({ note: "page loaded, no matching links" })));
+      if (f) {
+        await page.close();
+        throw new Error(`page blocked or unavailable (${describe(f)})`);
+      }
+    }
     await page.close();
     return roles;
   } catch (err) {
@@ -762,9 +835,9 @@ async function scrapeCompany(browser, company, { debug = false } = {}) {
   const roles = [];
   const errors = [];
 
-  for (const url of urls) {
+  for (const [index, url] of urls.entries()) {
     try {
-      const found = await scrapeOneUrl(browser, url, company);
+      const found = await scrapeOneUrl(browser, url, company, index);
       found.forEach((r) => {
         if (seen.has(r.url)) return;
         seen.add(r.url);

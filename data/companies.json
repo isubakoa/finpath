@@ -1225,7 +1225,8 @@
       "openNote": "Full Lever board fetched directly (Business Development, Compliance, Finance, HR, Marketing, Product Management, Technology) — no Design/UX/UI role at any level.",
       "ats": {
         "type": "lever",
-        "slug": "nium"
+        "slug": "nium",
+        "timeout": 20
       }
     },
     {
@@ -1464,7 +1465,8 @@
       "ats": {
         "type": "oraclecloud",
         "host": "ebuu.fa.ap1.oraclecloud.com",
-        "site": "CX"
+        "site": "CX",
+        "timeout": 25
       }
     },
     {
@@ -5925,7 +5927,8 @@
       "openNote": "CONVERTED (2026-09-17, real browser + live network capture): the earlier 'confirmed SuccessFactors end-to-end' conclusion (2026-09-14) turned out to be wrong — vacancy.klm.com's SF-pattern session cookies belong only to the old apply-flow redirect (a leftover/parallel path, likely for internal transfers), not to careers.klm.com's actual job search, which is a Sanity-CMS-backed site with its own same-origin JSON API at careers.klm.com/api/v1/jobs/. Confirmed genuinely stateless and cookie-less. Its own UI search box (labelled 'searchString' in the page's own JS bundle) turned out not to be wired to anything server-side, though — every query tried, including outright nonsense strings, returned an identical result set, so free-text filtering doesn't actually work despite existing in the UI. What DOES genuinely change the result set: 'language': 'en' alone narrows KLM's 58 total open postings down to the 8 that are in English (the rest are Dutch-only). Fetched all 8 directly: Business Analyst Commercial Level 3, Graduation Internship Operations Research, Senior Business Product Analyst, Technical Architect Level 1, Data Scientist Level 3, Licensed Engine Mechanic, Line Maintenance Mechanic (CAT A), Aircraft Maintenance Technician B1 and/or B2 — zero Director+ Product Design/UX/PM roles, consistent with the 2026-09-14 finding that every design-adjacent posting there was dead or expired. Difference now: this is a live, per-check API call instead of a static manual note, so a future design opening posted in English will actually surface here automatically. Job URLs are reconstructed from slugify(title)+id (no slug field in the API response itself — confirmed against real rendered links on the site) so could occasionally be wrong for an unusual title; not a concern for any of today's 8 non-matching roles. Also being checked via li-scraper (LI/Indeed) as a supplement.",
       "ats": {
         "type": "klm",
-        "slug": null
+        "slug": null,
+        "http1": true
       },
       "match": {
         "aliases": [

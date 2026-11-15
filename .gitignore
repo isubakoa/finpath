@@ -18,3 +18,7 @@ diagnoses.py
 # Python bytecode
 __pycache__/
 *.pyc
+
+
+# js-scraper debug captures (workflow artifact)
+js-scraper/debug/
