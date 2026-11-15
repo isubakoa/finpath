@@ -80,6 +80,17 @@ jobs:
         working-directory: ./js-scraper
         run: node scrape.js
 
+      # Screenshot + status/title/final URL for each page that gave no job links or
+      # failed (see scrape.js saveDebug). Download from the run's summary page.
+      - name: Upload debug captures
+        if: always() && steps.gate.outputs.should_run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: js-scraper-debug
+          path: js-scraper/debug/
+          if-no-files-found: ignore
+          retention-days: 7
+
       # Only touches data/js-snapshot.json, so rebasing onto a moved main can't
       # conflict — retry instead of losing the run (same as scrape-li.yml).
       - name: Commit updated snapshot
