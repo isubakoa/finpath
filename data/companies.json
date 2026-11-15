@@ -5813,7 +5813,7 @@
       "url": "https://www.m1.com.sg/about-us/careers",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "No standard trackable ATS detected — the careers page is essentially a landing page that links out to an LI Jobs company-search widget rather than hosting its own Workday/Greenhouse/SmartRecruiters/SuccessFactors instance, and at check time it explicitly stated \"There are no M1 jobs,\" with only an email job-alert signup offered. Not one of the deliberately-unsupported platforms — just nothing to integrate against right now. RE-CONFIRMED (2026-09-17, real browser): same finding, checked directly rather than assumed — the whole 'kickstart your career with M1' section on the careers page is a single 'Apply Here' link straight out to an LI job search pre-filtered to M1's own company ID, no iframe, no embedded listing, nothing self-hosted to point an adapter at. This genuinely isn't a scraper gap, just a company with no first-party board — li-scraper's own LI coverage is already the right tool for this one.",
+      "openNote": "No board of its own: the careers page (m1.com.sg/about-us/careers/departments) links only to M1's LI job search (re-checked 2026-11-15). Covered through job-site matches.",
       "ats": {
         "type": "unknown",
         "slug": null
@@ -7042,7 +7042,7 @@
       "url": "https://www.knab.nl/",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "Its Greenhouse board (knab) no longer answers (404 on 2026-10-24) and no replacement was found. Covered through job-site matches.",
+      "openNote": "Its Greenhouse board (knab) is closed (404, re-checked 2026-11-15). Knab now lists vacancies on werkenbijknab.nl, which couldn't be opened from ZenPath's tools on 2026-11-15 (to check by hand). Covered through job-site matches.",
       "ats": {
         "type": "unknown"
       },
@@ -8745,9 +8745,10 @@
       "url": "https://careers.hyperoptic.com/jobs/home/",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "Eploy board (careers.hyperoptic.com): its results page needs a per-visit pagestamp from the home page and answers 202 without one, even in a browser (2026-10-30). Covered through job-site matches.",
+      "openNote": "Eploy board (careers.hyperoptic.com). A direct load of its results page answers an empty 202; the browser scraper opens the home page and clicks its Search Jobs link, which loads the list in the same session (4 roles on 2026-11-15, mostly Belgrade).",
       "ats": {
-        "type": "unknown"
+        "type": "snapshot",
+        "slug": "hyperoptic"
       },
       "match": {
         "aliases": [

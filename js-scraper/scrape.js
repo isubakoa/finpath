@@ -50,6 +50,8 @@ function isRoleRelevant(title) {
 // linkPattern then; a page without __NEXT_DATA__ fails the company).
 // `frames: true` also collects links inside the page's iframes (iCIMS boards show
 // their list in an iframe and redirect a direct load of the iframe URL).
+// `clickSelector`: a link to click after the page loads (the listing then loads in
+// the same session); waitForSelector then waits on the page it leads to.
 const COMPANIES = [
   {
     slug: "adyen",
@@ -510,6 +512,14 @@ const COMPANIES = [
       }));
     },
   },
+  {
+    slug: "hyperoptic",
+    // Eploy (4 roles on 2026-11-15, mostly Belgrade); see clickSelector.
+    urls: ["https://careers.hyperoptic.com/jobs/home/"],
+    clickSelector: 'a[href*="posbrowser_resetto/?pagestamp="]',
+    linkPattern: /careers\.hyperoptic\.com\/jobs\/vacancy\/[^/]+\/\d+\/description\//,
+    waitForSelector: 'a[href*="/description/"]',
+  },
   // Not scraped:
   //   - wefox: careers site broken, no open roles on its join.com board.
   //   - Hang Seng Bank, Mubadala: job cards are JS click handlers with no href to
@@ -673,16 +683,29 @@ async function saveDebug(page, company, index, info) {
 async function scrapeOneUrl(browser, url, company, index = 0) {
   const page = await browser.newPage({ userAgent: USER_AGENT });
   let status = null;
+  // The main page's latest navigation status (also after a clickSelector click).
+  page.on("response", (r) => {
+    if (r.request().isNavigationRequest() && r.frame() === page.mainFrame()) status = r.status();
+  });
   const facts = async (extra) => ({ url, finalUrl: page.url(), status, title: await page.title().catch(() => ""), ...extra });
   try {
     try {
-      const response = await page.goto(url, { waitUntil: "networkidle", timeout: TIMEOUT_MS });
-      status = response ? response.status() : null;
+      await page.goto(url, { waitUntil: "networkidle", timeout: TIMEOUT_MS });
     } catch (gotoErr) {
       // Swallow only the networkidle timeout (bot protection makes headless loads
       // slow; Amex did this in production) and let waitForSelector below wait for the
       // content. Real navigation failures still fail the company.
       if (!/Timeout .*exceeded/i.test(String((gotoErr && gotoErr.message) || gotoErr))) throw gotoErr;
+    }
+    if (company.clickSelector) {
+      // Eploy boards (Hyperoptic) answer an empty 202 to a direct load of their
+      // results page; following the home page's own link works.
+      await page.waitForSelector(company.clickSelector, { timeout: TIMEOUT_MS });
+      await Promise.all([
+        page.waitForLoadState("domcontentloaded", { timeout: TIMEOUT_MS }).catch(() => {}),
+        page.waitForURL((u) => u.href !== url, { timeout: TIMEOUT_MS }).catch(() => {}),
+        page.click(company.clickSelector),
+      ]);
     }
     if (company.waitForSelector) {
       // Best-effort: if the selector never appears, scrape whatever rendered.
