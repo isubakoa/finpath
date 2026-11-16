@@ -198,7 +198,8 @@ DESIGN_TERMS = [
 
 SEARCH_TERMS = PRODUCT_TERMS + DESIGN_TERMS
 
-# Target markets (2026-10-27: Japan, South Korea, Sweden and Portugal removed). The
+# Target markets (2026-10-27: Japan, South Korea, Sweden and Portugal removed;
+# 2026-11-16: Japan back, for Mercari and other Tokyo employers). The
 # app's accepted countries (app.js TARGET_COUNTRY_NAMES) are the same list.
 # Bare country names search the whole country; "City, Country" entries search
 # that metro only. Every entry needs an INDEED_COUNTRY
@@ -206,6 +207,7 @@ SEARCH_TERMS = PRODUCT_TERMS + DESIGN_TERMS
 LOCATIONS = [
     "Singapore",
     "Hong Kong",
+    "Japan",
     "New Zealand",
     "Australia",
     "Netherlands",
@@ -265,7 +267,7 @@ MARKET_ALIASES = {
 # posting exists; Cambridge MA, Perth Scotland): when unsure, drop the rare
 # legitimate posting rather than let an off-market one in.
 ISO_CODE_TO_MARKET = {
-    "sg": "Singapore", "hk": "Hong Kong",
+    "sg": "Singapore", "hk": "Hong Kong", "jp": "Japan",
     "nz": "New Zealand", "au": "Australia", "nl": "Netherlands", "it": "Italy",
     "de": "Germany", "gb": "United Kingdom",
     "uk": "United Kingdom", "ie": "Ireland", "my": "Malaysia",
@@ -301,6 +303,7 @@ CITY_ALIASES = {
     "noord-brabant": "Netherlands", "north brabant": "Netherlands",
     "gelderland": "Netherlands", "flevoland": "Netherlands", "overijssel": "Netherlands",
     "sydney": "Australia", "melbourne": "Australia", "brisbane": "Australia",
+    "tokyo": "Japan", "osaka": "Japan", "fukuoka": "Japan", "yokohama": "Japan",
     "munich": "Germany", "hamburg": "Germany", "stuttgart": "Germany",
     "nuremberg": "Germany",
     "milan": "Italy", "padova": "Italy", "padua": "Italy", "vicenza": "Italy",
@@ -350,6 +353,7 @@ def is_known_market(location):
 INDEED_COUNTRY = {
     "Singapore": "Singapore",
     "Hong Kong": "Hong Kong",
+    "Japan": "Japan",
     "New Zealand": "New Zealand",
     "Australia": "Australia",
     "Netherlands": "Netherlands",

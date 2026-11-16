@@ -8356,6 +8356,34 @@
       }
     },
     {
+      "region": "APAC",
+      "name": "Mercari",
+      "slug": "mercari",
+      "category": "E-commerce Platform",
+      "hq": "Tokyo, Japan",
+      "founded": 2013,
+      "asia": "some",
+      "asiaNote": "Japan (Tokyo HQ: Mercari Marketplace, Merpay fintech, Mercoin crypto); engineering centre in Bengaluru, India; US marketplace.",
+      "sponsorship": "likely",
+      "sponsorshipNote": "Hires internationally in English and supports work-visa sponsorship and relocation to Tokyo for its global roles. Not individually verified per role.",
+      "note": "Japan's largest C2C marketplace app, plus Merpay payments and credit; large in-house product design org with English-language roles.",
+      "url": "https://careers.mercari.com/en/",
+      "openStatus": "none",
+      "openRoles": [],
+      "openNote": "Workable board (apply.workable.com/mercari), read by check.php's Workable adapter. 138 open roles on 2026-11-16, all in Tokyo (Minato), incl. Design Manager and Senior Design Manager (Mercari Marketplace), Senior Product Designer, Design System Designer and several Product Manager roles.",
+      "match": {
+        "aliases": [
+          "Mercari, Inc.",
+          "Merpay",
+          "メルカリ"
+        ]
+      },
+      "ats": {
+        "type": "workable",
+        "slug": "mercari"
+      }
+    },
+    {
       "region": "Europe/UK",
       "name": "KPN",
       "slug": "kpn",
