@@ -220,7 +220,7 @@ LOCATIONS = [
 ]
 
 # Searched in full (every term) every other run instead of waiting for their
-# rotation turn -- see priority_combos() / priority_sweep_due(). Must be exact
+# rotation turn -- see priority_combos() / next_rotation(). Must be exact
 # LOCATIONS entries (asserted below). "Netherlands" already covers Amsterdam.
 PRIORITY_LOCATIONS = [
     "Singapore",
@@ -408,8 +408,8 @@ LI_BLOCK_BACKOFF_SECONDS = (300,)  # by blocks in a row; the penalty lifted afte
 LI_MAX_BLOCK_WAIT_SECONDS = 300  # cap on a Retry-After
 LI_MAX_BLOCKS_IN_A_ROW = 3
 LI_MAX_BLOCK_WAIT_TOTAL_SECONDS = 15 * 60
-LI_MAX_REQUESTS_PER_RUN = 36  # every search plus a few retries; ~45 min at the pause above
-LI_HISTORY_RUNS = 120  # ~10 days at the 2h cadence
+LI_MAX_REQUESTS_PER_RUN = 39  # every search (36 with Japan, 2026-11-16) plus 3 retries; ~50 min at the pause above
+LI_HISTORY_RUNS = 120  # ~30 days at the observed ~6 h spacing
 
 
 class ErrorLogCount(logging.Handler):
@@ -426,20 +426,23 @@ class ErrorLogCount(logging.Handler):
 
 
 # ---- Indeed rotation ----
-# One run = one chunk of ROTATING_LOCATIONS x SEARCH_TERMS (272 combos since the
-# 2026-10-27 trim), picked from wall-clock time so runs walk the whole grid and
-# wrap around. 68 divides the grid into 4 equal chunks -> a full rotation every
-# ~8h at the 2h cadence (the priority sweep adds its own combos every other run).
-# Pacing is ~8s/combo, so ~9 min per run. LI doesn't rotate (see run_li).
+# One run = one chunk of ROTATING_LOCATIONS x SEARCH_TERMS (306 combos with Japan
+# back, 2026-11-16 -> 5 chunks of up to 68). Each run takes the chunk after the
+# previous run's and the priority sweep alternates, both read from the snapshot
+# (indeedRotation), so the grid is walked in order however far apart GitHub starts
+# the runs (2026-11-16: ~6 h apart on a 2 h schedule; the wall-clock buckets used
+# before skipped around). Pacing is ~8s/combo, so ~9 min per run. LI doesn't
+# rotate (see run_li).
 #
 # The lever for rotation speed vs. request volume (block risk) is this number.
 COMBOS_PER_RUN = 68
-# Wall-clock bucket size for the rotation and the priority sweep. Must match
-# SCHEDULE_INTERVAL_HOURS in .github/workflows/scrape-li.yml's gate step: the
-# workflow fires every 15 minutes, but only runs when this much time has passed
-# since the last snapshot commit. Tune COMBOS_PER_RUN, not this, to change
-# rotation speed.
+# The workflow fires every 15 minutes but only runs when this much time has passed
+# since the last snapshot commit (.github/workflows/scrape-li.yml's gate step).
+# GitHub delays most runs well past it, so the timings the app shows come from
+# observed_run_gap_hours(), not from this.
 SCHEDULE_INTERVAL_HOURS = 2  # must match .github/workflows/scrape-li.yml's gate
+# How many recent runs (liHistory) the observed spacing is measured over.
+RUN_GAP_SAMPLE_RUNS = 20
 
 # A role not seen again within this many days is dropped. Kept well above two
 # full rotations, so a role is never pruned just for waiting its turn.
@@ -460,30 +463,44 @@ def rotating_combos():
 
 def priority_combos():
     """Every term x every PRIORITY_LOCATIONS entry; added on top of a run's
-        rotating chunk when priority_sweep_due().
+        rotating chunk when next_rotation() says the sweep is due.
     """
     return [(term, loc) for term in SEARCH_TERMS for loc in PRIORITY_LOCATIONS]
 
 
-def current_chunk_index(total_chunks, forced=None):
-    if forced is not None:
-        return forced % total_chunks
-    # Which SCHEDULE_INTERVAL_HOURS-wide bucket of wall-clock time this is.
-    # Consecutive real runs land in consecutive buckets without any stored state;
-    # a delayed or manual run may repeat or skip a chunk, which evens out.
-    bucket = int(time.time() // (SCHEDULE_INTERVAL_HOURS * 3600))
-    return bucket % total_chunks
-
-
-def priority_sweep_due(forced=None):
-    """Whether this run adds the PRIORITY_LOCATIONS sweep: due on even-numbered
-        wall-clock buckets (same buckets as current_chunk_index()), so roughly
-        every other real run. Stateless, so a dropped GitHub tick can't desync it.
+def next_rotation(previous, total_chunks, forced_chunk=None, forced_priority=None):
+    """(chunk index, priority sweep due) for this run: the chunk after the previous
+        run's and the opposite sweep choice, from the snapshot's indeedRotation. No or
+        unreadable previous state starts at chunk 0 with the sweep. --chunk /
+        --priority / --no-priority override either part.
     """
-    if forced is not None:
-        return forced % 2 == 0
-    bucket = int(time.time() // (SCHEDULE_INTERVAL_HOURS * 3600))
-    return bucket % 2 == 0
+    try:
+        chunk = (int(previous["chunk"]) + 1) % total_chunks
+        priority = not bool(previous["priority"])
+    except (TypeError, KeyError, ValueError):
+        chunk, priority = 0, True
+    if forced_chunk is not None:
+        chunk = forced_chunk % total_chunks
+    if forced_priority is not None:
+        priority = forced_priority
+    return chunk, priority
+
+
+def observed_run_gap_hours(history):
+    """Median hours between the last RUN_GAP_SAMPLE_RUNS runs in liHistory (its
+        "at" times), or SCHEDULE_INTERVAL_HOURS with fewer than 3 gaps to go on.
+    """
+    times = []
+    for entry in history[-(RUN_GAP_SAMPLE_RUNS + 1):]:
+        try:
+            times.append(datetime.strptime(entry["at"], "%Y-%m-%dT%H:%M:%SZ").timestamp())
+        except (TypeError, KeyError, ValueError):
+            continue
+    gaps = sorted((b - a) / 3600 for a, b in zip(times, times[1:]) if b > a)
+    if len(gaps) < 3:
+        return float(SCHEDULE_INTERVAL_HOURS)
+    mid = len(gaps) // 2
+    return gaps[mid] if len(gaps) % 2 else (gaps[mid - 1] + gaps[mid]) / 2
 
 
 def li_searches():
@@ -950,26 +967,25 @@ def main():
     # --priority / --no-priority force the priority sweep on or off, like --chunk.
     forced_priority = None
     if "--priority" in sys.argv:
-        forced_priority = 0  # even -> due, per priority_sweep_due()
+        forced_priority = True
     elif "--no-priority" in sys.argv:
-        forced_priority = 1  # odd -> not due
+        forced_priority = False
 
+    existing = load_existing_snapshot()
     rotating = rotating_combos()
     total_chunks = math.ceil(len(rotating) / COMBOS_PER_RUN)
-    chunk_index = current_chunk_index(total_chunks, forced=forced_chunk)
+    chunk_index, include_priority = next_rotation(
+        existing.get("indeedRotation"), total_chunks, forced_chunk, forced_priority)
     this_chunk = rotating[chunk_index * COMBOS_PER_RUN: (chunk_index + 1) * COMBOS_PER_RUN]
-
-    include_priority = priority_sweep_due(forced=forced_priority)
     priority = priority_combos() if include_priority else []
     combos_this_run = this_chunk + priority
 
-    cycle_hours = total_chunks * SCHEDULE_INTERVAL_HOURS
     print(
         f"[scrape] LI: {len(li_searches())} searches ({len(LOCATIONS)} markets x keyword groups), "
         f"every run. Indeed: rotating pool of {len(rotating)} combos ({len(SEARCH_TERMS)} terms x "
-        f"{len(ROTATING_LOCATIONS)} rotating locations), {COMBOS_PER_RUN}/run -> {total_chunks} chunks -> "
-        f"full cycle ~{cycle_hours}h; priority pool {len(PRIORITY_LOCATIONS)} markets ({', '.join(PRIORITY_LOCATIONS)}) "
-        f"x {len(SEARCH_TERMS)} terms, swept every other run (~{2 * SCHEDULE_INTERVAL_HOURS}h)."
+        f"{len(ROTATING_LOCATIONS)} rotating locations), {COMBOS_PER_RUN}/run -> {total_chunks} chunks, "
+        f"one per run; priority pool {len(PRIORITY_LOCATIONS)} markets ({', '.join(PRIORITY_LOCATIONS)}) "
+        f"x {len(SEARCH_TERMS)} terms, swept every other run."
     )
     print(f"[scrape] this run: Indeed chunk {chunk_index + 1}/{total_chunks} ({len(this_chunk)} combos)"
           + (f" + priority sweep ({len(priority)} combos)" if include_priority else " (priority sweep not due)")
@@ -977,7 +993,6 @@ def main():
           f"{len(SEARCH_TERMS) * 2} requests")
 
     index = build_index(COMPANIES, ALIASES)
-    existing = load_existing_snapshot()
     checked_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     # LI spends most of its ~40 min pausing between requests (human pace), so
     # it runs alongside Indeed and Welcome to NL rather than before them.
@@ -1002,6 +1017,8 @@ def main():
     snapshot["liLastRun"] = li_log
     history = existing.get("liHistory") if isinstance(existing.get("liHistory"), list) else []
     snapshot["liHistory"] = (history + [{"at": checked_at, **li_health}])[-LI_HISTORY_RUNS:]
+    snapshot["indeedRotation"] = {"chunk": chunk_index, "priority": include_priority}
+    run_gap = observed_run_gap_hours(snapshot["liHistory"])
 
     # What the app's "which markets" tooltip and source warnings show -- published
     # here so they can never drift from LOCATIONS / the rotation settings.
@@ -1009,10 +1026,12 @@ def main():
         "searchedMarkets": list(CANONICAL_MARKETS),
         "searchTerms": list(SEARCH_TERMS),
         "priorityMarkets": [_canonical_market_name(loc) for loc in PRIORITY_LOCATIONS],
-        "fullCycleHours": cycle_hours,
-        "prioritySweepHours": 2 * SCHEDULE_INTERVAL_HOURS,
+        # From the observed spacing between runs, not the 2 h schedule.
+        "runEveryHours": round(run_gap, 1),
+        "fullCycleHours": round(total_chunks * run_gap),
+        "prioritySweepHours": round(2 * run_gap),
         # At best one request per search, LI_MAX_REQUESTS_PER_RUN per run.
-        "liEveryHours": math.ceil(li_health["searches"] / LI_MAX_REQUESTS_PER_RUN) * SCHEDULE_INTERVAL_HOURS,
+        "liEveryHours": round(math.ceil(li_health["searches"] / LI_MAX_REQUESTS_PER_RUN) * run_gap),
         "sourceHealth": {
             "checkedAt": checked_at,
             "li": li_health,

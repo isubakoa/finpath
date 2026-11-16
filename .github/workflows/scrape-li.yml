@@ -6,8 +6,8 @@
 # through once SCHEDULE_INTERVAL_HOURS have passed since the last run started
 # (see the gate step). Self-healing: the next tick that fires after the
 # interval does the work. LI searches only what's new since each search
-# last completed, and Indeed picks its rotation chunk from wall-clock time, so
-# skipped ticks don't lose coverage. Off-minute offsets (3/18/33/48)
+# last completed, and Indeed takes the chunk after the previous run's (stored in
+# the snapshot), so skipped ticks don't lose coverage. Off-minute offsets (3/18/33/48)
 # avoid GitHub's congested top-of-hour.
 #
 # Tuning what each run searches (markets, terms, combos per run) happens in
@@ -44,8 +44,8 @@ jobs:
       # Runs before checkout, so a skipped tick costs seconds. Measures from when
       # the last run STARTED (the snapshot's openMarket.sourceHealth.checkedAt), not
       # when it committed: since 2026-10-27 a run takes ~45 min (LI at human
-      # pace), and counting from the commit would stretch the 2h cadence to ~3h and
-      # skip Indeed rotation chunks. Falls back to the snapshot's last commit time.
+      # pace), and counting from the commit would stretch the 2h cadence to ~3h.
+      # Falls back to the snapshot's last commit time.
       - name: Gate on elapsed time since last real run
         id: gate
         working-directory: .

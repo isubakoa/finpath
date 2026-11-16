@@ -107,6 +107,10 @@ def check():
                     re.compile(m.group(1))
                 except re.error as e:
                     err(f"{where}: linkPattern doesn't compile ({e})")
+        if "moreUrls" in ats:
+            mu = ats["moreUrls"]
+            if t != "html" or not (isinstance(mu, list) and mu and all(isinstance(u, str) and u.startswith("https://") for u in mu)):
+                err(f"{where}: ats.moreUrls is for html companies: a non-empty list of https URLs")
 
         for j, r in enumerate(c.get("openRoles") or []):
             missing = ROLE_REQUIRED - set(r)

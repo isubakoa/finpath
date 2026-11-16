@@ -15,6 +15,7 @@ from scrape import (
     all_combos, rotating_combos, priority_combos, merge_and_prune, role_identity,
     normalize_employer_name, SEARCH_TERMS, LOCATIONS, PRIORITY_LOCATIONS,
     ROTATING_LOCATIONS, COMBOS_PER_RUN, EXPIRY_DAYS, SCHEDULE_INTERVAL_HOURS,
+    next_rotation, observed_run_gap_hours,
 )
 
 failures = 0
@@ -59,11 +60,37 @@ check("rotating and priority combo sets are disjoint",
 
 import math
 total_chunks = math.ceil(len(rotating) / COMBOS_PER_RUN)
-cycle_days = total_chunks * SCHEDULE_INTERVAL_HOURS / 24
-print(f"  (info) {total_chunks} chunks x {SCHEDULE_INTERVAL_HOURS}h = {cycle_days:.2f}-day full rotation cycle "
+# Sized for runs ~8 h apart (observed ~6 h on the 2 h schedule, 2026-11-16).
+cycle_days = total_chunks * 8 / 24
+print(f"  (info) {total_chunks} chunks x 8h = {cycle_days:.2f}-day full rotation cycle "
       f"for the {len(rotating)} rotating combos ({len(PRIORITY_LOCATIONS)} priority markets swept separately, "
       f"every other run, on top of each chunk)")
 check("EXPIRY_DAYS comfortably exceeds 2x rotation cycle", EXPIRY_DAYS > 2 * cycle_days, True)
+
+print("-- next_rotation (stateful, 2026-11-16) --")
+# Walking from no state through total_chunks * 2 runs visits every chunk twice,
+# in order, and alternates the priority sweep.
+state, seen, sweeps = None, [], []
+for _ in range(total_chunks * 2):
+    chunk, prio = next_rotation(state, total_chunks)
+    seen.append(chunk); sweeps.append(prio)
+    state = {"chunk": chunk, "priority": prio}
+check("every run takes the next chunk, wrapping", seen, list(range(total_chunks)) * 2)
+check("priority sweep alternates, starting with a sweep", sweeps, [True, False] * total_chunks)
+check("unreadable state starts over", next_rotation({"chunk": "x"}, total_chunks), (0, True))
+check("a chunk past the end (fewer chunks now) wraps", next_rotation({"chunk": total_chunks + 3, "priority": False}, total_chunks)[0], (total_chunks + 4) % total_chunks)
+check("--chunk / --no-priority override", next_rotation({"chunk": 0, "priority": False}, total_chunks, 2, False), (2 % total_chunks, False))
+
+print("-- observed_run_gap_hours --")
+def hist(*hours_apart):
+    t = datetime(2026, 11, 1, tzinfo=timezone.utc); out = [{"at": t.strftime("%Y-%m-%dT%H:%M:%SZ")}]
+    for h in hours_apart:
+        t += timedelta(hours=h); out.append({"at": t.strftime("%Y-%m-%dT%H:%M:%SZ")})
+    return out
+check("median of the gaps", observed_run_gap_hours(hist(4, 6, 9)), 6)
+check("even count: mean of the middle two", observed_run_gap_hours(hist(4, 5, 7, 9)), 6)
+check("fewer than 3 gaps: the schedule", observed_run_gap_hours(hist(6, 6)), float(SCHEDULE_INTERVAL_HOURS))
+check("bad timestamps skipped", observed_run_gap_hours(hist(5, 6, 7) + [{"at": "nope"}, {}]), 6)
 
 print("-- merge_and_prune --")
 today = days_ago(0)

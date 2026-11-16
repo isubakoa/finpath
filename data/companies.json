@@ -7959,12 +7959,17 @@
       "url": "https://jobs.ca-cib.com/job/list-of-all-jobs.aspx?all=1&LCID=2057",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Talentsoft board jobs.ca-cib.com (linked from ca-cib.com/careers), server-rendered, found 2026-10-30. The all-jobs list shows the newest 100 of ~350 roles on its first page, so older postings aren't read; the city is the card's last line.",
+      "openNote": "Talentsoft board jobs.ca-cib.com (linked from ca-cib.com/careers), server-rendered, found 2026-10-30. The all-jobs list has ~350 roles, 100 per page; pages 2–4 are read too (ats.moreUrls, 2026-11-16). The city is the card's last line.",
       "ats": {
         "type": "html",
         "url": "https://jobs.ca-cib.com/job/list-of-all-jobs.aspx?all=1&LCID=2057",
         "linkPattern": "#/job/job-[a-z0-9-]+_\\d+\\.aspx$#i",
-        "locationLastText": true
+        "locationLastText": true,
+        "moreUrls": [
+          "https://jobs.ca-cib.com/job/list-of-all-jobs.aspx?page=2&LCID=2057",
+          "https://jobs.ca-cib.com/job/list-of-all-jobs.aspx?page=3&LCID=2057",
+          "https://jobs.ca-cib.com/job/list-of-all-jobs.aspx?page=4&LCID=2057"
+        ]
       },
       "match": {
         "aliases": [
