@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T05:05:22Z",
+  "generatedAt": "2026-11-19T13:50:42Z",
   "companies": {
     "google": {
       "roles": [
@@ -1149,7 +1149,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-18"
+          "lastSeenAt": "2026-11-19"
         },
         {
           "title": "Service Designer - 12 Month FTC",
@@ -3857,7 +3857,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-18"
+          "lastSeenAt": "2026-11-19"
         },
         {
           "title": "GEP Protege - Graphic Designer",
@@ -5015,7 +5015,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-18"
+          "lastSeenAt": "2026-11-19"
         }
       ]
     },
@@ -13071,7 +13071,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-18"
+          "lastSeenAt": "2026-11-19"
         },
         {
           "title": "Product Director - Server OS Configuration Management",
@@ -14936,6 +14936,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-16"
+        },
+        {
+          "title": "Manager Distribution Technology (Maternity Cover) - Design Hotels",
+          "location": "Berlin, BE, Germany",
+          "url": "https://de.indeed.com/viewjob?jk=b12680b616ada17c",
+          "postedDate": "2026-11-18",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-19"
         }
       ]
     },
@@ -17150,6 +17162,22 @@
           "lastSeenAt": "2026-11-18"
         }
       ]
+    },
+    "fujitsu": {
+      "roles": [
+        {
+          "title": "\u3010Uvance Wayfinders\u3011\u30b3\u30f3\u30b5\u30eb\u30bf\u30f3\u30c8_Transformation Design(Strategic Change)_Senior Manager",
+          "location": "Greater Tokyo Area",
+          "url": "https://www.linkedin.com/jobs/view/4437915072",
+          "postedDate": "2026-11-19",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-19"
+        }
+      ]
     }
   },
   "openMarket": {
@@ -18098,6 +18126,146 @@
         "title": "Associate Design Director - Branding & Packaging",
         "location": "Singapore, S00, Singapore",
         "url": "https://sg.indeed.com/viewjob?jk=68000333357d11ed",
+        "postedDate": "2026-11-19",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "\u4e00\u822c\u8ca1\u56e3\u6cd5\u4ebaGovTech\u6771\u4eac",
+        "market": "Japan",
+        "title": "UI/UX G_Web\u60c5\u5831\u8a2d\u8a08\u30c7\u30a3\u30ec\u30af\u30bf\u30fc\uff08\u30a8\u30ad\u30b9\u30d1\u30fc\u30c8\uff09",
+        "location": "Shinjuku-ku, Tokyo, Japan",
+        "url": "https://www.linkedin.com/jobs/view/4432952475",
+        "postedDate": "2026-11-19",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Aquent",
+        "market": "Japan",
+        "title": "\u30ea\u30fc\u30c9\u30d7\u30ed\u30c0\u30af\u30c8\u30c7\u30b6\u30a4\u30ca\u30fc\uff08UI/UX\uff09 \u30ea\u30e2\u30fc\u30c8\u30ef\u30fc\u30af\u3042\u308a\uff01\u30af\u30e9\u30a6\u30c9\u30b5\u30fc\u30d3\u30b9\u306e\u958b\u767a\u4f01\u696d\u3067\u30d7\u30ed\u30c0\u30af\u30c8\u30c7\u30b6\u30a4\u30f3\u306e\u304a\u4ed5\u4e8b [AQ-27435]",
+        "location": "Tokyo, Tokyo, Japan",
+        "url": "https://www.linkedin.com/jobs/view/4491608520",
+        "postedDate": "2026-11-19",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "ABeam Consulting",
+        "market": "Japan",
+        "title": "\u65b0\u898f\u4e8b\u696d\u5275\u51fa\u30fb\u30b5\u30fc\u30d3\u30b9\u30c7\u30b6\u30a4\u30f3\uff08UX/CX\u30c7\u30b6\u30a4\u30f3\uff09_AI Native Enterprise Strategy Sector\uff08Solution Consultant\u8077\uff09\u226a\u6771\u4eac\u226b",
+        "location": "Chuo-ku, Tokyo, Japan",
+        "url": "https://www.linkedin.com/jobs/view/4475766315",
+        "postedDate": "2026-11-19",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Aquent",
+        "market": "Japan",
+        "title": "Web\u30c7\u30a3\u30ec\u30af\u30bf\u30fc \u30ea\u30e2\u30fc\u30c8\u30ef\u30fc\u30afOK\u306e\u7d39\u4ecb\u4e88\u5b9a\u6d3e\u9063\uff01UI/UX\u30c7\u30b6\u30a4\u30f3\u3068\u30a8\u30f3\u30b8\u30cb\u30a2\u30ea\u30f3\u30b0\u3092\u5f37\u307f\u3068\u3059\u308b\u3001\u30c7\u30b8\u30bf\u30eb\u9818\u57df\u306e\u30af\u30ea\u30a8\u30a4\u30c6\u30a3\u30d6\u30fb\u30b3\u30f3\u30b5\u30eb\u30c6\u30a3\u30f3\u30b0\u4f01\u696d [AQ-27430]",
+        "location": "Tokyo, Tokyo, Japan",
+        "url": "https://www.linkedin.com/jobs/view/4491623024",
+        "postedDate": "2026-11-19",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Aquent",
+        "market": "Japan",
+        "title": "Future Strategist\u3010Future Design Lab\u3011 [AQ-27426]",
+        "location": "Tokyo, Tokyo, Japan",
+        "url": "https://www.linkedin.com/jobs/view/4491620122",
+        "postedDate": "2026-11-19",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Aquent",
+        "market": "Japan",
+        "title": "UI/UX\u30c7\u30b6\u30a4\u30ca\u30fc \u30af\u30e9\u30a6\u30c9\u578bPOS\u30ec\u30b8\u7b49\u3092\u63d0\u4f9b\u3059\u308bIT\u4f01\u696d\u3067Web\u3084\u30a2\u30d7\u30ea\u306eUI/UX\u8a2d\u8a08\u30fb\u69cb\u7bc9\u696d\u52d9 [AQ-27461]",
+        "location": "Osaka, Osaka, Japan",
+        "url": "https://www.linkedin.com/jobs/view/4491612450",
+        "postedDate": "2026-11-19",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Novartis",
+        "market": "Japan",
+        "title": "ED, NovaOS Strategy and Innovation - AI",
+        "location": "Usa, Kochi, Japan",
+        "url": "https://www.linkedin.com/jobs/view/4456967486",
+        "postedDate": "2026-11-19",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "FWD Insurance",
+        "market": "Malaysia",
+        "title": "Manager, Business Planning & Strategy",
+        "location": "KL Eco City, M14, Malaysia",
+        "url": "https://malaysia.indeed.com/viewjob?jk=e700f4588c6a53b6",
+        "postedDate": "2026-11-19",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Sunlife",
+        "market": "Hong Kong",
+        "title": "Director, ALM Product Enablement, Asia",
+        "location": "Taikoo Shing, HKI, Hong Kong",
+        "url": "https://hk.indeed.com/viewjob?jk=c0a55d7446b9b928",
+        "postedDate": "2026-11-19",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Expedia Group",
+        "market": "United Kingdom",
+        "title": "Director, User Experience Design (InsurTech)",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=6e7f05dba18aaf5e",
         "postedDate": "2026-11-19",
         "source": "indeed",
         "sources": [
@@ -19238,6 +19406,36 @@
         "source": "welcometonl",
         "sources": [
           "welcometonl"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "WTW",
+        "market": "United Kingdom",
+        "title": "Head of CISO Strategy & Operations",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=fdd09aa192aa78ab",
+        "postedDate": "2026-11-18",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [
+          "visa sponsorship"
+        ],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "ORWELL PARK SCHOOL",
+        "market": "United Kingdom",
+        "title": "Head of Design Technology",
+        "location": "Ipswich, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=e375ffa1f413b918",
+        "postedDate": "2026-11-18",
+        "source": "indeed",
+        "sources": [
+          "indeed"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-19"
@@ -25979,6 +26177,20 @@
         "lastSeenAt": "2026-11-19"
       },
       {
+        "employer": "Babcock International",
+        "market": "United Kingdom",
+        "title": "Head of Product Development",
+        "location": "Plymouth, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=d9204100321f94f6",
+        "postedDate": "2026-11-17",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
         "employer": "Enigma",
         "market": "United Kingdom",
         "title": "Senior Design Engineer | React | Typescript | UI/UX | Figma | Hybrid | London, UK",
@@ -32647,25 +32859,25 @@
         "lastSeenAt": "2026-11-19"
       },
       {
-        "employer": "LYNX Berlin",
-        "market": "Netherlands",
-        "title": "Product Manager Awareness & Lead Acquisition West",
-        "location": "Amsterdam, NH, Netherlands",
-        "url": "https://nl.indeed.com/viewjob?jk=0494dc393ed702b6",
+        "employer": "Westcliff High School for Boys Academy",
+        "market": "United Kingdom",
+        "title": "Head of Design and Technology",
+        "location": "Westcliff-on-Sea, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=feaec0dcd3b8ac67",
         "postedDate": "2026-11-16",
         "source": "indeed",
         "sources": [
           "indeed"
         ],
         "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
+        "lastSeenAt": "2026-11-19"
       },
       {
-        "employer": "Westcliff High School for Boys Academy",
-        "market": "United Kingdom",
-        "title": "Head of Design and Technology",
-        "location": "Westcliff-on-Sea, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=feaec0dcd3b8ac67",
+        "employer": "LYNX Berlin",
+        "market": "Netherlands",
+        "title": "Product Manager Awareness & Lead Acquisition West",
+        "location": "Amsterdam, NH, Netherlands",
+        "url": "https://nl.indeed.com/viewjob?jk=0494dc393ed702b6",
         "postedDate": "2026-11-16",
         "source": "indeed",
         "sources": [
@@ -42430,7 +42642,7 @@
           "indeed"
         ],
         "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
+        "lastSeenAt": "2026-11-19"
       },
       {
         "employer": "Ayunis",
@@ -42444,21 +42656,7 @@
           "indeed"
         ],
         "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
-      },
-      {
-        "employer": "Yodo1",
-        "market": "Hong Kong",
-        "title": "Head of Product - AdTech",
-        "location": "Hong Kong",
-        "url": "https://hk.indeed.com/viewjob?jk=2fdaceb1efa80559",
-        "postedDate": "2026-11-13",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
+        "lastSeenAt": "2026-11-19"
       },
       {
         "employer": "Morris and Spottiswood",
@@ -42466,6 +42664,34 @@
         "title": "Design Director \u2013 Architecture and Interiors",
         "location": "Glasgow, SCT, UK",
         "url": "https://uk.indeed.com/viewjob?jk=dc8074c7ce2762d0",
+        "postedDate": "2026-11-13",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "ACT Government",
+        "market": "Australia",
+        "title": "Manager Group Strategy, Coordination and Performance | Full-time Permanent",
+        "location": "Canberra, ACT, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=a9a6caaf212ac7b2",
+        "postedDate": "2026-11-13",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Yodo1",
+        "market": "Hong Kong",
+        "title": "Head of Product - AdTech",
+        "location": "Hong Kong",
+        "url": "https://hk.indeed.com/viewjob?jk=2fdaceb1efa80559",
         "postedDate": "2026-11-13",
         "source": "indeed",
         "sources": [
@@ -42990,20 +43216,6 @@
         "title": "SAP Data Strategist(m/f/d) - Germany",
         "location": "Frankfurt am Main, HE, Germany",
         "url": "https://de.indeed.com/viewjob?jk=79d43354c5236572",
-        "postedDate": "2026-11-13",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-17"
-      },
-      {
-        "employer": "ACT Government",
-        "market": "Australia",
-        "title": "Manager Group Strategy, Coordination and Performance | Full-time Permanent",
-        "location": "Canberra, ACT, Australia",
-        "url": "https://au.indeed.com/viewjob?jk=a9a6caaf212ac7b2",
         "postedDate": "2026-11-13",
         "source": "indeed",
         "sources": [
@@ -49188,6 +49400,34 @@
         "lastSeenAt": "2026-11-19"
       },
       {
+        "employer": "EPOS SPAIN ETT",
+        "market": "Malaysia",
+        "title": "Growth Product Manager",
+        "location": "Kuala Lumpur, M14, Malaysia",
+        "url": "https://malaysia.indeed.com/viewjob?jk=5ab326f9a5261e7e",
+        "postedDate": "2026-11-12",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "\u30d9\u30af\u30c8\u30f3\u30fb\u30c7\u30a3\u30c3\u30ad\u30f3\u30bd\u30f3",
+        "market": "Japan",
+        "title": "Strategy Director",
+        "location": "JPC, Japan",
+        "url": "https://jp.indeed.com/viewjob?jk=cdb09984950ff937",
+        "postedDate": "2026-11-12",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
         "employer": "HCLTech",
         "market": "Japan",
         "title": "Design Lead",
@@ -49216,39 +49456,11 @@
         "lastSeenAt": "2026-11-18"
       },
       {
-        "employer": "EPOS SPAIN ETT",
-        "market": "Malaysia",
-        "title": "Growth Product Manager",
-        "location": "Kuala Lumpur, M14, Malaysia",
-        "url": "https://malaysia.indeed.com/viewjob?jk=5ab326f9a5261e7e",
-        "postedDate": "2026-11-12",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
-      },
-      {
         "employer": "ASIA PACIFIC EXCHANGE PTE. LTD.",
         "market": "Singapore",
         "title": "Product Manager (Derivatives Exchange)",
         "location": "Outram, S00, Singapore",
         "url": "https://sg.indeed.com/viewjob?jk=cd77d7b17118087a",
-        "postedDate": "2026-11-12",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
-      },
-      {
-        "employer": "\u30d9\u30af\u30c8\u30f3\u30fb\u30c7\u30a3\u30c3\u30ad\u30f3\u30bd\u30f3",
-        "market": "Japan",
-        "title": "Strategy Director",
-        "location": "JPC, Japan",
-        "url": "https://jp.indeed.com/viewjob?jk=cdb09984950ff937",
         "postedDate": "2026-11-12",
         "source": "indeed",
         "sources": [
@@ -56916,20 +57128,6 @@
         "lastSeenAt": "2026-11-19"
       },
       {
-        "employer": "LYNX",
-        "market": "Netherlands",
-        "title": "Product Manager Trading Experience",
-        "location": "Amsterdam, Netherlands",
-        "url": "https://lynxbroker-jobs.softgarden.io/job/68671148/Product-Manager-Trading-Experience?jobDbPVId=290286668&l=en",
-        "postedDate": "2026-11-11",
-        "source": "welcometonl",
-        "sources": [
-          "welcometonl"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
-      },
-      {
         "employer": "FWD Insurance",
         "market": "Hong Kong",
         "title": "Director, Group Data Product",
@@ -56941,7 +57139,7 @@
           "indeed"
         ],
         "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
+        "lastSeenAt": "2026-11-19"
       },
       {
         "employer": "MicroPROGEL Srl",
@@ -56953,6 +57151,106 @@
         "source": "indeed",
         "sources": [
           "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Channel 4",
+        "market": "United Kingdom",
+        "title": "Brand Design Director",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=d3d86f54f2fc0424",
+        "postedDate": "2026-11-11",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "atolls",
+        "market": "Germany",
+        "title": "Head of Product Operations (Core)",
+        "location": "M\u00fcnchen, BY, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=5fbd67b4aec99f83",
+        "postedDate": "2026-11-11",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Mitie",
+        "market": "United Kingdom",
+        "title": "Design Director",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=68a4655e5222485a",
+        "postedDate": "2026-11-11",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Sandoz",
+        "market": "Germany",
+        "title": "Head Strategy & Operations (f/m/d)",
+        "location": "Holzkirchen, BY, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=794bfec6bb145214",
+        "postedDate": "2026-11-11",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "MicroPROGEL Srl",
+        "market": "Germany",
+        "title": "Head of Product Management (m/f/d) \u2013 Germany",
+        "location": "Dortmund, NW, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=e335b84e6ecd2e1e",
+        "postedDate": "2026-11-11",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "HM Treasury",
+        "market": "United Kingdom",
+        "title": "Head of Product and Project Delivery",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=e2d0d7a2d78e930e",
+        "postedDate": "2026-11-11",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [
+          "visa sponsorship"
+        ],
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "LYNX",
+        "market": "Netherlands",
+        "title": "Product Manager Trading Experience",
+        "location": "Amsterdam, Netherlands",
+        "url": "https://lynxbroker-jobs.softgarden.io/job/68671148/Product-Manager-Trading-Experience?jobDbPVId=290286668&l=en",
+        "postedDate": "2026-11-11",
+        "source": "welcometonl",
+        "sources": [
+          "welcometonl"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-18"
@@ -56986,67 +57284,11 @@
         "lastSeenAt": "2026-11-18"
       },
       {
-        "employer": "Channel 4",
-        "market": "United Kingdom",
-        "title": "Brand Design Director",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=d3d86f54f2fc0424",
-        "postedDate": "2026-11-11",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
-      },
-      {
-        "employer": "atolls",
-        "market": "Germany",
-        "title": "Head of Product Operations (Core)",
-        "location": "M\u00fcnchen, BY, Germany",
-        "url": "https://de.indeed.com/viewjob?jk=5fbd67b4aec99f83",
-        "postedDate": "2026-11-11",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
-      },
-      {
-        "employer": "Mitie",
-        "market": "United Kingdom",
-        "title": "Design Director",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=68a4655e5222485a",
-        "postedDate": "2026-11-11",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
-      },
-      {
         "employer": "MARIA GALLAND INTERNATIONAL GmbH",
         "market": "Germany",
         "title": "Product Innovation Manager (m/w/d)",
         "location": "M\u00fcnchen, BY, Germany",
         "url": "https://de.indeed.com/viewjob?jk=dcb35f234297f5a2",
-        "postedDate": "2026-11-11",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
-      },
-      {
-        "employer": "Sandoz",
-        "market": "Germany",
-        "title": "Head Strategy & Operations (f/m/d)",
-        "location": "Holzkirchen, BY, Germany",
-        "url": "https://de.indeed.com/viewjob?jk=794bfec6bb145214",
         "postedDate": "2026-11-11",
         "source": "indeed",
         "sources": [
@@ -57075,20 +57317,6 @@
         "title": "Senior Product Manager",
         "location": "Brisbane, QLD, Australia",
         "url": "https://au.indeed.com/viewjob?jk=4a0c596d98693988",
-        "postedDate": "2026-11-11",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
-      },
-      {
-        "employer": "MicroPROGEL Srl",
-        "market": "Germany",
-        "title": "Head of Product Management (m/f/d) \u2013 Germany",
-        "location": "Dortmund, NW, Germany",
-        "url": "https://de.indeed.com/viewjob?jk=e335b84e6ecd2e1e",
         "postedDate": "2026-11-11",
         "source": "indeed",
         "sources": [
@@ -57839,22 +58067,6 @@
           "indeed"
         ],
         "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-16"
-      },
-      {
-        "employer": "HM Treasury",
-        "market": "United Kingdom",
-        "title": "Head of Product and Project Delivery",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=e2d0d7a2d78e930e",
-        "postedDate": "2026-11-11",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [
-          "visa sponsorship"
-        ],
         "lastSeenAt": "2026-11-16"
       },
       {
@@ -63665,7 +63877,21 @@
           "indeed"
         ],
         "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "PaySend",
+        "market": "United Kingdom",
+        "title": "Head of KYC Product",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=0e998aa11e70824d",
+        "postedDate": "2026-11-10",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
       },
       {
         "employer": "Winparts",
@@ -64415,20 +64641,6 @@
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-17"
-      },
-      {
-        "employer": "PaySend",
-        "market": "United Kingdom",
-        "title": "Head of KYC Product",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=0e998aa11e70824d",
-        "postedDate": "2026-11-10",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-16"
       },
       {
         "employer": "Sainsbury\u2019s",
@@ -70378,7 +70590,7 @@
           "indeed"
         ],
         "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
+        "lastSeenAt": "2026-11-19"
       },
       {
         "employer": "DLL Group",
@@ -70392,7 +70604,21 @@
           "indeed"
         ],
         "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-18"
+        "lastSeenAt": "2026-11-19"
+      },
+      {
+        "employer": "Macs Adventure Ltd",
+        "market": "United Kingdom",
+        "title": "Head of Software Product (UK)",
+        "location": "Glasgow, SCT, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=39c538d48c0a7edf",
+        "postedDate": "2026-11-09",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-19"
       },
       {
         "employer": "Teva Pharmaceuticals",
@@ -70946,20 +71172,6 @@
         "title": "Design Director - Transport (Road) Projects",
         "location": "Perth, WA, Australia",
         "url": "https://au.indeed.com/viewjob?jk=9e1edb723da92adb",
-        "postedDate": "2026-11-09",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-16"
-      },
-      {
-        "employer": "Macs Adventure Ltd",
-        "market": "United Kingdom",
-        "title": "Head of Software Product (UK)",
-        "location": "Glasgow, SCT, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=39c538d48c0a7edf",
         "postedDate": "2026-11-09",
         "source": "indeed",
         "sources": [
@@ -101252,30 +101464,30 @@
       "United Arab Emirates",
       "Netherlands"
     ],
-    "runEveryHours": 6.3,
-    "fullCycleHours": 31,
+    "runEveryHours": 6.4,
+    "fullCycleHours": 32,
     "prioritySweepHours": 13,
     "liEveryHours": 6,
     "sourceHealth": {
-      "checkedAt": "2026-11-19T04:15:40Z",
+      "checkedAt": "2026-11-19T13:31:31Z",
       "li": {
-        "variant": "requests",
+        "variant": "chrome",
         "searches": 36,
-        "done": 36,
-        "requests": 37,
-        "blocked": 1,
-        "stoppedEarly": false,
-        "rows": 427,
-        "capped": 1,
-        "stalestHours": 0.8,
-        "firstBlockRequest": 8,
-        "firstBlockSecs": 550,
-        "minutes": 49.7
+        "done": 3,
+        "requests": 6,
+        "blocked": 3,
+        "stoppedEarly": true,
+        "rows": 68,
+        "capped": 0,
+        "stalestHours": 9.6,
+        "firstBlockRequest": 1,
+        "firstBlockSecs": 0,
+        "minutes": 19.2
       },
       "indeed": {
-        "searches": 170,
+        "searches": 34,
         "failed": 0,
-        "rows": 1980
+        "rows": 553
       },
       "welcometonl": {
         "rows": 1700
@@ -101290,7 +101502,7 @@
     "Hong Kong|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-19T04:41:22Z",
     "Hong Kong|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-19T04:40:21Z",
     "New Zealand|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-19T04:43:56Z",
-    "New Zealand|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-19T04:19:38Z",
+    "New Zealand|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-19T13:45:41Z",
     "New Zealand|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-19T04:56:31Z",
     "Australia|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-19T04:45:00Z",
     "Australia|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-19T04:46:21Z",
@@ -101317,343 +101529,66 @@
     "Dubai, United Arab Emirates|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-19T04:24:50Z",
     "Dubai, United Arab Emirates|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-19T04:33:33Z",
     "Japan|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-19T04:15:40Z",
-    "Japan|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-19T04:17:10Z",
-    "Japan|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-19T04:18:37Z"
+    "Japan|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-19T13:42:46Z",
+    "Japan|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-19T13:44:11Z"
   },
   "liLastRun": [
     {
       "s": 0,
       "loc": "Japan",
       "g": 0,
-      "windowH": 12.0,
-      "status": 200,
-      "cards": 20,
-      "bytes": 180404
-    },
-    {
-      "s": 90,
-      "loc": "Japan",
-      "g": 1,
-      "windowH": 12.0,
-      "status": 200,
-      "cards": 13,
-      "bytes": 150230
-    },
-    {
-      "s": 177,
-      "loc": "Japan",
-      "g": 2,
-      "windowH": 12.0,
-      "status": 200,
-      "cards": 15,
-      "bytes": 154042
-    },
-    {
-      "s": 238,
-      "loc": "New Zealand",
-      "g": 1,
-      "windowH": 12.0,
-      "status": 200,
-      "cards": 3,
-      "bytes": 110457
-    },
-    {
-      "s": 324,
-      "loc": "Ireland",
-      "g": 2,
-      "windowH": 12.0,
-      "status": 200,
-      "cards": 7,
-      "bytes": 122753
-    },
-    {
-      "s": 401,
-      "loc": "Kuala Lumpur, Malaysia",
-      "g": 0,
-      "windowH": 12.0,
-      "status": 200,
-      "cards": 7,
-      "bytes": 128562
-    },
-    {
-      "s": 483,
-      "loc": "Kuala Lumpur, Malaysia",
-      "g": 2,
-      "windowH": 12.0,
-      "status": 200,
-      "cards": 14,
-      "bytes": 150385
-    },
-    {
-      "s": 550,
-      "loc": "Dubai, United Arab Emirates",
-      "g": 1,
-      "windowH": 12.0,
+      "windowH": 10.3,
       "status": 429,
       "blocked": true,
       "title": "",
       "bytes": 24633
     },
     {
+      "s": 300,
+      "loc": "Japan",
+      "g": 0,
+      "windowH": 10.3,
+      "status": 429,
+      "blocked": true,
+      "title": "",
+      "bytes": 24633
+    },
+    {
+      "s": 675,
+      "loc": "Japan",
+      "g": 1,
+      "windowH": 10.4,
+      "status": 200,
+      "cards": 32,
+      "bytes": 242539
+    },
+    {
+      "s": 760,
+      "loc": "Japan",
+      "g": 2,
+      "windowH": 10.4,
+      "status": 200,
+      "cards": 35,
+      "bytes": 252241
+    },
+    {
       "s": 850,
-      "loc": "Dubai, United Arab Emirates",
-      "g": 1,
-      "windowH": 12.0,
-      "status": 200,
-      "cards": 2,
-      "bytes": 109916
-    },
-    {
-      "s": 925,
-      "loc": "United Kingdom",
-      "g": 1,
-      "windowH": 6.4,
-      "status": 200,
-      "cards": 13,
-      "bytes": 146426
-    },
-    {
-      "s": 990,
-      "loc": "Ireland",
-      "g": 0,
-      "windowH": 6.4,
-      "status": 200,
-      "cards": 3,
-      "bytes": 111434
-    },
-    {
-      "s": 1073,
-      "loc": "Dubai, United Arab Emirates",
-      "g": 2,
-      "windowH": 6.4,
-      "status": 200,
-      "cards": 1,
-      "bytes": 104470
-    },
-    {
-      "s": 1143,
-      "loc": "Singapore",
-      "g": 0,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 12,
-      "bytes": 143535
-    },
-    {
-      "s": 1221,
-      "loc": "Singapore",
-      "g": 2,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 4,
-      "bytes": 113007
-    },
-    {
-      "s": 1307,
-      "loc": "Hong Kong",
-      "g": 0,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 8,
-      "bytes": 129708
-    },
-    {
-      "s": 1391,
-      "loc": "Singapore",
-      "g": 1,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 7,
-      "bytes": 125739
-    },
-    {
-      "s": 1481,
-      "loc": "Hong Kong",
-      "g": 2,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 7,
-      "bytes": 123205
-    },
-    {
-      "s": 1542,
-      "loc": "Hong Kong",
-      "g": 1,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 7,
-      "bytes": 125463
-    },
-    {
-      "s": 1613,
-      "loc": "Kuala Lumpur, Malaysia",
-      "g": 1,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 7,
-      "bytes": 128030
-    },
-    {
-      "s": 1696,
       "loc": "New Zealand",
-      "g": 0,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 7,
-      "bytes": 125673
-    },
-    {
-      "s": 1760,
-      "loc": "Australia",
-      "g": 0,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 32,
-      "bytes": 211237
-    },
-    {
-      "s": 1841,
-      "loc": "Australia",
       "g": 1,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 14,
-      "bytes": 149657
+      "windowH": 10.4,
+      "status": 429,
+      "blocked": true,
+      "title": "",
+      "bytes": 24633
     },
     {
-      "s": 1918,
-      "loc": "Australia",
-      "g": 2,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 16,
-      "bytes": 154125
-    },
-    {
-      "s": 1997,
-      "loc": "Netherlands",
-      "g": 0,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 10,
-      "bytes": 136132
-    },
-    {
-      "s": 2072,
-      "loc": "Dubai, United Arab Emirates",
-      "g": 0,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 2,
-      "bytes": 110682
-    },
-    {
-      "s": 2160,
-      "loc": "Netherlands",
-      "g": 1,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 4,
-      "bytes": 114668
-    },
-    {
-      "s": 2223,
-      "loc": "Netherlands",
-      "g": 2,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 2,
-      "bytes": 105374
-    },
-    {
-      "s": 2313,
-      "loc": "Italy",
-      "g": 0,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 13,
-      "bytes": 145332
-    },
-    {
-      "s": 2381,
-      "loc": "Italy",
-      "g": 1,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 8,
-      "bytes": 126979
-    },
-    {
-      "s": 2451,
+      "s": 1150,
       "loc": "New Zealand",
-      "g": 2,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 3,
-      "bytes": 109065
-    },
-    {
-      "s": 2529,
-      "loc": "Italy",
-      "g": 2,
-      "windowH": 6.3,
+      "g": 1,
+      "windowH": 10.4,
       "status": 200,
       "cards": 1,
-      "bytes": 101632
-    },
-    {
-      "s": 2593,
-      "loc": "Germany",
-      "g": 0,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 60,
-      "bytes": 311287
-    },
-    {
-      "s": 2668,
-      "loc": "Germany",
-      "g": 1,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 21,
-      "bytes": 174503
-    },
-    {
-      "s": 2732,
-      "loc": "Germany",
-      "g": 2,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 40,
-      "bytes": 238974
-    },
-    {
-      "s": 2822,
-      "loc": "United Kingdom",
-      "g": 0,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 32,
-      "bytes": 210603
-    },
-    {
-      "s": 2902,
-      "loc": "United Kingdom",
-      "g": 2,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 11,
-      "bytes": 137343
-    },
-    {
-      "s": 2982,
-      "loc": "Ireland",
-      "g": 1,
-      "windowH": 6.3,
-      "status": 200,
-      "cards": 1,
-      "bytes": 103982
+      "bytes": 113870
     }
   ],
   "liHistory": [
@@ -102976,10 +102911,25 @@
       "firstBlockRequest": 8,
       "firstBlockSecs": 550,
       "minutes": 49.7
+    },
+    {
+      "at": "2026-11-19T13:31:31Z",
+      "variant": "chrome",
+      "searches": 36,
+      "done": 3,
+      "requests": 6,
+      "blocked": 3,
+      "stoppedEarly": true,
+      "rows": 68,
+      "capped": 0,
+      "stalestHours": 9.6,
+      "firstBlockRequest": 1,
+      "firstBlockSecs": 0,
+      "minutes": 19.2
     }
   ],
   "indeedRotation": {
-    "chunk": 3,
-    "priority": true
+    "chunk": 4,
+    "priority": false
   }
 }
