@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T21:51:14.495Z",
+  "generatedAt": "2026-11-20T02:58:39.268Z",
   "companies": {
     "adyen": {
       "ok": true,
@@ -50,7 +50,7 @@
     },
     "atlassian": {
       "ok": true,
-      "found": 251,
+      "found": 259,
       "roles": [
         {
           "title": "Senior Product Designer, Administration",
@@ -109,12 +109,6 @@
         {
           "title": "MBA Product Marketing Manager Intern- Enterprise, 2027 Summer U.S.",
           "url": "https://www.atlassian.com/company/careers/details/26845",
-          "location": "San Francisco or Remote",
-          "postedDate": null
-        },
-        {
-          "title": "Product Management Intern, 2027 Summer U.S.",
-          "url": "https://www.atlassian.com/company/careers/details/26274",
           "location": "San Francisco or Remote",
           "postedDate": null
         },
@@ -185,6 +179,18 @@
           "postedDate": null
         },
         {
+          "title": "Principal Product Manager, Enterprise Platform",
+          "url": "https://www.atlassian.com/company/careers/details/28956",
+          "location": "Gdańsk or Remote",
+          "postedDate": null
+        },
+        {
+          "title": "Group Product Manager, Global Experiences Platform",
+          "url": "https://www.atlassian.com/company/careers/details/28403",
+          "location": "Seattle or Remote",
+          "postedDate": null
+        },
+        {
           "title": "Product Manager, Atlassian Government Cloud",
           "url": "https://www.atlassian.com/company/careers/details/27433",
           "location": "Seattle or Remote",
@@ -236,12 +242,6 @@
           "title": "Senior Product Manager, DX - Data Platform and Integrations",
           "url": "https://www.atlassian.com/company/careers/details/26663",
           "location": "Salt Lake City or Remote",
-          "postedDate": null
-        },
-        {
-          "title": "Group Product Manager, Global Experiences Platform",
-          "url": "https://www.atlassian.com/company/careers/details/28403",
-          "location": "Seattle or Remote",
           "postedDate": null
         },
         {
@@ -359,7 +359,7 @@
     },
     "kiwibank": {
       "ok": true,
-      "found": 24,
+      "found": 25,
       "roles": [
         {
           "title": "Product Manager - Unsecured Lending",
@@ -466,8 +466,40 @@
       ]
     },
     "bmw-group": {
-      "ok": false,
-      "error": "https://jobs.bmwgroup.com/search?q=design: page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.bmwgroup.com/search?q=design\nCall log:\n  - navigating to \"https://jobs.bmwgroup.com/search?q=design\", waiting until \"networkidle\"\n"
+      "ok": true,
+      "found": 10,
+      "roles": [
+        {
+          "title": "Junior Designer, Interaction Design",
+          "url": "https://jobs.bmwgroup.com/job/Junior-Designer%2C-Interaction-Design/187571-en_US",
+          "location": "Santa Monica, CA, USA,",
+          "postedDate": null
+        },
+        {
+          "title": "Creative Director, Automotive Design",
+          "url": "https://jobs.bmwgroup.com/job/Creative-Director%2C-Automotive-Design/200580-en_US",
+          "location": "Santa Monica, CA, USA,",
+          "postedDate": null
+        },
+        {
+          "title": "Associate Director - New Business Design",
+          "url": "https://jobs.bmwgroup.com/job/Associate-Director-New-Business-Design/192470-en_US",
+          "location": "Santa Monica, CA, USA,",
+          "postedDate": null
+        },
+        {
+          "title": "Intern, Automotive Design - Spring 2027",
+          "url": "https://jobs.bmwgroup.com/job/Intern%2C-Automotive-Design-Spring-2027/192989-en_US",
+          "location": "Santa Monica, CA, USA,",
+          "postedDate": null
+        },
+        {
+          "title": "Intern Generative AI for Vehicle Design (f/m/x)",
+          "url": "https://jobs.bmwgroup.com/job/Intern-Generative-AI-for-Vehicle-Design-%28fmx%29/197092-en_US",
+          "location": "Job Description:",
+          "postedDate": null
+        }
+      ]
     },
     "google": {
       "ok": true,
@@ -494,6 +526,12 @@
         {
           "title": "Staff UX Designer, Search Travel Journeys",
           "url": "https://www.google.com/about/careers/applications/jobs/results/135930103866499782-staff-ux-designer-search-travel-journeys?q=UX",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Staff UX Designer, Workspace GenAI Foundations Platform",
+          "url": "https://www.google.com/about/careers/applications/jobs/results/107537930498515654-senior-staff-ux-designer-workspace-genai-foundations-platform?q=UX",
           "location": "",
           "postedDate": null
         },
@@ -586,19 +624,31 @@
           "url": "https://www.google.com/about/careers/applications/jobs/results/93915359387493062-ux-designer-cloud-finops-and-billing?q=UX",
           "location": "",
           "postedDate": null
-        },
-        {
-          "title": "Staff UX Designer, AI and Creation, Slides",
-          "url": "https://www.google.com/about/careers/applications/jobs/results/127242742236357318-staff-ux-designer-ai-and-creation-slides?q=UX",
-          "location": "",
-          "postedDate": null
         }
       ]
     },
     "ericsson": {
       "ok": true,
-      "found": 14,
+      "found": 20,
       "roles": [
+        {
+          "title": "New Grad-Board Power Design-BJ",
+          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
+          "location": "Beijing, China",
+          "postedDate": null
+        },
+        {
+          "title": "Manager of System Design Team 1",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
+          "location": "Yokohama, Japan",
+          "postedDate": null
+        },
+        {
+          "title": "Network Design Optimization Internship",
+          "url": "https://jobs.ericsson.com/careers/job/563121776415307?domain=ericsson.com",
+          "location": "Ukraine",
+          "postedDate": null
+        },
         {
           "title": "Radio HW Design Power Amplifier",
           "url": "https://jobs.ericsson.com/careers/job/563121776262128?domain=ericsson.com",
@@ -616,43 +666,13 @@
           "url": "https://jobs.ericsson.com/careers/job/563121777152640?domain=ericsson.com",
           "location": "Yokohama, Japan",
           "postedDate": null
-        },
-        {
-          "title": "Principal CAD RTL Methodology and Design Engineer",
-          "url": "https://jobs.ericsson.com/careers/job/563121777481794?domain=ericsson.com",
-          "location": "Austin, United States",
-          "postedDate": null
-        },
-        {
-          "title": "New Grad-Board Power Design-BJ",
-          "url": "https://jobs.ericsson.com/careers/job/563121777172791?domain=ericsson.com",
-          "location": "Beijing, China",
-          "postedDate": null
-        },
-        {
-          "title": "Manager of System Design Team 1",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
-          "location": "Yokohama, Japan",
-          "postedDate": null
-        },
-        {
-          "title": "Master Thesis: Applied AI in Product Design",
-          "url": "https://jobs.ericsson.com/careers/job/563121777398844?domain=ericsson.com",
-          "location": "Stockholm, Sweden",
-          "postedDate": null
         }
       ]
     },
     "vodafone": {
       "ok": true,
-      "found": 20,
+      "found": 19,
       "roles": [
-        {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "Milan, Italy",
-          "postedDate": null
-        },
         {
           "title": "Praktikant Innovation Garage mit Schwerpunkt IoT Backend Development & Design (m/w/d) in Düsseldorf",
           "url": "https://jobs.vodafone.com/careers/job/563018687652949?domain=vodafone.com",
@@ -666,9 +686,9 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
-          "location": "Pune, India",
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "Milan, Italy",
           "postedDate": null
         },
         {
@@ -678,15 +698,15 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
-          "location": "Pune, India",
-          "postedDate": null
-        },
-        {
           "title": "Secure by Design Manager Telecom Networks",
           "url": "https://jobs.vodafone.com/careers/job/563018698373038?domain=vodafone.com",
           "location": "Lisbon, Portugal",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Manager - Secure by Design - CIS - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018698178807?domain=vodafone.com",
+          "location": "Pune, India",
           "postedDate": null
         },
         {
@@ -750,6 +770,12 @@
       "found": 20,
       "roles": [
         {
+          "title": "Design Lead: Multimedia",
+          "url": "https://citi.eightfold.ai/careers/job/859037414561?domain=citi.com",
+          "location": "Schaumburg, United States; Irving, United States; New Castle, United States",
+          "postedDate": null
+        },
+        {
           "title": "Global Design & Construction Program Lead - Senior Vice President",
           "url": "https://citi.eightfold.ai/careers/job/859038455499?domain=citi.com",
           "location": "New York, United States",
@@ -759,12 +785,6 @@
           "title": "International Office Design & Utility Lead - Vice President",
           "url": "https://citi.eightfold.ai/careers/job/859038663684?domain=citi.com",
           "location": "Mumbai, India",
-          "postedDate": null
-        },
-        {
-          "title": "Design Lead: Multimedia",
-          "url": "https://citi.eightfold.ai/careers/job/859037414561?domain=citi.com",
-          "location": "Schaumburg, United States; Irving, United States; New Castle, United States",
           "postedDate": null
         },
         {
@@ -968,12 +988,6 @@
           "url": "https://higher.gs.com/roles/174474",
           "location": "Chicago·United States",
           "postedDate": null
-        },
-        {
-          "title": "Transaction Banking (TxB), Product Management, Vice President, London",
-          "url": "https://higher.gs.com/roles/185092",
-          "location": "London·United Kingdom",
-          "postedDate": null
         }
       ]
     },
@@ -1055,7 +1069,7 @@
     },
     "vanderlande": {
       "ok": true,
-      "found": 242,
+      "found": 235,
       "roles": [
         {
           "title": "Mechanical Design Engineer",
@@ -1312,27 +1326,15 @@
       "found": 18,
       "roles": [
         {
-          "title": "Electromechanical Design Intern (12 Months)",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527606",
-          "location": "Congleton or Newport",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Fire Alarm Systems Design Lead",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/522889",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "R&D Mechanical Designer",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525100",
-          "location": "Livermore, California, United States of America",
-          "postedDate": null
-        },
-        {
           "title": "Electronics Design Summer Placement (3 months)",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/529191",
           "location": "Congleton, Cheshire East, UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND",
+          "postedDate": null
+        },
+        {
+          "title": "Electromechanical Design Intern (12 Months)",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527606",
+          "location": "Congleton or Newport",
           "postedDate": null
         },
         {
@@ -1345,6 +1347,12 @@
           "title": "Degree Apprentice - Software Design Engineer",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/527509",
           "location": "Congleton, Cheshire East, UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND",
+          "postedDate": null
+        },
+        {
+          "title": "R&D Mechanical Designer",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/525100",
+          "location": "Livermore, California, United States of America",
           "postedDate": null
         },
         {
@@ -1372,27 +1380,27 @@
           "postedDate": null
         },
         {
-          "title": "Senior Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526713",
-          "location": "Bellevue, Washington, United States of America",
-          "postedDate": null
-        },
-        {
           "title": "Principal Product Manager",
           "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526691",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Principal Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526693",
-          "location": "",
+          "title": "Product quality manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/529467",
+          "location": "Thane, Maharashtra, India",
           "postedDate": null
         },
         {
-          "title": "Product Marketing Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/528014",
-          "location": "Pune, Maharashtra, India",
+          "title": "Principal Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526689",
+          "location": "Bellevue, Washington, United States of America",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526713",
+          "location": "Bellevue, Washington, United States of America",
           "postedDate": null
         }
       ]
