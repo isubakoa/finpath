@@ -8375,7 +8375,7 @@
       "url": "https://careers.mercari.com/en/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Workable board (apply.workable.com/mercari), read by check.php's Workable adapter. 138 open roles on 2026-11-16, all in Tokyo (Minato), incl. Design Manager and Senior Design Manager (Mercari Marketplace), Senior Product Designer, Design System Designer and several Product Manager roles.",
+      "openNote": "Read by the browser scraper from careers.mercari.com/en/jobs/ (Isu's choice, 2026-11-24; before that check.php's Workable adapter, board `mercari`). 141 open roles on 2026-11-24, all in Tokyo (Minato), incl. Design Manager and Senior Design Manager (Mercari Marketplace), Senior Product Designer, Design System Designer and several Product Manager roles.",
       "match": {
         "aliases": [
           "Mercari, Inc.",
@@ -8384,7 +8384,7 @@
         ]
       },
       "ats": {
-        "type": "workable",
+        "type": "snapshot",
         "slug": "mercari"
       }
     },
