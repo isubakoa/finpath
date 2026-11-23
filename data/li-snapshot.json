@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T03:23:22Z",
+  "generatedAt": "2026-11-23T12:26:46Z",
   "companies": {
     "google": {
       "roles": [
@@ -4759,7 +4759,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-22"
+          "lastSeenAt": "2026-11-23"
         },
         {
           "title": "Senior Principal Product Manager - Recommendation & Lifestyle Intelligence (all genders)",
@@ -4817,13 +4817,13 @@
           "title": "Principal Product Strategist",
           "location": "Singapore, Singapore",
           "url": "https://www.linkedin.com/jobs/view/4488680845",
-          "postedDate": "2026-11-11",
+          "postedDate": "2026-11-23",
           "source": "li",
           "sources": [
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-11"
+          "lastSeenAt": "2026-11-23"
         },
         {
           "title": "Principal Product Strategist",
@@ -7249,7 +7249,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-22"
+          "lastSeenAt": "2026-11-23"
         },
         {
           "title": "UX Strateeg",
@@ -7383,13 +7383,13 @@
           "title": "Senior Product Strategy Manager - Telco",
           "location": "Singapore, Singapore",
           "url": "https://www.linkedin.com/jobs/view/4484802334",
-          "postedDate": "2026-11-17",
+          "postedDate": "2026-11-23",
           "source": "li",
           "sources": [
             "li"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-17"
+          "lastSeenAt": "2026-11-23"
         },
         {
           "title": "Head of Product, Multi-Product Experience",
@@ -13535,7 +13535,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-22"
+          "lastSeenAt": "2026-11-23"
         },
         {
           "title": "Staff Product Manager, AI Management",
@@ -13783,7 +13783,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-22"
+          "lastSeenAt": "2026-11-23"
         }
       ]
     },
@@ -13947,7 +13947,7 @@
             "indeed"
           ],
           "sponsorshipSignal": [],
-          "lastSeenAt": "2026-11-21"
+          "lastSeenAt": "2026-11-23"
         }
       ]
     },
@@ -14460,6 +14460,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-19"
+        },
+        {
+          "title": "Associate Director, Product Marketing - 12 Month FTC",
+          "location": "London, ENG, UK",
+          "url": "https://uk.indeed.com/viewjob?jk=006e1abd33d19708",
+          "postedDate": "2026-11-19",
+          "source": "indeed",
+          "sources": [
+            "indeed"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-23"
         }
       ]
     },
@@ -16190,6 +16202,22 @@
           "lastSeenAt": "2026-11-22"
         }
       ]
+    },
+    "trust-bank": {
+      "roles": [
+        {
+          "title": "Product Lead",
+          "location": "Singapore, Singapore",
+          "url": "https://www.linkedin.com/jobs/view/4493607531",
+          "postedDate": "2026-11-23",
+          "source": "li",
+          "sources": [
+            "li"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-23"
+        }
+      ]
     }
   },
   "openMarket": {
@@ -16354,6 +16382,90 @@
         "title": "Senior Design Strategist",
         "location": "Auckland City, N, New Zealand",
         "url": "https://nz.indeed.com/viewjob?jk=9571c59e40e5d393",
+        "postedDate": "2026-11-23",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "Ministry of Defence of Singapore",
+        "market": "Singapore",
+        "title": "Manager (Plans - User Experience)",
+        "location": "Singapore, Singapore",
+        "url": "https://www.linkedin.com/jobs/view/4492602577",
+        "postedDate": "2026-11-23",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "Manulife",
+        "market": "Singapore",
+        "title": "Director, Product Strategy and Governance",
+        "location": "Singapore, Singapore",
+        "url": "https://www.linkedin.com/jobs/view/4493774316",
+        "postedDate": "2026-11-23",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "Manulife",
+        "market": "Singapore",
+        "title": "Manager, Product Strategy and Governance",
+        "location": "Singapore, Singapore",
+        "url": "https://www.linkedin.com/jobs/view/4493767416",
+        "postedDate": "2026-11-23",
+        "source": "li",
+        "sources": [
+          "li"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "Don",
+        "market": "Australia",
+        "title": "Product Portfolio Manager - Out of Home",
+        "location": "Castlemaine, VIC, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=9f927838814163fa",
+        "postedDate": "2026-11-23",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "ASTRO",
+        "market": "Malaysia",
+        "title": "Senior Content Strategist",
+        "location": "Bukit Jalil, M14, Malaysia",
+        "url": "https://malaysia.indeed.com/viewjob?jk=60b1242888e2004d",
+        "postedDate": "2026-11-23",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "Barker College",
+        "market": "Australia",
+        "title": "Head of Design & Technology",
+        "location": "Hornsby, NSW, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=3f1620a6c737955c",
         "postedDate": "2026-11-23",
         "source": "indeed",
         "sources": [
@@ -19480,6 +19592,48 @@
         "title": "Marketplace Product Hunter \u2013 Amazon & noon UAE",
         "location": "Dubai, DU, United Arab Emirates",
         "url": "https://ae.indeed.com/viewjob?jk=c1aa82a81aef6248",
+        "postedDate": "2026-11-20",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "Sun Life Hong Kong Ltd",
+        "market": "Hong Kong",
+        "title": "Associate Director, Product Proposition",
+        "location": "Hong Kong",
+        "url": "https://hk.indeed.com/viewjob?jk=e9839621840b9e45",
+        "postedDate": "2026-11-20",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "BioNTech",
+        "market": "Germany",
+        "title": "Associate Director Protein & ADC Drug Product",
+        "location": "Mainz, RP, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=d8cdef91d4cc54f2",
+        "postedDate": "2026-11-20",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "Premium Credit Limited",
+        "market": "United Kingdom",
+        "title": "Senior Product Manager",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=e2884b45cb993a31",
         "postedDate": "2026-11-20",
         "source": "indeed",
         "sources": [
@@ -22723,34 +22877,6 @@
         "lastSeenAt": "2026-11-21"
       },
       {
-        "employer": "Sun Life Hong Kong Ltd",
-        "market": "Hong Kong",
-        "title": "Associate Director, Product Proposition",
-        "location": "Hong Kong",
-        "url": "https://hk.indeed.com/viewjob?jk=e9839621840b9e45",
-        "postedDate": "2026-11-20",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-21"
-      },
-      {
-        "employer": "BioNTech",
-        "market": "Germany",
-        "title": "Associate Director Protein & ADC Drug Product",
-        "location": "Mainz, RP, Germany",
-        "url": "https://de.indeed.com/viewjob?jk=d8cdef91d4cc54f2",
-        "postedDate": "2026-11-20",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-21"
-      },
-      {
         "employer": "3S group",
         "market": "United Arab Emirates",
         "title": "Business Development & Supplier Management Manager \u2013 Sanitaryware product",
@@ -23086,20 +23212,6 @@
         "sponsorshipSignal": [
           "visa sponsorship"
         ],
-        "lastSeenAt": "2026-11-21"
-      },
-      {
-        "employer": "Premium Credit Limited",
-        "market": "United Kingdom",
-        "title": "Senior Product Manager",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=e2884b45cb993a31",
-        "postedDate": "2026-11-20",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-21"
       },
       {
@@ -24434,7 +24546,77 @@
           "indeed"
         ],
         "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-22"
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "SiteMinder",
+        "market": "Australia",
+        "title": "Head of Design",
+        "location": "Sydney, NSW, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=0c7b26eed2b19030",
+        "postedDate": "2026-11-19",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "FWD Insurance",
+        "market": "Malaysia",
+        "title": "Manager, Business Planning & Strategy",
+        "location": "KL Eco City, M14, Malaysia",
+        "url": "https://malaysia.indeed.com/viewjob?jk=e700f4588c6a53b6",
+        "postedDate": "2026-11-19",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "All Energy Contracting Pty Ltd",
+        "market": "Australia",
+        "title": "Design Lead",
+        "location": "Hamilton, QLD, Australia",
+        "url": "https://au.indeed.com/viewjob?jk=1ead15818f6c500f",
+        "postedDate": "2026-11-19",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "Expedia Group",
+        "market": "United Kingdom",
+        "title": "Director, User Experience Design (InsurTech)",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=6e7f05dba18aaf5e",
+        "postedDate": "2026-11-19",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "Deliveroo",
+        "market": "Italy",
+        "title": "Commercial Strategy Manager",
+        "location": "Milano, LOM, Italy",
+        "url": "https://it.indeed.com/viewjob?jk=cad4ab2a0693d61b",
+        "postedDate": "2026-11-19",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
       },
       {
         "employer": "OCTA Farmacie Groep",
@@ -24773,20 +24955,6 @@
         "lastSeenAt": "2026-11-22"
       },
       {
-        "employer": "SiteMinder",
-        "market": "Australia",
-        "title": "Head of Design",
-        "location": "Sydney, NSW, Australia",
-        "url": "https://au.indeed.com/viewjob?jk=0c7b26eed2b19030",
-        "postedDate": "2026-11-19",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-22"
-      },
-      {
         "employer": "Electrolux Professional Group",
         "market": "Italy",
         "title": "Technical Product Owner - Connected Solutions",
@@ -24869,34 +25037,6 @@
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-22"
-      },
-      {
-        "employer": "FWD Insurance",
-        "market": "Malaysia",
-        "title": "Manager, Business Planning & Strategy",
-        "location": "KL Eco City, M14, Malaysia",
-        "url": "https://malaysia.indeed.com/viewjob?jk=e700f4588c6a53b6",
-        "postedDate": "2026-11-19",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-21"
-      },
-      {
-        "employer": "All Energy Contracting Pty Ltd",
-        "market": "Australia",
-        "title": "Design Lead",
-        "location": "Hamilton, QLD, Australia",
-        "url": "https://au.indeed.com/viewjob?jk=1ead15818f6c500f",
-        "postedDate": "2026-11-19",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-21"
       },
       {
         "employer": "Avery Dennison",
@@ -25048,20 +25188,6 @@
         "source": "li",
         "sources": [
           "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-21"
-      },
-      {
-        "employer": "Expedia Group",
-        "market": "United Kingdom",
-        "title": "Director, User Experience Design (InsurTech)",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=6e7f05dba18aaf5e",
-        "postedDate": "2026-11-19",
-        "source": "indeed",
-        "sources": [
-          "indeed"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-21"
@@ -25650,20 +25776,6 @@
         "source": "li",
         "sources": [
           "li"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-21"
-      },
-      {
-        "employer": "Deliveroo",
-        "market": "Italy",
-        "title": "Commercial Strategy Manager",
-        "location": "Milano, LOM, Italy",
-        "url": "https://it.indeed.com/viewjob?jk=cad4ab2a0693d61b",
-        "postedDate": "2026-11-19",
-        "source": "indeed",
-        "sources": [
-          "indeed"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-21"
@@ -29915,6 +30027,48 @@
         "lastSeenAt": "2026-11-23"
       },
       {
+        "employer": "Speexx",
+        "market": "Germany",
+        "title": "Brand & Design Lead (m/f/d)",
+        "location": "M\u00fcnchen, BY, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=59b9d5ccfc082aa7",
+        "postedDate": "2026-11-18",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "ORWELL PARK SCHOOL",
+        "market": "United Kingdom",
+        "title": "Head of Design Technology",
+        "location": "Ipswich, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=e375ffa1f413b918",
+        "postedDate": "2026-11-18",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "carwow",
+        "market": "United Kingdom",
+        "title": "Senior Product Manager (Used Cars)",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=93965ecb2f33387c",
+        "postedDate": "2026-11-18",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
         "employer": "Optics11",
         "market": "Netherlands",
         "title": "Senior Product Marketing Manager",
@@ -30153,20 +30307,6 @@
         "lastSeenAt": "2026-11-22"
       },
       {
-        "employer": "Speexx",
-        "market": "Germany",
-        "title": "Brand & Design Lead (m/f/d)",
-        "location": "M\u00fcnchen, BY, Germany",
-        "url": "https://de.indeed.com/viewjob?jk=59b9d5ccfc082aa7",
-        "postedDate": "2026-11-18",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-22"
-      },
-      {
         "employer": "B. Braun",
         "market": "Germany",
         "title": "Product Owner (f/m/d) Offer Management Solutions",
@@ -30256,20 +30396,6 @@
         "title": "Product Owner",
         "location": "Amsterdam Westpoort, NH, Netherlands",
         "url": "https://nl.indeed.com/viewjob?jk=47dcb9333897a11a",
-        "postedDate": "2026-11-18",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-21"
-      },
-      {
-        "employer": "ORWELL PARK SCHOOL",
-        "market": "United Kingdom",
-        "title": "Head of Design Technology",
-        "location": "Ipswich, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=e375ffa1f413b918",
         "postedDate": "2026-11-18",
         "source": "indeed",
         "sources": [
@@ -37465,6 +37591,20 @@
         "lastSeenAt": "2026-11-23"
       },
       {
+        "employer": "Femtasy",
+        "market": "Germany",
+        "title": "Senior Product Manager \u2013 Pricing, Packaging & Positioning (m/f/d)",
+        "location": "Berlin, BE, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=a15b2f9320598bb4",
+        "postedDate": "2026-11-17",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
         "employer": "AMZ AI & TECHNOLOGY SOLUTIONS PTE. LTD.",
         "market": "Singapore",
         "title": "Avaloq Product Owner",
@@ -44063,6 +44203,48 @@
         "lastSeenAt": "2026-11-23"
       },
       {
+        "employer": "Westcliff High School for Boys Academy",
+        "market": "United Kingdom",
+        "title": "Head of Design and Technology",
+        "location": "Westcliff-on-Sea, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=feaec0dcd3b8ac67",
+        "postedDate": "2026-11-16",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "AKENO",
+        "market": "Germany",
+        "title": "Product Marketing Manager (all genders)",
+        "location": "Hamburg, HH, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=30a5730585366155",
+        "postedDate": "2026-11-16",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
+        "employer": "TDK Corporation",
+        "market": "Germany",
+        "title": "Working student UX Design & Communication for Global Incubation Program (m/f/d)",
+        "location": "M\u00fcnchen, BY, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=f845e45d12279976",
+        "postedDate": "2026-11-16",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
         "employer": "Publitas",
         "market": "Netherlands",
         "title": "Senior Product Manager, Data & Platform (SaaS / Remote)",
@@ -44315,20 +44497,6 @@
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-22"
-      },
-      {
-        "employer": "Westcliff High School for Boys Academy",
-        "market": "United Kingdom",
-        "title": "Head of Design and Technology",
-        "location": "Westcliff-on-Sea, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=feaec0dcd3b8ac67",
-        "postedDate": "2026-11-16",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-21"
       },
       {
         "employer": "Alzheimer's Society",
@@ -51001,6 +51169,20 @@
         "lastSeenAt": "2026-11-23"
       },
       {
+        "employer": "Just Eat Takeaway.com",
+        "market": "United Kingdom",
+        "title": "Senior Product Manager",
+        "location": "London, ENG, UK",
+        "url": "https://uk.indeed.com/viewjob?jk=f033156da62a7191",
+        "postedDate": "2026-11-14",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
         "employer": "OKB Technology Company Limited",
         "market": "Hong Kong",
         "title": "Senior Product Designer, Fiat/EarnNew",
@@ -51062,20 +51244,6 @@
         "title": "Ad Creative Strategist (Creative Producer)New",
         "location": "Hong Kong",
         "url": "https://hk.indeed.com/viewjob?jk=c490da9cee3522dc",
-        "postedDate": "2026-11-14",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-21"
-      },
-      {
-        "employer": "Just Eat Takeaway.com",
-        "market": "United Kingdom",
-        "title": "Senior Product Manager",
-        "location": "London, ENG, UK",
-        "url": "https://uk.indeed.com/viewjob?jk=7b21ec943df64b62",
         "postedDate": "2026-11-14",
         "source": "indeed",
         "sources": [
@@ -53793,6 +53961,20 @@
         "lastSeenAt": "2026-11-23"
       },
       {
+        "employer": "Sovendus GmbH",
+        "market": "Germany",
+        "title": "Founding Product Lead \u2013 New Venture (m/f/d)",
+        "location": "Berlin, BE, Germany",
+        "url": "https://de.indeed.com/viewjob?jk=ec68bf2a832e784f",
+        "postedDate": "2026-11-13",
+        "source": "indeed",
+        "sources": [
+          "indeed"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-23"
+      },
+      {
         "employer": "Mott MacDonald",
         "market": "United Kingdom",
         "title": "Head of UX Design",
@@ -53924,20 +54106,6 @@
         "title": "Senior Product Manager LogicSteel",
         "location": "Rijssen, OV, Netherlands",
         "url": "https://nl.indeed.com/viewjob?jk=38191687d0f44cfa",
-        "postedDate": "2026-11-13",
-        "source": "indeed",
-        "sources": [
-          "indeed"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-22"
-      },
-      {
-        "employer": "Sovendus GmbH",
-        "market": "Germany",
-        "title": "Founding Product Lead \u2013 New Venture (m/f/d)",
-        "location": "Berlin, BE, Germany",
-        "url": "https://de.indeed.com/viewjob?jk=ec68bf2a832e784f",
         "postedDate": "2026-11-13",
         "source": "indeed",
         "sources": [
@@ -93820,25 +93988,25 @@
     "prioritySweepHours": 14,
     "liEveryHours": 7,
     "sourceHealth": {
-      "checkedAt": "2026-11-23T02:53:57Z",
+      "checkedAt": "2026-11-23T12:14:04Z",
       "li": {
         "variant": "requests",
         "searches": 36,
-        "done": 12,
-        "requests": 15,
+        "done": 1,
+        "requests": 4,
         "blocked": 3,
         "stoppedEarly": true,
-        "rows": 59,
+        "rows": 19,
         "capped": 0,
-        "stalestHours": 10.3,
+        "stalestHours": 19.4,
         "firstBlockRequest": 2,
-        "firstBlockSecs": 68,
-        "minutes": 29.4
+        "firstBlockSecs": 87,
+        "minutes": 12.7
       },
       "indeed": {
-        "searches": 170,
+        "searches": 34,
         "failed": 0,
-        "rows": 1833
+        "rows": 503
       },
       "welcometonl": {
         "rows": 1700
@@ -93847,7 +94015,7 @@
   },
   "liCoverage": {
     "Singapore|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-23T03:10:05Z",
-    "Singapore|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-22T17:04:31Z",
+    "Singapore|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-23T12:14:04Z",
     "Singapore|\"design thinking lead\" OR \"design technologist\" OR \"creative technologist\" OR \"vp of design\" OR \"head of product design\" OR \"head of design\" OR \"design director\"": "2026-11-23T03:11:12Z",
     "Hong Kong|\"product manager\" OR \"product owner\" OR \"product lead\" OR \"product strategist\" OR \"senior product designer\" OR \"senior ux designer\" OR \"senior ux/ui designer\" OR \"experience designer\" OR \"cx designer\" OR \"lead product designer\"": "2026-11-23T03:12:20Z",
     "Hong Kong|\"principal product designer\" OR \"staff product designer\" OR \"design lead\" OR \"ux lead\" OR \"ux strategist\" OR \"ux consultant\" OR \"ux specialist\" OR \"senior design manager\" OR \"senior ux manager\" OR \"design strategist\"": "2026-11-22T17:12:09Z",
@@ -93886,137 +94054,38 @@
   "liLastRun": [
     {
       "s": 0,
-      "loc": "Ireland",
-      "g": 1,
-      "windowH": 11.2,
-      "status": 200,
-      "cards": 0,
-      "bytes": 92560
-    },
-    {
-      "s": 68,
-      "loc": "Japan",
-      "g": 0,
-      "windowH": 11.1,
-      "status": 429,
-      "blocked": true,
-      "title": "",
-      "bytes": 24633
-    },
-    {
-      "s": 368,
-      "loc": "Japan",
-      "g": 0,
-      "windowH": 11.1,
-      "status": 200,
-      "cards": 7,
-      "bytes": 128465
-    },
-    {
-      "s": 434,
-      "loc": "Ireland",
-      "g": 2,
-      "windowH": 11.2,
-      "status": 200,
-      "cards": 1,
-      "bytes": 100490
-    },
-    {
-      "s": 508,
-      "loc": "Kuala Lumpur, Malaysia",
-      "g": 0,
-      "windowH": 11.2,
-      "status": 200,
-      "cards": 5,
-      "bytes": 121234
-    },
-    {
-      "s": 585,
-      "loc": "Kuala Lumpur, Malaysia",
-      "g": 2,
-      "windowH": 11.2,
-      "status": 200,
-      "cards": 5,
-      "bytes": 119072
-    },
-    {
-      "s": 648,
-      "loc": "Dubai, United Arab Emirates",
-      "g": 1,
-      "windowH": 11.2,
-      "status": 200,
-      "cards": 3,
-      "bytes": 112180
-    },
-    {
-      "s": 720,
-      "loc": "United Kingdom",
-      "g": 1,
-      "windowH": 11.1,
-      "status": 200,
-      "cards": 4,
-      "bytes": 114678
-    },
-    {
-      "s": 804,
-      "loc": "Ireland",
-      "g": 0,
-      "windowH": 11.1,
-      "status": 200,
-      "cards": 2,
-      "bytes": 106133
-    },
-    {
-      "s": 891,
-      "loc": "Dubai, United Arab Emirates",
-      "g": 2,
-      "windowH": 11.1,
-      "status": 200,
-      "cards": 2,
-      "bytes": 106487
-    },
-    {
-      "s": 968,
       "loc": "Singapore",
-      "g": 0,
-      "windowH": 11.2,
+      "g": 1,
+      "windowH": 20.2,
       "status": 200,
-      "cards": 18,
-      "bytes": 161803
+      "cards": 19,
+      "bytes": 164864
     },
     {
-      "s": 1035,
-      "loc": "Singapore",
-      "g": 2,
-      "windowH": 11.1,
-      "status": 200,
-      "cards": 6,
-      "bytes": 119126
-    },
-    {
-      "s": 1103,
+      "s": 87,
       "loc": "Hong Kong",
-      "g": 0,
-      "windowH": 11.1,
-      "status": 200,
-      "cards": 6,
-      "bytes": 121485
-    },
-    {
-      "s": 1165,
-      "loc": "Singapore",
-      "g": 1,
-      "windowH": 11.1,
+      "g": 2,
+      "windowH": 20.2,
       "status": 429,
       "blocked": true,
       "title": "",
       "bytes": 24633
     },
     {
-      "s": 1465,
-      "loc": "Singapore",
+      "s": 388,
+      "loc": "Hong Kong",
+      "g": 2,
+      "windowH": 20.2,
+      "status": 429,
+      "blocked": true,
+      "title": "",
+      "bytes": 24633
+    },
+    {
+      "s": 761,
+      "loc": "Kuala Lumpur, Malaysia",
       "g": 1,
-      "windowH": 11.1,
+      "windowH": 20.3,
       "status": 429,
       "blocked": true,
       "title": "",
@@ -95493,10 +95562,25 @@
       "firstBlockRequest": 2,
       "firstBlockSecs": 68,
       "minutes": 29.4
+    },
+    {
+      "at": "2026-11-23T12:14:04Z",
+      "variant": "requests",
+      "searches": 36,
+      "done": 1,
+      "requests": 4,
+      "blocked": 3,
+      "stoppedEarly": true,
+      "rows": 19,
+      "capped": 0,
+      "stalestHours": 19.4,
+      "firstBlockRequest": 2,
+      "firstBlockSecs": 87,
+      "minutes": 12.7
     }
   ],
   "indeedRotation": {
-    "chunk": 3,
-    "priority": true
+    "chunk": 4,
+    "priority": false
   }
 }
