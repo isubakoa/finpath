@@ -11,6 +11,7 @@ Sources (one generator each, all yielding (source, row)):
   indeed        JobSpy keyword searches over the SEARCH_TERMS x LOCATIONS grid,
                 in rotating chunks (run_indeed_searches).
   welcometonl   welcome-to-nl.nl's search backend (welcome_to_nl.py).
+  hirehelsinki  myhelsinki.fi Hire Helsinki's job feed, Finland only (hire_helsinki.py).
 Retired: Glassdoor and Google (2026-09: bot walls; Glassdoor's API is gone), Bayt
 (2026-10-26: Cloudflare refused GitHub's runner on 35 of 38 searches, its
 robots.txt bars crawling search results, and it added ~14 roles in our markets
@@ -78,7 +79,7 @@ from match import (
 # keeps its url. Unknown sources rank after everything listed.
 # "bayt" and "uxwork" stay (retired 2026-10-26/27) until their last roles expire
 # from the snapshot.
-SOURCE_PRECEDENCE = {"ats": 0, "li": 1, "indeed": 2, "bayt": 3, "welcometonl": 4, "uxwork": 5}
+SOURCE_PRECEDENCE = {"ats": 0, "li": 1, "indeed": 2, "bayt": 3, "welcometonl": 4, "hirehelsinki": 5, "uxwork": 6}
 
 
 def _source_rank(source):
@@ -198,16 +199,16 @@ DESIGN_TERMS = [
 
 SEARCH_TERMS = PRODUCT_TERMS + DESIGN_TERMS
 
-# Target markets (2026-10-27: Japan, South Korea, Sweden and Portugal removed;
-# 2026-11-16: Japan back, for Mercari and other Tokyo employers). The
-# app's accepted countries (app.js TARGET_COUNTRY_NAMES) are the same list.
+# Searched markets (2026-10-27: Japan, South Korea, Sweden and Portugal removed;
+# Japan back 2026-11-16, out again 2026-11-24: Mercari's own board covers it).
+# The app's accepted countries (app.js TARGET_COUNTRY_NAMES) are these plus
+# EXTRA_MARKETS and Japan (Mercari).
 # Bare country names search the whole country; "City, Country" entries search
 # that metro only. Every entry needs an INDEED_COUNTRY
 # mapping below.
 LOCATIONS = [
     "Singapore",
     "Hong Kong",
-    "Japan",
     "New Zealand",
     "Australia",
     "Netherlands",
@@ -247,6 +248,12 @@ for _loc_entry in LOCATIONS:
     _canonical = _canonical_market_name(_loc_entry)
     if _canonical not in CANONICAL_MARKETS:
         CANONICAL_MARKETS.append(_canonical)
+# What LI and Indeed search, as shown in Settings › Job sites.
+SEARCHED_MARKETS = list(CANONICAL_MARKETS)
+# Accepted for job-site postings but not searched on LI or Indeed: Finland, which
+# only Hire Helsinki covers (Isu's choice, 2026-11-24).
+EXTRA_MARKETS = ["Finland"]
+CANONICAL_MARKETS += EXTRA_MARKETS
 
 # Common abbreviations a location field uses instead of the canonical name
 # ("Dubai, UAE"), checked as extra substrings in market_for_location().
@@ -267,7 +274,7 @@ MARKET_ALIASES = {
 # posting exists; Cambridge MA, Perth Scotland): when unsure, drop the rare
 # legitimate posting rather than let an off-market one in.
 ISO_CODE_TO_MARKET = {
-    "sg": "Singapore", "hk": "Hong Kong", "jp": "Japan",
+    "sg": "Singapore", "hk": "Hong Kong", "fi": "Finland",
     "nz": "New Zealand", "au": "Australia", "nl": "Netherlands", "it": "Italy",
     "de": "Germany", "gb": "United Kingdom",
     "uk": "United Kingdom", "ie": "Ireland", "my": "Malaysia",
@@ -303,7 +310,7 @@ CITY_ALIASES = {
     "noord-brabant": "Netherlands", "north brabant": "Netherlands",
     "gelderland": "Netherlands", "flevoland": "Netherlands", "overijssel": "Netherlands",
     "sydney": "Australia", "melbourne": "Australia", "brisbane": "Australia",
-    "tokyo": "Japan", "osaka": "Japan", "fukuoka": "Japan", "yokohama": "Japan",
+    "helsinki": "Finland", "espoo": "Finland", "vantaa": "Finland",
     "munich": "Germany", "hamburg": "Germany", "stuttgart": "Germany",
     "nuremberg": "Germany",
     "milan": "Italy", "padova": "Italy", "padua": "Italy", "vicenza": "Italy",
@@ -353,7 +360,6 @@ def is_known_market(location):
 INDEED_COUNTRY = {
     "Singapore": "Singapore",
     "Hong Kong": "Hong Kong",
-    "Japan": "Japan",
     "New Zealand": "New Zealand",
     "Australia": "Australia",
     "Netherlands": "Netherlands",
@@ -408,7 +414,7 @@ LI_BLOCK_BACKOFF_SECONDS = (300,)  # by blocks in a row; the penalty lifted afte
 LI_MAX_BLOCK_WAIT_SECONDS = 300  # cap on a Retry-After
 LI_MAX_BLOCKS_IN_A_ROW = 3
 LI_MAX_BLOCK_WAIT_TOTAL_SECONDS = 15 * 60
-LI_MAX_REQUESTS_PER_RUN = 39  # every search (36 with Japan, 2026-11-16) plus 3 retries; ~50 min at the pause above
+LI_MAX_REQUESTS_PER_RUN = 36  # every search (33) plus 3 retries; ~45 min at the pause above
 LI_HISTORY_RUNS = 120  # ~30 days at the observed ~6 h spacing
 
 
@@ -426,8 +432,8 @@ class ErrorLogCount(logging.Handler):
 
 
 # ---- Indeed rotation ----
-# One run = one chunk of ROTATING_LOCATIONS x SEARCH_TERMS (306 combos with Japan
-# back, 2026-11-16 -> 5 chunks of up to 68). Each run takes the chunk after the
+# One run = one chunk of ROTATING_LOCATIONS x SEARCH_TERMS (272 combos -> 4 chunks
+# of 68; 5 while Japan was searched, 16-24 Nov). Each run takes the chunk after the
 # previous run's and the priority sweep alternates, both read from the snapshot
 # (indeedRotation), so the grid is walked in order however far apart GitHub starts
 # the runs (2026-11-16: ~6 h apart on a 2 h schedule; the wall-clock buckets used
@@ -696,6 +702,15 @@ def run_welcome_to_nl_searches(debug=False):
     from welcome_to_nl import scrape_welcome_to_nl
 
     yield from scrape_welcome_to_nl(SEARCH_TERMS, debug=debug)
+
+
+def run_hire_helsinki(debug=False):
+    """(rows as ("hirehelsinki", row), health) from Hire Helsinki's feed
+        (hire_helsinki.py, imported lazily like the others).
+    """
+    from hire_helsinki import scrape_hire_helsinki
+
+    return scrape_hire_helsinki(debug=debug)
 
 
 def normalize_posted_date(value):
@@ -1000,12 +1015,13 @@ def main():
         li_job = pool.submit(run_li, existing.get("liCoverage"))
         indeed_rows, indeed_health = run_indeed_searches(combos_this_run, debug=debug)
         welcome_rows = list(run_welcome_to_nl_searches(debug=debug))
+        helsinki_rows, helsinki_health = run_hire_helsinki(debug=debug)
         li_rows, coverage, li_health, li_log = li_job.result()
-    rows = li_rows + indeed_rows + welcome_rows
+    rows = li_rows + indeed_rows + welcome_rows + helsinki_rows
     counts = {}
     for source, _ in rows:
         counts[source] = counts.get(source, 0) + 1
-    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "welcometonl"))
+    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "welcometonl", "hirehelsinki"))
     print(f"[scrape] {len(rows)} raw results this run ({counts_str})")
 
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -1023,7 +1039,7 @@ def main():
     # What the app's "which markets" tooltip and source warnings show -- published
     # here so they can never drift from LOCATIONS / the rotation settings.
     snapshot["openMarket"].update({
-        "searchedMarkets": list(CANONICAL_MARKETS),
+        "searchedMarkets": list(SEARCHED_MARKETS),
         "searchTerms": list(SEARCH_TERMS),
         "priorityMarkets": [_canonical_market_name(loc) for loc in PRIORITY_LOCATIONS],
         # From the observed spacing between runs, not the 2 h schedule.
@@ -1037,6 +1053,7 @@ def main():
             "li": li_health,
             "indeed": indeed_health,
             "welcometonl": {"rows": len(welcome_rows)},
+            "hirehelsinki": helsinki_health,
         },
     })
 

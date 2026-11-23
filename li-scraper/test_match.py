@@ -397,8 +397,9 @@ def run():
         ("Kuala Lumpur, Malaysia", "Malaysia"),
         ("Berlin, Germany", "Germany"),  # a bare-country LOCATIONS entry, well outside the old 3-market allowlist
         ("Sydney, NSW, Australia", "Australia"),
-        ("Tokyo, Japan", "Japan"),  # Japan back in LOCATIONS 2026-11-16
-        ("Minato City, Japan", "Japan"),  # Mercari's Workable location form
+        ("Tokyo, Japan", None),  # Japan out of LOCATIONS again 2026-11-24 (Mercari's board covers it)
+        ("Minato City, Japan", None),
+        ("Helsinki, Finland", "Finland"),  # EXTRA_MARKETS: accepted, not searched (Hire Helsinki)
         # ISO_CODE_TO_MARKET's last-segment pass: "City, StateCode, CountryCode".
         ("Berlin, BE, DE", "Germany"),
         ("London, ENG, GB", "United Kingdom"),
@@ -406,8 +407,8 @@ def run():
         ("Milan, MI, IT", "Italy"),
         ("Outram, S00, SG", "Singapore"),
         # CITY_ALIASES: "Greater X Area" with no country marker.
-        ("Greater Tokyo Area", "Japan"),
-        ("Shibuya, 13, JP", "Japan"),
+        ("Greater Tokyo Area", None),
+        ("Shibuya, 13, JP", None),
         ("Greater Kuala Lumpur", "Malaysia"),
         # Smaller Dutch cities and provinces (2026-10-25).
         ("Haarlem, North Holland", "Netherlands"),
@@ -433,11 +434,11 @@ def run():
         print(f"  {'OK ' if ok else 'FAIL'}  {raw!r:45s} -> {got!r} (expected {expected!r})")
 
     print("-- open-market: CANONICAL_MARKETS derivation (2026-09-23, sanity; "
-          "LOCATIONS trimmed 25 -> 15 on 2026-09-24, 15 -> 11 on 2026-10-27, Japan back -> 12 on 2026-11-16) --")
+          "LOCATIONS trimmed 25 -> 15 on 2026-09-24, 15 -> 11 on 2026-10-27; Japan 16-24 Nov; + Finland, not searched, 2026-11-24) --")
     canonical_checks = [
-        # A tripwire, not a derived value: 12 LOCATIONS entries -> 12 distinct markets.
+        # A tripwire, not a derived value: 11 LOCATIONS entries + EXTRA_MARKETS (Finland) -> 12 markets.
         # Update deliberately if LOCATIONS changes.
-        ("12 distinct canonical markets from 12 LOCATIONS entries (no "
+        ("12 distinct canonical markets from 11 LOCATIONS entries + Finland (no "
          "multi-entry collapsing since only one UAE entry remains)",
          len(CANONICAL_MARKETS) == 12),
         ("Singapore present (bare LOCATIONS entry, unchanged)", "Singapore" in CANONICAL_MARKETS),

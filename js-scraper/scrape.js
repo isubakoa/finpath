@@ -50,6 +50,8 @@ function isRoleRelevant(title) {
 // linkPattern then; a page without __NEXT_DATA__ fails the company).
 // `frames: true` also collects links inside the page's iframes (iCIMS boards show
 // their list in an iframe and redirect a direct load of the iframe URL).
+// `fixedLocation`: the location for every role whose listing shows none, for a company
+// hiring in one place (no posting pages opened for it).
 // `clickSelector`: a link to click after the page loads (the listing then loads in
 // the same session); waitForSelector then waits on the page it leads to.
 const COMPANIES = [
@@ -520,6 +522,15 @@ const COMPANIES = [
     linkPattern: /careers\.hyperoptic\.com\/jobs\/vacancy\/[^/]+\/\d+\/description\//,
     waitForSelector: 'a[href*="/description/"]',
   },
+  {
+    slug: "mercari",
+    // careers.mercari.com lists every open role (141 on 2026-11-24) as a link to its
+    // Workable posting, title as the link text; all in Tokyo (Minato).
+    urls: ["https://careers.mercari.com/en/jobs/"],
+    linkPattern: /mercari\.workable\.com\/jobs\/\d+/,
+    waitForSelector: 'a[href*="mercari.workable.com/jobs/"]',
+    fixedLocation: "Tokyo, Japan",
+  },
   // Not scraped:
   //   - wefox: careers site broken, no open roles on its join.com board.
   //   - Hang Seng Bank, Mubadala: job cards are JS click handlers with no href to
@@ -892,7 +903,7 @@ async function scrapeCompany(browser, company, { debug = false } = {}) {
   }
   // `found`: job links seen before the title filter. 0 means the pages listed no jobs
   // at all -- changed or blocked -- and check.php flags it (boardError).
-  return { ok: true, found: roles.length, roles: relevant.map((r) => ({ title: r.title, url: r.url, location: cleanLocation(r.location), postedDate: null })) };
+  return { ok: true, found: roles.length, roles: relevant.map((r) => ({ title: r.title, url: r.url, location: cleanLocation(r.location) || company.fixedLocation || "", postedDate: null })) };
 }
 
 // Steps 2 and 3 of "Locations", for roles whose listing showed none.
