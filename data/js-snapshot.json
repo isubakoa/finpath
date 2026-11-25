@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-25T12:11:50.975Z",
+  "generatedAt": "2026-11-25T21:12:47.515Z",
   "companies": {
     "adyen": {
       "ok": true,
-      "found": 10,
+      "found": 8,
       "roles": [
         {
           "title": "Group Product Manager – Fraud Intelligence",
@@ -24,14 +24,14 @@
           "postedDate": null
         },
         {
-          "title": "Principal Product Manager, Internal AI Products",
-          "url": "https://careers.adyen.com/vacancies/8359357-principal-product-manager-internal-ai-products?locale=en",
-          "location": "San Francisco",
+          "title": "Product Manager - Business Intelligence and Data DevEx",
+          "url": "https://careers.adyen.com/vacancies/8411308-product-manager-business-intelligence-and-data-dev-ex?locale=en",
+          "location": "Amsterdam",
           "postedDate": null
         },
         {
-          "title": "Product Manager - Business Intelligence and Data DevEx",
-          "url": "https://careers.adyen.com/vacancies/8411308-product-manager-business-intelligence-and-data-dev-ex?locale=en",
+          "title": "Product Manager - Interface Foundations",
+          "url": "https://careers.adyen.com/vacancies/8244728-product-manager-interface-foundations?locale=en",
           "location": "Amsterdam",
           "postedDate": null
         },
@@ -52,24 +52,24 @@
           "url": "https://careers.adyen.com/vacancies/8325581-strategy-program-manager?locale=en",
           "location": "New York",
           "postedDate": null
-        },
-        {
-          "title": "Tech Strategy & Program Manager",
-          "url": "https://careers.adyen.com/vacancies/8276792-tech-strategy-program-manager?locale=en",
-          "location": "Amsterdam",
-          "postedDate": null
         }
       ]
     },
     "klarna": {
       "ok": true,
-      "found": 78,
+      "found": 82,
       "roles": []
     },
     "atlassian": {
       "ok": true,
-      "found": 229,
+      "found": 225,
       "roles": [
+        {
+          "title": "Principal Product Designer, Jira",
+          "url": "https://www.atlassian.com/company/careers/details/27322",
+          "location": "San Francisco or Remote",
+          "postedDate": null
+        },
         {
           "title": "Senior Product Designer, Administration",
           "url": "https://www.atlassian.com/company/careers/details/27779",
@@ -79,12 +79,6 @@
         {
           "title": "Lead Product Designer, Jira",
           "url": "https://www.atlassian.com/company/careers/details/27324",
-          "location": "San Francisco or Remote",
-          "postedDate": null
-        },
-        {
-          "title": "Principal Product Designer, Jira",
-          "url": "https://www.atlassian.com/company/careers/details/27322",
           "location": "San Francisco or Remote",
           "postedDate": null
         },
@@ -301,7 +295,7 @@
     },
     "national-australia-bank-nab": {
       "ok": true,
-      "found": 17,
+      "found": 16,
       "roles": []
     },
     "abn-amro": {
@@ -383,6 +377,12 @@
           "title": "Business Continuity Strategy and Program Design Manager",
           "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26016383/?keyword=design",
           "location": "Sandy, UT, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Associate - Digital Product Solution Design",
+          "url": "https://careers.americanexpress.com/en/sites/CX_1/job/26016852/?keyword=design",
+          "location": "Phoenix, AZ, United States",
           "postedDate": null
         },
         {
@@ -476,18 +476,6 @@
           "postedDate": null
         },
         {
-          "title": "Senior UX Design Manager, YouTube Studio and Support",
-          "url": "https://www.google.com/about/careers/applications/jobs/results/122444748370649798-senior-ux-design-manager-youtube-studio-and-support?q=UX",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior UX Program Manager, Google Pay India",
-          "url": "https://www.google.com/about/careers/applications/jobs/results/125330040828109510-senior-ux-program-manager-google-pay-india?q=UX",
-          "location": "",
-          "postedDate": null
-        },
-        {
           "title": "UX Designer, Ads",
           "url": "https://www.google.com/about/careers/applications/jobs/results/112839964546212550-ux-designer-ads?q=UX",
           "location": "",
@@ -500,20 +488,14 @@
           "postedDate": null
         },
         {
-          "title": "Senior UX Model Designer, Trust and Safety, GeminiApp, DeepMind",
-          "url": "https://www.google.com/about/careers/applications/jobs/results/91320625762575046-senior-ux-model-designer-trust-and-safety-geminiapp-deepmind?q=UX",
+          "title": "Staff UX Designer, Agentic Design and Development",
+          "url": "https://www.google.com/about/careers/applications/jobs/results/142392723976921798-staff-ux-designer-agentic-design-and-development?q=UX",
           "location": "",
           "postedDate": null
         },
         {
           "title": "Staff UX Designer, Search Travel Journeys",
           "url": "https://www.google.com/about/careers/applications/jobs/results/135930103866499782-staff-ux-designer-search-travel-journeys?q=UX",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Staff UX Designer, Agentic Design and Development",
-          "url": "https://www.google.com/about/careers/applications/jobs/results/142392723976921798-staff-ux-designer-agentic-design-and-development?q=UX",
           "location": "",
           "postedDate": null
         },
@@ -532,12 +514,6 @@
         {
           "title": "UX Research Manager, Customer Engagement, Google Ads",
           "url": "https://www.google.com/about/careers/applications/jobs/results/111770441722274502-ux-research-manager-customer-engagement-google-ads?q=UX",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Senior UX Research Program Manager, Search Ads",
-          "url": "https://www.google.com/about/careers/applications/jobs/results/76941440327787206-senior-ux-research-program-manager-search-ads?q=UX",
           "location": "",
           "postedDate": null
         },
@@ -578,14 +554,38 @@
           "postedDate": null
         },
         {
-          "title": "Senior Staff UX Model Designer",
-          "url": "https://www.google.com/about/careers/applications/jobs/results/105695149010363078-senior-staff-ux-model-designer?q=UX",
+          "title": "Senior Staff UX Designer, AI Search",
+          "url": "https://www.google.com/about/careers/applications/jobs/results/124159924232954566-senior-staff-ux-designer-ai-search?q=UX",
           "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior Staff UX Designer, AI Search",
-          "url": "https://www.google.com/about/careers/applications/jobs/results/124159924232954566-senior-staff-ux-designer-ai-search?q=UX",
+          "title": "Staff UX Designer",
+          "url": "https://www.google.com/about/careers/applications/jobs/results/75567065825452742-staff-ux-designer?q=UX",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior UX Researcher, YouTube Creator",
+          "url": "https://www.google.com/about/careers/applications/jobs/results/74526468264075974-senior-ux-researcher-youtube-creator?q=UX",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior UX Designer, Payments Platform Design System",
+          "url": "https://www.google.com/about/careers/applications/jobs/results/89317060026213062-senior-ux-designer-payments-platform-design-system?q=UX",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Staff UX Researcher, Search Ads",
+          "url": "https://www.google.com/about/careers/applications/jobs/results/101442229444190918-staff-ux-researcher-search-ads?q=UX",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Senior UX Researcher, YouTube Shorts Ads",
+          "url": "https://www.google.com/about/careers/applications/jobs/results/113828970960429766-senior-ux-researcher-youtube-shorts-ads?q=UX",
           "location": "",
           "postedDate": null
         }
@@ -593,14 +593,8 @@
     },
     "ericsson": {
       "ok": true,
-      "found": 19,
+      "found": 18,
       "roles": [
-        {
-          "title": "Optical HW Design Engineer",
-          "url": "https://jobs.ericsson.com/careers/job/563121777320956?domain=ericsson.com",
-          "location": "Gothenburg, Sweden",
-          "postedDate": null
-        },
         {
           "title": "Principal CAD RTL Methodology and Design Engineer",
           "url": "https://jobs.ericsson.com/careers/job/563121777481794?domain=ericsson.com",
@@ -614,21 +608,9 @@
           "postedDate": null
         },
         {
-          "title": "Staff Compiler Design Engineer",
-          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
-          "location": "Austin, United States",
-          "postedDate": null
-        },
-        {
-          "title": "CAD Design Enablement TPM",
-          "url": "https://jobs.ericsson.com/careers/job/563121777484574?domain=ericsson.com",
-          "location": "Austin, United States",
-          "postedDate": null
-        },
-        {
-          "title": "Manager of System Design Team 1",
-          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
-          "location": "Yokohama, Japan",
+          "title": "Optical HW Design Engineer",
+          "url": "https://jobs.ericsson.com/careers/job/563121777320956?domain=ericsson.com",
+          "location": "Gothenburg, Sweden",
           "postedDate": null
         },
         {
@@ -650,9 +632,27 @@
           "postedDate": null
         },
         {
-          "title": "RF Designer (m/f/d)",
-          "url": "https://jobs.ericsson.com/careers/job/563121777635579?domain=ericsson.com",
-          "location": "RO, Germany",
+          "title": "Manager of System Design Team 1",
+          "url": "https://jobs.ericsson.com/careers/job/563121777152655?domain=ericsson.com",
+          "location": "Yokohama, Japan",
+          "postedDate": null
+        },
+        {
+          "title": "Staff Compiler Design Engineer",
+          "url": "https://jobs.ericsson.com/careers/job/563121775885616?domain=ericsson.com",
+          "location": "Austin, United States",
+          "postedDate": null
+        },
+        {
+          "title": "CAD Design Enablement TPM",
+          "url": "https://jobs.ericsson.com/careers/job/563121777484574?domain=ericsson.com",
+          "location": "Austin, United States",
+          "postedDate": null
+        },
+        {
+          "title": "Silicon CAD Technical Product Manager",
+          "url": "https://jobs.ericsson.com/careers/job/563121775610673?domain=ericsson.com",
+          "location": "Austin, United States",
           "postedDate": null
         }
       ]
@@ -668,39 +668,15 @@
           "postedDate": null
         },
         {
-          "title": "Cloud Solution Design Engineer",
-          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
-          "location": "Milan, Italy",
-          "postedDate": null
-        },
-        {
           "title": "Secure by Design Manager",
           "url": "https://jobs.vodafone.com/careers/job/563018698117127?domain=vodafone.com",
           "location": "Lisbon, Portugal",
           "postedDate": null
         },
         {
-          "title": "GTM Design Manager",
-          "url": "https://jobs.vodafone.com/careers/job/563018697959954?domain=vodafone.com",
-          "location": "Madrid, Spain",
-          "postedDate": null
-        },
-        {
-          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
-          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
-          "location": "Düsseldorf, Germany",
-          "postedDate": null
-        },
-        {
-          "title": "Secure by Design Solution Expert - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
-          "location": "Pune, India",
-          "postedDate": null
-        },
-        {
-          "title": "Senior Manager - Secure by Design - CIS - VOIS",
-          "url": "https://jobs.vodafone.com/careers/job/563018698178807?domain=vodafone.com",
-          "location": "Pune, India",
+          "title": "Cloud Solution Design Engineer",
+          "url": "https://jobs.vodafone.com/careers/job/563018682603570?domain=vodafone.com",
+          "location": "Milan, Italy",
           "postedDate": null
         },
         {
@@ -710,8 +686,38 @@
           "postedDate": null
         },
         {
-          "title": "Secure by Design Solution Expert",
-          "url": "https://jobs.vodafone.com/careers/job/563018698421674?domain=vodafone.com",
+          "title": "VodafoneThree - Solution Design Authority (SD-WAN)",
+          "url": "https://jobs.vodafone.com/careers/job/563018698091320?domain=vodafone.com",
+          "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Manager, Satellite Networks",
+          "url": "https://jobs.vodafone.com/careers/job/563018698377633?domain=vodafone.com",
+          "location": "Lisbon, Portugal",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777815?domain=vodafone.com",
+          "location": "Pune, India",
+          "postedDate": null
+        },
+        {
+          "title": "Praktikant IoT Solution Development & Design (m/w/d) in Düsseldorf",
+          "url": "https://jobs.vodafone.com/careers/job/563018675572200?domain=vodafone.com",
+          "location": "Düsseldorf, Germany",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Manager - Secure by Design - CIS - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018698178807?domain=vodafone.com",
+          "location": "Pune, India",
+          "postedDate": null
+        },
+        {
+          "title": "Secure by Design Solution Expert - VOIS",
+          "url": "https://jobs.vodafone.com/careers/job/563018697777816?domain=vodafone.com",
           "location": "Pune, India",
           "postedDate": null
         }
@@ -756,12 +762,6 @@
           "url": "https://www.metacareers.com/profile/job_details/1763344164969127",
           "location": "Sunnyvale, United States; Redmond, United States; Seattle, United States",
           "postedDate": null
-        },
-        {
-          "title": "Thermal Design Engineer",
-          "url": "https://www.metacareers.com/profile/job_details/1658203509186637",
-          "location": "Sunnyvale, United States",
-          "postedDate": null
         }
       ]
     },
@@ -788,12 +788,6 @@
           "postedDate": null
         },
         {
-          "title": "Senior Conceptual Campaign Designer",
-          "url": "https://citi.eightfold.ai/careers/job/859038163646?domain=citi.com",
-          "location": "London, United Kingdom",
-          "postedDate": null
-        },
-        {
           "title": "Presentation Graphics Designer",
           "url": "https://citi.eightfold.ai/careers/job/859037622899?domain=citi.com",
           "location": "Hong Kong SAR China",
@@ -809,6 +803,12 @@
           "title": "Service Designer",
           "url": "https://citi.eightfold.ai/careers/job/859038766410?domain=citi.com",
           "location": "Mississauga, Canada",
+          "postedDate": null
+        },
+        {
+          "title": "Senior Product Designer",
+          "url": "https://citi.eightfold.ai/careers/job/859038379638?domain=citi.com",
+          "location": "Belfast, United Kingdom",
           "postedDate": null
         }
       ]
@@ -839,7 +839,7 @@
     },
     "telenor": {
       "ok": true,
-      "found": 40,
+      "found": 41,
       "roles": [
         {
           "title": "Product Expert Network Security",
@@ -869,7 +869,7 @@
     },
     "backbase": {
       "ok": true,
-      "found": 57,
+      "found": 56,
       "roles": [
         {
           "title": "(Agentic) Senior Product Manager",
@@ -896,15 +896,15 @@
           "postedDate": null
         },
         {
-          "title": "Product Manager Digital Assets, Equities & Trading",
-          "url": "https://www.euronext.com/en/about/careers/job-offers/r29424-france-product-manager-digital-assets-equities-trading",
-          "location": "Paris, France",
-          "postedDate": null
-        },
-        {
           "title": "CRM Product Owner",
           "url": "https://www.euronext.com/en/about/careers/job-offers/r29175-india-crm-product-owner",
           "location": "Bangalore, India",
+          "postedDate": null
+        },
+        {
+          "title": "Product Manager Digital Assets, Equities & Trading",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r29424-france-product-manager-digital-assets-equities-trading",
+          "location": "Paris, France",
           "postedDate": null
         },
         {
@@ -914,15 +914,15 @@
           "postedDate": null
         },
         {
-          "title": "Product Manager – Issuer Services",
-          "url": "https://www.euronext.com/en/about/careers/job-offers/r29197-denmark-product-manager-issuer-services",
-          "location": "Copenhagen, Denmark",
-          "postedDate": null
-        },
-        {
           "title": "Product Manager, Digital Assets - CSD & Settlement",
           "url": "https://www.euronext.com/en/about/careers/job-offers/r29337-france-product-manager-digital-assets-csd-settlement",
           "location": "Paris, France",
+          "postedDate": null
+        },
+        {
+          "title": "Product Manager – Issuer Services",
+          "url": "https://www.euronext.com/en/about/careers/job-offers/r29197-denmark-product-manager-issuer-services",
+          "location": "Copenhagen, Denmark",
           "postedDate": null
         },
         {
@@ -960,11 +960,18 @@
     "aegon": {
       "ok": true,
       "found": 21,
-      "roles": []
+      "roles": [
+        {
+          "title": "Director, Product Leader",
+          "url": "https://www.aegon.com/careers/vacancies/united-states/denver/sales-and-marketing/director-product-leader",
+          "location": "United States",
+          "postedDate": null
+        }
+      ]
     },
     "goldman-sachs": {
       "ok": true,
-      "found": 59,
+      "found": 60,
       "roles": [
         {
           "title": "GBM - Public Dept-London-Vice President-UX Designer – Design the Future of Operations Internal Workflow Platforms",
@@ -991,9 +998,15 @@
           "postedDate": null
         },
         {
-          "title": "Asset & Wealth Management, Insurance Product Strategist, Vice President - Newport Beach, CA (SWR)",
-          "url": "https://higher.gs.com/roles/163339",
-          "location": "Newport Beach·United States",
+          "title": "Internal Audit, Data Strategy & Analytics, New York,Associate",
+          "url": "https://higher.gs.com/roles/182854",
+          "location": "New York·United States",
+          "postedDate": null
+        },
+        {
+          "title": "Asset & Wealth Management, Multi-Asset Solutions: Personalized Portfolios Investment Product Manager (Retirement), Vice President - Chicago",
+          "url": "https://higher.gs.com/roles/174474",
+          "location": "Chicago·United States",
           "postedDate": null
         }
       ]
@@ -1053,12 +1066,12 @@
     },
     "transavia": {
       "ok": true,
-      "found": 11,
+      "found": 13,
       "roles": []
     },
     "vanderlande": {
       "ok": true,
-      "found": 238,
+      "found": 232,
       "roles": [
         {
           "title": "Mechanical Design Engineer",
@@ -1069,12 +1082,6 @@
         {
           "title": "Internship: Design and Analysis of Timber Structures for Industrial Platforms",
           "url": "https://careers.vanderlande.com/all-jobs/internship-design-and-analysis-of-timber-structures-for-industrial-platforms-jr38295/",
-          "location": "Veghel, Netherlands",
-          "postedDate": null
-        },
-        {
-          "title": "Internship: Designing a unified, scalable planning solution for the global distribution service desk",
-          "url": "https://careers.vanderlande.com/all-jobs/internship-designing-a-unified-scalable-planning-solution-for-the-global-distribution-service-desk-jr38331/",
           "location": "Veghel, Netherlands",
           "postedDate": null
         },
@@ -1121,6 +1128,12 @@
       "found": 16,
       "roles": [
         {
+          "title": "Manager Strategy & Risk",
+          "url": "https://www.werkenbijkpmg.nl/vacature/manager-strategy-risk",
+          "location": "Amstelveen",
+          "postedDate": null
+        },
+        {
           "title": "Stagiair(e) Strategy & Operations - Financial Sector",
           "url": "https://www.werkenbijkpmg.nl/vacature/stagiaire-strategy-operations-financial-sector",
           "location": "Amstelveen",
@@ -1154,7 +1167,7 @@
     },
     "vodafoneziggo": {
       "ok": true,
-      "found": 41,
+      "found": 40,
       "roles": [
         {
           "title": "Principal Commercial Strategy & Planning Specialist",
@@ -1166,22 +1179,16 @@
     },
     "odido": {
       "ok": true,
-      "found": 15,
+      "found": 16,
       "roles": []
     },
     "sky": {
       "ok": true,
-      "found": 12,
+      "found": 11,
       "roles": [
         {
           "title": "Product Designer (UX, UI)",
           "url": "https://careers.sky.com/jobs/t-R0060101",
-          "location": "London",
-          "postedDate": null
-        },
-        {
-          "title": "Junior Industrial Designer",
-          "url": "https://careers.sky.com/jobs/t-R0060165",
           "location": "London",
           "postedDate": null
         },
@@ -1253,23 +1260,23 @@
     },
     "rabobank": {
       "ok": true,
-      "found": 5,
+      "found": 7,
       "roles": [
         {
-          "title": "Strategic Service Designer – Business Lending",
-          "url": "https://rabobank.jobs/en/job/strategic-service-designer-business-lending/JR_00147942/?",
+          "title": "Design Lead Investments",
+          "url": "https://rabobank.jobs/en/job/design-lead-investments/JR_00148044/?",
           "location": "Utrecht, nl",
+          "postedDate": null
+        },
+        {
+          "title": "Design Lead - Online Banking",
+          "url": "https://rabobank.jobs/en/job/design-lead-online-banking/JR_00146837/?",
+          "location": "Sydney, au",
           "postedDate": null
         },
         {
           "title": "Chapter Lead Enterprise UX",
           "url": "https://rabobank.jobs/en/job/chapter-lead-enterprise-ux/JR_00147500/?",
-          "location": "Utrecht, nl",
-          "postedDate": null
-        },
-        {
-          "title": "Design Lead Investments",
-          "url": "https://rabobank.jobs/en/job/design-lead-investments/JR_00148044/?",
           "location": "Utrecht, nl",
           "postedDate": null
         },
@@ -1280,9 +1287,9 @@
           "postedDate": null
         },
         {
-          "title": "Design Lead - Online Banking",
-          "url": "https://rabobank.jobs/en/job/design-lead-online-banking/JR_00146837/?",
-          "location": "Sydney, au",
+          "title": "Strategic Service Designer – Business Lending",
+          "url": "https://rabobank.jobs/en/job/strategic-service-designer-business-lending/JR_00147942/?",
+          "location": "Utrecht, nl",
           "postedDate": null
         }
       ]
@@ -1298,7 +1305,7 @@
     },
     "optus": {
       "ok": true,
-      "found": 90,
+      "found": 79,
       "roles": [
         {
           "title": "Associate Director, Service Management Strategy & Assurance",
@@ -1321,7 +1328,7 @@
     },
     "siemens": {
       "ok": true,
-      "found": 17,
+      "found": 18,
       "roles": [
         {
           "title": "Design Engineer Intern (Tamayouz Program)- Great opportunity for fresh Saudi graduates",
@@ -1330,20 +1337,8 @@
           "postedDate": null
         },
         {
-          "title": "Mechanical Design Engineer",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/529284",
-          "location": "Thane, Maharashtra, India",
-          "postedDate": null
-        },
-        {
-          "title": "Werkstudent (w/m/d) UX/UI Design",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/529211",
-          "location": "",
-          "postedDate": null
-        },
-        {
-          "title": "Power Transformer Tank - Mechanical design engineer",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/529450",
+          "title": "Digital Design Engineer",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/528118",
           "location": "",
           "postedDate": null
         },
@@ -1354,9 +1349,27 @@
           "postedDate": null
         },
         {
-          "title": "Electronics Design Summer Placement (3 months)",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/529191",
-          "location": "Congleton, Cheshire East, UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND",
+          "title": "R&D Mechanical Designer",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/528324",
+          "location": "Sibiu, Sibiu, Romania",
+          "postedDate": null
+        },
+        {
+          "title": "Teknisk Designer",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/524537",
+          "location": "Odense, Syddanmark, Denmark",
+          "postedDate": null
+        },
+        {
+          "title": "AI Process Designer / Use Case Manager (w/m/d)",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/529658",
+          "location": "Munich, Bayern, Germany",
+          "postedDate": null
+        },
+        {
+          "title": "Werkstudent (w/m/d) UX/UI Design",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/529211",
+          "location": "",
           "postedDate": null
         },
         {
@@ -1372,15 +1385,21 @@
           "postedDate": null
         },
         {
-          "title": "Product Marketing Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/528014",
-          "location": "Pune, Maharashtra, India",
+          "title": "Senior Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526716",
+          "location": "",
           "postedDate": null
         },
         {
-          "title": "Senior Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526715",
+          "title": "Principal Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526691",
           "location": "",
+          "postedDate": null
+        },
+        {
+          "title": "Product Marketing Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/528014",
+          "location": "Pune, Maharashtra, India",
           "postedDate": null
         },
         {
@@ -1390,15 +1409,9 @@
           "postedDate": null
         },
         {
-          "title": "Product quality manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/529467",
-          "location": "Thane, Maharashtra, India",
-          "postedDate": null
-        },
-        {
-          "title": "Principal Product Manager",
-          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526689",
-          "location": "Bellevue, Washington, United States of America",
+          "title": "Senior Product Manager",
+          "url": "https://jobs.siemens.com/en_US/externaljobs/JobDetail/526715",
+          "location": "",
           "postedDate": null
         }
       ]
@@ -1410,7 +1423,7 @@
     },
     "viasat": {
       "ok": true,
-      "found": 27,
+      "found": 28,
       "roles": [
         {
           "title": "Product Development Program Manager, Ground Encryptor",
@@ -1455,7 +1468,7 @@
     },
     "hyperoptic": {
       "ok": true,
-      "found": 8,
+      "found": 7,
       "roles": []
     },
     "mercari": {
