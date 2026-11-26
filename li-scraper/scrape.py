@@ -10,8 +10,9 @@ Sources (one generator each, all yielding (source, row)):
                 LI_MAX_REQUESTS_PER_RUN requests a run (run_li).
   indeed        JobSpy keyword searches over the SEARCH_TERMS x LOCATIONS grid,
                 in rotating chunks (run_indeed_searches).
-  welcometonl   welcome-to-nl.nl's search backend (welcome_to_nl.py).
-  hirehelsinki  myhelsinki.fi Hire Helsinki's job feed, Finland only (hire_helsinki.py).
+  Talent Hubs   official job portals for internationals (Welcome to NL, Hire
+                Helsinki, Work in Estonia, Workindenmark...): the hubs package,
+                one module each, every row tagged with its hub's id.
 Retired: Glassdoor and Google (2026-09: bot walls; Glassdoor's API is gone), Bayt
 (2026-10-26: Cloudflare refused GitHub's runner on 35 of 38 searches, its
 robots.txt bars crawling search results, and it added ~14 roles in our markets
@@ -24,12 +25,15 @@ Output:
   companies   {slug: {roles: [...]}} -- postings from a tracked company in
               data/companies.json (matched by employer name, match.py) that
               pass the same title-relevance filter the app uses.
-  openMarket  {roles: [...], searchedMarkets, searchTerms, priorityMarkets, sourceHealth, ...}
+  openMarket  {roles: [...], searchedMarkets, hubOnlyMarkets, searchTerms, priorityMarkets,
+              sourceHealth, talentHubs, ...}
               -- postings from untracked employers that clear open_market_gate()
               (relevant, target- or below-tier fit) and are located in a searched
               market (is_known_market). Agencies are included on purpose. Newest
-              first. sourceHealth is this run's per-source report (the app warns
-              when a source was blocked or came back empty).
+              first. sourceHealth is this run's LI/Indeed report and talentHubs
+              each hub's (the app warns when a source was blocked or came back
+              empty). The app files a role under Talent Hubs when no general
+              board (LI, Indeed) found it.
   liCoverage  {"<location>|<keywords>": ISO time} -- when each LI
               search last completed, so the next run asks only for what's newer.
 Every role carries `source`, a `sources` list (cross-site corroboration,
@@ -63,6 +67,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 from companies import COMPANIES, ALIASES
+from hubs import HUB_IDS, hubs_off, run_talent_hubs
 from match import (
     build_index,
     match_company,
@@ -75,11 +80,11 @@ from match import (
 
 # When the same (employer, title, location) identity is found on several sites,
 # the lowest-ranked site supplies the canonical url/source; all sites stay in
-# `sources`. The NL-only boards rank last so an existing LI/Indeed/Bayt row
-# keeps its url. Unknown sources rank after everything listed.
-# "bayt" and "uxwork" stay (retired 2026-10-26/27) until their last roles expire
-# from the snapshot.
-SOURCE_PRECEDENCE = {"ats": 0, "li": 1, "indeed": 2, "bayt": 3, "welcometonl": 4, "hirehelsinki": 5, "uxwork": 6}
+# `sources`. The Talent Hubs rank after the general boards, in hubs.HUBS order, so
+# an existing LI/Indeed row keeps its url. Unknown sources rank after everything
+# listed. "bayt" and "uxwork" stay (retired 2026-10-26/27) until their last roles
+# expire from the snapshot.
+SOURCE_PRECEDENCE = {s: i for i, s in enumerate(["ats", "li", "indeed", "bayt"] + HUB_IDS + ["uxwork"])}
 
 
 def _source_rank(source):
@@ -250,9 +255,9 @@ for _loc_entry in LOCATIONS:
         CANONICAL_MARKETS.append(_canonical)
 # What LI and Indeed search, as shown in Settings › Job sites.
 SEARCHED_MARKETS = list(CANONICAL_MARKETS)
-# Accepted for job-site postings but not searched on LI or Indeed: Finland, which
-# only Hire Helsinki covers (Isu's choice, 2026-11-24).
-EXTRA_MARKETS = ["Finland"]
+# Accepted for job-site postings but not searched on LI or Indeed: countries only
+# a Talent Hub covers (Isu's choice: Finland 2026-11-24, the rest 2026-11-26).
+EXTRA_MARKETS = ["Finland", "Estonia", "Austria", "Denmark", "Sweden"]
 CANONICAL_MARKETS += EXTRA_MARKETS
 
 # Common abbreviations a location field uses instead of the canonical name
@@ -278,7 +283,8 @@ ISO_CODE_TO_MARKET = {
     "nz": "New Zealand", "au": "Australia", "nl": "Netherlands", "it": "Italy",
     "de": "Germany", "gb": "United Kingdom",
     "uk": "United Kingdom", "ie": "Ireland", "my": "Malaysia",
-    "ae": "United Arab Emirates",
+    "ae": "United Arab Emirates", "ee": "Estonia", "at": "Austria", "dk": "Denmark",
+    "se": "Sweden",
 }
 
 # "Greater X Area" / "X Metropolitan Area" shapes with no country marker, each
@@ -311,6 +317,13 @@ CITY_ALIASES = {
     "gelderland": "Netherlands", "flevoland": "Netherlands", "overijssel": "Netherlands",
     "sydney": "Australia", "melbourne": "Australia", "brisbane": "Australia",
     "helsinki": "Finland", "espoo": "Finland", "vantaa": "Finland",
+    "tallinn": "Estonia", "tartu": "Estonia",
+    "vienna": "Austria", "wien": "Austria", "graz": "Austria", "salzburg": "Austria",
+    "innsbruck": "Austria",
+    "copenhagen": "Denmark", "københavn": "Denmark", "aarhus": "Denmark", "odense": "Denmark",
+    "aalborg": "Denmark",
+    "stockholm": "Sweden", "gothenburg": "Sweden", "göteborg": "Sweden", "malmö": "Sweden",
+    "malmo": "Sweden", "uppsala": "Sweden",
     "munich": "Germany", "hamburg": "Germany", "stuttgart": "Germany",
     "nuremberg": "Germany",
     "milan": "Italy", "padova": "Italy", "padua": "Italy", "vicenza": "Italy",
@@ -695,24 +708,6 @@ def run_indeed_searches(combos, debug=False, scrape_jobs=None, sleep=time.sleep)
     return rows, {"searches": len(combos), "failed": failed, "rows": len(rows)}
 
 
-def run_welcome_to_nl_searches(debug=False):
-    """Yields ("welcometonl", row) for every SEARCH_TERMS entry (welcome_to_nl.py,
-        imported lazily like the others).
-    """
-    from welcome_to_nl import scrape_welcome_to_nl
-
-    yield from scrape_welcome_to_nl(SEARCH_TERMS, debug=debug)
-
-
-def run_hire_helsinki(debug=False):
-    """(rows as ("hirehelsinki", row), health) from Hire Helsinki's feed
-        (hire_helsinki.py, imported lazily like the others).
-    """
-    from hire_helsinki import scrape_hire_helsinki
-
-    return scrape_hire_helsinki(debug=debug)
-
-
 def normalize_posted_date(value):
     """JobSpy's date_posted comes back as a pandas Timestamp/date/NaT/None
     depending on what LI gave it — collapse all of that to either an
@@ -1004,24 +999,22 @@ def main():
     )
     print(f"[scrape] this run: Indeed chunk {chunk_index + 1}/{total_chunks} ({len(this_chunk)} combos)"
           + (f" + priority sweep ({len(priority)} combos)" if include_priority else " (priority sweep not due)")
-          + f"; LI up to {LI_MAX_REQUESTS_PER_RUN} requests; welcome-to-nl up to "
-          f"{len(SEARCH_TERMS) * 2} requests")
+          + f"; LI up to {LI_MAX_REQUESTS_PER_RUN} requests; every Talent Hub not switched off")
 
     index = build_index(COMPANIES, ALIASES)
     checked_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     # LI spends most of its ~40 min pausing between requests (human pace), so
-    # it runs alongside Indeed and Welcome to NL rather than before them.
+    # it runs alongside Indeed and the Talent Hubs rather than before them.
     with ThreadPoolExecutor(max_workers=1) as pool:
         li_job = pool.submit(run_li, existing.get("liCoverage"))
         indeed_rows, indeed_health = run_indeed_searches(combos_this_run, debug=debug)
-        welcome_rows = list(run_welcome_to_nl_searches(debug=debug))
-        helsinki_rows, helsinki_health = run_hire_helsinki(debug=debug)
+        hub_rows, hub_report = run_talent_hubs(SEARCH_TERMS, off=hubs_off(), debug=debug)
         li_rows, coverage, li_health, li_log = li_job.result()
-    rows = li_rows + indeed_rows + welcome_rows + helsinki_rows
+    rows = li_rows + indeed_rows + hub_rows
     counts = {}
     for source, _ in rows:
         counts[source] = counts.get(source, 0) + 1
-    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ("li", "indeed", "welcometonl", "hirehelsinki"))
+    counts_str = ", ".join(f"{counts.get(s, 0)} {s}" for s in ["li", "indeed"] + HUB_IDS)
     print(f"[scrape] {len(rows)} raw results this run ({counts_str})")
 
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -1040,6 +1033,7 @@ def main():
     # here so they can never drift from LOCATIONS / the rotation settings.
     snapshot["openMarket"].update({
         "searchedMarkets": list(SEARCHED_MARKETS),
+        "hubOnlyMarkets": list(EXTRA_MARKETS),
         "searchTerms": list(SEARCH_TERMS),
         "priorityMarkets": [_canonical_market_name(loc) for loc in PRIORITY_LOCATIONS],
         # From the observed spacing between runs, not the 2 h schedule.
@@ -1052,9 +1046,8 @@ def main():
             "checkedAt": checked_at,
             "li": li_health,
             "indeed": indeed_health,
-            "welcometonl": {"rows": len(welcome_rows)},
-            "hirehelsinki": helsinki_health,
         },
+        "talentHubs": hub_report,
     })
 
     open_market_count = len(snapshot["openMarket"]["roles"])

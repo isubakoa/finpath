@@ -399,11 +399,16 @@ def run():
         ("Sydney, NSW, Australia", "Australia"),
         ("Tokyo, Japan", None),  # Japan out of LOCATIONS again 2026-11-24 (Mercari's board covers it)
         ("Minato City, Japan", None),
-        ("Helsinki, Finland", "Finland"),  # EXTRA_MARKETS: accepted, not searched (Hire Helsinki)
+        ("Helsinki, Finland", "Finland"),  # EXTRA_MARKETS: accepted, not searched (Talent Hubs)
         # ISO_CODE_TO_MARKET's last-segment pass: "City, StateCode, CountryCode".
         ("Berlin, BE, DE", "Germany"),
         ("London, ENG, GB", "United Kingdom"),
-        ("Stockholm, AB, SE", None),  # Sweden dropped 2026-10-27
+        ("Stockholm, AB, SE", "Sweden"),  # back 2026-11-26 as a Talent Hubs-only market
+        ("Vienna, Austria", "Austria"),  # not "Australia"
+        ("Sydney, Australia", "Australia"),  # not "Austria"
+        ("Tallinn", "Estonia"),
+        ("Gentofte, Denmark", "Denmark"),
+        ("Malmö", "Sweden"),
         ("Milan, MI, IT", "Italy"),
         ("Outram, S00, SG", "Singapore"),
         # CITY_ALIASES: "Greater X Area" with no country marker.
@@ -434,13 +439,14 @@ def run():
         print(f"  {'OK ' if ok else 'FAIL'}  {raw!r:45s} -> {got!r} (expected {expected!r})")
 
     print("-- open-market: CANONICAL_MARKETS derivation (2026-09-23, sanity; "
-          "LOCATIONS trimmed 25 -> 15 on 2026-09-24, 15 -> 11 on 2026-10-27; Japan 16-24 Nov; + Finland, not searched, 2026-11-24) --")
+          "LOCATIONS trimmed 25 -> 15 on 2026-09-24, 15 -> 11 on 2026-10-27; Japan 16-24 Nov; + Finland, not searched, 2026-11-24; "
+          "+ Estonia, Austria, Denmark, Sweden, not searched, 2026-11-26) --")
     canonical_checks = [
-        # A tripwire, not a derived value: 11 LOCATIONS entries + EXTRA_MARKETS (Finland) -> 12 markets.
-        # Update deliberately if LOCATIONS changes.
-        ("12 distinct canonical markets from 11 LOCATIONS entries + Finland (no "
+        # A tripwire, not a derived value: 11 LOCATIONS entries + 5 EXTRA_MARKETS -> 16 markets.
+        # Update deliberately if LOCATIONS or EXTRA_MARKETS changes.
+        ("16 distinct canonical markets from 11 LOCATIONS entries + 5 Talent Hubs-only countries (no "
          "multi-entry collapsing since only one UAE entry remains)",
-         len(CANONICAL_MARKETS) == 12),
+         len(CANONICAL_MARKETS) == 16),
         ("Singapore present (bare LOCATIONS entry, unchanged)", "Singapore" in CANONICAL_MARKETS),
         ("Germany present — never eligible for open market before the broadening round",
          "Germany" in CANONICAL_MARKETS),
