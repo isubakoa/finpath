@@ -11,7 +11,7 @@ Sources (one generator each, all yielding (source, row)):
   indeed        JobSpy keyword searches over the SEARCH_TERMS x LOCATIONS grid,
                 in rotating chunks (run_indeed_searches).
   Talent Hubs   official job portals for internationals (Welcome to NL, Hire
-                Helsinki, Workindenmark, Arbetsförmedlingen...): ../talent-hubs/,
+                Helsinki, Workindenmark, Arbetsförmedlingen...): ../hb-scraper/,
                 one module each, every row tagged with its hub's id.
 Retired: Glassdoor and Google (2026-09: bot walls; Glassdoor's API is gone), Bayt
 (2026-10-26: Cloudflare refused GitHub's runner on 35 of 38 searches, its
@@ -68,7 +68,7 @@ from datetime import datetime, timedelta, timezone
 
 from companies import COMPANIES, ALIASES
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "talent-hubs"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "hb-scraper"))
 from registry import HUB_IDS, hubs_off, run_talent_hubs  # noqa: E402 -- needs the path above
 from match import (
     build_index,

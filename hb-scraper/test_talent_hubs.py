@@ -1,5 +1,5 @@
 """Tests for the Talent Hubs readers with fake portals (no network), and for
-duplicates across hubs and job sites. Run: python3 talent-hubs/test_talent_hubs.py"""
+duplicates across hubs and job sites. Run: python3 hb-scraper/test_talent_hubs.py"""
 import json
 import os
 import sys
