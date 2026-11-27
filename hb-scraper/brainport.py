@@ -21,7 +21,7 @@ PORTAL_URL = "https://brainporteindhoven.com/int/work/jobs"
 ANSWER_URL = "partout.dev/api/v1/vacancies"
 SEARCH_BOX = 'input[placeholder^="Search a vacancy"]'
 SEARCH_BUTTON = ".job-list__search-btn"
-QUERIES = ("product", "designer", "ux")
+QUERIES = ("product", "designer", "user experience")  # the search ignores terms under 3 letters ("ux")
 MAX_PAGES_PER_QUERY = 4
 PAUSE_SECONDS = 1.0
 

@@ -1,6 +1,6 @@
 """
 Headless Chrome for the portals whose job list only exists in the browser
-(Careers in Gothenburg, Brainport Eindhoven, VDAB). Playwright drives the
+(Careers in Gothenburg, Brainport Eindhoven, VDAB, Jobsplus). Playwright drives the
 Chrome already installed on GitHub's runner (channel="chrome"), so nothing is
 downloaded. A reader opens the portal's own page and keeps the answers the page
 itself gets from its job search; it never calls those search services directly.
@@ -27,10 +27,11 @@ class Browser:
         self._browser.close()
         self._pw.stop()
 
-    def answers(self, action, url_part, accept=None):
-        """Runs action(page) (a navigation or a click) and returns the JSON bodies
-            of the responses whose URL contains url_part and that accept(response)
-            allows, in arrival order. Raises if none arrives in PAGE_TIMEOUT_MS.
+    def answers(self, action, url_part, accept=None, as_text=False):
+        """Runs action(page) (a navigation or a click) and returns the bodies (JSON,
+            or text with as_text) of the responses whose URL contains url_part and
+            that accept(response) allows, in arrival order. Raises if none arrives
+            in PAGE_TIMEOUT_MS.
         """
         got = []
 
@@ -51,7 +52,7 @@ class Browser:
             if resp.status != 200:
                 raise RuntimeError(f"search answered HTTP {resp.status}")
             try:
-                bodies.append(resp.json())
+                bodies.append(resp.text() if as_text else resp.json())
             except (ValueError, json.JSONDecodeError):
                 continue
         return bodies

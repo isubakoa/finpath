@@ -433,18 +433,22 @@ check("Munich vs Bavaria", (rows[1]["location"], rows[0]["location"], rows[0]["d
 print("-- Jobsplus --")
 
 
-def jp_answer(method, url, kw):
-    p = kw["params"]
-    if p["searchText"] != "ux":
-        return Resp(200, text="<ul><li><strong>0 Job(s)</strong></li></ul><ul class='list-d'></ul>")
-    items = "".join(f'<li id="45{p["pageNumber"]}{i}"><a href="#"><h3>FRONT-END / UI-UX DESIGNER</h3>'
+jp_calls = []
+
+
+def jp_fragment(query, page):
+    jp_calls.append((query, page))
+    if query != "ux":
+        return "<ul><li><strong>0 Job(s)</strong></li></ul><ul class='list-d'></ul>"
+    items = "".join(f'<li id="45{page}{i}"><a href="#"><h3>FRONT-END / UI-UX DESIGNER</h3>'
                     f'<ul><li><span><i class="fad fa-map-pin"></i> TAS-SLIEMA, MALTA</span></li></ul>'
                     f'<p> (Please log in to view Company Name) </p><p>MedTrips is seeking a designer.</p></a></li>'
-                    for i in range(10 if p["pageNumber"] == 1 else 2))
-    return Resp(200, text=f"<ul><li><strong>12 Job(s)</strong></li></ul><ul class='list-d'>{items}</ul>")
+                    for i in range(10 if page == 1 else 2))
+    return f"<ul><li><strong>12 Job(s)</strong></li></ul><ul class='list-d'>{items}</ul>"
 
 
-rows, health = jobsplus.read(http=FakeHttp(jp_answer), sleep=NO_SLEEP)
+rows, health = jobsplus.read(sleep=NO_SLEEP, fragment=jp_fragment)
+check("pages through the next arrow", [p for q, p in jp_calls if q == "ux"], [1, 2])
 check("row", (len(rows), rows[0]["title"], rows[0]["location"], rows[0]["company"], rows[0]["job_url"], rows[0]["description"]),
       (12, "Front-End / UI-UX Designer", "Tas-Sliema, Malta", jobsplus.COMPANY_HIDDEN,
        "https://jobsplus.gov.mt/vacancy/vacancy-details?id=4510", "MedTrips is seeking a designer."))
