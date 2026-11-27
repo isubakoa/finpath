@@ -28,10 +28,12 @@ import work_in_lithuania  # noqa: E402
 import work_in_luxembourg  # noqa: E402
 import workindenmark  # noqa: E402
 from registry import HUB_IDS, HUBS, hubs_off, run_talent_hubs  # noqa: E402
-from scrape import (CANONICAL_MARKETS, SEARCHED_MARKETS, SOURCE_PRECEDENCE, build_fresh_roles,  # noqa: E402
-                    market_for_location, merge_and_prune)
+from roles import (CANONICAL_MARKETS, SEARCHED_MARKETS, SOURCE_PRECEDENCE, build_fresh_roles,  # noqa: E402
+                   market_for_location, merge_and_prune, set_hub_order)
 from companies import ALIASES, COMPANIES  # noqa: E402
 from match import build_index  # noqa: E402
+
+set_hub_order(HUB_IDS)
 
 failures = 0
 NO_SLEEP = lambda s: None  # noqa: E731

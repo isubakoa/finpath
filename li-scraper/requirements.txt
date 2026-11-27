@@ -2,10 +2,8 @@
 # runs (2026-10). Re-test before raising it.
 python-jobspy==1.4.1
 
-# LI's public job search (li_guest.py) and the Talent Hubs (../hb-scraper/).
+# LI's public job search (li_guest.py).
 # curl_cffi (also a JobSpy dependency) is li_guest's "chrome" client.
 requests
 curl_cffi
 beautifulsoup4
-# hb-scraper/browser.py drives the runner's own Chrome (channel="chrome"); no browser download.
-playwright

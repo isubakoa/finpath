@@ -11,11 +11,11 @@ This file gates the scraper in CI, so a failure here stops the scheduled run.
 
 from datetime import datetime, timedelta, timezone
 
+from match import normalize_employer_name, role_identity
+from roles import EXPIRY_DAYS, merge_and_prune
 from scrape import (
-    all_combos, rotating_combos, priority_combos, merge_and_prune, role_identity,
-    normalize_employer_name, SEARCH_TERMS, LOCATIONS, PRIORITY_LOCATIONS,
-    ROTATING_LOCATIONS, COMBOS_PER_RUN, EXPIRY_DAYS, SCHEDULE_INTERVAL_HOURS,
-    next_rotation, observed_run_gap_hours,
+    all_combos, rotating_combos, priority_combos, SEARCH_TERMS, LOCATIONS, PRIORITY_LOCATIONS,
+    ROTATING_LOCATIONS, COMBOS_PER_RUN, SCHEDULE_INTERVAL_HOURS, next_rotation, observed_run_gap_hours,
 )
 
 failures = 0

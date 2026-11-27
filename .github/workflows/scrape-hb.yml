@@ -1,0 +1,132 @@
+# hb-scraper: the Talent Hubs (official job portals) -> data/hb-snapshot.json
+#
+# Same scheduling as scrape-li.yml: the cron fires every 15 minutes (offset from
+# the other scrapers) and a cheap gate lets a real run through only once
+# SCHEDULE_INTERVAL_HOURS have passed since the last run started (the snapshot's
+# checkedAt). The gate also reads ZenPath's switches (scraper-control.php): a
+# paused Talent Hubs scraper skips scheduled runs, and the hubs switched off are
+# handed to the run, which skips them. A run started by hand always goes ahead;
+# if the site can't be reached, everything runs.
+name: Scrape Talent Hubs
+
+on:
+  schedule:
+    - cron: "8,23,38,53 * * * *"
+  push:
+    paths:
+      - "hb-scraper/**"
+      - "li-scraper/roles.py"
+      - "li-scraper/match.py"
+      - "li-scraper/companies.py"
+      - "data/companies.json"
+  workflow_dispatch: {}
+
+concurrency:
+  group: scrape-hb
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: hb-scraper
+    steps:
+      - name: Gate on switches and elapsed time since last real run
+        id: gate
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SNAPSHOT_PATH: data/hb-snapshot.json
+          SCHEDULE_INTERVAL_HOURS: "2" # must match hb-scraper/scrape.py's SCHEDULE_INTERVAL_HOURS
+        run: |
+          set -euo pipefail
+          STATE=$(curl -sS -m 10 -A "ZenPath-Scraper/1.0 (+GitHub Actions)" \
+            "https://isubakoa.com/zenpath/scraper-control.php?scraper=hb" || true)
+          echo "$STATE" > "$RUNNER_TEMP/zp-control.json"
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ "$(echo "$STATE" | jq -r '.paused // false' 2>/dev/null || echo false)" = "true" ]; then
+              echo "Paused in ZenPath Settings (until: $(echo "$STATE" | jq -r '.until // "resumed by hand"')) — skipping."
+              echo "should_run=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+          LAST_ISO=$(curl -sS \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github.raw+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/${SNAPSHOT_PATH}?ref=main" \
+            | jq -r '.checkedAt // ""' 2>/dev/null || true)
+          if [ -z "$LAST_ISO" ]; then
+            echo "No earlier run recorded in $SNAPSHOT_PATH — running."
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          ELAPSED=$(( $(date -u +%s) - $(date -u -d "$LAST_ISO" +%s) ))
+          THRESHOLD=$(( SCHEDULE_INTERVAL_HOURS * 3600 ))
+          echo "Last run of $SNAPSHOT_PATH: $LAST_ISO (${ELAPSED}s ago; threshold ${THRESHOLD}s)"
+          if [ "$ELAPSED" -ge "$THRESHOLD" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "Only ${ELAPSED}s since the last real run — skipping this check-in."
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.should_run == 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.should_run == 'true'
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        if: steps.gate.outputs.should_run == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Run offline Talent Hubs tests
+        if: steps.gate.outputs.should_run == 'true'
+        run: python test_talent_hubs.py
+
+      # Careers in Gothenburg, Brainport and VDAB are read in headless Chrome
+      # (Playwright drives the Chrome already on GitHub's runner; no download).
+      - name: Run scraper
+        if: steps.gate.outputs.should_run == 'true'
+        env:
+          ZP_CONTROL_FILE: ${{ runner.temp }}/zp-control.json
+        run: python scrape.py
+
+      # Only data/hb-snapshot.json changes, so rebasing onto a moved main can't
+      # conflict; retry the push a few times instead of losing the run.
+      - name: Commit updated snapshot
+        if: steps.gate.outputs.should_run == 'true'
+        working-directory: .
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/hb-snapshot.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Refresh hb-snapshot.json"
+          for attempt in 1 2 3 4 5 6; do
+            if git push; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push rejected on attempt $attempt — rebasing onto origin/main and retrying..."
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "::error::Unexpected rebase conflict on data/hb-snapshot.json. Aborting rather than guessing."
+              git rebase --abort
+              exit 1
+            fi
+            sleep $(( (RANDOM % 20) + 5 ))
+          done
+          echo "::error::Failed to push after 6 attempts — this run's snapshot was NOT saved."
+          exit 1

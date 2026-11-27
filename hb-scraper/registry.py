@@ -3,13 +3,12 @@ Talent Hubs: official regional and national job portals for internationals,
 read every run alongside LI and Indeed (Isu's list, triaged 2026-11-26/27; see
 the project doc zenpath-2026-11-26-talent-hubs-triage.md for what was skipped and why).
 
-This folder sits beside li-scraper/ and js-scraper/; li-scraper/scrape.py puts
-it on its import path. HUBS is the one list: scrape.py runs it, tags rows with
-the hub's id as their source, and publishes it with each hub's last-run health
-as openMarket.talentHubs, from which the app builds Settings › Job sites ›
-Talent Hubs and its labels. When several sites list the same role, scrape.py
-keeps one record (LI and Indeed first, then hubs in HUBS order) and lists every
-site in its `sources`. `country` is where the hub's jobs are; countries only a
+HUBS is the one list: hb-scraper/scrape.py runs it, tags rows with the hub's id
+as their source, and publishes it with each hub's last-run health as
+openMarket.talentHubs in data/hb-snapshot.json, from which the app builds
+Settings › Job sites › Talent Hubs and its labels. When several hubs list the
+same role, one record is kept (the first hub in HUBS order supplies the link)
+with every hub in its `sources`; the app does the same across the two snapshots. `country` is where the hub's jobs are; countries only a
 hub covers are scrape.py's EXTRA_MARKETS (accepted, not searched on LI or Indeed).
 
 Each module's read(http, sleep, terms) returns (rows, health) and never raises.
