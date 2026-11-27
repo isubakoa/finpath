@@ -16,7 +16,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
-from .common import Collector, iso_date, make_row, place, request
+from common import Collector, iso_date, make_row, place, request
 
 PORTAL_URL = "https://skane.com/live-work/international-house/stem-jobportal/"
 PAGE_SIZE = 10

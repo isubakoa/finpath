@@ -1,9 +1,8 @@
 """
 Careers in Gothenburg (careersingothenburg.com, Move to Gothenburg): ~500
 English-only jobs in West Sweden. The page searches a Meilisearch index from
-the browser, so this reader opens the page in headless Chrome (Playwright,
-using the Chrome already on GitHub's runner) and keeps the page's own search
-answer for each of QUERIES:
+the browser, so this reader opens the page in headless Chrome (browser.py)
+and keeps the page's own search answer for each of QUERIES:
 
     https://careersingothenburg.com/?query=<q>&offset=<n>&filters={"english":true,...}
     -> the page's POST to search-movetogbg.tenfifty.io/indexes/jobs/search
@@ -20,7 +19,8 @@ import json
 import time
 from urllib.parse import quote
 
-from .common import Collector, epoch_date, make_row, place
+from browser import PAGE_TIMEOUT_MS, run_in_browser
+from common import Collector, epoch_date, make_row, place
 
 PORTAL_URL = "https://careersingothenburg.com/"
 SEARCH_HOST = "tenfifty.io"
@@ -30,7 +30,6 @@ QUERIES = ("product manager", "product owner", "designer", "ux")
 PAGE_SIZE = 20
 MAX_PAGES_PER_QUERY = 3
 PAUSE_SECONDS = 1.0
-PAGE_TIMEOUT_MS = 30000
 
 
 def page_url(query, offset):
@@ -38,34 +37,17 @@ def page_url(query, offset):
             f"&filters={quote(json.dumps(FILTERS, separators=(',', ':')))}")
 
 
-class BrowserSearch:
-    """search(query, offset) -> the page's own search answer, via headless Chrome."""
-
-    def __enter__(self):
-        from playwright.sync_api import sync_playwright
-        self._pw = sync_playwright().start()
-        try:
-            self._browser = self._pw.chromium.launch(channel="chrome", headless=True)
-        except Exception:
-            self._pw.stop()
-            raise
-        self._page = self._browser.new_page()
-        return self
-
-    def __call__(self, query, offset):
-        def is_answer(resp):
-            post = resp.request.post_data or ""
-            return SEARCH_HOST in resp.url and resp.request.method == "POST" and json.dumps(query) in post
-        with self._page.expect_response(is_answer, timeout=PAGE_TIMEOUT_MS) as answer:
-            self._page.goto(page_url(query, offset), wait_until="domcontentloaded", timeout=PAGE_TIMEOUT_MS)
-        resp = answer.value
-        if resp.status != 200:
-            raise RuntimeError(f"search answered HTTP {resp.status}")
-        return resp.json()
-
-    def __exit__(self, *exc):
-        self._browser.close()
-        self._pw.stop()
+def browser_search(browser):
+    """search(query, offset) -> the page's own search answer for that query."""
+    def search(query, offset):
+        bodies = browser.answers(
+            lambda page: page.goto(page_url(query, offset), wait_until="domcontentloaded", timeout=PAGE_TIMEOUT_MS),
+            SEARCH_HOST,
+            accept=lambda r: r.request.method == "POST" and json.dumps(query) in (r.request.post_data or ""))
+        if not bodies:
+            raise RuntimeError("no readable search answer")
+        return bodies[-1]
+    return search
 
 
 def _hit_to_row(hit):
@@ -94,10 +76,6 @@ def read(http=None, sleep=time.sleep, terms=(), search=None):
     c = Collector("gothenburg")
     if search is not None:
         _read_with(search, c, sleep)
-        return c.rows, c.health()
-    try:
-        with BrowserSearch() as browser_search:
-            _read_with(browser_search, c, sleep)
-    except Exception as e:  # noqa: BLE001 -- no browser, or it crashed: report, don't break the run
-        c.fail(f"browser: {type(e).__name__}: {str(e).splitlines()[0][:160] if str(e) else ''}")
+    else:
+        run_in_browser(c, lambda browser: _read_with(browser_search(browser), c, sleep))
     return c.rows, c.health()

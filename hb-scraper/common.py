@@ -136,3 +136,32 @@ class Collector:
 
     def health(self):
         return {"rows": len(self.rows), "pages": self.pages, "total": self.total, "error": self.error}
+
+
+_KEEP_UPPER = {"UX", "UI", "AI", "IT", "HR", "CX", "QA", "VP", "CTO", "CEO", "CFO", "CPO", "SEO", "ICT", "SAP", "B2B", "B2C"}
+
+
+def tidy_caps(text):
+    """'FRONT-END / UI-UX DESIGNER' -> 'Front-End / UI-UX Designer'; text that
+        isn't all capitals is returned as is.
+    """
+    text = clean(text)
+    if not text or text != text.upper():
+        return text
+    out = re.sub(r"[A-Za-zÀ-ÿ']+", lambda m: m.group(0) if m.group(0).upper() in _KEEP_UPPER else m.group(0).capitalize(),
+                 text.lower())
+    out = re.sub(r"\b(" + "|".join(sorted(_KEEP_UPPER, key=len, reverse=True)) + r")\b",
+                 lambda m: m.group(0).upper(), out, flags=re.IGNORECASE)
+    return re.sub(r"(?<=\s)(Of|And|The|In|For|At|To|With)\b", lambda m: m.group(0).lower(), out)
+
+
+_EN_WORDS = re.compile(r"\b(and|the|to|for|with|you|we|are|our|will|of|in)\b")
+_LOCAL_WORDS = re.compile(r"\b(och|att|för|med|som|vi|du|är|det|og|til|med|vil|er|du|de|het|een|van|voor|je|wij|und|der|die|mit|wir|sie)\b")
+
+
+def is_english(text):
+    """Whether a description reads as English rather than Swedish, Norwegian,
+        Dutch or German (more English function words than local ones).
+    """
+    t = clean(text).lower()
+    return len(_EN_WORDS.findall(t)) > len(_LOCAL_WORDS.findall(t))

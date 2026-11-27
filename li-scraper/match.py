@@ -225,15 +225,48 @@ def normalize_employer_name(name):
     return _normalize(name)
 
 
+# Gender markers that sites add to the same title in different ways: "(m/w/d)",
+# "(f/m/x)", "m/f/d", "(all genders)", "(gn)", "(h/f)".
+_GENDER_MARKER_RE = re.compile(
+    r"\(\s*(?:all\s+genders?|gn|[mwfdxh](?:\s*[/|,*]\s*(?:[mwfdxh]|div|divers|diverse))+)\s*\)"
+    r"|\b[mwfdx]\s*/\s*[mwfdx](?:\s*/\s*(?:[mwfdx]|div|divers|diverse))?\b"
+    r"|\ball\s+genders?\b",
+    re.IGNORECASE,
+)
+# Legal forms the job sites add or drop around the same employer ("Bolt" /
+# "Bolt Technology OÜ", "Mendix" / "Mendix B.V.", "UAB Teltonika"), stripped
+# from the ends of an open-market employer key for duplicate checks only.
+_IDENTITY_LEGAL_TOKENS = {
+    "oü", "ou", "as", "asa", "ab", "aktiebolag", "oy", "oyj", "aps", "a", "s", "se", "sarl", "r", "l", "bv", "b", "v", "n",
+    "kg", "srl", "spa", "p", "sro", "uab", "ag", "nv", "sa", "lda", "kft", "plc", "ltd", "limited", "gmbh", "inc",
+    "technology", "technologies",
+}
+
+
+def _identity_title(title):
+    return _normalize_identity_text(_GENDER_MARKER_RE.sub(" ", collapse_whitespace(title or "")))
+
+
+def _identity_employer(employer_key):
+    tokens = str(employer_key or "").split()
+    while len(tokens) > 1 and tokens[-1] in _IDENTITY_LEGAL_TOKENS:
+        tokens.pop()
+    while len(tokens) > 1 and tokens[0] in _IDENTITY_LEGAL_TOKENS:
+        tokens.pop(0)
+    return " ".join(tokens)
+
+
 def role_identity(employer_key, title, location):
-    """The (employer, title, location) key build_fresh_roles() dedupes on, whatever
-        site or URL a posting came from (conflicts resolved by scrape.py's
+    """The (employer, title, location) key duplicates are merged on, whatever site
+        or URL a posting came from (conflicts resolved by scrape.py's
         SOURCE_PRECEDENCE). employer_key is the tracked slug, or the normalized
-        employer name for open-market postings. Accepted limitation: two
-        genuinely different reqs with identical title and location at the same
-        employer collapse into one row.
+        employer name for open-market postings (legal forms at its ends
+        dropped); the title ignores gender markers; scrape.py passes the market
+        (country) as `location`, so "Tallinn, Estonia" and "Estonia" match.
+        Accepted limitation: two genuinely different reqs with the same title at
+        the same employer in one country collapse into one row.
     """
-    return (employer_key, _normalize_identity_text(title), _normalize_identity_text(location))
+    return (_identity_employer(employer_key), _identity_title(title), _normalize_identity_text(location))
 
 
 # ---- Company-name matching ----

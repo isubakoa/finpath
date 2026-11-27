@@ -15,7 +15,7 @@ import time
 
 import requests
 
-from .common import Collector, iso_date, make_row, place, request
+from common import Collector, iso_date, make_row, place, request
 
 SEARCH_URL = "https://api.workinaustria.com/en/employees/jobs"
 SITE_URL = "https://www.workinaustria.com"

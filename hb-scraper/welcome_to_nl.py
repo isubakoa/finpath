@@ -16,7 +16,7 @@ import time
 
 import requests
 
-from .common import Collector, iso_date, make_row, request
+from common import Collector, iso_date, make_row, request
 
 SEARCH_URL = "https://jobportal.ent.europe-west4.gcp.elastic-cloud.com/api/as/v1/engines/rvo/search"
 AUTH_HEADER = "Bearer search-o21ix7ak2jiao92yvzceums2"  # public, search-only

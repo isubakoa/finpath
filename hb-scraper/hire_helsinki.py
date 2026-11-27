@@ -13,7 +13,7 @@ import time
 
 import requests
 
-from .common import Collector, make_row, place, request
+from common import Collector, make_row, place, request
 
 FEED_URL = "https://www.myhelsinki.fi/wp-json/mhb/v1/workinfinland/jobs"
 REFERER = "https://www.myhelsinki.fi/hire-helsinki/"

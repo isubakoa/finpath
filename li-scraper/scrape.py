@@ -11,7 +11,7 @@ Sources (one generator each, all yielding (source, row)):
   indeed        JobSpy keyword searches over the SEARCH_TERMS x LOCATIONS grid,
                 in rotating chunks (run_indeed_searches).
   Talent Hubs   official job portals for internationals (Welcome to NL, Hire
-                Helsinki, Work in Estonia, Workindenmark...): the hubs package,
+                Helsinki, Workindenmark, Arbetsförmedlingen...): ../talent-hubs/,
                 one module each, every row tagged with its hub's id.
 Retired: Glassdoor and Google (2026-09: bot walls; Glassdoor's API is gone), Bayt
 (2026-10-26: Cloudflare refused GitHub's runner on 35 of 38 searches, its
@@ -67,7 +67,9 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 from companies import COMPANIES, ALIASES
-from hubs import HUB_IDS, hubs_off, run_talent_hubs
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "talent-hubs"))
+from registry import HUB_IDS, hubs_off, run_talent_hubs  # noqa: E402 -- needs the path above
 from match import (
     build_index,
     match_company,
@@ -256,8 +258,10 @@ for _loc_entry in LOCATIONS:
 # What LI and Indeed search, as shown in Settings › Job sites.
 SEARCHED_MARKETS = list(CANONICAL_MARKETS)
 # Accepted for job-site postings but not searched on LI or Indeed: countries only
-# a Talent Hub covers (Isu's choice: Finland 2026-11-24, the rest 2026-11-26).
-EXTRA_MARKETS = ["Finland", "Estonia", "Austria", "Denmark", "Sweden"]
+# a Talent Hub covers (Isu's choice: Finland 2026-11-24, Estonia, Austria,
+# Denmark, Sweden 2026-11-26, Norway, Belgium, Luxembourg, Lithuania, Malta 2026-11-27).
+EXTRA_MARKETS = ["Finland", "Estonia", "Austria", "Denmark", "Sweden", "Norway", "Belgium", "Luxembourg",
+                 "Lithuania", "Malta"]
 CANONICAL_MARKETS += EXTRA_MARKETS
 
 # Common abbreviations a location field uses instead of the canonical name
@@ -284,7 +288,8 @@ ISO_CODE_TO_MARKET = {
     "de": "Germany", "gb": "United Kingdom",
     "uk": "United Kingdom", "ie": "Ireland", "my": "Malaysia",
     "ae": "United Arab Emirates", "ee": "Estonia", "at": "Austria", "dk": "Denmark",
-    "se": "Sweden",
+    "se": "Sweden", "no": "Norway", "be": "Belgium", "lu": "Luxembourg", "lt": "Lithuania",
+    "mt": "Malta",
 }
 
 # "Greater X Area" / "X Metropolitan Area" shapes with no country marker, each
@@ -324,6 +329,13 @@ CITY_ALIASES = {
     "aalborg": "Denmark",
     "stockholm": "Sweden", "gothenburg": "Sweden", "göteborg": "Sweden", "malmö": "Sweden",
     "malmo": "Sweden", "uppsala": "Sweden",
+    # Not "bergen" (Bergen op Zoom, NL) or "gent" (inside "Argentina", "agent").
+    "oslo": "Norway", "trondheim": "Norway", "stavanger": "Norway",
+    "brussel": "Belgium", "bruxelles": "Belgium", "antwerp": "Belgium",
+    "ghent": "Belgium", "leuven": "Belgium", "mechelen": "Belgium",
+    "vilnius": "Lithuania", "kaunas": "Lithuania", "klaipėda": "Lithuania", "klaipeda": "Lithuania",
+    "valletta": "Malta", "sliema": "Malta", "st julian": "Malta", "san giljan": "Malta", "gzira": "Malta",
+    "birkirkara": "Malta",
     "munich": "Germany", "hamburg": "Germany", "stuttgart": "Germany",
     "nuremberg": "Germany",
     "milan": "Italy", "padova": "Italy", "padua": "Italy", "vicenza": "Italy",
@@ -730,9 +742,17 @@ def _clean_str(value):
     return str(value)
 
 
+def duplicate_key(key, title, location):
+    """role_identity() at country level: the same role listed by LI, Indeed and
+        several Talent Hubs, with different links, employer spellings, title
+        suffixes and place detail ("Tallinn, Estonia" / "Estonia"), gets one key.
+    """
+    return role_identity(key, title, market_for_location(location) or location)
+
+
 def build_fresh_roles(rows, index, today_iso, debug=False):
     """Filter this run's raw (source, row) results down to real matches, keyed by
-        role_identity() (normalized employer + title + location, not URL -- the
+        duplicate_key() (normalized employer + title + country, not URL -- the
         same posting often has a different URL per site, or a new one later).
     
         Returns (fresh, fresh_open_market), both {identity: (key, role)}:
@@ -788,7 +808,7 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
                 continue
 
             employer_key = normalize_employer_name(employer)
-            identity = role_identity(employer_key, title, location)
+            identity = duplicate_key(employer_key, title, location)
             candidate_role = {
                 "employer": employer,
                 "market": market,
@@ -816,7 +836,7 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
                 print(f"[match] title filtered out: {title!r} @ {employer!r}", file=sys.stderr)
             continue
 
-        identity = role_identity(slug, title, location)
+        identity = duplicate_key(slug, title, location)
         candidate_role = {
             "title": title,
             "location": location,
@@ -882,13 +902,15 @@ def _merge_identity_roles(existing_items, fresh_roles, cutoff):
     """
     merged = {}
     for key, role in existing_items:
-        identity = role_identity(key, role.get("title", ""), role.get("location", ""))
+        identity = duplicate_key(key, role.get("title", ""), role.get("location", ""))
         if "sources" not in role or "sponsorshipSignal" not in role:
             role = dict(role)
             if "sources" not in role:
                 role["sources"] = [role["source"]] if role.get("source") else []
             if "sponsorshipSignal" not in role:
                 role["sponsorshipSignal"] = []
+        if identity in merged:  # duplicates kept apart under an older, stricter key
+            role = _merge_role_records(merged[identity][1], role)
         merged[identity] = (key, role)
 
     stats = {"added": 0, "updated": 0, "carried_over": 0, "expired": 0}

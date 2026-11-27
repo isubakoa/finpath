@@ -24,7 +24,7 @@ on:
       - "li-scraper/companies.py"
       - "li-scraper/requirements.txt"
       - "li-scraper/li_guest.py"
-      - "li-scraper/hubs/**"
+      - "talent-hubs/**"
       - "data/companies.json"
   workflow_dispatch: {}
 
@@ -128,9 +128,10 @@ jobs:
 
       - name: Run offline Talent Hubs tests
         if: steps.gate.outputs.should_run == 'true'
-        run: python test_talent_hubs.py
+        run: python ../talent-hubs/test_talent_hubs.py
 
-      # Careers in Gothenburg is read in headless Chrome (Playwright drives the Chrome
+      # The Talent Hubs in ../talent-hubs run from here too. Careers in Gothenburg,
+      # Brainport and VDAB are read in headless Chrome (Playwright drives the Chrome
       # already on GitHub's runner, so no browser download).
       - name: Run scraper
         if: steps.gate.outputs.should_run == 'true'

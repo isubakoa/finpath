@@ -15,11 +15,11 @@ from match import (
     match_negative_filters,
     normalize_scraped_title,
     normalize_employer_name,
-    role_identity,
     open_market_gate,
 )
 from scrape import (  # top-level scrape.py imports have no jobspy dependency —
     build_fresh_roles,                                    # it's only imported lazily inside run_indeed_searches()
+    duplicate_key,
     merge_and_prune,
     CANONICAL_MARKETS,
     EXPIRY_DAYS,
@@ -234,11 +234,11 @@ def run():
         crashed = True
         print(f"  FAIL  build_fresh_roles crashed: {e}")
 
-    id_wise_design_london = role_identity("wise", "Head of Design", "London")
-    id_wise_design_unknown = role_identity("wise", "Head of Design", "")
-    id_wise_senior_pd_sg = role_identity("wise", "Senior Product Designer", "Singapore")
-    id_wise_ux_researcher_dubai = role_identity("wise", "UX Researcher", "Dubai")
-    id_hsbc_senior_ux_researcher_sg = role_identity("hsbc", "Senior UX Researcher", "Singapore")
+    id_wise_design_london = duplicate_key("wise", "Head of Design", "London")
+    id_wise_design_unknown = duplicate_key("wise", "Head of Design", "")
+    id_wise_senior_pd_sg = duplicate_key("wise", "Senior Product Designer", "Singapore")
+    id_wise_ux_researcher_dubai = duplicate_key("wise", "UX Researcher", "Dubai")
+    id_hsbc_senior_ux_researcher_sg = duplicate_key("hsbc", "Senior UX Researcher", "Singapore")
 
     fresh_checks = [
         ("did not crash on NaN fields (the actual production bug)", not crashed),
@@ -270,38 +270,38 @@ def run():
         print(f"  {'OK ' if ok else 'FAIL'}  {label}")
 
     print("-- build_fresh_roles open-market branch (2.2) --")
-    id_om_startup_sg = role_identity(
+    id_om_startup_sg = duplicate_key(
         normalize_employer_name("Some Random Singapore Startup Pte Ltd"), "Head of Product Design", "Singapore"
     )
-    id_om_startup_uae = role_identity(
+    id_om_startup_uae = duplicate_key(
         normalize_employer_name("Some Random Dubai Startup FZE"), "Head of Product Design", "Dubai, UAE"
     )
-    id_om_nl_negation = role_identity(
+    id_om_nl_negation = duplicate_key(
         normalize_employer_name("Some Random NL Open Market Co"), "Head of Product Design", "Netherlands"
     )
-    id_om_germany = role_identity(
+    id_om_germany = duplicate_key(
         normalize_employer_name("Some Random Startup GmbH"), "Head of Product Design", "Germany"
     )
     # Case #3 (bare "Berlin") must NOT be kept; named so the assertion below can
     # check it.
-    id_om_berlin_unrelated = role_identity(
+    id_om_berlin_unrelated = duplicate_key(
         normalize_employer_name("Some Totally Unrelated Company"), "Head of Design", "Berlin"
     )
     # Case #17: an otherwise-qualifying India posting must not reach open market.
-    id_om_india = role_identity(
+    id_om_india = duplicate_key(
         normalize_employer_name("Some Random Startup Pvt Ltd"), "Head of Product Design", "Bengaluru, India"
     )
     # Case #18: "City, StateCode, CountryCode" resolves via ISO_CODE_TO_MARKET -> Germany.
-    id_om_berlin_iso = role_identity(
+    id_om_berlin_iso = duplicate_key(
         normalize_employer_name("Some Random Berlin Startup GmbH"), "Head of Product Design", "Berlin, BE, DE"
     )
     # Case #12 ("Product Designer", below tier) is its own kept identity -- a
     # different title from #11/#11b, not a merge.
-    id_om_startup_sg_below = role_identity(
+    id_om_startup_sg_below = duplicate_key(
         normalize_employer_name("Some Random Singapore Startup Pte Ltd"), "Product Designer", "Singapore"
     )
     # Case #13 (Robert Walters, an agency) is kept: agencies are included.
-    id_om_robert_walters = role_identity(
+    id_om_robert_walters = duplicate_key(
         normalize_employer_name("Robert Walters"), "Head of Product Design", "Netherlands"
     )
     om_checks = [
@@ -442,11 +442,11 @@ def run():
           "LOCATIONS trimmed 25 -> 15 on 2026-09-24, 15 -> 11 on 2026-10-27; Japan 16-24 Nov; + Finland, not searched, 2026-11-24; "
           "+ Estonia, Austria, Denmark, Sweden, not searched, 2026-11-26) --")
     canonical_checks = [
-        # A tripwire, not a derived value: 11 LOCATIONS entries + 5 EXTRA_MARKETS -> 16 markets.
+        # A tripwire, not a derived value: 11 LOCATIONS entries + 10 EXTRA_MARKETS -> 21 markets.
         # Update deliberately if LOCATIONS or EXTRA_MARKETS changes.
-        ("16 distinct canonical markets from 11 LOCATIONS entries + 5 Talent Hubs-only countries (no "
+        ("21 distinct canonical markets from 11 LOCATIONS entries + 10 Talent Hubs-only countries (no "
          "multi-entry collapsing since only one UAE entry remains)",
-         len(CANONICAL_MARKETS) == 16),
+         len(CANONICAL_MARKETS) == 21),
         ("Singapore present (bare LOCATIONS entry, unchanged)", "Singapore" in CANONICAL_MARKETS),
         ("Germany present — never eligible for open market before the broadening round",
          "Germany" in CANONICAL_MARKETS),
@@ -528,7 +528,7 @@ def run():
         ]},
     }
     new_key = normalize_employer_name("Gamma Singapore Pte Ltd")
-    new_identity = role_identity(new_key, "Lead Product Designer", "Singapore")
+    new_identity = duplicate_key(new_key, "Lead Product Designer", "Singapore")
     fresh_open_market_for_merge = {
         new_identity: (new_key, {
             "employer": "Gamma Singapore Pte Ltd", "market": "Singapore", "title": "Lead Product Designer",

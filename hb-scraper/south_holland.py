@@ -15,7 +15,7 @@ import time
 
 import requests
 
-from .common import Collector, epoch_date, make_row, request
+from common import Collector, epoch_date, make_row, request
 
 SEARCH_URL = "https://api.getro.com/api/v2/collections/1535/search/jobs"
 BOARD_URL = "https://jobs.workinsouthholland.nl"

@@ -1,13 +1,16 @@
 """
 Talent Hubs: official regional and national job portals for internationals,
-read every run alongside LI and Indeed (Isu's list, triaged 2026-11-26; see the
-project doc zenpath-2026-11-26-talent-hubs-triage.md for what was skipped and why).
+read every run alongside LI and Indeed (Isu's list, triaged 2026-11-26/27; see
+the project doc zenpath-2026-11-26-talent-hubs-triage.md for what was skipped and why).
 
-HUBS is the one list: scrape.py runs it, tags rows with the hub's id as their
-source, and publishes it with each hub's last-run health as openMarket.talentHubs,
-from which the app builds Settings › Job sites › Talent Hubs and its labels.
-`country` is where the hub's jobs are; countries only a hub covers are scrape.py's
-EXTRA_MARKETS (accepted, not searched on LI or Indeed).
+This folder sits beside li-scraper/ and js-scraper/; li-scraper/scrape.py puts
+it on its import path. HUBS is the one list: scrape.py runs it, tags rows with
+the hub's id as their source, and publishes it with each hub's last-run health
+as openMarket.talentHubs, from which the app builds Settings › Job sites ›
+Talent Hubs and its labels. When several sites list the same role, scrape.py
+keeps one record (LI and Indeed first, then hubs in HUBS order) and lists every
+site in its `sources`. `country` is where the hub's jobs are; countries only a
+hub covers are scrape.py's EXTRA_MARKETS (accepted, not searched on LI or Indeed).
 
 Each module's read(http, sleep, terms) returns (rows, health) and never raises.
 A hub switched off in Settings (scraper-control.php's hubsOff, handed over by
@@ -18,26 +21,59 @@ import json
 import os
 import sys
 
-from . import gothenburg, hire_helsinki, skane, south_holland, welcome_to_nl, work_in_austria, \
-    work_in_estonia, workindenmark
+import arbetsformedlingen
+import brainport
+import gothenburg
+import hire_helsinki
+import jobsplus
+import make_it_in_munich
+import nav
+import skane
+import south_holland
+import talent_berlin
+import vdab
+import welcome_to_nl
+import work_in_austria
+import work_in_estonia
+import work_in_lithuania
+import work_in_luxembourg
+import workindenmark
 
 HUBS = [
     {"id": "welcometonl", "name": "Welcome to NL", "country": "Netherlands",
      "url": "https://www.welcome-to-nl.nl/jobs/", "read": welcome_to_nl.read},
     {"id": "southholland", "name": "Work in South Holland", "country": "Netherlands",
      "url": "https://jobs.workinsouthholland.nl/jobs", "read": south_holland.read},
-    {"id": "hirehelsinki", "name": "Hire Helsinki", "country": "Finland",
-     "url": "https://www.myhelsinki.fi/hire-helsinki/", "read": hire_helsinki.read},
-    {"id": "workinestonia", "name": "Work in Estonia", "country": "Estonia",
-     "url": "https://workinestonia.com/job/", "read": work_in_estonia.read},
+    {"id": "brainport", "name": "Brainport Eindhoven", "country": "Netherlands",
+     "url": "https://brainporteindhoven.com/int/work/jobs", "read": brainport.read},
+    {"id": "talentberlin", "name": "Talent Berlin", "country": "Germany",
+     "url": "https://talent.berlin/jobs", "read": talent_berlin.read},
+    {"id": "makeitinmunich", "name": "Make it in Munich", "country": "Germany",
+     "url": "https://www.make-it-in-munich.com/munich-job-board/", "read": make_it_in_munich.read},
+    {"id": "vdab", "name": "VDAB", "country": "Belgium",
+     "url": "https://www.vdab.be/vindeenjob/jobs/jobs-in-belgium", "read": vdab.read},
+    {"id": "workinluxembourg", "name": "Work in Luxembourg", "country": "Luxembourg",
+     "url": "https://jobs.workinluxembourg.com/offers", "read": work_in_luxembourg.read},
     {"id": "workinaustria", "name": "Work in Austria", "country": "Austria",
      "url": "https://www.workinaustria.com/en/employees/jobs", "read": work_in_austria.read},
     {"id": "workindenmark", "name": "Workindenmark", "country": "Denmark",
      "url": "https://workindenmark.jobnet.dk/find-job", "read": workindenmark.read},
+    {"id": "arbetsformedlingen", "name": "Arbetsförmedlingen", "country": "Sweden",
+     "url": "https://arbetsformedlingen.se/platsbanken", "read": arbetsformedlingen.read},
     {"id": "skane", "name": "Skåne STEM jobs", "country": "Sweden",
      "url": "https://skane.com/live-work/international-house/stem-jobportal/", "read": skane.read},
     {"id": "gothenburg", "name": "Careers in Gothenburg", "country": "Sweden",
      "url": "https://careersingothenburg.com/", "read": gothenburg.read},
+    {"id": "nav", "name": "NAV arbeidsplassen", "country": "Norway",
+     "url": "https://arbeidsplassen.nav.no/stillinger?v=6&workLanguage=Engelsk", "read": nav.read},
+    {"id": "hirehelsinki", "name": "Hire Helsinki", "country": "Finland",
+     "url": "https://www.myhelsinki.fi/hire-helsinki/", "read": hire_helsinki.read},
+    {"id": "workinestonia", "name": "Work in Estonia", "country": "Estonia",
+     "url": "https://workinestonia.com/job/", "read": work_in_estonia.read},
+    {"id": "workinlithuania", "name": "Work in Lithuania", "country": "Lithuania",
+     "url": "https://jobs.workinlithuania.com/", "read": work_in_lithuania.read},
+    {"id": "jobsplus", "name": "Jobsplus", "country": "Malta",
+     "url": "https://jobsplus.gov.mt/vacancy", "read": jobsplus.read},
 ]
 HUB_IDS = [h["id"] for h in HUBS]
 assert len(set(HUB_IDS)) == len(HUB_IDS), "hub ids must be unique"

@@ -15,7 +15,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
-from .common import Collector, make_row, place, request
+from common import Collector, make_row, place, request
 
 AJAX_URL = "https://workinestonia.com/wp-admin/admin-ajax.php"
 REFERER = "https://workinestonia.com/job/"
