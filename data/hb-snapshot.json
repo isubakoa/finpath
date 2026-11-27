@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T09:49:25Z",
+  "generatedAt": "2026-11-27T19:21:21Z",
   "companies": {
     "adyen": {
       "roles": [
@@ -942,6 +942,18 @@
           "location": "Stockholm, Sweden",
           "url": "https://arbetsformedlingen.se/platsbanken/annonser/31759007",
           "postedDate": "2026-11-20",
+          "source": "arbetsformedlingen",
+          "sources": [
+            "arbetsformedlingen"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-27"
+        },
+        {
+          "title": "Strategic Product Manager",
+          "location": "Stockholm, Sweden",
+          "url": "https://arbetsformedlingen.se/platsbanken/annonser/31788395",
+          "postedDate": "2026-11-27",
           "source": "arbetsformedlingen",
           "sources": [
             "arbetsformedlingen"
@@ -3464,6 +3476,76 @@
         "title": "Manager Product Integration",
         "location": "J\u00e4rf\u00e4lla, Sweden",
         "url": "https://arbetsformedlingen.se/platsbanken/annonser/31785590",
+        "postedDate": "2026-11-27",
+        "source": "arbetsformedlingen",
+        "sources": [
+          "arbetsformedlingen"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-27"
+      },
+      {
+        "employer": "evondos",
+        "market": "Netherlands",
+        "title": "Product Designer",
+        "location": "Zoetermeer, Netherlands",
+        "url": "https://careers.evondos.com/jobs/8015120-product-designer",
+        "postedDate": "2026-11-27",
+        "source": "southholland",
+        "sources": [
+          "southholland"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-27"
+      },
+      {
+        "employer": "Verendus System AB",
+        "market": "Sweden",
+        "title": "German-speaking Product Manager",
+        "location": "J\u00f6nk\u00f6ping, Sweden",
+        "url": "https://arbetsformedlingen.se/platsbanken/annonser/31788685",
+        "postedDate": "2026-11-27",
+        "source": "arbetsformedlingen",
+        "sources": [
+          "arbetsformedlingen"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-27"
+      },
+      {
+        "employer": "Veritaz AB",
+        "market": "Sweden",
+        "title": "Product Owner CRM, Personalisation & Customer Orchestration - 21076",
+        "location": "Solna, Sweden",
+        "url": "https://arbetsformedlingen.se/platsbanken/annonser/31789102",
+        "postedDate": "2026-11-27",
+        "source": "arbetsformedlingen",
+        "sources": [
+          "arbetsformedlingen"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-27"
+      },
+      {
+        "employer": "NFA Forestry Automation AB",
+        "market": "Sweden",
+        "title": "Product Lead - Application and Infrastructure",
+        "location": "LUND, Sweden",
+        "url": "https://arbetsformedlingen.se/platsbanken/annonser/31788363",
+        "postedDate": "2026-11-27",
+        "source": "arbetsformedlingen",
+        "sources": [
+          "arbetsformedlingen"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-27"
+      },
+      {
+        "employer": "Epiroc Rock Drills Aktiebolag",
+        "market": "Sweden",
+        "title": "Strategy Manager, Infrastructure & Construction",
+        "location": "Stockholm, Sweden",
+        "url": "https://arbetsformedlingen.se/platsbanken/annonser/31787768",
         "postedDate": "2026-11-27",
         "source": "arbetsformedlingen",
         "sources": [
@@ -9854,6 +9936,34 @@
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-27"
+      },
+      {
+        "employer": "KONE",
+        "market": "Finland",
+        "title": "Product Architect, Customer Service",
+        "location": "Espoo, Finland",
+        "url": "https://www.jobly.fi/en/job/product-architect-customer-service-2808050",
+        "postedDate": null,
+        "source": "hirehelsinki",
+        "sources": [
+          "hirehelsinki"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-27"
+      },
+      {
+        "employer": "W\u00e4rtsil\u00e4",
+        "market": "Finland",
+        "title": "MyW\u00e4rtsil\u00e4 Product Manager",
+        "location": "Helsinki, Finland",
+        "url": "https://www.jobly.fi/en/job/mywartsila-product-manager-2807373",
+        "postedDate": null,
+        "source": "hirehelsinki",
+        "sources": [
+          "hirehelsinki"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-27"
       }
     ],
     "talentHubs": [
@@ -9874,7 +9984,7 @@
         "country": "Netherlands",
         "url": "https://jobs.workinsouthholland.nl/jobs",
         "off": false,
-        "rows": 575,
+        "rows": 576,
         "pages": 46,
         "total": null,
         "error": null
@@ -9940,9 +10050,9 @@
         "country": "Austria",
         "url": "https://www.workinaustria.com/en/employees/jobs",
         "off": false,
-        "rows": 1064,
+        "rows": 1071,
         "pages": 11,
-        "total": 1064,
+        "total": 1071,
         "error": null
       },
       {
@@ -9951,9 +10061,9 @@
         "country": "Denmark",
         "url": "https://workindenmark.jobnet.dk/find-job",
         "off": false,
-        "rows": 2344,
-        "pages": 24,
-        "total": 2345,
+        "rows": 2283,
+        "pages": 23,
+        "total": 2283,
         "error": null
       },
       {
@@ -9962,7 +10072,7 @@
         "country": "Sweden",
         "url": "https://arbetsformedlingen.se/platsbanken",
         "off": false,
-        "rows": 458,
+        "rows": 465,
         "pages": 14,
         "total": null,
         "error": null
@@ -9973,10 +10083,10 @@
         "country": "Sweden",
         "url": "https://skane.com/live-work/international-house/stem-jobportal/",
         "off": false,
-        "rows": 0,
-        "pages": 0,
-        "total": null,
-        "error": "page 1: no job list on the page (changed or blocked)"
+        "rows": 218,
+        "pages": 22,
+        "total": 218,
+        "error": null
       },
       {
         "id": "gothenburg",
@@ -9995,7 +10105,7 @@
         "country": "Norway",
         "url": "https://arbeidsplassen.nav.no/stillinger?v=6&workLanguage=Engelsk",
         "off": false,
-        "rows": 268,
+        "rows": 267,
         "pages": 20,
         "total": null,
         "error": null
@@ -10006,9 +10116,9 @@
         "country": "Finland",
         "url": "https://www.myhelsinki.fi/hire-helsinki/",
         "off": false,
-        "rows": 648,
-        "pages": 13,
-        "total": 648,
+        "rows": 653,
+        "pages": 14,
+        "total": 653,
         "error": null
       },
       {
@@ -10017,8 +10127,8 @@
         "country": "Estonia",
         "url": "https://workinestonia.com/job/",
         "off": false,
-        "rows": 382,
-        "pages": 33,
+        "rows": 384,
+        "pages": 34,
         "total": null,
         "error": null
       },
@@ -10028,9 +10138,9 @@
         "country": "Lithuania",
         "url": "https://jobs.workinlithuania.com/",
         "off": false,
-        "rows": 212,
-        "pages": 18,
-        "total": 212,
+        "rows": 220,
+        "pages": 19,
+        "total": 221,
         "error": null
       },
       {
@@ -10058,5 +10168,5 @@
       "Malta"
     ]
   },
-  "checkedAt": "2026-11-27T09:37:34Z"
+  "checkedAt": "2026-11-27T19:10:55Z"
 }
