@@ -1,7 +1,7 @@
 """
 Talent Hubs: official regional and national job portals for internationals,
 read every run alongside LI and Indeed (Isu's list, triaged 2026-11-26/27; see
-the project doc zenpath-2026-11-26-talent-hubs-triage.md for what was skipped and why).
+the project doc propath-2026-11-26-talent-hubs-triage.md for what was skipped and why).
 
 HUBS is the one list: hb/scrape.py runs it, tags rows with the hub's id
 as their source, and publishes it with each hub's last-run health as
@@ -13,7 +13,7 @@ hub covers are scrape.py's EXTRA_MARKETS (accepted, not searched on LI or Indeed
 
 Each module's read(http, sleep, terms) returns (rows, health) and never raises.
 A hub switched off in Settings (scraper-control.php's hubsOff, handed over by
-the workflow as ZP_CONTROL_FILE) isn't read; its roles expire from the snapshot
+the workflow as PP_CONTROL_FILE) isn't read; its roles expire from the snapshot
 as usual and the app hides them meanwhile.
 """
 import json
@@ -88,7 +88,7 @@ def hubs_off(path=None):
     """Hub ids switched off in Settings, from the workflow's copy of
         scraper-control.php's answer. Missing or unreadable: none off.
     """
-    path = path if path is not None else os.environ.get("ZP_CONTROL_FILE", "")
+    path = path if path is not None else os.environ.get("PP_CONTROL_FILE", "")
     if not path:
         return set()
     try:

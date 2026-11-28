@@ -1,7 +1,7 @@
 """
 hb: reads the Talent Hubs (registry.HUBS, official job portals for
 internationals) and writes data/hb-snapshot.json, which check.php serves to
-ZenPath next to li's data/li-snapshot.json.
+Propath next to li's data/li-snapshot.json.
 
 The rules are the job-site scraper's own (li/roles.py and match.py,
 shared): title relevance and fit, accepted markets, tracked-company matching,
@@ -16,7 +16,7 @@ Output:
 
 Usage (locally, or via .github/workflows/hb.yml):
     pip install -r requirements.txt
-    python scrape.py            # ZP_CONTROL_FILE=<scraper-control answer> skips hubs switched off
+    python scrape.py            # PP_CONTROL_FILE=<scraper-control answer> skips hubs switched off
     python scrape.py --debug    # print kept/dropped results, write nothing
 """
 import os

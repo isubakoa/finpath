@@ -35,13 +35,13 @@ jobs:
           SCHEDULE_INTERVAL_HOURS: "2"
         run: |
           set -euo pipefail
-          # Paused in ZenPath Settings › Job sites? Scheduled runs only; a run started by
+          # Paused in Propath Settings › Job sites? Scheduled runs only; a run started by
           # hand always goes ahead. If the site can't be reached, the run goes ahead too.
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            STATE=$(curl -sS -m 10 -A "ZenPath-Scraper/1.0 (+GitHub Actions)" \
-              "https://isubakoa.com/zenpath/scraper-control.php?scraper=js" || true)
+            STATE=$(curl -sS -m 10 -A "Propath-Scraper/1.0 (+GitHub Actions)" \
+              "https://isubakoa.com/propath/scraper-control.php?scraper=js" || true)
             if [ "$(echo "$STATE" | jq -r '.paused // false' 2>/dev/null || echo false)" = "true" ]; then
-              echo "Paused in ZenPath Settings (until: $(echo "$STATE" | jq -r '.until // "resumed by hand"')) — skipping."
+              echo "Paused in Propath Settings (until: $(echo "$STATE" | jq -r '.until // "resumed by hand"')) — skipping."
               echo "should_run=false" >> "$GITHUB_OUTPUT"
               exit 0
             fi

@@ -6,7 +6,7 @@ jobs in the Helsinki region, via the feed its "Search all open jobs" block reads
         ?limit=<=50&page=<n>&city=helsinki,espoo,vantaa
 
 ~650 jobs, 50 a page. Each has title, employer {name, city}, expireDate and
-externalUrl; no posting date, so ZenPath's first-seen date stands in. Behind
+externalUrl; no posting date, so Propath's first-seen date stands in. Behind
 Cloudflare, hence the browser user agent and referer.
 """
 import time

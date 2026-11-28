@@ -1,6 +1,6 @@
 """Tracked companies for the li and hb scrapers, loaded from ../data/companies.json.
 
-companies.json is ZenPath's single list of tracked companies -- the app
+companies.json is Propath's single list of tracked companies -- the app
 (index.php), this scraper and the validation test all read it. Don't add
 companies here; edit companies.json. This module only reshapes it into the
 two structures match.py already expects:
