@@ -1,15 +1,3 @@
-"""
-Skåne's STEM job portal (skane.com, International House Skåne): ~240 STEM jobs
-in Malmö, Lund and around that don't require Swedish, taken from the Swedish
-employment service. Plain server-rendered pages, 10 cards each:
-
-    GET https://skane.com/live-work/international-house/stem-jobportal/
-        ?q&sortOrder=relevance&location&pej_page=<n>
-
-The search box filters in the browser only, so every page is read. A card
-(.pej-job-card) has the title, city badge, employer, "Published: YYYY-MM-DD"
-and an apply link to arbetsformedlingen.se.
-"""
 import re
 import time
 

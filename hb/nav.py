@@ -1,14 +1,3 @@
-"""
-NAV arbeidsplassen (Norway's Labour and Welfare Administration), ads whose
-working language is English (~2,600), searched for QUERIES. Server-rendered
-pages of 25:
-
-    GET https://arbeidsplassen.nav.no/stillinger?v=6&workLanguage=Engelsk&q=<q>&from=<n>
-
-Each result is an <article>: date ("21. november 2026"), title link
-(/stillinger/stilling/<id>), then "Arbeidsgiver" <employer> and "Sted" <place>.
-The page says how many matched ("61 treff").
-"""
 import re
 import time
 
@@ -28,7 +17,6 @@ MONTHS = {m: i + 1 for i, m in enumerate(["januar", "februar", "mars", "april", 
 
 
 def norwegian_date(text):
-    """'21. november 2026' -> '2026-11-21', else None."""
     m = re.match(r"\s*(\d{1,2})\.\s*([a-zæøå]+)\s+(\d{4})", text or "", re.IGNORECASE)
     if not m or m.group(2).lower() not in MONTHS:
         return None

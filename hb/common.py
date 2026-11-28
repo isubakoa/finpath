@@ -1,11 +1,3 @@
-"""
-Shared plumbing for the Talent Hubs readers: HTTP calls that fail loudly, a
-row builder in the JobSpy shape scrape.py expects, and Collector, which pages
-through a portal, drops duplicate links and records the first error.
-
-A reader never raises: a refused or failed page ends that reader's run, keeps
-the rows already read, and is reported in its health dict (Settings › Job sites).
-"""
 import html
 import re
 import sys
@@ -20,11 +12,6 @@ USER_AGENT = (
 
 
 def request(http, method, url, *, expect="json", headers=None, **kwargs):
-    """One call through `http` (the requests module, or a test fake with
-        get/post). Returns parsed JSON or text. Raises RuntimeError with a short
-        reason on an HTTP error or an answer that isn't the expected kind (a
-        bot-wall page instead of JSON).
-    """
     all_headers = {"User-Agent": USER_AGENT, "Accept": "application/json" if expect == "json" else "text/html"}
     all_headers.update(headers or {})
     resp = getattr(http, method)(url, headers=all_headers, timeout=REQUEST_TIMEOUT_SECONDS, **kwargs)
@@ -39,31 +26,25 @@ def request(http, method, url, *, expect="json", headers=None, **kwargs):
 
 
 def clean(value):
-    """Plain, unescaped, single-spaced text from a feed field."""
     if value is None:
         return ""
     return " ".join(html.unescape(str(value)).split())
 
 
 def place(city, country):
-    """"City, Country", or just the country when there's no city (or the city
-        field repeats the country).
-    """
-    city = clean(city).strip(" ,\u3164")  # U+3164: a blank-looking filler seen on Work in Estonia
+    city = clean(city).strip(" ,\u3164")
     if not city or city.lower() == country.lower() or not any(ch.isalpha() for ch in city):
         return country
     return f"{city}, {country}"
 
 
 def strip_tracking(url):
-    """The link without utm_* parameters, so the same ad found twice matches."""
     parts = urlsplit(url)
     query = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True) if not k.lower().startswith("utm_")]
     return urlunsplit(parts._replace(query=urlencode(query)))
 
 
 def epoch_date(value):
-    """'YYYY-MM-DD' from a Unix timestamp, or None."""
     try:
         return datetime.fromtimestamp(int(value), tz=timezone.utc).strftime("%Y-%m-%d")
     except (TypeError, ValueError, OverflowError, OSError):
@@ -71,15 +52,11 @@ def epoch_date(value):
 
 
 def iso_date(value):
-    """'YYYY-MM-DD' from an ISO-ish date string, or None."""
     s = clean(value)
     return s[:10] if len(s) >= 10 and s[4] == "-" and s[7] == "-" else None
 
 
 def make_row(url, company, title, location, date_posted=None, description=""):
-    """A JobSpy-shaped row, or None without a title or an http(s) link. The
-        description (HTML or text) only feeds scrape.py's sponsorship phrases.
-    """
     url, title = clean(url), clean(title)
     if not title or not url.startswith("http"):
         return None
@@ -94,7 +71,6 @@ def make_row(url, company, title, location, date_posted=None, description=""):
 
 
 class Collector:
-    """Rows from one portal, deduplicated by link, plus its health report."""
 
     def __init__(self, hub_id):
         self.hub_id = hub_id
@@ -107,16 +83,10 @@ class Collector:
             self.rows.append(row)
 
     def run(self, fetch, *, sleep, pause, max_pages, start=1, label=""):
-        """Calls fetch(page) for page = start, start+1, ... until it returns
-            more=False or max_pages is reached. fetch returns (rows, total, more);
-            `total` (the portal's own count) is kept from the first unlabelled
-            call. The first exception stops this run and is recorded. Returns
-            False when it stopped on an error.
-        """
         for page in range(start, start + max_pages):
             try:
                 rows, total, more = fetch(page)
-            except Exception as e:  # noqa: BLE001 -- one bad call must not kill the run
+            except Exception as e:
                 self.fail(f"{label}page {page - start + 1}: {e}")
                 return False
             self.pages += 1
@@ -142,9 +112,6 @@ _KEEP_UPPER = {"UX", "UI", "AI", "IT", "HR", "CX", "QA", "VP", "CTO", "CEO", "CF
 
 
 def tidy_caps(text):
-    """'FRONT-END / UI-UX DESIGNER' -> 'Front-End / UI-UX Designer'; text that
-        isn't all capitals is returned as is.
-    """
     text = clean(text)
     if not text or text != text.upper():
         return text
@@ -160,8 +127,5 @@ _LOCAL_WORDS = re.compile(r"\b(och|att|för|med|som|vi|du|är|det|og|til|med|vil
 
 
 def is_english(text):
-    """Whether a description reads as English rather than Swedish, Norwegian,
-        Dutch or German (more English function words than local ones).
-    """
     t = clean(text).lower()
     return len(_EN_WORDS.findall(t)) > len(_LOCAL_WORDS.findall(t))

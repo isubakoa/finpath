@@ -1,14 +1,3 @@
-"""
-Make it in Munich's job board (City and District of Munich): ~58,000 jobs in
-Bavaria from the Federal Employment Agency, mostly German ads, searched by job
-title for QUERIES:
-
-    GET https://jobs.make-it-in-munich.com/jobs?job_title=<q>&limit=100&page=<n>
-    -> {"total", "total_pages", "jobs": [...]}
-
-Each job has job_title, company_name, postal_code, created_at and url (the ad
-on the employer's or a partner's site). Postal codes 80xxx-81xxx are Munich.
-"""
 import time
 
 import requests

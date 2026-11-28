@@ -1,16 +1,3 @@
-"""
-Work in South Holland (jobs.workinsouthholland.nl): English jobs in The Hague,
-Rotterdam, Delft and Leiden, ~2,000 in all. A Getro board; its search API is
-public:
-
-    POST https://api.getro.com/api/v2/collections/1535/search/jobs
-         {"hitsPerPage": 20, "page": <0-based>, "filters": "", "query": "<q>"}
-    -> {"results": {"jobs": [...], "count": n}}
-
-Pages are capped at 20, so instead of paging through everything it's searched
-for QUERIES. Each job has title, organization {name, slug}, locations[],
-created_at (Unix time) and url (the employer's own posting).
-"""
 import time
 
 import requests

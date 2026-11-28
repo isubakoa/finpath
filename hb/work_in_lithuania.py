@@ -1,14 +1,3 @@
-"""
-Work in Lithuania (jobs.workinlithuania.com, Invest Lithuania): ~210 roles at
-international companies, read in full:
-
-    GET https://jobs.workinlithuania.com/api/job-offers?page=<n>
-    -> {"data": [...], "meta": {"total", "last_page"}}   (12 a page)
-
-Each offer has name (title), company.name, location ("Vilnius", "Kaunas,
-Remote job") and slug (the ad on cvbankas.lt). The date is only relative
-("Added 8 hours ago"), so ProPath's first-seen date stands in.
-"""
 import time
 
 import requests

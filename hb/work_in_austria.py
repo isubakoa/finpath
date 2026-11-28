@@ -1,16 +1,3 @@
-"""
-Work in Austria (workinaustria.com), the national agency's board, ~1,050 jobs
-(it also carries Come2Upper Austria's). The site reads a Solr search API:
-
-    GET https://api.workinaustria.com/en/employees/jobs?tx_solr[action]=results
-        &tx_solr[controller]=Search&tx_solr[cuid]=38222&type=7383
-        &tx_solr[resultsPerPage]=100&tx_solr[page]=<n>
-    -> {"searchResults": [...], "allResultCount": n}
-
-Each result has title, businessCompanyName_textS, cities_stringM (or
-businessCity_stringS), published_stringS, content (the description) and url
-(a path on www.workinaustria.com).
-"""
 import time
 
 import requests

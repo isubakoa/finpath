@@ -1,17 +1,3 @@
-"""
-Welcome to NL (welcome-to-nl.nl/jobs), a general Dutch jobs portal for
-internationals. The page ships no listings in its HTML; it POSTs to an Elastic
-App Search engine ("rvo"):
-
-    https://jobportal.ent.europe-west4.gcp.elastic-cloud.com/api/as/v1/engines/rvo/search
-
-AUTH_HEADER is the site's public, read-only "search-" key, Elastic's convention
-for keys meant to be embedded in client JS. If it stops working, re-capture it
-from the "search" request in DevTools › Network on welcome-to-nl.nl/jobs.
-
-Searched per title term, newest first, two pages each. Each result's url is the
-employer's own posting.
-"""
 import time
 
 import requests
@@ -19,15 +5,14 @@ import requests
 from common import Collector, iso_date, make_row, request
 
 SEARCH_URL = "https://jobportal.ent.europe-west4.gcp.elastic-cloud.com/api/as/v1/engines/rvo/search"
-AUTH_HEADER = "Bearer search-o21ix7ak2jiao92yvzceums2"  # public, search-only
+AUTH_HEADER = "Bearer search-o21ix7ak2jiao92yvzceums2"
 ORIGIN = "https://www.welcome-to-nl.nl"
 PAGE_SIZE = 25
-MAX_PAGES_PER_TERM = 2  # newest first, so a scheduled run only needs what's new
+MAX_PAGES_PER_TERM = 2
 PAUSE_SECONDS = 0.5
 
 
 def _raw(result, field):
-    """App Search wraps every field as {"raw": ...}."""
     v = result.get(field)
     return v.get("raw") if isinstance(v, dict) else None
 

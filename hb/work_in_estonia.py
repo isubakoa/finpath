@@ -1,15 +1,3 @@
-"""
-Work in Estonia (workinestonia.com/job/), the state agency's board, ~380 jobs.
-Its "Load more" button POSTs to WordPress and gets back HTML cards:
-
-    POST https://workinestonia.com/wp-admin/admin-ajax.php
-         action=filter_job_offers&paged=<n>&search=&categories=placeholder&locations=placeholder
-    -> {"status": "success", "html": "<div class=card-job>...", "paged": n+1}
-
-12 cards a page; an empty page has no .card-job. A card has the link
-(.card-job__link, mostly cv.ee / cvkeskus.ee or the employer's board), title,
-company and city; no posting date.
-"""
 import time
 
 import requests

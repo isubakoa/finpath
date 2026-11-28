@@ -1,5 +1,3 @@
-"""Tests for the Talent Hubs readers with fake portals (no network), and for
-duplicates across hubs and job sites. Run: python3 hb/test_talent_hubs.py"""
 import json
 import os
 import sys
@@ -9,36 +7,36 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(HERE, "..", "li"))
 
-import arbetsformedlingen  # noqa: E402
-import brainport  # noqa: E402
-import common  # noqa: E402
-import gothenburg  # noqa: E402
-import hire_helsinki  # noqa: E402
-import jobsplus  # noqa: E402
-import make_it_in_munich  # noqa: E402
-import make_it_in_the_north  # noqa: E402
-import nav  # noqa: E402
-import skane  # noqa: E402
-import south_holland  # noqa: E402
-import talent_berlin  # noqa: E402
-import vdab  # noqa: E402
-import welcome_to_nl  # noqa: E402
-import work_in_austria  # noqa: E402
-import work_in_estonia  # noqa: E402
-import work_in_finland  # noqa: E402
-import work_in_lithuania  # noqa: E402
-import work_in_luxembourg  # noqa: E402
-import workindenmark  # noqa: E402
-from registry import HUB_IDS, HUBS, hubs_off, run_talent_hubs  # noqa: E402
-from roles import (CANONICAL_MARKETS, SEARCHED_MARKETS, SOURCE_PRECEDENCE, build_fresh_roles,  # noqa: E402
+import arbetsformedlingen
+import brainport
+import common
+import gothenburg
+import hire_helsinki
+import jobsplus
+import make_it_in_munich
+import make_it_in_the_north
+import nav
+import skane
+import south_holland
+import talent_berlin
+import vdab
+import welcome_to_nl
+import work_in_austria
+import work_in_estonia
+import work_in_finland
+import work_in_lithuania
+import work_in_luxembourg
+import workindenmark
+from registry import HUB_IDS, HUBS, hubs_off, run_talent_hubs
+from roles import (CANONICAL_MARKETS, SEARCHED_MARKETS, SOURCE_PRECEDENCE, build_fresh_roles,
                    market_for_location, merge_and_prune, set_hub_order)
-from companies import ALIASES, COMPANIES  # noqa: E402
-from match import build_index  # noqa: E402
+from companies import ALIASES, COMPANIES
+from match import build_index
 
 set_hub_order(HUB_IDS)
 
 failures = 0
-NO_SLEEP = lambda s: None  # noqa: E731
+NO_SLEEP = lambda s: None
 
 
 def check(name, got, want):
@@ -60,7 +58,6 @@ class Resp:
 
 
 class FakeHttp:
-    """get/post that answer from answer(method, url, kwargs) and record calls."""
 
     def __init__(self, answer):
         self.answer, self.calls = answer, []
@@ -537,7 +534,7 @@ row = common.make_row
 dup_rows = [
     ("li", row("https://li.test/1", "Bolt", "Senior Product Designer", "Tallinn, Estonia")),
     ("workinestonia", row("https://cv.ee/1?utm_source=workinestonia", "Bolt Technology OÜ", "Senior Product Designer", "Estonia")),
-    ("workinestonia", row("https://cv.ee/1", "Bolt", "Senior Product Designer", "Estonia")),  # same link once utm is gone
+    ("workinestonia", row("https://cv.ee/1", "Bolt", "Senior Product Designer", "Estonia")),
     ("welcometonl", row("https://emp.test/a", "Mendix", "Product Designer (m/f/d)", "Rotterdam")),
     ("southholland", row("https://careers.mendix.test/a", "Mendix B.V.", "Product Designer", "Rotterdam, Netherlands")),
     ("brainport", row("https://careers.mendix.test/b", "Mendix", "Product Designer - all genders", "Eindhoven, Netherlands")),
@@ -546,7 +543,7 @@ dup_rows = [
     ("talentberlin", row("https://tb.test/1", "SATO Europe GmbH", "Senior Product Manager (m/w/d)", "Berlin, Germany")),
     ("makeitinmunich", row("https://mm.test/1", "SATO Europe", "Senior Product Manager", "Munich, Germany")),
     ("hirehelsinki", row("https://fi.test/1", "Nomentia", "Senior UX Designer", "Espoo, Finland")),
-    ("workinfinland", row("https://fi.test/1", "Nomentia", "Senior UX Designer", "Espoo, Finland")),  # same feed, same link
+    ("workinfinland", row("https://fi.test/1", "Nomentia", "Senior UX Designer", "Espoo, Finland")),
     ("jobsplus", row("https://jp.test/1", jobsplus.COMPANY_HIDDEN, "Senior Product Designer", "Sliema, Malta")),
     ("jobsplus", row("https://jp.test/2", jobsplus.COMPANY_HIDDEN, "Senior UX Designer", "Gzira, Malta")),
 ]
@@ -577,7 +574,6 @@ check("Hire Helsinki + Work in Finland, same link -> one role with both", (len(f
 malta = [r for _, r in everything if "Malta" in r["location"]]
 check("Jobsplus roles with the hidden company stay apart by title", len(malta), 2)
 
-# Across runs: a duplicate pair already in the snapshot under the old city-level key collapses on the next run.
 existing = {"companies": {}, "openMarket": {"roles": [
     {"employer": "Adyen", "market": "Netherlands", "title": "Senior Product Designer", "location": "Amsterdam",
      "url": "https://li.test/old", "postedDate": "2026-11-20", "source": "li", "sources": ["li"], "sponsorshipSignal": [],

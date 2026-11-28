@@ -1,24 +1,3 @@
-"""
-hb: reads the Talent Hubs (registry.HUBS, official job portals for
-internationals) and writes data/hb-snapshot.json, which check.php serves to
-ProPath next to li's data/li-snapshot.json.
-
-The rules are the job-site scraper's own (li/roles.py and match.py,
-shared): title relevance and fit, accepted markets, tracked-company matching,
-sponsorship phrases, one record per employer + title + country, and a role
-dropped after roles.EXPIRY_DAYS unseen. A role both scrapers find is in both
-snapshots; the app shows it once, with every site in its sources.
-
-Output:
-  checkedAt   when this run started (the workflow's gate and the app read it)
-  companies   {slug: {roles: [...]}}  tracked-company postings found on a hub
-  openMarket  {roles: [...], talentHubs: [each hub's last run], hubOnlyMarkets}
-
-Usage (locally, or via .github/workflows/hb.yml):
-    pip install -r requirements.txt
-    python scrape.py            # PP_CONTROL_FILE=<scraper-control answer> skips hubs switched off
-    python scrape.py --debug    # print kept/dropped results, write nothing
-"""
 import os
 import sys
 from datetime import datetime, timezone
@@ -26,14 +5,14 @@ from datetime import datetime, timezone
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "li"))
 
-from companies import ALIASES, COMPANIES  # noqa: E402 -- needs the path above
-from match import build_index  # noqa: E402
-from registry import HUB_IDS, hubs_off, run_talent_hubs  # noqa: E402
-from roles import (EXTRA_MARKETS, SEARCH_TERMS, build_fresh_roles, load_snapshot, merge_and_prune,  # noqa: E402
+from companies import ALIASES, COMPANIES
+from match import build_index
+from registry import HUB_IDS, hubs_off, run_talent_hubs
+from roles import (EXTRA_MARKETS, SEARCH_TERMS, build_fresh_roles, load_snapshot, merge_and_prune,
                    result_urls, set_hub_order, write_snapshot)
 
 OUTPUT_PATH = os.path.normpath(os.path.join(HERE, "..", "data", "hb-snapshot.json"))
-SCHEDULE_INTERVAL_HOURS = 2  # must match .github/workflows/hb.yml's gate
+SCHEDULE_INTERVAL_HOURS = 2
 
 set_hub_order(HUB_IDS)
 

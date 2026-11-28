@@ -1,16 +1,3 @@
-"""
-Workindenmark (workindenmark.jobnet.dk/find-job), the Danish employment
-service's board for English-language jobs, ~2,400. The page reads:
-
-    GET https://workindenmark.jobnet.dk/bff/FindJob/Search?resultsPerPage=100
-        &pageNumber=<n>&orderType=PublicationDate&kmRadius=50&searchString=
-    header x-csrf: 1   (the site's anti-forgery marker; without it: 401)
-    -> {"jobAds": [...], "totalJobAdCount": n}
-
-Each ad has title, hiringOrgName, municipality, publicationDate, description
-and jobAdUrl (the employer's own ad). About half are Jobnet's own ads with no
-jobAdUrl; those link to Jobnet's page for the ad.
-"""
 import time
 
 import requests

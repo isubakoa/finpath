@@ -1,6 +1,3 @@
-# Fast guard for the company list and matching code. Runs on every push that
-# touches them -- not behind the scrapers' elapsed-time gate, so a bad entry
-# fails within seconds. Standard library only: no installs, no network.
 name: Validate
 
 on:

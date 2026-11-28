@@ -1,26 +1,18 @@
-# ProPath
-
-# Ignore on GitHub
 /app/
 /local/
 /docs/
 
-# Notes anywhere else stay local too
 README.md
 **/README.md
 CHANGES.md
 **/CHANGES.md
 diagnoses.py
 
-# macOS
 .DS_Store
 
-# Python
 __pycache__/
 *.pyc
 
-# Node
 node_modules/
 
-# js debug captures (workflow artifact)
 /js/debug/

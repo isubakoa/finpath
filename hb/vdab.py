@@ -1,19 +1,3 @@
-"""
-VDAB (vdab.be, Flanders' public employment service), searched for QUERIES. The
-results page's app fetches the list itself (direct calls are refused), so this
-reader opens the results page in headless Chrome (browser.py) and keeps the
-answer the page gets:
-
-    https://www.vdab.be/vindeenjob/vacatures?trefwoord=<q>&sort=standaard&sinds=9000&p=<n>
-    -> the page's POST to /rest/vindeenjob/v4/vacatureLight/zoek answers
-       {"resultaten": [...], "pagina", "paginaGrootte": 15}
-
-Each result has id.id (its page is /vindeenjob/vacatures/<id>),
-vacaturefunctie.naam (title), vacatureBedrijfsnaam (often an agency),
-tewerkstellingsLocatieRegioOfAdres (the town, in capitals) and
-eerstePublicatieDatum. VDAB's list isn't limited to English ads; scrape.py's
-title rules keep only English titles that match.
-"""
 import time
 from urllib.parse import quote
 

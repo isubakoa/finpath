@@ -1,14 +1,3 @@
-"""
-Work in Luxembourg's job board (jobs.workinluxembourg.com, Luxinnovation with
-ADEM): ~650 offers, read in full. The board's app reads:
-
-    GET https://jobs.workinluxembourg.com/api/job-boards/offers?page=<0-based>
-    header JobBoard-Id: <the board's id>   (identifies the board, not a secret)
-    -> {"content": [...], "totalElements", "totalPages"}   (10 a page)
-
-Each offer has id (its page is /offers/<id>), titles.en, exhibitorName and
-publishedAt. The place is only given as internal ids, so it's "Luxembourg".
-"""
 import time
 
 import requests

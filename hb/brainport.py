@@ -1,16 +1,3 @@
-"""
-Brainport Eindhoven's job portal (brainporteindhoven.com/int/work/jobs): ~2,300
-English-language vacancies in the Eindhoven region, mostly engineering. The
-page's own app fetches the list (with a key it keeps to itself), so this reader
-opens the page in headless Chrome (browser.py), types each of QUERIES into its
-search box and presses "Load more vacancies", keeping the answers the page gets:
-
-    brainport-joblist.partout.dev/api/v1/vacancies?page=<n>&filter[searchTerm]=<q>&filter[language]=en...
-    -> {"data": [...], "meta": {"current_page", "last_page", "total"}}   (15 a page)
-
-Each vacancy has title, url (the employer's ad), job_date, organization.name
-and location.name.
-"""
 import time
 from urllib.parse import unquote_plus
 
@@ -21,7 +8,7 @@ PORTAL_URL = "https://brainporteindhoven.com/int/work/jobs"
 ANSWER_URL = "partout.dev/api/v1/vacancies"
 SEARCH_BOX = 'input[placeholder^="Search a vacancy"]'
 SEARCH_BUTTON = ".job-list__search-btn"
-QUERIES = ("product", "designer", "user experience")  # the search ignores terms under 3 letters ("ux")
+QUERIES = ("product", "designer", "user experience")
 MAX_PAGES_PER_QUERY = 4
 PAUSE_SECONDS = 1.0
 
@@ -34,7 +21,6 @@ def _vacancy_to_row(v):
 
 
 def browser_pages(browser):
-    """pages(query, page) -> the page's own answer for that query and page."""
     state = {"opened": False}
 
     def pages(query, page):

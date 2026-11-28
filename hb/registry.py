@@ -1,21 +1,3 @@
-"""
-Talent Hubs: official regional and national job portals for internationals,
-read every run alongside LI and Indeed (Isu's list, triaged 2026-11-26/27; see
-the project doc propath-2026-11-26-talent-hubs-triage.md for what was skipped and why).
-
-HUBS is the one list: hb/scrape.py runs it, tags rows with the hub's id
-as their source, and publishes it with each hub's last-run health as
-openMarket.talentHubs in data/hb-snapshot.json, from which the app builds
-Settings › Job sites › Talent Hubs and its labels. When several hubs list the
-same role, one record is kept (the first hub in HUBS order supplies the link)
-with every hub in its `sources`; the app does the same across the two snapshots. `country` is where the hub's jobs are; countries only a
-hub covers are scrape.py's EXTRA_MARKETS (accepted, not searched on LI or Indeed).
-
-Each module's read(http, sleep, terms) returns (rows, health) and never raises.
-A hub switched off in Settings (scraper-control.php's hubsOff, handed over by
-the workflow as PP_CONTROL_FILE) isn't read; its roles expire from the snapshot
-as usual and the app hides them meanwhile.
-"""
 import json
 import os
 import sys
@@ -85,9 +67,6 @@ assert len(set(HUB_IDS)) == len(HUB_IDS), "hub ids must be unique"
 
 
 def hubs_off(path=None):
-    """Hub ids switched off in Settings, from the workflow's copy of
-        scraper-control.php's answer. Missing or unreadable: none off.
-    """
     path = path if path is not None else os.environ.get("PP_CONTROL_FILE", "")
     if not path:
         return set()
@@ -101,9 +80,6 @@ def hubs_off(path=None):
 
 
 def run_talent_hubs(terms, off=frozenset(), debug=False, hubs=None):
-    """Reads every hub not in `off`. Returns (rows as (hub_id, row), report),
-        report being HUBS' public fields plus each hub's health and `off`.
-    """
     rows, report = [], []
     for hub in (hubs if hubs is not None else HUBS):
         entry = {k: hub[k] for k in ("id", "name", "country", "url")}
@@ -112,7 +88,7 @@ def run_talent_hubs(terms, off=frozenset(), debug=False, hubs=None):
         else:
             try:
                 hub_rows, health = hub["read"](terms=terms)
-            except Exception as e:  # noqa: BLE001 -- a reader bug must not lose the other hubs
+            except Exception as e:
                 hub_rows, health = [], {"rows": 0, "pages": 0, "total": None, "error": f"{type(e).__name__}: {e}"}
             rows.extend((hub["id"], row) for row in hub_rows)
             entry.update(off=False, **health)

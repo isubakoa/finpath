@@ -1,20 +1,3 @@
-"""
-Careers in Gothenburg (careersingothenburg.com, Move to Gothenburg): ~500
-English-only jobs in West Sweden. The page searches a Meilisearch index from
-the browser, so this reader opens the page in headless Chrome (browser.py)
-and keeps the page's own search answer for each of QUERIES:
-
-    https://careersingothenburg.com/?query=<q>&offset=<n>&filters={"english":true,...}
-    -> the page's POST to search-movetogbg.tenfifty.io/indexes/jobs/search
-       answers {"hits": [...], "estimatedTotalHits": n}, 20 hits a page
-
-Each hit has title, employer_name, location.lvl1 ("Gothenburg Region >
-Gothenburg"), published (Unix time), description and url (the employer's ad).
-
-The site asks anonymous visitors to log in after many searches, so a run makes
-only a handful (narrow QUERIES, at most MAX_PAGES_PER_QUERY each). If it ever
-asks anyway, the search answer doesn't come, and the run reports it.
-"""
 import json
 import time
 from urllib.parse import quote
@@ -38,7 +21,6 @@ def page_url(query, offset):
 
 
 def browser_search(browser):
-    """search(query, offset) -> the page's own search answer for that query."""
     def search(query, offset):
         bodies = browser.answers(
             lambda page: page.goto(page_url(query, offset), wait_until="domcontentloaded", timeout=PAGE_TIMEOUT_MS),
@@ -69,7 +51,7 @@ def _read_with(search, c, sleep):
             total = data.get("estimatedTotalHits") if isinstance(data.get("estimatedTotalHits"), int) else 0
             return [_hit_to_row(h) for h in hits if isinstance(h, dict)], None, bool(hits) and page * PAGE_SIZE < total
         if not c.run(fetch, sleep=sleep, pause=PAUSE_SECONDS, max_pages=MAX_PAGES_PER_QUERY, label=f"{query!r} "):
-            break  # each failed page costs a 30 s wait; the other queries would fail the same way
+            break
 
 
 def read(http=None, sleep=time.sleep, terms=(), search=None):

@@ -1,21 +1,3 @@
-"""Guards companies.json, ProPath's single list of tracked companies.
-
-the app (index.php + app.js), the li and js scrapers all depend on this file, and
-a bad entry fails quietly in the app (a company that's never checked, a
-drawer that won't open), so this test fails loudly instead -- in CI before the
-scraper runs, or locally:  python test_companies_json.py
-
-Checks: required fields and types, unique slugs/names, allowed enum values,
-each ats.type's required config keys, html linkPatterns that compile, the
-optional `match` block's shape, unique openRoles ids, and that every
-`snapshot`-type company has a js/scrape.js entry (and vice versa).
-
-What it can't check: whether check.php (FTP-only, not in this repo) supports
-an ats.type. That list lives in check.php's buildRequest() and app.js's
-LIVE_CHECK_ATS -- keep those two in step by hand. Unknown types below are
-reported here as a reminder, not silently accepted.
-"""
-
 import json
 import re
 import sys
@@ -37,8 +19,6 @@ ENUMS = {
     "sponsorship": {"likely", "uncertain"},
     "openStatus": {"match", "below-target", "none", "uncertain"},
 }
-# Config keys check.php needs for each ats.type. Types that aren't checked
-# live ("unknown", "other") only need a type.
 ATS_REQUIRED = {
     "greenhouse": {"slug"}, "lever": {"slug"}, "ashby": {"slug"},
     "smartrecruiters": {"slug"}, "workable": {"slug"}, "pinpoint": {"slug"},
@@ -48,7 +28,6 @@ ATS_REQUIRED = {
     "taleo": {"host", "section", "portal"}, "mokahr": {"orgId", "siteId"}, "jibe": {"host", "locations"}, "brassring": {"host", "partnerId", "siteId"},
     "snapshot": {"slug"},
     "unknown": set(), "other": set(),
-    # one-off, company-specific adapters in check.php
     "nordea": set(), "dassault": set(), "amazon": set(),
     "telekom": set(), "microsoft": set(), "emirates": set(), "line": set(),
     "bt": set(), "fujitsu": set(), "capgemini": set(), "klm": set(),
@@ -56,7 +35,7 @@ ATS_REQUIRED = {
     "dynatrace": set(), "ibm": set(), "mercedes": set(), "personio": set(),
 }
 ROLE_REQUIRED = {"id", "title", "url"}
-MATCH_KEYS = {"name", "aliases", "exclude", "note"}
+MATCH_KEYS = {"name", "aliases", "exclude"}
 SLUG_RE = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 
 
@@ -130,8 +109,6 @@ def check():
                 if "exclude" in m and not (isinstance(m["exclude"], list) and m["exclude"]
                                            and all(isinstance(a, str) and a.strip() for a in m["exclude"])):
                     err(f"{where}: match.exclude must be a non-empty list of strings")
-                if "note" in m and not isinstance(m["note"], str):
-                    err(f"{where}: match.note must be a string")
 
     for label, values in (
         ("slug", [c.get("slug") for c in companies]),

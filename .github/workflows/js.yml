@@ -1,9 +1,3 @@
-# js: JavaScript-only careers boards -> data/js-snapshot.json
-#
-# Same scheduling pattern as li.yml (see its header): a 15-minute cron
-# plus an elapsed-time gate, because GitHub drops and delays scheduled runs.
-# Offsets 8/23/38/53 keep it away from li.yml's ticks and the top of
-# the hour. Also runs on any push that changes the scraper.
 name: TC-Coverage
 
 on:
@@ -26,7 +20,6 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     steps:
-      # Runs before checkout, so a skipped tick costs seconds. Same gate as li.yml's.
       - name: Gate on elapsed time since last real run
         id: gate
         env:
@@ -35,8 +28,6 @@ jobs:
           SCHEDULE_INTERVAL_HOURS: "2"
         run: |
           set -euo pipefail
-          # Paused in ProPath Settings › Job sites? Scheduled runs only; a run started by
-          # hand always goes ahead. If the site can't be reached, the run goes ahead too.
           if [ "${{ github.event_name }}" = "schedule" ]; then
             STATE=$(curl -sS -m 10 -A "ProPath-Scraper/1.0 (+GitHub Actions)" \
               "https://isubakoa.com/propath/scraper-control.php?scraper=js" || true)
@@ -91,8 +82,6 @@ jobs:
         working-directory: ./js
         run: node scrape.js
 
-      # Screenshot + status/title/final URL for each page that gave no job links or
-      # failed (see scrape.js saveDebug). Download from the run's summary page.
       - name: Upload debug captures
         if: always() && steps.gate.outputs.should_run == 'true'
         uses: actions/upload-artifact@v4
@@ -102,8 +91,6 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
-      # Only touches data/js-snapshot.json, so rebasing onto a moved main can't
-      # conflict — retry instead of losing the run (same as li.yml).
       - name: Commit updated snapshot
         if: steps.gate.outputs.should_run == 'true'
         run: |

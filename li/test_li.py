@@ -1,9 +1,3 @@
-"""
-Tests for li_guest.py and scrape.py's run_li() / run_indeed_searches()
-against fakes: no network. Card markup copied from LI's guest search
-(2026-10-26). Run: python3 test_li.py
-"""
-
 import logging
 import sys
 
@@ -105,8 +99,6 @@ for status in (429, 999, 403):
         check(f"HTTP {status} raises Blocked", False)
     except lg.Blocked as b:
         check(f"HTTP {status} raises Blocked (Retry-After read: {b.wait})", b.status == status and b.wait == 120)
-# The page LI served for a Kuala Lumpur search with no matches (2026-10-27
-# 22:34Z run): a 200 results page, title repeating the keywords, no cards.
 KL = '"principal product designer" OR "staff product designer" OR "design technologist"'
 NO_MATCH = ("<html><head><title>&quot;principal Product Designer&quot; OR &quot;staff Product Designer&quot; OR "
             "&quot;design Technologist&quot; Jobs in Kuala Lumpur</title></head><body><main>0 results</main></body></html>")
@@ -133,22 +125,16 @@ except RuntimeError:
 check("page_title reads a block page's title", lg.page_title("<html><title>\n Too  Many </title>") == "Too Many")
 
 print("\n-- run_li(): windows, coverage, blocks, budget --")
-NOW = 1_800_000_000  # fixed clock
+NOW = 1_800_000_000
 iso = scrape._iso_utc
 searches = scrape.li_searches()
 keys = [scrape.li_key(*s) for s in searches]
 PAUSE, BACKOFF = scrape.LI_PAUSE_SECONDS, scrape.LI_BLOCK_BACKOFF_SECONDS
-# Most cases check other behaviour than the budget, so they lift it; the budget
-# case restores it.
 BUDGET = scrape.LI_MAX_REQUESTS_PER_RUN
 scrape.LI_MAX_REQUESTS_PER_RUN = 10 * len(searches)
 
 
 class FakeLI:
-    """Answers every search page with one posting; the n-th request in `block_at`
-        gets a 429 block page, in `wall_at` a 200 sign-in page, in `empty_at` the
-        search's own results page with no match.
-    """
 
     def __init__(self, block_at=(), wall_at=(), empty_at=()):
         self.requests, self.headers = [], []

@@ -1,5 +1,4 @@
 {
-  "about": "ProPath's one and only list of tracked companies. index.php (the app, loaded from GitHub at page render), the job-site scraper (company matching) and the validation test all read this file -- edit companies here, nowhere else. Optional per-company `match` block is used only by li/match.py: `match.name` overrides `name` for matching (when the display name is too generic to match safely, e.g. 'Spark' -> 'Spark New Zealand'), `match.aliases` lists other employer names postings appear under, `match.exclude` employer names that must never match it (e.g. 'Volvo Group' for Volvo Cars). See README.md 'Adding or editing a company'.",
   "companies": [
     {
       "region": "Europe/UK",
@@ -2962,9 +2961,6 @@
         "type": "html",
         "url": "https://careers.myboost.co/search/",
         "linkPattern": "#/job/[^/]+/\\d+/#i"
-      },
-      "match": {
-        "note": "Known, accepted collision with 'boost': 'Boost Bank' normalizes to 'boost' once 'Bank' is stripped as a legal suffix. The two are affiliated (Axiata/RHB JV) and share one careers board, so a misfile between them is harmless. Regression-tested via test_match.py KNOWN_COLLISIONS."
       }
     },
     {
@@ -3222,9 +3218,6 @@
         "type": "html",
         "url": "https://careers.myboost.co/search/",
         "linkPattern": "#/job/[^/]+/\\d+/#i"
-      },
-      "match": {
-        "note": "Other half of the reviewed 'boost' collision -- see boost-bank."
       }
     },
     {
@@ -5124,8 +5117,7 @@
           "du",
           "EITC",
           "du Telecom"
-        ],
-        "note": "'Emirates Integrated Telecommunications Company' deliberately not an alias: its normalized form starts with 'emirates' and swallowed Emirates Airline matches. 'EITC' covers the abbreviation."
+        ]
       }
     },
     {
@@ -5229,8 +5221,7 @@
           "VodafoneThree",
           "Vodafone Three",
           "Three UK"
-        ],
-        "note": "VodafoneThree (Vodafone UK + Three UK, merged 2025) hires through jobs.vodafone.com."
+        ]
       }
     },
     {
@@ -5260,8 +5251,7 @@
           "Openreach",
           "BT Business",
           "EE Limited"
-        ],
-        "note": "BT, EE and Openreach share jobs.bt.com. 'BT' and 'EE' only match exactly."
+        ]
       }
     },
     {
@@ -5354,8 +5344,7 @@
       "match": {
         "aliases": [
           "Telefonica"
-        ],
-        "note": "Unaccented alias in case LI/Indeed drop the accent."
+        ]
       }
     },
     {
@@ -5688,8 +5677,7 @@
         "name": "Spark New Zealand",
         "aliases": [
           "Spark NZ"
-        ],
-        "note": "Matched as 'Spark New Zealand', never bare 'Spark': a generic 5-char word (Spark Networks, Spark by Capital One...) that would clear the containment threshold and misattribute unrelated postings."
+        ]
       }
     },
     {
@@ -5837,8 +5825,7 @@
         "query": "design"
       },
       "match": {
-        "name": "Emirates Airline",
-        "note": "Matched as 'Emirates Airline', never bare 'Emirates' (or 'The Emirates Group', which normalizes the same): it would contain-match 'Emirates NBD', 'Emirates Islamic Bank' etc. A bare 'Emirates' posting still matches into the longer name."
+        "name": "Emirates Airline"
       }
     },
     {
@@ -6411,8 +6398,7 @@
         ],
         "exclude": [
           "Volvo Group"
-        ],
-        "note": "Volvo Cars and Volvo Group (trucks, buses, marine, construction) are separate companies. 'Volvo Group' (and a bare 'Volvo', which normalizes to the same) would contain-match 'Volvo Cars', so it's excluded; it filed two Volvo Group roles (jobs.volvogroup.com) here until 2026-11-28. 'Volvo Car' covers 'Volvo Car Corporation' / 'Volvo Car AB'."
+        ]
       }
     },
     {
@@ -6553,8 +6539,7 @@
       "match": {
         "aliases": [
           "bunq B.V."
-        ],
-        "note": "4-char name, exact match only; Dutch 'B.V.' is not stripped by match.py (punctuation goes first, leaving 'b v'), hence the explicit alias."
+        ]
       }
     },
     {
@@ -6585,8 +6570,7 @@
           "KPMG N.V.",
           "KPMG Advisory",
           "KPMG Accountants"
-        ],
-        "note": "4-char name, exact match only, so country/entity forms are listed explicitly (incl. Dutch N.V. entities -- see bunq)."
+        ]
       }
     },
     {
@@ -6625,8 +6609,7 @@
       "match": {
         "aliases": [
           "NXP"
-        ],
-        "note": "Primary match name is the containment-safe 'NXP Semiconductors'; bare 'NXP' is an exact-only alias."
+        ]
       }
     },
     {
@@ -6727,8 +6710,7 @@
         "aliases": [
           "citizenM Hotels",
           "Another Star"
-        ],
-        "note": "Marriott owns the brand, but hotels are operated and staffed by Another Star -- index.php checks Another Star's Pinpoint board, so 'Another Star' postings belong here."
+        ]
       }
     },
     {
@@ -6765,8 +6747,7 @@
         "aliases": [
           "Marriott",
           "Marriott Hotels"
-        ],
-        "note": "Accepted risk: 'Marriott' also contain-matches Marriott Vacations Worldwide (rare in design/product postings)."
+        ]
       }
     },
     {
@@ -6795,8 +6776,7 @@
         "aliases": [
           "Hilton Hotels",
           "Hilton Worldwide"
-        ],
-        "note": "Accepted risk: 'Hilton' also contain-matches Hilton Grand Vacations (rare in design/product postings)."
+        ]
       }
     },
     {
@@ -6885,9 +6865,6 @@
       "ats": {
         "type": "greenhouse",
         "slug": "guerrilla-games"
-      },
-      "match": {
-        "note": "Sony Interactive Entertainment studio, kept separate (same pattern as Deutsche Telekom / T-Systems). No bare 'Guerrilla' alias: as a 9-char containment key it would catch 'guerrilla marketing' agencies; a bare 'Guerrilla' posting still matches into 'Guerrilla Games'."
       }
     },
     {
@@ -6989,8 +6966,7 @@
         "aliases": [
           "ASN Bank",
           "de Volksbank N.V."
-        ],
-        "note": "No bare 'Volksbank' alias: it would match Germany's many cooperative Volksbanks."
+        ]
       }
     },
     {
@@ -7108,8 +7084,7 @@
           "BUX Financial Services",
           "BUX Zero",
           "getbux"
-        ],
-        "note": "'BUX' is under the 5-character containment minimum, so only exact or alias matches attach."
+        ]
       }
     },
     {
@@ -7206,8 +7181,7 @@
         "aliases": [
           "IMC",
           "IMC Financial Markets"
-        ],
-        "note": "'IMC' alone is short and generic; it only matches exactly."
+        ]
       }
     },
     {
@@ -7256,8 +7230,7 @@
           "Nationale-Nederlanden",
           "NN Insurance",
           "NN Investment Partners"
-        ],
-        "note": "Bare 'NN' is too short to match safely."
+        ]
       }
     },
     {
@@ -7324,8 +7297,7 @@
           "JP Morgan",
           "JPMorgan Chase & Co.",
           "Chase UK"
-        ],
-        "note": "No bare 'Chase' alias (too generic)."
+        ]
       }
     },
     {
@@ -7447,8 +7419,7 @@
         "aliases": [
           "Zopa Bank",
           "Zopa Limited"
-        ],
-        "note": "'Zopa' is under the 5-character containment minimum."
+        ]
       }
     },
     {
@@ -7474,8 +7445,7 @@
       "match": {
         "aliases": [
           "Kroo Bank"
-        ],
-        "note": "'Kroo' is under the 5-character containment minimum."
+        ]
       }
     },
     {
@@ -7557,8 +7527,7 @@
       "match": {
         "aliases": [
           "Paddle.com"
-        ],
-        "note": "Accepted risk: 'Paddle' also contain-matches unrelated names such as 'Paddle8' (rare in design/product postings)."
+        ]
       }
     },
     {
@@ -7606,8 +7575,7 @@
         "aliases": [
           "10x Future Technologies",
           "10x"
-        ],
-        "note": "'10x' alone only matches exactly."
+        ]
       }
     },
     {
@@ -7634,8 +7602,7 @@
         "aliases": [
           "Curve OS",
           "Imagine Curve"
-        ],
-        "note": "Accepted risk: 'Curve' (5 characters) also contain-matches unrelated employers such as 'Curve Dental' (rare in design/product postings)."
+        ]
       }
     },
     {
@@ -7708,8 +7675,7 @@
           "Chip Financial",
           "Chip Financial Ltd",
           "Chip Savings"
-        ],
-        "note": "'Chip' is generic and under the 5-character containment minimum."
+        ]
       }
     },
     {
@@ -7757,8 +7723,7 @@
         "name": "Trust Bank Singapore",
         "aliases": [
           "Trust Bank Singapore Limited"
-        ],
-        "note": "Not plain 'Trust Bank': match.py drops 'Bank', and a bare 'trust' would contain-match Trustly, National Trust and the like."
+        ]
       }
     },
     {
@@ -7786,8 +7751,7 @@
       "match": {
         "aliases": [
           "GXS Bank Pte Ltd"
-        ],
-        "note": "'GXS' is short; GXBank (Malaysia) is its own entry."
+        ]
       }
     },
     {
@@ -7994,8 +7958,7 @@
           "LGT Private Banking",
           "LGT Bank",
           "LGT Capital Partners"
-        ],
-        "note": "'LGT' alone only matches exactly."
+        ]
       }
     },
     {
@@ -8194,8 +8157,7 @@
         "aliases": [
           "Singapore Exchange",
           "SGX"
-        ],
-        "note": "'SGX' alone only matches exactly."
+        ]
       }
     },
     {
@@ -8226,8 +8188,7 @@
           "Prudential Assurance Company Singapore",
           "Prudential Corporation Asia",
           "Prudential Hong Kong"
-        ],
-        "note": "No key that normalizes to bare 'prudential' (match.py drops 'plc'), so the unrelated US Prudential Financial doesn't match."
+        ]
       }
     },
     {
@@ -8257,8 +8218,7 @@
           "AIA Singapore",
           "AIA Group",
           "AIA Group Limited"
-        ],
-        "note": "'AIA' alone only matches exactly."
+        ]
       }
     },
     {
@@ -8373,8 +8333,7 @@
           "Koninklijke KPN",
           "KPN B.V.",
           "KPN N.V."
-        ],
-        "note": "'KPN' is under the 5-character containment minimum, so it matches exactly."
+        ]
       }
     },
     {
@@ -8401,8 +8360,7 @@
         "aliases": [
           "Vodafone Ziggo",
           "Ziggo"
-        ],
-        "note": "Separate employer from Vodafone Group (tracked as 'vodafone')."
+        ]
       }
     },
     {
@@ -8429,8 +8387,7 @@
         "aliases": [
           "Odido Netherlands",
           "Odido Nederland"
-        ],
-        "note": "No 'T-Mobile Netherlands' alias: containment works both ways, so it would also claim a bare 'T-Mobile' employer (T-Mobile US / Deutsche Telekom)."
+        ]
       }
     },
     {
@@ -8489,8 +8446,7 @@
           "MessageBird",
           "Bird.com",
           "MessageBird B.V."
-        ],
-        "note": "Accepted risk: an employer listed as just 'Bird' (e.g. Bird Rides) matches exactly."
+        ]
       }
     },
     {
@@ -8576,8 +8532,7 @@
           "DELTA Fiber Nederland",
           "DELTA Fiber Nederland B.V.",
           "Delta Fiber"
-        ],
-        "note": "Accepted risk: containment works both ways, so an employer listed as just 'Delta' matches; 'Delta Air Lines' doesn't."
+        ]
       }
     },
     {
@@ -8633,8 +8588,7 @@
           "VMO2",
           "Virgin Media O2 Business",
           "Virgin Media Business"
-        ],
-        "note": "'O2' is too short for containment and 'O2 Telefónica' still goes to telefonica. Accepted risk: a bare 'Virgin' or 'Media' employer matches through 'Virgin Media'."
+        ]
       }
     },
     {
@@ -8663,8 +8617,7 @@
           "Sky Group",
           "Sky UK Limited",
           "Sky Limited"
-        ],
-        "note": "'Sky' is under the 5-character containment minimum, so it matches exactly."
+        ]
       }
     },
     {
@@ -8692,8 +8645,7 @@
         "aliases": [
           "Colt",
           "Colt Technology Services Group"
-        ],
-        "note": "'Colt' is under the 5-character containment minimum, so it matches exactly."
+        ]
       }
     },
     {
@@ -8916,8 +8868,7 @@
         "aliases": [
           "Vonage Holdings",
           "Vonage UK"
-        ],
-        "note": "Separate board from Ericsson (tracked as 'ericsson')."
+        ]
       }
     }
   ]

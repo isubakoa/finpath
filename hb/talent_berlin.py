@@ -1,14 +1,3 @@
-"""
-Talent Berlin (talent.berlin, Berlin Partner): ~12,000 jobs in Berlin, mostly a
-StepStone feed, searched for QUERIES. The search's "Load more" pages are JSON
-with the cards as HTML, 12 a page:
-
-    GET https://talent.berlin/jobs/search-results/ajax-search/page/<n>/ajax-jobs.json?q=<q>
-    -> {"template": "<div class=c-joblist__item>...", "nextSearchPageCount": k, ...}
-
-A card links to Talent Berlin's page for the ad and has the date (MM/DD/YYYY),
-title (h3) and company.
-"""
 import re
 import time
 from urllib.parse import quote

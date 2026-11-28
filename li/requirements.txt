@@ -1,9 +1,5 @@
-# Indeed via JobSpy. Pinned: 1.4.1 changed LI paging underneath unpinned
-# runs (2026-10). Re-test before raising it.
 python-jobspy==1.4.1
 
-# LI's public job search (li_guest.py).
-# curl_cffi (also a JobSpy dependency) is li_guest's "chrome" client.
 requests
 curl_cffi
 beautifulsoup4

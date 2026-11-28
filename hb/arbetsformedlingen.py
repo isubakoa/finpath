@@ -1,15 +1,3 @@
-"""
-Arbetsförmedlingen's Platsbanken (the Swedish Public Employment Service), all
-of Sweden, via JobTech's open JobSearch API (public, no key):
-
-    GET https://jobsearch.api.jobtechdev.se/search?q=<q>&limit=100&offset=<n>
-    -> {"total": {"value": n}, "hits": [...]}
-
-Most ads are in Swedish, so only ads whose description reads as English are
-kept (common.is_english). Each hit has headline, employer.name,
-workplace_address (city / municipality), publication_date, webpage_url (the
-Platsbanken ad) and description.text. Searched for QUERIES.
-"""
 import time
 
 import requests

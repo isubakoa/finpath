@@ -1,19 +1,3 @@
-"""
-Jobsplus (jobsplus.gov.mt, Malta's employment agency), searched for QUERIES.
-The vacancy page loads its list as an HTML fragment:
-
-    https://jobsplus.gov.mt/vacancy?SearchText=<q>
-    -> the page's GET /Umbraco/Surface/Vacancy/GetVacancyListData?...&searchText=<q>&pageNumber=<n>
-
-Jobsplus refuses that list to GitHub's servers when asked directly (HTTP 403,
-27 Nov), so this reader opens the vacancy page in headless Chrome (browser.py)
-and keeps the fragments the page gets, pressing its "next" arrow for more pages.
-
-Each <li id="<vacancy id>"> has the title (h3, in capitals), the place
-("TAS-SLIEMA, MALTA") and a short description; the page for it is
-/vacancy/vacancy-details?id=<id>. Jobsplus only shows the company to signed-in
-users, so the employer is COMPANY_HIDDEN (Isu's choice: show the role anyway).
-"""
 import re
 import time
 from urllib.parse import quote, unquote_plus
@@ -46,7 +30,6 @@ def _item_to_row(item):
 
 
 def browser_fragments(browser):
-    """fragment(query, page) -> the vacancy list HTML the page gets."""
     def fragment(query, page):
         def is_answer(resp):
             url = unquote_plus(resp.url)

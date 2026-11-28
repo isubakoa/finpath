@@ -1,14 +1,7 @@
-"""
-Headless Chrome for the portals whose job list only exists in the browser
-(Careers in Gothenburg, Brainport Eindhoven, VDAB, Jobsplus). Playwright drives the
-Chrome already installed on GitHub's runner (channel="chrome"), so nothing is
-downloaded. A reader opens the portal's own page and keeps the answers the page
-itself gets from its job search; it never calls those search services directly.
-"""
 import json
 
 PAGE_TIMEOUT_MS = 30000
-SETTLE_MS = 1500  # after the first matching answer, for any that follow it
+SETTLE_MS = 1500
 
 
 class Browser:
@@ -28,11 +21,6 @@ class Browser:
         self._pw.stop()
 
     def answers(self, action, url_part, accept=None, as_text=False):
-        """Runs action(page) (a navigation or a click) and returns the bodies (JSON,
-            or text with as_text) of the responses whose URL contains url_part and
-            that accept(response) allows, in arrival order. Raises if none arrives
-            in PAGE_TIMEOUT_MS.
-        """
         got = []
 
         def on_response(resp):
@@ -59,12 +47,9 @@ class Browser:
 
 
 def run_in_browser(collector, read_with):
-    """read_with(browser) inside a Browser; a browser that won't start or
-        crashes is reported on the collector instead of raised.
-    """
     try:
         with Browser() as browser:
             read_with(browser)
-    except Exception as e:  # noqa: BLE001 -- report, never break the run
+    except Exception as e:
         first_line = str(e).splitlines()[0][:160] if str(e) else ""
         collector.fail(f"browser: {type(e).__name__}: {first_line}")
