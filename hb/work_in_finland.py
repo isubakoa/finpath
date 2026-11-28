@@ -6,7 +6,7 @@ here for the whole country:
     GET https://www.workinfinland.com/api/jobs/?limit=100&page=<n>
 
 ~1,170 jobs, 100 a page. Each has title, employer {name, city}, expireDate and
-externalUrl; no posting date, so Propath's first-seen date stands in. A role
+externalUrl; no posting date, so ProPath's first-seen date stands in. A role
 both list is kept once (Hire Helsinki's comes first in registry.HUBS).
 """
 import time

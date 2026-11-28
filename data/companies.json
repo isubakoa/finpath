@@ -1,5 +1,5 @@
 {
-  "about": "Propath's one and only list of tracked companies. index.php (the app, loaded from GitHub at page render), the job-site scraper (company matching) and the validation test all read this file -- edit companies here, nowhere else. Optional per-company `match` block is used only by li/match.py: `match.name` overrides `name` for matching (when the display name is too generic to match safely, e.g. 'Spark' -> 'Spark New Zealand'), `match.aliases` lists other employer names postings appear under, `match.exclude` employer names that must never match it (e.g. 'Volvo Group' for Volvo Cars). See README.md 'Adding or editing a company'.",
+  "about": "ProPath's one and only list of tracked companies. index.php (the app, loaded from GitHub at page render), the job-site scraper (company matching) and the validation test all read this file -- edit companies here, nowhere else. Optional per-company `match` block is used only by li/match.py: `match.name` overrides `name` for matching (when the display name is too generic to match safely, e.g. 'Spark' -> 'Spark New Zealand'), `match.aliases` lists other employer names postings appear under, `match.exclude` employer names that must never match it (e.g. 'Volvo Group' for Volvo Cars). See README.md 'Adding or editing a company'.",
   "companies": [
     {
       "region": "Europe/UK",
@@ -37,7 +37,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "revolut.com/careers returns 403 to Propath's server and shows only a few roles behind \"show more\", but the page's embedded data (__NEXT_DATA__ props.pageProps.positions) carries every open role (~314 on 2026-10-30) with id, title and locations. The browser scraper reads that data (its pageData mode, added 2026-10-30) and builds each position URL from the title and id. Office places read 'City, Country'; remote ones 'Remote, Country', which the app drops.",
+      "openNote": "revolut.com/careers returns 403 to ProPath's server and shows only a few roles behind \"show more\", but the page's embedded data (__NEXT_DATA__ props.pageProps.positions) carries every open role (~314 on 2026-10-30) with id, title and locations. The browser scraper reads that data (its pageData mode, added 2026-10-30) and builds each position URL from the title and id. Office places read 'City, Country'; remote ones 'Remote, Country', which the app drops.",
       "ats": {
         "type": "snapshot",
         "slug": "revolut"
@@ -997,7 +997,7 @@
       "url": "https://jobs.ubs.com/TGNewUI/Search/Home/Home?partnerid=25008&siteid=5155",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "IBM BrassRing board jobs.ubs.com (partnerid 25008, siteid 5155; link from Isu, 2026-10-30). Its job-list API (ProcessSortAndShowMoreJobs, 50 a page, newest first) answers inside a session: Propath first loads the search page for its cookies and __RequestVerificationToken (sent back as the RFT header). 591 roles on 2026-10-30, read in 12 pages, all 591 returned reliably in a browser test; incl. 'Senior Service Designer / UX Strategist' and 'Senior Conversation Designer' (Zürich). Location is formtext23 ('Switzerland - Zürich').",
+      "openNote": "IBM BrassRing board jobs.ubs.com (partnerid 25008, siteid 5155; link from Isu, 2026-10-30). Its job-list API (ProcessSortAndShowMoreJobs, 50 a page, newest first) answers inside a session: ProPath first loads the search page for its cookies and __RequestVerificationToken (sent back as the RFT header). 591 roles on 2026-10-30, read in 12 pages, all 591 returned reliably in a browser test; incl. 'Senior Service Designer / UX Strategist' and 'Senior Conversation Designer' (Zürich). Location is formtext23 ('Switzerland - Zürich').",
       "ats": {
         "type": "brassring",
         "host": "jobs.ubs.com",
@@ -1263,7 +1263,7 @@
       "url": "https://www.grab.careers/en/teams/ux-and-design/",
       "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "grab.careers returns 403 to Propath's server since 2026-10-27; the browser scraper reads the UX & Design team page in a browser.",
+      "openNote": "grab.careers returns 403 to ProPath's server since 2026-10-27; the browser scraper reads the UX & Design team page in a browser.",
       "ats": {
         "type": "snapshot",
         "slug": "grab-grab-financial-group"
@@ -1323,7 +1323,7 @@
       "url": "https://careers.xero.com/jobs/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "careers.xero.com returns 403 to Propath's server since 2026-10-27; the browser scraper reads the same listing in a browser.",
+      "openNote": "careers.xero.com returns 403 to ProPath's server since 2026-10-27; the browser scraper reads the same listing in a browser.",
       "ats": {
         "type": "snapshot",
         "slug": "xero"
@@ -1625,7 +1625,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "rabobank.jobs returns 403 to Propath's server since 2026-10-27; the browser scraper reads its \"design\" search in a browser.",
+      "openNote": "rabobank.jobs returns 403 to ProPath's server since 2026-10-27; the browser scraper reads its \"design\" search in a browser.",
       "ats": {
         "type": "snapshot",
         "slug": "rabobank"
@@ -1818,7 +1818,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Lloyds' job search (AEM) answers Propath's server with a different page since 2026-10-27, so the browser scraper reads its \"design\" search in a browser.",
+      "openNote": "Lloyds' job search (AEM) answers ProPath's server with a different page since 2026-10-27, so the browser scraper reads its \"design\" search in a browser.",
       "ats": {
         "type": "snapshot",
         "slug": "lloyds-banking-group"
@@ -3904,7 +3904,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "ibm.com/careers/search reads a public search API (www-api.ibm.com/search/api/v2, appId careers, scope careers2); Propath asks it for the Design & UX and Product Management categories only (18 roles on 2026-10-30). Job links go to careers.ibm.com JobDetail pages.",
+      "openNote": "ibm.com/careers/search reads a public search API (www-api.ibm.com/search/api/v2, appId careers, scope careers2); ProPath asks it for the Design & UX and Product Management categories only (18 roles on 2026-10-30). Job links go to careers.ibm.com JobDetail pages.",
       "ats": {
         "type": "ibm"
       }
@@ -6245,7 +6245,7 @@
       "url": "https://careers.hellofresh.com/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Greenhouse board \"hellofresh\" (the API behind careers.hellofresh.com; 382 roles on 2026-10-27, incl. Director, Product in Paris). The careers site itself returns 403 to Propath's server, the board API doesn't.",
+      "openNote": "Greenhouse board \"hellofresh\" (the API behind careers.hellofresh.com; 382 roles on 2026-10-27, incl. Director, Product in Paris). The careers site itself returns 403 to ProPath's server, the board API doesn't.",
       "ats": {
         "type": "greenhouse",
         "slug": "hellofresh"
@@ -6430,7 +6430,7 @@
       "url": "https://jobs.mercedes-benz.com/en",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "jobs.mercedes-benz.com reads a public search API (jobs.api.mercedes-benz.com/search, a JSON query in ?data=). Propath asks for titles matching design / UX / product (a broad match, ~700 on 2026-10-30, 500 a request) and keeps one posting per title and place (the same role is often published several times).",
+      "openNote": "jobs.mercedes-benz.com reads a public search API (jobs.api.mercedes-benz.com/search, a JSON query in ?data=). ProPath asks for titles matching design / UX / product (a broad match, ~700 on 2026-10-30, 500 a request) and keeps one posting per title and place (the same role is often published several times).",
       "ats": {
         "type": "mercedes",
         "pages": 2
@@ -7127,7 +7127,7 @@
       "url": "https://jobs.eu.lever.co/pnlfin",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Lever EU board jobs.eu.lever.co/pnlfin (Finom's legal name PNL Fintech), found 2026-10-30: 79 roles, nearly all remote, which Propath doesn't track (Lever's workplaceType), so few will show.",
+      "openNote": "Lever EU board jobs.eu.lever.co/pnlfin (Finom's legal name PNL Fintech), found 2026-10-30: 79 roles, nearly all remote, which ProPath doesn't track (Lever's workplaceType), so few will show.",
       "ats": {
         "type": "lever",
         "slug": "pnlfin",
@@ -7155,7 +7155,7 @@
       "url": "https://optiver.com/working-at-optiver/career-opportunities/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Greenhouse board 'optiverus' carries all offices' roles (162 on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Greenhouse board 'optiverus' carries all offices' roles (162 on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "greenhouse",
         "slug": "optiverus"
@@ -7176,7 +7176,7 @@
       "url": "https://www.flowtraders.com/careers",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Greenhouse board 'flowtraders' (46 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Greenhouse board 'flowtraders' (46 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "greenhouse",
         "slug": "flowtraders"
@@ -7197,7 +7197,7 @@
       "url": "https://www.imc.com/eu/careers",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Greenhouse board 'imc' (170 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Greenhouse board 'imc' (170 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "greenhouse",
         "slug": "imc"
@@ -7385,7 +7385,7 @@
       "url": "https://jobs.ashbyhq.com/allica-bank",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Ashby board 'allica-bank' (28 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Ashby board 'allica-bank' (28 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "ashby",
         "slug": "allica-bank"
@@ -7412,7 +7412,7 @@
       "url": "https://jobs.ashbyhq.com/oaknorth",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Ashby board 'oaknorth' (25 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Ashby board 'oaknorth' (25 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "ashby",
         "slug": "oaknorth"
@@ -7438,7 +7438,7 @@
       "url": "https://jobs.lever.co/zopa",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Lever board 'zopa' (34 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Lever board 'zopa' (34 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "lever",
         "slug": "zopa"
@@ -7466,7 +7466,7 @@
       "url": "https://apply.workable.com/kroo/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Workable account 'kroo' (16 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Workable account 'kroo' (16 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workable",
         "slug": "kroo"
@@ -7493,7 +7493,7 @@
       "url": "https://job-boards.eu.greenhouse.io/ebury",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Greenhouse board 'ebury' (EU-hosted board, readable through the standard API; 144 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Greenhouse board 'ebury' (EU-hosted board, readable through the standard API; 144 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "greenhouse",
         "slug": "ebury"
@@ -7519,7 +7519,7 @@
       "url": "https://jobs.globalpayments.com/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Global Payments' Workday tenant (tsys.wd1, site TSYS), which now carries Worldpay roles. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Global Payments' Workday tenant (tsys.wd1, site TSYS), which now carries Worldpay roles. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workday",
         "slug": "tsys",
@@ -7549,7 +7549,7 @@
       "url": "https://jobs.ashbyhq.com/paddle",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Ashby board 'paddle' (17 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Ashby board 'paddle' (17 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "ashby",
         "slug": "paddle"
@@ -7576,7 +7576,7 @@
       "url": "https://jobs.ashbyhq.com/thought-machine",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Ashby board 'thought-machine' (38 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Ashby board 'thought-machine' (38 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "ashby",
         "slug": "thought-machine"
@@ -7597,7 +7597,7 @@
       "url": "https://apply.workable.com/10xbanking/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Workable account '10xbanking' (1 role on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Workable account '10xbanking' (1 role on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workable",
         "slug": "10xbanking"
@@ -7625,7 +7625,7 @@
       "url": "https://www.curve.com/careers/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Workable account 'curve' (Curve's logo); 0 open roles on 2026-10-24, matching its careers page. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Workable account 'curve' (Curve's logo); 0 open roles on 2026-10-24, matching its careers page. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workable",
         "slug": "curve"
@@ -7653,7 +7653,7 @@
       "url": "https://apply.workable.com/clear-score/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Workable account 'clear-score' (named ClearScore); 0 open roles on 2026-10-24. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Workable account 'clear-score' (named ClearScore); 0 open roles on 2026-10-24. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workable",
         "slug": "clear-score"
@@ -7674,7 +7674,7 @@
       "url": "https://jobs.ashbyhq.com/moneybox",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Ashby board 'moneybox' (20 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Ashby board 'moneybox' (20 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "ashby",
         "slug": "moneybox"
@@ -7727,7 +7727,7 @@
       "url": "https://careers.lendable.com/jobs",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Ashby board 'lendable' (69 roles on 2026-10-24); careers.lendable.com's static HTML only holds placeholder jobs. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Ashby board 'lendable' (69 roles on 2026-10-24); careers.lendable.com's static HTML only holds placeholder jobs. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "ashby",
         "slug": "lendable"
@@ -7748,7 +7748,7 @@
       "url": "https://job-boards.greenhouse.io/trustbank",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Greenhouse board 'trustbank' (10 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Greenhouse board 'trustbank' (10 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "greenhouse",
         "slug": "trustbank"
@@ -7776,7 +7776,7 @@
       "url": "https://gxs.wd3.myworkdayjobs.com/GXS",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Same Workday tenant as GXBank (Malaysia), separate site 'GXS'. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Same Workday tenant as GXBank (Malaysia), separate site 'GXS'. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workday",
         "slug": "gxs",
@@ -7860,7 +7860,7 @@
       "url": "https://careers.bankofamerica.com/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Workday tenant 'ghr', Asia-Pacific lateral site (Lateral-APAC) to match the Singapore focus; a separate 'Lateral-US' site carries US roles. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Workday tenant 'ghr', Asia-Pacific lateral site (Lateral-APAC) to match the Singapore focus; a separate 'Lateral-US' site carries US roles. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workday",
         "slug": "ghr",
@@ -7954,7 +7954,7 @@
       "url": "https://juliusbaer.wd3.myworkdayjobs.com/External",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Workday tenant 'juliusbaer'. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Workday tenant 'juliusbaer'. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workday",
         "slug": "juliusbaer",
@@ -8074,7 +8074,7 @@
       "url": "https://apply.workable.com/youtrip/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Workable account 'youtrip' (43 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Workable account 'youtrip' (43 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workable",
         "slug": "youtrip"
@@ -8131,7 +8131,7 @@
       "url": "https://apply.workable.com/fundingsocieties/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Workable account 'fundingsocieties' (Funding Societies | Modalku Group, 72 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Workable account 'fundingsocieties' (Funding Societies | Modalku Group, 72 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workable",
         "slug": "fundingsocieties"
@@ -8158,7 +8158,7 @@
       "url": "https://jobs.ashbyhq.com/artafinance",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Ashby board 'artafinance' (6 roles on 2026-10-24, incl. VP of Product, B2B Wealth Platform, Singapore). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Ashby board 'artafinance' (6 roles on 2026-10-24, incl. VP of Product, B2B Wealth Platform, Singapore). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "ashby",
         "slug": "artafinance"
@@ -8213,7 +8213,7 @@
       "url": "https://prudential.wd3.myworkdayjobs.com/prudential",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Prudential plc's group Workday site; 'design' search on 2026-10-24 included Experience Design Lead roles. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Prudential plc's group Workday site; 'design' search on 2026-10-24 included Experience Design Lead roles. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workday",
         "slug": "prudential",
@@ -8245,7 +8245,7 @@
       "url": "https://aia.wd3.myworkdayjobs.com/External",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "AIA group Workday site; 'design' search on 2026-10-24 included UI/UX designer roles. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "AIA group Workday site; 'design' search on 2026-10-24 included UI/UX designer roles. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workday",
         "slug": "aia",
@@ -8363,7 +8363,7 @@
       "url": "https://jobs.kpn.com/vacatures",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "jobs.kpn.com is fed by SmartRecruiters; company 'KPN' (43 roles on 2026-10-24, with cities). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "jobs.kpn.com is fed by SmartRecruiters; company 'KPN' (43 roles on 2026-10-24, with cities). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "smartrecruiters",
         "slug": "KPN"
@@ -8448,7 +8448,7 @@
       "url": "https://libertyglobal.wd3.myworkdayjobs.com/Liberty_Global_Careers",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Workday tenant 'libertyglobal' (wd3, site Liberty_Global_Careers; 34 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Workday tenant 'libertyglobal' (wd3, site Liberty_Global_Careers; 34 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workday",
         "slug": "libertyglobal",
@@ -8477,7 +8477,7 @@
       "url": "https://bird.com/careers",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Own site bird.com/careers, server-rendered (3 roles on 2026-10-24); title is the card's text-h2 span. Greenhouse 'bird' is the scooter company, not this one. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Own site bird.com/careers, server-rendered (3 roles on 2026-10-24); title is the card's text-h2 span. Greenhouse 'bird' is the scooter company, not this one. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "html",
         "url": "https://bird.com/careers",
@@ -8508,7 +8508,7 @@
       "url": "https://jobs.cm.com/all-jobs",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Recruitee board on its own domain (cmcom.recruitee.com). The all-jobs page holds the newest 10 of 20 roles (2026-10-24); titles come with a 'New' tag appended. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Recruitee board on its own domain (cmcom.recruitee.com). The all-jobs page holds the newest 10 of 20 roles (2026-10-24); titles come with a 'New' tag appended. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "html",
         "url": "https://jobs.cm.com/all-jobs",
@@ -8538,7 +8538,7 @@
       "url": "https://careers.eurofiber.com/nl/vacatures",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "careers.eurofiber.com is fed by SmartRecruiters; company 'Eurofiber1' (11 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "careers.eurofiber.com is fed by SmartRecruiters; company 'Eurofiber1' (11 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "smartrecruiters",
         "slug": "Eurofiber1"
@@ -8565,7 +8565,7 @@
       "url": "https://werkenbij.deltafiber.nl/vacatures",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "werkenbij.deltafiber.nl is fed by Recruitee; board 'deltafibernederland' (13 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "werkenbij.deltafiber.nl is fed by Recruitee; board 'deltafibernederland' (13 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "html",
         "url": "https://deltafibernederland.recruitee.com/",
@@ -8595,7 +8595,7 @@
       "url": "https://www.lebara.de/en/ueber-lebara/stellenangebote.html",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Lebara Germany's vacancies page (lebara.de, Düsseldorf; found by Isu, 2026-10-30) lists roles that link to Occupop application pages (3 on 2026-10-30). The list is rendered in the browser, so the browser scraper reads it. lebara.com itself returns 403 to Propath's server and has no board.",
+      "openNote": "Lebara Germany's vacancies page (lebara.de, Düsseldorf; found by Isu, 2026-10-30) lists roles that link to Occupop application pages (3 on 2026-10-30). The list is rendered in the browser, so the browser scraper reads it. lebara.com itself returns 403 to ProPath's server and has no board.",
       "ats": {
         "type": "snapshot",
         "slug": "lebara"
@@ -8682,7 +8682,7 @@
       "url": "https://joblistings.colt.net/search/?q=design",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "SAP SuccessFactors site, server-rendered; a 'design' search returned 25 roles on 2026-10-24. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "SAP SuccessFactors site, server-rendered; a 'design' search returned 25 roles on 2026-10-24. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "html",
         "url": "https://joblistings.colt.net/search/?q=design",
@@ -8765,7 +8765,7 @@
       "url": "https://careers.communityfibre.co.uk/jobs",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Teamtailor board, server-rendered (4 roles on 2026-10-24); titles from the company-link-style span inside each link. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Teamtailor board, server-rendered (4 roles on 2026-10-24); titles from the company-link-style span inside each link. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "html",
         "url": "https://careers.communityfibre.co.uk/jobs",
@@ -8795,7 +8795,7 @@
       "url": "https://cityfibre.com/careers/all-jobs",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "cityfibre.com's job pages link to SmartRecruiters; company 'CityFibre'. Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "cityfibre.com's job pages link to SmartRecruiters; company 'CityFibre'. Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "smartrecruiters",
         "slug": "CityFibre"
@@ -8822,7 +8822,7 @@
       "url": "https://apply.workable.com/1global/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Workable account '1global' (75 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Workable account '1global' (75 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "workable",
         "slug": "1global"
@@ -8880,7 +8880,7 @@
       "url": "https://www.twilio.com/en-us/company/jobs",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Greenhouse board 'twilio' (134 roles on 2026-10-24). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Greenhouse board 'twilio' (134 roles on 2026-10-24). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "greenhouse",
         "slug": "twilio"
@@ -8907,7 +8907,7 @@
       "url": "https://www.vonage.com/careers/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Greenhouse board 'vonage' (23 roles on 2026-10-24, incl. London). Checked live by Propath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
+      "openNote": "Greenhouse board 'vonage' (23 roles on 2026-10-24, incl. London). Checked live by ProPath (see ats); the first live check sets the real status. Board found and verified 2026-10-24.",
       "ats": {
         "type": "greenhouse",
         "slug": "vonage"

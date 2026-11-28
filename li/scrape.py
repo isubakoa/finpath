@@ -1,6 +1,6 @@
 """
 li: finds design/product roles on job boards and writes
-data/li-snapshot.json, which check.php merges into Propath alongside each
+data/li-snapshot.json, which check.php merges into ProPath alongside each
 company's own careers board.
 
 Sources (one generator each, all yielding (source, row)). The Talent Hubs

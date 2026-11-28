@@ -7,7 +7,7 @@ international companies, read in full:
 
 Each offer has name (title), company.name, location ("Vilnius", "Kaunas,
 Remote job") and slug (the ad on cvbankas.lt). The date is only relative
-("Added 8 hours ago"), so Propath's first-seen date stands in.
+("Added 8 hours ago"), so ProPath's first-seen date stands in.
 """
 import time
 

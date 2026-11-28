@@ -470,7 +470,7 @@ const COMPANIES = [
   {
     slug: "revolut",
     // revolut.com/careers shows a handful of roles behind "show more" (and returns 403
-    // to Propath's server), but its page data holds every open role (~314 on
+    // to ProPath's server), but its page data holds every open role (~314 on
     // 2026-10-30) with id, title and locations. A position URL is the title slugged
     // plus the id (the site resolves it by id; checked against its own links).
     urls: ["https://www.revolut.com/careers/"],

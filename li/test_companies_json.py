@@ -1,4 +1,4 @@
-"""Guards companies.json, Propath's single list of tracked companies.
+"""Guards companies.json, ProPath's single list of tracked companies.
 
 the app (index.php + app.js), the li and js scrapers all depend on this file, and
 a bad entry fails quietly in the app (a company that's never checked, a

@@ -1,7 +1,7 @@
 """
 hb: reads the Talent Hubs (registry.HUBS, official job portals for
 internationals) and writes data/hb-snapshot.json, which check.php serves to
-Propath next to li's data/li-snapshot.json.
+ProPath next to li's data/li-snapshot.json.
 
 The rules are the job-site scraper's own (li/roles.py and match.py,
 shared): title relevance and fit, accepted markets, tracked-company matching,

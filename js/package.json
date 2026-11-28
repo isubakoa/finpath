@@ -2,7 +2,7 @@
   "name": "propath-js-scraper",
   "private": true,
   "type": "module",
-  "description": "Scheduled headless-browser scraper for Propath's JavaScript-only careers boards (writes ../data/js-snapshot.json) — see README.md.",
+  "description": "Scheduled headless-browser scraper for ProPath's JavaScript-only careers boards (writes ../data/js-snapshot.json) — see README.md.",
   "scripts": {
     "scrape": "node scrape.js"
   },
