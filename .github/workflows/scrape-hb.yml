@@ -7,7 +7,7 @@
 # paused Talent Hubs scraper skips scheduled runs, and the hubs switched off are
 # handed to the run, which skips them. A run started by hand always goes ahead;
 # if the site can't be reached, everything runs.
-name: Scrape TH-Coverage
+name: TH-Coverage
 
 on:
   schedule:
