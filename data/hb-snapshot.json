@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T02:14:25Z",
+  "generatedAt": "2026-11-28T10:25:11Z",
   "companies": {
     "adyen": {
       "roles": [
@@ -44,6 +44,18 @@
           "location": "Amsterdam, Netherlands",
           "url": "https://boards.greenhouse.io/adyen/jobs/8244728",
           "postedDate": "2026-10-21",
+          "source": "welcometonl",
+          "sources": [
+            "welcometonl"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-28"
+        },
+        {
+          "title": "Product Design Manager, Unified Financial Platform",
+          "location": "Amsterdam, Netherlands",
+          "url": "https://boards.greenhouse.io/adyen/jobs/8227082",
+          "postedDate": "2026-10-23",
           "source": "welcometonl",
           "sources": [
             "welcometonl"
@@ -216,6 +228,30 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-28"
+        },
+        {
+          "title": "UX/UI Designer Grooming and Beauty, Amsterdam",
+          "location": "Amsterdam, Netherlands",
+          "url": "https://www.careers.philips.com/global/en/job/593855",
+          "postedDate": "2026-11-27",
+          "source": "welcometonl",
+          "sources": [
+            "welcometonl"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-28"
+        },
+        {
+          "title": "Software Designer (C++) - Image Guided Therapy",
+          "location": "Best, Netherlands",
+          "url": "https://www.careers.philips.com/global/en/job/588436",
+          "postedDate": "2026-11-27",
+          "source": "welcometonl",
+          "sources": [
+            "welcometonl"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-28"
         }
       ]
     },
@@ -265,6 +301,18 @@
           "source": "arbetsformedlingen",
           "sources": [
             "arbetsformedlingen"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-28"
+        },
+        {
+          "title": "Product Manager for AI",
+          "location": "Netherlands",
+          "url": "https://jobs.siemens-energy.com/en_US/jobs/FolderDetail/Product-Manager-for-AI/307672",
+          "postedDate": "2026-11-28",
+          "source": "southholland",
+          "sources": [
+            "southholland"
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-28"
@@ -533,7 +581,7 @@
           "title": "Senior Brand / Product Manager (m/w/d)",
           "location": "Bavaria, Germany",
           "url": "https://www.adzuna.de/details/5902882447",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -545,7 +593,7 @@
           "title": "Product Owner Customer Service (m/w/d)",
           "location": "Bavaria, Germany",
           "url": "https://www.persy.jobs/persy/l/job-jr485-b",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -573,7 +621,7 @@
           "title": "Automotive Software Product Manager (f/d/m)",
           "location": "Bavaria, Germany",
           "url": "https://www.adzuna.de/details/5895471882",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -633,7 +681,7 @@
           "title": "Senior Product Manager, Google Design Platform (Product Owner)",
           "location": "Munich, Germany",
           "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTc0ODYtNzk1NzgxMzU3ODMxODcxNDItUyAx?jvDisplayLanguage=de",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -645,7 +693,7 @@
           "title": "Product Manager I, Chrome Privacy",
           "location": "Bavaria, Germany",
           "url": "https://www.adzuna.de/details/5895362895",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -657,7 +705,7 @@
           "title": "Senior Product Manager, Geo Auto Data Platform",
           "location": "Bavaria, Germany",
           "url": "https://www.adzuna.de/details/5859452224",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -669,7 +717,7 @@
           "title": "Senior UX Designer, Chrome",
           "location": "Bavaria, Germany",
           "url": "https://www.adzuna.de/details/5923540742",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -681,7 +729,7 @@
           "title": "UX Design Strategic Lead",
           "location": "Bavaria, Germany",
           "url": "https://www.adzuna.de/details/5859891203",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -697,7 +745,7 @@
           "title": "Product Manager (f/md) - Consumer Industries - Industry AI",
           "location": "Bavaria, Germany",
           "url": "https://www.jobstairs.de/stellenangebot-product-manager-fmd-consumer-industries-industry-ai-sap-85748-garching-bei-muenchen-munich--2416261.html",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -713,7 +761,7 @@
           "title": "(Senior) Technical Product Manager - Mobile Platform (m/f/x)",
           "location": "Bavaria, Germany",
           "url": "https://www.adzuna.de/details/5883900924",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -725,7 +773,7 @@
           "title": "(Senior) Product Manager - Mobile Core (m/f/x)",
           "location": "Bavaria, Germany",
           "url": "https://www.adzuna.de/details/5875138207",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -741,7 +789,7 @@
           "title": "Senior Product Manager (Dutch), Amazon Alexa NL",
           "location": "Bavaria, Germany",
           "url": "https://www.adzuna.de/details/5865016851",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -781,7 +829,7 @@
           "title": "Praktikant UX/UI Design f\u00fcr interne Applikationen (w/m/x)",
           "location": "Bavaria, Germany",
           "url": "https://www.jobstairs.de/stellenangebot-praktikant-uxui-design-fuer-interne-applikationen-wmx-bmw-ag-80809-muenchen--2427388.html",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -797,7 +845,7 @@
           "title": "Senior UX/UI Designer - Online Banking (all genders) - Inklusiver Job",
           "location": "Bavaria, Germany",
           "url": "https://www.adzuna.de/details/5921753378",
-          "postedDate": "2026-11-27",
+          "postedDate": "2026-11-28",
           "source": "makeitinmunich",
           "sources": [
             "makeitinmunich"
@@ -904,6 +952,18 @@
           ],
           "sponsorshipSignal": [],
           "lastSeenAt": "2026-11-27"
+        },
+        {
+          "title": "Senior Consultant - Technology Strategy & Transformation - Utilities",
+          "location": "Amsterdam, Netherlands",
+          "url": "https://careers.ey.com/ey/job/Amsterdam-Senior-Consultant-Technology-Strategy-&-Transformation-Utilities-1083-HP/1460738333/",
+          "postedDate": "2026-11-27",
+          "source": "welcometonl",
+          "sources": [
+            "welcometonl"
+          ],
+          "sponsorshipSignal": [],
+          "lastSeenAt": "2026-11-28"
         }
       ]
     },
@@ -1106,7 +1166,7 @@
         "title": "Senior Product Manager (m/w/d)",
         "location": "Berlin, Germany",
         "url": "https://talent.berlin/jobs/search-results/job-offer/job/ext/senior-product-manager-mwd-19214",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "talentberlin",
         "sources": [
           "talentberlin",
@@ -1121,7 +1181,7 @@
         "title": "Product Manager (m/w/d) Billing, Payment & Pricing Platform",
         "location": "Berlin, Germany",
         "url": "https://talent.berlin/jobs/search-results/job-offer/job/ext/product-manager-mwd-billing-payment-pricing-platform-18454",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "talentberlin",
         "sources": [
           "talentberlin",
@@ -1136,7 +1196,7 @@
         "title": "Consultant Insurance Product Manager - Consulting (Financial Services) (w/m/d)",
         "location": "Berlin, Germany",
         "url": "https://talent.berlin/jobs/search-results/job-offer/job/ext/consultant-insurance-product-manager-consulting-financial-services-wmd-18209",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "talentberlin",
         "sources": [
           "talentberlin",
@@ -1151,7 +1211,7 @@
         "title": "Product Owner (d/m/w) mit Schwerpunkt Kooperationsprodukte",
         "location": "Berlin, Germany",
         "url": "https://talent.berlin/jobs/search-results/job-offer/job/ext/product-owner-dmw-mit-schwerpunkt-kooperationsprodukte-2529",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "talentberlin",
         "sources": [
           "talentberlin",
@@ -1166,7 +1226,7 @@
         "title": "Product Manager Mobility (m/w/d) \u2013 M\u00fcnchen",
         "location": "Munich, Germany",
         "url": "https://www.persy.jobs/persy/l/job-jwyjk-b",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1180,7 +1240,7 @@
         "title": "Product Manager for Power Semiconductors (f/m/div) (Ingenieur/in - Elektrotechnik)",
         "location": "Bavaria, Germany",
         "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI4NzQtMTY1NjgwMC0xLVMgMQ?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1194,7 +1254,7 @@
         "title": "Product Manager / Solution Lead Leasing (m/w/d) (Berater/in - digitale Transformation)",
         "location": "Bavaria, Germany",
         "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTAwMDEtMTAwNDA1ODIzOC1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1208,7 +1268,7 @@
         "title": "Senior Product Manager- Fidectus an enmacc Partner (m/f/d)",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-fidectus-an-enmacc-partner-m-f-d-muenchen-enmacc-gmbh--14777752-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1222,7 +1282,7 @@
         "title": "Product Manager (m/f/d) Services International",
         "location": "Bavaria, Germany",
         "url": "https://eosgroup.wd3.myworkdayjobs.com/en-US/eos/job/Krailling/Product-Manager--m-f-d--Services-International_JR102439",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1236,7 +1296,7 @@
         "title": "Product Manager (m/f/d) Services International",
         "location": "Bavaria, Germany",
         "url": "https://eosgroup.wd3.myworkdayjobs.com/de-DE/eos/job/Krailling/Product-Manager--m-f-d--Services-International_JR102439",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1250,7 +1310,7 @@
         "title": "Product Manager (all genders)",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--product-manager-all-genders-muenchen-wemolo-gmbh--14768950-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1264,7 +1324,7 @@
         "title": "Product Manager (all genders) - IoT Platform",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--product-manager-all-genders-iot-platform-muenchen-wemolo-gmbh--14769974-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1278,7 +1338,7 @@
         "title": "(Senior) Product Manager (m/w/d) \u2013 Customer & Agent Experience",
         "location": "Bavaria, Germany",
         "url": "https://www.adzuna.de/details/5925230063",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1292,7 +1352,7 @@
         "title": "Senior Product Manager Platform (w/m/d)",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-platform-w-m-d-muenchen-wts-advisory-ag--14755930-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1306,7 +1366,7 @@
         "title": "Product Manager Ladeinfrastruktur und Energy Assets (m/w/d) - befristet auf 2 Jahre (Ingenieur/in -",
         "location": "Munich, Germany",
         "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI3MjgtMTAzMy0xLVMgMQ?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1320,7 +1380,7 @@
         "title": "Senior Product Manager Shoulder & Elbow EMEA (w/m/d)",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-shoulder-elbow-emea-w-m-d-muenchen-arthrex-gmbh--14364356-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1334,7 +1394,7 @@
         "title": "Product Manager Spine EMEA (w/m/d)",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--product-manager-spine-emea-w-m-d-muenchen-freiham-arthrex-gmbh--14364426-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1348,7 +1408,7 @@
         "title": "Product Manager VetSystems EMEA (w/m/d)",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--product-manager-vetsystems-emea-w-m-d-muenchen-arthrex-gmbh--14386921-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1362,7 +1422,7 @@
         "title": "Senior Product Manager - Productization (m/w/d)",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-productization-m-w-d-munich-soley-gmbh--14747596-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1376,7 +1436,7 @@
         "title": "Product Manager (m/w/d) Digital Commerce",
         "location": "Bavaria, Germany",
         "url": "https://recruiting.dmgmori.com/Vacancies/1232/Description/1",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1390,7 +1450,7 @@
         "title": "Product Manager \u2013 Atlassian Service Management",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--product-manager-atlassian-service-management-munich-xalt-business-consulting-gmbh--14736309-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1404,7 +1464,7 @@
         "title": "Product Manager \u2013 AI Agents & Atlassian Cloud",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--product-manager-ai-agents-atlassian-cloud-munich-xalt-business-consulting-gmbh--14736334-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1418,7 +1478,7 @@
         "title": "Product Manager \u2013 Employee Communication & AI Workplace",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--product-manager-employee-communication-ai-workplace-munich-xalt-business-consulting-gmbh--14736290-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1432,7 +1492,7 @@
         "title": "(Senior) Product Manager (m/w/d) \u2013 B2B-Produkte Insurtech & AI",
         "location": "Munich, Germany",
         "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-m-w-d-b2b-produkte-insurtech-ai-80636-muenchen-xempus-ag--14734705-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1446,7 +1506,7 @@
         "title": "Product Manager (m/f/d) Digital Platform WIRE Mind",
         "location": "Bavaria, Germany",
         "url": "https://jobs.komaxgroup.com/job/Product-Manager-(mfd)-Digital-Platform-WIRE-Mind/2273-en_US",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1460,7 +1520,7 @@
         "title": "Product Manager Autonomous Trucking (m/f/d)",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--product-manager-autonomous-trucking-m-f-d-gilching-bayern-germany-quantum-systems-gmbh--14527569-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1474,7 +1534,7 @@
         "title": "Product Manager Mission Payload Land (m/f/d)",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--product-manager-mission-payload-land-m-f-d-gilching-quantum-systems-gmbh--14527613-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1488,7 +1548,7 @@
         "title": "Product Manager Polymer Solutions (m/f/d)",
         "location": "Bavaria, Germany",
         "url": "https://eosgroup.wd3.myworkdayjobs.com/de-DE/eos/job/Krailling/Product-Manager-Polymer-Solutions--m-f-d-_JR102433",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1502,7 +1562,7 @@
         "title": "IT Digital Product Manager (m/w/d)",
         "location": "Bavaria, Germany",
         "url": "https://t.gohiring.com/h/62b0d884fb4fa6c0bb1849467ed1093fae631e4e516651fbfec0bef1083ba0b3?source=Indeed",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1516,7 +1576,7 @@
         "title": "(Senior) Product Manager, Trust Platform- Digital Identities (f/m/d)",
         "location": "Bavaria, Germany",
         "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-trust-platform-digital-identities-f-m-d-berlin-berlin-germany-muenchen-bavaria-germany-paris-paris-france-rennes-ille-et-vilaine-idnow-gmbh--14693996-inline.html?cid=partner_jobnet___Y&adj=",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1530,21 +1590,7 @@
         "title": "Senior Product Manager Cloud & AI (m/w/d)",
         "location": "Bavaria, Germany",
         "url": "https://www.persy.jobs/persy/l/job-jrpyb-b",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "WORK Microwave GmbH",
-        "market": "Germany",
-        "title": "Product Manager (m/w/d) - Virtual/Digital SATCOM Solutions",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--product-manager-m-w-d-virtual-digital-satcom-solutions-holzkirchen-work-microwave-gmbh--14690822-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1558,7 +1604,7 @@
         "title": "Product Manager Polymer Solutions (m/f/d)",
         "location": "Bavaria, Germany",
         "url": "https://eosgroup.wd3.myworkdayjobs.com/en-US/eos/job/Krailling/Product-Manager-Polymer-Solutions--m-f-d-_JR102433",
-        "postedDate": "2026-11-27",
+        "postedDate": "2026-11-28",
         "source": "makeitinmunich",
         "sources": [
           "makeitinmunich"
@@ -1572,6 +1618,1938 @@
         "title": "PRODUCT MANAGER MAKE-UP (M/W/D)",
         "location": "Bavaria, Germany",
         "url": "https://careers.groupeclarins.com/job/Starnberg-PRODUCT-MANAGER-MAKE-UP-(MWD)-82319/1372907455/?feedId=351255",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Westwing Group SE",
+        "market": "Germany",
+        "title": "(Senior) Product Manager eCommerce Fulfillment (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5917128073",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Fides Technology GmbH",
+        "market": "Germany",
+        "title": "Product Manager (all genders)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5929720121",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Ipsen Pharma GmbH",
+        "market": "Germany",
+        "title": "Senior Product Manager Neuroscience (w/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-neuroscience-w-m-d-muenchen-ipsen-pharma-gmbh--14633878-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Wemolo GmbH",
+        "market": "Germany",
+        "title": "Senior Business Product Manager (all genders)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-business-product-manager-all-genders-muenchen-wemolo-gmbh--14632729-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Netcetera GmbH",
+        "market": "Germany",
+        "title": "Senior Product Manager - Payment Security (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-payment-security-m-w-d-muenchen-netcetera-gmbh--14630624-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "DieProduktMacher GmbH",
+        "market": "Germany",
+        "title": "Senior Product Manager (all genders)",
+        "location": "Munich, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-all-genders-81379-muenchen-dieproduktmacher-gmbh--14630769-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Avelios Medical GmbH",
+        "market": "Germany",
+        "title": "Medical Product Manager (all genders)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--medical-product-manager-all-genders-muenchen-avelios-medical-gmbh--14632302-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Kranus Health GmbH",
+        "market": "Germany",
+        "title": "Senior Product Manager (all gender)",
+        "location": "Munich, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-all-gender-80331-muenchen-kranus-health-gmbh--14633483-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "SupplyOn GmbH",
+        "market": "Germany",
+        "title": "Product Manager \u2013 Identity & Access Management / Platform (w/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-manager-identity-access-management-platform-w-m-d-muenchen-supplyon-gmbh--14634208-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "TeleClinic GmbH",
+        "market": "Germany",
+        "title": "Senior Product Manager - Patient Experience (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-patient-experience-m-w-d-muenchen-teleclinic-gmbh--14633099-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Factor Eleven",
+        "market": "Germany",
+        "title": "Senior Product Manager - Ad Creator (all genders)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5895420273",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Avelios Medical GmbH",
+        "market": "Germany",
+        "title": "Product Manager Pharmacy (all genders)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-manager-pharmacy-all-genders-muenchen-avelios-medical-gmbh--14622522-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "G+D Netcetera",
+        "market": "Germany",
+        "title": "Senior Product Manager - Payment Security (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5929082743",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Plantura",
+        "market": "Germany",
+        "title": "Senior Product Manager \u2013 Shopping Experience (w/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5925667775",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "cbs Corporate Business Solutions Unternehmensberatung GmbH",
+        "market": "Germany",
+        "title": "Product Manager SAP Transformation Consulting (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5887002143",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "HELSING",
+        "market": "Germany",
+        "title": "Product Manager \u2013 Perception & Sensor Fusion",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5922372763",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Edenred Deutschland GmbH",
+        "market": "Germany",
+        "title": "Product Manager (m/w/d) (Produktentwickler/in)",
+        "location": "Munich, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTAwMDEtMTAwMzI2NjU2MS1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Integrity Next GmbH",
+        "market": "Germany",
+        "title": "Product Manager (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5912528952",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Eurojob Consulting",
+        "market": "Germany",
+        "title": "Product Manager Asien - Deutsch / Englisch (m/w/d), M\u00fcnchen",
+        "location": "Bavaria, Germany",
+        "url": "https://www.arbeitsagentur.de/jobsuche/jobdetail/10001-1003026219-S",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "YO AI Labs",
+        "market": "Germany",
+        "title": "Product Manager - Remote",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5913691230",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "EDTELLIGENT",
+        "market": "Germany",
+        "title": "Product Manager (m/w/d) GenauMeinKurs",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5903056093",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Brainlab",
+        "market": "Germany",
+        "title": "Product Manager - Cranial Navigation",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5905955573",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Primazon GmbH",
+        "market": "Germany",
+        "title": "(Senior) Product Manager / Produktmanager BESS (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5905749457",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "QuantumDiamonds",
+        "market": "Germany",
+        "title": "Product Manager (f/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5902981515",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Xometry Europe",
+        "market": "Germany",
+        "title": "Staff Product Manager, Pricing and Manufacturability",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5900799936",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Peter Park System GmbH",
+        "market": "Germany",
+        "title": "Senior Product Manager (m/w/d), Peter Park System GmbH (Produktmanager/in)",
+        "location": "Munich, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI4MTEtMjM0MzM1OC1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Ignite",
+        "market": "Germany",
+        "title": "German Speaking Fintech Product Manager",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5892690698",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "WORK Microwave GmbH",
+        "market": "Germany",
+        "title": "Product Manager - Virtual/Digital SATCOM Solutions, WORK Microwave GmbH (Ingenieur/in - Elektrotechn",
+        "location": "Bavaria, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI4MTEtMjMxNzExMy1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "CoCrafter",
+        "market": "Germany",
+        "title": "Founding Product Manager (Y Combinator Startup)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5883428578",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "CarOnSale",
+        "market": "Germany",
+        "title": "Senior Product Manager (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5882771059",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "CarOnSale",
+        "market": "Germany",
+        "title": "Product Manager (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5882805860",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "amasol GmbH",
+        "market": "Germany",
+        "title": "Senior Product Manager (m/f/d) \u2013 Enterprise SaaS & AI",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5879747315",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "CONSTRUCTOR",
+        "market": "Germany",
+        "title": "Staff Product Manager: Product Discovery Engine",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5879888143",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ROCKEN",
+        "market": "Germany",
+        "title": "Business Development Manager / Product Manager (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5876548324",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ProGlove",
+        "market": "Germany",
+        "title": "Product Manager \u2013 Android Integration & Ecosystem",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5877298540",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Collective.work",
+        "market": "Germany",
+        "title": "Product Manager - Electronics - 2419 - Permanent",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5875175490",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ZEISS Gruppe",
+        "market": "Germany",
+        "title": "Product Manager ZEISS Collaborative Care (m/w/x)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5870815463",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "apaleo",
+        "market": "Germany",
+        "title": "Senior Product Manager (f/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5874283686",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Atolls",
+        "market": "Germany",
+        "title": "Senior Product Manager (Giftcard)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5872095184",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Factor Eleven GmbH",
+        "market": "Germany",
+        "title": "Sr. Product Manager - Media Planner (all genders)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5868892462",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ProGlove",
+        "market": "Germany",
+        "title": "Senior Product Manager - Software Solutions",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5870843784",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Guldberg",
+        "market": "Germany",
+        "title": "Product Manager AI (w/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5872131047",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Guldberg GmbH",
+        "market": "Germany",
+        "title": "Product Manager AI (w/m/d) (Komponentenentwickler/in)",
+        "location": "Munich, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTM0MTAtazEzNTcyLjE1ODUyLVMgMQ?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Sixt SE",
+        "market": "Germany",
+        "title": "Senior Product Manager Up- & Cross-Selling (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5867763076",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Instaffo GmbH",
+        "market": "Germany",
+        "title": "Product Manager Automation & Growth (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5862977699",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Sobi",
+        "market": "Germany",
+        "title": "Product Manager Metabolic Diseases",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5859138792",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Blackned GmbH",
+        "market": "Germany",
+        "title": "Module Product Owner & Team Lead Secure Communication (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://jobs.blackned.de/de?id=ec1260",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "karriere tutor GmbH",
+        "market": "Germany",
+        "title": "Product Owner Learning Content (AI enabled) (w/m/d) (Product Owner)",
+        "location": "Bavaria, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTAwMDEtMTAwNDA0NDk1OC1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Akkodis Germany Tech Experts GmbH",
+        "market": "Germany",
+        "title": "Data & Process Specialist Homologation (w/m/d) (Product Owner)",
+        "location": "Munich, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI2MzQtQkItNjQ3NDA5LTc4NzgtMTY5MS1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Allianz",
+        "market": "Germany",
+        "title": "Senior Product Owner Produktentwicklung (m/w/d) (Product Owner)",
+        "location": "Bavaria, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTU3MTktNDQ1ODM2NTYtMTExOS1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Itera Campus",
+        "market": "Germany",
+        "title": "IT Product Owner (m/w/d) - 100% Homeoffice",
+        "location": "Bavaria, Germany",
+        "url": "https://pioneer-people-68f6605e1c1aa.heyrecruit.de/?page=job&id=148423&location=29854",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "PricewaterhouseCoopers GmbH WPG",
+        "market": "Germany",
+        "title": "IT Product Owner Bau (w/m/d) (Unternehmensberater/in)",
+        "location": "Munich, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTg5ODktOTg0NTQ0ODIxLVMgMQ?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "doctari group",
+        "market": "Germany",
+        "title": "Product Owner (m/w/d) - Customer Domain (IT-Projektleiter/in (Weiterbildung/Ausbildung))",
+        "location": "Munich, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTM2MzUtYTA2N2Y0NThfSkI1MzAxMzgyLVMgMQ?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "doctari group",
+        "market": "Germany",
+        "title": "Product Owner (m/w/d) - Customer Domain",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-owner-m-w-d-customer-domain-muenchen-doctari-group--14765154-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ocumeda AG",
+        "market": "Germany",
+        "title": "Product Owner AI (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5875594570",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "SupplyOn GmbH",
+        "market": "Germany",
+        "title": "Team Lead Product Owner (w/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--team-lead-product-owner-w-m-d-muenchen-supplyon-gmbh--14754468-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Carfax Europe GmbH",
+        "market": "Germany",
+        "title": "Senior Product Owner (m/f/d)",
+        "location": "Munich, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-product-owner-m-f-d-80339-muenchen-carfax-europe-gmbh--14753548-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ghc solutions GmbH",
+        "market": "Germany",
+        "title": "Product Owner (m/w/d) in spannenden Kundenprojekten mit hohem Remote-Anteil (Product Owner)",
+        "location": "Munich, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTAwMDEtMTAwNDAwMzg2Ni1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "wenglor MEL GmbH - Unterschlei\u00dfheim",
+        "market": "Germany",
+        "title": "Teamlead Software Development & Technical Product Owner Machine Vision Interfaces (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--teamlead-software-development-technical-product-owner-machine-vision-interfaces-m-w-d-unterschleissheim-wenglor-mel-gmbh-unterschleissheim--14667889-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Flughafen M\u00fcnchen GmbH",
+        "market": "Germany",
+        "title": "Technical Product Owner - Campus Radio Systems (w/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--technical-product-owner-campus-radio-systems-w-m-d-oberding-flughafen-muenchen-gmbh--14744732-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Natus Medical GmbH",
+        "market": "Germany",
+        "title": "Sr Product Owner - Cloud Software",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--sr-product-owner-cloud-software-82152-planegg-natus-medical-gmbh--14632530-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Flughafen M\u00fcnchen GmbH",
+        "market": "Germany",
+        "title": "Technical Product Owner - Cabling & Rechenzentrum (w/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--technical-product-owner-cabling-rechenzentrum-w-m-d-oberding-flughafen-muenchen-gmbh--14741933-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ADAC e.V.",
+        "market": "Germany",
+        "title": "Product Owner Workforcemanagement (w/m/d) (IT-Projektleiter/in (Weiterbildung/Ausbildung))",
+        "location": "Munich, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTgzNDktNDc2OTFfMTZfSkI1MjkxMjE0LVMgMQ?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Flughafen M\u00fcnchen GmbH",
+        "market": "Germany",
+        "title": "Technical Product Owner - Campus Radio Systems (w/m/d) (Chief-Information-Security-Officer)",
+        "location": "Bavaria, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI5NTEtZWRlYTU4MGEtYzdlYi00ZWZkLS1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "MEAG MUNICH ERGO AssetManagement GmbH",
+        "market": "Germany",
+        "title": "Data Produkt Owner (m|f|d) (Product Owner)",
+        "location": "Munich, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTAwMDEtMTAwMzk0NTk0MS1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Flughafen M\u00fcnchen GmbH",
+        "market": "Germany",
+        "title": "Technical Product Owner - Cabling & Rechenzentrum (w/m/d) (Chief-Information-Security-Officer)",
+        "location": "Bavaria, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI5NTEtNjRiYjYzNDQtMDc4YS00NzNhLS1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Bayerische Versorgungskammer",
+        "market": "Germany",
+        "title": "Product Owner DMS & Archivierung (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-owner-dms-archivierung-m-w-d-muenchen-bayerische-versorgungskammer--14706708-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Bayerische Versorgungskammer",
+        "market": "Germany",
+        "title": "Product Owner SAP (m/w/d), M\u00fcnchen (Product Owner)",
+        "location": "Munich, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI4MTEtMjM2NzMyMC1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Bayerische Versorgungskammer",
+        "market": "Germany",
+        "title": "Product Owner SAP (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-owner-sap-m-w-d-muenchen-bayerische-versorgungskammer--14697396-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Qualityminds Gmbh - NL M\u00fcnchen",
+        "market": "Germany",
+        "title": "Senior Product Owner (m/w/d) technischer Fokus",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-product-owner-m-w-d-technischer-fokus-muenchen-qualityminds-gmbh-nl-muenchen--14693861-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "AeroGround Flughafen M\u00fcnchen GmbH",
+        "market": "Germany",
+        "title": "Referent (w/m/d) Innovationsmanagement & Product Owner (Organisator/in)",
+        "location": "Bavaria, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI5NTEtMGQ3M2RiOGEtN2U1Yi00MzkyLS1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "de.indeed.com",
+        "market": "Germany",
+        "title": "Product Owner f\u00fcr Agentic-Twin-Plattform explore (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://join.com/companies/exentra/16749048-product-owner-fuer-agentic-twin-plattform-explore-m-w-d?pid=a13795120131dbe48464",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Randstad Professional",
+        "market": "Germany",
+        "title": "Product Owner (m/w/d) Homologationssysteme & Datenprozesse",
+        "location": "Munich, Germany",
+        "url": "https://jobboard.compleet.com/?externalId=4973504848",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "WENGLOR Sensoric GmbH",
+        "market": "Germany",
+        "title": "Teamlead Software Development & Technical Product Owner Machine Vision Interfaces (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.yourfirm.de/api/jobs/iframe/?jobId=YF-52919&title=%22Yourfirm%3A+Teamlead+Software+Development+&+Technical+Product+Owner+Machine+Vision+Interfaces+%28m%2Fw%2Fd%29+bei+wenglor+sensoric+gmbh%22=&isMailToLinkFormEnabled=true&disableAppLinks=false&isIndex=t",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Public Value Technologies GmbH",
+        "market": "Germany",
+        "title": "Technical Product Owner Backend (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5925643967",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "KFS GROUP",
+        "market": "Germany",
+        "title": "Product Owner (m/w/d) | Festanstellung oder Freelance | M\u00fcnchen / Remote",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5928444399",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "SIXT Germany",
+        "market": "Germany",
+        "title": "Product Owner Service Resolution & Automation \u2013 Customer Service Transformation (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5929515930",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "SIXT Germany",
+        "market": "Germany",
+        "title": "Product Owner Rent Booking (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5929515629",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Myra Security",
+        "market": "Germany",
+        "title": "Lead Product Owner (m/f/d) - AI Workspace",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5929284262",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "zooplus SE",
+        "market": "Germany",
+        "title": "Product Owner - SEO & Product Content Platforms (All Genders)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5927825419",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "MITOcare Gmbh & Co KG",
+        "market": "Germany",
+        "title": "ERP/Odoo Product Owner / Business Process Manager (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5895110840",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Omegga GmbH",
+        "market": "Germany",
+        "title": "Product Owner Hardware (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-owner-hardware-m-f-d-muenchen-omegga-gmbh--14625355-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "AirLST GmbH",
+        "market": "Germany",
+        "title": "Product Owner Kundenprojekte (m/w/d)",
+        "location": "Munich, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-owner-kundenprojekte-m-w-d-80538-muenchen-airlst-gmbh--14622341-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ARES Consulting GmbH",
+        "market": "Germany",
+        "title": "Senior Technical Engagement Manager/ Product Owner Cloud Platforms (m/w/d) - Remote",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-technical-engagement-manager-product-owner-cloud-platforms-m-w-d-remote-85609-aschheim-ares-consulting-gmbh--14622463-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Flughafen M\u00fcnchen GmbH",
+        "market": "Germany",
+        "title": "Technical Product Owner - Central Services (w/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.arbeitsagentur.de/jobsuche/jobdetail/20031-974514273-S",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Flughafen M\u00fcnchen GmbH",
+        "market": "Germany",
+        "title": "Technical Product Owner - IT-Infrastruktur & Central Services (w/m/d) (Chief-Information-Security-Of",
+        "location": "Bavaria, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI5NTEtYThiODJlZjYtZjJjOS00M2QwLS1TIDE?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ROHLIK",
+        "market": "Germany",
+        "title": "Product Owner - Customer Experience",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5919244201",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ComArch AG",
+        "market": "Germany",
+        "title": "Product Owner (m/w/d) im Bereich Controlling und Anlagenbuchhaltung",
+        "location": "Munich, Germany",
+        "url": "https://www.arbeitsagentur.de/jobsuche/jobdetail/10001-1003054536-S",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Knorr-Bremse AG",
+        "market": "Germany",
+        "title": "Global Product Owner Trailer Business (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.arbeitsagentur.de/jobsuche/jobdetail/10000-1208187094-S",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Data Q Company",
+        "market": "Germany",
+        "title": "Product Owner f\u00fcr KI-Systeme (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5908518224",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Crewmeister",
+        "market": "Germany",
+        "title": "Product Owner (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5888005059",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ImFusion GmbH",
+        "market": "Germany",
+        "title": "Technical Product Owner \u2013 C++ SDK & ImFusion Suite",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5879748494",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Passion for People GmbH",
+        "market": "Germany",
+        "title": "Senior Product Owner Digitalisierung und Banking (w/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5884713831",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Bayerische Versorgungskammer",
+        "market": "Germany",
+        "title": "Product Owner Power BI (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5866216639",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Dock Financial GmbH",
+        "market": "Germany",
+        "title": "Product Owner/in (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5881903156",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "HAYS",
+        "market": "Germany",
+        "title": "Product Owner ERP (Dynamics 365 Business Central / NAV) (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5880435771",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Haufe Group SE",
+        "market": "Germany",
+        "title": "Technical Product Owner - Cloud Infrastructure (d/m/w)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5880130838",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Stiftung Kulturzukunft Bayern",
+        "market": "Germany",
+        "title": "Technical Product Owner (w/m/d) - Vollzeit oder Teilzeit m\u00f6glich",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5875286992",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ROCKEN",
+        "market": "Germany",
+        "title": "Global Product Owner (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5875662767",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Sixt",
+        "market": "Germany",
+        "title": "Senior Technical Product Owner \u2014 Revenue Management (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5860576145",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ADAC Zentrale",
+        "market": "Germany",
+        "title": "Product Owner Workforcemanagement (w/m/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5871983119",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Ajaska GmbH",
+        "market": "Germany",
+        "title": "Product Owner Lead-Conversion & Revenue (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-owner-lead-conversion-revenue-m-w-d-muenchen-ajaska-gmbh--14468370-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Myra Security",
+        "market": "Germany",
+        "title": "Senior Product Owner App Security (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5867245107",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Vesterling AG",
+        "market": "Germany",
+        "title": "KI - Product Owner | FinTech | Inhouse, bis ca. 85.000\u20ac, bis 50% Home-Office (mwd)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5862255338",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "SIXT Germany",
+        "market": "Germany",
+        "title": "Tech Lead & Product Owner - AI Platform (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5864096564",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "BWI GmbH",
+        "market": "Germany",
+        "title": "Product Owner Cloud Orchestration & Services (m/w/d) (Produktmanager/in)",
+        "location": "Bavaria, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTM1MDktMDAwMDIxMTBmODAwMDEtUyAx?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Nearshorefriends GmbH",
+        "market": "Germany",
+        "title": "German Speaking Product Owner",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5862979174",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "ROSA Experts AG & Co KG",
+        "market": "Germany",
+        "title": "Technischer Product Designer (m/w/d) (Ingenieur/in - Maschinenbau)",
+        "location": "Munich, Germany",
+        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTQ5MzUtMDAwMTE5NTJfMDAxLVMgMQ?jvDisplayLanguage=de",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "MVST GmbH",
+        "market": "Germany",
+        "title": "UX/UI Product Designer (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--ux-ui-product-designer-m-f-d-munich-mvst-gmbh--14467690-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "HAT.tec GmbH",
+        "market": "Germany",
+        "title": "Werkstudent UI/UX Design mit Qt/QML-Fokus (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--werkstudent-ui-ux-design-mit-qt-qml-fokus-m-w-d-neubiberg-hat-tec-gmbh--14759871-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "HappyOps",
+        "market": "Germany",
+        "title": "Senior UX & Interaction Designer (m/w/d) | Industrial Software | Teilzeit",
+        "location": "Bavaria, Germany",
+        "url": "https://join.com/companies/happyops/14354897-senior-ux-und-interaction-designer-m-w-d-oder-industrial-software-oder-teilzeit?pid=a13795120131dbe48464",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Quantum-Systems GmbH",
+        "market": "Germany",
+        "title": "UX/UI Designer (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--ux-ui-designer-m-f-d-gilching-bayern-germany-quantum-systems-gmbh--14731134-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "dental bauer GmbH",
+        "market": "Germany",
+        "title": "Senior UX-Designer (m/w/d) \u2013 befristet als Elternzeitvertretung (in Teilzeit mit mind. 50% m\u00f6glich)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-ux-designer-m-w-d-befristet-als-elternzeitvertretung-in-teilzeit-mit-mind-50-moeglich-muenchen-stuttgart-dental-bauer-gmbh--14741848-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_ca=",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Stryber GmbH",
+        "market": "Germany",
+        "title": "Senior UI/UX Designer at Stryber GmbH in Munich Germany",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-ui-ux-designer-at-stryber-gmbh-in-munich-germany-munich-germany-stryber-gmbh--12557842-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "FLUID Design GmbH",
+        "market": "Germany",
+        "title": "Senior UX Designer - Interaction & Visual Design (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-ux-designer-interaction-visual-design-m-f-d-munich-fluid-design-gmbh--12915559-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Sthree Germany",
+        "market": "Germany",
+        "title": "UX/UI Consultant (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5926636619",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "DocuWare GmbH",
+        "market": "Germany",
+        "title": "Senior UX Researcher (m/f/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--senior-ux-researcher-m-f-d-82110-germering-docuware-gmbh--14630667-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Atruvia AG",
+        "market": "Germany",
+        "title": "Werkstudent UX/UI Design - Banking Apps (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5912842639",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "MINDFACTS GMBH",
+        "market": "Germany",
+        "title": "Praktikum UX-Research (m/w/x)",
+        "location": "Munich, Germany",
+        "url": "https://mindfacts.de/karriere-ux-research/",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "de.indeed.com",
+        "market": "Germany",
+        "title": "UI/UX Designer:in / Art Director:in Screendesign (m/w/d)",
+        "location": "Munich, Germany",
+        "url": "https://t.gohiring.com/h/550e10d25b9b90f23e28f3581b7e27933018113468f8118958f9cde54985419e?source=Indeed",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Twentyfour Industries",
+        "market": "Germany",
+        "title": "(Senior) UX Designer",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5903845585",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Cobe",
+        "market": "Germany",
+        "title": "(Parental leave cover) Senior UX Researcher/Designer (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5904067827",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "appliedAI",
+        "market": "Germany",
+        "title": "Principal UX Designer (m/f/x) \u2013 AI Design",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5893870143",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "]init[ AG",
+        "market": "Germany",
+        "title": "Senior UI/UX Designer (all genders)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5894542932",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "SYNTEX GmbH",
+        "market": "Germany",
+        "title": "Quereinsteiger gesucht: Werde UX/UI Designer mit KI (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5894015740",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "SKOPOS NOVA",
+        "market": "Germany",
+        "title": "Praktikant User Experience (m/w/d) UX Research",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5886411532",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Heynberg",
+        "market": "Germany",
+        "title": "HMI UX/UI Engineer Automotive (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5878763612",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Brainlab",
+        "market": "Germany",
+        "title": "Working Student UX & UI Design",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5875643134",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Cobe",
+        "market": "Germany",
+        "title": "(Parental leave cover) Senior UX Designer/Researcher (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.adzuna.de/details/5870807875",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "HAT.tec GmbH",
+        "market": "Germany",
+        "title": "Product Manager (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-manager-m-w-d-neubiberg-hat-tec-gmbh--14800642-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Praxis f\u00fcr Plastische und \u00c4sthetische Chirurgie",
+        "market": "Germany",
+        "title": "Social Media Strategist (m/w/d) Personal & Luxury Brand Growth",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--social-media-strategist-m-w-d-personal-luxury-brand-growth-muenchen-praxis-fuer-plastische-und-aesthetische-chirurgie--14771000-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partn",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Ratbacher GmbH",
+        "market": "Germany",
+        "title": "Product Owner (m/w/d) - Technischer Produktmanager",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-owner-m-w-d-technischer-produktmanager-dortmund-koeln-duesseldorf-muenster-muenchen-ratbacher-gmbh--13842628-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet__",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Matter & Lout GmbH & Co. KG",
+        "market": "Germany",
+        "title": "UI/UX Designer:in / Art Director:in Screendesign (m/w/d)",
+        "location": "Munich, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--ui-ux-designer-in-art-director-in-screendesign-m-w-d-80333-muenchen-matter-lout-gmbh-co-kg--14617221-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "assistance partner GmbH & Co. KG",
+        "market": "Germany",
+        "title": "Product Owner (m/w/d)",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-owner-m-w-d-muenchen-assistance-partner-gmbh-co-kg--14803408-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "MAN Truck & Bus Group",
+        "market": "Germany",
+        "title": "Product Owner Data & AI (w/m/d) - AI Impact Accelerator",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-owner-data-ai-w-m-d-ai-impact-accelerator-muenchen-man-truck-bus-group--14803970-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
+        "postedDate": "2026-11-28",
+        "source": "makeitinmunich",
+        "sources": [
+          "makeitinmunich"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "TDC NET",
+        "market": "Denmark",
+        "title": "Consultant Group Strategy (maternity cover)",
+        "location": "Denmark",
+        "url": "https://tdc.csod.com/ats/careersite/jobdetails.aspx?site=23&c=tdc&id=10859",
+        "postedDate": "2026-11-28",
+        "source": "workindenmark",
+        "sources": [
+          "workindenmark"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Demant",
+        "market": "Denmark",
+        "title": "Technical Product Owner, Chipset Test & Support",
+        "location": "Egedal, Denmark",
+        "url": "https://careers.demant.com/demant/job/Sm%C3%B8rum-Technical-Product-Owner%2C-Chipset-Test-&-Support-2765/1460732333/",
+        "postedDate": "2026-11-28",
+        "source": "workindenmark",
+        "sources": [
+          "workindenmark"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "WORK Microwave GmbH",
+        "market": "Germany",
+        "title": "Product Manager (m/w/d) - Virtual/Digital SATCOM Solutions",
+        "location": "Bavaria, Germany",
+        "url": "https://www.stepstone.de/stellenangebote--product-manager-m-w-d-virtual-digital-satcom-solutions-holzkirchen-work-microwave-gmbh--14690822-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
         "postedDate": "2026-11-27",
         "source": "makeitinmunich",
         "sources": [
@@ -1595,1271 +3573,11 @@
         "lastSeenAt": "2026-11-28"
       },
       {
-        "employer": "Westwing Group SE",
-        "market": "Germany",
-        "title": "(Senior) Product Manager eCommerce Fulfillment (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5917128073",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Fides Technology GmbH",
-        "market": "Germany",
-        "title": "Product Manager (all genders)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5929720121",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Ipsen Pharma GmbH",
-        "market": "Germany",
-        "title": "Senior Product Manager Neuroscience (w/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-neuroscience-w-m-d-muenchen-ipsen-pharma-gmbh--14633878-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Wemolo GmbH",
-        "market": "Germany",
-        "title": "Senior Business Product Manager (all genders)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-business-product-manager-all-genders-muenchen-wemolo-gmbh--14632729-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Netcetera GmbH",
-        "market": "Germany",
-        "title": "Senior Product Manager - Payment Security (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-payment-security-m-w-d-muenchen-netcetera-gmbh--14630624-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "DieProduktMacher GmbH",
-        "market": "Germany",
-        "title": "Senior Product Manager (all genders)",
-        "location": "Munich, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-all-genders-81379-muenchen-dieproduktmacher-gmbh--14630769-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Avelios Medical GmbH",
-        "market": "Germany",
-        "title": "Medical Product Manager (all genders)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--medical-product-manager-all-genders-muenchen-avelios-medical-gmbh--14632302-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Kranus Health GmbH",
-        "market": "Germany",
-        "title": "Senior Product Manager (all gender)",
-        "location": "Munich, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-all-gender-80331-muenchen-kranus-health-gmbh--14633483-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "SupplyOn GmbH",
-        "market": "Germany",
-        "title": "Product Manager \u2013 Identity & Access Management / Platform (w/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--product-manager-identity-access-management-platform-w-m-d-muenchen-supplyon-gmbh--14634208-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "TeleClinic GmbH",
-        "market": "Germany",
-        "title": "Senior Product Manager - Patient Experience (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-product-manager-patient-experience-m-w-d-muenchen-teleclinic-gmbh--14633099-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Factor Eleven",
-        "market": "Germany",
-        "title": "Senior Product Manager - Ad Creator (all genders)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5895420273",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Avelios Medical GmbH",
-        "market": "Germany",
-        "title": "Product Manager Pharmacy (all genders)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--product-manager-pharmacy-all-genders-muenchen-avelios-medical-gmbh--14622522-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "G+D Netcetera",
-        "market": "Germany",
-        "title": "Senior Product Manager - Payment Security (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5929082743",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Plantura",
-        "market": "Germany",
-        "title": "Senior Product Manager \u2013 Shopping Experience (w/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5925667775",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "cbs Corporate Business Solutions Unternehmensberatung GmbH",
-        "market": "Germany",
-        "title": "Product Manager SAP Transformation Consulting (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5887002143",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "HELSING",
-        "market": "Germany",
-        "title": "Product Manager \u2013 Perception & Sensor Fusion",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5922372763",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Edenred Deutschland GmbH",
-        "market": "Germany",
-        "title": "Product Manager (m/w/d) (Produktentwickler/in)",
-        "location": "Munich, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTAwMDEtMTAwMzI2NjU2MS1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Integrity Next GmbH",
-        "market": "Germany",
-        "title": "Product Manager (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5912528952",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
         "employer": "1 & 1 Mail & Media Applications SE",
         "market": "Germany",
         "title": "Targeting & Data Product Manager (w/m/d)",
         "location": "Munich, Germany",
         "url": "https://www.arbeitsagentur.de/jobsuche/jobdetail/10001-1003613474-S",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Eurojob Consulting",
-        "market": "Germany",
-        "title": "Product Manager Asien - Deutsch / Englisch (m/w/d), M\u00fcnchen",
-        "location": "Bavaria, Germany",
-        "url": "https://www.arbeitsagentur.de/jobsuche/jobdetail/10001-1003026219-S",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "YO AI Labs",
-        "market": "Germany",
-        "title": "Product Manager - Remote",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5913691230",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "EDTELLIGENT",
-        "market": "Germany",
-        "title": "Product Manager (m/w/d) GenauMeinKurs",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5903056093",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Brainlab",
-        "market": "Germany",
-        "title": "Product Manager - Cranial Navigation",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5905955573",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Primazon GmbH",
-        "market": "Germany",
-        "title": "(Senior) Product Manager / Produktmanager BESS (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5905749457",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "QuantumDiamonds",
-        "market": "Germany",
-        "title": "Product Manager (f/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5902981515",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Xometry Europe",
-        "market": "Germany",
-        "title": "Staff Product Manager, Pricing and Manufacturability",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5900799936",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Peter Park System GmbH",
-        "market": "Germany",
-        "title": "Senior Product Manager (m/w/d), Peter Park System GmbH (Produktmanager/in)",
-        "location": "Munich, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI4MTEtMjM0MzM1OC1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Ignite",
-        "market": "Germany",
-        "title": "German Speaking Fintech Product Manager",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5892690698",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "WORK Microwave GmbH",
-        "market": "Germany",
-        "title": "Product Manager - Virtual/Digital SATCOM Solutions, WORK Microwave GmbH (Ingenieur/in - Elektrotechn",
-        "location": "Bavaria, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI4MTEtMjMxNzExMy1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "CoCrafter",
-        "market": "Germany",
-        "title": "Founding Product Manager (Y Combinator Startup)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5883428578",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "CarOnSale",
-        "market": "Germany",
-        "title": "Senior Product Manager (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5882771059",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "CarOnSale",
-        "market": "Germany",
-        "title": "Product Manager (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5882805860",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "amasol GmbH",
-        "market": "Germany",
-        "title": "Senior Product Manager (m/f/d) \u2013 Enterprise SaaS & AI",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5879747315",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "CONSTRUCTOR",
-        "market": "Germany",
-        "title": "Staff Product Manager: Product Discovery Engine",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5879888143",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ROCKEN",
-        "market": "Germany",
-        "title": "Business Development Manager / Product Manager (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5876548324",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ProGlove",
-        "market": "Germany",
-        "title": "Product Manager \u2013 Android Integration & Ecosystem",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5877298540",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Collective.work",
-        "market": "Germany",
-        "title": "Product Manager - Electronics - 2419 - Permanent",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5875175490",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ZEISS Gruppe",
-        "market": "Germany",
-        "title": "Product Manager ZEISS Collaborative Care (m/w/x)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5870815463",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "apaleo",
-        "market": "Germany",
-        "title": "Senior Product Manager (f/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5874283686",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Atolls",
-        "market": "Germany",
-        "title": "Senior Product Manager (Giftcard)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5872095184",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Factor Eleven GmbH",
-        "market": "Germany",
-        "title": "Sr. Product Manager - Media Planner (all genders)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5868892462",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ProGlove",
-        "market": "Germany",
-        "title": "Senior Product Manager - Software Solutions",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5870843784",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Guldberg",
-        "market": "Germany",
-        "title": "Product Manager AI (w/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5872131047",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Guldberg GmbH",
-        "market": "Germany",
-        "title": "Product Manager AI (w/m/d) (Komponentenentwickler/in)",
-        "location": "Munich, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTM0MTAtazEzNTcyLjE1ODUyLVMgMQ?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Sixt SE",
-        "market": "Germany",
-        "title": "Senior Product Manager Up- & Cross-Selling (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5867763076",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Instaffo GmbH",
-        "market": "Germany",
-        "title": "Product Manager Automation & Growth (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5862977699",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Sobi",
-        "market": "Germany",
-        "title": "Product Manager Metabolic Diseases",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5859138792",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Blackned GmbH",
-        "market": "Germany",
-        "title": "Module Product Owner & Team Lead Secure Communication (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://jobs.blackned.de/de?id=ec1260",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "karriere tutor GmbH",
-        "market": "Germany",
-        "title": "Product Owner Learning Content (AI enabled) (w/m/d) (Product Owner)",
-        "location": "Bavaria, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTAwMDEtMTAwNDA0NDk1OC1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Akkodis Germany Tech Experts GmbH",
-        "market": "Germany",
-        "title": "Data & Process Specialist Homologation (w/m/d) (Product Owner)",
-        "location": "Munich, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI2MzQtQkItNjQ3NDA5LTc4NzgtMTY5MS1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Allianz",
-        "market": "Germany",
-        "title": "Senior Product Owner Produktentwicklung (m/w/d) (Product Owner)",
-        "location": "Bavaria, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTU3MTktNDQ1ODM2NTYtMTExOS1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Itera Campus",
-        "market": "Germany",
-        "title": "IT Product Owner (m/w/d) - 100% Homeoffice",
-        "location": "Bavaria, Germany",
-        "url": "https://pioneer-people-68f6605e1c1aa.heyrecruit.de/?page=job&id=148423&location=29854",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "PricewaterhouseCoopers GmbH WPG",
-        "market": "Germany",
-        "title": "IT Product Owner Bau (w/m/d) (Unternehmensberater/in)",
-        "location": "Munich, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTg5ODktOTg0NTQ0ODIxLVMgMQ?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "doctari group",
-        "market": "Germany",
-        "title": "Product Owner (m/w/d) - Customer Domain (IT-Projektleiter/in (Weiterbildung/Ausbildung))",
-        "location": "Munich, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTM2MzUtYTA2N2Y0NThfSkI1MzAxMzgyLVMgMQ?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "doctari group",
-        "market": "Germany",
-        "title": "Product Owner (m/w/d) - Customer Domain",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--product-owner-m-w-d-customer-domain-muenchen-doctari-group--14765154-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ocumeda AG",
-        "market": "Germany",
-        "title": "Product Owner AI (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5875594570",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "SupplyOn GmbH",
-        "market": "Germany",
-        "title": "Team Lead Product Owner (w/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--team-lead-product-owner-w-m-d-muenchen-supplyon-gmbh--14754468-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Carfax Europe GmbH",
-        "market": "Germany",
-        "title": "Senior Product Owner (m/f/d)",
-        "location": "Munich, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-product-owner-m-f-d-80339-muenchen-carfax-europe-gmbh--14753548-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ghc solutions GmbH",
-        "market": "Germany",
-        "title": "Product Owner (m/w/d) in spannenden Kundenprojekten mit hohem Remote-Anteil (Product Owner)",
-        "location": "Munich, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTAwMDEtMTAwNDAwMzg2Ni1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "wenglor MEL GmbH - Unterschlei\u00dfheim",
-        "market": "Germany",
-        "title": "Teamlead Software Development & Technical Product Owner Machine Vision Interfaces (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--teamlead-software-development-technical-product-owner-machine-vision-interfaces-m-w-d-unterschleissheim-wenglor-mel-gmbh-unterschleissheim--14667889-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Flughafen M\u00fcnchen GmbH",
-        "market": "Germany",
-        "title": "Technical Product Owner - Campus Radio Systems (w/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--technical-product-owner-campus-radio-systems-w-m-d-oberding-flughafen-muenchen-gmbh--14744732-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Natus Medical GmbH",
-        "market": "Germany",
-        "title": "Sr Product Owner - Cloud Software",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--sr-product-owner-cloud-software-82152-planegg-natus-medical-gmbh--14632530-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Flughafen M\u00fcnchen GmbH",
-        "market": "Germany",
-        "title": "Technical Product Owner - Cabling & Rechenzentrum (w/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--technical-product-owner-cabling-rechenzentrum-w-m-d-oberding-flughafen-muenchen-gmbh--14741933-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ADAC e.V.",
-        "market": "Germany",
-        "title": "Product Owner Workforcemanagement (w/m/d) (IT-Projektleiter/in (Weiterbildung/Ausbildung))",
-        "location": "Munich, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTgzNDktNDc2OTFfMTZfSkI1MjkxMjE0LVMgMQ?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Flughafen M\u00fcnchen GmbH",
-        "market": "Germany",
-        "title": "Technical Product Owner - Campus Radio Systems (w/m/d) (Chief-Information-Security-Officer)",
-        "location": "Bavaria, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI5NTEtZWRlYTU4MGEtYzdlYi00ZWZkLS1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "MEAG MUNICH ERGO AssetManagement GmbH",
-        "market": "Germany",
-        "title": "Data Produkt Owner (m|f|d) (Product Owner)",
-        "location": "Munich, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTAwMDEtMTAwMzk0NTk0MS1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Flughafen M\u00fcnchen GmbH",
-        "market": "Germany",
-        "title": "Technical Product Owner - Cabling & Rechenzentrum (w/m/d) (Chief-Information-Security-Officer)",
-        "location": "Bavaria, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI5NTEtNjRiYjYzNDQtMDc4YS00NzNhLS1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Bayerische Versorgungskammer",
-        "market": "Germany",
-        "title": "Product Owner DMS & Archivierung (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--product-owner-dms-archivierung-m-w-d-muenchen-bayerische-versorgungskammer--14706708-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Bayerische Versorgungskammer",
-        "market": "Germany",
-        "title": "Product Owner SAP (m/w/d), M\u00fcnchen (Product Owner)",
-        "location": "Munich, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI4MTEtMjM2NzMyMC1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Bayerische Versorgungskammer",
-        "market": "Germany",
-        "title": "Product Owner SAP (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--product-owner-sap-m-w-d-muenchen-bayerische-versorgungskammer--14697396-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Qualityminds Gmbh - NL M\u00fcnchen",
-        "market": "Germany",
-        "title": "Senior Product Owner (m/w/d) technischer Fokus",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-product-owner-m-w-d-technischer-fokus-muenchen-qualityminds-gmbh-nl-muenchen--14693861-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "AeroGround Flughafen M\u00fcnchen GmbH",
-        "market": "Germany",
-        "title": "Referent (w/m/d) Innovationsmanagement & Product Owner (Organisator/in)",
-        "location": "Bavaria, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI5NTEtMGQ3M2RiOGEtN2U1Yi00MzkyLS1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "de.indeed.com",
-        "market": "Germany",
-        "title": "Product Owner f\u00fcr Agentic-Twin-Plattform explore (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://join.com/companies/exentra/16749048-product-owner-fuer-agentic-twin-plattform-explore-m-w-d?pid=a13795120131dbe48464",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Randstad Professional",
-        "market": "Germany",
-        "title": "Product Owner (m/w/d) Homologationssysteme & Datenprozesse",
-        "location": "Munich, Germany",
-        "url": "https://jobboard.compleet.com/?externalId=4973504848",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "WENGLOR Sensoric GmbH",
-        "market": "Germany",
-        "title": "Teamlead Software Development & Technical Product Owner Machine Vision Interfaces (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.yourfirm.de/api/jobs/iframe/?jobId=YF-52919&title=%22Yourfirm%3A+Teamlead+Software+Development+&+Technical+Product+Owner+Machine+Vision+Interfaces+%28m%2Fw%2Fd%29+bei+wenglor+sensoric+gmbh%22=&isMailToLinkFormEnabled=true&disableAppLinks=false&isIndex=t",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Public Value Technologies GmbH",
-        "market": "Germany",
-        "title": "Technical Product Owner Backend (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5925643967",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "KFS GROUP",
-        "market": "Germany",
-        "title": "Product Owner (m/w/d) | Festanstellung oder Freelance | M\u00fcnchen / Remote",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5928444399",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "SIXT Germany",
-        "market": "Germany",
-        "title": "Product Owner Service Resolution & Automation \u2013 Customer Service Transformation (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5929515930",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "SIXT Germany",
-        "market": "Germany",
-        "title": "Product Owner Rent Booking (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5929515629",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Myra Security",
-        "market": "Germany",
-        "title": "Lead Product Owner (m/f/d) - AI Workspace",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5929284262",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "zooplus SE",
-        "market": "Germany",
-        "title": "Product Owner - SEO & Product Content Platforms (All Genders)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5927825419",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "MITOcare Gmbh & Co KG",
-        "market": "Germany",
-        "title": "ERP/Odoo Product Owner / Business Process Manager (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5895110840",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Omegga GmbH",
-        "market": "Germany",
-        "title": "Product Owner Hardware (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--product-owner-hardware-m-f-d-muenchen-omegga-gmbh--14625355-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "AirLST GmbH",
-        "market": "Germany",
-        "title": "Product Owner Kundenprojekte (m/w/d)",
-        "location": "Munich, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--product-owner-kundenprojekte-m-w-d-80538-muenchen-airlst-gmbh--14622341-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ARES Consulting GmbH",
-        "market": "Germany",
-        "title": "Senior Technical Engagement Manager/ Product Owner Cloud Platforms (m/w/d) - Remote",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-technical-engagement-manager-product-owner-cloud-platforms-m-w-d-remote-85609-aschheim-ares-consulting-gmbh--14622463-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Flughafen M\u00fcnchen GmbH",
-        "market": "Germany",
-        "title": "Technical Product Owner - Central Services (w/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.arbeitsagentur.de/jobsuche/jobdetail/20031-974514273-S",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Flughafen M\u00fcnchen GmbH",
-        "market": "Germany",
-        "title": "Technical Product Owner - IT-Infrastruktur & Central Services (w/m/d) (Chief-Information-Security-Of",
-        "location": "Bavaria, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTI5NTEtYThiODJlZjYtZjJjOS00M2QwLS1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ROHLIK",
-        "market": "Germany",
-        "title": "Product Owner - Customer Experience",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5919244201",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ComArch AG",
-        "market": "Germany",
-        "title": "Product Owner (m/w/d) im Bereich Controlling und Anlagenbuchhaltung",
-        "location": "Munich, Germany",
-        "url": "https://www.arbeitsagentur.de/jobsuche/jobdetail/10001-1003054536-S",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Knorr-Bremse AG",
-        "market": "Germany",
-        "title": "Global Product Owner Trailer Business (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.arbeitsagentur.de/jobsuche/jobdetail/10000-1208187094-S",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Data Q Company",
-        "market": "Germany",
-        "title": "Product Owner f\u00fcr KI-Systeme (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5908518224",
         "postedDate": "2026-11-27",
         "source": "makeitinmunich",
         "sources": [
@@ -2883,585 +3601,11 @@
         "lastSeenAt": "2026-11-28"
       },
       {
-        "employer": "Crewmeister",
-        "market": "Germany",
-        "title": "Product Owner (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5888005059",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ImFusion GmbH",
-        "market": "Germany",
-        "title": "Technical Product Owner \u2013 C++ SDK & ImFusion Suite",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5879748494",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Passion for People GmbH",
-        "market": "Germany",
-        "title": "Senior Product Owner Digitalisierung und Banking (w/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5884713831",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Bayerische Versorgungskammer",
-        "market": "Germany",
-        "title": "Product Owner Power BI (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5866216639",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Dock Financial GmbH",
-        "market": "Germany",
-        "title": "Product Owner/in (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5881903156",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "HAYS",
-        "market": "Germany",
-        "title": "Product Owner ERP (Dynamics 365 Business Central / NAV) (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5880435771",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Haufe Group SE",
-        "market": "Germany",
-        "title": "Technical Product Owner - Cloud Infrastructure (d/m/w)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5880130838",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Stiftung Kulturzukunft Bayern",
-        "market": "Germany",
-        "title": "Technical Product Owner (w/m/d) - Vollzeit oder Teilzeit m\u00f6glich",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5875286992",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ROCKEN",
-        "market": "Germany",
-        "title": "Global Product Owner (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5875662767",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Sixt",
-        "market": "Germany",
-        "title": "Senior Technical Product Owner \u2014 Revenue Management (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5860576145",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ADAC Zentrale",
-        "market": "Germany",
-        "title": "Product Owner Workforcemanagement (w/m/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5871983119",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Ajaska GmbH",
-        "market": "Germany",
-        "title": "Product Owner Lead-Conversion & Revenue (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--product-owner-lead-conversion-revenue-m-w-d-muenchen-ajaska-gmbh--14468370-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Myra Security",
-        "market": "Germany",
-        "title": "Senior Product Owner App Security (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5867245107",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Vesterling AG",
-        "market": "Germany",
-        "title": "KI - Product Owner | FinTech | Inhouse, bis ca. 85.000\u20ac, bis 50% Home-Office (mwd)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5862255338",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "SIXT Germany",
-        "market": "Germany",
-        "title": "Tech Lead & Product Owner - AI Platform (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5864096564",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "BWI GmbH",
-        "market": "Germany",
-        "title": "Product Owner Cloud Orchestration & Services (m/w/d) (Produktmanager/in)",
-        "location": "Bavaria, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTM1MDktMDAwMDIxMTBmODAwMDEtUyAx?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Nearshorefriends GmbH",
-        "market": "Germany",
-        "title": "German Speaking Product Owner",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5862979174",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
         "employer": "Pharmatechnik KG 01",
         "market": "Germany",
         "title": "Product Owner Customer Service & Field Service (m/w/d) (Product Owner)",
         "location": "Bavaria, Germany",
         "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTYyNjUtMDA2NzAyMTkwMC1TIDE?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "ROSA Experts AG & Co KG",
-        "market": "Germany",
-        "title": "Technischer Product Designer (m/w/d) (Ingenieur/in - Maschinenbau)",
-        "location": "Munich, Germany",
-        "url": "https://europa.eu/eures/portal/jv-se/jv-details/MTQ5MzUtMDAwMTE5NTJfMDAxLVMgMQ?jvDisplayLanguage=de",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "MVST GmbH",
-        "market": "Germany",
-        "title": "UX/UI Product Designer (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--ux-ui-product-designer-m-f-d-munich-mvst-gmbh--14467690-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "HAT.tec GmbH",
-        "market": "Germany",
-        "title": "Werkstudent UI/UX Design mit Qt/QML-Fokus (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--werkstudent-ui-ux-design-mit-qt-qml-fokus-m-w-d-neubiberg-hat-tec-gmbh--14759871-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "HappyOps",
-        "market": "Germany",
-        "title": "Senior UX & Interaction Designer (m/w/d) | Industrial Software | Teilzeit",
-        "location": "Bavaria, Germany",
-        "url": "https://join.com/companies/happyops/14354897-senior-ux-und-interaction-designer-m-w-d-oder-industrial-software-oder-teilzeit?pid=a13795120131dbe48464",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Quantum-Systems GmbH",
-        "market": "Germany",
-        "title": "UX/UI Designer (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--ux-ui-designer-m-f-d-gilching-bayern-germany-quantum-systems-gmbh--14731134-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "dental bauer GmbH",
-        "market": "Germany",
-        "title": "Senior UX-Designer (m/w/d) \u2013 befristet als Elternzeitvertretung (in Teilzeit mit mind. 50% m\u00f6glich)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-ux-designer-m-w-d-befristet-als-elternzeitvertretung-in-teilzeit-mit-mind-50-moeglich-muenchen-stuttgart-dental-bauer-gmbh--14741848-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_ca=",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Stryber GmbH",
-        "market": "Germany",
-        "title": "Senior UI/UX Designer at Stryber GmbH in Munich Germany",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-ui-ux-designer-at-stryber-gmbh-in-munich-germany-munich-germany-stryber-gmbh--12557842-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "FLUID Design GmbH",
-        "market": "Germany",
-        "title": "Senior UX Designer - Interaction & Visual Design (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-ux-designer-interaction-visual-design-m-f-d-munich-fluid-design-gmbh--12915559-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Sthree Germany",
-        "market": "Germany",
-        "title": "UX/UI Consultant (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5926636619",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "DocuWare GmbH",
-        "market": "Germany",
-        "title": "Senior UX Researcher (m/f/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--senior-ux-researcher-m-f-d-82110-germering-docuware-gmbh--14630667-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Atruvia AG",
-        "market": "Germany",
-        "title": "Werkstudent UX/UI Design - Banking Apps (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5912842639",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "MINDFACTS GMBH",
-        "market": "Germany",
-        "title": "Praktikum UX-Research (m/w/x)",
-        "location": "Munich, Germany",
-        "url": "https://mindfacts.de/karriere-ux-research/",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "de.indeed.com",
-        "market": "Germany",
-        "title": "UI/UX Designer:in / Art Director:in Screendesign (m/w/d)",
-        "location": "Munich, Germany",
-        "url": "https://t.gohiring.com/h/550e10d25b9b90f23e28f3581b7e27933018113468f8118958f9cde54985419e?source=Indeed",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Twentyfour Industries",
-        "market": "Germany",
-        "title": "(Senior) UX Designer",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5903845585",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Cobe",
-        "market": "Germany",
-        "title": "(Parental leave cover) Senior UX Researcher/Designer (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5904067827",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "appliedAI",
-        "market": "Germany",
-        "title": "Principal UX Designer (m/f/x) \u2013 AI Design",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5893870143",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "]init[ AG",
-        "market": "Germany",
-        "title": "Senior UI/UX Designer (all genders)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5894542932",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "SYNTEX GmbH",
-        "market": "Germany",
-        "title": "Quereinsteiger gesucht: Werde UX/UI Designer mit KI (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5894015740",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "SKOPOS NOVA",
-        "market": "Germany",
-        "title": "Praktikant User Experience (m/w/d) UX Research",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5886411532",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Heynberg",
-        "market": "Germany",
-        "title": "HMI UX/UI Engineer Automotive (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5878763612",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Brainlab",
-        "market": "Germany",
-        "title": "Working Student UX & UI Design",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5875643134",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Cobe",
-        "market": "Germany",
-        "title": "(Parental leave cover) Senior UX Designer/Researcher (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.adzuna.de/details/5870807875",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "HAT.tec GmbH",
-        "market": "Germany",
-        "title": "Product Manager (m/w/d)",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--product-manager-m-w-d-neubiberg-hat-tec-gmbh--14800642-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
-        "postedDate": "2026-11-27",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-28"
-      },
-      {
-        "employer": "Praxis f\u00fcr Plastische und \u00c4sthetische Chirurgie",
-        "market": "Germany",
-        "title": "Social Media Strategist (m/w/d) Personal & Luxury Brand Growth",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--social-media-strategist-m-w-d-personal-luxury-brand-growth-muenchen-praxis-fuer-plastische-und-aesthetische-chirurgie--14771000-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partn",
         "postedDate": "2026-11-27",
         "source": "makeitinmunich",
         "sources": [
@@ -3578,6 +3722,62 @@
         "source": "workindenmark",
         "sources": [
           "workindenmark"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Naya",
+        "market": "Netherlands",
+        "title": "CMF & Product Experience Designer",
+        "location": "Groningen, Netherlands",
+        "url": "https://vacancies.recruitee.com/o/cmf-product-experience-designer",
+        "postedDate": "2026-11-27",
+        "source": "welcometonl",
+        "sources": [
+          "welcometonl"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Tellow",
+        "market": "Netherlands",
+        "title": "Senior Product Owner, Netherlands Payroll",
+        "location": "Amsterdam, Netherlands",
+        "url": "https://careers.shine.co/jobs/8472256-senior-product-owner-netherlands-payroll",
+        "postedDate": "2026-11-27",
+        "source": "welcometonl",
+        "sources": [
+          "welcometonl"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "TNO",
+        "market": "Netherlands",
+        "title": "Business Controller ICT, Strategy & Policy",
+        "location": "The Hague, Netherlands",
+        "url": "https://www.tno.nl/nl/werken-bij-tno/vacatures/2026/11/business-controller-ict-strategy-policy/",
+        "postedDate": "2026-11-27",
+        "source": "welcometonl",
+        "sources": [
+          "welcometonl"
+        ],
+        "sponsorshipSignal": [],
+        "lastSeenAt": "2026-11-28"
+      },
+      {
+        "employer": "Nutricia",
+        "market": "Netherlands",
+        "title": "Product Design & Development Manager - Adult Tube",
+        "location": "Utrecht, Netherlands",
+        "url": "https://enapply-danone.icims.com/jobs/29132/product-design-%26-development-manager---adult-tube/job",
+        "postedDate": "2026-11-27",
+        "source": "welcometonl",
+        "sources": [
+          "welcometonl"
         ],
         "sponsorshipSignal": [],
         "lastSeenAt": "2026-11-28"
@@ -3809,39 +4009,11 @@
         "lastSeenAt": "2026-11-27"
       },
       {
-        "employer": "Ratbacher GmbH",
-        "market": "Germany",
-        "title": "Product Owner (m/w/d) - Technischer Produktmanager",
-        "location": "Bavaria, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--product-owner-m-w-d-technischer-produktmanager-dortmund-koeln-duesseldorf-muenster-muenchen-ratbacher-gmbh--13842628-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet__",
-        "postedDate": "2026-11-26",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-27"
-      },
-      {
         "employer": "MOTEL ONE HEAD OFFICE",
         "market": "Germany",
         "title": "Senior Manager E-Commerce \u2013 Business Product Owner Buchungsstrecke (w/m/d)",
         "location": "Bavaria, Germany",
         "url": "https://www.adzuna.de/details/5856649478",
-        "postedDate": "2026-11-26",
-        "source": "makeitinmunich",
-        "sources": [
-          "makeitinmunich"
-        ],
-        "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-27"
-      },
-      {
-        "employer": "Matter & Lout GmbH & Co. KG",
-        "market": "Germany",
-        "title": "UI/UX Designer:in / Art Director:in Screendesign (m/w/d)",
-        "location": "Munich, Germany",
-        "url": "https://www.stepstone.de/stellenangebote--ui-ux-designer-in-art-director-in-screendesign-m-w-d-80333-muenchen-matter-lout-gmbh-co-kg--14617221-inline.html?cid=partner_jobnet___Y&adjust_t=1bbth7ql_1bjy99sm&adjust_campaign=partner_jobnet___Y",
         "postedDate": "2026-11-26",
         "source": "makeitinmunich",
         "sources": [
@@ -4422,7 +4594,7 @@
           "skane"
         ],
         "sponsorshipSignal": [],
-        "lastSeenAt": "2026-11-27"
+        "lastSeenAt": "2026-11-28"
       },
       {
         "employer": "DataSnipper",
@@ -4485,7 +4657,7 @@
         "market": "Netherlands",
         "title": "Senior Manager - Technical Product Owner- Treasury",
         "location": "Leiden, Netherlands",
-        "url": "https://jj.wd5.myworkdayjobs.com/JJ/job/Beerse-Antwerp-Belgium/Senior-Manager---Technical-Product-Owner--Treasury_R-111750",
+        "url": "https://jj.wd5.myworkdayjobs.com/JJ/job/Leiden-South-Holland-Netherlands/Senior-Manager---Technical-Product-Owner--Treasury_R-112368-1",
         "postedDate": "2026-11-21",
         "source": "welcometonl",
         "sources": [
@@ -10001,7 +10173,7 @@
         "country": "Netherlands",
         "url": "https://www.welcome-to-nl.nl/jobs/",
         "off": false,
-        "rows": 449,
+        "rows": 458,
         "pages": 68,
         "total": null,
         "error": null
@@ -10045,7 +10217,7 @@
         "country": "Germany",
         "url": "https://www.make-it-in-munich.com/munich-job-board/",
         "off": false,
-        "rows": 280,
+        "rows": 281,
         "pages": 7,
         "total": null,
         "error": null
@@ -10089,9 +10261,9 @@
         "country": "Denmark",
         "url": "https://workindenmark.jobnet.dk/find-job",
         "off": false,
-        "rows": 2213,
-        "pages": 23,
-        "total": 2214,
+        "rows": 2181,
+        "pages": 22,
+        "total": 2181,
         "error": null
       },
       {
@@ -10111,10 +10283,10 @@
         "country": "Sweden",
         "url": "https://skane.com/live-work/international-house/stem-jobportal/",
         "off": false,
-        "rows": 0,
-        "pages": 0,
-        "total": null,
-        "error": "page 1: no job list on the page (changed or blocked)"
+        "rows": 210,
+        "pages": 21,
+        "total": 210,
+        "error": null
       },
       {
         "id": "gothenburg",
@@ -10122,7 +10294,7 @@
         "country": "Sweden",
         "url": "https://careersingothenburg.com/",
         "off": false,
-        "rows": 107,
+        "rows": 105,
         "pages": 8,
         "total": null,
         "error": null
@@ -10133,7 +10305,7 @@
         "country": "Norway",
         "url": "https://arbeidsplassen.nav.no/stillinger?v=6&workLanguage=Engelsk",
         "off": false,
-        "rows": 266,
+        "rows": 264,
         "pages": 20,
         "total": null,
         "error": null
@@ -10144,9 +10316,9 @@
         "country": "Finland",
         "url": "https://www.myhelsinki.fi/hire-helsinki/",
         "off": false,
-        "rows": 647,
+        "rows": 646,
         "pages": 13,
-        "total": 647,
+        "total": 646,
         "error": null
       },
       {
@@ -10155,7 +10327,7 @@
         "country": "Estonia",
         "url": "https://workinestonia.com/job/",
         "off": false,
-        "rows": 383,
+        "rows": 379,
         "pages": 33,
         "total": null,
         "error": null
@@ -10196,5 +10368,5 @@
       "Malta"
     ]
   },
-  "checkedAt": "2026-11-28T02:03:10Z"
+  "checkedAt": "2026-11-28T10:14:03Z"
 }
