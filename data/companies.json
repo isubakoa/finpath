@@ -1,5 +1,5 @@
 {
-  "about": "ZenPath's one and only list of tracked companies. index.php (the app, loaded from GitHub at page render), li-scraper (company matching) and the validation test all read this file -- edit companies here, nowhere else. Optional per-company `match` block is used only by li-scraper/match.py: `match.name` overrides `name` for matching (when the display name is too generic to match safely, e.g. 'Spark' -> 'Spark New Zealand'), `match.aliases` lists other employer names postings appear under. See README.md 'Adding or editing a company'.",
+  "about": "ZenPath's one and only list of tracked companies. index.php (the app, loaded from GitHub at page render), the job-site scraper (company matching) and the validation test all read this file -- edit companies here, nowhere else. Optional per-company `match` block is used only by li/match.py: `match.name` overrides `name` for matching (when the display name is too generic to match safely, e.g. 'Spark' -> 'Spark New Zealand'), `match.aliases` lists other employer names postings appear under, `match.exclude` employer names that must never match it (e.g. 'Volvo Group' for Volvo Cars). See README.md 'Adding or editing a company'.",
   "companies": [
     {
       "region": "Europe/UK",
@@ -165,7 +165,7 @@
       "url": "https://careers.adyen.com/vacancies?team=Product+Management",
       "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "Adyen's careers site is JavaScript-only (nothing in the raw HTML for check.php to read), so this is now checked via a scheduled browser-based scraper (see js-scraper/ in the package) instead of check.php's direct adapters — same idea as the html type, just with an actual browser rendering the page first. Confirmed live: Group/Senior Product Manager and Head of Product roles currently open.",
+      "openNote": "Adyen's careers site is JavaScript-only (nothing in the raw HTML for check.php to read), so this is now checked via a scheduled browser-based scraper (see js/ in the package) instead of check.php's direct adapters — same idea as the html type, just with an actual browser rendering the page first. Confirmed live: Group/Senior Product Manager and Head of Product roles currently open.",
       "ats": {
         "type": "snapshot",
         "slug": "adyen"
@@ -271,7 +271,7 @@
       "url": "https://jobs.deel.com/klarna",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Found it: klarna.com/careers/ links out to a Deel-hosted job board (jobs.deel.com/klarna), not a Greenhouse/Lever/etc API. Its job titles only render client-side, so it's checked via the same scheduled browser-based scraper as Adyen (see js-scraper/ in the package) instead of check.php's direct adapters. Confirmed live and running: 82 open roles currently, none in Product/Design/Strategy right now — but this will now catch it the moment one appears.",
+      "openNote": "Found it: klarna.com/careers/ links out to a Deel-hosted job board (jobs.deel.com/klarna), not a Greenhouse/Lever/etc API. Its job titles only render client-side, so it's checked via the same scheduled browser-based scraper as Adyen (see js/ in the package) instead of check.php's direct adapters. Confirmed live and running: 82 open roles currently, none in Product/Design/Strategy right now — but this will now catch it the moment one appears.",
       "ats": {
         "type": "snapshot",
         "slug": "klarna"
@@ -748,12 +748,11 @@
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "Composable core-banking SaaS powering many neobanks worldwide.",
       "url": "https://mambu.com/en/careers",
-      "openStatus": "none",
+      "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "Mambu's iCIMS board returns 405 to ZenPath's server since 2026-10-27; js-scraper reads it in a browser.",
+      "openNote": "Mambu's iCIMS board answers GitHub's servers with a 'confirm you are human' check (405, since 2026-11-16), so Mambu is covered through job-site and talent hubs matches only (moved 2026-11-28).",
       "ats": {
-        "type": "snapshot",
-        "slug": "mambu"
+        "type": "unknown"
       }
     },
     {
@@ -965,7 +964,7 @@
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
       "note": "Eurozone's largest bank by assets.",
       "url": "https://group.bnpparibas/en/careers",
-      "openStatus": "below-target",
+      "openStatus": "uncertain",
       "openRoles": [
         {
           "id": "bnp-paribas-r0",
@@ -978,10 +977,9 @@
           "status": "not-started"
         }
       ],
-      "openNote": "group.bnpparibas returns 403 to ZenPath's server since 2026-10-27; js-scraper reads the job-offers page in a browser.",
+      "openNote": "group.bnpparibas blocks GitHub's servers too (403 'Access Denied' to the browser scraper since 2026-11-16), so BNP Paribas is covered through job-site and talent hubs matches only (moved 2026-11-28).",
       "ats": {
-        "type": "snapshot",
-        "slug": "bnp-paribas"
+        "type": "unknown"
       }
     },
     {
@@ -1265,7 +1263,7 @@
       "url": "https://www.grab.careers/en/teams/ux-and-design/",
       "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "grab.careers returns 403 to ZenPath's server since 2026-10-27; js-scraper reads the UX & Design team page in a browser.",
+      "openNote": "grab.careers returns 403 to ZenPath's server since 2026-10-27; the browser scraper reads the UX & Design team page in a browser.",
       "ats": {
         "type": "snapshot",
         "slug": "grab-grab-financial-group"
@@ -1325,7 +1323,7 @@
       "url": "https://careers.xero.com/jobs/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "careers.xero.com returns 403 to ZenPath's server since 2026-10-27; js-scraper reads the same listing in a browser.",
+      "openNote": "careers.xero.com returns 403 to ZenPath's server since 2026-10-27; the browser scraper reads the same listing in a browser.",
       "ats": {
         "type": "snapshot",
         "slug": "xero"
@@ -1627,7 +1625,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "rabobank.jobs returns 403 to ZenPath's server since 2026-10-27; js-scraper reads its \"design\" search in a browser.",
+      "openNote": "rabobank.jobs returns 403 to ZenPath's server since 2026-10-27; the browser scraper reads its \"design\" search in a browser.",
       "ats": {
         "type": "snapshot",
         "slug": "rabobank"
@@ -1820,7 +1818,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Lloyds' job search (AEM) answers ZenPath's server with a different page since 2026-10-27, so js-scraper reads its \"design\" search in a browser.",
+      "openNote": "Lloyds' job search (AEM) answers ZenPath's server with a different page since 2026-10-27, so the browser scraper reads its \"design\" search in a browser.",
       "ats": {
         "type": "snapshot",
         "slug": "lloyds-banking-group"
@@ -1868,7 +1866,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "jobs.natwestgroup.com's \"design\" search is server-rendered (25 per page, title in p.job__title) -- read by check.php since 2026-10-27, when js-scraper's browser on GitHub stopped seeing any jobs on it.",
+      "openNote": "jobs.natwestgroup.com's \"design\" search is server-rendered (25 per page, title in p.job__title) -- read by check.php since 2026-10-27, when the browser scraper's browser on GitHub stopped seeing any jobs on it.",
       "ats": {
         "type": "html",
         "url": "https://jobs.natwestgroup.com/search/jobs?q=design",
@@ -1958,7 +1956,7 @@
       "url": "https://www.hangseng.com/en-hk/about-us/careers/",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "WIRED IN (2026-09-16): the previous pass's guessed endpoint shape is now confirmed real, with actual network access via a real browser session (not just curl-style fetching, which this environment restricts to an allowlist) — hsbc.eightfold.ai/api/apply/v2/jobs?domain=hsbc.com&query=<term>&start=0&num=<n> is a plain, unauthenticated GET returning a real 'positions' array (title as 'name', 'location', a stable per-role canonicalPositionUrl at portal.careers.hsbc.com/careers/job/<id>, and a t_create Unix-seconds timestamp used as postedDate). It works even as a fresh top-level navigation with no prior session/cookies, which is what check.php's stateless server-side fetch effectively is — so this isn't just a browser-only trick. Wired into check.php as a new general-purpose 'eightfold' adapter (reusable for any other Eightfold-platform company found later), searching the broad term \"design\" (333 total hits company-wide, same as the site's own UI). A partial manual read of roughly 30 of those hits turned up genuine UX/product titles (e.g. \"Assistant UI UX Manager\") but nothing unambiguously Director+ senior in a target region in that sample — not an exhaustive review, so treat this as \"nothing confirmed yet\" rather than \"confirmed empty\"; the automated live check now does the real, complete pass on every run going forward. NAB/BNZ's separate Eightfold tenant (still handled via js-scraper, since its UI does expose real hrefs unlike this one) is unaffected by this change.",
+      "openNote": "WIRED IN (2026-09-16): the previous pass's guessed endpoint shape is now confirmed real, with actual network access via a real browser session (not just curl-style fetching, which this environment restricts to an allowlist) — hsbc.eightfold.ai/api/apply/v2/jobs?domain=hsbc.com&query=<term>&start=0&num=<n> is a plain, unauthenticated GET returning a real 'positions' array (title as 'name', 'location', a stable per-role canonicalPositionUrl at portal.careers.hsbc.com/careers/job/<id>, and a t_create Unix-seconds timestamp used as postedDate). It works even as a fresh top-level navigation with no prior session/cookies, which is what check.php's stateless server-side fetch effectively is — so this isn't just a browser-only trick. Wired into check.php as a new general-purpose 'eightfold' adapter (reusable for any other Eightfold-platform company found later), searching the broad term \"design\" (333 total hits company-wide, same as the site's own UI). A partial manual read of roughly 30 of those hits turned up genuine UX/product titles (e.g. \"Assistant UI UX Manager\") but nothing unambiguously Director+ senior in a target region in that sample — not an exhaustive review, so treat this as \"nothing confirmed yet\" rather than \"confirmed empty\"; the automated live check now does the real, complete pass on every run going forward. NAB/BNZ's separate Eightfold tenant (still handled via the browser scraper, since its UI does expose real hrefs unlike this one) is unaffected by this change.",
       "ats": {
         "type": "eightfold",
         "host": "hsbc.eightfold.ai",
@@ -3339,7 +3337,7 @@
       "sponsorshipNote": "Huge, long-established multinational employer with standard visa sponsorship pathways in Germany (EU Blue Card), Singapore (EP) and other hubs; this is a heuristic, not an individual registry check.",
       "note": "German enterprise software giant (ERP/cloud) with a large in-house UX org (SAP Fiori design language, SAP AppHaus network); genuine enterprise design leadership tracks exist and are relevant to a Director-level candidate from finance/enterprise backgrounds.",
       "url": "https://jobs.sap.com/",
-      "openStatus": "below-target",
+      "openStatus": "uncertain",
       "openRoles": [
         {
           "id": "sap-r0",
@@ -3362,10 +3360,9 @@
           "status": "not-started"
         }
       ],
-      "openNote": "jobs.sap.com returns 403 to ZenPath's server since 2026-10-27; js-scraper reads its \"design\" search in a browser.",
+      "openNote": "jobs.sap.com shows GitHub's servers an empty search (0 jobs since 2026-11-16), so SAP is covered through job-site and talent hubs matches only (moved 2026-11-28).",
       "ats": {
-        "type": "snapshot",
-        "slug": "sap"
+        "type": "unknown"
       }
     },
     {
@@ -3492,7 +3489,7 @@
       "url": "https://hexagon.com/company/careers/job-listings",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "RE-INVESTIGATED (2026-09-17, real browser): much closer than any earlier pass got, but still not convertible, for a precise reason rather than a vague one. The corporate careers page's widget turns out to call a real Sitecore XA search API (hexagon.com/sxa/search/results/) that aggregates all ~240 open roles across every division's own ATS in one response — Leica Geosystems on 'onlyfy', Hexagon Robotics also on onlyfy, Manufacturing Intelligence on its own SmartRecruiters-family board, Mining on JobScore, Autonomy & Positioning on iCIMS, and some Geosystems roles still on BrassRing — each result's embedded HTML snippet carries a real `<a href>` straight to that division's own job posting. Its `&q=` param does genuinely filter server-side (confirmed: q=design cut 240 results down to 3, including a real, currently open 'Senior User Experience Designer' role at Leica Geosystems — genuinely promising). The problem is access, not the data: this endpoint sits behind a Cloudflare bot challenge that a stateless, cookie-less request (exactly what check.php's curl fetch is) gets a 403 'Just a moment...' challenge page from every time, confirmed by testing the identical request with and without the browser's own Cloudflare clearance cookie — with it, real JSON; without it, blocked. This is the same class of problem as UBS/Maybank's session-gating, not a missing-adapter gap. It's also not a fit for `js-scraper` as that tool exists today: js-scraper loads a page and extracts already-rendered links by pattern, but this widget's own page doesn't read a `?q=` URL param on load (confirmed: navigating straight to the page with one added had no filtering effect) — actually getting the filtered result needs driving the widget's own search box interactively, which js-scraper isn't built to do. Worth flagging as a good candidate if `js-scraper` ever grows an interactive-search mode (a real headless browser naturally clears Cloudflare's challenge the way curl can't), but that's a real infrastructure change, not something to fake here. Stays unknown.",
+      "openNote": "RE-INVESTIGATED (2026-09-17, real browser): much closer than any earlier pass got, but still not convertible, for a precise reason rather than a vague one. The corporate careers page's widget turns out to call a real Sitecore XA search API (hexagon.com/sxa/search/results/) that aggregates all ~240 open roles across every division's own ATS in one response — Leica Geosystems on 'onlyfy', Hexagon Robotics also on onlyfy, Manufacturing Intelligence on its own SmartRecruiters-family board, Mining on JobScore, Autonomy & Positioning on iCIMS, and some Geosystems roles still on BrassRing — each result's embedded HTML snippet carries a real `<a href>` straight to that division's own job posting. Its `&q=` param does genuinely filter server-side (confirmed: q=design cut 240 results down to 3, including a real, currently open 'Senior User Experience Designer' role at Leica Geosystems — genuinely promising). The problem is access, not the data: this endpoint sits behind a Cloudflare bot challenge that a stateless, cookie-less request (exactly what check.php's curl fetch is) gets a 403 'Just a moment...' challenge page from every time, confirmed by testing the identical request with and without the browser's own Cloudflare clearance cookie — with it, real JSON; without it, blocked. This is the same class of problem as UBS/Maybank's session-gating, not a missing-adapter gap. It's also not a fit for the browser scraper as that tool exists today: the browser scraper loads a page and extracts already-rendered links by pattern, but this widget's own page doesn't read a `?q=` URL param on load (confirmed: navigating straight to the page with one added had no filtering effect) — actually getting the filtered result needs driving the widget's own search box interactively, which the browser scraper isn't built to do. Worth flagging as a good candidate if the browser scraper ever grows an interactive-search mode (a real headless browser naturally clears Cloudflare's challenge the way curl can't), but that's a real infrastructure change, not something to fake here. Stays unknown.",
       "ats": {
         "type": "other",
         "slug": null,
@@ -4102,7 +4099,7 @@
       "url": "https://www.google.com/about/careers/applications/jobs/results",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "UPDATE (2026-09): confirmed JS-rendered with no <noscript> fallback (job titles render but hrefs are empty placeholders on direct fetch) — genuinely needs a real browser. Wired into js-scraper on a best-effort basis; flagged higher risk than most js-scraper companies since Google's careers site is known to actively resist automated scraping (per third-party scraping-tool documentation) — worth checking the Actions log specifically for this one after the first live run rather than assuming it's working.",
+      "openNote": "UPDATE (2026-09): confirmed JS-rendered with no <noscript> fallback (job titles render but hrefs are empty placeholders on direct fetch) — genuinely needs a real browser. Wired into the browser scraper on a best-effort basis; flagged higher risk than most browser-scraper companies since Google's careers site is known to actively resist automated scraping (per third-party scraping-tool documentation) — worth checking the Actions log specifically for this one after the first live run rather than assuming it's working.",
       "ats": {
         "type": "snapshot",
         "slug": "google"
@@ -4166,7 +4163,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "RE-CONFIRMED (2026-09): still 429 on every attempt; found third-party evidence (a commercial scraping-as-a-service listing) confirming Meta has no published API and actively rate-limits/blocks automated access at the infrastructure level — this would likely defeat even a headless-browser scraper without stealth/proxy tooling this project doesn't have. metacareers.com returned HTTP 429 (rate-limited) on every direct-fetch attempt during research on 2026-09-09; only search-engine snippets were available and none independently re-verified. check.php has no adapter for Meta's in-house ATS — flagged uncertain rather than none or match, since this is genuinely unconfirmed either way. CONVERTED (2026-09-17, real browser): the 429 turns out to be specific to plain stateless fetches, not automation generally — a real browser loads metacareers.com/jobs?q=design cleanly, no blocking at all, full \"697 Items\" results including a strong live match ('Design Systems Product Designer', San Francisco). The page itself is a heavy internal Facebook/Comet GraphQL app (rotating doc_ids, a per-load CSRF token) that's genuinely unsuitable for a direct check.php adapter, but its rendered DOM is ordinary — real `<a href=\"/profile/job_details/<id>\">` links each wrapping a plain `<h3>` title, no fragile class-name selectors needed. Wired into js-scraper/scrape.js; now flowing through the browser-based scraper like Adyen/Klarna/etc.",
+      "openNote": "RE-CONFIRMED (2026-09): still 429 on every attempt; found third-party evidence (a commercial scraping-as-a-service listing) confirming Meta has no published API and actively rate-limits/blocks automated access at the infrastructure level — this would likely defeat even a headless-browser scraper without stealth/proxy tooling this project doesn't have. metacareers.com returned HTTP 429 (rate-limited) on every direct-fetch attempt during research on 2026-09-09; only search-engine snippets were available and none independently re-verified. check.php has no adapter for Meta's in-house ATS — flagged uncertain rather than none or match, since this is genuinely unconfirmed either way. CONVERTED (2026-09-17, real browser): the 429 turns out to be specific to plain stateless fetches, not automation generally — a real browser loads metacareers.com/jobs?q=design cleanly, no blocking at all, full \"697 Items\" results including a strong live match ('Design Systems Product Designer', San Francisco). The page itself is a heavy internal Facebook/Comet GraphQL app (rotating doc_ids, a per-load CSRF token) that's genuinely unsuitable for a direct check.php adapter, but its rendered DOM is ordinary — real `<a href=\"/profile/job_details/<id>\">` links each wrapping a plain `<h3>` title, no fragile class-name selectors needed. Wired into js/scrape.js; now flowing through the browser-based scraper like Adyen/Klarna/etc.",
       "ats": {
         "type": "snapshot",
         "slug": "meta"
@@ -4443,7 +4440,7 @@
       "asiaNote": "Singapore APAC hub.",
       "sponsorship": "likely",
       "sponsorshipNote": "One of the largest and most established global tech employers with a very well-known visa-sponsorship track record; heuristic only.",
-      "note": "Tracked here as an employer (distinct from the li-scraper's LI job-search coverage). Confirmed on SmartRecruiters.",
+      "note": "Tracked here as an employer (distinct from the job-site scraper's LI job-search coverage). Confirmed on SmartRecruiters.",
       "url": "https://careers.linkedin.com/",
       "openStatus": "below-target",
       "openRoles": [],
@@ -5157,7 +5154,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Careers site runs on Eightfold AI (careers.telekom.com) — confirmed via embedded telekom-growthhub.eightfold.ai references and Eightfold-style job URLs — so it was checked via the same browser-based scraper as other Eightfold sites (see js-scraper/) rather than a direct check.php adapter. Only IC/specialist and internship-level design roles found (a UX/UI & AI Experience Designer internship and a Strategic Design & UX internship also currently open); a previously-seen \"Head of Design System\" posting is confirmed closed (HTTP 410). CONVERTED (2026-09-17, real browser): found careers.telekom.com's own first-party API route (api/jobs-proxy/search) — it fans out to Eightfold plus several regional SmartRecruiters boards (including T-Systems' own country entities) into one combined, unauthenticated JSON search. The page's URL query param alone doesn't filter, but a real UI search revealed the working POST body shape ({\"user_query\":\"design\",\"locale\":\"en\"}), confirmed reproducible from a cold request. Now live-checked directly via check.php's new `telekom` adapter — no longer needs the browser scraper for this company, and results are fresher/more complete than the old snapshot (this endpoint also surfaces T-Systems' own postings under its own row, see below).",
+      "openNote": "Careers site runs on Eightfold AI (careers.telekom.com) — confirmed via embedded telekom-growthhub.eightfold.ai references and Eightfold-style job URLs — so it was checked via the same browser-based scraper as other Eightfold sites (see js/) rather than a direct check.php adapter. Only IC/specialist and internship-level design roles found (a UX/UI & AI Experience Designer internship and a Strategic Design & UX internship also currently open); a previously-seen \"Head of Design System\" posting is confirmed closed (HTTP 410). CONVERTED (2026-09-17, real browser): found careers.telekom.com's own first-party API route (api/jobs-proxy/search) — it fans out to Eightfold plus several regional SmartRecruiters boards (including T-Systems' own country entities) into one combined, unauthenticated JSON search. The page's URL query param alone doesn't filter, but a real UI search revealed the working POST body shape ({\"user_query\":\"design\",\"locale\":\"en\"}), confirmed reproducible from a cold request. Now live-checked directly via check.php's new `telekom` adapter — no longer needs the browser scraper for this company, and results are fresher/more complete than the old snapshot (this endpoint also surfaces T-Systems' own postings under its own row, see below).",
       "ats": {
         "type": "telekom",
         "query": "design"
@@ -5222,7 +5219,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "Primary global board (jobs.vodafone.com) runs on Eightfold AI — checked via the same browser-based scraper as other Eightfold sites (see js-scraper/) rather than a direct check.php adapter. A legacy SAP SuccessFactors board (opportunities.vodafone.com) still resolves but now appears to hold only closed/archived postings — SuccessFactors is a deliberately unsupported ATS for this tracker regardless. No Director/Head/VP/Principal/Staff/Lead design role found as of 2026-09-12.",
+      "openNote": "Primary global board (jobs.vodafone.com) runs on Eightfold AI — checked via the same browser-based scraper as other Eightfold sites (see js/) rather than a direct check.php adapter. A legacy SAP SuccessFactors board (opportunities.vodafone.com) still resolves but now appears to hold only closed/archived postings — SuccessFactors is a deliberately unsupported ATS for this tracker regardless. No Director/Head/VP/Principal/Staff/Lead design role found as of 2026-09-12.",
       "ats": {
         "type": "snapshot",
         "slug": "vodafone"
@@ -5293,7 +5290,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "The public job board (jobs.ericsson.com) is an Eightfold AI front end — checked via the same browser-based scraper as other Eightfold sites (see js-scraper/) — but the actual apply flow redirects into SAP SuccessFactors (career2.successfactors.eu), a deliberately unsupported platform for direct API integration. Since Eightfold's own listing pages are real, browsable, and scrapable independent of that backend, this is tracked the same way as Klarna/Adyen rather than marked fully unknown. A target-tier Principal UX/UI Designer role is confirmed live in Bangalore; only a Junior UX/UI Designer (Stockholm) and a Learning Experience Designer role were found below that.",
+      "openNote": "The public job board (jobs.ericsson.com) is an Eightfold AI front end — checked via the same browser-based scraper as other Eightfold sites (see js/) — but the actual apply flow redirects into SAP SuccessFactors (career2.successfactors.eu), a deliberately unsupported platform for direct API integration. Since Eightfold's own listing pages are real, browsable, and scrapable independent of that backend, this is tracked the same way as Klarna/Adyen rather than marked fully unknown. A target-tier Principal UX/UI Designer role is confirmed live in Bangalore; only a Junior UX/UI Designer (Stockholm) and a Learning Experience Designer role were found below that.",
       "ats": {
         "type": "snapshot",
         "slug": "ericsson"
@@ -5376,7 +5373,7 @@
       "url": "https://careers.telenor.com/jobs",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Telenor left Workday by 2026-10-24 (the old telenorgroup.wd3 tenant redirects to Workday's invalid-url page; check.php got HTTP 422). Its group board careers.telenor.com/jobs aggregates every subsidiary's Teamtailor site (43 jobs on 2026-10-24, 20 per page) and is read by js-scraper. Checked 2026-10-24: one product role, Product Lead; no UX/design roles.",
+      "openNote": "Telenor left Workday by 2026-10-24 (the old telenorgroup.wd3 tenant redirects to Workday's invalid-url page; check.php got HTTP 422). Its group board careers.telenor.com/jobs aggregates every subsidiary's Teamtailor site (43 jobs on 2026-10-24, 20 per page) and is read by the browser scraper. Checked 2026-10-24: one product role, Product Lead; no UX/design roles.",
       "ats": {
         "type": "snapshot",
         "slug": "telenor"
@@ -5627,7 +5624,7 @@
       "url": "https://careers.optus.com.au/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "careers.optus.com.au lists 133 roles over ~14 pages of 10 with no keyword filter, so js-scraper reads every page (2026-10-27: job ids changed from hex to numbers).",
+      "openNote": "careers.optus.com.au lists 133 roles over ~14 pages of 10 with no keyword filter, so the browser scraper reads every page (2026-10-27: job ids changed from hex to numbers).",
       "ats": {
         "type": "snapshot",
         "slug": "optus"
@@ -5834,7 +5831,7 @@
       "url": "https://www.emiratesgroupcareers.com/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Careers marketplace (emiratesgroupcareers.com) runs on Avature — a real, JS-rendered platform, not one of the deliberately-unsupported ones, but no working selector/linkPattern was confirmed against its live listing page this pass (an earlier finding, a 'Manager – Digital Product Design' role, leaned on a third-party aggregator mirror of uncertain currency, not a direct read of the live board). CONVERTED (2026-09-17, real browser): found Emirates' own first-party JSON API behind its search box (api/v1/jobs) — a clean, unauthenticated GET wrapping the underlying Avature system, confirmed via real network capture and independently reproducible from a cold request, with genuine server-side title filtering (title=pilot correctly returns exactly the one Pilot posting). Now live-checked via check.php's new `emirates` adapter. Currently zero 'design' or 'ux' title matches out of ~98 open reqs company-wide — a confirmed live result superseding the earlier uncertain aggregator lead, not a search-coverage gap; also being checked via li-scraper (LI/Indeed) as a supplement.",
+      "openNote": "Careers marketplace (emiratesgroupcareers.com) runs on Avature — a real, JS-rendered platform, not one of the deliberately-unsupported ones, but no working selector/linkPattern was confirmed against its live listing page this pass (an earlier finding, a 'Manager – Digital Product Design' role, leaned on a third-party aggregator mirror of uncertain currency, not a direct read of the live board). CONVERTED (2026-09-17, real browser): found Emirates' own first-party JSON API behind its search box (api/v1/jobs) — a clean, unauthenticated GET wrapping the underlying Avature system, confirmed via real network capture and independently reproducible from a cold request, with genuine server-side title filtering (title=pilot correctly returns exactly the one Pilot posting). Now live-checked via check.php's new `emirates` adapter. Currently zero 'design' or 'ux' title matches out of ~98 open reqs company-wide — a confirmed live result superseding the earlier uncertain aggregator lead, not a search-coverage gap; also being checked via the job-site scraper (LI/Indeed) as a supplement.",
       "ats": {
         "type": "emirates",
         "query": "design"
@@ -5924,7 +5921,7 @@
       "url": "https://careers.klm.com/en/jobs/?language=en",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "CONVERTED (2026-09-17, real browser + live network capture): the earlier 'confirmed SuccessFactors end-to-end' conclusion (2026-09-14) turned out to be wrong — vacancy.klm.com's SF-pattern session cookies belong only to the old apply-flow redirect (a leftover/parallel path, likely for internal transfers), not to careers.klm.com's actual job search, which is a Sanity-CMS-backed site with its own same-origin JSON API at careers.klm.com/api/v1/jobs/. Confirmed genuinely stateless and cookie-less. Its own UI search box (labelled 'searchString' in the page's own JS bundle) turned out not to be wired to anything server-side, though — every query tried, including outright nonsense strings, returned an identical result set, so free-text filtering doesn't actually work despite existing in the UI. What DOES genuinely change the result set: 'language': 'en' alone narrows KLM's 58 total open postings down to the 8 that are in English (the rest are Dutch-only). Fetched all 8 directly: Business Analyst Commercial Level 3, Graduation Internship Operations Research, Senior Business Product Analyst, Technical Architect Level 1, Data Scientist Level 3, Licensed Engine Mechanic, Line Maintenance Mechanic (CAT A), Aircraft Maintenance Technician B1 and/or B2 — zero Director+ Product Design/UX/PM roles, consistent with the 2026-09-14 finding that every design-adjacent posting there was dead or expired. Difference now: this is a live, per-check API call instead of a static manual note, so a future design opening posted in English will actually surface here automatically. Job URLs are reconstructed from slugify(title)+id (no slug field in the API response itself — confirmed against real rendered links on the site) so could occasionally be wrong for an unusual title; not a concern for any of today's 8 non-matching roles. Also being checked via li-scraper (LI/Indeed) as a supplement.",
+      "openNote": "CONVERTED (2026-09-17, real browser + live network capture): the earlier 'confirmed SuccessFactors end-to-end' conclusion (2026-09-14) turned out to be wrong — vacancy.klm.com's SF-pattern session cookies belong only to the old apply-flow redirect (a leftover/parallel path, likely for internal transfers), not to careers.klm.com's actual job search, which is a Sanity-CMS-backed site with its own same-origin JSON API at careers.klm.com/api/v1/jobs/. Confirmed genuinely stateless and cookie-less. Its own UI search box (labelled 'searchString' in the page's own JS bundle) turned out not to be wired to anything server-side, though — every query tried, including outright nonsense strings, returned an identical result set, so free-text filtering doesn't actually work despite existing in the UI. What DOES genuinely change the result set: 'language': 'en' alone narrows KLM's 58 total open postings down to the 8 that are in English (the rest are Dutch-only). Fetched all 8 directly: Business Analyst Commercial Level 3, Graduation Internship Operations Research, Senior Business Product Analyst, Technical Architect Level 1, Data Scientist Level 3, Licensed Engine Mechanic, Line Maintenance Mechanic (CAT A), Aircraft Maintenance Technician B1 and/or B2 — zero Director+ Product Design/UX/PM roles, consistent with the 2026-09-14 finding that every design-adjacent posting there was dead or expired. Difference now: this is a live, per-check API call instead of a static manual note, so a future design opening posted in English will actually surface here automatically. Job URLs are reconstructed from slugify(title)+id (no slug field in the API response itself — confirmed against real rendered links on the site) so could occasionally be wrong for an unusual title; not a concern for any of today's 8 non-matching roles. Also being checked via the job-site scraper (LI/Indeed) as a supplement.",
       "ats": {
         "type": "klm",
         "slug": null,
@@ -5952,7 +5949,7 @@
       "url": "https://lufthansagroup.careers/en/search/?q=design",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "CONVERTED (2026-09-17, real browser + live network capture): found the actual second AJAX call the 2026-09-17 note above said existed but hadn't located — it just wasn't on apply.lufthansagroup.careers at all. A separate, newer Angular front end at lufthansagroup.careers (no 'apply.' prefix) searches the exact same Milch & Zucker Global Jobboard backend through a proper JSON API: api-apply.lufthansagroup.careers/search/. Confirmed genuinely stateless and cookie-less (identical result cold vs. in-session), and genuinely filtering server-side (16 hits for 'design' vs. 371 with no filter at all) — though unlike the old board's GET-param search, this API takes its entire query as one JSON-encoded `data` query-string parameter (found by reading the Angular bundle's own GJBApiClient class) rather than a plain `?search_criterion_keyword=` param, which is presumably why it was missed on the direct/first attempt. Each result's PositionURI already points straight at a normal apply.lufthansagroup.careers job page — the exact page type the spinner-placeholder problem was blocking stateless access to — so this also fixes reaching individual postings, not just search. Re-confirmed today's 16 'design' matches are the same story as every prior pass: internships, apprentices, and technical/engineering roles (Design Engineer, Manager Sales Specification und Design Defense, Werkstudent UX & DesignOps, ...), zero Director+ Product Design/UX/PM match. Difference now: this is a live per-check API call instead of a static manual note. Also being checked via li-scraper (LI/Indeed) as a supplement.",
+      "openNote": "CONVERTED (2026-09-17, real browser + live network capture): found the actual second AJAX call the 2026-09-17 note above said existed but hadn't located — it just wasn't on apply.lufthansagroup.careers at all. A separate, newer Angular front end at lufthansagroup.careers (no 'apply.' prefix) searches the exact same Milch & Zucker Global Jobboard backend through a proper JSON API: api-apply.lufthansagroup.careers/search/. Confirmed genuinely stateless and cookie-less (identical result cold vs. in-session), and genuinely filtering server-side (16 hits for 'design' vs. 371 with no filter at all) — though unlike the old board's GET-param search, this API takes its entire query as one JSON-encoded `data` query-string parameter (found by reading the Angular bundle's own GJBApiClient class) rather than a plain `?search_criterion_keyword=` param, which is presumably why it was missed on the direct/first attempt. Each result's PositionURI already points straight at a normal apply.lufthansagroup.careers job page — the exact page type the spinner-placeholder problem was blocking stateless access to — so this also fixes reaching individual postings, not just search. Re-confirmed today's 16 'design' matches are the same story as every prior pass: internships, apprentices, and technical/engineering roles (Design Engineer, Manager Sales Specification und Design Defense, Werkstudent UX & DesignOps, ...), zero Director+ Product Design/UX/PM match. Difference now: this is a live per-check API call instead of a static manual note. Also being checked via the job-site scraper (LI/Indeed) as a supplement.",
       "ats": {
         "type": "lufthansa",
         "query": "design"
@@ -5973,7 +5970,7 @@
       "url": "https://recrutement.airfrance.com/homepage.aspx?LCID=2057",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Confirmed running on Talentsoft (Cegid Talentsoft, per the site's own legal notice) — a real, server-rendered .aspx front end (direct fetch returned 30-90+ live vacancies), not one of the deliberately-unsupported platforms, but no confirmed individual-job URL pattern was established this pass to wire up a working linkPattern, so it's marked unknown rather than guessed at. Every design-titled posting found (Content Designer, Visual Designer, UX/UI Designer, Motion Designer) was an internship/apprenticeship using an older reference scheme not present in the current live listing — i.e. appears closed/historical. A good candidate for a follow-up pass once a live job URL is confirmed by hand. Also being checked via li-scraper (LI/Indeed) as a supplement.",
+      "openNote": "Confirmed running on Talentsoft (Cegid Talentsoft, per the site's own legal notice) — a real, server-rendered .aspx front end (direct fetch returned 30-90+ live vacancies), not one of the deliberately-unsupported platforms, but no confirmed individual-job URL pattern was established this pass to wire up a working linkPattern, so it's marked unknown rather than guessed at. Every design-titled posting found (Content Designer, Visual Designer, UX/UI Designer, Motion Designer) was an internship/apprenticeship using an older reference scheme not present in the current live listing — i.e. appears closed/historical. A good candidate for a follow-up pass once a live job URL is confirmed by hand. Also being checked via the job-site scraper (LI/Indeed) as a supplement.",
       "ats": {
         "type": "html",
         "url": "https://recrutement.airfrance.com/offre-de-emploi/liste-toutes-offres.aspx?all=1",
@@ -5995,7 +5992,7 @@
       "url": "https://careers.singaporeair.com/sia/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Confirmed running on SAP SuccessFactors (rmkcdn.successfactors.com CDN references on careers.singaporeair.com/sia/) — a deliberately unsupported ATS for this tracker, marked unknown. Checked the full ~60-role Ground Professionals listing plus specific design-adjacent job IDs found via search — every one (Customer Experience Management & Design, Senior Executive Dining Design & Development, Executive/Senior Executive Design & Development) is confirmed closed/filled. No design-relevant role open as of 2026-09-14. Also being checked via li-scraper (LI/Indeed) as a supplement.",
+      "openNote": "Confirmed running on SAP SuccessFactors (rmkcdn.successfactors.com CDN references on careers.singaporeair.com/sia/) — a deliberately unsupported ATS for this tracker, marked unknown. Checked the full ~60-role Ground Professionals listing plus specific design-adjacent job IDs found via search — every one (Customer Experience Management & Design, Senior Executive Dining Design & Development, Executive/Senior Executive Design & Development) is confirmed closed/filled. No design-relevant role open as of 2026-09-14. Also being checked via the job-site scraper (LI/Indeed) as a supplement.",
       "ats": {
         "type": "html",
         "url": "https://careers.singaporeair.com/sia/go/Ground-Professionals/689144/",
@@ -6017,7 +6014,7 @@
       "url": "https://www.siemens.com/careers",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "jobs.siemens.com (Avature) renders only 6 results in its HTML and the rest in the browser, and its RSS feed ignores the search, so js-scraper reads its \"design\", \"UX\" and \"product manager\" searches (2026-10-27).",
+      "openNote": "jobs.siemens.com (Avature) renders only 6 results in its HTML and the rest in the browser, and its RSS feed ignores the search, so the browser scraper reads its \"design\", \"UX\" and \"product manager\" searches (2026-10-27).",
       "ats": {
         "type": "snapshot",
         "slug": "siemens"
@@ -6059,7 +6056,7 @@
       "url": "https://www.shopify.com/careers",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "shopify.com/careers now lists individual roles, server-rendered (25 on 2026-10-30; link from Isu). Shopify is remote by design: every role reads 'Remote - <region>' (Americas, Singapore, Hong Kong, UK, Ireland), so ZenPath, which doesn't track remote roles, shows none of them; 'Designers' is a general talent-pool listing, not a requisition.",
+      "openNote": "shopify.com/careers (re-checked 2026-11-28): 113 roles, but the page's HTML lists only the first 25; the rest sit in its embedded React Router data (load more). Shopify is remote by design: 110 of 113 read 'Remote - <region>' (80 Americas, 10 UK, 9 Ireland, 11 Canada, 5 Singapore, others one each) and 3 are London events/marketing roles. Design and product roles: 'Designers' and 'Product Management' (general talent pools) and a Staff Presentation Designer, all Remote - Americas. ZenPath doesn't track remote roles, so none show; check.php keeps reading the first page, and job-site matches cover the rest.",
       "ats": {
         "type": "html",
         "url": "https://www.shopify.com/careers",
@@ -6414,18 +6411,31 @@
       "asiaNote": "Majority-owned by Zhejiang Geely Holding (China) since 2010; manufacturing plants in Chengdu and Daqing; China is its single largest market, with design/tech presence in Shanghai/Hangzhou.",
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
-      "note": "Passenger-vehicle manufacturer, separate company from Volvo Group (trucks/buses/construction equipment) since a 1999 ownership split — see COMPANIES list note in li-scraper/companies.py for a matcher-ambiguity caveat between the two.",
-      "url": "https://careers.volvocars.com/",
+      "note": "Passenger-vehicle manufacturer, separate company from Volvo Group (trucks/buses/construction equipment) since a 1999 ownership split (see the match note).",
+      "url": "https://jobs.volvocars.com/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Runs on Avature (URL pattern jobs.volvocars.com/job/[City]-[Title]-[State-or-postcode]/[id]/ and .../go/All-Jobs/...), server-rendered/static HTML so directly scrapable. Browsed 2 of an estimated 3-4 listing pages (56-71 total open roles visible, mostly production/logistics/IT/finance/sales) — no qualifying Product Design/UX/Product Strategy leadership title found; a 'Creative Director' posting (Gothenburg) exists in the URL structure but is confirmed closed. The site's own ?q=design query param did not appear to filter results, so this checker's keyword filter shouldn't rely on it.",
+      "openNote": "jobs.volvocars.com (SAP SuccessFactors career site, server-rendered, 20 per page). Its search matches descriptions, not titles ('design', 'UX' and 'product' each return ~30 of the same mostly production jobs), so check.php reads the whole list: 51 jobs on 2026-11-28 (Gothenburg, Olofström, Floby, Ghent, Košice, Vienna, US), none in design or product. Five pages are read, room for ~100.",
       "ats": {
-        "type": "other",
-        "slug": null,
-        "vendor": "Avature (jobs.volvocars.com/job/...)"
+        "type": "html",
+        "url": "https://jobs.volvocars.com/search/?q=&startrow=0",
+        "linkPattern": "#/job/[^/]+/\\d+/#",
+        "locationClass": "jobLocation",
+        "moreUrls": [
+          "https://jobs.volvocars.com/search/?q=&startrow=20",
+          "https://jobs.volvocars.com/search/?q=&startrow=40",
+          "https://jobs.volvocars.com/search/?q=&startrow=60",
+          "https://jobs.volvocars.com/search/?q=&startrow=80"
+        ]
       },
       "match": {
-        "note": "Volvo Cars and Volvo Group are separate companies, but a bare 'Volvo' / 'Volvo Group' posting would contain-match here. Accepted: Volvo Group rarely posts Product/Design roles. Revisit if one shows up under this slug."
+        "aliases": [
+          "Volvo Car"
+        ],
+        "exclude": [
+          "Volvo Group"
+        ],
+        "note": "Volvo Cars and Volvo Group (trucks, buses, marine, construction) are separate companies. 'Volvo Group' (and a bare 'Volvo', which normalizes to the same) would contain-match 'Volvo Cars', so it's excluded; it filed two Volvo Group roles (jobs.volvogroup.com) here until 2026-11-28. 'Volvo Car' covers 'Volvo Car Corporation' / 'Volvo Car AB'."
       }
     },
     {
@@ -6464,7 +6474,7 @@
       "url": "https://jobs.bmwgroup.com/",
       "openStatus": "uncertain",
       "openRoles": [],
-      "openNote": "RE-CONFIRMED (2026-09-24, real browser): still runs on SAP SuccessFactors' modern Career Site Builder (career5.successfactors.eu/career?career_company=bmwag, ~786 vacancies at check time) — the raw HTML genuinely has no job data at all (confirmed: a cold fetch of the search page is a near-empty shell, and even after the page's own JS runs, the job list itself only appears after a further internal AJAX round-trip with no plain REST/JSON endpoint underneath it, unlike BT Group/Fujitsu's SuccessFactors CSB instances elsewhere in this file). Its own public-facing vanity domain (jobs.bmwgroup.com) fronts the same backend and returns real, clean per-job links once rendered (/job/<title-slug>/<numeric-id>-<locale>) — same URL shape as Standard Chartered's own SuccessFactors CSB board. Rather than leave this unconvertible, it's now wired into js-scraper/scrape.js (a real headless-browser scrape on a schedule, feeding into check.php's existing 'snapshot' mechanism) — same fix already used for Standard Chartered. Confirmed false-positive risk carries over: BMW's own 'Design' job-field copy explicitly covers automotive/vehicle design, so a bare keyword search on 'design' mostly surfaces IT/manufacturing/internship roles (63 raw matches at check time, nearly all unrelated) — js-scraper's own isRoleRelevant() title filter handles this the same way it already does for Google/Atlassian's similarly broad searches, so it's included rather than dropped. Stays 'uncertain' until the scraper's next scheduled run actually reports back.",
+      "openNote": "RE-CONFIRMED (2026-09-24, real browser): still runs on SAP SuccessFactors' modern Career Site Builder (career5.successfactors.eu/career?career_company=bmwag, ~786 vacancies at check time) — the raw HTML genuinely has no job data at all (confirmed: a cold fetch of the search page is a near-empty shell, and even after the page's own JS runs, the job list itself only appears after a further internal AJAX round-trip with no plain REST/JSON endpoint underneath it, unlike BT Group/Fujitsu's SuccessFactors CSB instances elsewhere in this file). Its own public-facing vanity domain (jobs.bmwgroup.com) fronts the same backend and returns real, clean per-job links once rendered (/job/<title-slug>/<numeric-id>-<locale>) — same URL shape as Standard Chartered's own SuccessFactors CSB board. Rather than leave this unconvertible, it's now wired into js/scrape.js (a real headless-browser scrape on a schedule, feeding into check.php's existing 'snapshot' mechanism) — same fix already used for Standard Chartered. Confirmed false-positive risk carries over: BMW's own 'Design' job-field copy explicitly covers automotive/vehicle design, so a bare keyword search on 'design' mostly surfaces IT/manufacturing/internship roles (63 raw matches at check time, nearly all unrelated) — the browser scraper's own isRoleRelevant() title filter handles this the same way it already does for Google/Atlassian's similarly broad searches, so it's included rather than dropped. Stays 'uncertain' until the scraper's next scheduled run actually reports back.",
       "ats": {
         "type": "snapshot",
         "slug": "bmw-group"
@@ -6527,11 +6537,11 @@
       "asiaNote": "Large APAC consumer/institutional banking presence (Singapore, Hong Kong, India) is public knowledge; not independently verified for this tracker's purposes.",
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
-      "note": "Citigroup's retail/consumer banking brand; tracked under the commonly-used \"Citibank\" name per Isu's own wording, with \"Citi\"/\"Citigroup\" as li-scraper aliases.",
+      "note": "Citigroup's retail/consumer banking brand; tracked under the commonly-used \"Citibank\" name per Isu's own wording, with \"Citi\"/\"Citigroup\" as the job-site scraper aliases.",
       "url": "https://citi.eightfold.ai/careers?query=design&domain=citi.com&sort_by=relevance",
       "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "2026-10-22, real browser: jobs.citi.com's own search UI turned out to be a front end over a separate Eightfold tenant (citi.eightfold.ai) — same ATS platform as several other companies on this list, just blocking the generic public API endpoint those others use (403 \"Not authorized for PCSX\"; its real endpoint is a differently-shaped /api/pcsx/search instead). Wired in via js-scraper against the rendered page directly rather than a new check.php adapter variant — see js-scraper/scrape.js's own comment for the full story. 20 real per-role links confirmed live, genuinely design-relevant titles present (\"UX Product Design Lead\", \"UX and Human Factors Design\"), alongside some keyword noise (\"Design System Developer\") that isRoleRelevant() filters back out.",
+      "openNote": "2026-10-22, real browser: jobs.citi.com's own search UI turned out to be a front end over a separate Eightfold tenant (citi.eightfold.ai) — same ATS platform as several other companies on this list, just blocking the generic public API endpoint those others use (403 \"Not authorized for PCSX\"; its real endpoint is a differently-shaped /api/pcsx/search instead). Wired in via the browser scraper against the rendered page directly rather than a new check.php adapter variant — see js/scrape.js's own comment for the full story. 20 real per-role links confirmed live, genuinely design-relevant titles present (\"UX Product Design Lead\", \"UX and Human Factors Design\"), alongside some keyword noise (\"Design System Developer\") that isRoleRelevant() filters back out.",
       "ats": {
         "type": "snapshot",
         "slug": "citibank"
@@ -6558,7 +6568,7 @@
       "url": "https://careers.bunq.com/positions",
       "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "2026-10-22, real browser: careers.bunq.com is a Framer-built site (not a third-party ATS), but its full 20-role list is already present in the raw server HTML on a cold fetch — no client JS needed to render it, unusually for a Framer site. Wired into js-scraper rather than check.php's plain \"html\" adapter since the title text sits nested a couple of DOM levels inside each card's link (an <h3> inside an <article> inside the <a>), which this project's own \"html\" adapter wasn't confirmed to handle. \"(Senior) Product Owner\"/\"Head of Product\" currently open; nothing explicitly UX/design-titled at check time, but real product-org roles worth surfacing.",
+      "openNote": "2026-10-22, real browser: careers.bunq.com is a Framer-built site (not a third-party ATS), but its full 20-role list is already present in the raw server HTML on a cold fetch — no client JS needed to render it, unusually for a Framer site. Wired into the browser scraper rather than check.php's plain \"html\" adapter since the title text sits nested a couple of DOM levels inside each card's link (an <h3> inside an <article> inside the <a>), which this project's own \"html\" adapter wasn't confirmed to handle. \"(Senior) Product Owner\"/\"Head of Product\" currently open; nothing explicitly UX/design-titled at check time, but real product-org roles worth surfacing.",
       "ats": {
         "type": "snapshot",
         "slug": "bunq"
@@ -6585,7 +6595,7 @@
       "url": "https://www.werkenbijkpmg.nl/vacatures",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "2026-10-22, real browser: a genuine, complete, confirmed-zero finding, not the usual partial-page guess. werkenbijkpmg.nl's own ?s= keyword filter is silently ignored (same failure mode as ABN AMRO elsewhere on this list), but its client-side search widget is backed by a full public JSON dump at /_lunr/vacancies — read directly to check EVERY one of KPMG NL's 185 live roles by title. Only two contain the word \"design\" at all (\"Manager Digital Organization Design\", \"Manager Organizational Design\"), and both are management-consulting roles, not product/UX design — genuinely zero design/UX/product openings company-wide right now. Wired into js-scraper against the ordinary rendered page (not the JSON dump, which this project's scraper can't consume directly) so any future design-relevant posting still gets caught live; only the first ~20 of 185 render per page, a known gap elsewhere in this project, but immaterial here given the confirmed zero.",
+      "openNote": "2026-10-22, real browser: a genuine, complete, confirmed-zero finding, not the usual partial-page guess. werkenbijkpmg.nl's own ?s= keyword filter is silently ignored (same failure mode as ABN AMRO elsewhere on this list), but its client-side search widget is backed by a full public JSON dump at /_lunr/vacancies — read directly to check EVERY one of KPMG NL's 185 live roles by title. Only two contain the word \"design\" at all (\"Manager Digital Organization Design\", \"Manager Organizational Design\"), and both are management-consulting roles, not product/UX design — genuinely zero design/UX/product openings company-wide right now. Wired into the browser scraper against the ordinary rendered page (not the JSON dump, which this project's scraper can't consume directly) so any future design-relevant posting still gets caught live; only the first ~20 of 185 render per page, a known gap elsewhere in this project, but immaterial here given the confirmed zero.",
       "ats": {
         "type": "snapshot",
         "slug": "kpmg"
@@ -6628,7 +6638,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "2026-10-22, real browser: ATS confirmed as Workday (nxp.wd3.myworkdayjobs.com, tenant \"nxp\", site \"careers\") — wired directly into check.php's existing adapter, no js-scraper needed. As a semiconductor company, a bare \"design\" keyword search is almost entirely noise (533 hits, nearly all chip/silicon design engineering roles like \"Senior Digital Design Engineer\" — isRoleRelevant()'s NEGATIVE filter correctly drops these via \"engineer\"). Broadening to \"user experience\" surfaced the one listed Director-tier Product role above, plus a non-Director \"Product Manager, Digital Platforms\" (Guadalajara) — genuinely worth having live-checked even though NXP's core business is hardware, not design-led software.",
+      "openNote": "2026-10-22, real browser: ATS confirmed as Workday (nxp.wd3.myworkdayjobs.com, tenant \"nxp\", site \"careers\") — wired directly into check.php's existing adapter, no browser scraper needed. As a semiconductor company, a bare \"design\" keyword search is almost entirely noise (533 hits, nearly all chip/silicon design engineering roles like \"Senior Digital Design Engineer\" — isRoleRelevant()'s NEGATIVE filter correctly drops these via \"engineer\"). Broadening to \"user experience\" surfaced the one listed Director-tier Product role above, plus a non-Director \"Product Manager, Digital Platforms\" (Guadalajara) — genuinely worth having live-checked even though NXP's core business is hardware, not design-led software.",
       "ats": {
         "type": "workday",
         "slug": "nxp",
@@ -6657,7 +6667,7 @@
       "url": "https://www.tomtom.com/careers/joboverview/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "2026-10-22, real browser: a confirmed, complete zero, not a partial guess — tomtom.com runs its own first-party careers API (www.tomtom.com/api/careers/jobs, public/unauthenticated), read directly to check EVERY one of TomTom's 17 current openings company-wide by title. All 17 are Engineering/IT/Sales/HR; nothing Design/UX/Product-design (a \"Program Manager - Delivery\" role sits in the API's own \"Product\" category but isn't design). Wired into js-scraper against the rendered page for ongoing live monitoring.",
+      "openNote": "2026-10-22, real browser: a confirmed, complete zero, not a partial guess — tomtom.com runs its own first-party careers API (www.tomtom.com/api/careers/jobs, public/unauthenticated), read directly to check EVERY one of TomTom's 17 current openings company-wide by title. All 17 are Engineering/IT/Sales/HR; nothing Design/UX/Product-design (a \"Program Manager - Delivery\" role sits in the API's own \"Product\" category but isn't design). Wired into the browser scraper against the rendered page for ongoing live monitoring.",
       "ats": {
         "type": "snapshot",
         "slug": "tomtom"
@@ -6689,7 +6699,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "2026-10-22, real browser: a WordPress site with a custom careers API plugin behind it (unreachable via a plain same-origin fetch for reasons not pursued further — the rendered page works fine). Its own keyword filter genuinely works server-side (unlike ABN AMRO/KPMG elsewhere on this list) — a \"design\" search surfaced the one role listed above, an internship. Wired into js-scraper with the linkPattern anchored to \"/all-jobs/\" specifically, since job cards share their wrapper markup with this site's unrelated \"life at Vanderlande\" blog-post cards.",
+      "openNote": "2026-10-22, real browser: a WordPress site with a custom careers API plugin behind it (unreachable via a plain same-origin fetch for reasons not pursued further — the rendered page works fine). Its own keyword filter genuinely works server-side (unlike ABN AMRO/KPMG elsewhere on this list) — a \"design\" search surfaced the one role listed above, an internship. Wired into the browser scraper with the linkPattern anchored to \"/all-jobs/\" specifically, since job cards share their wrapper markup with this site's unrelated \"life at Vanderlande\" blog-post cards.",
       "ats": {
         "type": "snapshot",
         "slug": "vanderlande"
@@ -6710,7 +6720,7 @@
       "url": "https://werkenbijtransavia.com/vacatures",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "2026-10-22, real browser: a confirmed, complete zero — werkenbijtransavia.com is a white-labeled Recruitee board (confirmed via its careers.recruiteecdn.com asset host; transavia.recruitee.com itself redirects here). Read all 12 of Transavia's current company-wide openings directly: Cockpit/Technische Dienst/Kantoor roles only (pilots, legal, platform engineer, safety engineer, domain architect, aircraft mechanics) — nothing Design/UX/Product, as expected for an airline this size. Wired into js-scraper for ongoing live monitoring; Recruitee isn't one of check.php's existing direct adapter types.",
+      "openNote": "2026-10-22, real browser: a confirmed, complete zero — werkenbijtransavia.com is a white-labeled Recruitee board (confirmed via its careers.recruiteecdn.com asset host; transavia.recruitee.com itself redirects here). Read all 12 of Transavia's current company-wide openings directly: Cockpit/Technische Dienst/Kantoor roles only (pilots, legal, platform engineer, safety engineer, domain architect, aircraft mechanics) — nothing Design/UX/Product, as expected for an airline this size. Wired into the browser scraper for ongoing live monitoring; Recruitee isn't one of check.php's existing direct adapter types.",
       "ats": {
         "type": "snapshot",
         "slug": "transavia"
@@ -6793,7 +6803,7 @@
       "asiaNote": "Large APAC hotel footprint is public knowledge for this industry; not independently verified here.",
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
-      "note": "Global hospitality company (Hilton, Conrad, Waldorf Astoria, and other brands). Isu's own wording was \"Hilton Hotels\" — kept as a li-scraper alias.",
+      "note": "Global hospitality company (Hilton, Conrad, Waldorf Astoria, and other brands). Isu's own wording was \"Hilton Hotels\" — kept as a the job-site scraper alias.",
       "url": "https://jobs.hilton.com/",
       "openStatus": "below-target",
       "openRoles": [],
@@ -6823,7 +6833,7 @@
       "asiaNote": "Owned by Beijing-based ByteDance; large APAC product/engineering/design presence across China and Singapore is public knowledge, not independently verified here.",
       "sponsorship": "likely",
       "sponsorshipNote": "Established employer — the UK Skilled Worker visa or an EU Blue Card / national work-permit route is the standard path for specialist design hires at firms this size. Not individually checked against an official sponsor registry (bulk verification wasn't feasible in this environment).",
-      "note": "Short-form video platform; real postings on LI/Indeed commonly appear under the parent \"ByteDance\" entity name as well as \"TikTok\" itself — kept as a li-scraper alias.",
+      "note": "Short-form video platform; real postings on LI/Indeed commonly appear under the parent \"ByteDance\" entity name as well as \"TikTok\" itself — kept as a the job-site scraper alias.",
       "url": "https://careers.tiktok.com/",
       "openStatus": "below-target",
       "openRoles": [],
@@ -6929,7 +6939,7 @@
           "status": "not-started"
         }
       ],
-      "openNote": "2026-10-22, real browser: roku.com/jobs redirects to a dedicated microsite (weareroku.com) that's a custom front end over Greenhouse (confirmed via its own asset paths referencing \"greenhouse\" controllers, and verified directly against Greenhouse's public API with board token \"roku\" — 88 real jobs). Wired in directly, no js-scraper needed. No current postings are explicitly titled Design/UX (a third-party aggregator surfaced a \"Sr Product Designer\" listing that is NOT on the live board right now, likely closed/stale) — the Director of Product Management role above is the closest live Director+ match, worth Isu's own judgment on fit. Several \"...UI\" engineering titles (C++ UI, Roku UI) also show up on a broad keyword search but are software-engineering roles, correctly filtered out by isRoleRelevant()'s NEGATIVE list.",
+      "openNote": "2026-10-22, real browser: roku.com/jobs redirects to a dedicated microsite (weareroku.com) that's a custom front end over Greenhouse (confirmed via its own asset paths referencing \"greenhouse\" controllers, and verified directly against Greenhouse's public API with board token \"roku\" — 88 real jobs). Wired in directly, no browser scraper needed. No current postings are explicitly titled Design/UX (a third-party aggregator surfaced a \"Sr Product Designer\" listing that is NOT on the live board right now, likely closed/stale) — the Director of Product Management role above is the closest live Director+ match, worth Isu's own judgment on fit. Several \"...UI\" engineering titles (C++ UI, Roku UI) also show up on a broad keyword search but are software-engineering roles, correctly filtered out by isRoleRelevant()'s NEGATIVE list.",
       "ats": {
         "type": "greenhouse",
         "slug": "roku"
@@ -6950,7 +6960,7 @@
       "url": "https://careers.unilever.com/en/search-jobs/design",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "2026-10-22, real browser: a confirmed, complete zero. careers.unilever.com runs on Oracle Taleo — a platform this project has deliberately decided not to build a direct check.php adapter for (same call already made for Spark NZ's listed alternatives) — so this is scraped instead. Its keyword filter genuinely works server-side (a nonsense query returns 0, \"UX designer\"/\"product designer\" both return 0, plain \"design\" returns 55 real but almost entirely packaging/process-engineering matches). Wired into js-scraper for ongoing live monitoring.",
+      "openNote": "2026-10-22, real browser: a confirmed, complete zero. careers.unilever.com runs on Oracle Taleo — a platform this project has deliberately decided not to build a direct check.php adapter for (same call already made for Spark NZ's listed alternatives) — so this is scraped instead. Its keyword filter genuinely works server-side (a nonsense query returns 0, \"UX designer\"/\"product designer\" both return 0, plain \"design\" returns 55 real but almost entirely packaging/process-engineering matches). Wired into the browser scraper for ongoing live monitoring.",
       "ats": {
         "type": "snapshot",
         "slug": "unilever"
@@ -6971,7 +6981,7 @@
       "url": "https://careers.theheinekencompany.com/job-listing?job_functions%5B%5D=211",
       "openStatus": "below-target",
       "openRoles": [],
-      "openNote": "Drupal careers site for every HEINEKEN brand (~735 roles). The keyword box is ignored server-side, but the \"Digital & Technology\" Job Functions facet (job_functions[0]=211, ~32 roles) works, and js-scraper reads all of its pages (page=0,0,N, 10 per page). Checked 2026-10-24: one design role, Product Designer (HEINEKEN Kraków, Poland), below the Director bar.",
+      "openNote": "Drupal careers site for every HEINEKEN brand (~735 roles). The keyword box is ignored server-side, but the \"Digital & Technology\" Job Functions facet (job_functions[0]=211, ~32 roles) works, and the browser scraper reads all of its pages (page=0,0,N, 10 per page). Checked 2026-10-24: one design role, Product Designer (HEINEKEN Kraków, Poland), below the Director bar.",
       "ats": {
         "type": "snapshot",
         "slug": "heineken"
@@ -7021,37 +7031,10 @@
       "url": "https://careers.triodos.com/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "SAP SuccessFactors career site (careers.triodos.com), browser-rendered, read by js-scraper (9 roles on 2026-10-24).",
+      "openNote": "SAP SuccessFactors career site (careers.triodos.com), browser-rendered, read by the browser scraper (9 roles on 2026-10-24).",
       "ats": {
         "type": "snapshot",
         "slug": "triodos-bank"
-      }
-    },
-    {
-      "region": "Europe/UK",
-      "name": "Knab",
-      "slug": "knab",
-      "category": "Digital Bank",
-      "hq": "Amsterdam, Netherlands",
-      "founded": 2012,
-      "asia": "limited",
-      "asiaNote": "Netherlands only",
-      "sponsorship": "uncertain",
-      "sponsorshipNote": "Smaller or younger employer — no clear signal on visa sponsorship; not individually checked.",
-      "note": "Dutch digital bank for freelancers and SMEs.",
-      "url": "https://www.knab.nl/",
-      "openStatus": "uncertain",
-      "openRoles": [],
-      "openNote": "Its Greenhouse board (knab) is closed (404, re-checked 2026-11-15). Knab now lists vacancies on werkenbijknab.nl, which couldn't be opened from ZenPath's tools on 2026-11-15 (to check by hand). Covered through job-site matches.",
-      "ats": {
-        "type": "unknown"
-      },
-      "match": {
-        "aliases": [
-          "Knab Bank",
-          "Knab N.V."
-        ],
-        "note": "'Knab' is under the 5-character containment minimum, so these aliases cover longer employer strings."
       }
     },
     {
@@ -7069,7 +7052,7 @@
       "url": "https://www.backbase.com/careers/jobs",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Own Webflow careers page fed by Teamtailor, 20 per page (b158f050_page), read by js-scraper. 68 roles on 2026-10-24, including a Senior UX Designer.",
+      "openNote": "Own Webflow careers page fed by Teamtailor, 20 per page (b158f050_page), read by the browser scraper. 68 roles on 2026-10-24, including a Senior UX Designer.",
       "ats": {
         "type": "snapshot",
         "slug": "backbase"
@@ -7265,7 +7248,7 @@
       "url": "https://www.euronext.com/en/about/careers/job-offers",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Own server-rendered job-offers list, 50 per page (153 roles over 4 pages on 2026-10-24, ~10 product roles), read by js-scraper.",
+      "openNote": "Own server-rendered job-offers list, 50 per page (153 roles over 4 pages on 2026-10-24, ~10 product roles), read by the browser scraper.",
       "ats": {
         "type": "snapshot",
         "slug": "euronext"
@@ -7286,7 +7269,7 @@
       "url": "https://www.nn-careers.com/en/vacancies",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "nn-careers.com English vacancies (13 on 2026-10-24) render from an internal API that rejects paging parameters; js-scraper reads the newest 10 on the page.",
+      "openNote": "nn-careers.com English vacancies (13 on 2026-10-24) render from an internal API that rejects paging parameters; the browser scraper reads the newest 10 on the page.",
       "ats": {
         "type": "snapshot",
         "slug": "nn-group"
@@ -7315,7 +7298,7 @@
       "url": "https://www.aegon.com/careers/vacancies",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Own Drupal vacancies list (157 on 2026-10-24, ~21 per page); pages load reliably only in a browser session, so js-scraper reads them. Titles sit beside the link.",
+      "openNote": "Own Drupal vacancies list (157 on 2026-10-24, ~21 per page); pages load reliably only in a browser session, so the browser scraper reads them. Titles sit beside the link.",
       "ats": {
         "type": "snapshot",
         "slug": "aegon"
@@ -7383,7 +7366,7 @@
       "url": "https://higher.gs.com/",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Own site higher.gs.com, browser-rendered (GraphQL behind it), read by js-scraper from a 'design' search. On 2026-10-24: VP UI/UX Design (Bengaluru).",
+      "openNote": "Own site higher.gs.com, browser-rendered (GraphQL behind it), read by the browser scraper from a 'design' search. On 2026-10-24: VP UI/UX Design (Bengaluru).",
       "ats": {
         "type": "snapshot",
         "slug": "goldman-sachs"
@@ -7404,7 +7387,7 @@
       "url": "https://www.morganstanley.com/careers",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Eightfold board (morganstanley.eightfold.ai); its API refuses outside requests (403 even in a browser), so js-scraper reads the rendered list. On 2026-10-24: Senior UX Design Lead VP (New York).",
+      "openNote": "Eightfold board (morganstanley.eightfold.ai); its API refuses outside requests (403 even in a browser), so the browser scraper reads the rendered list. On 2026-10-24: Senior UX Design Lead VP (New York).",
       "ats": {
         "type": "snapshot",
         "slug": "morgan-stanley"
@@ -8432,7 +8415,7 @@
       "url": "https://careers.vodafoneziggo.com/vacatures",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Own site, server-rendered, 8 per page (38 roles on 2026-10-24); job cards link by title, paged with ?page=N. Read by js-scraper (see js-scraper/scrape.js); shows 'not present in snapshot' until its next run. Board found and verified 2026-10-24.",
+      "openNote": "Own site, server-rendered, 8 per page (38 roles on 2026-10-24); job cards link by title, paged with ?page=N. Read by the browser scraper (see js/scrape.js); shows 'not present in snapshot' until its next run. Board found and verified 2026-10-24.",
       "ats": {
         "type": "snapshot",
         "slug": "vodafoneziggo"
@@ -8460,7 +8443,7 @@
       "url": "https://werkenbij.odido.nl/vacatures",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "werkenbij.odido.nl (Serena CMS), browser-rendered, 10 per page (59 roles on 2026-10-24, 36 of them in shops). js-scraper reads the non-shop fields (Corporate Support, Marketing en Communicatie, Sales, Finance); there's no tech or design field. Read by js-scraper (see js-scraper/scrape.js); shows 'not present in snapshot' until its next run. Board found and verified 2026-10-24.",
+      "openNote": "werkenbij.odido.nl (Serena CMS), browser-rendered, 10 per page (59 roles on 2026-10-24, 36 of them in shops). The browser scraper reads the non-shop fields (Corporate Support, Marketing en Communicatie, Sales, Finance); there's no tech or design field. Read by the browser scraper (see js/scrape.js); shows 'not present in snapshot' until its next run. Board found and verified 2026-10-24.",
       "ats": {
         "type": "snapshot",
         "slug": "odido"
@@ -8662,7 +8645,7 @@
       "url": "https://jobs.virginmediao2.co.uk/en_US/careersmarketplace/SearchJobs",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "Avature board, server-rendered 8 per page with full-text search (127 hits for \"design\" on 2026-10-27, mostly retail and field sales); js-scraper reads every page of that search.",
+      "openNote": "Avature board, server-rendered 8 per page with full-text search (127 hits for \"design\" on 2026-10-27, mostly retail and field sales); the browser scraper reads every page of that search.",
       "ats": {
         "type": "snapshot",
         "slug": "virgin-media-o2"
@@ -8692,7 +8675,7 @@
       "url": "https://careers.sky.com/jobs",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "careers.sky.com is browser-rendered over Workday; read by js-scraper from 'design', 'product', 'UX' and 'research' searches (the public Workday site Sky_Careers only carries ~36 Italy/Czech roles). Read by js-scraper (see js-scraper/scrape.js); shows 'not present in snapshot' until its next run. Board found and verified 2026-10-24.",
+      "openNote": "careers.sky.com is browser-rendered over Workday; read by the browser scraper from 'design', 'product', 'UX' and 'research' searches (the public Workday site Sky_Careers only carries ~36 Italy/Czech roles). Read by the browser scraper (see js/scrape.js); shows 'not present in snapshot' until its next run. Board found and verified 2026-10-24.",
       "ats": {
         "type": "snapshot",
         "slug": "sky"
@@ -8891,7 +8874,7 @@
       "url": "https://careers.viasat.com/jobs",
       "openStatus": "none",
       "openRoles": [],
-      "openNote": "careers.viasat.com is a Jibe front end over iCIMS whose job API needs a browser session; js-scraper reads its \"design\" and \"product\" searches for Singapore and the UK (2026-10-27).",
+      "openNote": "careers.viasat.com is a Jibe front end over iCIMS whose job API needs a browser session; the browser scraper reads its \"design\" and \"product\" searches for Singapore and the UK (2026-10-27).",
       "ats": {
         "type": "snapshot",
         "slug": "viasat"

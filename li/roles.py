@@ -1,6 +1,6 @@
 """
-Shared role rules for the job-site scrapers (li-scraper/scrape.py for LI and
-Indeed, hb-scraper/scrape.py for the Talent Hubs): which markets are accepted
+Shared role rules for the job-site scrapers (li/scrape.py for LI and
+Indeed, hb/scrape.py for the Talent Hubs): which markets are accepted
 and how a raw location resolves to one, the per-posting sponsorship phrases,
 turning raw rows into tracked-company and open-market roles, merging duplicates
 (one record per employer + title + country, every site kept in `sources`) and
@@ -70,7 +70,7 @@ SEARCH_TERMS = PRODUCT_TERMS + DESIGN_TERMS
 
 # When the same role is found on several sites, the lowest-ranked site supplies
 # the canonical url/source; all sites stay in `sources`. The general boards come
-# first; hb-scraper adds the Talent Hubs after them, in its registry order
+# first; hb adds the Talent Hubs after them, in its registry order
 # (set_hub_order). Unknown sources rank after everything listed. "bayt" and
 # "uxwork" were retired in 2026-10.
 GENERAL_SOURCES = ["ats", "li", "indeed", "bayt"]
@@ -158,7 +158,7 @@ def sponsorship_signal(description):
 # A posting is eligible from any accepted market (open_market_gate() for
 # title/fit, is_known_market() for location); the market name is the `market`
 # label the app filters on. SEARCHED_MARKETS is what LI and Indeed search: their
-# LOCATIONS in li-scraper/scrape.py collapsed to countries (asserted there).
+# LOCATIONS in li/scrape.py collapsed to countries (asserted there).
 SEARCHED_MARKETS = ["Singapore", "Hong Kong", "New Zealand", "Australia", "Netherlands", "Italy", "Germany",
                     "United Kingdom", "Ireland", "Malaysia", "United Arab Emirates"]
 # Accepted for job-site postings but not searched on LI or Indeed: countries only
@@ -518,22 +518,38 @@ def _from_sources(role, keep_sources):
     return any(s in keep_sources for s in sources)
 
 
-def merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=None, debug=False, keep_sources=None):
+def result_urls(rows):
+    """Every result URL of a run's (source, row) pairs, for merge_and_prune's seen_urls."""
+    return {url for url in (_clean_str(row.get("job_url")) for _, row in rows) if url}
+
+
+def merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=None, debug=False, keep_sources=None,
+                    seen_urls=None):
     """Merge this run's results into the snapshot loaded from disk and prune
         expired roles. Returns {"companies": {slug: {"roles": [...]}},
         "openMarket": {"roles": [...]}}; open-market roles are never filed under
         a company. keep_sources: carried-over roles found by none of these
         sources are dropped (a scraper no longer reading a source lets the
-        other scraper own its roles).
+        other scraper own its roles). seen_urls: see below.
     """
     cutoff = (datetime.now(timezone.utc) - timedelta(days=EXPIRY_DAYS)).strftime("%Y-%m-%d")
     fresh_open_market_roles = fresh_open_market_roles or {}
+    # A posting this run read again (seen_urls: every result URL of the run) is
+    # filed only where this run puts it: a carried-over copy elsewhere (another
+    # company or the other side, e.g. after a matching fix) is dropped rather
+    # than left to expire.
+    seen_urls = seen_urls or set()
+    placed = {(key, role.get("url")) for key, role in list(fresh_roles.values()) + list(fresh_open_market_roles.values())}
+
+    def _refiled(key, role):
+        url = role.get("url")
+        return url in seen_urls and (key, url) not in placed
 
     existing_tracked_items = (
         (slug, role)
         for slug, entry in existing.get("companies", {}).items()
         for role in entry.get("roles", [])
-        if _from_sources(role, keep_sources)
+        if _from_sources(role, keep_sources) and not _refiled(slug, role)
     )
     kept_items, stats = _merge_identity_roles(existing_tracked_items, fresh_roles, cutoff)
     companies_out = {}
@@ -544,9 +560,9 @@ def merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=No
     # employer. Carried-over roles go through the same market gate as fresh ones,
     # so a rule change applies to the whole snapshot on the next run.
     existing_open_market_items = (
-        (normalize_employer_name(role.get("employer", "")), dict(role, market=market_for_location(role.get("location", ""))))
-        for role in existing.get("openMarket", {}).get("roles", [])
-        if is_known_market(role.get("location", "")) and _from_sources(role, keep_sources)
+        (key, dict(role, market=market_for_location(role.get("location", ""))))
+        for key, role in ((normalize_employer_name(r.get("employer", "")), r) for r in existing.get("openMarket", {}).get("roles", []))
+        if is_known_market(role.get("location", "")) and _from_sources(role, keep_sources) and not _refiled(key, role)
     )
     kept_open_market_items, om_stats = _merge_identity_roles(
         existing_open_market_items, fresh_open_market_roles, cutoff

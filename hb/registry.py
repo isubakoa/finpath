@@ -3,7 +3,7 @@ Talent Hubs: official regional and national job portals for internationals,
 read every run alongside LI and Indeed (Isu's list, triaged 2026-11-26/27; see
 the project doc zenpath-2026-11-26-talent-hubs-triage.md for what was skipped and why).
 
-HUBS is the one list: hb-scraper/scrape.py runs it, tags rows with the hub's id
+HUBS is the one list: hb/scrape.py runs it, tags rows with the hub's id
 as their source, and publishes it with each hub's last-run health as
 openMarket.talentHubs in data/hb-snapshot.json, from which the app builds
 Settings › Job sites › Talent Hubs and its labels. When several hubs list the
@@ -26,6 +26,7 @@ import gothenburg
 import hire_helsinki
 import jobsplus
 import make_it_in_munich
+import make_it_in_the_north
 import nav
 import skane
 import south_holland
@@ -34,6 +35,7 @@ import vdab
 import welcome_to_nl
 import work_in_austria
 import work_in_estonia
+import work_in_finland
 import work_in_lithuania
 import work_in_luxembourg
 import workindenmark
@@ -45,6 +47,8 @@ HUBS = [
      "url": "https://jobs.workinsouthholland.nl/jobs", "read": south_holland.read},
     {"id": "brainport", "name": "Brainport Eindhoven", "country": "Netherlands",
      "url": "https://brainporteindhoven.com/int/work/jobs", "read": brainport.read},
+    {"id": "makeitinthenorth", "name": "Make it in the North", "country": "Netherlands",
+     "url": "https://www.makeitinthenorth.nl/jobs/", "read": make_it_in_the_north.read},
     {"id": "talentberlin", "name": "Talent Berlin", "country": "Germany",
      "url": "https://talent.berlin/jobs", "read": talent_berlin.read},
     {"id": "makeitinmunich", "name": "Make it in Munich", "country": "Germany",
@@ -67,6 +71,8 @@ HUBS = [
      "url": "https://arbeidsplassen.nav.no/stillinger?v=6&workLanguage=Engelsk", "read": nav.read},
     {"id": "hirehelsinki", "name": "Hire Helsinki", "country": "Finland",
      "url": "https://www.myhelsinki.fi/hire-helsinki/", "read": hire_helsinki.read},
+    {"id": "workinfinland", "name": "Work in Finland", "country": "Finland",
+     "url": "https://www.workinfinland.com/en/jobs", "read": work_in_finland.read},
     {"id": "workinestonia", "name": "Work in Estonia", "country": "Estonia",
      "url": "https://workinestonia.com/job/", "read": work_in_estonia.read},
     {"id": "workinlithuania", "name": "Work in Lithuania", "country": "Lithuania",

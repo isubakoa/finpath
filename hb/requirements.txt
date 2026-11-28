@@ -1,4 +1,4 @@
-# hb-scraper: the Talent Hubs. It also uses li-scraper's companies.py, match.py
+# hb: the Talent Hubs. It also uses li's companies.py, match.py
 # and roles.py, which need nothing beyond these.
 requests
 beautifulsoup4

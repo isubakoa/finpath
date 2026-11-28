@@ -1,10 +1,10 @@
-// js-scraper: careers boards that only render with JavaScript. Opens each
+// js: careers boards that only render with JavaScript. Opens each
 // company's page in headless Chromium, collects links matching its
 // `linkPattern`, keeps the relevant titles, finds each role's location (see
 // "Locations" below), and writes ../data/js-snapshot.json:
 //   { "generatedAt": "...", "companies": { "<slug>": { "ok": true, "roles": [...] } } }
 // check.php reads it for companies whose ats is {type: "snapshot"}.
-// Run by .github/workflows/scrape.yml; locally: node scrape.js [--debug <slug>].
+// Run by .github/workflows/js.yml; locally: node scrape.js [--debug <slug>].
 
 import { chromium } from "playwright";
 import { mkdirSync, readFileSync, writeFileSync } from "fs";
@@ -21,7 +21,7 @@ const SNAPSHOT_PATH = join(__dirname, "..", "data", "js-snapshot.json");
 // status/title/final URL. Uploaded as a workflow artifact, never committed.
 const DEBUG_DIR = join(__dirname, "debug");
 
-// Ports of the app's isRoleRelevant() (same as li-scraper/match.py) -- change
+// Ports of the app's isRoleRelevant() (same as li/match.py) -- change
 // all three together. Filtering here keeps the snapshot to roles the app could
 // ever show (Atlassian's all-jobs page alone is ~230 entries).
 const ALWAYS_ALLOW = /(ux engineer|ui engineer|design engineer|design technologist|creative technologist|product marketing|marketing manager)/i;
@@ -48,8 +48,6 @@ function isRoleRelevant(title) {
 // few links but carries every role in its embedded data: a function given the
 // page's parsed __NEXT_DATA__ that returns [{title, url, location}] (no
 // linkPattern then; a page without __NEXT_DATA__ fails the company).
-// `frames: true` also collects links inside the page's iframes (iCIMS boards show
-// their list in an iframe and redirect a direct load of the iframe URL).
 // `fixedLocation`: the location for every role whose listing shows none, for a company
 // hiring in one place (no posting pages opened for it).
 // `clickSelector`: a link to click after the page loads (the listing then loads in
@@ -414,35 +412,10 @@ const COMPANIES = [
     waitForSelector: 'a[href*="/en/jobs/"]',
   },
   {
-    slug: "bnp-paribas",
-    // Server-rendered, 10 per page; ?q= filters and ranks by relevance (checked
-    // 2026-11-15), so the first 3 pages cover the design roles.
-    urls: [1, 2, 3].map((p) => `https://group.bnpparibas/en/careers/all-job-offers?q=design&page=${p}`),
-    linkPattern: /\/careers\/job-offer\//,
-    waitForSelector: 'a[href*="/careers/job-offer/"]',
-    titleSelector: "h3",
-    locationSelector: ".offer-location",
-  },
-  {
     slug: "rabobank",
     urls: ["https://rabobank.jobs/en/search/?q=design"],
     linkPattern: /\/en\/job\/[^/]+\/JR_\d+\//i,
     waitForSelector: 'a[href*="/en/job/"]',
-  },
-  {
-    slug: "sap",
-    // SuccessFactors search, server-rendered.
-    urls: ["https://jobs.sap.com/search/?q=design"],
-    linkPattern: /\/job\/[^/]+\/\d+\//,
-    waitForSelector: 'a[href*="/job/"]',
-  },
-  {
-    slug: "mambu",
-    // iCIMS: a direct load of the iframe URL redirects to the wrapper page, which
-    // shows the list in #icims_content_iframe (2026-11-15).
-    urls: ["https://careers-mambu.icims.com/jobs/search?ss=1&in_iframe=1"],
-    linkPattern: /\/jobs\/\d+\/[^?]+\/job/i,
-    frames: true,
   },
   {
     slug: "optus",
@@ -722,16 +695,6 @@ async function scrapeOneUrl(browser, url, company, index = 0) {
       // Best-effort: if the selector never appears, scrape whatever rendered.
       await page.waitForSelector(company.waitForSelector, { timeout: TIMEOUT_MS }).catch(() => {});
     }
-    if (company.frames) {
-      // Wait for a matching link in any frame (an iframe's list loads after the page).
-      const pattern = company.linkPattern;
-      for (let waited = 0; waited < TIMEOUT_MS; waited += 1000) {
-        const hits = await Promise.all(page.frames().map((f) =>
-          f.evaluate((src) => [...document.querySelectorAll("a[href]")].some((a) => new RegExp(src).test(a.href)), pattern.source).catch(() => false)));
-        if (hits.some(Boolean)) break;
-        await page.waitForTimeout(1000);
-      }
-    }
     if (company.settleDelayMs) {
       // Some SPAs (Fidelity's Workday) render job links with a placeholder href
       // (community.workday.com/invalid-url) before swapping in the real URL; give
@@ -771,18 +734,7 @@ async function scrapeOneUrl(browser, url, company, index = 0) {
       locationSelector: company.locationSelector || null,
       locationAncestorSelector: company.locationAncestorSelector || null,
     };
-    const frames = company.frames ? page.frames() : [page.mainFrame()];
-    const roles = [];
-    const seen = new Set();
-    for (const frame of frames) {
-      const found = await frame.evaluate(collectLinks, args).catch(() => []);
-      found.forEach((r) => {
-        if (!seen.has(r.url)) {
-          seen.add(r.url);
-          roles.push(r);
-        }
-      });
-    }
+    const roles = await page.evaluate(collectLinks, args);
 
     if (!roles.length) {
       const f = await blocked();

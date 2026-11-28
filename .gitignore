@@ -20,5 +20,5 @@ __pycache__/
 *.pyc
 
 
-# js-scraper debug captures (workflow artifact)
-js-scraper/debug/
+# js debug captures (workflow artifact)
+js/debug/

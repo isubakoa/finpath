@@ -1,6 +1,6 @@
 """Guards companies.json, ZenPath's single list of tracked companies.
 
-the app (index.php + app.js), li-scraper and js-scraper all depend on this file, and
+the app (index.php + app.js), the li and js scrapers all depend on this file, and
 a bad entry fails quietly in the app (a company that's never checked, a
 drawer that won't open), so this test fails loudly instead -- in CI before the
 scraper runs, or locally:  python test_companies_json.py
@@ -8,7 +8,7 @@ scraper runs, or locally:  python test_companies_json.py
 Checks: required fields and types, unique slugs/names, allowed enum values,
 each ats.type's required config keys, html linkPatterns that compile, the
 optional `match` block's shape, unique openRoles ids, and that every
-`snapshot`-type company has a js-scraper/scrape.js entry (and vice versa).
+`snapshot`-type company has a js/scrape.js entry (and vice versa).
 
 What it can't check: whether check.php (FTP-only, not in this repo) supports
 an ats.type. That list lives in check.php's buildRequest() and app.js's
@@ -24,7 +24,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 COMPANIES_JSON = ROOT / "data" / "companies.json"
-SCRAPE_JS = ROOT / "js-scraper" / "scrape.js"
+SCRAPE_JS = ROOT / "js" / "scrape.js"
 
 REQUIRED = {
     "region": str, "name": str, "slug": str, "category": str, "hq": str,
@@ -56,7 +56,7 @@ ATS_REQUIRED = {
     "dynatrace": set(), "ibm": set(), "mercedes": set(), "personio": set(),
 }
 ROLE_REQUIRED = {"id", "title", "url"}
-MATCH_KEYS = {"name", "aliases", "note"}
+MATCH_KEYS = {"name", "aliases", "exclude", "note"}
 SLUG_RE = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 
 
@@ -127,6 +127,9 @@ def check():
                 if "aliases" in m and not (isinstance(m["aliases"], list) and m["aliases"]
                                            and all(isinstance(a, str) and a.strip() for a in m["aliases"])):
                     err(f"{where}: match.aliases must be a non-empty list of strings")
+                if "exclude" in m and not (isinstance(m["exclude"], list) and m["exclude"]
+                                           and all(isinstance(a, str) and a.strip() for a in m["exclude"])):
+                    err(f"{where}: match.exclude must be a non-empty list of strings")
                 if "note" in m and not isinstance(m["note"], str):
                     err(f"{where}: match.note must be a string")
 
@@ -143,9 +146,9 @@ def check():
     snap = {c["ats"]["slug"] for c in companies
             if (c.get("ats") or {}).get("type") == "snapshot" and c["ats"].get("slug")}
     for s in sorted(snap - js_slugs):
-        err(f"snapshot company '{s}' has no entry in js-scraper/scrape.js (it will never get data)")
+        err(f"snapshot company '{s}' has no entry in js/scrape.js (it will never get data)")
     for s in sorted(js_slugs - snap):
-        err(f"js-scraper/scrape.js scrapes '{s}', but no snapshot-type company uses it (wasted run)")
+        err(f"js/scrape.js scrapes '{s}', but no snapshot-type company uses it (wasted run)")
 
     return errors
 

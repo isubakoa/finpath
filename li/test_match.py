@@ -141,6 +141,12 @@ CASES = [
     ("Grab", "grab-grab-financial-group"),
     ("Grab Financial Group", "grab-grab-financial-group"),
     ("Some Totally Unrelated Company", None),
+    # Containment is whole words, with the length floor on the shorter side too.
+    ("Ambu A/S", None),  # must NOT match "Mambu"
+    ("Mambu GmbH", "mambu"),
+    # match.exclude: Volvo Group is a different company from Volvo Cars.
+    ("Volvo Group", None),
+    ("Volvo Car Corporation", "volvo-cars"),
 ]
 
 # Every normalized name/alias that two different companies both claim as an
@@ -554,6 +560,43 @@ def run():
         failures += 0 if ok else 1
         print(f"  {'OK ' if ok else 'FAIL'}  {label}")
 
+    # A posting this run read again is filed only where this run puts it (here:
+    # no longer matched to a company -> open market); a posting it read and
+    # dropped goes too. Neither lingers until expiry.
+    moved_url = "https://x.test/MOVED"
+    moved_key = normalize_employer_name("Ambu A/S")
+    moved_snapshot = merge_and_prune(
+        {"companies": {"mambu": {"roles": [{"title": "Product Owner", "location": "Copenhagen, Denmark", "url": moved_url,
+                                            "source": "workindenmark", "sources": ["workindenmark"], "lastSeenAt": _today}]}},
+         "openMarket": {"roles": []}},
+        {}, _today,
+        fresh_open_market_roles={duplicate_key(moved_key, "Product Owner", "Copenhagen, Denmark"): (moved_key, {
+            "employer": "Ambu A/S", "title": "Product Owner", "location": "Copenhagen, Denmark", "url": moved_url,
+            "postedDate": _today, "source": "workindenmark", "sources": ["workindenmark"], "lastSeenAt": _today})},
+        seen_urls={moved_url},
+    )
+    dropped_snapshot = merge_and_prune(
+        {"companies": {"mambu": {"roles": [{"title": "Product Owner", "location": "Copenhagen, Denmark", "url": moved_url,
+                                            "source": "workindenmark", "sources": ["workindenmark"], "lastSeenAt": _today}]}},
+         "openMarket": {"roles": []}},
+        {}, _today, seen_urls={moved_url},
+    )
+    unseen_snapshot = merge_and_prune(
+        {"companies": {"mambu": {"roles": [{"title": "Product Owner", "location": "Copenhagen, Denmark", "url": moved_url,
+                                            "source": "workindenmark", "sources": ["workindenmark"], "lastSeenAt": _today}]}},
+         "openMarket": {"roles": []}},
+        {}, _today, seen_urls=set(),
+    )
+    reclassify_checks = [
+        ("re-found posting dropped from its old company", moved_snapshot["companies"] == {}),
+        ("re-found posting now in open market", [r["url"] for r in moved_snapshot["openMarket"]["roles"]] == [moved_url]),
+        ("re-read but dropped posting is gone", dropped_snapshot["companies"] == {} and dropped_snapshot["openMarket"]["roles"] == []),
+        ("posting not read this run is carried over", len(unseen_snapshot["companies"].get("mambu", {}).get("roles", [])) == 1),
+    ]
+    for label, ok in reclassify_checks:
+        failures += 0 if ok else 1
+        print(f"  {'OK ' if ok else 'FAIL'}  {label}")
+
     print("-- exact-match key collisions (reviewed allowlist) --")
     got_collisions = find_collisions(COMPANIES, ALIASES)
     ok = got_collisions == KNOWN_COLLISIONS
@@ -573,7 +616,7 @@ def run():
         + len(MARKET_FOR_LOCATION_CASES) + len(canonical_checks)
         + len(SPONSORSHIP_CASES) + 1  # +1: the all_covered SPONSORSHIP_KEYWORDS-coverage check
         + len(OPEN_MARKET_GATE_CASES)
-        + len(merge_om_checks) + 1  # +1: find_collisions() == KNOWN_COLLISIONS
+        + len(merge_om_checks) + len(reclassify_checks) + 1  # +1: find_collisions() == KNOWN_COLLISIONS
     )
     print(f"\n{total_cases - failures}/{total_cases} passed")
     if failures:

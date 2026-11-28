@@ -1,6 +1,6 @@
-# hb-scraper: the Talent Hubs (official job portals) -> data/hb-snapshot.json
+# hb: the Talent Hubs (official job portals) -> data/hb-snapshot.json
 #
-# Same scheduling as scrape-li.yml: the cron fires every 15 minutes (offset from
+# Same scheduling as li.yml: the cron fires every 15 minutes (offset from
 # the other scrapers) and a cheap gate lets a real run through only once
 # SCHEDULE_INTERVAL_HOURS have passed since the last run started (the snapshot's
 # checkedAt). The gate also reads ZenPath's switches (scraper-control.php): a
@@ -14,15 +14,15 @@ on:
     - cron: "8,23,38,53 * * * *"
   push:
     paths:
-      - "hb-scraper/**"
-      - "li-scraper/roles.py"
-      - "li-scraper/match.py"
-      - "li-scraper/companies.py"
+      - "hb/**"
+      - "li/roles.py"
+      - "li/match.py"
+      - "li/companies.py"
       - "data/companies.json"
   workflow_dispatch: {}
 
 concurrency:
-  group: scrape-hb
+  group: hb
   cancel-in-progress: false
 
 permissions:
@@ -34,7 +34,7 @@ jobs:
     timeout-minutes: 40
     defaults:
       run:
-        working-directory: hb-scraper
+        working-directory: hb
     steps:
       - name: Gate on switches and elapsed time since last real run
         id: gate
@@ -42,7 +42,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SNAPSHOT_PATH: data/hb-snapshot.json
-          SCHEDULE_INTERVAL_HOURS: "2" # must match hb-scraper/scrape.py's SCHEDULE_INTERVAL_HOURS
+          SCHEDULE_INTERVAL_HOURS: "2" # must match hb/scrape.py's SCHEDULE_INTERVAL_HOURS
         run: |
           set -euo pipefail
           STATE=$(curl -sS -m 10 -A "ZenPath-Scraper/1.0 (+GitHub Actions)" \
@@ -91,7 +91,7 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         run: python test_talent_hubs.py
 
-      # Careers in Gothenburg, Brainport and VDAB are read in headless Chrome
+      # Careers in Gothenburg, Brainport, VDAB and Jobsplus are read in headless Chrome
       # (Playwright drives the Chrome already on GitHub's runner; no download).
       - name: Run scraper
         if: steps.gate.outputs.should_run == 'true'

@@ -1,5 +1,5 @@
 """Tests for the Talent Hubs readers with fake portals (no network), and for
-duplicates across hubs and job sites. Run: python3 hb-scraper/test_talent_hubs.py"""
+duplicates across hubs and job sites. Run: python3 hb/test_talent_hubs.py"""
 import json
 import os
 import sys
@@ -7,7 +7,7 @@ import tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.join(HERE, "..", "li-scraper"))
+sys.path.insert(0, os.path.join(HERE, "..", "li"))
 
 import arbetsformedlingen  # noqa: E402
 import brainport  # noqa: E402
@@ -16,6 +16,7 @@ import gothenburg  # noqa: E402
 import hire_helsinki  # noqa: E402
 import jobsplus  # noqa: E402
 import make_it_in_munich  # noqa: E402
+import make_it_in_the_north  # noqa: E402
 import nav  # noqa: E402
 import skane  # noqa: E402
 import south_holland  # noqa: E402
@@ -24,6 +25,7 @@ import vdab  # noqa: E402
 import welcome_to_nl  # noqa: E402
 import work_in_austria  # noqa: E402
 import work_in_estonia  # noqa: E402
+import work_in_finland  # noqa: E402
 import work_in_lithuania  # noqa: E402
 import work_in_luxembourg  # noqa: E402
 import workindenmark  # noqa: E402
@@ -124,6 +126,47 @@ def boom(*a, **k):
 
 rows, health = hire_helsinki.read(http=FakeHttp(boom), sleep=NO_SLEEP)
 check("network failure reported", health["error"], "page 1: down")
+
+print("-- Work in Finland --")
+http = FakeHttp(helsinki_answer([
+    Resp(200, {"totalJobs": 101, "totalPages": 2, "jobs": [hh_job(1, "Staff Product Designer", "ICEYE", "Espoo")]}),
+    Resp(200, {"totalJobs": 101, "totalPages": 2, "jobs": [hh_job(2, "Product Owner", "Wolt", "")]})]))
+rows, health = work_in_finland.read(http=http, sleep=NO_SLEEP)
+check("whole country (no city filter), 100 a page", ([c[2]["params"] for c in http.calls]),
+      ([{"limit": 100, "page": 1}, {"limit": 100, "page": 2}]))
+check("rows", [(r["company"], r["location"]) for r in rows], [("ICEYE", "Espoo, Finland"), ("Wolt", "Finland")])
+check("health", health, {"rows": 2, "pages": 2, "total": 101, "error": None})
+rows, health = work_in_finland.read(http=FakeHttp(lambda m, u, k: Resp(200, {"oops": 1})), sleep=NO_SLEEP)
+check("unexpected answer reported", health["error"], "page 1: unexpected answer")
+
+print("-- Make it in the North --")
+
+
+def north_card(n, href=None):
+    href = href or f"https://www.makeitinthenorth.nl/jobs/acme/product-designer-{n}/"
+    return (f'<article class="card-vacancy-labels"><section><h3>Product Designer {n}</h3><div class="hstack stack-labels">'
+            f'<div class="badge"><i class="fa-regular fa-house fa-lg"></i>Acme</div>'
+            f'<div class="badge"><i class="fa-regular fa-location-dot fa-lg"></i>Leeuwarden</div></div></section>'
+            f'<div class="btn-wrapper"><a href="{href}" class="btn btn-primary">View job</a>'
+            f'<a href="https://www.makeitinthenorth.nl/companies/acme/" class="btn">View company</a></div></article>')
+
+
+def north_answer(method, url, kw):
+    pages = {"https://www.makeitinthenorth.nl/jobs/": [north_card(1), north_card(2, "https://careers.acme.test/2")],
+             "https://www.makeitinthenorth.nl/jobs/page/2/": [north_card(3)]}
+    cards = pages.get(url, [])
+    return Resp(200, text='<article class="offcanvas-search"><a href="https://www.makeitinthenorth.nl/jobs/">All</a></article>' + "".join(cards))
+
+
+http = FakeHttp(north_answer)
+rows, health = make_it_in_the_north.read(http=http, sleep=NO_SLEEP)
+check("pages until one has no cards", [c[1] for c in http.calls],
+      ["https://www.makeitinthenorth.nl/jobs/", "https://www.makeitinthenorth.nl/jobs/page/2/", "https://www.makeitinthenorth.nl/jobs/page/3/"])
+check("row (employer's own link kept)", (rows[1]["title"], rows[1]["company"], rows[1]["location"], rows[1]["job_url"]),
+      ("Product Designer 2", "Acme", "Leeuwarden, Netherlands", "https://careers.acme.test/2"))
+check("health (no reliable total)", health, {"rows": 3, "pages": 3, "total": None, "error": None})
+rows, health = make_it_in_the_north.read(http=FakeHttp(lambda m, u, k: Resp(200, text="<html>Blocked</html>")), sleep=NO_SLEEP)
+check("page without a job list reported", health["error"], "page 1: no job list on the page (changed or blocked)")
 
 print("-- Welcome to NL --")
 wn_result = {"title": {"raw": "Senior UX Designer"}, "url": {"raw": "https://emp.test/1"},
@@ -281,7 +324,7 @@ rows, health = gothenburg.read(sleep=NO_SLEEP, search=no_answer)
 check("missing search answer reported", health["error"], "'product manager' page 1: Timeout 30000ms exceeded")
 
 print("-- registry, switches, markets --")
-check("17 hubs", len(HUB_IDS), 17)
+check("19 hubs", len(HUB_IDS), 19)
 check("every hub's country is a market", all(h["country"] in CANONICAL_MARKETS for h in HUBS), True)
 HUB_ONLY = ("Finland", "Estonia", "Austria", "Denmark", "Sweden", "Norway", "Belgium", "Luxembourg", "Lithuania", "Malta")
 check("hub-only countries aren't searched", [c for c in HUB_ONLY if c in SEARCHED_MARKETS], [])

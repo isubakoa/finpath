@@ -318,10 +318,12 @@ def _aliases_for(name):
 
 def build_index(companies, aliases_by_slug=None):
     """Pre-compute normalized alias -> slug lookups once per run, instead of
-    re-normalizing every tracked name for every LI result."""
+    re-normalizing every tracked name for every LI result. A company's
+    `exclude` names (companies.py, from match.exclude) never match it."""
     aliases_by_slug = aliases_by_slug or {}
     exact = {}   # normalized name -> slug
     fuzzy = []   # (normalized name, slug) for containment matching
+    excluded = {}  # slug -> normalized names that must not match it
     for c in companies:
         names = _aliases_for(c["name"]) + aliases_by_slug.get(c["slug"], [])
         for n in names:
@@ -331,10 +333,18 @@ def build_index(companies, aliases_by_slug=None):
             exact[norm] = c["slug"]
             if len(norm) >= _MIN_CONTAINMENT_LEN:
                 fuzzy.append((norm, c["slug"]))
+        blocked = {_normalize(n) for n in c.get("exclude") or []} - {""}
+        if blocked:
+            excluded[c["slug"]] = blocked
     # Longest-first so a more specific alias wins over a shorter one that
     # happens to be a substring of it.
     fuzzy.sort(key=lambda pair: -len(pair[0]))
-    return {"exact": exact, "fuzzy": fuzzy}
+    return {"exact": exact, "fuzzy": fuzzy, "excluded": excluded}
+
+
+def _contains_words(longer, shorter):
+    """`shorter` appears in `longer` as whole words ("ambu" is not in "mambu")."""
+    return f" {shorter} " in f" {longer} "
 
 
 def match_company(employer_name, index):
@@ -344,7 +354,13 @@ def match_company(employer_name, index):
     if norm in index["exact"]:
         return index["exact"][norm]
     for alias_norm, slug in index["fuzzy"]:
-        if alias_norm in norm or norm in alias_norm:
+        if norm in index["excluded"].get(slug, ()):
+            continue
+        # Either side may be the longer one, but the shorter one must clear the
+        # same length floor as the alias (a 3-letter employer like "ING" would
+        # otherwise sit inside many longer names).
+        if (_contains_words(norm, alias_norm)
+                or (len(norm) >= _MIN_CONTAINMENT_LEN and _contains_words(alias_norm, norm))):
             return slug
     return None
 

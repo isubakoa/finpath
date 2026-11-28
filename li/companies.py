@@ -1,11 +1,12 @@
-"""Tracked companies for li-scraper, loaded from ../data/companies.json.
+"""Tracked companies for the li and hb scrapers, loaded from ../data/companies.json.
 
 companies.json is ZenPath's single list of tracked companies -- the app
 (index.php), this scraper and the validation test all read it. Don't add
 companies here; edit companies.json. This module only reshapes it into the
 two structures match.py already expects:
 
-  COMPANIES  [{"name": ..., "slug": ...}]  -- `match.name` if set, else `name`
+  COMPANIES  [{"name": ..., "slug": ..., "exclude": [...]}]  -- `match.name` if
+             set, else `name`; `match.exclude`: employer names never matched to it
   ALIASES    {slug: [alias, ...]}          -- from each company's `match.aliases`
 
 match.py normalizes each name (drops legal suffixes like "Group"/"Bank",
@@ -26,7 +27,8 @@ with COMPANIES_JSON.open(encoding="utf-8") as _f:
     _ALL = json.load(_f)["companies"]
 
 COMPANIES = [
-    {"name": (c.get("match") or {}).get("name") or c["name"], "slug": c["slug"]}
+    {"name": (c.get("match") or {}).get("name") or c["name"], "slug": c["slug"],
+     "exclude": (c.get("match") or {}).get("exclude") or []}
     for c in _ALL
 ]
 ALIASES = {

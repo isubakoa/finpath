@@ -1,8 +1,8 @@
-# js-scraper: JavaScript-only careers boards -> data/js-snapshot.json
+# js: JavaScript-only careers boards -> data/js-snapshot.json
 #
-# Same scheduling pattern as scrape-li.yml (see its header): a 15-minute cron
+# Same scheduling pattern as li.yml (see its header): a 15-minute cron
 # plus an elapsed-time gate, because GitHub drops and delays scheduled runs.
-# Offsets 8/23/38/53 keep it away from scrape-li.yml's ticks and the top of
+# Offsets 8/23/38/53 keep it away from li.yml's ticks and the top of
 # the hour. Also runs on any push that changes the scraper.
 name: TC-Coverage
 
@@ -11,12 +11,12 @@ on:
     - cron: "8,23,38,53 * * * *"
   push:
     paths:
-      - "js-scraper/scrape.js"
-      - "js-scraper/package.json"
+      - "js/scrape.js"
+      - "js/package.json"
   workflow_dispatch: {}
 
 concurrency:
-  group: scrape-js
+  group: js
   cancel-in-progress: false
 
 permissions:
@@ -26,7 +26,7 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     steps:
-      # Runs before checkout, so a skipped tick costs seconds. Same gate as scrape-li.yml's.
+      # Runs before checkout, so a skipped tick costs seconds. Same gate as li.yml's.
       - name: Gate on elapsed time since last real run
         id: gate
         env:
@@ -78,17 +78,17 @@ jobs:
 
       - name: Install dependencies
         if: steps.gate.outputs.should_run == 'true'
-        working-directory: ./js-scraper
+        working-directory: ./js
         run: npm install
 
       - name: Install Chromium (Playwright)
         if: steps.gate.outputs.should_run == 'true'
-        working-directory: ./js-scraper
+        working-directory: ./js
         run: npx playwright install --with-deps chromium
 
       - name: Run scraper
         if: steps.gate.outputs.should_run == 'true'
-        working-directory: ./js-scraper
+        working-directory: ./js
         run: node scrape.js
 
       # Screenshot + status/title/final URL for each page that gave no job links or
@@ -97,13 +97,13 @@ jobs:
         if: always() && steps.gate.outputs.should_run == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: js-scraper-debug
-          path: js-scraper/debug/
+          name: js-debug
+          path: js/debug/
           if-no-files-found: ignore
           retention-days: 7
 
       # Only touches data/js-snapshot.json, so rebasing onto a moved main can't
-      # conflict — retry instead of losing the run (same as scrape-li.yml).
+      # conflict — retry instead of losing the run (same as li.yml).
       - name: Commit updated snapshot
         if: steps.gate.outputs.should_run == 'true'
         run: |

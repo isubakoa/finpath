@@ -1,9 +1,9 @@
 """
-hb-scraper: reads the Talent Hubs (registry.HUBS, official job portals for
+hb: reads the Talent Hubs (registry.HUBS, official job portals for
 internationals) and writes data/hb-snapshot.json, which check.php serves to
-ZenPath next to li-scraper's data/li-snapshot.json.
+ZenPath next to li's data/li-snapshot.json.
 
-The rules are the job-site scraper's own (li-scraper/roles.py and match.py,
+The rules are the job-site scraper's own (li/roles.py and match.py,
 shared): title relevance and fit, accepted markets, tracked-company matching,
 sponsorship phrases, one record per employer + title + country, and a role
 dropped after roles.EXPIRY_DAYS unseen. A role both scrapers find is in both
@@ -14,7 +14,7 @@ Output:
   companies   {slug: {roles: [...]}}  tracked-company postings found on a hub
   openMarket  {roles: [...], talentHubs: [each hub's last run], hubOnlyMarkets}
 
-Usage (locally, or via .github/workflows/scrape-hb.yml):
+Usage (locally, or via .github/workflows/hb.yml):
     pip install -r requirements.txt
     python scrape.py            # ZP_CONTROL_FILE=<scraper-control answer> skips hubs switched off
     python scrape.py --debug    # print kept/dropped results, write nothing
@@ -24,16 +24,16 @@ import sys
 from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "li-scraper"))
+sys.path.insert(0, os.path.join(HERE, "..", "li"))
 
 from companies import ALIASES, COMPANIES  # noqa: E402 -- needs the path above
 from match import build_index  # noqa: E402
 from registry import HUB_IDS, hubs_off, run_talent_hubs  # noqa: E402
 from roles import (EXTRA_MARKETS, SEARCH_TERMS, build_fresh_roles, load_snapshot, merge_and_prune,  # noqa: E402
-                   set_hub_order, write_snapshot)
+                   result_urls, set_hub_order, write_snapshot)
 
 OUTPUT_PATH = os.path.normpath(os.path.join(HERE, "..", "data", "hb-snapshot.json"))
-SCHEDULE_INTERVAL_HOURS = 2  # must match .github/workflows/scrape-hb.yml's gate
+SCHEDULE_INTERVAL_HOURS = 2  # must match .github/workflows/hb.yml's gate
 
 set_hub_order(HUB_IDS)
 
@@ -54,7 +54,7 @@ def main():
     today_iso = checked_at[:10]
     fresh_roles, fresh_open_market_roles = build_fresh_roles(rows, build_index(COMPANIES, ALIASES), today_iso, debug=debug)
     snapshot = merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=fresh_open_market_roles,
-                               debug=debug, keep_sources=set(HUB_IDS))
+                               debug=debug, keep_sources=set(HUB_IDS), seen_urls=result_urls(rows))
     snapshot["checkedAt"] = checked_at
     snapshot["openMarket"].update({"talentHubs": report, "hubOnlyMarkets": list(EXTRA_MARKETS)})
 

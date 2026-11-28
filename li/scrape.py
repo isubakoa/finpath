@@ -1,10 +1,10 @@
 """
-li-scraper: finds design/product roles on job boards and writes
+li: finds design/product roles on job boards and writes
 data/li-snapshot.json, which check.php merges into ZenPath alongside each
 company's own careers board.
 
 Sources (one generator each, all yielding (source, row)). The Talent Hubs
-(official job portals) are a separate scraper, ../hb-scraper, with its own
+(official job portals) are a separate scraper, ../hb, with its own
 snapshot and workflow; both share roles.py (markets, matching, duplicates).
   li            LI's public job search (li_guest.py) at human pace:
                 the terms combined into a few OR queries per market, each searched
@@ -46,7 +46,7 @@ GitHub skips a tick) plus, every other run, a full sweep of PRIORITY_LOCATIONS
 dropped only after EXPIRY_DAYS without being seen again. Cycle lengths are
 printed at the start of every run and published in openMarket for the app.
 
-Usage (locally, or via .github/workflows/scrape-li.yml):
+Usage (locally, or via .github/workflows/li.yml):
     pip install -r requirements.txt
     python scrape.py
     python scrape.py --debug          # print every kept/dropped result, write nothing
@@ -65,7 +65,7 @@ from datetime import datetime, timezone
 
 from companies import COMPANIES, ALIASES
 from match import build_index
-from roles import SEARCH_TERMS, SEARCHED_MARKETS, build_fresh_roles, load_snapshot, merge_and_prune, write_snapshot
+from roles import SEARCH_TERMS, SEARCHED_MARKETS, build_fresh_roles, load_snapshot, merge_and_prune, result_urls, write_snapshot
 
 OUTPUT_PATH = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "li-snapshot.json"))
 
@@ -204,10 +204,10 @@ class ErrorLogCount(logging.Handler):
 # The lever for rotation speed vs. request volume (block risk) is this number.
 COMBOS_PER_RUN = 68
 # The workflow fires every 15 minutes but only runs when this much time has passed
-# since the last snapshot commit (.github/workflows/scrape-li.yml's gate step).
+# since the last snapshot commit (.github/workflows/li.yml's gate step).
 # GitHub delays most runs well past it, so the timings the app shows come from
 # observed_run_gap_hours(), not from this.
-SCHEDULE_INTERVAL_HOURS = 2  # must match .github/workflows/scrape-li.yml's gate
+SCHEDULE_INTERVAL_HOURS = 2  # must match .github/workflows/li.yml's gate
 # How many recent runs (liHistory) the observed spacing is measured over.
 RUN_GAP_SAMPLE_RUNS = 20
 
@@ -498,10 +498,9 @@ def main():
 
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     fresh_roles, fresh_open_market_roles = build_fresh_roles(rows, index, today_iso, debug=debug)
-    # Roles only the Talent Hubs found (from before they moved to hb-scraper) are
-    # left to hb-scraper's snapshot.
+    # Carried-over roles that only the talent hubs found are left to hb's snapshot.
     snapshot = merge_and_prune(existing, fresh_roles, today_iso, fresh_open_market_roles=fresh_open_market_roles,
-                               debug=debug, keep_sources={"li", "indeed", "bayt"})
+                               debug=debug, keep_sources={"li", "indeed", "bayt"}, seen_urls=result_urls(rows))
     snapshot["liCoverage"] = coverage
     # Evidence for tuning the LI settings: this run's requests, and a summary
     # of the last LI_HISTORY_RUNS runs.

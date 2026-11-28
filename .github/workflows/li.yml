@@ -1,4 +1,4 @@
-# li-scraper: LI / Indeed -> data/li-snapshot.json (the Talent Hubs are scrape-hb.yml)
+# li: LI / Indeed -> data/li-snapshot.json (the Talent Hubs are hb.yml)
 #
 # Scheduling: GitHub's `schedule` trigger is best-effort and routinely drops or
 # delays runs (we saw 5-7h gaps on a 2h cron). So the cron fires every 15
@@ -19,17 +19,17 @@ on:
     - cron: "3,18,33,48 * * * *"
   push:
     paths:
-      - "li-scraper/scrape.py"
-      - "li-scraper/match.py"
-      - "li-scraper/companies.py"
-      - "li-scraper/requirements.txt"
-      - "li-scraper/li_guest.py"
-      - "li-scraper/roles.py"
+      - "li/scrape.py"
+      - "li/match.py"
+      - "li/companies.py"
+      - "li/requirements.txt"
+      - "li/li_guest.py"
+      - "li/roles.py"
       - "data/companies.json"
   workflow_dispatch: {}
 
 concurrency:
-  group: scrape-li
+  group: li
   cancel-in-progress: false
 
 permissions:
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: li-scraper
+        working-directory: li
     steps:
       # Runs before checkout, so a skipped tick costs seconds. Measures from when
       # the last run STARTED (the snapshot's openMarket.sourceHealth.checkedAt), not
@@ -53,7 +53,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SNAPSHOT_PATH: data/li-snapshot.json
-          SCHEDULE_INTERVAL_HOURS: "2" # must match li-scraper/scrape.py's SCHEDULE_INTERVAL_HOURS
+          SCHEDULE_INTERVAL_HOURS: "2" # must match li/scrape.py's SCHEDULE_INTERVAL_HOURS
         run: |
           set -euo pipefail
           # Paused in ZenPath Settings › Job sites? Scheduled runs only; a run started by
@@ -129,7 +129,7 @@ jobs:
         run: python scrape.py
 
       # This run's commit only touches data/li-snapshot.json, so if main moved
-      # meanwhile (scrape.yml or a person pushed), rebasing onto it can't
+      # meanwhile (js.yml or a person pushed), rebasing onto it can't
       # conflict — retry the push a few times instead of losing the run.
       - name: Commit updated snapshot
         if: steps.gate.outputs.should_run == 'true'
