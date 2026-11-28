@@ -545,6 +545,8 @@ dup_rows = [
     ("indeed", row("https://indeed.test/1", "Spotify", "Senior Product Manager", "Stockholm")),
     ("talentberlin", row("https://tb.test/1", "SATO Europe GmbH", "Senior Product Manager (m/w/d)", "Berlin, Germany")),
     ("makeitinmunich", row("https://mm.test/1", "SATO Europe", "Senior Product Manager", "Munich, Germany")),
+    ("hirehelsinki", row("https://fi.test/1", "Nomentia", "Senior UX Designer", "Espoo, Finland")),
+    ("workinfinland", row("https://fi.test/1", "Nomentia", "Senior UX Designer", "Espoo, Finland")),  # same feed, same link
     ("jobsplus", row("https://jp.test/1", jobsplus.COMPANY_HIDDEN, "Senior Product Designer", "Sliema, Malta")),
     ("jobsplus", row("https://jp.test/2", jobsplus.COMPANY_HIDDEN, "Senior UX Designer", "Gzira, Malta")),
 ]
@@ -569,6 +571,9 @@ check("Spotify: Indeed + Arbetsförmedlingen -> one role, Indeed's link", (len(s
       (1, "https://indeed.test/1"))
 sato = [r for _, r in everything if r.get("employer", "").startswith("SATO")]
 check("same employer and title in two German cities -> one role (accepted limitation)", len(sato), 1)
+finland = [r for _, r in everything if "Finland" in r["location"]]
+check("Hire Helsinki + Work in Finland, same link -> one role with both", (len(finland), sorted(finland[0]["sources"]) if finland else None),
+      (1, ["hirehelsinki", "workinfinland"]))
 malta = [r for _, r in everything if "Malta" in r["location"]]
 check("Jobsplus roles with the hidden company stay apart by title", len(malta), 2)
 
