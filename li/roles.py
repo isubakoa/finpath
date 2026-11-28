@@ -327,8 +327,9 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
           fresh_open_market  no tracked match, but open_market_gate() (title/fit)
                              and is_known_market() (location) both pass;
                              key = normalize_employer_name(employer).
-        Everything else is dropped. Exact-URL duplicates are dropped first, as a
-        cheap check before the identity merge.
+        Everything else is dropped. A link a source already gave this run is
+        dropped first, as a cheap check; the same link from another source goes
+        on to the identity merge, which adds that source to the role.
     """
     fresh = {}  # identity tuple -> (slug, role dict)
     fresh_open_market = {}  # identity tuple -> (normalized employer key, role dict) — 2.2
@@ -339,10 +340,10 @@ def build_fresh_roles(rows, index, today_iso, debug=False):
 
     for source, row in rows:
         url = _clean_str(row.get("job_url"))
-        if not url or url in seen_urls:
+        if not url or (source, url) in seen_urls:
             duplicate += 1
             continue
-        seen_urls.add(url)
+        seen_urls.add((source, url))
 
         employer = _clean_str(row.get("company"))
         # Strip CTA run-on text and, only when the site gave no location, recover one

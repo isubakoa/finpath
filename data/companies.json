@@ -6043,29 +6043,6 @@
     },
     {
       "region": "Global",
-      "name": "Shopify",
-      "slug": "shopify",
-      "category": "E-commerce Platform",
-      "hq": "Ottawa, Canada",
-      "founded": 2006,
-      "asia": "limited",
-      "asiaNote": "Singapore office for APAC sales/support (reports of staff reductions there); no confirmed Asia product/design hub.",
-      "sponsorship": "likely",
-      "sponsorshipNote": "Large multinational with offices across several visa-friendly markets — the sponsoring entity depends on which office the role sits in. Not individually verified for a specific location.",
-      "note": "Major e-commerce platform; well-known for a strong, design-forward product culture (Shopify Polaris design system).",
-      "url": "https://www.shopify.com/careers",
-      "openStatus": "none",
-      "openRoles": [],
-      "openNote": "shopify.com/careers (re-checked 2026-11-28): 113 roles, but the page's HTML lists only the first 25; the rest sit in its embedded React Router data (load more). Shopify is remote by design: 110 of 113 read 'Remote - <region>' (80 Americas, 10 UK, 9 Ireland, 11 Canada, 5 Singapore, others one each) and 3 are London events/marketing roles. Design and product roles: 'Designers' and 'Product Management' (general talent pools) and a Staff Presentation Designer, all Remote - Americas. ZenPath doesn't track remote roles, so none show; check.php keeps reading the first page, and job-site matches cover the rest.",
-      "ats": {
-        "type": "html",
-        "url": "https://www.shopify.com/careers",
-        "linkPattern": "#/careers/[a-z0-9-]+_[0-9a-f-]{36}$#",
-        "titleClass": "text-careers-subhead"
-      }
-    },
-    {
-      "region": "Global",
       "name": "Celonis",
       "slug": "celonis",
       "category": "Enterprise Software (Process Mining)",

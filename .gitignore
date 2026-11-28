@@ -1,24 +1,26 @@
-# macOS Files
+# Propath
 
-.DS_Store
-**/.DS_Store
+# Ignore on GitHub
+/app/
+/local/
+/docs/
 
-
-# MD Files
+# Notes anywhere else stay local too
 README.md
 **/README.md
 CHANGES.md
 **/CHANGES.md
-
-
-# Files
 diagnoses.py
 
+# macOS
+.DS_Store
 
-# Python bytecode
+# Python
 __pycache__/
 *.pyc
 
+# Node
+node_modules/
 
 # js debug captures (workflow artifact)
-js/debug/
+/js/debug/
